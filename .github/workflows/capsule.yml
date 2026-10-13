@@ -1,49 +1,13 @@
-name: Publish prepared Genius source
-on:
-  push:
-    paths: [".github/workflows/capsule.yml"]
+name: Capsule verification
+on: [push, pull_request]
 permissions:
-  contents: write
+  contents: read
 jobs:
-  publish:
-    if: github.repository == 'pedrosalvadeo/genius-decision-open'
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify and unpack authorized edition
-        run: |
-          cp .github/workflows/capsule.yml /tmp/genius-import-workflow.yml
-          python3 - <<'PYCODE'
-          import hashlib, json, pathlib, zipfile
-          archive = pathlib.Path('genius-source.zip')
-          assert hashlib.sha256(archive.read_bytes()).hexdigest() == '92c0567354d03706798bd7b0c9a63754a222f0670805ca19d53e434fc75722e2'
-          with zipfile.ZipFile(archive) as z:
-              for entry in z.infolist():
-                  path = pathlib.PurePosixPath(entry.filename)
-                  assert path.parts[0] == 'genius-decision-open' and '..' not in path.parts and len(path.parts) > 1
-                  target = pathlib.Path(*path.parts[1:])
-                  target.parent.mkdir(parents=True, exist_ok=True)
-                  target.write_bytes(z.read(entry))
-          manifest = json.loads(pathlib.Path('PUBLICATION_MANIFEST.json').read_text())
-          for name, digest in manifest['files'].items():
-              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() == digest, name
-          print('Verified', len(manifest['files']), 'source hashes')
-          PYCODE
-          cp /tmp/genius-import-workflow.yml .github/workflows/capsule.yml
-          rm genius-source.zip
-      - name: Verify capsule and measured real case
-        run: |
-          python3 -m unittest discover -s capsule/tests -v
-          python3 capsule/genius.py evaluate capsule/cases/distribution/model.json --evidence capsule/cases/distribution/evidence.json --out /tmp/genius-distribution
-          python3 capsule/genius.py verify /tmp/genius-distribution
-      - name: Publish verified source files
-        run: |
-          find . -type d -name __pycache__ -prune -exec rm -rf {} +
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
-          git commit -m 'Publish verified Genius source edition 0.1.0'
-          git push origin HEAD:main
+      - run: python3 -m unittest discover -s capsule/tests -v
