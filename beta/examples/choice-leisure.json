@@ -1,0 +1,64 @@
+{
+  "profile": "choice",
+  "context": {
+    "question": "¿Qué actividad hacer esta tarde?",
+    "category": "leisure",
+    "horizon": "Esta tarde"
+  },
+  "criteria": [
+    {
+      "id": "time",
+      "label": "Tiempo de viaje",
+      "unit": "minutos",
+      "direction": "min",
+      "limit": "30"
+    },
+    {
+      "id": "interest",
+      "label": "Interés personal",
+      "unit": "escala 0 a 10",
+      "direction": "max",
+      "limit": null
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "park",
+      "label": "Parque",
+      "values": {
+        "time": "10",
+        "interest": "7"
+      },
+      "source": "Estimación propia"
+    },
+    {
+      "id": "museum",
+      "label": "Museo",
+      "values": {
+        "time": "20",
+        "interest": "9"
+      },
+      "source": "Estimación propia"
+    },
+    {
+      "id": "far",
+      "label": "Paseo lejano",
+      "values": {
+        "time": "45",
+        "interest": "10"
+      },
+      "source": "Estimación propia"
+    }
+  ],
+  "selection": {
+    "mode": "lexicographic",
+    "criteria_order": [
+      "interest",
+      "time"
+    ]
+  },
+  "model_confirmation": "a2d1bf9fc04e8f35086e251b7df8573348f836b129a89986969f532c66c2eaf2",
+  "permission_confirmed": true,
+  "scope_acknowledged": true,
+  "evidence_origin": "synthetic"
+}

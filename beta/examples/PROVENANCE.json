@@ -1,0 +1,69 @@
+{
+  "examples": [
+    {
+      "evidence_kind": "SYNTHETIC_STIPULATION",
+      "example": "hours-known",
+      "not_empirical_evidence": true,
+      "payload_sha256": "a27c0719c53aed969c43fa35654bb0afec59dc977ba818d5db3e9d4f9d42080d",
+      "source": "beta/tests/test_adapter.py:hours",
+      "source_files": [],
+      "transformation": "Explicit illustrative values; no participant or measured observation."
+    },
+    {
+      "evidence_kind": "SYNTHETIC_STIPULATION",
+      "example": "hours-unknown",
+      "not_empirical_evidence": true,
+      "payload_sha256": "ac272222add774b428e6a86609092dcceb1655b135fe5a0bed90e3bcfb48b1f2",
+      "source": "beta/tests/test_adapter.py:hours",
+      "source_files": [],
+      "transformation": "Explicit illustrative values; no participant or measured observation."
+    },
+    {
+      "evidence_kind": "SYNTHETIC_STIPULATION",
+      "example": "fdq-frontier",
+      "not_empirical_evidence": true,
+      "payload_sha256": "e3b18f695476e64bd6a21d13c7fd17be44f6a8e206209e6e3289475d0c10c872",
+      "source": "product_local/examples/fdq/none",
+      "source_files": [
+        {
+          "path": "product_local/examples/fdq/none/input.json",
+          "sha256": "c345dab543725ae96b756e63ab5b3e9dcdad4b1360c576aa0e2176e8a69f4190"
+        },
+        {
+          "path": "product_local/examples/fdq/none/original_result.json",
+          "sha256": "8094ccf8431bfb25894abc2f21ccc9fee8d94a7667835d710562ee7d0ee7e8df"
+        },
+        {
+          "path": "product_local/examples/fdq/none/certificate.json",
+          "sha256": "975c3b2585f025f8c62d94d5e310eaa64fd8b45fba018737adf31ce305a6ca25"
+        }
+      ],
+      "transformation": "Input/Result exact UTF-8 bytes copied. Certificate explicitly restricted to the requested query and claim using beta/tests/test_adapter.py:fdq; family, witness, target and original byte digests unchanged. This construction is the submitted example, not a repair performed by the runtime adapter."
+    },
+    {
+      "evidence_kind": "SYNTHETIC_STIPULATION",
+      "example": "fdq-selector",
+      "not_empirical_evidence": true,
+      "payload_sha256": "24211fc60d26dc2024093ce9c70130935894acbdae923e197a5df270dcd0892e",
+      "source": "product_local/examples/fdq/historical",
+      "source_files": [
+        {
+          "path": "product_local/examples/fdq/historical/input.json",
+          "sha256": "bef1074ffd927eb53a78635951e73e9128ff5f2b2470b9509c7034bb8db3b721"
+        },
+        {
+          "path": "product_local/examples/fdq/historical/original_result.json",
+          "sha256": "f5e111c1db134b75151a663e4d52c7d483de35901bf7b29e8bfdeb8ffbd0c225"
+        },
+        {
+          "path": "product_local/examples/fdq/historical/certificate.json",
+          "sha256": "20b74bb7a20b08552b11b09873d02aaa4f9d8d4dae2862290ec1977fce975982"
+        }
+      ],
+      "transformation": "Input/Result exact UTF-8 bytes copied. Certificate explicitly restricted to the requested query and claim using beta/tests/test_adapter.py:fdq; family, witness, target and original byte digests unchanged. This construction is the submitted example, not a repair performed by the runtime adapter."
+    }
+  ],
+  "format": "genius-beta-example-provenance/0.1.0",
+  "generator": "beta/tools/generate_examples.py",
+  "source_provenance": "product_local/examples/fdq/PROVENANCE.json"
+}
