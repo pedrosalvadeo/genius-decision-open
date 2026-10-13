@@ -1,0 +1,45 @@
+{
+  "basis": "Received rules and fixed source certificate claims; runtime does not read this file.",
+  "examples": {
+    "fdq-frontier": {
+      "decision": "PR_SET_OR_INCOMPARABLE",
+      "evidence": "EV_CONDITIONAL",
+      "selected_policy": null,
+      "value": {
+        "frontier": [
+          "p",
+          "s"
+        ]
+      }
+    },
+    "fdq-selector": {
+      "decision": "PR_JUSTIFIED_RESULT",
+      "evidence": "EV_CONDITIONAL",
+      "selection_rule": {
+        "mode": "unique"
+      },
+      "value": {
+        "selector": {
+          "state": "DEFINED",
+          "value": "p"
+        }
+      }
+    },
+    "hours-known": {
+      "decision": "PR_JUSTIFIED_RESULT",
+      "evidence": "EV_CONDITIONAL",
+      "values": {
+        "assigned": "14/1",
+        "deficit": "1/1",
+        "excess": "0/1"
+      }
+    },
+    "hours-unknown": {
+      "obligation_open": true,
+      "unknown_is_not_zero": true,
+      "values_state": "PV_UNKNOWN"
+    }
+  },
+  "format": "genius-beta-example-expectations/0.1.0",
+  "not_empirical_evidence": true
+}

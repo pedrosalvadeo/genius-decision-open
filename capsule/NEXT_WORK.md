@@ -7,9 +7,11 @@ Estado de publicación: edición pública de fuentes en la rama main bajo Apache
 
 Ya construido: cápsula portable, ejecutor local del gemelo, verificación por recompilación/recomputación, contratos para casos reales, contribuciones e intercambio de anfitrión, catálogo de frentes/candidatos y edición pública Apache-2.0 con las fuentes matemáticas originales y enmiendas. Nueve pruebas pasaron en desarrollo y desde una exportación limpia. El caso real de distribución usa observaciones de archivos y limita su conclusión a bytes.
 
-Continuar directamente los frentes del mandato: acceso autónomo API/MCP al gemelo, observaciones reales del modelo, interpretación de problemas, aportes a matemática y perfiles completos, colaboración externa y experiencia humana. Ninguno requiere esperar una secuencia obligatoria de versiones reducidas.
+Acceso autónomo API/MCP implementado en esta edición: 15 herramientas, permisos propios, cuota diaria compartida con los trabajos de agentes, aislamiento y borrado de expedientes. Ver beta/docs/AGENT_TWIN.md. Despliegue preparado en Railway con commit 103da8fcc76a552d06a3074f09f5a47188f10717, pendiente de confirmación explícita para aplicarlo. Verificar después el manifiesto vivo y un ciclo de cliente; publicar el código no acredita que esté activo. Se recuperaron los siete archivos sintéticos beta/examples omitidos en la primera exportación.
 
-Un agente externo con herramientas propias aún debe recibir y utilizar la cápsula; las pruebas locales no lo acreditan. El catálogo de proyectos identifica candidatos y canales, no acuerdos de colaboración. Conservar en cada contribución la afirmación, las fuentes, los cambios, la reproducción y los límites.
+Continuar directamente los frentes del mandato: verificación del despliegue API/MCP, observaciones reales del modelo, interpretación de problemas, aportes a matemática y perfiles completos, colaboración externa y experiencia humana. Ninguno requiere esperar una secuencia obligatoria de versiones reducidas.
+
+Un agente externo con herramientas propias aún debe recibir y utilizar la cápsula; las pruebas locales no lo acreditan. Se envió una propuesta concreta de integración y prueba independiente a OpenHands Extensions: https://github.com/OpenHands/extensions/issues/770. Está pendiente de revisión; no acredita acuerdo ni ejecución externa. Los demás proyectos siguen siendo candidatos. Conservar en cada contribución la afirmación, las fuentes, los cambios, la reproducción y los límites.
 
 ## Encargo de continuación
 

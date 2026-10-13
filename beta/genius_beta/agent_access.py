@@ -8,7 +8,8 @@ from flask import g, jsonify, request
 from .db import dump, transaction
 
 POLICY_VERSION = 'agent-access-2026-10-06-v1'
-SCOPES = frozenset(('cases:read', 'cases:write', 'jobs:run', 'cases:delete', 'account:delete'))
+TWIN_SCOPES = ('twins:read', 'twins:write', 'twins:evaluate', 'twins:delete')
+SCOPES = frozenset(('cases:read', 'cases:write', 'jobs:run', 'cases:delete', 'account:delete', *TWIN_SCOPES))
 DEFAULT_SCOPES = ('cases:read', 'cases:write', 'jobs:run', 'account:delete')
 DEMO_SCOPES = ('cases:read', 'account:delete')
 EXAMPLES = ('hours-known', 'hours-unknown', 'fdq-frontier', 'fdq-selector')
@@ -16,6 +17,20 @@ EXAMPLES = ('hours-known', 'hours-unknown', 'fdq-frontier', 'fdq-selector')
 
 def required_scope(method, path):
     method = 'GET' if method == 'HEAD' else method
+    if path.startswith('/api/twin/'):
+        suffix = path[len('/api/twin/'):]
+        if method == 'GET' and (suffix in ('capabilities', 'profiles', 'examples', 'cases', 'runtime')
+                or re.fullmatch(r'(profiles/[A-Za-z0-9_-]+/schema|examples/[A-Za-z0-9_-]+|cases/[a-f0-9]{32}(/compare|/export)?|jobs/[a-f0-9]{32})', suffix)):
+            return 'twins:read'
+        if method == 'POST' and (suffix == 'cases' or re.fullmatch(r'(cases/[a-f0-9]{32}/(proposals|observations)|proposals/[a-f0-9]{32}/accept)', suffix)):
+            return 'twins:write'
+        if method == 'PATCH' and re.fullmatch(r'cases/[a-f0-9]{32}/draft', suffix):
+            return 'twins:write'
+        if method == 'POST' and re.fullmatch(r'cases/[a-f0-9]{32}/evaluate', suffix):
+            return 'twins:evaluate'
+        if method == 'DELETE' and re.fullmatch(r'cases/[a-f0-9]{32}', suffix):
+            return 'twins:delete'
+        return None
     if (method, path) in (('GET', '/api/agents/me'), ('POST', '/api/agents/token'),
                            ('DELETE', '/api/agents/token')):
         return ''  # Own credential inspection/rotation/revocation only.
@@ -111,6 +126,10 @@ def install(app, db, body, digest, error, fail_quota, capacity, delete_entity,
             policy_version=POLICY_VERSION,policy_url='/static/agent-policy.html',
             documentation='/agents',openapi='/openapi.json',
             profiles=['hours','fdq','choice'],
+            twin=dict(available=app.config['TWIN_ENABLED'],base_url='/api/twin',
+                capabilities_url='/api/twin/capabilities',scopes=TWIN_SCOPES,
+                documentation='https://github.com/pedrosalvadeo/genius-decision-open/blob/main/beta/docs/AGENT_TWIN.md',
+                empirical_validation=False,narrative_interpreted=False),
             choice=dict(version='genius-declared-choice/1',review_url='/api/choice/review',documentation='/static/decisions.html',
                 categories=['leisure','personal_organization'],max_alternatives=8,max_criteria=5,
                 narrative_interpreted=False,model_confirmation_required=True,empirical_admission=False),
@@ -219,4 +238,6 @@ def install(app, db, body, digest, error, fail_quota, capacity, delete_entity,
     def delete_agent_account():
         machine_only()
         delete_entity(g.user['id'],'user')
+        if 'twin_erase_user' in app.extensions:
+            app.extensions['twin_erase_user'](g.user['id'])
         return '',204

@@ -14,6 +14,8 @@ import shutil
 import time
 
 from flask import g, jsonify, request, send_from_directory
+from .agent_access import reserve_agent_job
+from .db import transaction
 
 IDENTIFIER = re.compile(r'[0-9a-f]{32}\Z')
 
@@ -101,13 +103,13 @@ def install(app, db, fail_quota, APIError):
     static = Path(__file__).resolve().parents[2] / 'twin' / 'genius_twin' / 'static'
     evaluator = app.config.get('TWIN_EVALUATOR') or ProcessEvaluator(
         app.config['TWIN_TIMEOUT'], app.config['TWIN_MEMORY_MB'], app.config['TWIN_OUTPUT_BYTES'])
-    context = {'mode': 'authenticated_beta', 'timeout': app.config['TWIN_TIMEOUT'],
+    context = {'mode': 'authenticated_beta', 'mcp': app.config['MCP_ENABLED'], 'timeout': app.config['TWIN_TIMEOUT'],
                'memory_mb': app.config['TWIN_MEMORY_MB'], 'output_bytes': app.config['TWIN_OUTPUT_BYTES']}
 
     @app.before_request
     def tenant_gate():
         protected = app.config['TWIN_ENABLED'] and (request.path.startswith('/api/twin/') or request.path == '/api/twin')
-        lifecycle = request.path == '/api/me' and request.method == 'DELETE'
+        lifecycle = request.path in ('/api/me', '/api/agents/me') and request.method == 'DELETE'
         export = request.path == '/api/export'
         if not (protected or lifecycle or export):
             return
@@ -135,6 +137,9 @@ def install(app, db, fail_quota, APIError):
                 handle.close()
                 raise APIError('compute_capacity', 'Hay otra evaluación en curso. Vuelve a intentar en unos momentos.', 429) from None
             g.twin_compute_lock = handle
+            if g.agent_account:
+                with transaction(db()):
+                    reserve_agent_job(db(), app.config, g.user['id'], int(time.time()), APIError)
             fail_quota('twin-job:' + g.user['id'], app.config['MAX_JOBS_DAILY'])
             fail_quota('twin-job:global', app.config['MAX_GLOBAL_JOBS_DAILY'])
 
@@ -170,21 +175,34 @@ def install(app, db, fail_quota, APIError):
             # This process holds the tenant lock; a previous web process died.
             # The evaluator's parent-death signal prevents live orphan work.
             current.recover_jobs()
+            case_limit = app.config['MAX_CASES']
+            revision_limit = app.config['MAX_REVISIONS']
+            if g.agent_account:
+                case_limit = min(case_limit, app.config['MAX_AGENT_CASES'])
+                revision_limit = min(revision_limit, app.config['MAX_AGENT_REVISIONS'])
             if request.method == 'POST' and request.path.rstrip('/') == '/api/twin/cases':
-                if len(current.list_cases()['cases']) >= app.config['MAX_CASES']:
+                if len(current.list_cases()['cases']) >= case_limit:
                     raise APIError('case_limit', 'Límite de expedientes alcanzado.', 429)
             accepting = re.fullmatch(r'/api/twin/proposals/([0-9a-f]{32})/accept', request.path)
             if request.method == 'POST' and accepting:
                 proposal = store.one('SELECT * FROM proposals WHERE id=?', (accepting.group(1),))
                 if proposal and proposal['status'] != 'accepted':
                     case = store.one('SELECT current_version FROM cases WHERE id=?', (proposal['case_id'],))
-                    if case['current_version'] >= app.config['MAX_REVISIONS']:
+                    if case['current_version'] >= revision_limit:
                         raise APIError('revision_limit', 'Límite de versiones alcanzado. Exporta el expediente para conservarlo.', 429)
             proposing = re.fullmatch(r'/api/twin/cases/([0-9a-f]{32})/proposals', request.path)
             if request.method == 'POST' and proposing:
                 count = store.one('SELECT count(*) AS n FROM proposals WHERE case_id=?', (proposing.group(1),))['n']
-                if count >= 5 * app.config['MAX_REVISIONS']:
+                if count >= 5 * revision_limit:
                     raise APIError('proposal_limit', 'Límite de propuestas alcanzado para este expediente.', 429)
+            observing = re.fullmatch(r'/api/twin/cases/([0-9a-f]{32})/observations', request.path)
+            if request.method == 'POST' and observing:
+                case = store.one('SELECT current_version FROM cases WHERE id=?', (observing.group(1),))
+                # Existing idempotent receipts may still be read at the limit.
+                key = (request.get_json(silent=True) or {}).get('idempotency_key')
+                prior = store.one('SELECT 1 FROM idempotency WHERE case_id=? AND key=?', (observing.group(1), key)) if isinstance(key, str) else None
+                if case and case['current_version'] >= revision_limit and not prior:
+                    raise APIError('revision_limit', 'Límite de versiones alcanzado.', 429)
             g.twin_service = current
         return g.twin_service
 

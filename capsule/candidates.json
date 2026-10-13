@@ -1,7 +1,7 @@
 {
   "format": "genius-collaboration-candidates/1",
   "checked_on": "2026-10-13",
-  "contacts_sent": 0,
+  "contacts_sent": 1,
   "candidates": [
     {
       "name": "OpenHands Software Agent SDK",
@@ -17,7 +17,11 @@
       "kind": "extension_registry",
       "potential": "Distribute a compatible capsule integration",
       "channel": "Registry contribution process",
-      "status": "IDENTIFIED_NOT_CONTACTED"
+      "status": "PROPOSAL_SENT_AWAITING_REVIEW",
+      "contact_url": "https://github.com/OpenHands/extensions/issues/770",
+      "contact_date": "2026-10-13",
+      "agreement_confirmed": false,
+      "external_agent_execution_confirmed": false
     },
     {
       "name": "A2A sample ecosystem",

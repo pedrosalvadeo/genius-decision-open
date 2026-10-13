@@ -91,7 +91,7 @@ class TwinService:
         return {"format": "genius-twin-capabilities/0.2.0", "profile": registry.D1,
                 "profiles": registry.profiles(), "examples": registry.examples(),
                 "scope": "Declared finite models; calculation under assumptions, empirical validity not assessed",
-                "transport": "HTTP JSON; access boundary belongs to the embedding", "mcp": False, "external_acquisition": False,
+                "transport": "HTTP JSON; access boundary belongs to the embedding", "mcp": self.execution_context.get('mcp', False), "external_acquisition": False,
                 "physical_actions": False, "rc01_receipt": False, "default_case_versions": "start at 1 after material confirmation",
                 "execution_limits": deepcopy(self.execution_context),
                 "edit_operations": ["declared_model", "draft", "apply_relay_policy", "preference", "law_correction", "restore"],

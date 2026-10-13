@@ -1,0 +1,17 @@
+{
+  "assignments": [
+    {
+      "credit": "6.5",
+      "id": "a"
+    },
+    {
+      "credit": "7.5",
+      "id": "b"
+    }
+  ],
+  "evidence_origin": "synthetic",
+  "permission_confirmed": true,
+  "profile": "hours",
+  "scope_acknowledged": true,
+  "target": "15"
+}

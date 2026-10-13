@@ -1,0 +1,20 @@
+{
+  "format": "genius-agent-twin-validation/1",
+  "date": "2026-10-13",
+  "source_base": "714a713e725db9667b473bfc511f2e2309aa552f",
+  "deployment_commit": "103da8fcc76a552d06a3074f09f5a47188f10717",
+  "deployment_status": "STAGED_NOT_DEPLOYED",
+  "tests": {
+    "test_agent_twin.py": 5,
+    "test_mcp_access.py": 12,
+    "test_twin_integration.py": 9,
+    "test_direct_agents.py": 14,
+    "capsule/tests": 9
+  },
+  "total_passed": 49,
+  "real_engine_execution": true,
+  "empirical_validation": false,
+  "external_agent_execution_confirmed": false,
+  "collaboration_proposal": "https://github.com/OpenHands/extensions/issues/770",
+  "collaboration_agreement_confirmed": false
+}
