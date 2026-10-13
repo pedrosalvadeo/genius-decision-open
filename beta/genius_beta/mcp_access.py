@@ -12,9 +12,10 @@ import time
 from flask import jsonify, request
 from werkzeug.test import EnvironBuilder
 from .agent_access import EXAMPLES
+from . import twin_mcp
 
 VERSIONS = ('2026-07-28', '2025-11-25', '2025-06-18', '2025-03-26')
-INFO = dict(name='genius-decision',version='0.1.0')
+INFO = dict(name='genius-decision',version='0.2.0')
 ID_SCHEMA = dict(type='string',pattern='^[a-f0-9]{32}$')
 CHOICE_SCHEMA = json.loads((Path(__file__).with_name('static')/'openapi.json').read_text())['components']['schemas']['ChoiceModel']
 
@@ -53,6 +54,7 @@ TOOLS = [
     tool('delete_agent_space','Permanently delete this credential’s entire agent space and revoke access. Requires confirm=true.',
          {'confirm':dict(type='boolean',const=True)},('confirm',),scope='account:delete',read=False,destructive=True),
 ]
+TOOLS += twin_mcp.definitions(tool)
 BY_NAME = {t['name']:t for t in TOOLS}
 
 
@@ -125,6 +127,10 @@ def install(app, body, error, fail_quota, digest):
         return outcome
 
     def execute(name, args, authorization):
+        if name in twin_mcp.ROUTES:
+            if not app.config['TWIN_ENABLED']:
+                raise error('twin_unavailable', 'Twin access is disabled.', 503)
+            return twin_mcp.execute(name, args, authorization, rest)
         if name == 'prepare_decision': return rest('POST','/api/choice/review',args,authorization)
         if name == 'revise_case': return rest('PATCH','/api/cases/'+args['case_id'],{'input':args['input']},authorization)
         if name == 'get_capabilities': return rest('GET','/agents/manifest.json')
@@ -227,7 +233,8 @@ def install(app, body, error, fail_quota, digest):
         if method == 'ping': return success({})
         if method == 'tools/list':
             if params.get('cursor') is not None: return rpc_error(ident,-32602,'No pagination cursor supported')
-            listing = {'tools':[t for t in TOOLS if t['_meta']['app.geniusdecision/required-scope'] in [None,*scopes]]}
+            listing = {'tools':[t for t in TOOLS if t['_meta']['app.geniusdecision/required-scope'] in [None,*scopes]
+                and (app.config['TWIN_ENABLED'] or t['name'] not in twin_mcp.ROUTES)]}
             if modern: listing.update(ttlMs=0,cacheScope='private')
             return success(listing)
         if method != 'tools/call':

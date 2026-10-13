@@ -563,7 +563,7 @@ def create_app(overrides=None):
     def export():
         ids=[r[0] for r in db().execute('SELECT id FROM cases WHERE user_id=?',(g.user['id'],))]
         response = dict(export_version='1',exported_at=int(time.time()),user=user_view(g.user),cases=[details(cid) for cid in ids],research_candidates=[dict(r) for r in db().execute('SELECT research_candidates.* FROM research_candidates JOIN cases ON cases.id=research_candidates.case_id WHERE cases.user_id=?',(g.user['id'],))])
-        if 'twin_export_user' in app.extensions:
+        if 'twin_export_user' in app.extensions and (not g.agent_account or 'twins:read' in g.agent_scopes):
             response['twins'] = app.extensions['twin_export_user']()
         return jsonify(response)
 
