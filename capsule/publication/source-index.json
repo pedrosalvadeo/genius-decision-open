@@ -172,6 +172,121 @@
       "git_blob": "e77c1d102f94f2a19d96efb610d01871ca76eee8"
     },
     {
+      "path": "beta/README.md",
+      "sha256": "86ac764422df8df759094a51c7c4aea952e2d0e40592bf2abe1be64ad2c7934a",
+      "git_blob": "f13f9d39d7628c02115e9eccd12a4ce898b09bca"
+    },
+    {
+      "path": "beta/deploy/CI_orchestrate.py",
+      "sha256": "03767e70fd948ad0ec456fe7717e9bc37073e2e4447986f45d8f61e39d9c9b81",
+      "git_blob": "be4d9d3676417887bdc7714a9167200a6779b68a"
+    },
+    {
+      "path": "beta/deploy/CI_tests.py",
+      "sha256": "f4cb8c31e79b9af889c33d11249b9ddec813ee6095791f36a747a84cbd2e5797",
+      "git_blob": "7eb54c0a09255b5977a18c60edad010ddb27f87f"
+    },
+    {
+      "path": "beta/deploy/Dockerfile",
+      "sha256": "49c7e84ce18516f6f4811a4a54c1390aa3d13f9f64250594e3e72cd0ea81afa9",
+      "git_blob": "c42a2fd56a27f616bef4584f72413f0152c9cede"
+    },
+    {
+      "path": "beta/deploy/backup.py",
+      "sha256": "9c9c23d02aa4daa1b669506c0e79ff0bbd0bba139b1af42d2f92c752f1a04d6e",
+      "git_blob": "cd9f4303e097601e72b738f82f58475f90f0a1b3"
+    },
+    {
+      "path": "beta/deploy/r2_recovery_probe.py",
+      "sha256": "822211bb96c54e6e123680809578d8e643376b7a5c0479b71a7f598f54b68a2b",
+      "git_blob": "9504b8767a54868ab0038b14a68d584f2440652e"
+    },
+    {
+      "path": "beta/deploy/start.py",
+      "sha256": "938b9694c2f1fdfa225b19e6f740a57a7235762d7dcbde2c0b10994a0387d10c",
+      "git_blob": "282dd224f40cdb6594cba5dcf8990a3d9ebe7805"
+    },
+    {
+      "path": "beta/deploy/test_lifecycle.py",
+      "sha256": "dbc3721b9d0506353acda35574932c2b22b48253806fe7dba3f701fe0c48a10e",
+      "git_blob": "a8e42df316b5d0d8889e200982c9bb5fabfc12b7"
+    },
+    {
+      "path": "beta/deploy/test_r2_recovery_probe.py",
+      "sha256": "b6864e2eebc459d9651414ddc0bbd30477b26d3dbfe12872a3bc43e893caa313",
+      "git_blob": "d270134789c301d0cebd094488fcb4786fa8a162"
+    },
+    {
+      "path": "beta/deploy/test_recovery.py",
+      "sha256": "2b658a1498012bf0196583d34cf167c78fd3242d2e282436b513867bd6e6627f",
+      "git_blob": "36b7663c85571cafa6acf63d5692a7a120bf8a6a"
+    },
+    {
+      "path": "beta/deploy/test_runtime_guards.py",
+      "sha256": "b3fdcad154fffad21c930d322b4e47599a814eda75fec87ff027eed84646370b",
+      "git_blob": "f9d1e3b55882009289e36e32f4af1c290629a1fa"
+    },
+    {
+      "path": "beta/deploy/test_trial_probe.py",
+      "sha256": "c2af60f91727b9132059550857347f3e149086e288f97618f5b9a751171c7f9e",
+      "git_blob": "306db47c77a3b12124cf01f7f1814363d641ee85"
+    },
+    {
+      "path": "beta/deploy/test_trial_supervisor.py",
+      "sha256": "0410c4bdf95a5a4aac52599a14d1b47a7150384bdb0b0d8c1bab1c6df999ad81",
+      "git_blob": "6428db5e4d6e0c5963fee354dd7ba6a0851b264a"
+    },
+    {
+      "path": "beta/deploy/trial_probe.py",
+      "sha256": "388b2d1afe4558a88b809eef24cc4e86b619e9ab07ee90bc5d6f646c3699156a",
+      "git_blob": "03a53bcaaa5cfd22508e65b73472cb4a1aade7bd"
+    },
+    {
+      "path": "beta/deploy/trial_supervisor.py",
+      "sha256": "f1a84ea0fabf9e110a6917b7970ac804c53fa115055de426c7605602d2287116",
+      "git_blob": "55d7682879bef0cdbfffa30ef6de2824c44d05bc"
+    },
+    {
+      "path": "beta/docs/AGENT_TWIN.md",
+      "sha256": "a9b39fb44eff985e835f6540cc4e41724cdd235d6e64dd6b17fad5a883918478",
+      "git_blob": "5e43c6de542647b991bd0b9d07c3c879d76c7494"
+    },
+    {
+      "path": "beta/examples/EXPECTED.json",
+      "sha256": "4a33cb70a3b7a4d86cf2e97cd797a77659a60c54d452a055e89e4f8f8021e038",
+      "git_blob": "1ee34533443c8a6a7140a3837f205d7e94f0b7c2"
+    },
+    {
+      "path": "beta/examples/PROVENANCE.json",
+      "sha256": "309a34a5854c7bcdd861f33fc9381a9b0f142f63e5fe0abfc618eb1039d0fe2f",
+      "git_blob": "afb253ad5661b7a2ba729ff9dcec2bea692af1be"
+    },
+    {
+      "path": "beta/examples/choice-leisure.json",
+      "sha256": "f3cda1b598453c35c9929d7186400878ebd3ac37f34a74171c92566bd7c0c026",
+      "git_blob": "44558f3529e79845d26b1c7369dca62c8b6ba867"
+    },
+    {
+      "path": "beta/examples/fdq-frontier.json",
+      "sha256": "e3b18f695476e64bd6a21d13c7fd17be44f6a8e206209e6e3289475d0c10c872",
+      "git_blob": "a27dae6ad9b5a1d01bdc43172bfe424597fd1f98"
+    },
+    {
+      "path": "beta/examples/fdq-selector.json",
+      "sha256": "24211fc60d26dc2024093ce9c70130935894acbdae923e197a5df270dcd0892e",
+      "git_blob": "85416b4b096bf35807a4487c19fb6059147b5543"
+    },
+    {
+      "path": "beta/examples/hours-known.json",
+      "sha256": "a27c0719c53aed969c43fa35654bb0afec59dc977ba818d5db3e9d4f9d42080d",
+      "git_blob": "c2310311707714fde470471ef55c0f63fedd78e9"
+    },
+    {
+      "path": "beta/examples/hours-unknown.json",
+      "sha256": "ac272222add774b428e6a86609092dcceb1655b135fe5a0bed90e3bcfb48b1f2",
+      "git_blob": "40ab48798a471c34084d9c0d248b3ded1004f924"
+    },
+    {
       "path": "beta/genius_beta/__init__.py",
       "sha256": "a7534286e5552865a3ea1160eb5dd743ed35d7676a8efbb5c914c41f004d3e9a",
       "git_blob": "350072dfeaed6a23484563e7b5ec427d269c6eb0"
@@ -183,13 +298,17 @@
     },
     {
       "path": "beta/genius_beta/agent_access.py",
-      "sha256": "722f6196bd1054b64b8df0ead2697876a117c605faf445b7cb9494d35530110b",
-      "git_blob": "b87771fa8d3aaa702a6f3a7279248239caaeb4da"
+      "sha256": "c9f125cfc2b8a8b082b74d1de771ccfc980ed7b057c2f23e215e26b6d4880338",
+      "git_blob": "3ecaacb6635edb2ebd3f48f8bd39866a2e930a2e",
+      "origin_sha256": "722f6196bd1054b64b8df0ead2697876a117c605faf445b7cb9494d35530110b",
+      "origin_git_blob": "b87771fa8d3aaa702a6f3a7279248239caaeb4da"
     },
     {
       "path": "beta/genius_beta/app.py",
-      "sha256": "9da598380e41a34d6058657a3e3faa12e89c3b76bedd241d06086f1a650220a2",
-      "git_blob": "cffbe288611dcd909c1242844afefb73f5c565ea"
+      "sha256": "a9345d589760f4bf51836cbeb8a9ac01a44ce4933d95a8cbd91a2158e987bad7",
+      "git_blob": "188b59b953aa20025b055ef89c1274521d5134ee",
+      "origin_sha256": "9da598380e41a34d6058657a3e3faa12e89c3b76bedd241d06086f1a650220a2",
+      "origin_git_blob": "cffbe288611dcd909c1242844afefb73f5c565ea"
     },
     {
       "path": "beta/genius_beta/backup_agent.py",
@@ -223,8 +342,10 @@
     },
     {
       "path": "beta/genius_beta/mcp_access.py",
-      "sha256": "5a6d8760d1a1e79bcaf2b1c211293f910e1f60e9bad97a11defa53e874224006",
-      "git_blob": "170c6c0186360cff3c1caec09bd6cbdf8bd02db4"
+      "sha256": "3129d643f1393f126e0aec35adc5e1ea47f991aa88ec83b662507de10fcdc70d",
+      "git_blob": "c5efa5cc021472bf5c04f0fdcf1fbedb3f2f60a1",
+      "origin_sha256": "5a6d8760d1a1e79bcaf2b1c211293f910e1f60e9bad97a11defa53e874224006",
+      "origin_git_blob": "170c6c0186360cff3c1caec09bd6cbdf8bd02db4"
     },
     {
       "path": "beta/genius_beta/r2_backup.py",
@@ -238,8 +359,10 @@
     },
     {
       "path": "beta/genius_beta/static/agents.html",
-      "sha256": "68b230a7f65f025fbb0f2eaf8db5ce316882ea01db3ecb7ccef55b32572af813",
-      "git_blob": "94bddb3bcae3a493642d7ef1cc7c46585c9f23d2"
+      "sha256": "4e1f48c017902aab8f10dabc0a5667a15c8a64e7382f18dd9da8e7966cd38420",
+      "git_blob": "379c58d9b6f76f3514aaac160db2e724af7b06d2",
+      "origin_sha256": "68b230a7f65f025fbb0f2eaf8db5ce316882ea01db3ecb7ccef55b32572af813",
+      "origin_git_blob": "94bddb3bcae3a493642d7ef1cc7c46585c9f23d2"
     },
     {
       "path": "beta/genius_beta/static/api.html",
@@ -288,8 +411,10 @@
     },
     {
       "path": "beta/genius_beta/static/openapi.json",
-      "sha256": "be7f4f999787a33151f24917d1adba9ce93522c901f7eb7c0d29d7e413f6a808",
-      "git_blob": "208fb3204cbf8d07a1bd4dd48817641a1353e397"
+      "sha256": "ef18118833ed702e6a249348d51a6bc4aef145950e9fbe948acea02bea23fcba",
+      "git_blob": "069921b3def232e7e192fa4f4909a57e4696a6e3",
+      "origin_sha256": "be7f4f999787a33151f24917d1adba9ce93522c901f7eb7c0d29d7e413f6a808",
+      "origin_git_blob": "208fb3204cbf8d07a1bd4dd48817641a1353e397"
     },
     {
       "path": "beta/genius_beta/static/privacy.html",
@@ -308,13 +433,35 @@
     },
     {
       "path": "beta/genius_beta/twin_integration.py",
-      "sha256": "8931d990eaa7266c8bf3c1372fa37435f9694546d366c00ba24710ba57c5f1e5",
-      "git_blob": "8f9a4d460e9973d53b6e0fa2c967ac7e9e2faa7a"
+      "sha256": "8d8031e2dd8b588ab6535780bd6d4cb2309176085bbdb2c7fcd88d37a93cb5a8",
+      "git_blob": "5965b74fa3a91ac4e6ae5702424f37b53455d1d5",
+      "origin_sha256": "8931d990eaa7266c8bf3c1372fa37435f9694546d366c00ba24710ba57c5f1e5",
+      "origin_git_blob": "8f9a4d460e9973d53b6e0fa2c967ac7e9e2faa7a"
+    },
+    {
+      "path": "beta/genius_beta/twin_mcp.py",
+      "sha256": "2e251c0b6cd5cdabb621b90bf72a0050fcca6c06b313e2607c05ae6a3d69deb2",
+      "git_blob": "25f2fb63331d2491a4c6effcb89442a84551d97d"
     },
     {
       "path": "beta/genius_beta/worker.py",
       "sha256": "3223f072284671d91a1b2ebc60df54ed616632b81f469d452acddc7e57a7ea70",
       "git_blob": "2414ace86f29becb43a39bbcc71976ec65ae4ca1"
+    },
+    {
+      "path": "beta/migrations/001_initial.sql",
+      "sha256": "e175cc8f299d102adf5e59766255d78ad1b59ac08e690673d59eb7c96de99632",
+      "git_blob": "966110ed01f27e1607e45fd1a5f8a15a76fd1036"
+    },
+    {
+      "path": "beta/migrations/002_artifacts.sql",
+      "sha256": "f5918d1a458cb23a2783861e586195654689192980935258e331453560abcb8b",
+      "git_blob": "3799b2b1943b157f7d512802129c202f6a8ba50a"
+    },
+    {
+      "path": "beta/migrations/003_agent_access.sql",
+      "sha256": "268f836e00138ddffea3b68dd754b67f0f82a4f29d48b0dd1cb7900568c6fc71",
+      "git_blob": "72fcde4c3e6c6ce7a82302651f166d17ae3d9526"
     },
     {
       "path": "beta/requirements.lock",
@@ -355,6 +502,11 @@
       "path": "beta/tests/test_agent_access.py",
       "sha256": "6e42d38b22e85062e33be89fa41b5d638202ecafc91120f9c48d79ab07953696",
       "git_blob": "59e55933cf6a85dd120570941cbd4b4db49f8094"
+    },
+    {
+      "path": "beta/tests/test_agent_twin.py",
+      "sha256": "449a576e8574e242bae0ab7da24b39838a53d0028f0bc6fcf532033599660613",
+      "git_blob": "edd46779b828adbb6181105f9bd2a9f10b9f014d"
     },
     {
       "path": "beta/tests/test_backend.py",
@@ -1450,8 +1602,10 @@
     },
     {
       "path": "twin/genius_twin/service.py",
-      "sha256": "df678970b3e666fbbc46a138769105252f174ad36a388819c22697253c6de766",
-      "git_blob": "a698ade0195b1eec6a23ac40938e95ceac0e9674"
+      "sha256": "9795b955b6386107cf3de2f5b2122a5bcfb570880dd058f8bca1c5a1401d935a",
+      "git_blob": "d9b45cc77bd7832381671aa32f80a1f3371b9b8d",
+      "origin_sha256": "df678970b3e666fbbc46a138769105252f174ad36a388819c22697253c6de766",
+      "origin_git_blob": "a698ade0195b1eec6a23ac40938e95ceac0e9674"
     },
     {
       "path": "twin/genius_twin/static/app.js",
@@ -1587,96 +1741,6 @@
       "path": "twin/tests/test_stockflow.py",
       "sha256": "2de8f2b71505839ef6ae57e5c642749740766cb586381c37b20a76605f1fd175",
       "git_blob": "8c3789607382518b0c91676d931bd67df3f07a6d"
-    },
-    {
-      "path": "beta/README.md",
-      "sha256": "86ac764422df8df759094a51c7c4aea952e2d0e40592bf2abe1be64ad2c7934a",
-      "git_blob": "f13f9d39d7628c02115e9eccd12a4ce898b09bca"
-    },
-    {
-      "path": "beta/deploy/CI_orchestrate.py",
-      "sha256": "03767e70fd948ad0ec456fe7717e9bc37073e2e4447986f45d8f61e39d9c9b81",
-      "git_blob": "be4d9d3676417887bdc7714a9167200a6779b68a"
-    },
-    {
-      "path": "beta/deploy/CI_tests.py",
-      "sha256": "f4cb8c31e79b9af889c33d11249b9ddec813ee6095791f36a747a84cbd2e5797",
-      "git_blob": "7eb54c0a09255b5977a18c60edad010ddb27f87f"
-    },
-    {
-      "path": "beta/deploy/Dockerfile",
-      "sha256": "49c7e84ce18516f6f4811a4a54c1390aa3d13f9f64250594e3e72cd0ea81afa9",
-      "git_blob": "c42a2fd56a27f616bef4584f72413f0152c9cede"
-    },
-    {
-      "path": "beta/deploy/backup.py",
-      "sha256": "9c9c23d02aa4daa1b669506c0e79ff0bbd0bba139b1af42d2f92c752f1a04d6e",
-      "git_blob": "cd9f4303e097601e72b738f82f58475f90f0a1b3"
-    },
-    {
-      "path": "beta/deploy/r2_recovery_probe.py",
-      "sha256": "822211bb96c54e6e123680809578d8e643376b7a5c0479b71a7f598f54b68a2b",
-      "git_blob": "9504b8767a54868ab0038b14a68d584f2440652e"
-    },
-    {
-      "path": "beta/deploy/start.py",
-      "sha256": "938b9694c2f1fdfa225b19e6f740a57a7235762d7dcbde2c0b10994a0387d10c",
-      "git_blob": "282dd224f40cdb6594cba5dcf8990a3d9ebe7805"
-    },
-    {
-      "path": "beta/deploy/test_lifecycle.py",
-      "sha256": "dbc3721b9d0506353acda35574932c2b22b48253806fe7dba3f701fe0c48a10e",
-      "git_blob": "a8e42df316b5d0d8889e200982c9bb5fabfc12b7"
-    },
-    {
-      "path": "beta/deploy/test_r2_recovery_probe.py",
-      "sha256": "b6864e2eebc459d9651414ddc0bbd30477b26d3dbfe12872a3bc43e893caa313",
-      "git_blob": "d270134789c301d0cebd094488fcb4786fa8a162"
-    },
-    {
-      "path": "beta/deploy/test_recovery.py",
-      "sha256": "2b658a1498012bf0196583d34cf167c78fd3242d2e282436b513867bd6e6627f",
-      "git_blob": "36b7663c85571cafa6acf63d5692a7a120bf8a6a"
-    },
-    {
-      "path": "beta/deploy/test_runtime_guards.py",
-      "sha256": "b3fdcad154fffad21c930d322b4e47599a814eda75fec87ff027eed84646370b",
-      "git_blob": "f9d1e3b55882009289e36e32f4af1c290629a1fa"
-    },
-    {
-      "path": "beta/deploy/test_trial_probe.py",
-      "sha256": "c2af60f91727b9132059550857347f3e149086e288f97618f5b9a751171c7f9e",
-      "git_blob": "306db47c77a3b12124cf01f7f1814363d641ee85"
-    },
-    {
-      "path": "beta/deploy/test_trial_supervisor.py",
-      "sha256": "0410c4bdf95a5a4aac52599a14d1b47a7150384bdb0b0d8c1bab1c6df999ad81",
-      "git_blob": "6428db5e4d6e0c5963fee354dd7ba6a0851b264a"
-    },
-    {
-      "path": "beta/deploy/trial_probe.py",
-      "sha256": "388b2d1afe4558a88b809eef24cc4e86b619e9ab07ee90bc5d6f646c3699156a",
-      "git_blob": "03a53bcaaa5cfd22508e65b73472cb4a1aade7bd"
-    },
-    {
-      "path": "beta/deploy/trial_supervisor.py",
-      "sha256": "f1a84ea0fabf9e110a6917b7970ac804c53fa115055de426c7605602d2287116",
-      "git_blob": "55d7682879bef0cdbfffa30ef6de2824c44d05bc"
-    },
-    {
-      "path": "beta/migrations/001_initial.sql",
-      "sha256": "e175cc8f299d102adf5e59766255d78ad1b59ac08e690673d59eb7c96de99632",
-      "git_blob": "966110ed01f27e1607e45fd1a5f8a15a76fd1036"
-    },
-    {
-      "path": "beta/migrations/002_artifacts.sql",
-      "sha256": "f5918d1a458cb23a2783861e586195654689192980935258e331453560abcb8b",
-      "git_blob": "3799b2b1943b157f7d512802129c202f6a8ba50a"
-    },
-    {
-      "path": "beta/migrations/003_agent_access.sql",
-      "sha256": "268f836e00138ddffea3b68dd754b67f0f82a4f29d48b0dd1cb7900568c6fc71",
-      "git_blob": "72fcde4c3e6c6ce7a82302651f166d17ae3d9526"
     }
   ]
 }
