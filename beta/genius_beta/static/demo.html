@@ -1,0 +1,1081 @@
+<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Resultados de demostración · Genius Decision</title><meta name="description" content="Dos ejecuciones reales de Genius con ejemplos sintéticos: datos conocidos y valores PV_UNKNOWN. Lectura sin registro."><link rel="stylesheet" href="/static/styles.css"><link rel="alternate" type="application/json" href="/static/demo-result.json"></head><body><header class="topbar"><a class="brand" href="/">genius decision</a><span class="beta-label">DEMOSTRACIÓN SINTÉTICA</span></header><main class="docs"><h1>Así responde Genius.</h1><p>Estos resultados fueron generados por el motor real en un entorno local aislado, usando los ejemplos públicos de la beta. Están guardados: abrir esta página no inicia otra ejecución ni crea una cuenta.</p><p>Un trabajo completo puede conservar una decisión pendiente. <code>PV_UNKNOWN</code> significa desconocido; no se convierte en cero. Estas ejecuciones no acreditan utilidad en casos reales ni autorizan acciones sobre personas.</p><p><a href="/static/demo-result.json">Descargar resultados completos en JSON</a> · <a href="/static/mcp.html">Conectar por MCP</a> · <a href="/agents">Todas las formas de acceso</a></p><p>Generados: <time>2026-10-06T04:36:03.501178+00:00</time>. El JSON conserva entradas, resultados, identificación del motor y hashes de comprobación. Los bloques siguientes muestran las capas originales; el documento completo incluye también la solicitud compilada y su presentación.</p><section><h2>Datos conocidos</h2><p>Ejemplo: <code>hours-known</code>. Ejecución: <code>PE_COMPLETE</code>. Cierre: <code>PC_ANSWERED_SCOPED</code>.</p><h3>Entrada sintética</h3><pre>{
+  &quot;assignments&quot;: [
+    {
+      &quot;credit&quot;: &quot;6.5&quot;,
+      &quot;id&quot;: &quot;a&quot;
+    },
+    {
+      &quot;credit&quot;: &quot;7.5&quot;,
+      &quot;id&quot;: &quot;b&quot;
+    }
+  ],
+  &quot;evidence_origin&quot;: &quot;synthetic&quot;,
+  &quot;permission_confirmed&quot;: true,
+  &quot;profile&quot;: &quot;hours&quot;,
+  &quot;scope_acknowledged&quot;: true,
+  &quot;target&quot;: &quot;15&quot;
+}</pre><h3>Capas del resultado original</h3><pre>{
+  &quot;transport&quot;: {
+    &quot;last_verified_artifacts&quot;: [
+      &quot;hours&quot;,
+      &quot;metadata&quot;
+    ],
+    &quot;limits&quot;: &quot;Delivery describes this received local envelope, not a remote RPC or scientific validity.&quot;,
+    &quot;reason&quot;: &quot;LOCAL_RESPONSE_CONSTRUCTED_AND_VALIDATED&quot;,
+    &quot;state&quot;: &quot;PT_DELIVERED&quot;
+  },
+  &quot;execution&quot;: {
+    &quot;progress&quot;: {
+      &quot;received_operations&quot;: 1,
+      &quot;requested_operations&quot;: 1
+    },
+    &quot;reason&quot;: &quot;ALL_CONTRACTED_OPERATIONS_FINISHED&quot;,
+    &quot;state&quot;: &quot;PE_COMPLETE&quot;
+  },
+  &quot;evidence&quot;: [
+    {
+      &quot;limits&quot;: [
+        &quot;No empirical fidelity, utility, understanding or permission to act inferred.&quot;
+      ],
+      &quot;query_ref&quot;: &quot;Q&quot;,
+      &quot;query_sha256&quot;: &quot;8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce&quot;,
+      &quot;records&quot;: [
+        {
+          &quot;query_sha256&quot;: &quot;8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce&quot;,
+          &quot;source_assessment&quot;: {
+            &quot;access_and_permissions&quot;: {
+              &quot;access&quot;: &quot;ALLOWED&quot;,
+              &quot;basis&quot;: &quot;Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.&quot;,
+              &quot;use&quot;: &quot;ALLOWED&quot;
+            },
+            &quot;assessment_id&quot;: &quot;A&quot;,
+            &quot;axes&quot;: {
+              &quot;identity&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/identity&quot;
+                },
+                &quot;source_value&quot;: &quot;consumer-declared-credit-register&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;consumer-declared-credit-register&quot;
+              },
+              &quot;method&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/method&quot;
+                },
+                &quot;source_value&quot;: &quot;CONTRACT_HOURS/1&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;CONTRACT_HOURS/1&quot;
+              },
+              &quot;period&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/period&quot;
+                },
+                &quot;source_value&quot;: &quot;declared-plan-scope&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;declared-plan-scope&quot;
+              },
+              &quot;population&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/population&quot;
+                },
+                &quot;source_value&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;
+              },
+              &quot;unit&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/unit&quot;
+                },
+                &quot;source_value&quot;: &quot;h_contractual&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;h_contractual&quot;
+              }
+            },
+            &quot;blocked_premise_refs&quot;: [],
+            &quot;claim&quot;: &quot;Q&quot;,
+            &quot;closure&quot;: {
+              &quot;predicate&quot;: &quot;DOCUMENTARY_SUBSTITUTION_FOR_EXACT_CLAIM&quot;,
+              &quot;scope&quot;: {
+                &quot;claim&quot;: &quot;Q&quot;,
+                &quot;intended_use&quot;: &quot;Conditional formal arithmetic only&quot;,
+                &quot;query_ref&quot;: &quot;Q&quot;
+              },
+              &quot;verified&quot;: true,
+              &quot;verifier&quot;: &quot;genius-local-source-policy/0.1.0&quot;,
+              &quot;witness_refs&quot;: [
+                &quot;hours&quot;
+              ]
+            },
+            &quot;conditional_premise_refs&quot;: [
+              &quot;hours&quot;,
+              &quot;metadata&quot;
+            ],
+            &quot;conflicts&quot;: [],
+            &quot;documentary_limit&quot;: &quot;BYTE_CORRESPONDENCE_AND_DECLARED_PERMISSION_ONLY; SOURCE_TRUTH_AND_EMPIRICAL_FIDELITY_NOT_AUTHENTICATED&quot;,
+            &quot;evidence_kind&quot;: &quot;SYNTHETIC_STIPULATION&quot;,
+            &quot;intended_use&quot;: &quot;Conditional formal arithmetic only&quot;,
+            &quot;observed_or_received_at&quot;: &quot;2026-10-06T04:36:03.275545+00:00&quot;,
+            &quot;owner&quot;: {
+              &quot;assigned_person&quot;: &quot;UNKNOWN&quot;,
+              &quot;role&quot;: &quot;submitting-consumer&quot;,
+              &quot;task&quot;: &quot;Supply formal premises&quot;
+            },
+            &quot;premise_artifact_refs&quot;: [
+              &quot;hours&quot;,
+              &quot;metadata&quot;
+            ],
+            &quot;profile_limitations&quot;: [],
+            &quot;query_ref&quot;: &quot;Q&quot;,
+            &quot;relevant_period&quot;: &quot;declared-plan-scope&quot;,
+            &quot;reopen&quot;: {
+              &quot;affected_refs&quot;: [
+                &quot;Q&quot;
+              ],
+              &quot;condition&quot;: &quot;Source or query changes&quot;
+            },
+            &quot;revision&quot;: 1,
+            &quot;source_digest&quot;: &quot;d5a630e0bd123b635e35ee4642fc096b029d6347b23bd7cc0377adc472f7500e&quot;,
+            &quot;source_locator&quot;: &quot;hours.json&quot;,
+            &quot;source_ref&quot;: &quot;hours&quot;,
+            &quot;source_version&quot;: &quot;genius-beta-adapter/0.1.0&quot;,
+            &quot;target_spec&quot;: {
+              &quot;identity&quot;: &quot;consumer-declared-credit-register&quot;,
+              &quot;method&quot;: &quot;CONTRACT_HOURS/1&quot;,
+              &quot;period&quot;: &quot;declared-plan-scope&quot;,
+              &quot;population&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;
+            },
+            &quot;transformation_chain&quot;: [],
+            &quot;verdict&quot;: &quot;SC_CONDITIONAL_MODEL_ONLY&quot;
+          },
+          &quot;source_authenticity&quot;: &quot;NOT_AUTHENTICATED&quot;,
+          &quot;source_sha256&quot;: &quot;d5a630e0bd123b635e35ee4642fc096b029d6347b23bd7cc0377adc472f7500e&quot;
+        }
+      ],
+      &quot;state&quot;: &quot;EV_CONDITIONAL&quot;
+    }
+  ],
+  &quot;decisions&quot;: [
+    {
+      &quot;answers&quot;: [
+        {
+          &quot;artifact_refs&quot;: [
+            &quot;hours&quot;
+          ],
+          &quot;claim_source&quot;: &quot;CONTRACT_HOURS/1&quot;,
+          &quot;operation_id&quot;: &quot;OP&quot;,
+          &quot;value&quot;: {
+            &quot;assigned&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;14/1&quot;
+            },
+            &quot;deficit&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;1/1&quot;
+            },
+            &quot;excess&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;0/1&quot;
+            },
+            &quot;oriented_overtime&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;0/1&quot;
+            },
+            &quot;oriented_undertime&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;-1/1&quot;
+            }
+          }
+        }
+      ],
+      &quot;norm&quot;: {
+        &quot;reasons&quot;: [
+          &quot;No policy selection requested&quot;
+        ],
+        &quot;scope&quot;: &quot;contractual-credit arithmetic&quot;,
+        &quot;state&quot;: &quot;PV_NOT_APPLICABLE&quot;
+      },
+      &quot;observed_values&quot;: [
+        {
+          &quot;artifact_refs&quot;: [
+            &quot;hours&quot;
+          ],
+          &quot;claim_source&quot;: &quot;CONTRACT_HOURS/1&quot;,
+          &quot;operation_id&quot;: &quot;OP&quot;,
+          &quot;reason&quot;: &quot;EXACT_CONTRACTUAL_HOURS&quot;,
+          &quot;status&quot;: &quot;CONDITIONAL&quot;,
+          &quot;value&quot;: {
+            &quot;assigned&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;14/1&quot;
+            },
+            &quot;deficit&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;1/1&quot;
+            },
+            &quot;excess&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;0/1&quot;
+            },
+            &quot;oriented_overtime&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;0/1&quot;
+            },
+            &quot;oriented_undertime&quot;: {
+              &quot;basis&quot;: [
+                &quot;CONTRACT_HOURS/1&quot;
+              ],
+              &quot;state&quot;: &quot;PV_KNOWN&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;,
+              &quot;value&quot;: &quot;-1/1&quot;
+            }
+          }
+        }
+      ],
+      &quot;permitted_use&quot;: &quot;Formal conditional model or documentary component only; no empirical intervention authorized.&quot;,
+      &quot;query_ref&quot;: &quot;Q&quot;,
+      &quot;query_sha256&quot;: &quot;8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce&quot;,
+      &quot;reason&quot;: &quot;EXACT_SCOPED_QUERY_VERIFIED&quot;,
+      &quot;scope&quot;: {
+        &quot;operator&quot;: &quot;CONTRACT_HOURS/1&quot;,
+        &quot;purpose&quot;: &quot;FORMAL_CONDITIONAL&quot;
+      },
+      &quot;state&quot;: &quot;PR_JUSTIFIED_RESULT&quot;,
+      &quot;unresolved_obligations&quot;: []
+    }
+  ],
+  &quot;quality&quot;: {
+    &quot;adoption_business&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;comprehension&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;coverage&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;data_provenance&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;formal_correctness&quot;: {
+      &quot;conclusion&quot;: &quot;Scoped checks completed.&quot;,
+      &quot;evidence&quot;: [
+        &quot;Q&quot;
+      ],
+      &quot;limit&quot;: &quot;No general theorem extension or empirical fidelity inferred.&quot;,
+      &quot;scope&quot;: &quot;Only received exact component or finite FDQ query&quot;,
+      &quot;state&quot;: &quot;ASSESSED&quot;
+    },
+    &quot;information_efficiency&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;model_fidelity&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;operation&quot;: {
+      &quot;conclusion&quot;: &quot;PE_COMPLETE&quot;,
+      &quot;evidence&quot;: [
+        &quot;OP&quot;
+      ],
+      &quot;limit&quot;: &quot;No availability, concurrency, empirical utility or business claim.&quot;,
+      &quot;scope&quot;: &quot;Observed local operations only&quot;,
+      &quot;state&quot;: &quot;ASSESSED&quot;
+    },
+    &quot;uncertainty_sensitivity&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;utility&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    }
+  },
+  &quot;obligations_ref&quot;: {
+    &quot;record&quot;: {
+      &quot;budget&quot;: {
+        &quot;certificate_timeout_seconds&quot;: 15,
+        &quot;max_certificates&quot;: 0,
+        &quot;max_operations&quot;: 1
+      },
+      &quot;format&quot;: &quot;genius-product-obligations/0.1.0&quot;,
+      &quot;obligations&quot;: [
+        {
+          &quot;affected_claims&quot;: [
+            &quot;Q&quot;
+          ],
+          &quot;attempts&quot;: [],
+          &quot;budget_ref&quot;: &quot;request.budget&quot;,
+          &quot;classification_basis&quot;: [
+            {
+              &quot;evidence&quot;: &quot;Consumer-supplied formal request&quot;,
+              &quot;mechanism&quot;: &quot;DERIVABLE&quot;
+            }
+          ],
+          &quot;closure&quot;: {
+            &quot;claim_source&quot;: &quot;CONTRACT_HOURS/1&quot;,
+            &quot;predicate&quot;: &quot;EXACT_QUERY_RESULT_RECEIVED&quot;,
+            &quot;query_sha256&quot;: &quot;8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce&quot;,
+            &quot;reason&quot;: &quot;VERIFIED_EXACT_QUERY_SCOPE&quot;,
+            &quot;verified&quot;: true,
+            &quot;verifier&quot;: &quot;genius-local-operation-policy/0.1.0&quot;,
+            &quot;witness_refs&quot;: [
+              &quot;OP&quot;
+            ]
+          },
+          &quot;dependencies&quot;: [],
+          &quot;derivation_rule&quot;: {
+            &quot;kind&quot;: &quot;NO_DERIVATION&quot;,
+            &quot;reason&quot;: &quot;Only the explicitly bound received operation can produce a witness.&quot;
+          },
+          &quot;id&quot;: &quot;O&quot;,
+          &quot;input_spec&quot;: {
+            &quot;field&quot;: &quot;scoped formal answer&quot;,
+            &quot;method&quot;: &quot;CONTRACT_HOURS/1&quot;,
+            &quot;object&quot;: &quot;consumer-declared-credit-register&quot;,
+            &quot;period&quot;: &quot;declared-plan-scope&quot;,
+            &quot;population&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;,
+            &quot;reason&quot;: &quot;Await scoped execution; missing supplied values remain unknown.&quot;,
+            &quot;state&quot;: &quot;UNKNOWN&quot;,
+            &quot;type&quot;: &quot;formal component or policy answer&quot;,
+            &quot;unit&quot;: &quot;h_contractual&quot;
+          },
+          &quot;next_action&quot;: &quot;Run the bounded operation or retain an explicit dependency&quot;,
+          &quot;owner&quot;: {
+            &quot;assigned_person&quot;: &quot;UNKNOWN&quot;,
+            &quot;role&quot;: &quot;submitting-consumer&quot;,
+            &quot;task&quot;: &quot;Supply compatible formal premises and resolve unknown inputs&quot;
+          },
+          &quot;permitted_use&quot;: [
+            &quot;Conditional formal answer to the supplied query&quot;
+          ],
+          &quot;primary_cause&quot;: &quot;DERIVABLE&quot;,
+          &quot;prohibited_inferences&quot;: [
+            &quot;Physical domain admission&quot;,
+            &quot;Human comprehension&quot;,
+            &quot;Decision utility&quot;,
+            &quot;Authority to act&quot;,
+            &quot;Empirical CAG or PVS&quot;
+          ],
+          &quot;provenance&quot;: [
+            {
+              &quot;kind&quot;: &quot;SYNTHETIC_STIPULATION&quot;,
+              &quot;reason&quot;: &quot;User declaration is treated as formal premises, not authenticated empirical observation.&quot;
+            }
+          ],
+          &quot;query_ref&quot;: &quot;Q&quot;,
+          &quot;reopen&quot;: {
+            &quot;affected_refs&quot;: [
+              &quot;Q&quot;
+            ],
+            &quot;condition&quot;: &quot;Pertinent change of source, query, rule or scope under a future explicit revision&quot;
+          },
+          &quot;revision&quot;: 1,
+          &quot;secondary_causes&quot;: [],
+          &quot;status&quot;: &quot;CLOSED_SCOPED&quot;
+        }
+      ],
+      &quot;queries&quot;: [
+        {
+          &quot;artifact_refs&quot;: [
+            &quot;hours&quot;,
+            &quot;metadata&quot;
+          ],
+          &quot;id&quot;: &quot;Q&quot;,
+          &quot;kind&quot;: &quot;component&quot;,
+          &quot;norm&quot;: {
+            &quot;reasons&quot;: [
+              &quot;No policy selection requested&quot;
+            ],
+            &quot;scope&quot;: &quot;contractual-credit arithmetic&quot;,
+            &quot;state&quot;: &quot;PV_NOT_APPLICABLE&quot;
+          },
+          &quot;obligation_refs&quot;: [
+            &quot;O&quot;
+          ],
+          &quot;revision&quot;: 1,
+          &quot;scope&quot;: {
+            &quot;operator&quot;: &quot;CONTRACT_HOURS/1&quot;,
+            &quot;purpose&quot;: &quot;FORMAL_CONDITIONAL&quot;
+          },
+          &quot;target_spec&quot;: {
+            &quot;identity&quot;: &quot;consumer-declared-credit-register&quot;,
+            &quot;method&quot;: &quot;CONTRACT_HOURS/1&quot;,
+            &quot;period&quot;: &quot;declared-plan-scope&quot;,
+            &quot;population&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;,
+            &quot;unit&quot;: &quot;h_contractual&quot;
+          }
+        }
+      ],
+      &quot;record_id&quot;: &quot;beta-hours&quot;,
+      &quot;revision&quot;: 1,
+      &quot;supersedes&quot;: null,
+      &quot;worklog&quot;: [
+        {
+          &quot;phase&quot;: &quot;REUSE&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;operation_ref&quot;: &quot;OP&quot;,
+          &quot;phase&quot;: &quot;REUSE_LOOKUP&quot;,
+          &quot;reason&quot;: &quot;No matching receipt in this case&#x27;s supplied, verified inventory; no claim about other sources.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;operation_refs&quot;: [
+            &quot;OP&quot;
+          ],
+          &quot;phase&quot;: &quot;DERIVE&quot;,
+          &quot;reason&quot;: &quot;Executed operations retain individual receipts and limits.&quot;,
+          &quot;status&quot;: &quot;APPLIED&quot;
+        },
+        {
+          &quot;phase&quot;: &quot;IRRELEVANCE&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;phase&quot;: &quot;EXPAND_MODEL&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;phase&quot;: &quot;ASSESS_SOURCE&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;phase&quot;: &quot;REQUEST_INPUT&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        }
+      ]
+    },
+    &quot;request_ref&quot;: {
+      &quot;revision&quot;: 1,
+      &quot;sha256&quot;: &quot;81659c9ec2b2a0178b1614645bae1da98a3b60803bc29e6f2fe84fbfeec1c714&quot;
+    }
+  },
+  &quot;closure&quot;: {
+    &quot;budget_used&quot;: {
+      &quot;certificates&quot;: 0,
+      &quot;network_acquisitions&quot;: 0,
+      &quot;operations&quot;: 1
+    },
+    &quot;closed_queries&quot;: [
+      &quot;Q&quot;
+    ],
+    &quot;last_verified_artifacts&quot;: [
+      &quot;hours&quot;,
+      &quot;metadata&quot;
+    ],
+    &quot;next_action&quot;: &quot;Use only the answered scoped conclusions; new purposes require a new query.&quot;,
+    &quot;owner&quot;: &quot;Local requester and the functional owners named by each obligation&quot;,
+    &quot;reason&quot;: &quot;ALL_CONTRACTED_OPERATIONS_FINISHED&quot;,
+    &quot;reopen_condition&quot;: &quot;A relevant premise, source, query, support, rule, permission or capability changes.&quot;,
+    &quot;state&quot;: &quot;PC_ANSWERED_SCOPED&quot;,
+    &quot;superseded_by&quot;: null,
+    &quot;unresolved_obligations&quot;: []
+  }
+}</pre></section><section><h2>Un dato desconocido</h2><p>Ejemplo: <code>hours-unknown</code>. Ejecución: <code>PE_COMPLETE</code>. Cierre: <code>PC_WAITING_DEPENDENCY</code>.</p><h3>Entrada sintética</h3><pre>{
+  &quot;assignments&quot;: [
+    {
+      &quot;credit&quot;: null,
+      &quot;id&quot;: &quot;a&quot;
+    },
+    {
+      &quot;credit&quot;: &quot;7.5&quot;,
+      &quot;id&quot;: &quot;b&quot;
+    }
+  ],
+  &quot;evidence_origin&quot;: &quot;synthetic&quot;,
+  &quot;permission_confirmed&quot;: true,
+  &quot;profile&quot;: &quot;hours&quot;,
+  &quot;scope_acknowledged&quot;: true,
+  &quot;target&quot;: &quot;15&quot;
+}</pre><h3>Capas del resultado original</h3><pre>{
+  &quot;transport&quot;: {
+    &quot;last_verified_artifacts&quot;: [
+      &quot;hours&quot;,
+      &quot;metadata&quot;
+    ],
+    &quot;limits&quot;: &quot;Delivery describes this received local envelope, not a remote RPC or scientific validity.&quot;,
+    &quot;reason&quot;: &quot;LOCAL_RESPONSE_CONSTRUCTED_AND_VALIDATED&quot;,
+    &quot;state&quot;: &quot;PT_DELIVERED&quot;
+  },
+  &quot;execution&quot;: {
+    &quot;progress&quot;: {
+      &quot;received_operations&quot;: 1,
+      &quot;requested_operations&quot;: 1
+    },
+    &quot;reason&quot;: &quot;ALL_CONTRACTED_OPERATIONS_FINISHED&quot;,
+    &quot;state&quot;: &quot;PE_COMPLETE&quot;
+  },
+  &quot;evidence&quot;: [
+    {
+      &quot;limits&quot;: [
+        &quot;No empirical fidelity, utility, understanding or permission to act inferred.&quot;
+      ],
+      &quot;query_ref&quot;: &quot;Q&quot;,
+      &quot;query_sha256&quot;: &quot;8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce&quot;,
+      &quot;records&quot;: [
+        {
+          &quot;query_sha256&quot;: &quot;8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce&quot;,
+          &quot;source_assessment&quot;: {
+            &quot;access_and_permissions&quot;: {
+              &quot;access&quot;: &quot;ALLOWED&quot;,
+              &quot;basis&quot;: &quot;Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.&quot;,
+              &quot;use&quot;: &quot;ALLOWED&quot;
+            },
+            &quot;assessment_id&quot;: &quot;A&quot;,
+            &quot;axes&quot;: {
+              &quot;identity&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/identity&quot;
+                },
+                &quot;source_value&quot;: &quot;consumer-declared-credit-register&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;consumer-declared-credit-register&quot;
+              },
+              &quot;method&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/method&quot;
+                },
+                &quot;source_value&quot;: &quot;CONTRACT_HOURS/1&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;CONTRACT_HOURS/1&quot;
+              },
+              &quot;period&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/period&quot;
+                },
+                &quot;source_value&quot;: &quot;declared-plan-scope&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;declared-plan-scope&quot;
+              },
+              &quot;population&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/population&quot;
+                },
+                &quot;source_value&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;
+              },
+              &quot;unit&quot;: {
+                &quot;affected_claims&quot;: [
+                  &quot;Q&quot;
+                ],
+                &quot;basis&quot;: {
+                  &quot;artifact_ref&quot;: &quot;metadata&quot;,
+                  &quot;pointer&quot;: &quot;/unit&quot;
+                },
+                &quot;source_value&quot;: &quot;h_contractual&quot;,
+                &quot;status&quot;: &quot;MATCH&quot;,
+                &quot;target_value&quot;: &quot;h_contractual&quot;
+              }
+            },
+            &quot;blocked_premise_refs&quot;: [],
+            &quot;claim&quot;: &quot;Q&quot;,
+            &quot;closure&quot;: {
+              &quot;predicate&quot;: &quot;DOCUMENTARY_SUBSTITUTION_FOR_EXACT_CLAIM&quot;,
+              &quot;scope&quot;: {
+                &quot;claim&quot;: &quot;Q&quot;,
+                &quot;intended_use&quot;: &quot;Conditional formal arithmetic only&quot;,
+                &quot;query_ref&quot;: &quot;Q&quot;
+              },
+              &quot;verified&quot;: true,
+              &quot;verifier&quot;: &quot;genius-local-source-policy/0.1.0&quot;,
+              &quot;witness_refs&quot;: [
+                &quot;hours&quot;
+              ]
+            },
+            &quot;conditional_premise_refs&quot;: [
+              &quot;hours&quot;,
+              &quot;metadata&quot;
+            ],
+            &quot;conflicts&quot;: [],
+            &quot;documentary_limit&quot;: &quot;BYTE_CORRESPONDENCE_AND_DECLARED_PERMISSION_ONLY; SOURCE_TRUTH_AND_EMPIRICAL_FIDELITY_NOT_AUTHENTICATED&quot;,
+            &quot;evidence_kind&quot;: &quot;SYNTHETIC_STIPULATION&quot;,
+            &quot;intended_use&quot;: &quot;Conditional formal arithmetic only&quot;,
+            &quot;observed_or_received_at&quot;: &quot;2026-10-06T04:36:03.433972+00:00&quot;,
+            &quot;owner&quot;: {
+              &quot;assigned_person&quot;: &quot;UNKNOWN&quot;,
+              &quot;role&quot;: &quot;submitting-consumer&quot;,
+              &quot;task&quot;: &quot;Supply formal premises&quot;
+            },
+            &quot;premise_artifact_refs&quot;: [
+              &quot;hours&quot;,
+              &quot;metadata&quot;
+            ],
+            &quot;profile_limitations&quot;: [],
+            &quot;query_ref&quot;: &quot;Q&quot;,
+            &quot;relevant_period&quot;: &quot;declared-plan-scope&quot;,
+            &quot;reopen&quot;: {
+              &quot;affected_refs&quot;: [
+                &quot;Q&quot;
+              ],
+              &quot;condition&quot;: &quot;Source or query changes&quot;
+            },
+            &quot;revision&quot;: 1,
+            &quot;source_digest&quot;: &quot;215b765aa69a346ec9af5dbd44d8fab956ae9e74a2f9652a7ed209717200bb19&quot;,
+            &quot;source_locator&quot;: &quot;hours.json&quot;,
+            &quot;source_ref&quot;: &quot;hours&quot;,
+            &quot;source_version&quot;: &quot;genius-beta-adapter/0.1.0&quot;,
+            &quot;target_spec&quot;: {
+              &quot;identity&quot;: &quot;consumer-declared-credit-register&quot;,
+              &quot;method&quot;: &quot;CONTRACT_HOURS/1&quot;,
+              &quot;period&quot;: &quot;declared-plan-scope&quot;,
+              &quot;population&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;,
+              &quot;unit&quot;: &quot;h_contractual&quot;
+            },
+            &quot;transformation_chain&quot;: [],
+            &quot;verdict&quot;: &quot;SC_CONDITIONAL_MODEL_ONLY&quot;
+          },
+          &quot;source_authenticity&quot;: &quot;NOT_AUTHENTICATED&quot;,
+          &quot;source_sha256&quot;: &quot;215b765aa69a346ec9af5dbd44d8fab956ae9e74a2f9652a7ed209717200bb19&quot;
+        }
+      ],
+      &quot;state&quot;: &quot;EV_INSUFFICIENT&quot;
+    }
+  ],
+  &quot;decisions&quot;: [
+    {
+      &quot;answers&quot;: [],
+      &quot;norm&quot;: {
+        &quot;reasons&quot;: [
+          &quot;No policy selection requested&quot;
+        ],
+        &quot;scope&quot;: &quot;contractual-credit arithmetic&quot;,
+        &quot;state&quot;: &quot;PV_NOT_APPLICABLE&quot;
+      },
+      &quot;observed_values&quot;: [
+        {
+          &quot;artifact_refs&quot;: [
+            &quot;hours&quot;
+          ],
+          &quot;claim_source&quot;: &quot;CONTRACT_HOURS/1&quot;,
+          &quot;operation_id&quot;: &quot;OP&quot;,
+          &quot;reason&quot;: &quot;UNKNOWN_HOURS_INPUT&quot;,
+          &quot;status&quot;: &quot;UNRESOLVED&quot;,
+          &quot;value&quot;: {
+            &quot;assigned&quot;: {
+              &quot;obligation_refs&quot;: [
+                &quot;O&quot;
+              ],
+              &quot;reasons&quot;: [
+                &quot;Consumer explicitly left this credit or target unknown&quot;
+              ],
+              &quot;state&quot;: &quot;PV_UNKNOWN&quot;
+            },
+            &quot;deficit&quot;: {
+              &quot;obligation_refs&quot;: [
+                &quot;O&quot;
+              ],
+              &quot;reasons&quot;: [
+                &quot;Consumer explicitly left this credit or target unknown&quot;
+              ],
+              &quot;state&quot;: &quot;PV_UNKNOWN&quot;
+            },
+            &quot;excess&quot;: {
+              &quot;obligation_refs&quot;: [
+                &quot;O&quot;
+              ],
+              &quot;reasons&quot;: [
+                &quot;Consumer explicitly left this credit or target unknown&quot;
+              ],
+              &quot;state&quot;: &quot;PV_UNKNOWN&quot;
+            },
+            &quot;oriented_overtime&quot;: {
+              &quot;obligation_refs&quot;: [
+                &quot;O&quot;
+              ],
+              &quot;reasons&quot;: [
+                &quot;Consumer explicitly left this credit or target unknown&quot;
+              ],
+              &quot;state&quot;: &quot;PV_UNKNOWN&quot;
+            },
+            &quot;oriented_undertime&quot;: {
+              &quot;obligation_refs&quot;: [
+                &quot;O&quot;
+              ],
+              &quot;reasons&quot;: [
+                &quot;Consumer explicitly left this credit or target unknown&quot;
+              ],
+              &quot;state&quot;: &quot;PV_UNKNOWN&quot;
+            }
+          }
+        }
+      ],
+      &quot;permitted_use&quot;: &quot;Formal conditional model or documentary component only; no empirical intervention authorized.&quot;,
+      &quot;query_ref&quot;: &quot;Q&quot;,
+      &quot;query_sha256&quot;: &quot;8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce&quot;,
+      &quot;reason&quot;: &quot;EXACT_QUERY_UNRESOLVED&quot;,
+      &quot;scope&quot;: {
+        &quot;operator&quot;: &quot;CONTRACT_HOURS/1&quot;,
+        &quot;purpose&quot;: &quot;FORMAL_CONDITIONAL&quot;
+      },
+      &quot;state&quot;: &quot;PR_DEPENDENCY&quot;,
+      &quot;unresolved_obligations&quot;: [
+        &quot;O&quot;
+      ]
+    }
+  ],
+  &quot;quality&quot;: {
+    &quot;adoption_business&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;comprehension&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;coverage&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;data_provenance&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;formal_correctness&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;information_efficiency&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;model_fidelity&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;operation&quot;: {
+      &quot;conclusion&quot;: &quot;PE_COMPLETE&quot;,
+      &quot;evidence&quot;: [
+        &quot;OP&quot;
+      ],
+      &quot;limit&quot;: &quot;No availability, concurrency, empirical utility or business claim.&quot;,
+      &quot;scope&quot;: &quot;Observed local operations only&quot;,
+      &quot;state&quot;: &quot;ASSESSED&quot;
+    },
+    &quot;uncertainty_sensitivity&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    },
+    &quot;utility&quot;: {
+      &quot;conclusion&quot;: &quot;No empirical assessment performed.&quot;,
+      &quot;evidence&quot;: [],
+      &quot;limit&quot;: &quot;Formal verification and document identity do not establish this dimension.&quot;,
+      &quot;scope&quot;: &quot;This local attempt&quot;,
+      &quot;state&quot;: &quot;NOT_ASSESSED&quot;
+    }
+  },
+  &quot;obligations_ref&quot;: {
+    &quot;record&quot;: {
+      &quot;budget&quot;: {
+        &quot;certificate_timeout_seconds&quot;: 15,
+        &quot;max_certificates&quot;: 0,
+        &quot;max_operations&quot;: 1
+      },
+      &quot;format&quot;: &quot;genius-product-obligations/0.1.0&quot;,
+      &quot;obligations&quot;: [
+        {
+          &quot;affected_claims&quot;: [
+            &quot;Q&quot;
+          ],
+          &quot;attempts&quot;: [],
+          &quot;budget_ref&quot;: &quot;request.budget&quot;,
+          &quot;classification_basis&quot;: [
+            {
+              &quot;evidence&quot;: &quot;Consumer-supplied formal request&quot;,
+              &quot;mechanism&quot;: &quot;DERIVABLE&quot;
+            }
+          ],
+          &quot;closure&quot;: {
+            &quot;predicate&quot;: &quot;EXACT_QUERY_RESULT_RECEIVED&quot;,
+            &quot;verified&quot;: false,
+            &quot;verifier&quot;: &quot;received R2 controller&quot;,
+            &quot;witness_refs&quot;: []
+          },
+          &quot;dependencies&quot;: [],
+          &quot;derivation_rule&quot;: {
+            &quot;kind&quot;: &quot;NO_DERIVATION&quot;,
+            &quot;reason&quot;: &quot;Only the explicitly bound received operation can produce a witness.&quot;
+          },
+          &quot;id&quot;: &quot;O&quot;,
+          &quot;input_spec&quot;: {
+            &quot;field&quot;: &quot;scoped formal answer&quot;,
+            &quot;method&quot;: &quot;CONTRACT_HOURS/1&quot;,
+            &quot;object&quot;: &quot;consumer-declared-credit-register&quot;,
+            &quot;period&quot;: &quot;declared-plan-scope&quot;,
+            &quot;population&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;,
+            &quot;reason&quot;: &quot;Await scoped execution; missing supplied values remain unknown.&quot;,
+            &quot;state&quot;: &quot;UNKNOWN&quot;,
+            &quot;type&quot;: &quot;formal component or policy answer&quot;,
+            &quot;unit&quot;: &quot;h_contractual&quot;
+          },
+          &quot;next_action&quot;: &quot;Run the bounded operation or retain an explicit dependency&quot;,
+          &quot;owner&quot;: {
+            &quot;assigned_person&quot;: &quot;UNKNOWN&quot;,
+            &quot;role&quot;: &quot;submitting-consumer&quot;,
+            &quot;task&quot;: &quot;Supply compatible formal premises and resolve unknown inputs&quot;
+          },
+          &quot;permitted_use&quot;: [
+            &quot;Conditional formal answer to the supplied query&quot;
+          ],
+          &quot;primary_cause&quot;: &quot;DERIVABLE&quot;,
+          &quot;prohibited_inferences&quot;: [
+            &quot;Physical domain admission&quot;,
+            &quot;Human comprehension&quot;,
+            &quot;Decision utility&quot;,
+            &quot;Authority to act&quot;,
+            &quot;Empirical CAG or PVS&quot;
+          ],
+          &quot;provenance&quot;: [
+            {
+              &quot;kind&quot;: &quot;SYNTHETIC_STIPULATION&quot;,
+              &quot;reason&quot;: &quot;User declaration is treated as formal premises, not authenticated empirical observation.&quot;
+            }
+          ],
+          &quot;query_ref&quot;: &quot;Q&quot;,
+          &quot;reopen&quot;: {
+            &quot;affected_refs&quot;: [
+              &quot;Q&quot;
+            ],
+            &quot;condition&quot;: &quot;Pertinent change of source, query, rule or scope under a future explicit revision&quot;
+          },
+          &quot;revision&quot;: 1,
+          &quot;secondary_causes&quot;: [],
+          &quot;status&quot;: &quot;OPEN&quot;
+        }
+      ],
+      &quot;queries&quot;: [
+        {
+          &quot;artifact_refs&quot;: [
+            &quot;hours&quot;,
+            &quot;metadata&quot;
+          ],
+          &quot;id&quot;: &quot;Q&quot;,
+          &quot;kind&quot;: &quot;component&quot;,
+          &quot;norm&quot;: {
+            &quot;reasons&quot;: [
+              &quot;No policy selection requested&quot;
+            ],
+            &quot;scope&quot;: &quot;contractual-credit arithmetic&quot;,
+            &quot;state&quot;: &quot;PV_NOT_APPLICABLE&quot;
+          },
+          &quot;obligation_refs&quot;: [
+            &quot;O&quot;
+          ],
+          &quot;revision&quot;: 1,
+          &quot;scope&quot;: {
+            &quot;operator&quot;: &quot;CONTRACT_HOURS/1&quot;,
+            &quot;purpose&quot;: &quot;FORMAL_CONDITIONAL&quot;
+          },
+          &quot;target_spec&quot;: {
+            &quot;identity&quot;: &quot;consumer-declared-credit-register&quot;,
+            &quot;method&quot;: &quot;CONTRACT_HOURS/1&quot;,
+            &quot;period&quot;: &quot;declared-plan-scope&quot;,
+            &quot;population&quot;: &quot;DECLARED_ASSIGNMENTS:[\&quot;a\&quot;,\&quot;b\&quot;]&quot;,
+            &quot;unit&quot;: &quot;h_contractual&quot;
+          }
+        }
+      ],
+      &quot;record_id&quot;: &quot;beta-hours&quot;,
+      &quot;revision&quot;: 1,
+      &quot;supersedes&quot;: null,
+      &quot;worklog&quot;: [
+        {
+          &quot;phase&quot;: &quot;REUSE&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;operation_ref&quot;: &quot;OP&quot;,
+          &quot;phase&quot;: &quot;REUSE_LOOKUP&quot;,
+          &quot;reason&quot;: &quot;No matching receipt in this case&#x27;s supplied, verified inventory; no claim about other sources.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;operation_refs&quot;: [
+            &quot;OP&quot;
+          ],
+          &quot;phase&quot;: &quot;DERIVE&quot;,
+          &quot;reason&quot;: &quot;Executed operations retain individual receipts and limits.&quot;,
+          &quot;status&quot;: &quot;APPLIED&quot;
+        },
+        {
+          &quot;phase&quot;: &quot;IRRELEVANCE&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;phase&quot;: &quot;EXPAND_MODEL&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;phase&quot;: &quot;ASSESS_SOURCE&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        },
+        {
+          &quot;phase&quot;: &quot;REQUEST_INPUT&quot;,
+          &quot;reason&quot;: &quot;No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.&quot;,
+          &quot;status&quot;: &quot;NOT_APPLICABLE&quot;
+        }
+      ]
+    },
+    &quot;request_ref&quot;: {
+      &quot;revision&quot;: 1,
+      &quot;sha256&quot;: &quot;8e824146eec4b581b50f4d983a16c972ea6df2df1393c936a6d1f638490bee90&quot;
+    }
+  },
+  &quot;closure&quot;: {
+    &quot;budget_used&quot;: {
+      &quot;certificates&quot;: 0,
+      &quot;network_acquisitions&quot;: 0,
+      &quot;operations&quot;: 1
+    },
+    &quot;closed_queries&quot;: [],
+    &quot;last_verified_artifacts&quot;: [
+      &quot;hours&quot;,
+      &quot;metadata&quot;
+    ],
+    &quot;next_action&quot;: &quot;Continue only with a pertinent new input, rule, query, permission or budget and a linked revision.&quot;,
+    &quot;owner&quot;: &quot;Local requester and the functional owners named by each obligation&quot;,
+    &quot;reason&quot;: &quot;ALL_CONTRACTED_OPERATIONS_FINISHED&quot;,
+    &quot;reopen_condition&quot;: &quot;A relevant premise, source, query, support, rule, permission or capability changes.&quot;,
+    &quot;state&quot;: &quot;PC_WAITING_DEPENDENCY&quot;,
+    &quot;superseded_by&quot;: null,
+    &quot;unresolved_obligations&quot;: [
+      &quot;O&quot;
+    ]
+  }
+}</pre></section></main><footer class="footer"><a href="/">Acceso humano</a><a href="/static/privacy.html">Privacidad</a></footer></body></html>

@@ -1,0 +1,7 @@
+{
+  "argument": "Policies p and s use 1/1 resource, q uses 2/1. Each exceeds stipulated bound 0/1, independently of functional hole choices 0/1 and 100/1. Full target is p,q,s; no policy omitted.",
+  "evidence_kind": "SYNTHETIC_STIPULATION",
+  "expected": "ALL_POLICIES_REFUTED",
+  "generation": "Received Kernel 1.0.1 generates original Result as required input artifact only; expected proof and claim are hand-fixed.",
+  "limit": "Formal refutation inside an artificial exact input; no physical infeasibility or domain admission."
+}

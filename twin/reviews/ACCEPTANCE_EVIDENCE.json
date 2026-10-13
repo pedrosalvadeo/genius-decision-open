@@ -1,0 +1,28 @@
+{
+  "format": "genius-d1-independent-review/1",
+  "scope": "domain/kernel/http acceptance; frontend not received by this report",
+  "captured_at": "2026-10-12T23:54:48.167928+00:00",
+  "python": "3.12.14",
+  "tests": {
+    "run_count": 20,
+    "failures": 0,
+    "errors": 0,
+    "duration_seconds": 24.276
+  },
+  "native_guard_regressions": {
+    "run_count": 3,
+    "failures": 0,
+    "errors": 0
+  },
+  "empirical_validation": "NOT_PERFORMED",
+  "human_comprehension": "NOT_PERFORMED",
+  "source_hash_note": "Current source snapshot after accepted type-hardening; integrator rerun is final freeze authority",
+  "source_sha256": {
+    "twin/genius_twin/domain.py": "b2cea8bd4cc70270e6a2a29550e80ee915ee9e14bd881ebcbb60aecbc0f363d9",
+    "twin/genius_twin/compiler.py": "7214126ead31f42b5dfb47887c4877583a7819b133f57c56dc9f52b792460801",
+    "twin/genius_twin/store.py": "1bdff67e30cb21a684437b81cee8ee3409c994f20f2311ab863afe45246446ab",
+    "twin/genius_twin/service.py": "31ab55b6187a4bb501a37b705d0d548452aadb88b2aee14331a14e84a3534709",
+    "twin/genius_twin/app.py": "33d0509882e116324dba52270cd49dc0d72c2b0a3ab49acb594ab0609f680a48",
+    "twin/tests/test_acceptance.py": "7e27353d08804a5391d30dc7197bf717f475be80f1b9610f2bc3c723132309b5"
+  }
+}

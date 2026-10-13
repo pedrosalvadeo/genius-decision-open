@@ -1,0 +1,15 @@
+CREATE TABLE users (id TEXT PRIMARY KEY, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, created_at INTEGER NOT NULL, last_active INTEGER NOT NULL, privacy_version TEXT NOT NULL);
+CREATE TABLE consents (user_id TEXT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE, research INTEGER NOT NULL CHECK(research IN(0,1)), followup INTEGER NOT NULL CHECK(followup IN(0,1)), updated_at INTEGER NOT NULL);
+CREATE TABLE sessions (id TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, csrf TEXT NOT NULL, expires_at INTEGER NOT NULL);
+CREATE TABLE api_tokens (id TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, token_hash TEXT UNIQUE NOT NULL, label TEXT NOT NULL, created_at INTEGER NOT NULL, last_used_at INTEGER);
+CREATE TABLE cases (id TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, title TEXT NOT NULL, profile TEXT NOT NULL, consumer_type TEXT NOT NULL, current_revision INTEGER NOT NULL DEFAULT 1, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL);
+CREATE TABLE revisions (case_id TEXT NOT NULL REFERENCES cases(id) ON DELETE CASCADE, version INTEGER NOT NULL, input_json TEXT NOT NULL, input_sha256 TEXT NOT NULL, created_at INTEGER NOT NULL, PRIMARY KEY(case_id,version));
+CREATE TABLE jobs (id TEXT PRIMARY KEY, case_id TEXT NOT NULL REFERENCES cases(id) ON DELETE CASCADE, revision INTEGER NOT NULL, status TEXT NOT NULL CHECK(status IN('queued','running','completed','failed','cancelled','interrupted')), result_json TEXT, error TEXT, created_at INTEGER NOT NULL, started_at INTEGER, finished_at INTEGER, cancel_requested INTEGER NOT NULL DEFAULT 0, FOREIGN KEY(case_id,revision) REFERENCES revisions(case_id,version));
+CREATE UNIQUE INDEX one_live_job_per_case ON jobs(case_id) WHERE status IN('queued','running');
+CREATE TABLE feedback (id TEXT PRIMARY KEY, case_id TEXT NOT NULL REFERENCES cases(id) ON DELETE CASCADE, job_id TEXT REFERENCES jobs(id) ON DELETE SET NULL, data_json TEXT NOT NULL, created_at INTEGER NOT NULL);
+CREATE TABLE research_candidates (id TEXT PRIMARY KEY, case_id TEXT NOT NULL REFERENCES cases(id) ON DELETE CASCADE, job_id TEXT NOT NULL REFERENCES jobs(id) ON DELETE CASCADE, consent_version TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'candidate_not_admitted', created_at INTEGER NOT NULL);
+CREATE TABLE counters (key TEXT NOT NULL, bucket INTEGER NOT NULL, count INTEGER NOT NULL, PRIMARY KEY(key,bucket));
+CREATE TABLE telemetry (id INTEGER PRIMARY KEY, event TEXT NOT NULL, created_at INTEGER NOT NULL);
+CREATE TABLE deletion_ledger (id TEXT PRIMARY KEY, entity_type TEXT NOT NULL, deleted_at INTEGER NOT NULL);
+CREATE INDEX cases_user ON cases(user_id);
+CREATE INDEX jobs_status ON jobs(status,created_at);

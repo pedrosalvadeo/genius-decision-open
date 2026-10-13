@@ -1,0 +1,1976 @@
+{
+  "format": "genius-public-demo-result/1",
+  "generated_at_utc": "2026-10-06T04:36:03.501178+00:00",
+  "evidence_origin": "synthetic",
+  "live_request": false,
+  "notice": "Real engine executions on fixed synthetic fixtures. Reading this saved receipt does not run the engine. Not empirical validation or an unrestricted decision solver.",
+  "engine_upstream_commit": "85439062c666e20d94b037cf215e310c02d0d220",
+  "records": [
+    {
+      "example": "hours-known",
+      "input": {
+        "assignments": [
+          {
+            "credit": "6.5",
+            "id": "a"
+          },
+          {
+            "credit": "7.5",
+            "id": "b"
+          }
+        ],
+        "evidence_origin": "synthetic",
+        "permission_confirmed": true,
+        "profile": "hours",
+        "scope_acknowledged": true,
+        "target": "15"
+      },
+      "input_file_sha256": "a27c0719c53aed969c43fa35654bb0afec59dc977ba818d5db3e9d4f9d42080d",
+      "observation": {
+        "environment": "offline-disposable-database",
+        "transport": "Flask WSGI test client",
+        "bootstrap_http_status": 202,
+        "job_http_status": 200,
+        "job_status": "completed"
+      },
+      "result": {
+        "adapter_version": "genius-beta-adapter/0.1.0",
+        "evidence_origin": "synthetic",
+        "presentation": {
+          "authority": "PRESENTATION_ONLY",
+          "authorization_to_act": "NOT_ESTABLISHED",
+          "closure": {
+            "label_es": "Consulta respondida dentro del alcance",
+            "state": "PC_ANSWERED_SCOPED"
+          },
+          "head_revision": 4,
+          "is_historical": false,
+          "language": "es-AR",
+          "layers": {
+            "decision": [
+              {
+                "label_es": "Resultado justificado para la consulta exacta",
+                "query_ref": "Q",
+                "state": "PR_JUSTIFIED_RESULT"
+              }
+            ],
+            "evidence": [
+              {
+                "label_es": "Evidencia condicional",
+                "query_ref": "Q",
+                "state": "EV_CONDITIONAL"
+              }
+            ],
+            "execution": {
+              "label_es": "Ejecución completada",
+              "state": "PE_COMPLETE"
+            },
+            "transport": {
+              "label_es": "Sobre local recibido",
+              "state": "PT_DELIVERED"
+            }
+          },
+          "notice_es": "Esta vista conserva un recibo técnico. No demuestra verdad física, comprensión o utilidad humana, ni autoriza una intervención. Un dato desconocido no es cero ni una probabilidad. La calidad se conserva por dimensiones, sin puntaje global. FDQ conserva su alcance formal y condicional: no demuestra pertenencia del sistema real al modelo. PVS no es un puntaje de confianza ni una probabilidad de supervivencia presumida. Una fuente compatible no convierte un modelo sintético en evidencia física. REQUEST_INPUT conserva una solicitud local: no la envía ni acredita respuesta o aceptación humana. El cierre local no implica que un proceso siga trabajando; la reapertura requiere la condición registrada.",
+          "publication_state": "PUBLISHED",
+          "quality": {
+            "adoption_business": "NOT_ASSESSED",
+            "comprehension": "NOT_ASSESSED",
+            "coverage": "NOT_ASSESSED",
+            "data_provenance": "NOT_ASSESSED",
+            "formal_correctness": "ASSESSED",
+            "information_efficiency": "NOT_ASSESSED",
+            "model_fidelity": "NOT_ASSESSED",
+            "operation": "ASSESSED",
+            "uncertainty_sensitivity": "NOT_ASSESSED",
+            "utility": "NOT_ASSESSED"
+          },
+          "selected_revision": 4,
+          "selected_revision_sha256": "6bed93c3cbc8288539563ee547bfbb917a82f381750636ea93651efe0456b9e3",
+          "source_head": "6bed93c3cbc8288539563ee547bfbb917a82f381750636ea93651efe0456b9e3",
+          "unresolved_obligations": []
+        },
+        "request": {
+          "artifacts": [
+            {
+              "evidence_kind": "SYNTHETIC_STIPULATION",
+              "id": "hours",
+              "path": "hours.json",
+              "permissions": {
+                "access": "ALLOWED",
+                "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                "use": "ALLOWED"
+              },
+              "role": "consumer-supplied formal premises",
+              "sha256": "d5a630e0bd123b635e35ee4642fc096b029d6347b23bd7cc0377adc472f7500e"
+            },
+            {
+              "evidence_kind": "SYNTHETIC_STIPULATION",
+              "id": "metadata",
+              "path": "metadata.json",
+              "permissions": {
+                "access": "ALLOWED",
+                "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                "use": "ALLOWED"
+              },
+              "role": "consumer-supplied formal premises",
+              "sha256": "225e65c347e2bff2bd4042d8dc564bcc3d03d55d635ed00b20109e66a9d4c986"
+            }
+          ],
+          "budget": {
+            "certificate_timeout_seconds": 15,
+            "max_certificates": 0,
+            "max_operations": 1
+          },
+          "format": "genius-local-request/0.1.0",
+          "novelty": {
+            "changed_refs": [],
+            "reason": "New consumer-submitted bounded formal case"
+          },
+          "obligations": [
+            {
+              "affected_claims": [
+                "Q"
+              ],
+              "attempts": [],
+              "budget_ref": "request.budget",
+              "classification_basis": [
+                {
+                  "evidence": "Consumer-supplied formal request",
+                  "mechanism": "DERIVABLE"
+                }
+              ],
+              "closure": {
+                "predicate": "EXACT_QUERY_RESULT_RECEIVED",
+                "verified": false,
+                "verifier": "received R2 controller",
+                "witness_refs": []
+              },
+              "dependencies": [],
+              "derivation_rule": {
+                "kind": "NO_DERIVATION",
+                "reason": "Only the explicitly bound received operation can produce a witness."
+              },
+              "id": "O",
+              "input_spec": {
+                "field": "scoped formal answer",
+                "method": "CONTRACT_HOURS/1",
+                "object": "consumer-declared-credit-register",
+                "period": "declared-plan-scope",
+                "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                "reason": "Await scoped execution; missing supplied values remain unknown.",
+                "state": "UNKNOWN",
+                "type": "formal component or policy answer",
+                "unit": "h_contractual"
+              },
+              "next_action": "Run the bounded operation or retain an explicit dependency",
+              "owner": {
+                "assigned_person": "UNKNOWN",
+                "role": "submitting-consumer",
+                "task": "Supply compatible formal premises and resolve unknown inputs"
+              },
+              "permitted_use": [
+                "Conditional formal answer to the supplied query"
+              ],
+              "primary_cause": "DERIVABLE",
+              "prohibited_inferences": [
+                "Physical domain admission",
+                "Human comprehension",
+                "Decision utility",
+                "Authority to act",
+                "Empirical CAG or PVS"
+              ],
+              "provenance": [
+                {
+                  "kind": "SYNTHETIC_STIPULATION",
+                  "reason": "User declaration is treated as formal premises, not authenticated empirical observation."
+                }
+              ],
+              "query_ref": "Q",
+              "reopen": {
+                "affected_refs": [
+                  "Q"
+                ],
+                "condition": "Pertinent change of source, query, rule or scope under a future explicit revision"
+              },
+              "revision": 1,
+              "secondary_causes": [],
+              "status": "OPEN"
+            }
+          ],
+          "operations": [
+            {
+              "id": "OP",
+              "kind": "DERIVE_HOURS",
+              "obligation_refs": [
+                "O"
+              ],
+              "parameters": {
+                "artifact_ref": "hours",
+                "assessment": {
+                  "access_and_permissions": {
+                    "access": "ALLOWED",
+                    "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                    "use": "ALLOWED"
+                  },
+                  "assessment_id": "A",
+                  "axes": {
+                    "identity": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/identity"
+                      },
+                      "source_value": "consumer-declared-credit-register",
+                      "status": "MATCH",
+                      "target_value": "consumer-declared-credit-register"
+                    },
+                    "method": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/method"
+                      },
+                      "source_value": "CONTRACT_HOURS/1",
+                      "status": "MATCH",
+                      "target_value": "CONTRACT_HOURS/1"
+                    },
+                    "period": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/period"
+                      },
+                      "source_value": "declared-plan-scope",
+                      "status": "MATCH",
+                      "target_value": "declared-plan-scope"
+                    },
+                    "population": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/population"
+                      },
+                      "source_value": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                      "status": "MATCH",
+                      "target_value": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]"
+                    },
+                    "unit": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/unit"
+                      },
+                      "source_value": "h_contractual",
+                      "status": "MATCH",
+                      "target_value": "h_contractual"
+                    }
+                  },
+                  "claim": "Q",
+                  "closure": {
+                    "predicate": "Five axes and permission declaration are compatible in stated formal scope",
+                    "verified": false,
+                    "verifier": "received R2 controller",
+                    "witness_refs": []
+                  },
+                  "conflicts": [],
+                  "evidence_kind": "SYNTHETIC_STIPULATION",
+                  "intended_use": "Conditional formal arithmetic only",
+                  "observed_or_received_at": "2026-10-06T04:36:03.275545+00:00",
+                  "owner": {
+                    "assigned_person": "UNKNOWN",
+                    "role": "submitting-consumer",
+                    "task": "Supply formal premises"
+                  },
+                  "query_ref": "Q",
+                  "relevant_period": "declared-plan-scope",
+                  "reopen": {
+                    "affected_refs": [
+                      "Q"
+                    ],
+                    "condition": "Source or query changes"
+                  },
+                  "revision": 1,
+                  "source_digest": "d5a630e0bd123b635e35ee4642fc096b029d6347b23bd7cc0377adc472f7500e",
+                  "source_locator": "hours.json",
+                  "source_ref": "hours",
+                  "source_version": "genius-beta-adapter/0.1.0",
+                  "target_spec": {
+                    "identity": "consumer-declared-credit-register",
+                    "method": "CONTRACT_HOURS/1",
+                    "period": "declared-plan-scope",
+                    "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                    "unit": "h_contractual"
+                  },
+                  "transformation_chain": [],
+                  "verdict": "PENDING"
+                },
+                "rule_id": "CONTRACT_HOURS/1"
+              },
+              "query_ref": "Q"
+            }
+          ],
+          "queries": [
+            {
+              "artifact_refs": [
+                "hours",
+                "metadata"
+              ],
+              "id": "Q",
+              "kind": "component",
+              "norm": {
+                "reasons": [
+                  "No policy selection requested"
+                ],
+                "scope": "contractual-credit arithmetic",
+                "state": "PV_NOT_APPLICABLE"
+              },
+              "obligation_refs": [
+                "O"
+              ],
+              "revision": 1,
+              "scope": {
+                "operator": "CONTRACT_HOURS/1",
+                "purpose": "FORMAL_CONDITIONAL"
+              },
+              "target_spec": {
+                "identity": "consumer-declared-credit-register",
+                "method": "CONTRACT_HOURS/1",
+                "period": "declared-plan-scope",
+                "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                "unit": "h_contractual"
+              }
+            }
+          ],
+          "request_id": "beta-hours",
+          "revision": 1,
+          "supersedes": null
+        },
+        "request_sha256": "81659c9ec2b2a0178b1614645bae1da98a3b60803bc29e6f2fe84fbfeec1c714",
+        "response": {
+          "artifacts": {
+            "expected": [
+              {
+                "id": "hours",
+                "ref": "hours",
+                "sha256": "d5a630e0bd123b635e35ee4642fc096b029d6347b23bd7cc0377adc472f7500e",
+                "state": "RECEIVED"
+              },
+              {
+                "id": "metadata",
+                "ref": "metadata",
+                "sha256": "225e65c347e2bff2bd4042d8dc564bcc3d03d55d635ed00b20109e66a9d4c986",
+                "state": "RECEIVED"
+              }
+            ],
+            "received": [
+              {
+                "evidence_kind": "SYNTHETIC_STIPULATION",
+                "id": "hours",
+                "path": "objects/d5a630e0bd123b635e35ee4642fc096b029d6347b23bd7cc0377adc472f7500e",
+                "permissions": {
+                  "access": "ALLOWED",
+                  "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                  "use": "ALLOWED"
+                },
+                "role": "consumer-supplied formal premises",
+                "sha256": "d5a630e0bd123b635e35ee4642fc096b029d6347b23bd7cc0377adc472f7500e",
+                "size": 579
+              },
+              {
+                "evidence_kind": "SYNTHETIC_STIPULATION",
+                "id": "metadata",
+                "path": "objects/225e65c347e2bff2bd4042d8dc564bcc3d03d55d635ed00b20109e66a9d4c986",
+                "permissions": {
+                  "access": "ALLOWED",
+                  "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                  "use": "ALLOWED"
+                },
+                "role": "consumer-supplied formal premises",
+                "sha256": "225e65c347e2bff2bd4042d8dc564bcc3d03d55d635ed00b20109e66a9d4c986",
+                "size": 180
+              }
+            ]
+          },
+          "closure": {
+            "budget_used": {
+              "certificates": 0,
+              "network_acquisitions": 0,
+              "operations": 1
+            },
+            "closed_queries": [
+              "Q"
+            ],
+            "last_verified_artifacts": [
+              "hours",
+              "metadata"
+            ],
+            "next_action": "Use only the answered scoped conclusions; new purposes require a new query.",
+            "owner": "Local requester and the functional owners named by each obligation",
+            "reason": "ALL_CONTRACTED_OPERATIONS_FINISHED",
+            "reopen_condition": "A relevant premise, source, query, support, rule, permission or capability changes.",
+            "state": "PC_ANSWERED_SCOPED",
+            "superseded_by": null,
+            "unresolved_obligations": []
+          },
+          "decisions": [
+            {
+              "answers": [
+                {
+                  "artifact_refs": [
+                    "hours"
+                  ],
+                  "claim_source": "CONTRACT_HOURS/1",
+                  "operation_id": "OP",
+                  "value": {
+                    "assigned": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "14/1"
+                    },
+                    "deficit": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "1/1"
+                    },
+                    "excess": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "0/1"
+                    },
+                    "oriented_overtime": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "0/1"
+                    },
+                    "oriented_undertime": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "-1/1"
+                    }
+                  }
+                }
+              ],
+              "norm": {
+                "reasons": [
+                  "No policy selection requested"
+                ],
+                "scope": "contractual-credit arithmetic",
+                "state": "PV_NOT_APPLICABLE"
+              },
+              "observed_values": [
+                {
+                  "artifact_refs": [
+                    "hours"
+                  ],
+                  "claim_source": "CONTRACT_HOURS/1",
+                  "operation_id": "OP",
+                  "reason": "EXACT_CONTRACTUAL_HOURS",
+                  "status": "CONDITIONAL",
+                  "value": {
+                    "assigned": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "14/1"
+                    },
+                    "deficit": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "1/1"
+                    },
+                    "excess": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "0/1"
+                    },
+                    "oriented_overtime": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "0/1"
+                    },
+                    "oriented_undertime": {
+                      "basis": [
+                        "CONTRACT_HOURS/1"
+                      ],
+                      "state": "PV_KNOWN",
+                      "unit": "h_contractual",
+                      "value": "-1/1"
+                    }
+                  }
+                }
+              ],
+              "permitted_use": "Formal conditional model or documentary component only; no empirical intervention authorized.",
+              "query_ref": "Q",
+              "query_sha256": "8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce",
+              "reason": "EXACT_SCOPED_QUERY_VERIFIED",
+              "scope": {
+                "operator": "CONTRACT_HOURS/1",
+                "purpose": "FORMAL_CONDITIONAL"
+              },
+              "state": "PR_JUSTIFIED_RESULT",
+              "unresolved_obligations": []
+            }
+          ],
+          "evidence": [
+            {
+              "limits": [
+                "No empirical fidelity, utility, understanding or permission to act inferred."
+              ],
+              "query_ref": "Q",
+              "query_sha256": "8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce",
+              "records": [
+                {
+                  "query_sha256": "8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce",
+                  "source_assessment": {
+                    "access_and_permissions": {
+                      "access": "ALLOWED",
+                      "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                      "use": "ALLOWED"
+                    },
+                    "assessment_id": "A",
+                    "axes": {
+                      "identity": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/identity"
+                        },
+                        "source_value": "consumer-declared-credit-register",
+                        "status": "MATCH",
+                        "target_value": "consumer-declared-credit-register"
+                      },
+                      "method": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/method"
+                        },
+                        "source_value": "CONTRACT_HOURS/1",
+                        "status": "MATCH",
+                        "target_value": "CONTRACT_HOURS/1"
+                      },
+                      "period": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/period"
+                        },
+                        "source_value": "declared-plan-scope",
+                        "status": "MATCH",
+                        "target_value": "declared-plan-scope"
+                      },
+                      "population": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/population"
+                        },
+                        "source_value": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                        "status": "MATCH",
+                        "target_value": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]"
+                      },
+                      "unit": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/unit"
+                        },
+                        "source_value": "h_contractual",
+                        "status": "MATCH",
+                        "target_value": "h_contractual"
+                      }
+                    },
+                    "blocked_premise_refs": [],
+                    "claim": "Q",
+                    "closure": {
+                      "predicate": "DOCUMENTARY_SUBSTITUTION_FOR_EXACT_CLAIM",
+                      "scope": {
+                        "claim": "Q",
+                        "intended_use": "Conditional formal arithmetic only",
+                        "query_ref": "Q"
+                      },
+                      "verified": true,
+                      "verifier": "genius-local-source-policy/0.1.0",
+                      "witness_refs": [
+                        "hours"
+                      ]
+                    },
+                    "conditional_premise_refs": [
+                      "hours",
+                      "metadata"
+                    ],
+                    "conflicts": [],
+                    "documentary_limit": "BYTE_CORRESPONDENCE_AND_DECLARED_PERMISSION_ONLY; SOURCE_TRUTH_AND_EMPIRICAL_FIDELITY_NOT_AUTHENTICATED",
+                    "evidence_kind": "SYNTHETIC_STIPULATION",
+                    "intended_use": "Conditional formal arithmetic only",
+                    "observed_or_received_at": "2026-10-06T04:36:03.275545+00:00",
+                    "owner": {
+                      "assigned_person": "UNKNOWN",
+                      "role": "submitting-consumer",
+                      "task": "Supply formal premises"
+                    },
+                    "premise_artifact_refs": [
+                      "hours",
+                      "metadata"
+                    ],
+                    "profile_limitations": [],
+                    "query_ref": "Q",
+                    "relevant_period": "declared-plan-scope",
+                    "reopen": {
+                      "affected_refs": [
+                        "Q"
+                      ],
+                      "condition": "Source or query changes"
+                    },
+                    "revision": 1,
+                    "source_digest": "d5a630e0bd123b635e35ee4642fc096b029d6347b23bd7cc0377adc472f7500e",
+                    "source_locator": "hours.json",
+                    "source_ref": "hours",
+                    "source_version": "genius-beta-adapter/0.1.0",
+                    "target_spec": {
+                      "identity": "consumer-declared-credit-register",
+                      "method": "CONTRACT_HOURS/1",
+                      "period": "declared-plan-scope",
+                      "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                      "unit": "h_contractual"
+                    },
+                    "transformation_chain": [],
+                    "verdict": "SC_CONDITIONAL_MODEL_ONLY"
+                  },
+                  "source_authenticity": "NOT_AUTHENTICATED",
+                  "source_sha256": "d5a630e0bd123b635e35ee4642fc096b029d6347b23bd7cc0377adc472f7500e"
+                }
+              ],
+              "state": "EV_CONDITIONAL"
+            }
+          ],
+          "execution": {
+            "progress": {
+              "received_operations": 1,
+              "requested_operations": 1
+            },
+            "reason": "ALL_CONTRACTED_OPERATIONS_FINISHED",
+            "state": "PE_COMPLETE"
+          },
+          "format": "genius-product-response/0.1.0",
+          "obligations_ref": {
+            "record": {
+              "budget": {
+                "certificate_timeout_seconds": 15,
+                "max_certificates": 0,
+                "max_operations": 1
+              },
+              "format": "genius-product-obligations/0.1.0",
+              "obligations": [
+                {
+                  "affected_claims": [
+                    "Q"
+                  ],
+                  "attempts": [],
+                  "budget_ref": "request.budget",
+                  "classification_basis": [
+                    {
+                      "evidence": "Consumer-supplied formal request",
+                      "mechanism": "DERIVABLE"
+                    }
+                  ],
+                  "closure": {
+                    "claim_source": "CONTRACT_HOURS/1",
+                    "predicate": "EXACT_QUERY_RESULT_RECEIVED",
+                    "query_sha256": "8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce",
+                    "reason": "VERIFIED_EXACT_QUERY_SCOPE",
+                    "verified": true,
+                    "verifier": "genius-local-operation-policy/0.1.0",
+                    "witness_refs": [
+                      "OP"
+                    ]
+                  },
+                  "dependencies": [],
+                  "derivation_rule": {
+                    "kind": "NO_DERIVATION",
+                    "reason": "Only the explicitly bound received operation can produce a witness."
+                  },
+                  "id": "O",
+                  "input_spec": {
+                    "field": "scoped formal answer",
+                    "method": "CONTRACT_HOURS/1",
+                    "object": "consumer-declared-credit-register",
+                    "period": "declared-plan-scope",
+                    "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                    "reason": "Await scoped execution; missing supplied values remain unknown.",
+                    "state": "UNKNOWN",
+                    "type": "formal component or policy answer",
+                    "unit": "h_contractual"
+                  },
+                  "next_action": "Run the bounded operation or retain an explicit dependency",
+                  "owner": {
+                    "assigned_person": "UNKNOWN",
+                    "role": "submitting-consumer",
+                    "task": "Supply compatible formal premises and resolve unknown inputs"
+                  },
+                  "permitted_use": [
+                    "Conditional formal answer to the supplied query"
+                  ],
+                  "primary_cause": "DERIVABLE",
+                  "prohibited_inferences": [
+                    "Physical domain admission",
+                    "Human comprehension",
+                    "Decision utility",
+                    "Authority to act",
+                    "Empirical CAG or PVS"
+                  ],
+                  "provenance": [
+                    {
+                      "kind": "SYNTHETIC_STIPULATION",
+                      "reason": "User declaration is treated as formal premises, not authenticated empirical observation."
+                    }
+                  ],
+                  "query_ref": "Q",
+                  "reopen": {
+                    "affected_refs": [
+                      "Q"
+                    ],
+                    "condition": "Pertinent change of source, query, rule or scope under a future explicit revision"
+                  },
+                  "revision": 1,
+                  "secondary_causes": [],
+                  "status": "CLOSED_SCOPED"
+                }
+              ],
+              "queries": [
+                {
+                  "artifact_refs": [
+                    "hours",
+                    "metadata"
+                  ],
+                  "id": "Q",
+                  "kind": "component",
+                  "norm": {
+                    "reasons": [
+                      "No policy selection requested"
+                    ],
+                    "scope": "contractual-credit arithmetic",
+                    "state": "PV_NOT_APPLICABLE"
+                  },
+                  "obligation_refs": [
+                    "O"
+                  ],
+                  "revision": 1,
+                  "scope": {
+                    "operator": "CONTRACT_HOURS/1",
+                    "purpose": "FORMAL_CONDITIONAL"
+                  },
+                  "target_spec": {
+                    "identity": "consumer-declared-credit-register",
+                    "method": "CONTRACT_HOURS/1",
+                    "period": "declared-plan-scope",
+                    "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                    "unit": "h_contractual"
+                  }
+                }
+              ],
+              "record_id": "beta-hours",
+              "revision": 1,
+              "supersedes": null,
+              "worklog": [
+                {
+                  "phase": "REUSE",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "operation_ref": "OP",
+                  "phase": "REUSE_LOOKUP",
+                  "reason": "No matching receipt in this case's supplied, verified inventory; no claim about other sources.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "operation_refs": [
+                    "OP"
+                  ],
+                  "phase": "DERIVE",
+                  "reason": "Executed operations retain individual receipts and limits.",
+                  "status": "APPLIED"
+                },
+                {
+                  "phase": "IRRELEVANCE",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "phase": "EXPAND_MODEL",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "phase": "ASSESS_SOURCE",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "phase": "REQUEST_INPUT",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                }
+              ]
+            },
+            "request_ref": {
+              "revision": 1,
+              "sha256": "81659c9ec2b2a0178b1614645bae1da98a3b60803bc29e6f2fe84fbfeec1c714"
+            }
+          },
+          "permitted_use": [
+            "Documentary or formal conditional local decision support only.",
+            "No empirical validation, human comprehension, utility or permission to intervene is established."
+          ],
+          "quality": {
+            "adoption_business": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "comprehension": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "coverage": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "data_provenance": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "formal_correctness": {
+              "conclusion": "Scoped checks completed.",
+              "evidence": [
+                "Q"
+              ],
+              "limit": "No general theorem extension or empirical fidelity inferred.",
+              "scope": "Only received exact component or finite FDQ query",
+              "state": "ASSESSED"
+            },
+            "information_efficiency": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "model_fidelity": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "operation": {
+              "conclusion": "PE_COMPLETE",
+              "evidence": [
+                "OP"
+              ],
+              "limit": "No availability, concurrency, empirical utility or business claim.",
+              "scope": "Observed local operations only",
+              "state": "ASSESSED"
+            },
+            "uncertainty_sensitivity": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "utility": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            }
+          },
+          "queries": [
+            {
+              "artifact_refs": [
+                "hours",
+                "metadata"
+              ],
+              "id": "Q",
+              "kind": "component",
+              "norm": {
+                "reasons": [
+                  "No policy selection requested"
+                ],
+                "scope": "contractual-credit arithmetic",
+                "state": "PV_NOT_APPLICABLE"
+              },
+              "obligation_refs": [
+                "O"
+              ],
+              "revision": 1,
+              "scope": {
+                "operator": "CONTRACT_HOURS/1",
+                "purpose": "FORMAL_CONDITIONAL"
+              },
+              "target_spec": {
+                "identity": "consumer-declared-credit-register",
+                "method": "CONTRACT_HOURS/1",
+                "period": "declared-plan-scope",
+                "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                "unit": "h_contractual"
+              }
+            }
+          ],
+          "request_ref": {
+            "revision": 1,
+            "sha256": "81659c9ec2b2a0178b1614645bae1da98a3b60803bc29e6f2fe84fbfeec1c714"
+          },
+          "response_id": "beta-hours:response:1",
+          "revision": 1,
+          "supersedes": null,
+          "transport": {
+            "last_verified_artifacts": [
+              "hours",
+              "metadata"
+            ],
+            "limits": "Delivery describes this received local envelope, not a remote RPC or scientific validity.",
+            "reason": "LOCAL_RESPONSE_CONSTRUCTED_AND_VALIDATED",
+            "state": "PT_DELIVERED"
+          },
+          "versions": {
+            "obligations": "genius-product-obligations/0.1.0",
+            "response": "genius-product-response/0.1.0",
+            "source_compatibility": "genius-source-compatibility/0.1.0",
+            "sufficiency": "DECISION_SUFFICIENCY/0.1.0",
+            "sufficiency_profile": "FDQ_FINITE_PATCH/0.1.0"
+          }
+        },
+        "source_receipt": {
+          "head": "6bed93c3cbc8288539563ee547bfbb917a82f381750636ea93651efe0456b9e3",
+          "limits": "No producer authentication, empirical validation, comprehension study or authorization to intervene.",
+          "selected_revision": 4,
+          "selected_revision_sha256": "6bed93c3cbc8288539563ee547bfbb917a82f381750636ea93651efe0456b9e3",
+          "verification": "BYTE_IDENTITY_AND_R2_RECEIPT_CONSISTENCY_ONLY"
+        }
+      },
+      "result_sha256": "eb23f499f0ca772380606fb267621eaed0334f33a6ffde43e6e2773b62015551",
+      "result_hash_encoding": "UTF-8 JSON: ensure_ascii=false, sort_keys=true, separators=comma-colon",
+      "artifact_sha256": "448eaa3f8ad733878c5a7fd9511db814ee4e08bec48536e0a430010c0de8a23c"
+    },
+    {
+      "example": "hours-unknown",
+      "input": {
+        "assignments": [
+          {
+            "credit": null,
+            "id": "a"
+          },
+          {
+            "credit": "7.5",
+            "id": "b"
+          }
+        ],
+        "evidence_origin": "synthetic",
+        "permission_confirmed": true,
+        "profile": "hours",
+        "scope_acknowledged": true,
+        "target": "15"
+      },
+      "input_file_sha256": "ac272222add774b428e6a86609092dcceb1655b135fe5a0bed90e3bcfb48b1f2",
+      "observation": {
+        "environment": "offline-disposable-database",
+        "transport": "Flask WSGI test client",
+        "bootstrap_http_status": 202,
+        "job_http_status": 200,
+        "job_status": "completed"
+      },
+      "result": {
+        "adapter_version": "genius-beta-adapter/0.1.0",
+        "evidence_origin": "synthetic",
+        "presentation": {
+          "authority": "PRESENTATION_ONLY",
+          "authorization_to_act": "NOT_ESTABLISHED",
+          "closure": {
+            "label_es": "A la espera de una dependencia",
+            "state": "PC_WAITING_DEPENDENCY"
+          },
+          "head_revision": 4,
+          "is_historical": false,
+          "language": "es-AR",
+          "layers": {
+            "decision": [
+              {
+                "label_es": "Dependencia pendiente",
+                "query_ref": "Q",
+                "state": "PR_DEPENDENCY"
+              }
+            ],
+            "evidence": [
+              {
+                "label_es": "Evidencia insuficiente",
+                "query_ref": "Q",
+                "state": "EV_INSUFFICIENT"
+              }
+            ],
+            "execution": {
+              "label_es": "Ejecución completada",
+              "state": "PE_COMPLETE"
+            },
+            "transport": {
+              "label_es": "Sobre local recibido",
+              "state": "PT_DELIVERED"
+            }
+          },
+          "notice_es": "Esta vista conserva un recibo técnico. No demuestra verdad física, comprensión o utilidad humana, ni autoriza una intervención. Un dato desconocido no es cero ni una probabilidad. La calidad se conserva por dimensiones, sin puntaje global. FDQ conserva su alcance formal y condicional: no demuestra pertenencia del sistema real al modelo. PVS no es un puntaje de confianza ni una probabilidad de supervivencia presumida. Una fuente compatible no convierte un modelo sintético en evidencia física. REQUEST_INPUT conserva una solicitud local: no la envía ni acredita respuesta o aceptación humana. El cierre local no implica que un proceso siga trabajando; la reapertura requiere la condición registrada.",
+          "publication_state": "PUBLISHED",
+          "quality": {
+            "adoption_business": "NOT_ASSESSED",
+            "comprehension": "NOT_ASSESSED",
+            "coverage": "NOT_ASSESSED",
+            "data_provenance": "NOT_ASSESSED",
+            "formal_correctness": "NOT_ASSESSED",
+            "information_efficiency": "NOT_ASSESSED",
+            "model_fidelity": "NOT_ASSESSED",
+            "operation": "ASSESSED",
+            "uncertainty_sensitivity": "NOT_ASSESSED",
+            "utility": "NOT_ASSESSED"
+          },
+          "selected_revision": 4,
+          "selected_revision_sha256": "c91b81e869480e0fac8ab4626ac5a251b70c4e2a58c758473edad63733cc8151",
+          "source_head": "c91b81e869480e0fac8ab4626ac5a251b70c4e2a58c758473edad63733cc8151",
+          "unresolved_obligations": [
+            "O"
+          ]
+        },
+        "request": {
+          "artifacts": [
+            {
+              "evidence_kind": "SYNTHETIC_STIPULATION",
+              "id": "hours",
+              "path": "hours.json",
+              "permissions": {
+                "access": "ALLOWED",
+                "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                "use": "ALLOWED"
+              },
+              "role": "consumer-supplied formal premises",
+              "sha256": "215b765aa69a346ec9af5dbd44d8fab956ae9e74a2f9652a7ed209717200bb19"
+            },
+            {
+              "evidence_kind": "SYNTHETIC_STIPULATION",
+              "id": "metadata",
+              "path": "metadata.json",
+              "permissions": {
+                "access": "ALLOWED",
+                "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                "use": "ALLOWED"
+              },
+              "role": "consumer-supplied formal premises",
+              "sha256": "225e65c347e2bff2bd4042d8dc564bcc3d03d55d635ed00b20109e66a9d4c986"
+            }
+          ],
+          "budget": {
+            "certificate_timeout_seconds": 15,
+            "max_certificates": 0,
+            "max_operations": 1
+          },
+          "format": "genius-local-request/0.1.0",
+          "novelty": {
+            "changed_refs": [],
+            "reason": "New consumer-submitted bounded formal case"
+          },
+          "obligations": [
+            {
+              "affected_claims": [
+                "Q"
+              ],
+              "attempts": [],
+              "budget_ref": "request.budget",
+              "classification_basis": [
+                {
+                  "evidence": "Consumer-supplied formal request",
+                  "mechanism": "DERIVABLE"
+                }
+              ],
+              "closure": {
+                "predicate": "EXACT_QUERY_RESULT_RECEIVED",
+                "verified": false,
+                "verifier": "received R2 controller",
+                "witness_refs": []
+              },
+              "dependencies": [],
+              "derivation_rule": {
+                "kind": "NO_DERIVATION",
+                "reason": "Only the explicitly bound received operation can produce a witness."
+              },
+              "id": "O",
+              "input_spec": {
+                "field": "scoped formal answer",
+                "method": "CONTRACT_HOURS/1",
+                "object": "consumer-declared-credit-register",
+                "period": "declared-plan-scope",
+                "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                "reason": "Await scoped execution; missing supplied values remain unknown.",
+                "state": "UNKNOWN",
+                "type": "formal component or policy answer",
+                "unit": "h_contractual"
+              },
+              "next_action": "Run the bounded operation or retain an explicit dependency",
+              "owner": {
+                "assigned_person": "UNKNOWN",
+                "role": "submitting-consumer",
+                "task": "Supply compatible formal premises and resolve unknown inputs"
+              },
+              "permitted_use": [
+                "Conditional formal answer to the supplied query"
+              ],
+              "primary_cause": "DERIVABLE",
+              "prohibited_inferences": [
+                "Physical domain admission",
+                "Human comprehension",
+                "Decision utility",
+                "Authority to act",
+                "Empirical CAG or PVS"
+              ],
+              "provenance": [
+                {
+                  "kind": "SYNTHETIC_STIPULATION",
+                  "reason": "User declaration is treated as formal premises, not authenticated empirical observation."
+                }
+              ],
+              "query_ref": "Q",
+              "reopen": {
+                "affected_refs": [
+                  "Q"
+                ],
+                "condition": "Pertinent change of source, query, rule or scope under a future explicit revision"
+              },
+              "revision": 1,
+              "secondary_causes": [],
+              "status": "OPEN"
+            }
+          ],
+          "operations": [
+            {
+              "id": "OP",
+              "kind": "DERIVE_HOURS",
+              "obligation_refs": [
+                "O"
+              ],
+              "parameters": {
+                "artifact_ref": "hours",
+                "assessment": {
+                  "access_and_permissions": {
+                    "access": "ALLOWED",
+                    "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                    "use": "ALLOWED"
+                  },
+                  "assessment_id": "A",
+                  "axes": {
+                    "identity": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/identity"
+                      },
+                      "source_value": "consumer-declared-credit-register",
+                      "status": "MATCH",
+                      "target_value": "consumer-declared-credit-register"
+                    },
+                    "method": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/method"
+                      },
+                      "source_value": "CONTRACT_HOURS/1",
+                      "status": "MATCH",
+                      "target_value": "CONTRACT_HOURS/1"
+                    },
+                    "period": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/period"
+                      },
+                      "source_value": "declared-plan-scope",
+                      "status": "MATCH",
+                      "target_value": "declared-plan-scope"
+                    },
+                    "population": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/population"
+                      },
+                      "source_value": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                      "status": "MATCH",
+                      "target_value": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]"
+                    },
+                    "unit": {
+                      "affected_claims": [
+                        "Q"
+                      ],
+                      "basis": {
+                        "artifact_ref": "metadata",
+                        "pointer": "/unit"
+                      },
+                      "source_value": "h_contractual",
+                      "status": "MATCH",
+                      "target_value": "h_contractual"
+                    }
+                  },
+                  "claim": "Q",
+                  "closure": {
+                    "predicate": "Five axes and permission declaration are compatible in stated formal scope",
+                    "verified": false,
+                    "verifier": "received R2 controller",
+                    "witness_refs": []
+                  },
+                  "conflicts": [],
+                  "evidence_kind": "SYNTHETIC_STIPULATION",
+                  "intended_use": "Conditional formal arithmetic only",
+                  "observed_or_received_at": "2026-10-06T04:36:03.433972+00:00",
+                  "owner": {
+                    "assigned_person": "UNKNOWN",
+                    "role": "submitting-consumer",
+                    "task": "Supply formal premises"
+                  },
+                  "query_ref": "Q",
+                  "relevant_period": "declared-plan-scope",
+                  "reopen": {
+                    "affected_refs": [
+                      "Q"
+                    ],
+                    "condition": "Source or query changes"
+                  },
+                  "revision": 1,
+                  "source_digest": "215b765aa69a346ec9af5dbd44d8fab956ae9e74a2f9652a7ed209717200bb19",
+                  "source_locator": "hours.json",
+                  "source_ref": "hours",
+                  "source_version": "genius-beta-adapter/0.1.0",
+                  "target_spec": {
+                    "identity": "consumer-declared-credit-register",
+                    "method": "CONTRACT_HOURS/1",
+                    "period": "declared-plan-scope",
+                    "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                    "unit": "h_contractual"
+                  },
+                  "transformation_chain": [],
+                  "verdict": "PENDING"
+                },
+                "rule_id": "CONTRACT_HOURS/1"
+              },
+              "query_ref": "Q"
+            }
+          ],
+          "queries": [
+            {
+              "artifact_refs": [
+                "hours",
+                "metadata"
+              ],
+              "id": "Q",
+              "kind": "component",
+              "norm": {
+                "reasons": [
+                  "No policy selection requested"
+                ],
+                "scope": "contractual-credit arithmetic",
+                "state": "PV_NOT_APPLICABLE"
+              },
+              "obligation_refs": [
+                "O"
+              ],
+              "revision": 1,
+              "scope": {
+                "operator": "CONTRACT_HOURS/1",
+                "purpose": "FORMAL_CONDITIONAL"
+              },
+              "target_spec": {
+                "identity": "consumer-declared-credit-register",
+                "method": "CONTRACT_HOURS/1",
+                "period": "declared-plan-scope",
+                "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                "unit": "h_contractual"
+              }
+            }
+          ],
+          "request_id": "beta-hours",
+          "revision": 1,
+          "supersedes": null
+        },
+        "request_sha256": "8e824146eec4b581b50f4d983a16c972ea6df2df1393c936a6d1f638490bee90",
+        "response": {
+          "artifacts": {
+            "expected": [
+              {
+                "id": "hours",
+                "ref": "hours",
+                "sha256": "215b765aa69a346ec9af5dbd44d8fab956ae9e74a2f9652a7ed209717200bb19",
+                "state": "RECEIVED"
+              },
+              {
+                "id": "metadata",
+                "ref": "metadata",
+                "sha256": "225e65c347e2bff2bd4042d8dc564bcc3d03d55d635ed00b20109e66a9d4c986",
+                "state": "RECEIVED"
+              }
+            ],
+            "received": [
+              {
+                "evidence_kind": "SYNTHETIC_STIPULATION",
+                "id": "hours",
+                "path": "objects/215b765aa69a346ec9af5dbd44d8fab956ae9e74a2f9652a7ed209717200bb19",
+                "permissions": {
+                  "access": "ALLOWED",
+                  "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                  "use": "ALLOWED"
+                },
+                "role": "consumer-supplied formal premises",
+                "sha256": "215b765aa69a346ec9af5dbd44d8fab956ae9e74a2f9652a7ed209717200bb19",
+                "size": 530
+              },
+              {
+                "evidence_kind": "SYNTHETIC_STIPULATION",
+                "id": "metadata",
+                "path": "objects/225e65c347e2bff2bd4042d8dc564bcc3d03d55d635ed00b20109e66a9d4c986",
+                "permissions": {
+                  "access": "ALLOWED",
+                  "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                  "use": "ALLOWED"
+                },
+                "role": "consumer-supplied formal premises",
+                "sha256": "225e65c347e2bff2bd4042d8dc564bcc3d03d55d635ed00b20109e66a9d4c986",
+                "size": 180
+              }
+            ]
+          },
+          "closure": {
+            "budget_used": {
+              "certificates": 0,
+              "network_acquisitions": 0,
+              "operations": 1
+            },
+            "closed_queries": [],
+            "last_verified_artifacts": [
+              "hours",
+              "metadata"
+            ],
+            "next_action": "Continue only with a pertinent new input, rule, query, permission or budget and a linked revision.",
+            "owner": "Local requester and the functional owners named by each obligation",
+            "reason": "ALL_CONTRACTED_OPERATIONS_FINISHED",
+            "reopen_condition": "A relevant premise, source, query, support, rule, permission or capability changes.",
+            "state": "PC_WAITING_DEPENDENCY",
+            "superseded_by": null,
+            "unresolved_obligations": [
+              "O"
+            ]
+          },
+          "decisions": [
+            {
+              "answers": [],
+              "norm": {
+                "reasons": [
+                  "No policy selection requested"
+                ],
+                "scope": "contractual-credit arithmetic",
+                "state": "PV_NOT_APPLICABLE"
+              },
+              "observed_values": [
+                {
+                  "artifact_refs": [
+                    "hours"
+                  ],
+                  "claim_source": "CONTRACT_HOURS/1",
+                  "operation_id": "OP",
+                  "reason": "UNKNOWN_HOURS_INPUT",
+                  "status": "UNRESOLVED",
+                  "value": {
+                    "assigned": {
+                      "obligation_refs": [
+                        "O"
+                      ],
+                      "reasons": [
+                        "Consumer explicitly left this credit or target unknown"
+                      ],
+                      "state": "PV_UNKNOWN"
+                    },
+                    "deficit": {
+                      "obligation_refs": [
+                        "O"
+                      ],
+                      "reasons": [
+                        "Consumer explicitly left this credit or target unknown"
+                      ],
+                      "state": "PV_UNKNOWN"
+                    },
+                    "excess": {
+                      "obligation_refs": [
+                        "O"
+                      ],
+                      "reasons": [
+                        "Consumer explicitly left this credit or target unknown"
+                      ],
+                      "state": "PV_UNKNOWN"
+                    },
+                    "oriented_overtime": {
+                      "obligation_refs": [
+                        "O"
+                      ],
+                      "reasons": [
+                        "Consumer explicitly left this credit or target unknown"
+                      ],
+                      "state": "PV_UNKNOWN"
+                    },
+                    "oriented_undertime": {
+                      "obligation_refs": [
+                        "O"
+                      ],
+                      "reasons": [
+                        "Consumer explicitly left this credit or target unknown"
+                      ],
+                      "state": "PV_UNKNOWN"
+                    }
+                  }
+                }
+              ],
+              "permitted_use": "Formal conditional model or documentary component only; no empirical intervention authorized.",
+              "query_ref": "Q",
+              "query_sha256": "8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce",
+              "reason": "EXACT_QUERY_UNRESOLVED",
+              "scope": {
+                "operator": "CONTRACT_HOURS/1",
+                "purpose": "FORMAL_CONDITIONAL"
+              },
+              "state": "PR_DEPENDENCY",
+              "unresolved_obligations": [
+                "O"
+              ]
+            }
+          ],
+          "evidence": [
+            {
+              "limits": [
+                "No empirical fidelity, utility, understanding or permission to act inferred."
+              ],
+              "query_ref": "Q",
+              "query_sha256": "8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce",
+              "records": [
+                {
+                  "query_sha256": "8c4104884821609936d8047200b75dae0e4e5396d09b5f5bbe1594c55e7c6cce",
+                  "source_assessment": {
+                    "access_and_permissions": {
+                      "access": "ALLOWED",
+                      "basis": "Submitting consumer explicitly declares authority to process these supplied bytes; declaration is not independently authenticated. Processing only; no research permission inferred.",
+                      "use": "ALLOWED"
+                    },
+                    "assessment_id": "A",
+                    "axes": {
+                      "identity": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/identity"
+                        },
+                        "source_value": "consumer-declared-credit-register",
+                        "status": "MATCH",
+                        "target_value": "consumer-declared-credit-register"
+                      },
+                      "method": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/method"
+                        },
+                        "source_value": "CONTRACT_HOURS/1",
+                        "status": "MATCH",
+                        "target_value": "CONTRACT_HOURS/1"
+                      },
+                      "period": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/period"
+                        },
+                        "source_value": "declared-plan-scope",
+                        "status": "MATCH",
+                        "target_value": "declared-plan-scope"
+                      },
+                      "population": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/population"
+                        },
+                        "source_value": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                        "status": "MATCH",
+                        "target_value": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]"
+                      },
+                      "unit": {
+                        "affected_claims": [
+                          "Q"
+                        ],
+                        "basis": {
+                          "artifact_ref": "metadata",
+                          "pointer": "/unit"
+                        },
+                        "source_value": "h_contractual",
+                        "status": "MATCH",
+                        "target_value": "h_contractual"
+                      }
+                    },
+                    "blocked_premise_refs": [],
+                    "claim": "Q",
+                    "closure": {
+                      "predicate": "DOCUMENTARY_SUBSTITUTION_FOR_EXACT_CLAIM",
+                      "scope": {
+                        "claim": "Q",
+                        "intended_use": "Conditional formal arithmetic only",
+                        "query_ref": "Q"
+                      },
+                      "verified": true,
+                      "verifier": "genius-local-source-policy/0.1.0",
+                      "witness_refs": [
+                        "hours"
+                      ]
+                    },
+                    "conditional_premise_refs": [
+                      "hours",
+                      "metadata"
+                    ],
+                    "conflicts": [],
+                    "documentary_limit": "BYTE_CORRESPONDENCE_AND_DECLARED_PERMISSION_ONLY; SOURCE_TRUTH_AND_EMPIRICAL_FIDELITY_NOT_AUTHENTICATED",
+                    "evidence_kind": "SYNTHETIC_STIPULATION",
+                    "intended_use": "Conditional formal arithmetic only",
+                    "observed_or_received_at": "2026-10-06T04:36:03.433972+00:00",
+                    "owner": {
+                      "assigned_person": "UNKNOWN",
+                      "role": "submitting-consumer",
+                      "task": "Supply formal premises"
+                    },
+                    "premise_artifact_refs": [
+                      "hours",
+                      "metadata"
+                    ],
+                    "profile_limitations": [],
+                    "query_ref": "Q",
+                    "relevant_period": "declared-plan-scope",
+                    "reopen": {
+                      "affected_refs": [
+                        "Q"
+                      ],
+                      "condition": "Source or query changes"
+                    },
+                    "revision": 1,
+                    "source_digest": "215b765aa69a346ec9af5dbd44d8fab956ae9e74a2f9652a7ed209717200bb19",
+                    "source_locator": "hours.json",
+                    "source_ref": "hours",
+                    "source_version": "genius-beta-adapter/0.1.0",
+                    "target_spec": {
+                      "identity": "consumer-declared-credit-register",
+                      "method": "CONTRACT_HOURS/1",
+                      "period": "declared-plan-scope",
+                      "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                      "unit": "h_contractual"
+                    },
+                    "transformation_chain": [],
+                    "verdict": "SC_CONDITIONAL_MODEL_ONLY"
+                  },
+                  "source_authenticity": "NOT_AUTHENTICATED",
+                  "source_sha256": "215b765aa69a346ec9af5dbd44d8fab956ae9e74a2f9652a7ed209717200bb19"
+                }
+              ],
+              "state": "EV_INSUFFICIENT"
+            }
+          ],
+          "execution": {
+            "progress": {
+              "received_operations": 1,
+              "requested_operations": 1
+            },
+            "reason": "ALL_CONTRACTED_OPERATIONS_FINISHED",
+            "state": "PE_COMPLETE"
+          },
+          "format": "genius-product-response/0.1.0",
+          "obligations_ref": {
+            "record": {
+              "budget": {
+                "certificate_timeout_seconds": 15,
+                "max_certificates": 0,
+                "max_operations": 1
+              },
+              "format": "genius-product-obligations/0.1.0",
+              "obligations": [
+                {
+                  "affected_claims": [
+                    "Q"
+                  ],
+                  "attempts": [],
+                  "budget_ref": "request.budget",
+                  "classification_basis": [
+                    {
+                      "evidence": "Consumer-supplied formal request",
+                      "mechanism": "DERIVABLE"
+                    }
+                  ],
+                  "closure": {
+                    "predicate": "EXACT_QUERY_RESULT_RECEIVED",
+                    "verified": false,
+                    "verifier": "received R2 controller",
+                    "witness_refs": []
+                  },
+                  "dependencies": [],
+                  "derivation_rule": {
+                    "kind": "NO_DERIVATION",
+                    "reason": "Only the explicitly bound received operation can produce a witness."
+                  },
+                  "id": "O",
+                  "input_spec": {
+                    "field": "scoped formal answer",
+                    "method": "CONTRACT_HOURS/1",
+                    "object": "consumer-declared-credit-register",
+                    "period": "declared-plan-scope",
+                    "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                    "reason": "Await scoped execution; missing supplied values remain unknown.",
+                    "state": "UNKNOWN",
+                    "type": "formal component or policy answer",
+                    "unit": "h_contractual"
+                  },
+                  "next_action": "Run the bounded operation or retain an explicit dependency",
+                  "owner": {
+                    "assigned_person": "UNKNOWN",
+                    "role": "submitting-consumer",
+                    "task": "Supply compatible formal premises and resolve unknown inputs"
+                  },
+                  "permitted_use": [
+                    "Conditional formal answer to the supplied query"
+                  ],
+                  "primary_cause": "DERIVABLE",
+                  "prohibited_inferences": [
+                    "Physical domain admission",
+                    "Human comprehension",
+                    "Decision utility",
+                    "Authority to act",
+                    "Empirical CAG or PVS"
+                  ],
+                  "provenance": [
+                    {
+                      "kind": "SYNTHETIC_STIPULATION",
+                      "reason": "User declaration is treated as formal premises, not authenticated empirical observation."
+                    }
+                  ],
+                  "query_ref": "Q",
+                  "reopen": {
+                    "affected_refs": [
+                      "Q"
+                    ],
+                    "condition": "Pertinent change of source, query, rule or scope under a future explicit revision"
+                  },
+                  "revision": 1,
+                  "secondary_causes": [],
+                  "status": "OPEN"
+                }
+              ],
+              "queries": [
+                {
+                  "artifact_refs": [
+                    "hours",
+                    "metadata"
+                  ],
+                  "id": "Q",
+                  "kind": "component",
+                  "norm": {
+                    "reasons": [
+                      "No policy selection requested"
+                    ],
+                    "scope": "contractual-credit arithmetic",
+                    "state": "PV_NOT_APPLICABLE"
+                  },
+                  "obligation_refs": [
+                    "O"
+                  ],
+                  "revision": 1,
+                  "scope": {
+                    "operator": "CONTRACT_HOURS/1",
+                    "purpose": "FORMAL_CONDITIONAL"
+                  },
+                  "target_spec": {
+                    "identity": "consumer-declared-credit-register",
+                    "method": "CONTRACT_HOURS/1",
+                    "period": "declared-plan-scope",
+                    "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                    "unit": "h_contractual"
+                  }
+                }
+              ],
+              "record_id": "beta-hours",
+              "revision": 1,
+              "supersedes": null,
+              "worklog": [
+                {
+                  "phase": "REUSE",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "operation_ref": "OP",
+                  "phase": "REUSE_LOOKUP",
+                  "reason": "No matching receipt in this case's supplied, verified inventory; no claim about other sources.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "operation_refs": [
+                    "OP"
+                  ],
+                  "phase": "DERIVE",
+                  "reason": "Executed operations retain individual receipts and limits.",
+                  "status": "APPLIED"
+                },
+                {
+                  "phase": "IRRELEVANCE",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "phase": "EXPAND_MODEL",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "phase": "ASSESS_SOURCE",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                },
+                {
+                  "phase": "REQUEST_INPUT",
+                  "reason": "No operation of this phase is supplied in the admitted request; this is not proof of irrelevance.",
+                  "status": "NOT_APPLICABLE"
+                }
+              ]
+            },
+            "request_ref": {
+              "revision": 1,
+              "sha256": "8e824146eec4b581b50f4d983a16c972ea6df2df1393c936a6d1f638490bee90"
+            }
+          },
+          "permitted_use": [
+            "Documentary or formal conditional local decision support only.",
+            "No empirical validation, human comprehension, utility or permission to intervene is established."
+          ],
+          "quality": {
+            "adoption_business": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "comprehension": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "coverage": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "data_provenance": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "formal_correctness": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "information_efficiency": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "model_fidelity": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "operation": {
+              "conclusion": "PE_COMPLETE",
+              "evidence": [
+                "OP"
+              ],
+              "limit": "No availability, concurrency, empirical utility or business claim.",
+              "scope": "Observed local operations only",
+              "state": "ASSESSED"
+            },
+            "uncertainty_sensitivity": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            },
+            "utility": {
+              "conclusion": "No empirical assessment performed.",
+              "evidence": [],
+              "limit": "Formal verification and document identity do not establish this dimension.",
+              "scope": "This local attempt",
+              "state": "NOT_ASSESSED"
+            }
+          },
+          "queries": [
+            {
+              "artifact_refs": [
+                "hours",
+                "metadata"
+              ],
+              "id": "Q",
+              "kind": "component",
+              "norm": {
+                "reasons": [
+                  "No policy selection requested"
+                ],
+                "scope": "contractual-credit arithmetic",
+                "state": "PV_NOT_APPLICABLE"
+              },
+              "obligation_refs": [
+                "O"
+              ],
+              "revision": 1,
+              "scope": {
+                "operator": "CONTRACT_HOURS/1",
+                "purpose": "FORMAL_CONDITIONAL"
+              },
+              "target_spec": {
+                "identity": "consumer-declared-credit-register",
+                "method": "CONTRACT_HOURS/1",
+                "period": "declared-plan-scope",
+                "population": "DECLARED_ASSIGNMENTS:[\"a\",\"b\"]",
+                "unit": "h_contractual"
+              }
+            }
+          ],
+          "request_ref": {
+            "revision": 1,
+            "sha256": "8e824146eec4b581b50f4d983a16c972ea6df2df1393c936a6d1f638490bee90"
+          },
+          "response_id": "beta-hours:response:1",
+          "revision": 1,
+          "supersedes": null,
+          "transport": {
+            "last_verified_artifacts": [
+              "hours",
+              "metadata"
+            ],
+            "limits": "Delivery describes this received local envelope, not a remote RPC or scientific validity.",
+            "reason": "LOCAL_RESPONSE_CONSTRUCTED_AND_VALIDATED",
+            "state": "PT_DELIVERED"
+          },
+          "versions": {
+            "obligations": "genius-product-obligations/0.1.0",
+            "response": "genius-product-response/0.1.0",
+            "source_compatibility": "genius-source-compatibility/0.1.0",
+            "sufficiency": "DECISION_SUFFICIENCY/0.1.0",
+            "sufficiency_profile": "FDQ_FINITE_PATCH/0.1.0"
+          }
+        },
+        "source_receipt": {
+          "head": "c91b81e869480e0fac8ab4626ac5a251b70c4e2a58c758473edad63733cc8151",
+          "limits": "No producer authentication, empirical validation, comprehension study or authorization to intervene.",
+          "selected_revision": 4,
+          "selected_revision_sha256": "c91b81e869480e0fac8ab4626ac5a251b70c4e2a58c758473edad63733cc8151",
+          "verification": "BYTE_IDENTITY_AND_R2_RECEIPT_CONSISTENCY_ONLY"
+        }
+      },
+      "result_sha256": "27db829521c67345805d1441a1729cf066635ff89728d4872cc61ec64d5e10cf",
+      "result_hash_encoding": "UTF-8 JSON: ensure_ascii=false, sort_keys=true, separators=comma-colon",
+      "artifact_sha256": "355325650b6f9e79d37efe7c460238cd147614a2b82c9ece1e6edea891cfeed5"
+    }
+  ]
+}

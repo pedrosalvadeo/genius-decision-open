@@ -1,0 +1,21 @@
+{
+  "algorithm": "sha256",
+  "base_commit": "a8af0502a022aa2c3d87c4e7da29be63e50717a6",
+  "files": {
+    "twin/.gitignore": "9decdba1d079774c5d2a189c4a13913ce85e86fbe3d6b046c68b9c073673f50a",
+    "twin/genius_twin/__init__.py": "c2d199afe968ef303ac4752ae975200f71f8338beb93faafe9b3612e2785f909",
+    "twin/genius_twin/__main__.py": "803fb0c81bece5f6a6260766be68977f9a5fb8294d82b1deac773af4b753d94a",
+    "twin/genius_twin/app.py": "33d0509882e116324dba52270cd49dc0d72c2b0a3ab49acb594ab0609f680a48",
+    "twin/genius_twin/compiler.py": "7214126ead31f42b5dfb47887c4877583a7819b133f57c56dc9f52b792460801",
+    "twin/genius_twin/domain.py": "b2cea8bd4cc70270e6a2a29550e80ee915ee9e14bd881ebcbb60aecbc0f363d9",
+    "twin/genius_twin/service.py": "3f1ea07c9e018bf2ec840aa30299427f5ed074736b7dee67ac4722c55b2730ef",
+    "twin/genius_twin/static/app.js": "5c2941dfb990d28cf49076a3aabddc58e10962f355d92cc3f273cbdb380f1269",
+    "twin/genius_twin/static/index.html": "e22b6a2229fd874241e27d9eb77691eb087cdb02ba0cda86ebf1d6c2646ccfa5",
+    "twin/genius_twin/static/styles.css": "a018a573b84eb48bb98853df67fac039f9f37645001a340bc061512323040e9c",
+    "twin/genius_twin/store.py": "1bdff67e30cb21a684437b81cee8ee3409c994f20f2311ab863afe45246446ab",
+    "twin/tests/browser_smoke.cjs": "fa33561665dc682c11ed982fe84e1605494215a570acb11086f0417fca91f114",
+    "twin/tests/test_acceptance.py": "7e27353d08804a5391d30dc7197bf717f475be80f1b9610f2bc3c723132309b5",
+    "twin/tests/test_domain.py": "5caa9b8f80fc65621112735ed4e25abbec7465a4a73c5a14ff1fffd2554edeac",
+    "twin/tests/test_service.py": "32d713af5162670de453ec1e68241e8333472eecd835843c6bfe1bc7db4c6900"
+  }
+}

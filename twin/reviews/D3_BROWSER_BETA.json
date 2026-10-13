@@ -1,0 +1,23 @@
+{
+  "scope": "AUTHENTICATED_LOCAL_BROWSER_NOT_PUBLIC_DEPLOYMENT",
+  "checks": [
+    "anonymous private API denied",
+    "authenticated account exposes dynamic workspace",
+    "cookie and runtime CSRF permit confirm and real native calculation",
+    "authenticated dossier persists evaluated version",
+    "no credential persisted in browser local storage",
+    "private export includes verified native receipt",
+    "authenticated view fits 1440px",
+    "authenticated view fits 390px",
+    "authenticated view fits 320px",
+    "authenticated reload reopens same private dossier",
+    "separate browser context cannot read dossier",
+    "no external browser requests",
+    "no JavaScript or CSP errors"
+  ],
+  "errors": [],
+  "external_requests": [],
+  "status": "PASS",
+  "source_report_sha256": "cd2979653990f94432fcfb84dfe1b44b3c0bac38a67fbb59a3d438c9f8084161",
+  "screenshots_inspected_locally": true
+}

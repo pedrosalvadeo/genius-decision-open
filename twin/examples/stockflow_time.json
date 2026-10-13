@@ -1,0 +1,245 @@
+{
+  "profile": "STOCK_FLOW_FINITE_V1",
+  "name": "Distribución de una bolsa de tiempo — ejemplo hipotético",
+  "horizon": 4,
+  "step_unit": "hour",
+  "stocks": [
+    {
+      "id": "unassigned",
+      "label": "Bolsa de tiempo aún no asignada",
+      "unit": "hour",
+      "kind": "persistent",
+      "initial": "8/1",
+      "capacity": "8/1"
+    },
+    {
+      "id": "research",
+      "label": "Tiempo dedicado a investigación",
+      "unit": "hour",
+      "kind": "persistent",
+      "initial": "0/1",
+      "capacity": "8/1"
+    },
+    {
+      "id": "service",
+      "label": "Tiempo dedicado a servicio",
+      "unit": "hour",
+      "kind": "persistent",
+      "initial": "0/1",
+      "capacity": "8/1"
+    }
+  ],
+  "carriers": [
+    {
+      "id": "planner",
+      "label": "Persona planificadora",
+      "kind": "person"
+    },
+    {
+      "id": "research_team",
+      "label": "Equipo de investigación",
+      "kind": "organization"
+    },
+    {
+      "id": "service_team",
+      "label": "Equipo de servicio",
+      "kind": "organization"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "coordination",
+      "label": "Coordinación inicial"
+    },
+    {
+      "id": "research_method",
+      "label": "Método de investigación activo"
+    },
+    {
+      "id": "service_method",
+      "label": "Método de servicio activo"
+    }
+  ],
+  "initial_capabilities": [
+    "coordination"
+  ],
+  "actions": [
+    {
+      "id": "research_block",
+      "label": "Asignar bloque a investigación",
+      "requires": [
+        "coordination"
+      ],
+      "withdrawals": {
+        "unassigned": "2/1"
+      },
+      "deposits": {
+        "research": "2/1"
+      },
+      "add_capabilities": [
+        "research_method"
+      ],
+      "remove_capabilities": []
+    },
+    {
+      "id": "service_block",
+      "label": "Asignar bloque a servicio",
+      "requires": [
+        "coordination"
+      ],
+      "withdrawals": {
+        "unassigned": "2/1"
+      },
+      "deposits": {
+        "service": "2/1"
+      },
+      "add_capabilities": [
+        "service_method"
+      ],
+      "remove_capabilities": []
+    }
+  ],
+  "policies": [
+    {
+      "id": "research_first",
+      "label": "Investigación primero",
+      "default_action": "service_block",
+      "rules": [
+        {
+          "steps": [
+            1,
+            2
+          ],
+          "when": [],
+          "action": "research_block"
+        }
+      ]
+    },
+    {
+      "id": "service_first",
+      "label": "Servicio primero",
+      "default_action": "research_block",
+      "rules": [
+        {
+          "steps": [
+            1,
+            2
+          ],
+          "when": [],
+          "action": "service_block"
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "available",
+      "label": "Bolsa disponible",
+      "events": [
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {},
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {},
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {},
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {},
+          "remove_capabilities": []
+        }
+      ]
+    },
+    {
+      "id": "interruption",
+      "label": "Demanda externa de dos horas",
+      "events": [
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {},
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {
+            "unassigned": "2/1"
+          },
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {},
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {},
+          "remove_capabilities": []
+        }
+      ]
+    }
+  ],
+  "law": null,
+  "welfare": [
+    {
+      "carrier": "planner",
+      "dimension": "remaining_time",
+      "label": "Tiempo no comprometido",
+      "stock": "unassigned",
+      "direction": "higher"
+    },
+    {
+      "carrier": "research_team",
+      "dimension": "dedicated_time",
+      "label": "Tiempo dedicado al equipo",
+      "stock": "research",
+      "direction": "higher"
+    },
+    {
+      "carrier": "service_team",
+      "dimension": "dedicated_time",
+      "label": "Tiempo dedicado al equipo",
+      "stock": "service",
+      "direction": "higher"
+    }
+  ],
+  "task": {
+    "kind": "operational",
+    "label": "Ejecutar cada bloque de asignación sin sobregirar la bolsa de tiempo",
+    "living_carriers": [],
+    "conditions": [
+      {
+        "stock": "unassigned",
+        "op": "ge",
+        "threshold": "0/1"
+      }
+    ],
+    "require_action_success": true
+  },
+  "require_all_scenarios": false,
+  "selection": "none",
+  "assumptions": [
+    {
+      "id": "Declared",
+      "kind": "SYNTHETIC",
+      "statement": "Ejemplo hipotético de asignación de una bolsa divisible de tiempo; cada paso representa una hora del reloj de decisión, y el bloque puede comprometer trabajo posterior. No son disponibilidad ni preferencias de una persona real. Dedicación no equivale a producción ni a bienestar agregado. La ley no está identificada.",
+      "provenance": "Ejemplo configurable D3"
+    }
+  ]
+}

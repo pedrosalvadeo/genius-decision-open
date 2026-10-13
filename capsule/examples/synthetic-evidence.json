@@ -1,0 +1,19 @@
+{
+  "format": "genius-case-evidence/1",
+  "case_id": "example-stockflow-time",
+  "question": "Compare the declared allocation policies",
+  "context": "Executable technical example, not field evidence",
+  "origin": "synthetic",
+  "observed_at": "2026-10-13",
+  "data_authority": "Project-owned synthetic example",
+  "sources": [],
+  "observations": [],
+  "assumptions": [
+    "All quantities and preferences in this example are stipulated"
+  ],
+  "unknowns": [
+    "External validity"
+  ],
+  "empirical_status": "NOT_ASSESSED",
+  "publication": "public"
+}

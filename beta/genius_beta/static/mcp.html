@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conectar Genius por MCP</title><meta name="description" content="Conectá Genius a un cliente MCP: demostraciones públicas y operaciones privadas con permisos limitados."><link rel="stylesheet" href="/static/styles.css"></head>
+<body><header class="topbar"><a class="brand" href="/">genius decision</a><span class="beta-label">MCP</span></header>
+<main class="docs"><h1>Conectá tu agente a Genius.</h1>
+<p>URL del servidor remoto: <code>https://geniusdecision.app/mcp</code>. Transporte: Streamable HTTP. No necesita otro dominio ni una cuenta humana para probar los ejemplos públicos.</p>
+<p>Si tu asistente sólo lee páginas, abrí <a href="/static/demo.html">los resultados guardados</a> o su <a href="/static/demo-result.json">JSON completo</a>. Un conector MCP es una integración explícita del cliente; compartir esta URL en el chat no la instala.</p>
+<h2>Claude: primera prueba sin credenciales</h2>
+<ol><li>En Claude, abrí Customize / Personalizar → Connectors / Conectores → Add custom connector.</li><li>Nombre: Genius Decision. URL: <code>https://geniusdecision.app/mcp</code>.</li><li>Para las herramientas públicas, elegí No sign in / Sin inicio de sesión y dejá vacías las cabeceras de credenciales.</li><li>Habilitá el conector para la conversación. Pedile que consulte las capacidades y lea <code>hours-unknown</code> con <code>read_demo_result</code>.</li><li>Para una ejecución nueva, pedile <code>run_demo</code> con <code>example: hours-unknown</code>. Consume una ejecución de la cuota compartida y elimina su espacio temporal al terminar.</li></ol>
+<p>La ubicación y disponibilidad de estas opciones dependen de tu cuenta y de las políticas de su organización. <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Guía oficial de Claude</a>.</p>
+<h2>Gemini CLI</h2>
+<p>Agregá el servidor al cliente:</p><pre>gemini mcp add --transport http genius https://geniusdecision.app/mcp</pre>
+<p>Luego comprobá la conexión y las herramientas disponibles en el cliente. Estas instrucciones corresponden a Gemini CLI; la aplicación web o móvil de Gemini puede ofrecer capacidades distintas. <a href="https://geminicli.com/docs/tools/mcp-server/">Guía oficial de Gemini CLI</a>.</p>
+<h2>Operar un espacio propio</h2>
+<p>Usá una credencial de <a href="/agents#register">alta automática de agente</a> en la configuración privada del conector: cabecera <code>Authorization</code>, valor <code>Bearer &lt;CREDENCIAL_DEL_AGENTE&gt;</code>. No la escribas en el chat, en argumentos de herramientas ni en la URL. No se aceptan contraseñas, sesiones o claves completas de cuentas humanas en MCP.</p>
+<p>Claude documenta Request headers / Cabeceras de solicitud para credenciales fijas. Gemini CLI admite cabeceras en la configuración del servidor. Cada integración debe custodiar su propia clave. Si tu cliente exige OAuth y no permite cabeceras, usá las herramientas públicas; esta beta aún no implementa OAuth.</p>
+<div class="table-wrap"><table><thead><tr><th>Herramientas</th><th>Permiso</th></tr></thead><tbody>
+<tr><td>get_capabilities, read_demo_result, run_demo</td><td>Públicas; sólo ejemplos sintéticos y capacidades.</td></tr>
+<tr><td>list_cases, get_case, get_job</td><td>cases:read</td></tr>
+<tr><td>create_case</td><td>cases:write</td></tr>
+<tr><td>run_case, cancel_job</td><td>jobs:run</td></tr>
+<tr><td>delete_case</td><td>cases:delete y confirm:true</td></tr>
+<tr><td>delete_agent_space</td><td>account:delete y confirm:true</td></tr>
+</tbody></table></div>
+<p>Las herramientas privadas operan exclusivamente en el espacio de esa credencial. La lista se filtra por permisos y el servidor los vuelve a comprobar al ejecutar. Los borrados son definitivos. Las claves vencen a los siete días; su rotación y revocación siguen el <a href="/agents">recorrido de la API</a>. La rotación invalida la clave anterior: actualizá el almacén privado del conector.</p>
+<h2>Alcance y límites</h2>
+<p>Genius acepta los perfiles formales hours y fdq. No resuelve cualquier descripción en lenguaje natural. El acceso automático admite exclusivamente datos sintéticos o no personales. Conservá los desconocidos, las condiciones y las obligaciones del resultado: una ejecución completa puede dejar la decisión pendiente.</p>
+<p>Las cuotas de MCP y API se comparten para ejecuciones: hasta 20 trabajos de agentes y demos por día en toda la instancia, dentro del límite global. MCP agrega un máximo de 2000 llamadas/día, 300/minuto globales y 60/minuto por dirección de conexión. Una demo espera hasta 10 segundos y elimina su espacio también si vence esa espera. Ante cuota, indisponibilidad o respuesta perdida, evitá reintentos ciegos; podés leer el resultado guardado.</p>
+<p>Si no se puede confirmar el borrado duradero, la demo devuelve un error y conserva el vencimiento de una hora para su limpieza posterior. Los espacios temporales nunca entregan su credencial al modelo a través de MCP.</p>
+<p>Versiones de protocolo admitidas: 2026-07-28, 2025-11-25, 2025-06-18 y 2025-03-26. Respuestas JSON sin sesiones de transporte ni canal SSE permanente. Los trabajos persistentes se consultan con get_job; no se anuncia la extensión MCP Tasks. <a href="/agents/manifest.json">Disponibilidad y límites vigentes</a>.</p>
+<h2>Preparar una decisión propia</h2><p>Con permiso <code>cases:write</code>, <code>prepare_decision</code> devuelve el modelo explícito, preguntas pendientes y un identificador de confirmación. Confirmá los datos y preferencias con quien decide antes de crear el expediente <code>choice</code>. <code>revise_case</code> permite guardar nuevas versiones. <a href="/static/decisions.html">Recorrido y alcance</a>.</p></main><footer class="footer"><a href="/agents">Agentes y API</a><a href="/">Acceso humano</a><a href="/static/privacy.html">Privacidad</a></footer></body></html>

@@ -1,0 +1,1913 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Genius Decision — agent integration API",
+    "version": "0.2.0",
+    "description": "Genius bounded beta: HTTP agent integration subset. Public discovery; no-human-registration synthetic demo; automatic machine registration for synthetic/non-personal data; separate existing human-account keys. Machine Bearer keys are scoped, revocable and expire after 7 days (demo: 1 hour). Rotation only retains/reduces scopes. Human keys retain full account permissions. No MCP or OAuth. HTTP acceptance is distinct from formal admission and empirical evidence. Body limit 128 KiB; input limit 110000 JSON bytes. Declared choice profile: /static/decisions.html; explicit review and confirmation required. No general narrative solver or real-world CAG/PVS claim."
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "externalDocs": {
+    "description": "Full API contract and limitations",
+    "url": "https://geniusdecision.app/static/api.html"
+  },
+  "security": [
+    {
+      "AccountBearer": []
+    }
+  ],
+  "paths": {
+    "/api/config": {
+      "get": {
+        "operationId": "getGeniusConfiguration",
+        "summary": "Read current limits and privacy notice version",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/health": {
+      "get": {
+        "operationId": "getGeniusHealth",
+        "summary": "Read operational health",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "backup": {
+                      "type": "string"
+                    },
+                    "suspended": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "backup",
+                    "suspended"
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/examples/{name}": {
+      "get": {
+        "operationId": "getGeniusExample",
+        "summary": "Read a synthetic profile example",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "enum": [
+                "hours-known",
+                "hours-unknown",
+                "fdq-frontier",
+                "fdq-selector",
+                "choice-leisure"
+              ]
+            }
+          }
+        ],
+        "description": "The response has profile at top level. For POST /api/cases extract profile and use the remaining example fields as input. Do not infer human permissions for real data from examples."
+      }
+    },
+    "/api/me": {
+      "get": {
+        "operationId": "checkGeniusConnection",
+        "summary": "Identify the account authorized by the credential",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "research_consent": {
+                          "type": "boolean"
+                        },
+                        "followup_consent": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "username",
+                        "research_consent",
+                        "followup_consent"
+                      ]
+                    },
+                    "csrf_token": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "user",
+                    "csrf_token"
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-required-agent-scope": "cases:read"
+      }
+    },
+    "/api/cases": {
+      "get": {
+        "operationId": "listGeniusCases",
+        "summary": "List cases owned by the account",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cases": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Case"
+                      }
+                    }
+                  },
+                  "required": [
+                    "cases"
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-required-agent-scope": "cases:read"
+      },
+      "post": {
+        "operationId": "createGeniusCase",
+        "summary": "Persist a case; does not execute or prove admission",
+        "description": "Not idempotent. After a lost response, inspect the case list before retrying. Input must be no more than 110000 bytes; full body at most 128 KiB.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Case persisted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaseEnvelope"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-required-agent-scope": "cases:write"
+      }
+    },
+    "/api/cases/{case_id}": {
+      "parameters": [
+        {
+          "name": "case_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "readGeniusCase",
+        "summary": "Read case history, jobs and feedback",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaseDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-required-agent-scope": "cases:read"
+      },
+      "patch": {
+        "operationId": "reviseGeniusCase",
+        "summary": "Update title or store revised input",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaseEnvelope"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "input": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/HoursInput"
+                      },
+                      {
+                        "$ref": "#/components/schemas/FdqInput"
+                      }
+                    ]
+                  }
+                },
+                "minProperties": 1,
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "description": "Input must match the existing case profile. Send a complete replacement input. A changed input creates a revision but does not execute it.",
+        "x-required-agent-scope": "cases:write"
+      },
+      "delete": {
+        "operationId": "deleteGeniusCase",
+        "summary": "Delete an owned case",
+        "description": "Destructive. Automatic machine keys require the optional cases:delete scope.",
+        "x-required-agent-scope": "cases:delete",
+        "responses": {
+          "204": {
+            "description": "Deleted."
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid policy/scopes/input; 401 missing/revoked/expired credential; 403 missing permission; 409 changed policy; 429 shared quota; 503 paused/backup/registration unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cases/{case_id}/run": {
+      "parameters": [
+        {
+          "name": "case_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "runGeniusCase",
+        "summary": "Queue an owned case revision or recover its existing job",
+        "description": "Omitted revision uses current_revision. Queued/running/completed jobs of the same revision are reused. A failed/cancelled/interrupted attempt requires explicit retry:true. An active job on another revision can conflict.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "retry": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Existing completed job.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobEnvelope"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Queued or running.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobEnvelope"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-required-agent-scope": "jobs:run"
+      }
+    },
+    "/api/jobs/{job_id}": {
+      "parameters": [
+        {
+          "name": "job_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "readGeniusJob",
+        "summary": "Read execution state and bounded result",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobEnvelope"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Poll with pauses. completed is an execution state, not conclusive evidence. Preserve result_json and all layers of result.response.",
+        "x-required-agent-scope": "cases:read"
+      }
+    },
+    "/api/jobs/{job_id}/cancel": {
+      "parameters": [
+        {
+          "name": "job_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "cancelGeniusJob",
+        "summary": "Request cancellation of an owned job",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobEnvelope"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "maxProperties": 0
+              }
+            }
+          }
+        },
+        "description": "A running job may remain running until the worker processes cancellation. Cancellation is not mathematical infeasibility.",
+        "x-required-agent-scope": "jobs:run"
+      }
+    },
+    "/api/jobs/{job_id}/artifacts": {
+      "parameters": [
+        {
+          "name": "job_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "downloadGeniusArtifacts",
+        "summary": "Download private verification artifacts",
+        "responses": {
+          "200": {
+            "description": "ZIP archive belonging to the account. Handle as private data.",
+            "headers": {
+              "X-Artifact-SHA256": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "SHA-256 of the archive."
+              }
+            },
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid input, 401 unauthorized, 403 origin/CSRF, 404 unavailable, 409 conflict/retry required, 413 size limit, 415 content type, 429 quota, 503 suspended/backup/storage unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-required-agent-scope": "cases:read"
+      }
+    },
+    "/agents/manifest.json": {
+      "get": {
+        "operationId": "discoverDirectAgentAccess",
+        "summary": "Read current policy, availability, endpoints and limits without authentication",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Discovery document; no account data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid policy/scopes/input; 401 missing/revoked/expired credential; 403 missing permission; 409 changed policy; 429 shared quota; 503 paused/backup/registration unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agents/register": {
+      "post": {
+        "operationId": "registerGeniusAgent",
+        "summary": "Create an isolated machine space without human login",
+        "description": "Only synthetic or non-personal data. No email, password, adult confirmation or human consent fields. Response secret is shown once. Not idempotent; avoid blind retries after a lost response. Default scopes are cases:read, cases:write, jobs:run and account:delete.",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentRegistration"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Machine identity and scoped credential.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentBootstrap"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid policy/scopes/input; 401 missing/revoked/expired credential; 403 missing permission; 409 changed policy; 429 shared quota; 503 paused/backup/registration unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agents/demo": {
+      "post": {
+        "operationId": "tryGeniusDemo",
+        "summary": "Run a fixed synthetic example without a preexisting account or credential",
+        "description": "Real engine, temporary isolated space. Key permits cases:read and account:delete. No custom input, writes or renewal. Access expires in 1 hour, active data is removed by hourly cleanup subject to durable deletion recording; encrypted backups up to 7 days. Not idempotent.",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "example": {
+                    "enum": [
+                      "hours-known",
+                      "hours-unknown",
+                      "fdq-frontier",
+                      "fdq-selector"
+                    ]
+                  }
+                },
+                "required": [
+                  "example"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Job queued. Keep credential private; poll with Bearer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentDemo"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid policy/scopes/input; 401 missing/revoked/expired credential; 403 missing permission; 409 changed policy; 429 shared quota; 503 paused/backup/registration unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agents/me": {
+      "get": {
+        "operationId": "inspectGeniusAgent",
+        "summary": "Inspect own machine identity, token metadata and quotas",
+        "responses": {
+          "200": {
+            "description": "No token secret returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "agent": {
+                      "$ref": "#/components/schemas/AgentIdentity"
+                    },
+                    "credential": {
+                      "type": "object",
+                      "properties": {
+                        "token_id": {
+                          "type": "string"
+                        },
+                        "scopes": {
+                          "type": "array",
+                          "minItems": 1,
+                          "maxItems": 5,
+                          "uniqueItems": true,
+                          "items": {
+                            "enum": [
+                              "cases:read",
+                              "cases:write",
+                              "jobs:run",
+                              "cases:delete",
+                              "account:delete"
+                            ]
+                          }
+                        },
+                        "expires_at": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "token_id",
+                        "scopes",
+                        "expires_at"
+                      ]
+                    },
+                    "limits": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "agent",
+                    "credential",
+                    "limits"
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid policy/scopes/input; 401 missing/revoked/expired credential; 403 missing permission; 409 changed policy; 429 shared quota; 503 paused/backup/registration unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteGeniusAgentSpace",
+        "summary": "Delete the entire own machine/demo space and credentials",
+        "description": "Destructive; requires explicit account:delete scope. Does not affect any other account.",
+        "x-required-agent-scope": "account:delete",
+        "responses": {
+          "204": {
+            "description": "Deleted with durable privacy record."
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid policy/scopes/input; 401 missing/revoked/expired credential; 403 missing permission; 409 changed policy; 429 shared quota; 503 paused/backup/registration unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agents/token": {
+      "post": {
+        "operationId": "rotateGeniusAgentCredential",
+        "summary": "Replace current machine credential before expiry",
+        "description": "Old token is revoked immediately. No scope escalation; omit scopes to retain. Demo credentials cannot rotate. A lost rotation response may lose access: no recovery or blind retry.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "scopes": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 5,
+                    "uniqueItems": true,
+                    "items": {
+                      "enum": [
+                        "cases:read",
+                        "cases:write",
+                        "jobs:run",
+                        "cases:delete",
+                        "account:delete"
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Replacement credential, valid 7 days.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "credential": {
+                      "$ref": "#/components/schemas/AgentCredential"
+                    }
+                  },
+                  "required": [
+                    "credential"
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid policy/scopes/input; 401 missing/revoked/expired credential; 403 missing permission; 409 changed policy; 429 shared quota; 503 paused/backup/registration unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "revokeGeniusAgentCredential",
+        "summary": "Revoke only the current machine/demo credential",
+        "description": "Data remains until inactivity retention or prior explicit deletion. No automatic credential recovery.",
+        "responses": {
+          "204": {
+            "description": "Revoked."
+          },
+          "default": {
+            "description": "HTTP failure, not a motor result. 400 invalid policy/scopes/input; 401 missing/revoked/expired credential; 403 missing permission; 409 changed policy; 429 shared quota; 503 paused/backup/registration unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/choice/review": {
+      "post": {
+        "operationId": "prepareDecision",
+        "summary": "Review explicit low-risk decision model before confirming and saving it. Narrative is not interpreted; no external data is fetched.",
+        "security": [
+          {
+            "AccountBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChoiceModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Model, confirmation digest, missing-data questions and scope. No case is created."
+          },
+          "400": {
+            "description": "Invalid model or unsupported category."
+          },
+          "401": {
+            "description": "Authentication required."
+          },
+          "403": {
+            "description": "Requires cases:write for agents; humans require session and CSRF."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "AccountBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "HTTPS Authorization Bearer only. ga_ machine credentials carry enforced scopes and expiry for their own isolated space. gb_ human-account API keys retain full-account access. Neither is a JWT. No key in a query string."
+      }
+    },
+    "schemas": {
+      "HoursInput": {
+        "type": "object",
+        "properties": {
+          "permission_confirmed": {
+            "const": true,
+            "description": "Explicit authority to process the submitted data; not an assertion of human consent on someone's behalf."
+          },
+          "scope_acknowledged": {
+            "const": true,
+            "description": "Explicit acknowledgment of the bounded, low-risk profile."
+          },
+          "evidence_origin": {
+            "type": "string",
+            "enum": [
+              "synthetic",
+              "user_declared"
+            ],
+            "description": "A declaration, not verified field evidence."
+          },
+          "assignments": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$",
+                  "maxLength": 64,
+                  "minLength": 1
+                },
+                "credit": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 64,
+                  "description": "Exact nonnegative integer, decimal or fraction; no exponent. null means unknown."
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "target": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 64,
+            "description": "Exact nonnegative numeric string, or null for unknown."
+          }
+        },
+        "required": [
+          "assignments",
+          "permission_confirmed",
+          "scope_acknowledged"
+        ]
+      },
+      "FdqInput": {
+        "type": "object",
+        "properties": {
+          "permission_confirmed": {
+            "const": true,
+            "description": "Explicit authority to process the submitted data; not an assertion of human consent on someone's behalf."
+          },
+          "scope_acknowledged": {
+            "const": true,
+            "description": "Explicit acknowledgment of the bounded, low-risk profile."
+          },
+          "evidence_origin": {
+            "type": "string",
+            "enum": [
+              "synthetic",
+              "user_declared"
+            ],
+            "description": "A declaration, not verified field evidence."
+          },
+          "query_kind": {
+            "enum": [
+              "frontier",
+              "selector"
+            ]
+          },
+          "input_json": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 110000
+          },
+          "result_json": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 110000
+          },
+          "certificate_json": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 110000
+          }
+        },
+        "required": [
+          "permission_confirmed",
+          "scope_acknowledged",
+          "query_kind",
+          "input_json",
+          "result_json",
+          "certificate_json"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "CreateCase": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "consumer_type": {
+                "enum": [
+                  "human",
+                  "application",
+                  "agent"
+                ],
+                "description": "Caller declaration only. Use agent or application for an integration."
+              },
+              "profile": {
+                "const": "hours"
+              },
+              "input": {
+                "$ref": "#/components/schemas/HoursInput"
+              }
+            },
+            "required": [
+              "title",
+              "profile",
+              "input"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "consumer_type": {
+                "enum": [
+                  "human",
+                  "application",
+                  "agent"
+                ],
+                "description": "Caller declaration only. Use agent or application for an integration."
+              },
+              "profile": {
+                "const": "fdq"
+              },
+              "input": {
+                "$ref": "#/components/schemas/FdqInput"
+              }
+            },
+            "required": [
+              "title",
+              "profile",
+              "input"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "consumer_type": {
+                "enum": [
+                  "human",
+                  "application",
+                  "agent"
+                ],
+                "description": "Caller declaration only. Use agent or application for an integration."
+              },
+              "profile": {
+                "const": "choice"
+              },
+              "input": {
+                "$ref": "#/components/schemas/ChoiceInput"
+              }
+            },
+            "required": [
+              "title",
+              "profile",
+              "input"
+            ]
+          }
+        ],
+        "description": "Automatically registered agents always use consumer_type agent (defaulted by the server); human or application is rejected for these principals. Their data policy is synthetic/non-personal only."
+      },
+      "Case": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "profile": {
+            "enum": [
+              "hours",
+              "fdq",
+              "choice"
+            ]
+          },
+          "consumer_type": {
+            "type": "string"
+          },
+          "current_revision": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "integer"
+          },
+          "updated_at": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "profile",
+          "consumer_type",
+          "current_revision",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "Job": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "case_id": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "integer"
+          },
+          "status": {
+            "enum": [
+              "queued",
+              "running",
+              "completed",
+              "failed",
+              "cancelled",
+              "interrupted"
+            ]
+          },
+          "error": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "type": "integer"
+          },
+          "started_at": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "finished_at": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "result": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "Preserve the complete response envelope. See full documentation for RC01 semantics."
+          },
+          "result_json": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Original result JSON text; preserve exactly to avoid numeric rounding."
+          },
+          "admission": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "artifacts": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              },
+              "size": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "case_id",
+          "revision",
+          "status",
+          "result",
+          "result_json"
+        ]
+      },
+      "CaseEnvelope": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "$ref": "#/components/schemas/Case"
+          }
+        },
+        "required": [
+          "case"
+        ]
+      },
+      "JobEnvelope": {
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/Job"
+          }
+        },
+        "required": [
+          "job"
+        ]
+      },
+      "CaseDetails": {
+        "type": "object",
+        "properties": {
+          "case": {
+            "$ref": "#/components/schemas/Case"
+          },
+          "revisions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "version": {
+                  "type": "integer"
+                },
+                "input": {
+                  "type": "object"
+                },
+                "input_json": {
+                  "type": "string"
+                },
+                "input_sha256": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "version",
+                "input",
+                "input_json",
+                "input_sha256",
+                "created_at"
+              ]
+            }
+          },
+          "jobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Job"
+            }
+          },
+          "feedback": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "case",
+          "revisions",
+          "jobs",
+          "feedback"
+        ]
+      },
+      "AgentIdentity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "agent",
+              "demo"
+            ]
+          },
+          "policy_version": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "integer"
+          },
+          "expires_at": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Demo space expiry as Unix seconds; null for persistent spaces with inactivity retention."
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "policy_version",
+          "expires_at"
+        ]
+      },
+      "AgentCredential": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "token_type": {
+            "const": "Bearer"
+          },
+          "token_id": {
+            "type": "string"
+          },
+          "scopes": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "cases:read",
+                "cases:write",
+                "jobs:run",
+                "cases:delete",
+                "account:delete"
+              ]
+            }
+          },
+          "expires_at": {
+            "type": "integer",
+            "description": "Unix seconds. Token is issued only once; never log or put it in a chat, URL or case."
+          }
+        },
+        "required": [
+          "token",
+          "token_type",
+          "token_id",
+          "scopes",
+          "expires_at"
+        ]
+      },
+      "AgentBootstrap": {
+        "type": "object",
+        "properties": {
+          "agent": {
+            "$ref": "#/components/schemas/AgentIdentity"
+          },
+          "credential": {
+            "$ref": "#/components/schemas/AgentCredential"
+          },
+          "limits": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "agent",
+          "credential",
+          "limits"
+        ]
+      },
+      "AgentDemo": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AgentBootstrap"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "job": {
+                "$ref": "#/components/schemas/Job"
+              },
+              "poll_url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "job",
+              "poll_url"
+            ]
+          }
+        ]
+      },
+      "AgentRegistration": {
+        "type": "object",
+        "properties": {
+          "policy_version": {
+            "type": "string",
+            "description": "Read the current value from /agents/manifest.json."
+          },
+          "data_policy_acknowledged": {
+            "const": true,
+            "description": "Technical acknowledgment: synthetic/non-personal data only. Not human consent or permission for other people's data."
+          },
+          "scopes": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "cases:read",
+                "cases:write",
+                "jobs:run",
+                "cases:delete",
+                "account:delete"
+              ]
+            }
+          }
+        },
+        "required": [
+          "policy_version",
+          "data_policy_acknowledged"
+        ],
+        "additionalProperties": false
+      },
+      "ChoiceModel": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 600
+              },
+              "category": {
+                "enum": [
+                  "leisure",
+                  "personal_organization"
+                ]
+              },
+              "horizon": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "question",
+              "category",
+              "horizon"
+            ],
+            "additionalProperties": false
+          },
+          "criteria": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 60
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 30
+                },
+                "direction": {
+                  "enum": [
+                    "min",
+                    "max"
+                  ]
+                },
+                "limit": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+|/[1-9][0-9]*)?$",
+                  "maxLength": 32,
+                  "description": "Nonnegative exact quantity <= 1000000, denominator <= 1000000; null stays unknown."
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "unit",
+                "direction",
+                "limit"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "alternatives": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "source": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "values": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+|/[1-9][0-9]*)?$",
+                    "maxLength": 32,
+                    "description": "Nonnegative exact quantity <= 1000000, denominator <= 1000000; null stays unknown."
+                  },
+                  "description": "Exactly one entry per declared criterion ID; same unit for every alternative."
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "source",
+                "values"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "selection": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "enum": [
+                  "unique",
+                  "lexicographic"
+                ]
+              },
+              "criteria_order": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+                },
+                "maxItems": 5,
+                "uniqueItems": true,
+                "description": "Empty for unique; permutation of all criteria for lexicographic."
+              }
+            },
+            "required": [
+              "mode",
+              "criteria_order"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "context",
+          "criteria",
+          "alternatives",
+          "selection"
+        ],
+        "additionalProperties": false
+      },
+      "ChoiceInput": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 600
+              },
+              "category": {
+                "enum": [
+                  "leisure",
+                  "personal_organization"
+                ]
+              },
+              "horizon": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "question",
+              "category",
+              "horizon"
+            ],
+            "additionalProperties": false
+          },
+          "criteria": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 60
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 30
+                },
+                "direction": {
+                  "enum": [
+                    "min",
+                    "max"
+                  ]
+                },
+                "limit": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+|/[1-9][0-9]*)?$",
+                  "maxLength": 32,
+                  "description": "Nonnegative exact quantity <= 1000000, denominator <= 1000000; null stays unknown."
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "unit",
+                "direction",
+                "limit"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "alternatives": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "source": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "values": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+|/[1-9][0-9]*)?$",
+                    "maxLength": 32,
+                    "description": "Nonnegative exact quantity <= 1000000, denominator <= 1000000; null stays unknown."
+                  },
+                  "description": "Exactly one entry per declared criterion ID; same unit for every alternative."
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "source",
+                "values"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "selection": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "enum": [
+                  "unique",
+                  "lexicographic"
+                ]
+              },
+              "criteria_order": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+                },
+                "maxItems": 5,
+                "uniqueItems": true,
+                "description": "Empty for unique; permutation of all criteria for lexicographic."
+              }
+            },
+            "required": [
+              "mode",
+              "criteria_order"
+            ],
+            "additionalProperties": false
+          },
+          "model_confirmation": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Digest from review, bound to all model fields, confirmed by the decision owner."
+          },
+          "permission_confirmed": {
+            "const": true
+          },
+          "scope_acknowledged": {
+            "const": true
+          },
+          "evidence_origin": {
+            "enum": [
+              "synthetic",
+              "user_declared"
+            ]
+          }
+        },
+        "required": [
+          "context",
+          "criteria",
+          "alternatives",
+          "selection",
+          "model_confirmation",
+          "permission_confirmed",
+          "scope_acknowledged",
+          "evidence_origin"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "x-genius-mcp-available": true,
+  "x-genius-credential-scope": {
+    "human": "full-account",
+    "automatic_agent": "enforced-scopes-and-expiry"
+  },
+  "x-genius-client-safety": {
+    "human_consent_never_inferred": true,
+    "automatic_agent_data_policy": "synthetic_or_non_personal_only",
+    "synthetic_examples_are_not_empirical_evidence": true,
+    "no_automatic_write_retries": true
+  },
+  "x-genius-mcp": {
+    "url": "/mcp",
+    "transport": "streamable-http",
+    "protocol_versions": [
+      "2026-07-28",
+      "2025-11-25",
+      "2025-06-18",
+      "2025-03-26"
+    ],
+    "public_tools": [
+      "get_capabilities",
+      "read_demo_result",
+      "run_demo"
+    ],
+    "private_authentication": "scoped-machine-bearer-header",
+    "oauth": false
+  },
+  "x-genius-saved-demo": {
+    "json": "/static/demo-result.json",
+    "html": "/static/demo.html",
+    "live_execution_on_get": false,
+    "evidence_origin": "synthetic"
+  }
+}

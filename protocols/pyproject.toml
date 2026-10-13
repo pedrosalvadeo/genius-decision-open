@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genius-decision-protocols"
+version = "1.0.0"
+description = "Exact-byte local JSON-RPC adapter for Genius Decision FP1"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+genius-protocols = "genius_protocols.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["genius_protocols*"]

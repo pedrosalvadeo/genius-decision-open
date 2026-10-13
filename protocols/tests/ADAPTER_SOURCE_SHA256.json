@@ -1,0 +1,9 @@
+{
+  "source_identity": "GENIUS-PROTOCOLS-1.0.0",
+  "sha256": {
+    "protocols/genius_protocols/__init__.py": "6a7d5301a605de8bd85e50287b2d9f49b3c86cededb363a7b1de87a0e9c0234d",
+    "protocols/genius_protocols/__main__.py": "037f2bd1bed829942762a763afac409ee0f424cd1e8506ea7eef059bc28ca8be",
+    "protocols/genius_protocols/server.py": "4e5bd037c8d3ed97027be2959dff68cec2945d313d682009a8dd4d43958ab0d5",
+    "protocols/genius_protocols/wire.py": "cfd635a8155ced86347110ee8b52bdab7afacc47e517ee2a808551ae27fcedea"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "format": "genius-collaboration-candidates/1",
+  "checked_on": "2026-10-13",
+  "contacts_sent": 0,
+  "candidates": [
+    {
+      "name": "OpenHands Software Agent SDK",
+      "url": "https://github.com/OpenHands/software-agent-sdk",
+      "kind": "agent_framework_project",
+      "potential": "Host coding agents for engine and integration work",
+      "channel": "Repository contribution process; review before contact",
+      "status": "IDENTIFIED_NOT_CONTACTED"
+    },
+    {
+      "name": "OpenHands Extensions",
+      "url": "https://github.com/openhands/extensions",
+      "kind": "extension_registry",
+      "potential": "Distribute a compatible capsule integration",
+      "channel": "Registry contribution process",
+      "status": "IDENTIFIED_NOT_CONTACTED"
+    },
+    {
+      "name": "A2A sample ecosystem",
+      "url": "https://github.com/a2aproject/a2a-samples",
+      "kind": "protocol_examples",
+      "potential": "Build and test a Genius A2A adapter",
+      "channel": "Repository contribution process",
+      "status": "IDENTIFIED_NOT_CONTACTED"
+    },
+    {
+      "name": "Official MCP Registry",
+      "url": "https://registry.modelcontextprotocol.io",
+      "kind": "server_registry_not_agent",
+      "potential": "Publish Genius server metadata after release",
+      "channel": "Verified namespace publication",
+      "status": "IDENTIFIED_NOT_SUBMITTED"
+    }
+  ]
+}

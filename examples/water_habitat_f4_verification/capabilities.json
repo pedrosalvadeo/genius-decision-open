@@ -1,0 +1,35 @@
+{
+  "protocol_version": "genius-protocols/1.0",
+  "protocols_version": "GENIUS-PROTOCOLS-1.0.0",
+  "kernel_version": "GENIUS-KERNEL-1.0.1",
+  "specification": "GENIUS-SPEC-1.0.0",
+  "theory_snapshot": "GENIUS-THEORY-2026-09-23-S2",
+  "profile": "FP1_FINITE_EXACT",
+  "input_format": "genius-fp1/1.0",
+  "result_format": "genius-fp1-result/1.0",
+  "capabilities": [
+    "evaluate",
+    "verify_result",
+    "verify_certificate"
+  ],
+  "transport_limits": {
+    "max_frame_bytes": "16777216",
+    "max_input_bytes": "2097152",
+    "max_candidate_bytes": "8388608",
+    "max_response_bytes": "33554432",
+    "max_batch_items": "16",
+    "max_limit_digits": "12"
+  },
+  "default_kernel_limits": {},
+  "allowed_kernel_limits": [
+    "max_input_bytes",
+    "max_integer_digits",
+    "max_nodes",
+    "max_operations",
+    "max_seconds"
+  ],
+  "environment": {
+    "python_recursion_depth": "1000"
+  },
+  "cancellation": "PROCESS_TERMINATION_ONLY"
+}

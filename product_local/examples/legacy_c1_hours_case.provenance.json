@@ -1,0 +1,82 @@
+{
+  "format": "genius-synthetic-historical-regression/0.1.0",
+  "fixture": "examples/legacy_c1_hours_case.zip",
+  "sha256": "d27189f5e230d5cd5a10c302f18f1244c1f4068ab6b02310212e1541805820cf",
+  "size": 18933,
+  "origin": "R2 C1 independent XG witness: reviews/xg_supervisor/hours_output_unit_unbound",
+  "purpose": "Preserve a synthetic C1 receipt that falsely answered an h_physical target with contractual hours, to verify explicit reevaluation and prohibit cache promotion under repaired producer. This fixture is not an accepted current conclusion.",
+  "case_bytes_unchanged_from_received_witness": true,
+  "excluded_runtime_files": [
+    "COMMIT_LOCK"
+  ],
+  "members": {
+    "input/request.json": {
+      "size": 4786,
+      "sha256": "2f3082d4a4587dc75828b6c6ca822d6861494570384fa863f552e5dd97e184fd"
+    },
+    "input/hours.json": {
+      "size": 385,
+      "sha256": "39e829670e42d196e01fec8e1db9b2669560de4854f18ce90ba7f00ec284d590"
+    },
+    "input/metadata.json": {
+      "size": 162,
+      "sha256": "334100894f388cf746cd67faa68c52d159eda15f7c9cce5acc7d2bf1732ff2b8"
+    },
+    "case/HEAD": {
+      "size": 112,
+      "sha256": "d73740cd7f7cefb930f53c460dc7485633b42d2e1421e3a8cdcac4a43a1983fe"
+    },
+    "case/objects/2bffb43e948486b7400f398aa565b78662cf889b997c465dde009bc5d18808f7": {
+      "size": 1327,
+      "sha256": "2bffb43e948486b7400f398aa565b78662cf889b997c465dde009bc5d18808f7"
+    },
+    "case/objects/2f3082d4a4587dc75828b6c6ca822d6861494570384fa863f552e5dd97e184fd": {
+      "size": 4786,
+      "sha256": "2f3082d4a4587dc75828b6c6ca822d6861494570384fa863f552e5dd97e184fd"
+    },
+    "case/objects/327d992e9bcf06aced6f0ca08310139c7270aa55d715321758e7a33e312ae768": {
+      "size": 1837,
+      "sha256": "327d992e9bcf06aced6f0ca08310139c7270aa55d715321758e7a33e312ae768"
+    },
+    "case/objects/334100894f388cf746cd67faa68c52d159eda15f7c9cce5acc7d2bf1732ff2b8": {
+      "size": 162,
+      "sha256": "334100894f388cf746cd67faa68c52d159eda15f7c9cce5acc7d2bf1732ff2b8"
+    },
+    "case/objects/39e829670e42d196e01fec8e1db9b2669560de4854f18ce90ba7f00ec284d590": {
+      "size": 385,
+      "sha256": "39e829670e42d196e01fec8e1db9b2669560de4854f18ce90ba7f00ec284d590"
+    },
+    "case/objects/3d1b72a1c2fdb7eb53fb96c81589b23bf3a5cd60ecf29bf443ae98d620d4f7c8": {
+      "size": 3520,
+      "sha256": "3d1b72a1c2fdb7eb53fb96c81589b23bf3a5cd60ecf29bf443ae98d620d4f7c8"
+    },
+    "case/objects/3e6c7862d86cbb5a3cddbd9e4c07cf9a8cac0d7b6c50a1c3bd1dab82907f61a7": {
+      "size": 13333,
+      "sha256": "3e6c7862d86cbb5a3cddbd9e4c07cf9a8cac0d7b6c50a1c3bd1dab82907f61a7"
+    },
+    "case/objects/625c3a94e189620a5ad15d3cdfde0985eaf80935be883e04188f1d68cf9bb1d6": {
+      "size": 1658,
+      "sha256": "625c3a94e189620a5ad15d3cdfde0985eaf80935be883e04188f1d68cf9bb1d6"
+    },
+    "case/objects/b10040f89b299a50e353a8767f37f98c0b25e1d8722b34f7fef8aa037617524a": {
+      "size": 2759,
+      "sha256": "b10040f89b299a50e353a8767f37f98c0b25e1d8722b34f7fef8aa037617524a"
+    },
+    "case/revisions/56c92758a60426fe738a75a470c5cdff5491ab8bee811d05d535a04ae390e47a": {
+      "size": 3302,
+      "sha256": "56c92758a60426fe738a75a470c5cdff5491ab8bee811d05d535a04ae390e47a"
+    },
+    "case/revisions/7c75051851fe4f87599513cdc728a177f18f412f60ad367bfc3f1a8090b9bafb": {
+      "size": 2235,
+      "sha256": "7c75051851fe4f87599513cdc728a177f18f412f60ad367bfc3f1a8090b9bafb"
+    },
+    "case/revisions/9f4031a1022927d9bce33d288a4b78d1731251f89d7f9049f8c845380f380086": {
+      "size": 2712,
+      "sha256": "9f4031a1022927d9bce33d288a4b78d1731251f89d7f9049f8c845380f380086"
+    },
+    "case/revisions/af0ae8aa60cb844c954b1c2f2ade975ffffd918522262af38e466c2e7d76279a": {
+      "size": 2105,
+      "sha256": "af0ae8aa60cb844c954b1c2f2ade975ffffd918522262af38e466c2e7d76279a"
+    }
+  }
+}

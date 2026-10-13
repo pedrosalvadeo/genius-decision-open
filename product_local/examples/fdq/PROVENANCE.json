@@ -1,0 +1,182 @@
+{
+  "attacks": [
+    {
+      "base": "historical",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "empty_family",
+      "kind": "certificate",
+      "reason": "NONEMPTY_BOUNDED_FAMILY"
+    },
+    {
+      "base": "priority",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "omitted_feasible_policy",
+      "kind": "certificate",
+      "reason": "POTENTIALLY_FEASIBLE_OMITTED"
+    },
+    {
+      "base": "historical",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "false_claim",
+      "kind": "certificate",
+      "reason": "FALSE_CERTIFICATE_CLAIM"
+    },
+    {
+      "base": "historical",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "missing_hole_index",
+      "kind": "certificate",
+      "reason": "INVALID_HOLE_INDEX_REFERENCE"
+    },
+    {
+      "base": "historical",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "missing_constraint",
+      "kind": "certificate",
+      "reason": "INVALID_WITNESS_CONSTRAINT_REFERENCE"
+    },
+    {
+      "base": "historical",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "order_breaking_calibration",
+      "kind": "certificate",
+      "reason": "COMPLETION_FP1_GUARD_FAILURE"
+    },
+    {
+      "base": "historical",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "shared_calibration_changed",
+      "kind": "members",
+      "reason": "FROZEN_OR_PATCH_MISMATCH"
+    },
+    {
+      "base": "historical",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "translation_changed",
+      "kind": "members",
+      "reason": "FROZEN_OR_PATCH_MISMATCH"
+    },
+    {
+      "base": "welfare",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "welfare_support_changed",
+      "kind": "members",
+      "reason": "FROZEN_OR_PATCH_MISMATCH"
+    },
+    {
+      "base": "historical",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "interface_changed",
+      "kind": "members",
+      "reason": "FROZEN_OR_PATCH_MISMATCH"
+    },
+    {
+      "base": "historical",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "joint_law_changed",
+      "kind": "members",
+      "reason": "FROZEN_OR_PATCH_MISMATCH"
+    },
+    {
+      "base": "priority",
+      "expected_state": "NOT_ACCEPTED",
+      "id": "same_frontier_different_selector",
+      "kind": "members",
+      "reason": "FROZEN_OR_PATCH_MISMATCH"
+    }
+  ],
+  "evidence_kind": "SYNTHETIC_STIPULATION",
+  "expected_basis": "Received DS contract; fixed expectations independent of R2 production. No claim of empirical domain membership.",
+  "source_copies": [
+    {
+      "path": "historical/input.json",
+      "sha256": "bef1074ffd927eb53a78635951e73e9128ff5f2b2470b9509c7034bb8db3b721",
+      "source": "R1/research/results/historical_gamma101/input.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "historical/original_result.json",
+      "sha256": "f5e111c1db134b75151a663e4d52c7d483de35901bf7b29e8bfdeb8ffbd0c225",
+      "source": "R1/research/results/historical_gamma101/original_result.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "historical/certificate.json",
+      "source": "R1/research/results/historical_gamma101/certificate.json",
+      "synthetic": true,
+      "transformation": "Input-defined nonempty family restricted to first and last member; claim retained as fixed expectation."
+    },
+    {
+      "path": "welfare/input.json",
+      "sha256": "eb295d96bf43107cae37e20646de21a85e0759bd44ec7258a058810dbd4f4e30",
+      "source": "R1/research/results/synthetic_welfare_gamma101/input.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "welfare/original_result.json",
+      "sha256": "3005d113c6f1aa4f76e4488d94df90a8ee508fc9ae5dc0fa8a5c9dd45ccdb085",
+      "source": "R1/research/results/synthetic_welfare_gamma101/original_result.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "welfare/certificate.json",
+      "source": "R1/research/results/synthetic_welfare_gamma101/certificate.json",
+      "synthetic": true,
+      "transformation": "Input-defined nonempty family restricted to first and last member; claim retained as fixed expectation."
+    },
+    {
+      "path": "priority/input.json",
+      "sha256": "fad5c2f9681cef945f255e9e2a61d54824f999b17ecde1c0dbfb592fed34be32",
+      "source": "R1/research/results/priority_two_maxima/input.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "priority/original_result.json",
+      "sha256": "e38c16859f91886bf565b28fd39a1a3abdcc8173a2d580ab2d39801ae2aa1d0b",
+      "source": "R1/research/results/priority_two_maxima/original_result.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "priority/certificate.json",
+      "source": "R1/research/results/priority_two_maxima/certificate.json",
+      "synthetic": true,
+      "transformation": "Input-defined nonempty family restricted to first and last member; claim retained as fixed expectation."
+    },
+    {
+      "path": "none/input.json",
+      "sha256": "c345dab543725ae96b756e63ab5b3e9dcdad4b1360c576aa0e2176e8a69f4190",
+      "source": "R1/research/results/none_two_maxima/input.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "none/original_result.json",
+      "sha256": "8094ccf8431bfb25894abc2f21ccc9fee8d94a7667835d710562ee7d0ee7e8df",
+      "source": "R1/research/results/none_two_maxima/original_result.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "none/certificate.json",
+      "source": "R1/research/results/none_two_maxima/certificate.json",
+      "synthetic": true,
+      "transformation": "Input-defined nonempty family restricted to first and last member; claim retained as fixed expectation."
+    },
+    {
+      "path": "unique/input.json",
+      "sha256": "4ef6132576cddbcb4469eccd3effd91883e949e5e6c320efc8f96d54b2faa452",
+      "source": "R1/research/results/unique_two_maxima/input.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "unique/original_result.json",
+      "sha256": "fdb7ad6d7a096c2cd3cb9d149910f72ffcd4fd1eab615618a599c9da8e59a3b3",
+      "source": "R1/research/results/unique_two_maxima/original_result.json",
+      "transformation": "EXACT_COPY"
+    },
+    {
+      "path": "unique/certificate.json",
+      "source": "R1/research/results/unique_two_maxima/certificate.json",
+      "synthetic": true,
+      "transformation": "Input-defined nonempty family restricted to first and last member; claim retained as fixed expectation."
+    }
+  ]
+}

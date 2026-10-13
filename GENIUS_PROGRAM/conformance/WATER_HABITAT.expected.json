@@ -1,0 +1,1669 @@
+{
+  "format": "GENIUS_FP1_EXPECTED_PROJECTION_V1",
+  "case_id": "CF-001",
+  "status": "DESIGNED",
+  "scope": "FORMAL_INSTANCE_ONLY",
+  "description": "Proyección declarativa del oráculo matemático de CF-001. No es una salida ejecutada ni el formato completo de salida del Kernel.",
+  "input": {
+    "file": "WATER_HABITAT.input.json",
+    "sha256": "b4ac8a6b739b6a689bc7d387a8691ffef71a9e7f3bad7824b6713f2cb6c93d9d",
+    "format": "genius-fp1/1.0",
+    "instance_id": "WaterHabitat_CF001"
+  },
+  "sources": [
+    "CONFORMANCE_CASES.md: instancia B y CF-001",
+    "S1:P03156-P03246",
+    "S1:P03552-P03656"
+  ],
+  "counts": {
+    "policies": "3",
+    "scenarios": "2",
+    "queries": "15",
+    "leaves": "6",
+    "reachable_points": "13"
+  },
+  "common_expected_guards": {
+    "causal_trees": "COMPLETE_TO_H",
+    "scenario_leaf_correspondence": "BIJECTIVE",
+    "functional_reduction": "EXACT_ON_REACHABLE_POINTS",
+    "composition_views": "LOSSLESS_JOIN_PER_POLICY",
+    "generative_translation": "FAITHFUL_AND_ORDER_REFLECTING",
+    "welfare": "COMPLETE_COMMON_SUPPORT",
+    "laws": "NORMALIZED",
+    "PVS": "DEFINED_FOR_ALL_POLICIES"
+  },
+  "policies": [
+    {
+      "policy": "pi_a",
+      "query_count": "5",
+      "leaf_count": "2",
+      "queries": [
+        {
+          "policy": "pi_a",
+          "path": []
+        },
+        {
+          "policy": "pi_a",
+          "path": [
+            "regular"
+          ]
+        },
+        {
+          "policy": "pi_a",
+          "path": [
+            "estres"
+          ]
+        },
+        {
+          "policy": "pi_a",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        {
+          "policy": "pi_a",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        }
+      ],
+      "scenario_leaves": [
+        {
+          "scenario": "regular",
+          "leaf": {
+            "policy": "pi_a",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          }
+        },
+        {
+          "scenario": "estres",
+          "leaf": {
+            "policy": "pi_a",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          }
+        }
+      ],
+      "semantics": [
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": []
+          },
+          "states": [
+            "s_a_r",
+            "s_a_s"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "regular"
+            ]
+          },
+          "states": [
+            "s_a_r"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "estres"
+            ]
+          },
+          "states": [
+            "s_a_s"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "states": [
+            "s_a_r"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "states": [
+            "s_a_s"
+          ]
+        }
+      ],
+      "V": [
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": []
+          },
+          "value": "UNDEFINED",
+          "reason": "La imagen de la tarea sobre Sem(raiz) es {0,1}."
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "regular"
+            ]
+          },
+          "value": "1"
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "estres"
+            ]
+          },
+          "value": "0"
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "value": "1"
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "value": "0"
+        }
+      ],
+      "mass_by_query": [
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": []
+          },
+          "mass": "1/1"
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "regular"
+            ]
+          },
+          "mass": "3/4"
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "estres"
+            ]
+          },
+          "mass": "1/4"
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "mass": "3/4"
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "mass": "1/4"
+        }
+      ],
+      "leaf_partition": {
+        "success": [
+          {
+            "policy": "pi_a",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          }
+        ],
+        "failure": [
+          {
+            "policy": "pi_a",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          }
+        ],
+        "undefined": []
+      },
+      "VProb": {
+        "success": "3/4",
+        "failure": "1/4",
+        "undefined": "0/1"
+      },
+      "PVS": "3/4",
+      "CAG": [
+        "g_empty",
+        "g_a"
+      ],
+      "achievements": [
+        "g_a"
+      ],
+      "additional": [
+        "g_a"
+      ],
+      "hold_witnesses": [
+        {
+          "leaf": {
+            "policy": "pi_a",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "identity": "g_a",
+          "start": "1",
+          "end": "2"
+        },
+        {
+          "leaf": {
+            "policy": "pi_a",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "identity": "g_a",
+          "start": "1",
+          "end": "2"
+        }
+      ],
+      "hard": [
+        {
+          "constraint": "BudgetAtMostOne",
+          "value": "1",
+          "total_by_query": [
+            {
+              "query": {
+                "policy": "pi_a",
+                "path": []
+              },
+              "value": "0/1"
+            },
+            {
+              "query": {
+                "policy": "pi_a",
+                "path": [
+                  "regular"
+                ]
+              },
+              "value": "1/1"
+            },
+            {
+              "query": {
+                "policy": "pi_a",
+                "path": [
+                  "estres"
+                ]
+              },
+              "value": "1/1"
+            },
+            {
+              "query": {
+                "policy": "pi_a",
+                "path": [
+                  "regular",
+                  "hold"
+                ]
+              },
+              "value": "1/1"
+            },
+            {
+              "query": {
+                "policy": "pi_a",
+                "path": [
+                  "estres",
+                  "hold"
+                ]
+              },
+              "value": "1/1"
+            }
+          ],
+          "bound": "1/1",
+          "missing_queries": [],
+          "positive_coverage": [
+            {
+              "policy": "pi_a",
+              "path": []
+            },
+            {
+              "policy": "pi_a",
+              "path": [
+                "regular"
+              ]
+            },
+            {
+              "policy": "pi_a",
+              "path": [
+                "estres"
+              ]
+            },
+            {
+              "policy": "pi_a",
+              "path": [
+                "regular",
+                "hold"
+              ]
+            },
+            {
+              "policy": "pi_a",
+              "path": [
+                "estres",
+                "hold"
+              ]
+            }
+          ]
+        }
+      ],
+      "feasibility": "FEASIBLE",
+      "functional_indices": [
+        "f_water",
+        "f_habitat"
+      ],
+      "functional_by_query": [
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": []
+          },
+          "values": [
+            "0/1",
+            "0/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "regular"
+            ]
+          },
+          "values": [
+            "1/1",
+            "0/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "estres"
+            ]
+          },
+          "values": [
+            "1/1",
+            "0/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "values": [
+            "1/1",
+            "0/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_a",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "values": [
+            "1/1",
+            "0/1"
+          ]
+        }
+      ],
+      "terminal_functional_by_scenario": [
+        {
+          "scenario": "regular",
+          "values": [
+            "1/1",
+            "0/1"
+          ]
+        },
+        {
+          "scenario": "estres",
+          "values": [
+            "1/1",
+            "0/1"
+          ]
+        }
+      ],
+      "welfare_by_scenario": [
+        {
+          "scenario": "regular",
+          "times": [
+            "0",
+            "1",
+            "2"
+          ],
+          "dimension": "living_condition",
+          "carriers": [
+            {
+              "carrier": "l1",
+              "values": [
+                "0/1",
+                "1/1",
+                "1/1"
+              ]
+            },
+            {
+              "carrier": "l2",
+              "values": [
+                "0/1",
+                "0/1",
+                "0/1"
+              ]
+            }
+          ]
+        },
+        {
+          "scenario": "estres",
+          "times": [
+            "0",
+            "1",
+            "2"
+          ],
+          "dimension": "living_condition",
+          "carriers": [
+            {
+              "carrier": "l1",
+              "values": [
+                "0/1",
+                "1/1",
+                "1/1"
+              ]
+            },
+            {
+              "carrier": "l2",
+              "values": [
+                "0/1",
+                "0/1",
+                "0/1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "policy": "pi_h",
+      "query_count": "5",
+      "leaf_count": "2",
+      "queries": [
+        {
+          "policy": "pi_h",
+          "path": []
+        },
+        {
+          "policy": "pi_h",
+          "path": [
+            "regular"
+          ]
+        },
+        {
+          "policy": "pi_h",
+          "path": [
+            "estres"
+          ]
+        },
+        {
+          "policy": "pi_h",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        {
+          "policy": "pi_h",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        }
+      ],
+      "scenario_leaves": [
+        {
+          "scenario": "regular",
+          "leaf": {
+            "policy": "pi_h",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          }
+        },
+        {
+          "scenario": "estres",
+          "leaf": {
+            "policy": "pi_h",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          }
+        }
+      ],
+      "semantics": [
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": []
+          },
+          "states": [
+            "s_h_r",
+            "s_h_s"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "regular"
+            ]
+          },
+          "states": [
+            "s_h_r"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "estres"
+            ]
+          },
+          "states": [
+            "s_h_s"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "states": [
+            "s_h_r"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "states": [
+            "s_h_s"
+          ]
+        }
+      ],
+      "V": [
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": []
+          },
+          "value": "UNDEFINED",
+          "reason": "La imagen de la tarea sobre Sem(raiz) es {0,1}."
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "regular"
+            ]
+          },
+          "value": "1"
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "estres"
+            ]
+          },
+          "value": "0"
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "value": "1"
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "value": "0"
+        }
+      ],
+      "mass_by_query": [
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": []
+          },
+          "mass": "1/1"
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "regular"
+            ]
+          },
+          "mass": "3/4"
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "estres"
+            ]
+          },
+          "mass": "1/4"
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "mass": "3/4"
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "mass": "1/4"
+        }
+      ],
+      "leaf_partition": {
+        "success": [
+          {
+            "policy": "pi_h",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          }
+        ],
+        "failure": [
+          {
+            "policy": "pi_h",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          }
+        ],
+        "undefined": []
+      },
+      "VProb": {
+        "success": "3/4",
+        "failure": "1/4",
+        "undefined": "0/1"
+      },
+      "PVS": "3/4",
+      "CAG": [
+        "g_empty",
+        "g_h"
+      ],
+      "achievements": [
+        "g_h"
+      ],
+      "additional": [
+        "g_h"
+      ],
+      "hold_witnesses": [
+        {
+          "leaf": {
+            "policy": "pi_h",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "identity": "g_h",
+          "start": "1",
+          "end": "2"
+        },
+        {
+          "leaf": {
+            "policy": "pi_h",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "identity": "g_h",
+          "start": "1",
+          "end": "2"
+        }
+      ],
+      "hard": [
+        {
+          "constraint": "BudgetAtMostOne",
+          "value": "1",
+          "total_by_query": [
+            {
+              "query": {
+                "policy": "pi_h",
+                "path": []
+              },
+              "value": "0/1"
+            },
+            {
+              "query": {
+                "policy": "pi_h",
+                "path": [
+                  "regular"
+                ]
+              },
+              "value": "1/1"
+            },
+            {
+              "query": {
+                "policy": "pi_h",
+                "path": [
+                  "estres"
+                ]
+              },
+              "value": "1/1"
+            },
+            {
+              "query": {
+                "policy": "pi_h",
+                "path": [
+                  "regular",
+                  "hold"
+                ]
+              },
+              "value": "1/1"
+            },
+            {
+              "query": {
+                "policy": "pi_h",
+                "path": [
+                  "estres",
+                  "hold"
+                ]
+              },
+              "value": "1/1"
+            }
+          ],
+          "bound": "1/1",
+          "missing_queries": [],
+          "positive_coverage": [
+            {
+              "policy": "pi_h",
+              "path": []
+            },
+            {
+              "policy": "pi_h",
+              "path": [
+                "regular"
+              ]
+            },
+            {
+              "policy": "pi_h",
+              "path": [
+                "estres"
+              ]
+            },
+            {
+              "policy": "pi_h",
+              "path": [
+                "regular",
+                "hold"
+              ]
+            },
+            {
+              "policy": "pi_h",
+              "path": [
+                "estres",
+                "hold"
+              ]
+            }
+          ]
+        }
+      ],
+      "feasibility": "FEASIBLE",
+      "functional_indices": [
+        "f_water",
+        "f_habitat"
+      ],
+      "functional_by_query": [
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": []
+          },
+          "values": [
+            "0/1",
+            "0/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "regular"
+            ]
+          },
+          "values": [
+            "0/1",
+            "1/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "estres"
+            ]
+          },
+          "values": [
+            "0/1",
+            "1/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "values": [
+            "0/1",
+            "1/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_h",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "values": [
+            "0/1",
+            "1/1"
+          ]
+        }
+      ],
+      "terminal_functional_by_scenario": [
+        {
+          "scenario": "regular",
+          "values": [
+            "0/1",
+            "1/1"
+          ]
+        },
+        {
+          "scenario": "estres",
+          "values": [
+            "0/1",
+            "1/1"
+          ]
+        }
+      ],
+      "welfare_by_scenario": [
+        {
+          "scenario": "regular",
+          "times": [
+            "0",
+            "1",
+            "2"
+          ],
+          "dimension": "living_condition",
+          "carriers": [
+            {
+              "carrier": "l1",
+              "values": [
+                "0/1",
+                "0/1",
+                "0/1"
+              ]
+            },
+            {
+              "carrier": "l2",
+              "values": [
+                "0/1",
+                "1/1",
+                "1/1"
+              ]
+            }
+          ]
+        },
+        {
+          "scenario": "estres",
+          "times": [
+            "0",
+            "1",
+            "2"
+          ],
+          "dimension": "living_condition",
+          "carriers": [
+            {
+              "carrier": "l1",
+              "values": [
+                "0/1",
+                "0/1",
+                "0/1"
+              ]
+            },
+            {
+              "carrier": "l2",
+              "values": [
+                "0/1",
+                "1/1",
+                "1/1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "policy": "pi_ah",
+      "query_count": "5",
+      "leaf_count": "2",
+      "queries": [
+        {
+          "policy": "pi_ah",
+          "path": []
+        },
+        {
+          "policy": "pi_ah",
+          "path": [
+            "regular"
+          ]
+        },
+        {
+          "policy": "pi_ah",
+          "path": [
+            "estres"
+          ]
+        },
+        {
+          "policy": "pi_ah",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        {
+          "policy": "pi_ah",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        }
+      ],
+      "scenario_leaves": [
+        {
+          "scenario": "regular",
+          "leaf": {
+            "policy": "pi_ah",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          }
+        },
+        {
+          "scenario": "estres",
+          "leaf": {
+            "policy": "pi_ah",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          }
+        }
+      ],
+      "semantics": [
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": []
+          },
+          "states": [
+            "s_ah_r",
+            "s_ah_s"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "regular"
+            ]
+          },
+          "states": [
+            "s_ah_r"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "estres"
+            ]
+          },
+          "states": [
+            "s_ah_s"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "states": [
+            "s_ah_r"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "states": [
+            "s_ah_s"
+          ]
+        }
+      ],
+      "V": [
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": []
+          },
+          "value": "1"
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "regular"
+            ]
+          },
+          "value": "1"
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "estres"
+            ]
+          },
+          "value": "1"
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "value": "1"
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "value": "1"
+        }
+      ],
+      "mass_by_query": [
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": []
+          },
+          "mass": "1/1"
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "regular"
+            ]
+          },
+          "mass": "3/4"
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "estres"
+            ]
+          },
+          "mass": "1/4"
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "mass": "3/4"
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "mass": "1/4"
+        }
+      ],
+      "leaf_partition": {
+        "success": [
+          {
+            "policy": "pi_ah",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          {
+            "policy": "pi_ah",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          }
+        ],
+        "failure": [],
+        "undefined": []
+      },
+      "VProb": {
+        "success": "1/1",
+        "failure": "0/1",
+        "undefined": "0/1"
+      },
+      "PVS": "1/1",
+      "CAG": [
+        "g_empty",
+        "g_ah"
+      ],
+      "achievements": [
+        "g_ah"
+      ],
+      "additional": [
+        "g_ah"
+      ],
+      "hold_witnesses": [
+        {
+          "leaf": {
+            "policy": "pi_ah",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "identity": "g_ah",
+          "start": "1",
+          "end": "2"
+        },
+        {
+          "leaf": {
+            "policy": "pi_ah",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "identity": "g_ah",
+          "start": "1",
+          "end": "2"
+        }
+      ],
+      "hard": [
+        {
+          "constraint": "BudgetAtMostOne",
+          "value": "0",
+          "total_by_query": [
+            {
+              "query": {
+                "policy": "pi_ah",
+                "path": []
+              },
+              "value": "0/1"
+            },
+            {
+              "query": {
+                "policy": "pi_ah",
+                "path": [
+                  "regular"
+                ]
+              },
+              "value": "2/1"
+            },
+            {
+              "query": {
+                "policy": "pi_ah",
+                "path": [
+                  "estres"
+                ]
+              },
+              "value": "2/1"
+            },
+            {
+              "query": {
+                "policy": "pi_ah",
+                "path": [
+                  "regular",
+                  "hold"
+                ]
+              },
+              "value": "2/1"
+            },
+            {
+              "query": {
+                "policy": "pi_ah",
+                "path": [
+                  "estres",
+                  "hold"
+                ]
+              },
+              "value": "2/1"
+            }
+          ],
+          "bound": "1/1",
+          "missing_queries": [],
+          "refutation_witness": {
+            "query": {
+              "policy": "pi_ah",
+              "path": [
+                "regular"
+              ]
+            },
+            "resource": "budget",
+            "demands": [
+              {
+                "demand": "d_water",
+                "value": "1/1"
+              },
+              {
+                "demand": "d_habitat",
+                "value": "1/1"
+              }
+            ],
+            "total": "2/1",
+            "bound": "1/1"
+          }
+        }
+      ],
+      "feasibility": "REFUTED",
+      "functional_indices": [
+        "f_water",
+        "f_habitat"
+      ],
+      "functional_by_query": [
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": []
+          },
+          "values": [
+            "0/1",
+            "0/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "regular"
+            ]
+          },
+          "values": [
+            "1/1",
+            "1/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "estres"
+            ]
+          },
+          "values": [
+            "1/1",
+            "1/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "regular",
+              "hold"
+            ]
+          },
+          "values": [
+            "1/1",
+            "1/1"
+          ]
+        },
+        {
+          "query": {
+            "policy": "pi_ah",
+            "path": [
+              "estres",
+              "hold"
+            ]
+          },
+          "values": [
+            "1/1",
+            "1/1"
+          ]
+        }
+      ],
+      "terminal_functional_by_scenario": [
+        {
+          "scenario": "regular",
+          "values": [
+            "1/1",
+            "1/1"
+          ]
+        },
+        {
+          "scenario": "estres",
+          "values": [
+            "1/1",
+            "1/1"
+          ]
+        }
+      ],
+      "welfare_by_scenario": [
+        {
+          "scenario": "regular",
+          "times": [
+            "0",
+            "1",
+            "2"
+          ],
+          "dimension": "living_condition",
+          "carriers": [
+            {
+              "carrier": "l1",
+              "values": [
+                "0/1",
+                "1/1",
+                "1/1"
+              ]
+            },
+            {
+              "carrier": "l2",
+              "values": [
+                "0/1",
+                "1/1",
+                "1/1"
+              ]
+            }
+          ]
+        },
+        {
+          "scenario": "estres",
+          "times": [
+            "0",
+            "1",
+            "2"
+          ],
+          "dimension": "living_condition",
+          "carriers": [
+            {
+              "carrier": "l1",
+              "values": [
+                "0/1",
+                "1/1",
+                "1/1"
+              ]
+            },
+            {
+              "carrier": "l2",
+              "values": [
+                "0/1",
+                "1/1",
+                "1/1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "comparison": {
+    "policy_order": [
+      "pi_a",
+      "pi_h",
+      "pi_ah"
+    ],
+    "matrix_convention": "La fila domina débilmente la columna; cada entrada es Bit. Las cuatro matrices se refieren al mismo bloque completo.",
+    "functional_weak": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "1",
+        "1"
+      ]
+    ],
+    "CAG_weak": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "welfare_weak": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "1",
+        "1"
+      ]
+    ],
+    "PVS_weak": [
+      [
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "1",
+        "1"
+      ]
+    ],
+    "integrated_weak": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "integrated_strict": [
+      [
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "comparison_block": [
+      "pi_a",
+      "pi_h",
+      "pi_ah"
+    ],
+    "feasible": [
+      "pi_a",
+      "pi_h"
+    ],
+    "refuted": [
+      "pi_ah"
+    ],
+    "unknown": [],
+    "frontier_input": [
+      "pi_a",
+      "pi_h"
+    ],
+    "frontier": [
+      "pi_a",
+      "pi_h"
+    ],
+    "coverage": "EXHAUSTIVE",
+    "objective_policies": [
+      "pi_a",
+      "pi_h",
+      "pi_ah"
+    ],
+    "selection": {
+      "mode": "none",
+      "selected": [],
+      "reason": "No se solicitó una regla de selección."
+    }
+  }
+}

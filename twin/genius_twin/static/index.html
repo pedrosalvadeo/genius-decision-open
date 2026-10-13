@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#126c66">
+  <title>Genius · Gemelo dinámico</title>
+  <link rel="stylesheet" href="static/styles.css">
+  <script src="static/app.js" defer></script>
+  <script src="static/d3.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Genius, inicio"><span class="brand-mark" aria-hidden="true">g.</span><span>GENIUS<span class="brand-sub">DECISION</span></span></a>
+    <span class="environment">Decisiones bajo tus condiciones</span>
+    <button id="case-library" class="button ghost small" type="button">Tus decisiones</button>
+    <button id="start-over" class="button ghost small" type="button" hidden>Nueva exploración</button>
+  </header>
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+  <div id="error" class="error-banner" role="alert" hidden></div>
+  <main id="main" tabindex="-1">
+    <section id="welcome" class="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-copy">
+        <p class="eyebrow">COMPRENDER ANTES DE ACTUAR</p>
+        <h1 id="welcome-title">Una decisión.<br>Sus posibles futuros.</h1>
+        <p class="intro">Construye un modelo de tu decisión. Compara planes, recursos y condiciones en el tiempo, y revisa qué puede cambiar para quienes participan.</p>
+        <form id="intake-form" class="intake-form">
+          <label for="narrative">¿Qué necesitas decidir?</label>
+          <textarea id="narrative" name="narrative" rows="5" maxlength="12000" required placeholder="¿Qué quieres lograr, qué opciones tienes y a quiénes afecta?" aria-describedby="admission-note"></textarea>
+          <label for="intake-mode" class="spacing-top">Cómo quieres empezar</label>
+          <select id="intake-mode"><option value="general">Construir mi decisión paso a paso</option><option value="d1">Semillero original · modelo sintético</option></select>
+          <div class="actions"><button class="button primary" type="submit">Construir propuesta <span aria-hidden="true">→</span></button><button class="button text-button" id="fill-example" type="button">Usar relato de ejemplo</button></div>
+          <p id="admission-note" class="hint">Puedes configurar planes con recursos compartidos y condiciones temporales. Las reglas y valores que declares serán premisas del cálculo; el relato se conserva para revisarlo.</p>
+        </form>
+      </div>
+      <aside class="welcome-aside" aria-label="Qué explorarás">
+        <div class="mini-map" aria-hidden="true"><span class="mini-orbit orbit-one"></span><span class="mini-orbit orbit-two"></span><span class="mini-node node-a">A</span><span class="mini-node node-b">B</span><span class="mini-center">tu decisión</span><span class="mini-node node-water">recursos</span><span class="mini-node node-future">futuros</span></div>
+        <div class="feature"><span>01</span><div><h2>Un gemelo revisable</h2><p>Personas, plantas, recursos y reglas con un origen visible.</p></div></div>
+        <div class="feature"><span>02</span><div><h2>El recorrido completo</h2><p>Observa lo que pasa entre el presente y el resultado final.</p></div></div>
+        <div class="feature"><span>03</span><div><h2>Consecuencias comparables</h2><p>Tiempo, condiciones hídricas y capacidades sin ocultar sus diferencias.</p></div></div>
+        <p class="model-note">Conserva tus supuestos y conoce el alcance de cada resultado. También puedes explorar ejemplos sintéticos identificados.</p>
+      </aside>
+    </section>
+    <section id="workspace" hidden aria-labelledby="case-title">
+      <div class="case-header"><div><p class="eyebrow">TU EXPLORACIÓN</p><h1 id="case-title">Semillero comunitario</h1><p id="case-meta" class="muted"></p></div><div id="case-badges" class="badges"></div></div>
+      <div class="scope-strip"><span class="scope-dot" aria-hidden="true"></span><p>Ejemplo sintético · Cuidado de un semillero · Sin intervención en el mundo real</p></div>
+      <nav id="step-nav" class="step-nav" aria-label="Etapas de la exploración">
+        <button type="button" data-view="review"><span>01</span> Revisión</button>
+        <button type="button" data-view="twin"><span>02</span> Gemelo</button>
+        <button type="button" data-view="futures"><span>03</span> Futuros</button>
+        <button type="button" data-view="conclusion"><span>04</span> Conclusión</button>
+        <button type="button" data-view="change"><span>05</span> Cambios</button>
+        <button type="button" data-view="evidence"><span>06</span> Evidencia</button>
+      </nav>
+      <div id="view-content" class="view-content"></div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>Genius · Gemelo dinámico</span><span>Modelo revisable. Resultados condicionados a su alcance.</span></footer>
+  <noscript><p class="error-banner">Activa JavaScript para usar este recorrido. La API local conserva el contrato estructurado.</p></noscript>
+</body>
+</html>

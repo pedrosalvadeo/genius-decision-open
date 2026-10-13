@@ -1,0 +1,30 @@
+{
+  "format": "genius-r2-diagnostic-expectations/0.1.0",
+  "evidence_kind": "RECEIVED_DIAGNOSIS",
+  "source": "R0/analysis/DOMAIN_EVIDENCE.md::sections-2-and-4",
+  "source_package_sha256": "2c2c90e7248d16565c03299ab9e69700578cb5124d05123b448b4818efebc2eb",
+  "limitations": [
+    "These rows preserve received diagnosis, not a new study of hospital calendars.",
+    "Synthetic R2 fixtures test local contract behavior, not hospital truth or human utility.",
+    "F6A_IN_PROGRESS — DESIGN and G6A_PENDING remain unchanged."
+  ],
+  "cases": [
+    {"id":"B01-01","primary_cause":"DERIVABLE","secondary_causes":["YA_DISPONIBLE"],"object":"contractual hours","limit":"No physical rest, presence or consent follows from contractual hours."},
+    {"id":"B01-02","primary_cause":"YA_DISPONIBLE","object":"D1 authorized controlled omission","limit":"Restore a reference in a new revision; retain original partial bytes."},
+    {"id":"B01-03","primary_cause":"IRRELEVANTE_DEMOSTRADO","object":"D4 inspected queries only","limit":"A changed query reopens relevance; no general missing-field exemption."},
+    {"id":"B01-05","primary_cause":"DATO_EXTERNO","object":"applicable consent","limit":"Cannot derive consent from a shift request."},
+    {"id":"B01-06","primary_cause":"DATO_EXTERNO","object":"history over required interval","limit":"A formal singleton initialization does not supply missing past."},
+    {"id":"B01-14","primary_cause":"DATO_EXTERNO","object":"physical identity across dates","limit":"Tokens do not establish people or availability."},
+    {"id":"B01-15","primary_cause":"DEFINICION_MODELO","object":"CAG identities, meaning, translation, dynamics","limit":"Empty tables do not certify an empty CAG."},
+    {"id":"B01-16","primary_cause":"DEFINICION_MODELO","future_cause":"COMPUTO_PENDIENTE","dependencies":["B01-15"],"object":"CAG computation after model admission","limit":"Do not relabel absent model as CPU work."},
+    {"id":"B01-17","primary_cause":"DEFINICION_MODELO","object":"functional origin catalogue","limit":"Zero or duplicated terminal measurements do not resolve G05."},
+    {"id":"B01-18","primary_cause":"DEFINICION_MODELO","object":"integrated task predicate","limit":"An unresolved condition is not false."},
+    {"id":"B01-19","primary_cause":"DEFINICION_MODELO","future_cause":"CAPACIDAD_AUSENTE","dependencies":["B01-18"],"object":"versioned domain evaluator to task adapter","limit":"No integrated adapter is admitted by a classification label."},
+    {"id":"B01-20","primary_cause":"YA_DISPONIBLE","object":"documentary replay law of mass one","limit":"No prediction of attendance or sustained life."},
+    {"id":"B01-21","primary_cause":"DEFINICION_MODELO","future_cause":"DERIVABLE","dependencies":["B01-18","B01-19"],"object":"task probability after admitted predicate","limit":"Replay law does not resolve task meaning."},
+    {"id":"B01-24","primary_cause":"PREFERENCIA","object":"selection among crossed profiles if requested","limit":"A justified set does not require fabricated weights."},
+    {"id":"B01-25","primary_cause":"IRRELEVANTE_DEMOSTRADO","object":"H13/H14 not applicable in inspected scope","limit":"An active field in a new instance requires a fresh applicable capability."},
+    {"id":"B01-28","primary_cause":"DISENO_ESTUDIO","object":"utility versus operational comparator","limit":"No empirical human utility has been observed."},
+    {"id":"B01-29","primary_cause":"DISENO_ESTUDIO","object":"prior protocol and evaluation observations","limit":"No fabricated sample size, exposure, significance or user study."}
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "claim": {
+    "frontier": [
+      "p"
+    ],
+    "selector": {
+      "state": "DEFINED",
+      "value": "p"
+    }
+  },
+  "contract": "DECISION_SUFFICIENCY/0.1.0",
+  "covered_policies": [
+    "p"
+  ],
+  "domain": {
+    "choices": [],
+    "failed_policy": "q",
+    "hole": {
+      "index": "f0",
+      "t": "1",
+      "x": "x_q_r_1"
+    },
+    "kind": "ONE_FUNCTIONAL_HOLE_FINITE"
+  },
+  "input_sha256": "bef1074ffd927eb53a78635951e73e9128ff5f2b2470b9509c7034bb8db3b721",
+  "original_result_sha256": "f5e111c1db134b75151a663e4d52c7d483de35901bf7b29e8bfdeb8ffbd0c225",
+  "profile": "FDQ_FINITE_PATCH/0.1.0",
+  "query": {
+    "frontier": true,
+    "selector": true
+  },
+  "target": [
+    "p",
+    "q"
+  ],
+  "witness": {
+    "constraint": "Budget_R",
+    "policy": "q",
+    "query": {
+      "path": [],
+      "policy": "q"
+    },
+    "resource": "R"
+  }
+}

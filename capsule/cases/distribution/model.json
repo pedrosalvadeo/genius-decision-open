@@ -1,0 +1,160 @@
+{
+  "profile": "STOCK_FLOW_FINITE_V1",
+  "name": "Distribución real de las fuentes Genius — bytes medidos",
+  "horizon": 1,
+  "step_unit": "step",
+  "stocks": [
+    {
+      "id": "remaining",
+      "label": "Margen de transferencia respecto del TAR medido",
+      "unit": "byte",
+      "kind": "persistent",
+      "initial": "6563840/1",
+      "capacity": "6563840/1"
+    }
+  ],
+  "carriers": [
+    {
+      "id": "project",
+      "label": "Proyecto Genius (condición operacional, no bienestar humano)",
+      "kind": "organization"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "deliver",
+      "label": "Entregar las mismas fuentes"
+    }
+  ],
+  "initial_capabilities": [
+    "deliver"
+  ],
+  "actions": [
+    {
+      "id": "send_tar",
+      "label": "Enviar tar",
+      "requires": [
+        "deliver"
+      ],
+      "withdrawals": {
+        "remaining": "6563840/1"
+      },
+      "deposits": {},
+      "add_capabilities": [],
+      "remove_capabilities": []
+    },
+    {
+      "id": "send_gzip",
+      "label": "Enviar gzip",
+      "requires": [
+        "deliver"
+      ],
+      "withdrawals": {
+        "remaining": "1459503/1"
+      },
+      "deposits": {},
+      "add_capabilities": [],
+      "remove_capabilities": []
+    },
+    {
+      "id": "send_zip",
+      "label": "Enviar zip",
+      "requires": [
+        "deliver"
+      ],
+      "withdrawals": {
+        "remaining": "1681640/1"
+      },
+      "deposits": {},
+      "add_capabilities": [],
+      "remove_capabilities": []
+    }
+  ],
+  "policies": [
+    {
+      "id": "tar",
+      "label": "tar",
+      "default_action": "send_tar",
+      "rules": []
+    },
+    {
+      "id": "gzip",
+      "label": "gzip",
+      "default_action": "send_gzip",
+      "rules": []
+    },
+    {
+      "id": "zip",
+      "label": "zip",
+      "default_action": "send_zip",
+      "rules": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "measured_snapshot",
+      "label": "Artefactos producidos y medidos en esta ejecución",
+      "events": [
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {},
+          "remove_capabilities": []
+        }
+      ]
+    }
+  ],
+  "law": {
+    "measured_snapshot": "1/1"
+  },
+  "welfare": [
+    {
+      "carrier": "project",
+      "dimension": "transfer_margin",
+      "label": "Margen de bytes; condición operacional declarada",
+      "stock": "remaining",
+      "direction": "higher"
+    }
+  ],
+  "task": {
+    "kind": "operational",
+    "label": "Entregar el archivo dentro del presupuesto comparativo de bytes",
+    "living_carriers": [],
+    "conditions": [
+      {
+        "stock": "remaining",
+        "op": "ge",
+        "threshold": "0/1"
+      }
+    ],
+    "require_action_success": true
+  },
+  "require_all_scenarios": true,
+  "selection": "unique",
+  "assumptions": [
+    {
+      "id": "Measurement",
+      "kind": "CALIBRATION",
+      "statement": "Los tamaños se midieron sobre los tres artefactos construidos. Ver hashes y fecha en measurement.json.",
+      "provenance": "Medición local directa del paquete Genius"
+    },
+    {
+      "id": "Scope",
+      "kind": "MODEL",
+      "statement": "Una transferencia íntegra; excluye cabeceras, reintentos, tiempo de CPU y compatibilidad del receptor.",
+      "provenance": "Alcance declarado del análisis"
+    },
+    {
+      "id": "Criterion",
+      "kind": "NORMATIVE",
+      "statement": "Comparar menor cantidad de bytes transferidos conservando las mismas fuentes; el presupuesto equivale al TAR medido. No es bienestar humano ni PVS.",
+      "provenance": "Criterio técnico propuesto para esta comparación"
+    },
+    {
+      "id": "SnapshotLaw",
+      "kind": "PROBABILITY",
+      "statement": "La masa unitaria describe únicamente el inventario de artefactos ya medidos. No estima éxito futuro de red.",
+      "provenance": "Modelo determinista del snapshot medido"
+    }
+  ]
+}

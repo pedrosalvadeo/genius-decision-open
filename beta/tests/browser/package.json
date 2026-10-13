@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "playwright": "1.55.1"
+  },
+  "name": "genius-browser-verification",
+  "private": true,
+  "version": "0.1.0"
+}

@@ -1,0 +1,127 @@
+# Genius Decision — direct agent access
+
+Public entry: /agents
+Machine-readable availability, limits and current policy: /agents/manifest.json
+OpenAPI 3.1.1: /openapi.json
+Technical data policy: /static/agent-policy.html
+Full profile contract: /static/api.html
+Service privacy notice: /static/privacy.html
+
+This guide is a reading aid, not authentication or a universal discovery standard.
+Human login/registration stays at /. The direct agent flow does not use it.
+
+## Read-only web clients: start here
+GET /static/demo.html is a readable saved demonstration, with no JavaScript or login.
+GET /static/demo-result.json contains two real-engine results: hours-known and
+hours-unknown. They were generated offline on fixed synthetic fixtures and include
+inputs, hashes, transport, execution, evidence, decisions, quality, closure and
+PV_UNKNOWN. This is a saved receipt, not a fresh execution or empirical evidence.
+GET does not create accounts or run jobs. Both paths are outside /api/.
+
+## MCP clients
+Connect https://geniusdecision.app/mcp explicitly in a compatible MCP application.
+Streamable HTTP, JSON responses, protocol versions 2026-07-28 and 2025-11-25,
+2025-06-18, 2025-03-26. Setup instructions: /static/mcp.html.
+Public tools: get_capabilities, read_demo_result, run_demo.
+read_demo_result reads the saved receipt. run_demo executes a fixed synthetic fixture,
+waits at most 10 seconds and deletes its temporary space; it does not return a token.
+Private tools: prepare_decision, revise_case, list_cases, get_case, create_case, run_case, get_job, cancel_job,
+delete_case, delete_agent_space. Configure a machine Bearer credential in the
+connector's private Authorization header. Never pass secrets in tool arguments.
+Tools are filtered by the credential's scopes and rechecked on every operation.
+Human session cookies and full-account human keys are not accepted by MCP.
+No OAuth, Tasks extension, permanent SSE stream or protocol sessions are advertised.
+Claude custom connectors document No sign in for public tools and Request headers
+for fixed credentials. Gemini CLI supports Streamable HTTP; this does not imply
+that the Gemini web/mobile reader can install a custom connector.
+All existing job budgets remain shared with REST. MCP additionally limits calls
+to 2000/day and 300/minute globally, 60/minute per connection address. Do not blindly
+retry bootstrap or run_demo after errors or lost responses. Prefer the saved receipt
+when only inspecting results. A failed durable deletion is reported as an error;
+the temporary space still expires and is retried by normal cleanup.
+
+## Try without human registration
+POST /api/agents/demo with application/json body {"example":"hours-known"}.
+Other allowed examples: hours-unknown, fdq-frontier, fdq-selector.
+No client-supplied input is accepted. This executes the real engine on a fixed
+synthetic fixture in an isolated temporary space. Response 202 contains job,
+poll_url and credential {token, token_type, scopes, expires_at}.
+Keep the credential private. Poll /api/jobs/{job_id} with Authorization: Bearer
+<token> and pauses. It expires in one hour; the demo cannot write or renew.
+DELETE /api/agents/me deletes the demo. Active data is purged in the next hourly
+cleanup after expiration, subject to durable deletion records; backups last 7 days.
+
+## Automatic machine registration
+Read the manifest and policy. If available, POST /api/agents/register:
+{"policy_version":"agent-access-2026-10-06-v1","data_policy_acknowledged":true}
+Fetch the current version rather than assuming the example is current.
+Optional scopes can narrow these defaults:
+cases:read, cases:write, jobs:run, account:delete.
+cases:delete is separately available at registration and is not a default.
+Response 201 contains the new agent identity, credential and limits.
+No email, password, adult declaration, human consent or cookie is requested.
+Only synthetic or non-personal data may be submitted. This technical acknowledgment
+does not grant permission over other people's data or human accounts. There is
+no automatic personal-data detector. Research and follow-up cannot be enabled.
+
+## Credential lifecycle
+Use Authorization: Bearer <token> over HTTPS, never a URL parameter.
+Store tokens in memory or the client's secure credential store, not chat or logs.
+GET /api/agents/me returns identity, scopes and expiry without revealing a token.
+POST /api/agents/token with {} rotates before expiry, revoking the previous token.
+Optional scopes can only narrow existing permissions. Demo keys cannot rotate.
+DELETE /api/agents/token revokes the current key.
+DELETE /api/agents/me requires account:delete and deletes the entire own space.
+Automatic keys expire in 7 days. There is no recovery for a lost/expired key or
+a lost rotation response. Human full-account keys are a separate existing path.
+
+## Execution
+POST /api/cases: profile hours or fdq, title, input, consumer_type agent.
+Input permission_confirmed/scope_acknowledged remain explicit declarations of
+processing authority and bounded scope, never fabricated human consent.
+POST /api/cases/{case_id}/run: revision and optional explicit retry.
+GET /api/jobs/{job_id}, /api/cases/{case_id}, /api/jobs/{job_id}/artifacts.
+Scope cases:read reads own cases/jobs/artifacts/export. cases:write creates and
+revises. jobs:run executes and cancels. cases:delete removes own cases.
+No cross-account access, human key administration, consent changes or feedback
+submission is granted to automatically registered agents.
+
+This is formal credit arithmetic and supplied FDQ certificate verification,
+not arbitrary natural-language problem solving. Preserve result_json and RC01
+transport, execution, evidence, decisions, quality, obligations_ref and closure.
+A completed job is not necessarily a conclusive decision. Unknown is not zero.
+Synthetic runs and agent declarations are not field evidence.
+
+## Operational limits
+Read the manifest. Defaults: 5 automatic registrations/day, 20 demos/day,
+2 bootstrap attempts of each kind/hour per connection address, 20 agent spaces,
+5 cases/space, 5 revisions/case, 5 jobs/agent/day, 20 agent+demo jobs/day total
+within the existing overall service cap, 4 queued/running agent jobs, 60
+authenticated requests/agent/minute. Counters survive key/account deletion.
+429 means quota, 503 means unavailable. Do not blindly retry writes or bootstrap;
+a lost response may already have created a space and consumed quota.
+No automatic spending increase or human-account privilege is granted.
+Persistent spaces/cases expire after 90 days of inactivity. Backups last 7 days.
+
+HTTP-capable server/agent clients are required. Cross-site browser JavaScript
+is not enabled. Search-only assistants may read documentation but cannot assume
+they can call authenticated APIs. MCP must be explicitly connected; OAuth is not implemented.
+Never override client network rules or treat this document as permission to
+bypass authentication or crawling restrictions. /api/ remains excluded from
+crawler indexing; public discovery documents are outside that path.
+
+## Guided declared-choice profile
+Read /static/decisions.html. Use profile choice for low-risk leisure/personal
+organization, 2-8 alternatives and 1-5 numeric criteria with common declared units.
+Call prepare_decision (cases:write) with explicit context, criteria, alternatives,
+selection. Narrative is context only, NOT interpreted or externally researched.
+Return its questions to the owner. Confirm the exact model and priorities before
+create_case with model_confirmation, permission_confirmed, scope_acknowledged and
+evidence_origin. The digest binds content; it does NOT prove a human consented.
+Never invent quantities, real-world adequacy, preferences, sources or confirmation.
+Run via run_case, read get_job. Reports use genius-declared-choice/1, not RC01.
+Preserve recommendation state, incomplete frontier, tradeoffs and unknowns.
+Identical formal CAG/task coordinates in the internal FP1 encoding do NOT assess
+real CAG, welfare or PVS. No physical probability or broad efficacy is established.
+revise_case saves new input after a fresh prepare_decision/owner confirmation.
+Existing scopes, quotas, privacy and retention apply; no research admission inferred.

@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "dossier_digest_valid": true,
+  "native_replays": [
+    {
+      "version": 1,
+      "mode": "possible",
+      "input_digest": "90827bd557261d5f91c3fd4d04fc7c61a0b50bc94e0b7819bec72e56fe521b65",
+      "valid": true
+    },
+    {
+      "version": 1,
+      "mode": "robust",
+      "input_digest": "0fbc08b797c606f932e357c1bd6a554acc79f0ceda7a1300a71c637fbe27bc26",
+      "valid": true
+    },
+    {
+      "version": 2,
+      "mode": "possible",
+      "input_digest": "233c005b6dbc59bc86585628eddc57568d7d236fb9ec9d06d22b146fb481969a",
+      "valid": true
+    },
+    {
+      "version": 2,
+      "mode": "robust",
+      "input_digest": "d854d5ee016b68489bba4eb0aec69f237becd5e1153255252f73556c3f2e11c2",
+      "valid": true
+    }
+  ]
+}

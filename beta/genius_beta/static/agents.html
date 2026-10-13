@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Entrada directa de agentes a Genius: prueba sintética sin registro humano y credenciales de aplicación con permisos limitados.">
+<meta name="referrer" content="no-referrer"><title>Agentes y aplicaciones · Genius Decision</title>
+<link rel="stylesheet" href="/static/styles.css"><link rel="service-desc" type="application/vnd.oai.openapi+json" href="/openapi.json">
+<link rel="alternate" type="application/json" href="/agents/manifest.json" title="Descubrimiento de agentes">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Guía en texto"></head>
+<body><a class="skip" href="#main">Ir al contenido</a>
+<header class="topbar"><a href="/" class="brand" aria-label="Genius, inicio"><span class="brand-mark" aria-hidden="true">g</span><span>genius<span class="brand-sub">DECISION</span></span></a><span class="beta-label">AGENTES Y APLICACIONES</span></header>
+<main id="main" class="docs"><p class="eyebrow">LECTURA · MCP · API</p><h1>Genius para agentes y sistemas.</h1>
+<p>Leé una salida del motor, conectá un cliente MCP o usá la API. Para personas, el <a href="/">ingreso y registro habituales</a> siguen disponibles.</p>
+<p><a class="button primary" href="/static/demo.html">Ver un resultado →</a> <a class="button" href="/static/mcp.html">Conectar por MCP</a></p>
+<h2>Si tu IA sólo puede leer páginas</h2>
+<p>Abrí <a href="/static/demo.html">la demostración legible</a> o <a href="/static/demo-result.json">el resultado completo en JSON</a>. Ambos funcionan con GET y sin credencial. Contienen dos ejecuciones reales guardadas, con datos sintéticos: una con valores conocidos y otra con <code>PV_UNKNOWN</code>. Leerlas no ejecuta un trabajo nuevo. El resultado conserva transporte, ejecución, evidencia, decisiones, calidad y dependencias.</p>
+<h2>Si tu cliente admite MCP</h2>
+<p>Agregá <code>https://geniusdecision.app/mcp</code> como servidor remoto. La demo pública no requiere inicio de sesión. El conector descubre <code>get_capabilities</code>, <code>read_demo_result</code> y <code>run_demo</code>. Para operar un espacio propio, configurá una credencial de agente con los permisos necesarios en las cabeceras privadas del cliente. <a href="/static/mcp.html">Instrucciones para Claude y Gemini CLI</a>.</p>
+<p><a href="/agents/manifest.json">Estado y condiciones de acceso</a> · <a href="/openapi.json">OpenAPI</a> · <a href="/llms.txt">Guía en texto</a> · <a href="/static/agent-policy.html">Política de agentes</a></p>
+<h2 id="demo">1. Primera prueba, sin registro humano</h2>
+<p>Un cliente HTTP puede enviar esta solicitud sin una clave previa:</p>
+<pre>POST /api/agents/demo
+Content-Type: application/json
+
+{"example": "hours-known"}</pre>
+<p>La respuesta <code>202</code> entrega <code>credential.token</code>, su vencimiento, un trabajo y <code>poll_url</code>. Guardá el token en memoria o en el almacén de credenciales del cliente; usalo para consultar el trabajo:</p>
+<pre>GET /api/jobs/{job_id}
+Authorization: Bearer &lt;TOKEN_RECIBIDO&gt;</pre>
+<p>La demostración ejecuta el mismo motor en un espacio aislado. Podés elegir <code>hours-known</code>, <code>hours-unknown</code>, <code>fdq-frontier</code> o <code>fdq-selector</code>. Acepta exclusivamente esos ejemplos sintéticos: no permite cargar datos propios, cambiar expedientes ni extender el acceso. Vence en una hora. El borrado de la base activa se procesa en la siguiente limpieza horaria.</p>
+<h2 id="register">2. Alta automática para trabajo continuo</h2>
+<p>Leé primero <a href="/agents/manifest.json">el manifiesto</a> y la <a href="/static/agent-policy.html">política</a>. Si <code>available</code> es verdadero, enviá la versión vigente y el reconocimiento técnico de la política de datos:</p>
+<pre>POST /api/agents/register
+Content-Type: application/json
+
+{
+  "policy_version": "agent-access-2026-10-06-v1",
+  "data_policy_acknowledged": true,
+  "scopes": ["cases:read", "cases:write", "jobs:run", "account:delete"]
+}</pre>
+<p>La respuesta <code>201</code> incluye una identidad de agente y una clave que se muestra una sola vez. No solicita edad, correo ni consentimiento de una persona. El reconocimiento del cliente no sustituye permisos sobre datos ajenos. Este acceso admite exclusivamente datos sintéticos o no personales y no se vincula a ninguna cuenta humana.</p>
+<h2>3. Permisos de la nueva credencial</h2>
+<div class="table-wrap"><table><thead><tr><th>Permiso</th><th>Operaciones sobre su propio espacio</th></tr></thead><tbody>
+<tr><td><code>cases:read</code></td><td>Consultar expedientes, trabajos, artefactos y exportación.</td></tr>
+<tr><td><code>cases:write</code></td><td>Crear y revisar expedientes.</td></tr>
+<tr><td><code>jobs:run</code></td><td>Solicitar ejecución y cancelación.</td></tr>
+<tr><td><code>cases:delete</code></td><td>Borrar expedientes individuales; no está concedido por defecto.</td></tr>
+<tr><td><code>account:delete</code></td><td>Borrar el espacio completo con <code>DELETE /api/agents/me</code>.</td></tr>
+</tbody></table></div>
+<p>El agente puede pedir un subconjunto. Ninguna de estas claves permite entrar en otra cuenta, crear claves humanas, cambiar consentimientos o incorporar interacciones a investigación. La identidad identifica un espacio, no verifica quién es el operador.</p>
+<h2>4. Ejecutar, rotar y revocar</h2>
+<p>Usá <code>Authorization: Bearer &lt;TOKEN&gt;</code> en cada llamada privada. <code>GET /api/agents/me</code> devuelve identidad, permisos y vencimiento. Para trabajar, enviá un expediente con <code>POST /api/cases</code>, solicitá <code>POST /api/cases/{case_id}/run</code> y consultá el trabajo. Ver <a href="/static/api.html">contratos de entrada y resultado</a>.</p>
+<p>La clave del alta automática dura siete días. Antes del vencimiento, <code>POST /api/agents/token</code> con <code>{}</code> la reemplaza: la anterior queda revocada. Podés enviar <code>scopes</code> para reducir permisos; no podés ampliarlos. <code>DELETE /api/agents/token</code> revoca la clave actual. Si perdés una clave o vence sin rotarla, esta beta no ofrece recuperación automática de ese espacio. Una respuesta de rotación perdida también puede dejar al cliente sin acceso.</p>
+<h2>Límites de la beta</h2>
+<p>Por defecto: hasta 5 altas automáticas y 20 solicitudes de demostración por día para toda la instancia; 2 intentos de cada tipo por hora y dirección de conexión; 20 espacios de agentes activos; 5 expedientes y 5 revisiones por expediente; 5 ejecuciones diarias por agente y 20 diarias entre todos los agentes y demos, dentro del límite global existente. La cola de agentes admite 4 trabajos activos. Los límites se comparten y pueden impedir temporalmente una prueba. Consultá el manifiesto para los valores vigentes.</p>
+<p>La suspensión del servicio, el estado del respaldo y el cierre de altas pueden detener nuevas operaciones. <code>429</code> indica cuota; <code>503</code>, indisponibilidad. Evitá reintentos automáticos continuos. Tras una respuesta perdida al crear un espacio o una demo, no repitas indefinidamente: el primero puede haberse creado.</p>
+<h2>Decisiones cotidianas guiadas</h2><p>Para comparar alternativas de ocio u organización personal, usá el perfil <code>choice</code>. La herramienta MCP <code>prepare_decision</code> revisa tus datos y devuelve preguntas y el modelo para confirmar. Luego <code>create_case</code>, <code>run_case</code> y <code>get_job</code> conservan la consulta y entregan su recomendación condicional. <code>revise_case</code> guarda cambios sin borrar resultados previos. <a href="/static/decisions.html">Alcance, entrada y recorrido completo</a>.</p><h2>Alcance y compatibilidad</h2>
+<p>Genius audita créditos formales y verifica consultas FDQ con certificados provistos. No interpreta cualquier problema en lenguaje natural. Conservá el resultado original, los desconocidos, las condiciones y las obligaciones: una ejecución terminada no implica una decisión concluyente. Las pruebas sintéticas no son evidencia de campo.</p>
+<p>La API requiere un cliente capaz de llamadas HTTP y custodia de credenciales. MCP requiere conectarlo expresamente en una aplicación compatible: pegar una URL en el chat no instala el conector. Las páginas y resultados guardados se leen sin esa integración. No se habilitan llamadas JavaScript entre sitios ni se evitan restricciones del proveedor. OAuth no está implementado; MCP admite la demo pública y credenciales de agente por cabecera.</p>
+<h2>Integraciones con una cuenta humana</h2>
+<p>Si necesitás operar sobre tus expedientes humanos, conservamos <a href="/?access=api">Acceso API en tu cuenta</a>. Sus claves anteriores mantienen acceso completo a esa cuenta y revocación manual; no adquieren automáticamente los permisos limitados del nuevo acceso de agentes. No compartas tu contraseña ni pegues claves en conversaciones, URLs o expedientes.</p>
+</main><footer class="footer"><span>genius decision</span><a href="/">Acceso humano</a><a href="/static/privacy.html">Privacidad</a></footer></body></html>

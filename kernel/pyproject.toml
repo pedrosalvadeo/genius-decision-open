@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genius-decision-kernel"
+version = "1.0.1"
+description = "Offline finite exact reference kernel for Genius Decision FP1"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+genius-kernel = "genius_kernel.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["genius_kernel*"]

@@ -1,0 +1,2313 @@
+{
+  "format": "genius-fp1/1.0",
+  "meta": {
+    "id": "WaterHabitat_CF001",
+    "framework": "GeniusFormal",
+    "model": "WaterHabitatModel",
+    "context": "WaterHabitatContext",
+    "condition": "C0",
+    "horizon": "2",
+    "specification": "GENIUS-SPEC-1.0.0",
+    "theory_snapshot": "GENIUS-THEORY-2026-09-23-S2",
+    "profile": "FP1_FINITE_EXACT",
+    "claim_scope": "FORMAL_INSTANCE_ONLY"
+  },
+  "assumptions": [
+    {
+      "id": "A_SYNTHETIC",
+      "kind": "SYNTHETIC",
+      "statement": "Instancia formal sintética de CF-001; no representa una población ni una intervención real.",
+      "provenance": "S1 P03156-P03246 y P03552-P03639; CONFORMANCE_CASES.md, instancia B."
+    },
+    {
+      "id": "A_MODEL",
+      "kind": "MODEL",
+      "statement": "Instalar crea dos resultados regular/estrés. Mantener preserva los servicios hasta H=2. Las tablas causales y la familia de tres políticas constituyen el modelo completo declarado.",
+      "provenance": "CONFORMANCE_CASES.md, instancia B; estipulación sintética."
+    },
+    {
+      "id": "A_INIT",
+      "kind": "INITIALIZATION",
+      "statement": "La historia h0 lleva a x0 sin servicios e información i0; las tres políticas parten de la misma condición C0.",
+      "provenance": "CONFORMANCE_CASES.md, instancia B; testigo inicial sintético."
+    },
+    {
+      "id": "A_INFO",
+      "kind": "INFORMATION",
+      "statement": "Las observaciones y_installed e y_held no revelan el escenario. El controlador solo dispone de i0, i1 o i2 según el tiempo; las políticas no consultan el estado oculto.",
+      "provenance": "CONFORMANCE_CASES.md, instancia B; estipulación del régimen informacional."
+    },
+    {
+      "id": "A_FUNCTIONAL",
+      "kind": "CALIBRATION",
+      "statement": "f_water y f_habitat miden presencia de servicios con calibración identidad 0/1 o 1/1. Las coordenadas son comunes a todos los puntos.",
+      "provenance": "S1 ejemplo agua/hábitat y definición de B."
+    },
+    {
+      "id": "A_COMPOSITION",
+      "kind": "MODEL",
+      "statement": "Los puertos water y habitat registran conjuntamente los servicios de cada consulta. Las vistas retienen query para no perder su correlación.",
+      "provenance": "Presentación finita explícita de la relación conjunta de B."
+    },
+    {
+      "id": "A_RESOURCES",
+      "kind": "MODEL",
+      "statement": "d_water y d_habitat son demandas físicas distintas del recurso budget, de unidad budget_unit. Cada servicio instalado consume una unidad por instante; sin servicio consume cero.",
+      "provenance": "S1 P03216-P03238; tablas sintéticas de B."
+    },
+    {
+      "id": "A_GENERATIVE",
+      "kind": "SEMANTIC",
+      "statement": "g_empty, g_a, g_h y g_ah son identidades organizacionales completas. Su conservación es inclusión de conjuntos de servicios; la traducción nativa-común es identidad nominal.",
+      "provenance": "S1 P03167-P03190; instancia B."
+    },
+    {
+      "id": "A_WELFARE",
+      "kind": "CALIBRATION",
+      "statement": "l1 y l2 existen en t=0,1,2; living_condition es aplicable a ambos. Sus valores comunes son presencia de agua y hábitat respectivamente. No se afirma una escala empírica de bienestar.",
+      "provenance": "S1 P03191-P03207; estipulación sintética."
+    },
+    {
+      "id": "A_SEMANTIC",
+      "kind": "SEMANTIC",
+      "statement": "Cada hoja refiere al significado (servicios,escenario) indicado. Los servicios permanecen en t=1,2, por lo que ese significado cubre ambos tiempos requeridos por la tarea.",
+      "provenance": "S1 P03208-P03215; invariancia explícita de servicios en el modelo."
+    },
+    {
+      "id": "A_TASK",
+      "kind": "NORMATIVE",
+      "statement": "La tarea sintética exige al menos un servicio en escenario regular y ambos en estrés durante t=1,2, para la frontera formada por l1,l2 hasta H=2. El presupuesto no forma parte de esta tarea.",
+      "provenance": "S1 P03208-P03215 y P03235-P03238; no es validación de vida sostenida real."
+    },
+    {
+      "id": "A_PROBABILITY",
+      "kind": "PROBABILITY",
+      "statement": "Cada instalación tiene probabilidades 3/4 regular y 1/4 estrés; cada mantenimiento tiene condicional uno. Son pesos estipulados, no inferidos de las posibilidades.",
+      "provenance": "S1 P03162-P03166; filas sintéticas de B."
+    },
+    {
+      "id": "A_BUDGET",
+      "kind": "NORMATIVE",
+      "statement": "Para elegibilidad se exige demanda total instantánea del recurso budget como máximo una unidad en toda consulta.",
+      "provenance": "S1 P03216-P03238; restricción separada de la tarea."
+    }
+  ],
+  "initialization": {
+    "history": "h0",
+    "condition": "C0",
+    "x0": "x0",
+    "i0": "i0",
+    "basis": [
+      "A_INIT",
+      "A_SYNTHETIC"
+    ]
+  },
+  "model": {
+    "states": [
+      "x0",
+      "x_a_r",
+      "x_a_s",
+      "x_h_r",
+      "x_h_s",
+      "x_ah_r",
+      "x_ah_s"
+    ],
+    "information": [
+      "i0",
+      "i1",
+      "i2"
+    ],
+    "actions": [
+      "install_a",
+      "install_h",
+      "install_ah",
+      "maintain"
+    ],
+    "observations": [
+      "y_installed",
+      "y_held"
+    ],
+    "exogenous": [
+      "u_regular",
+      "u_estres",
+      "u_hold"
+    ],
+    "basis": [
+      "A_MODEL",
+      "A_SYNTHETIC"
+    ],
+    "information_basis": [
+      "A_INFO"
+    ],
+    "executable": [
+      {
+        "t": "0",
+        "x": "x0",
+        "actions": [
+          "install_a",
+          "install_h",
+          "install_ah"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_a_r",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_a_s",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_h_r",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_h_s",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_ah_r",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_ah_s",
+        "actions": [
+          "maintain"
+        ]
+      }
+    ],
+    "admissible": [
+      {
+        "t": "0",
+        "x": "x0",
+        "actions": [
+          "install_a",
+          "install_h",
+          "install_ah"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_a_r",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_a_s",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_h_r",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_h_s",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_ah_r",
+        "actions": [
+          "maintain"
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_ah_s",
+        "actions": [
+          "maintain"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "t": "0",
+        "x": "x0",
+        "a": "install_a",
+        "outcomes": [
+          {
+            "branch": "regular",
+            "u": "u_regular",
+            "next_x": "x_a_r",
+            "y": "y_installed"
+          },
+          {
+            "branch": "estres",
+            "u": "u_estres",
+            "next_x": "x_a_s",
+            "y": "y_installed"
+          }
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_a_r",
+        "a": "maintain",
+        "outcomes": [
+          {
+            "branch": "hold",
+            "u": "u_hold",
+            "next_x": "x_a_r",
+            "y": "y_held"
+          }
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_a_s",
+        "a": "maintain",
+        "outcomes": [
+          {
+            "branch": "hold",
+            "u": "u_hold",
+            "next_x": "x_a_s",
+            "y": "y_held"
+          }
+        ]
+      },
+      {
+        "t": "0",
+        "x": "x0",
+        "a": "install_h",
+        "outcomes": [
+          {
+            "branch": "regular",
+            "u": "u_regular",
+            "next_x": "x_h_r",
+            "y": "y_installed"
+          },
+          {
+            "branch": "estres",
+            "u": "u_estres",
+            "next_x": "x_h_s",
+            "y": "y_installed"
+          }
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_h_r",
+        "a": "maintain",
+        "outcomes": [
+          {
+            "branch": "hold",
+            "u": "u_hold",
+            "next_x": "x_h_r",
+            "y": "y_held"
+          }
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_h_s",
+        "a": "maintain",
+        "outcomes": [
+          {
+            "branch": "hold",
+            "u": "u_hold",
+            "next_x": "x_h_s",
+            "y": "y_held"
+          }
+        ]
+      },
+      {
+        "t": "0",
+        "x": "x0",
+        "a": "install_ah",
+        "outcomes": [
+          {
+            "branch": "regular",
+            "u": "u_regular",
+            "next_x": "x_ah_r",
+            "y": "y_installed"
+          },
+          {
+            "branch": "estres",
+            "u": "u_estres",
+            "next_x": "x_ah_s",
+            "y": "y_installed"
+          }
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_ah_r",
+        "a": "maintain",
+        "outcomes": [
+          {
+            "branch": "hold",
+            "u": "u_hold",
+            "next_x": "x_ah_r",
+            "y": "y_held"
+          }
+        ]
+      },
+      {
+        "t": "1",
+        "x": "x_ah_s",
+        "a": "maintain",
+        "outcomes": [
+          {
+            "branch": "hold",
+            "u": "u_hold",
+            "next_x": "x_ah_s",
+            "y": "y_held"
+          }
+        ]
+      }
+    ],
+    "updates": [
+      {
+        "t": "0",
+        "i": "i0",
+        "a": "install_a",
+        "y": "y_installed",
+        "next_i": "i1"
+      },
+      {
+        "t": "0",
+        "i": "i0",
+        "a": "install_h",
+        "y": "y_installed",
+        "next_i": "i1"
+      },
+      {
+        "t": "0",
+        "i": "i0",
+        "a": "install_ah",
+        "y": "y_installed",
+        "next_i": "i1"
+      },
+      {
+        "t": "1",
+        "i": "i1",
+        "a": "maintain",
+        "y": "y_held",
+        "next_i": "i2"
+      }
+    ]
+  },
+  "policies": [
+    {
+      "id": "pi_a",
+      "decisions": [
+        {
+          "t": "0",
+          "i": "i0",
+          "a": "install_a"
+        },
+        {
+          "t": "1",
+          "i": "i1",
+          "a": "maintain"
+        }
+      ]
+    },
+    {
+      "id": "pi_h",
+      "decisions": [
+        {
+          "t": "0",
+          "i": "i0",
+          "a": "install_h"
+        },
+        {
+          "t": "1",
+          "i": "i1",
+          "a": "maintain"
+        }
+      ]
+    },
+    {
+      "id": "pi_ah",
+      "decisions": [
+        {
+          "t": "0",
+          "i": "i0",
+          "a": "install_ah"
+        },
+        {
+          "t": "1",
+          "i": "i1",
+          "a": "maintain"
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "regular",
+      "inputs": [
+        "u_regular",
+        "u_hold"
+      ]
+    },
+    {
+      "id": "estres",
+      "inputs": [
+        "u_estres",
+        "u_hold"
+      ]
+    }
+  ],
+  "functional": {
+    "indices": [
+      {
+        "id": "f_water",
+        "calibration": [
+          {
+            "raw": "0/1",
+            "value": "0/1"
+          },
+          {
+            "raw": "1/1",
+            "value": "1/1"
+          }
+        ],
+        "basis": [
+          "A_FUNCTIONAL"
+        ]
+      },
+      {
+        "id": "f_habitat",
+        "calibration": [
+          {
+            "raw": "0/1",
+            "value": "0/1"
+          },
+          {
+            "raw": "1/1",
+            "value": "1/1"
+          }
+        ],
+        "basis": [
+          "A_FUNCTIONAL"
+        ]
+      }
+    ],
+    "measurements": [
+      {
+        "t": "0",
+        "x": "x0",
+        "index": "f_water",
+        "raw": "0/1"
+      },
+      {
+        "t": "0",
+        "x": "x0",
+        "index": "f_habitat",
+        "raw": "0/1"
+      },
+      {
+        "t": "1",
+        "x": "x_a_r",
+        "index": "f_water",
+        "raw": "1/1"
+      },
+      {
+        "t": "1",
+        "x": "x_a_r",
+        "index": "f_habitat",
+        "raw": "0/1"
+      },
+      {
+        "t": "1",
+        "x": "x_a_s",
+        "index": "f_water",
+        "raw": "1/1"
+      },
+      {
+        "t": "1",
+        "x": "x_a_s",
+        "index": "f_habitat",
+        "raw": "0/1"
+      },
+      {
+        "t": "1",
+        "x": "x_h_r",
+        "index": "f_water",
+        "raw": "0/1"
+      },
+      {
+        "t": "1",
+        "x": "x_h_r",
+        "index": "f_habitat",
+        "raw": "1/1"
+      },
+      {
+        "t": "1",
+        "x": "x_h_s",
+        "index": "f_water",
+        "raw": "0/1"
+      },
+      {
+        "t": "1",
+        "x": "x_h_s",
+        "index": "f_habitat",
+        "raw": "1/1"
+      },
+      {
+        "t": "1",
+        "x": "x_ah_r",
+        "index": "f_water",
+        "raw": "1/1"
+      },
+      {
+        "t": "1",
+        "x": "x_ah_r",
+        "index": "f_habitat",
+        "raw": "1/1"
+      },
+      {
+        "t": "1",
+        "x": "x_ah_s",
+        "index": "f_water",
+        "raw": "1/1"
+      },
+      {
+        "t": "1",
+        "x": "x_ah_s",
+        "index": "f_habitat",
+        "raw": "1/1"
+      },
+      {
+        "t": "2",
+        "x": "x_a_r",
+        "index": "f_water",
+        "raw": "1/1"
+      },
+      {
+        "t": "2",
+        "x": "x_a_r",
+        "index": "f_habitat",
+        "raw": "0/1"
+      },
+      {
+        "t": "2",
+        "x": "x_a_s",
+        "index": "f_water",
+        "raw": "1/1"
+      },
+      {
+        "t": "2",
+        "x": "x_a_s",
+        "index": "f_habitat",
+        "raw": "0/1"
+      },
+      {
+        "t": "2",
+        "x": "x_h_r",
+        "index": "f_water",
+        "raw": "0/1"
+      },
+      {
+        "t": "2",
+        "x": "x_h_r",
+        "index": "f_habitat",
+        "raw": "1/1"
+      },
+      {
+        "t": "2",
+        "x": "x_h_s",
+        "index": "f_water",
+        "raw": "0/1"
+      },
+      {
+        "t": "2",
+        "x": "x_h_s",
+        "index": "f_habitat",
+        "raw": "1/1"
+      },
+      {
+        "t": "2",
+        "x": "x_ah_r",
+        "index": "f_water",
+        "raw": "1/1"
+      },
+      {
+        "t": "2",
+        "x": "x_ah_r",
+        "index": "f_habitat",
+        "raw": "1/1"
+      },
+      {
+        "t": "2",
+        "x": "x_ah_s",
+        "index": "f_water",
+        "raw": "1/1"
+      },
+      {
+        "t": "2",
+        "x": "x_ah_s",
+        "index": "f_habitat",
+        "raw": "1/1"
+      }
+    ],
+    "reduction": {
+      "ids": [
+        "R_empty_t0",
+        "R_a_t1",
+        "R_h_t1",
+        "R_ah_t1",
+        "R_a_t2",
+        "R_h_t2",
+        "R_ah_t2"
+      ],
+      "rows": [
+        {
+          "t": "0",
+          "x": "x0",
+          "reduced": "R_empty_t0"
+        },
+        {
+          "t": "1",
+          "x": "x_a_r",
+          "reduced": "R_a_t1"
+        },
+        {
+          "t": "1",
+          "x": "x_a_s",
+          "reduced": "R_a_t1"
+        },
+        {
+          "t": "1",
+          "x": "x_h_r",
+          "reduced": "R_h_t1"
+        },
+        {
+          "t": "1",
+          "x": "x_h_s",
+          "reduced": "R_h_t1"
+        },
+        {
+          "t": "1",
+          "x": "x_ah_r",
+          "reduced": "R_ah_t1"
+        },
+        {
+          "t": "1",
+          "x": "x_ah_s",
+          "reduced": "R_ah_t1"
+        },
+        {
+          "t": "2",
+          "x": "x_a_r",
+          "reduced": "R_a_t2"
+        },
+        {
+          "t": "2",
+          "x": "x_a_s",
+          "reduced": "R_a_t2"
+        },
+        {
+          "t": "2",
+          "x": "x_h_r",
+          "reduced": "R_h_t2"
+        },
+        {
+          "t": "2",
+          "x": "x_h_s",
+          "reduced": "R_h_t2"
+        },
+        {
+          "t": "2",
+          "x": "x_ah_r",
+          "reduced": "R_ah_t2"
+        },
+        {
+          "t": "2",
+          "x": "x_ah_s",
+          "reduced": "R_ah_t2"
+        }
+      ]
+    }
+  },
+  "composition": {
+    "ports": [
+      {
+        "id": "water",
+        "values": [
+          "v0",
+          "v1"
+        ],
+        "basis": [
+          "A_COMPOSITION"
+        ]
+      },
+      {
+        "id": "habitat",
+        "values": [
+          "v0",
+          "v1"
+        ],
+        "basis": [
+          "A_COMPOSITION"
+        ]
+      }
+    ],
+    "rows": [
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": []
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v0"
+          },
+          {
+            "port": "habitat",
+            "value": "v0"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v1"
+          },
+          {
+            "port": "habitat",
+            "value": "v0"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v1"
+          },
+          {
+            "port": "habitat",
+            "value": "v0"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v1"
+          },
+          {
+            "port": "habitat",
+            "value": "v0"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v1"
+          },
+          {
+            "port": "habitat",
+            "value": "v0"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": []
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v0"
+          },
+          {
+            "port": "habitat",
+            "value": "v0"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v0"
+          },
+          {
+            "port": "habitat",
+            "value": "v1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v0"
+          },
+          {
+            "port": "habitat",
+            "value": "v1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v0"
+          },
+          {
+            "port": "habitat",
+            "value": "v1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v0"
+          },
+          {
+            "port": "habitat",
+            "value": "v1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": []
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v0"
+          },
+          {
+            "port": "habitat",
+            "value": "v0"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v1"
+          },
+          {
+            "port": "habitat",
+            "value": "v1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v1"
+          },
+          {
+            "port": "habitat",
+            "value": "v1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v1"
+          },
+          {
+            "port": "habitat",
+            "value": "v1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "values": [
+          {
+            "port": "water",
+            "value": "v1"
+          },
+          {
+            "port": "habitat",
+            "value": "v1"
+          }
+        ]
+      }
+    ],
+    "views": [
+      {
+        "id": "ViewWater",
+        "columns": [
+          "query",
+          "water"
+        ]
+      },
+      {
+        "id": "ViewHabitat",
+        "columns": [
+          "query",
+          "habitat"
+        ]
+      }
+    ],
+    "basis": [
+      "A_COMPOSITION"
+    ]
+  },
+  "resources": {
+    "kinds": [
+      {
+        "id": "budget",
+        "unit": "budget_unit"
+      }
+    ],
+    "demands": [
+      {
+        "id": "d_water",
+        "resource": "budget",
+        "unit": "budget_unit",
+        "basis": [
+          "A_RESOURCES"
+        ]
+      },
+      {
+        "id": "d_habitat",
+        "resource": "budget",
+        "unit": "budget_unit",
+        "basis": [
+          "A_RESOURCES"
+        ]
+      }
+    ],
+    "values": [
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": []
+        },
+        "demand": "d_water",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": []
+        },
+        "demand": "d_habitat",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular"
+          ]
+        },
+        "demand": "d_water",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres"
+          ]
+        },
+        "demand": "d_water",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "demand": "d_water",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "demand": "d_water",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": []
+        },
+        "demand": "d_water",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": []
+        },
+        "demand": "d_habitat",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular"
+          ]
+        },
+        "demand": "d_water",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres"
+          ]
+        },
+        "demand": "d_water",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "demand": "d_water",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "demand": "d_water",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": []
+        },
+        "demand": "d_water",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": []
+        },
+        "demand": "d_habitat",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular"
+          ]
+        },
+        "demand": "d_water",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres"
+          ]
+        },
+        "demand": "d_water",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "demand": "d_water",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "demand": "d_water",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "demand": "d_habitat",
+        "value": "1/1"
+      }
+    ],
+    "basis": [
+      "A_RESOURCES"
+    ]
+  },
+  "generative": {
+    "native_ids": [
+      "g_empty",
+      "g_a",
+      "g_h",
+      "g_ah"
+    ],
+    "common_ids": [
+      "g_empty",
+      "g_a",
+      "g_h",
+      "g_ah"
+    ],
+    "meaning_atoms": [
+      "meaning_g_empty",
+      "meaning_g_a",
+      "meaning_g_h",
+      "meaning_g_ah"
+    ],
+    "native_meaning": [
+      {
+        "identity": "g_empty",
+        "atoms": [
+          "meaning_g_empty"
+        ]
+      },
+      {
+        "identity": "g_a",
+        "atoms": [
+          "meaning_g_a"
+        ]
+      },
+      {
+        "identity": "g_h",
+        "atoms": [
+          "meaning_g_h"
+        ]
+      },
+      {
+        "identity": "g_ah",
+        "atoms": [
+          "meaning_g_ah"
+        ]
+      }
+    ],
+    "common_meaning": [
+      {
+        "identity": "g_empty",
+        "atoms": [
+          "meaning_g_empty"
+        ]
+      },
+      {
+        "identity": "g_a",
+        "atoms": [
+          "meaning_g_a"
+        ]
+      },
+      {
+        "identity": "g_h",
+        "atoms": [
+          "meaning_g_h"
+        ]
+      },
+      {
+        "identity": "g_ah",
+        "atoms": [
+          "meaning_g_ah"
+        ]
+      }
+    ],
+    "native_order": [
+      [
+        "g_empty",
+        "g_empty"
+      ],
+      [
+        "g_empty",
+        "g_a"
+      ],
+      [
+        "g_empty",
+        "g_h"
+      ],
+      [
+        "g_empty",
+        "g_ah"
+      ],
+      [
+        "g_a",
+        "g_a"
+      ],
+      [
+        "g_a",
+        "g_ah"
+      ],
+      [
+        "g_h",
+        "g_h"
+      ],
+      [
+        "g_h",
+        "g_ah"
+      ],
+      [
+        "g_ah",
+        "g_ah"
+      ]
+    ],
+    "common_order": [
+      [
+        "g_empty",
+        "g_empty"
+      ],
+      [
+        "g_empty",
+        "g_a"
+      ],
+      [
+        "g_empty",
+        "g_h"
+      ],
+      [
+        "g_empty",
+        "g_ah"
+      ],
+      [
+        "g_a",
+        "g_a"
+      ],
+      [
+        "g_a",
+        "g_ah"
+      ],
+      [
+        "g_h",
+        "g_h"
+      ],
+      [
+        "g_h",
+        "g_ah"
+      ],
+      [
+        "g_ah",
+        "g_ah"
+      ]
+    ],
+    "identity": [
+      {
+        "t": "0",
+        "x": "x0",
+        "native": "g_empty"
+      },
+      {
+        "t": "1",
+        "x": "x_a_r",
+        "native": "g_a"
+      },
+      {
+        "t": "1",
+        "x": "x_a_s",
+        "native": "g_a"
+      },
+      {
+        "t": "1",
+        "x": "x_h_r",
+        "native": "g_h"
+      },
+      {
+        "t": "1",
+        "x": "x_h_s",
+        "native": "g_h"
+      },
+      {
+        "t": "1",
+        "x": "x_ah_r",
+        "native": "g_ah"
+      },
+      {
+        "t": "1",
+        "x": "x_ah_s",
+        "native": "g_ah"
+      },
+      {
+        "t": "2",
+        "x": "x_a_r",
+        "native": "g_a"
+      },
+      {
+        "t": "2",
+        "x": "x_a_s",
+        "native": "g_a"
+      },
+      {
+        "t": "2",
+        "x": "x_h_r",
+        "native": "g_h"
+      },
+      {
+        "t": "2",
+        "x": "x_h_s",
+        "native": "g_h"
+      },
+      {
+        "t": "2",
+        "x": "x_ah_r",
+        "native": "g_ah"
+      },
+      {
+        "t": "2",
+        "x": "x_ah_s",
+        "native": "g_ah"
+      }
+    ],
+    "translation": [
+      {
+        "native": "g_empty",
+        "common": "g_empty"
+      },
+      {
+        "native": "g_a",
+        "common": "g_a"
+      },
+      {
+        "native": "g_h",
+        "common": "g_h"
+      },
+      {
+        "native": "g_ah",
+        "common": "g_ah"
+      }
+    ],
+    "recipe": {
+      "kind": "hold",
+      "length": "1"
+    },
+    "mode": "robust",
+    "basis": [
+      "A_GENERATIVE"
+    ]
+  },
+  "welfare": {
+    "carriers": [
+      "l1",
+      "l2"
+    ],
+    "dimensions": [
+      {
+        "id": "living_condition",
+        "basis": [
+          "A_WELFARE"
+        ]
+      }
+    ],
+    "existence": [
+      {
+        "t": "0",
+        "carrier": "l1"
+      },
+      {
+        "t": "0",
+        "carrier": "l2"
+      },
+      {
+        "t": "1",
+        "carrier": "l1"
+      },
+      {
+        "t": "1",
+        "carrier": "l2"
+      },
+      {
+        "t": "2",
+        "carrier": "l1"
+      },
+      {
+        "t": "2",
+        "carrier": "l2"
+      }
+    ],
+    "applicability": [
+      {
+        "t": "0",
+        "carrier": "l1",
+        "dimension": "living_condition"
+      },
+      {
+        "t": "0",
+        "carrier": "l2",
+        "dimension": "living_condition"
+      },
+      {
+        "t": "1",
+        "carrier": "l1",
+        "dimension": "living_condition"
+      },
+      {
+        "t": "1",
+        "carrier": "l2",
+        "dimension": "living_condition"
+      },
+      {
+        "t": "2",
+        "carrier": "l1",
+        "dimension": "living_condition"
+      },
+      {
+        "t": "2",
+        "carrier": "l2",
+        "dimension": "living_condition"
+      }
+    ],
+    "values": [
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": []
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": []
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": []
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": []
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": []
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": []
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "0/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "carrier": "l1",
+        "dimension": "living_condition",
+        "value": "1/1"
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "carrier": "l2",
+        "dimension": "living_condition",
+        "value": "1/1"
+      }
+    ],
+    "basis": [
+      "A_WELFARE"
+    ]
+  },
+  "semantics": {
+    "states": [
+      "s_a_r",
+      "s_a_s",
+      "s_h_r",
+      "s_h_s",
+      "s_ah_r",
+      "s_ah_s"
+    ],
+    "references": [
+      {
+        "leaf": {
+          "policy": "pi_a",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "states": [
+          "s_a_r"
+        ]
+      },
+      {
+        "leaf": {
+          "policy": "pi_a",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "states": [
+          "s_a_s"
+        ]
+      },
+      {
+        "leaf": {
+          "policy": "pi_h",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "states": [
+          "s_h_r"
+        ]
+      },
+      {
+        "leaf": {
+          "policy": "pi_h",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "states": [
+          "s_h_s"
+        ]
+      },
+      {
+        "leaf": {
+          "policy": "pi_ah",
+          "path": [
+            "regular",
+            "hold"
+          ]
+        },
+        "states": [
+          "s_ah_r"
+        ]
+      },
+      {
+        "leaf": {
+          "policy": "pi_ah",
+          "path": [
+            "estres",
+            "hold"
+          ]
+        },
+        "states": [
+          "s_ah_s"
+        ]
+      }
+    ],
+    "task": [
+      {
+        "state": "s_a_r",
+        "value": "1"
+      },
+      {
+        "state": "s_a_s",
+        "value": "0"
+      },
+      {
+        "state": "s_h_r",
+        "value": "1"
+      },
+      {
+        "state": "s_h_s",
+        "value": "0"
+      },
+      {
+        "state": "s_ah_r",
+        "value": "1"
+      },
+      {
+        "state": "s_ah_s",
+        "value": "1"
+      }
+    ],
+    "protocol": "FP1_EXACT_ENUM_V1",
+    "basis": [
+      "A_SEMANTIC",
+      "A_TASK"
+    ]
+  },
+  "law": {
+    "rows": [
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": []
+        },
+        "weights": [
+          {
+            "branch": "regular",
+            "mass": "3/4"
+          },
+          {
+            "branch": "estres",
+            "mass": "1/4"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "regular"
+          ]
+        },
+        "weights": [
+          {
+            "branch": "hold",
+            "mass": "1/1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_a",
+          "path": [
+            "estres"
+          ]
+        },
+        "weights": [
+          {
+            "branch": "hold",
+            "mass": "1/1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": []
+        },
+        "weights": [
+          {
+            "branch": "regular",
+            "mass": "3/4"
+          },
+          {
+            "branch": "estres",
+            "mass": "1/4"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "regular"
+          ]
+        },
+        "weights": [
+          {
+            "branch": "hold",
+            "mass": "1/1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_h",
+          "path": [
+            "estres"
+          ]
+        },
+        "weights": [
+          {
+            "branch": "hold",
+            "mass": "1/1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": []
+        },
+        "weights": [
+          {
+            "branch": "regular",
+            "mass": "3/4"
+          },
+          {
+            "branch": "estres",
+            "mass": "1/4"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "regular"
+          ]
+        },
+        "weights": [
+          {
+            "branch": "hold",
+            "mass": "1/1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "policy": "pi_ah",
+          "path": [
+            "estres"
+          ]
+        },
+        "weights": [
+          {
+            "branch": "hold",
+            "mass": "1/1"
+          }
+        ]
+      }
+    ],
+    "basis": [
+      "A_PROBABILITY"
+    ]
+  },
+  "constraints": [
+    {
+      "id": "BudgetAtMostOne",
+      "kind": "resource_budget",
+      "resource": "budget",
+      "bound": "1/1",
+      "basis": [
+        "A_BUDGET"
+      ]
+    }
+  ],
+  "selection": {
+    "mode": "none"
+  }
+}

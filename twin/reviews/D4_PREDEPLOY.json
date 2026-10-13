@@ -1,0 +1,24 @@
+{
+  "format": "genius-d4-predeploy/1",
+  "public_base": "7d1debbfcf60e9e638422e9d526c605c43eb6b98",
+  "twin_base": "134eb202361d29fc90734259ffa20cab610c2df1",
+  "local_checks": {
+    "beta_suite": {
+      "passed": 92
+    },
+    "additional_archive_security_test": {
+      "passed": 1
+    },
+    "legacy_recovery": {
+      "passed": 3
+    },
+    "authenticated_twin_browser": {
+      "passed": 13
+    },
+    "public_beta_browser": {
+      "passed": 16
+    }
+  },
+  "scope": "Synthetic local fixtures; not evidence of public deployment or empirical validation",
+  "remote_changes": "None yet; exact source publication follows"
+}

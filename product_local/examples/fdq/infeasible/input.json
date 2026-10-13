@@ -1,0 +1,683 @@
+{
+  "assumptions": [
+    {
+      "id": "A",
+      "kind": "SYNTHETIC",
+      "provenance": "CF fixtures",
+      "statement": "Formal test only."
+    },
+    {
+      "id": "SYN_W",
+      "kind": "SYNTHETIC",
+      "provenance": "R1 research stipulation",
+      "statement": "Abstract carrier c exists at t0,t1; ordinal dimension integrity is stipulated, rational unitless values. Not plant data, biological welfare or a domain admission."
+    }
+  ],
+  "composition": {
+    "basis": [
+      "A"
+    ],
+    "ports": [],
+    "rows": [
+      {
+        "query": {
+          "path": [],
+          "policy": "p"
+        },
+        "values": []
+      },
+      {
+        "query": {
+          "path": [
+            "r"
+          ],
+          "policy": "p"
+        },
+        "values": []
+      },
+      {
+        "query": {
+          "path": [],
+          "policy": "q"
+        },
+        "values": []
+      },
+      {
+        "query": {
+          "path": [
+            "r"
+          ],
+          "policy": "q"
+        },
+        "values": []
+      },
+      {
+        "query": {
+          "path": [],
+          "policy": "s"
+        },
+        "values": []
+      },
+      {
+        "query": {
+          "path": [
+            "r"
+          ],
+          "policy": "s"
+        },
+        "values": []
+      }
+    ],
+    "views": [
+      {
+        "columns": [
+          "query"
+        ],
+        "id": "V"
+      }
+    ]
+  },
+  "constraints": [
+    {
+      "basis": [
+        "A"
+      ],
+      "bound": "0/1",
+      "id": "Budget_R",
+      "kind": "resource_budget",
+      "resource": "R"
+    }
+  ],
+  "format": "genius-fp1/1.0",
+  "functional": {
+    "indices": [
+      {
+        "basis": [
+          "A"
+        ],
+        "calibration": [
+          {
+            "raw": "0/1",
+            "value": "0/1"
+          },
+          {
+            "raw": "5/1",
+            "value": "5/1"
+          }
+        ],
+        "id": "f0"
+      }
+    ],
+    "measurements": [
+      {
+        "index": "f0",
+        "raw": "0/1",
+        "t": "0",
+        "x": "x0"
+      },
+      {
+        "index": "f0",
+        "raw": "5/1",
+        "t": "1",
+        "x": "x_p_r_1"
+      }
+    ],
+    "reduction": {
+      "ids": [
+        "red_0_x0",
+        "red_1_x_p_r_1",
+        "red_1_x_q_r_1"
+      ],
+      "rows": [
+        {
+          "reduced": "red_0_x0",
+          "t": "0",
+          "x": "x0"
+        },
+        {
+          "reduced": "red_1_x_p_r_1",
+          "t": "1",
+          "x": "x_p_r_1"
+        },
+        {
+          "reduced": "red_1_x_q_r_1",
+          "t": "1",
+          "x": "x_q_r_1"
+        }
+      ]
+    }
+  },
+  "generative": {
+    "basis": [
+      "A"
+    ],
+    "common_ids": [
+      "g",
+      "o"
+    ],
+    "common_meaning": [
+      {
+        "atoms": [
+          "meaning_g"
+        ],
+        "identity": "g"
+      },
+      {
+        "atoms": [
+          "meaning_o"
+        ],
+        "identity": "o"
+      }
+    ],
+    "common_order": [
+      [
+        "g",
+        "g"
+      ],
+      [
+        "o",
+        "o"
+      ]
+    ],
+    "identity": [
+      {
+        "native": "o",
+        "t": "0",
+        "x": "x0"
+      },
+      {
+        "native": "g",
+        "t": "1",
+        "x": "x_p_r_1"
+      },
+      {
+        "native": "g",
+        "t": "1",
+        "x": "x_q_r_1"
+      }
+    ],
+    "meaning_atoms": [
+      "meaning_g",
+      "meaning_o"
+    ],
+    "mode": "robust",
+    "native_ids": [
+      "g",
+      "o"
+    ],
+    "native_meaning": [
+      {
+        "atoms": [
+          "meaning_g"
+        ],
+        "identity": "g"
+      },
+      {
+        "atoms": [
+          "meaning_o"
+        ],
+        "identity": "o"
+      }
+    ],
+    "native_order": [
+      [
+        "g",
+        "g"
+      ],
+      [
+        "o",
+        "o"
+      ]
+    ],
+    "recipe": {
+      "kind": "att"
+    },
+    "translation": [
+      {
+        "common": "g",
+        "native": "g"
+      },
+      {
+        "common": "o",
+        "native": "o"
+      }
+    ]
+  },
+  "initialization": {
+    "basis": [
+      "A"
+    ],
+    "condition": "K",
+    "history": "h0",
+    "i0": "i0",
+    "x0": "x0"
+  },
+  "law": {
+    "basis": [
+      "A"
+    ],
+    "rows": [
+      {
+        "query": {
+          "path": [],
+          "policy": "p"
+        },
+        "weights": [
+          {
+            "branch": "r",
+            "mass": "1/1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "path": [],
+          "policy": "q"
+        },
+        "weights": [
+          {
+            "branch": "r",
+            "mass": "1/1"
+          }
+        ]
+      },
+      {
+        "query": {
+          "path": [],
+          "policy": "s"
+        },
+        "weights": [
+          {
+            "branch": "r",
+            "mass": "1/1"
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "claim_scope": "FORMAL_INSTANCE_ONLY",
+    "condition": "K",
+    "context": "C",
+    "framework": "F",
+    "horizon": "1",
+    "id": "Test",
+    "model": "M",
+    "profile": "FP1_FINITE_EXACT",
+    "specification": "GENIUS-SPEC-1.0.0",
+    "theory_snapshot": "GENIUS-THEORY-2026-09-23-S2"
+  },
+  "model": {
+    "actions": [
+      "act_p",
+      "act_q"
+    ],
+    "admissible": [
+      {
+        "actions": [
+          "act_p",
+          "act_q"
+        ],
+        "t": "0",
+        "x": "x0"
+      }
+    ],
+    "basis": [
+      "A"
+    ],
+    "executable": [
+      {
+        "actions": [
+          "act_p",
+          "act_q"
+        ],
+        "t": "0",
+        "x": "x0"
+      }
+    ],
+    "exogenous": [
+      "u_r"
+    ],
+    "information": [
+      "i0"
+    ],
+    "information_basis": [
+      "A"
+    ],
+    "observations": [
+      "y"
+    ],
+    "states": [
+      "x0",
+      "x_p_r_1",
+      "x_q_r_1"
+    ],
+    "transitions": [
+      {
+        "a": "act_p",
+        "outcomes": [
+          {
+            "branch": "r",
+            "next_x": "x_p_r_1",
+            "u": "u_r",
+            "y": "y"
+          }
+        ],
+        "t": "0",
+        "x": "x0"
+      },
+      {
+        "a": "act_q",
+        "outcomes": [
+          {
+            "branch": "r",
+            "next_x": "x_q_r_1",
+            "u": "u_r",
+            "y": "y"
+          }
+        ],
+        "t": "0",
+        "x": "x0"
+      }
+    ],
+    "updates": [
+      {
+        "a": "act_p",
+        "i": "i0",
+        "next_i": "i0",
+        "t": "0",
+        "y": "y"
+      },
+      {
+        "a": "act_q",
+        "i": "i0",
+        "next_i": "i0",
+        "t": "0",
+        "y": "y"
+      }
+    ]
+  },
+  "policies": [
+    {
+      "decisions": [
+        {
+          "a": "act_p",
+          "i": "i0",
+          "t": "0"
+        }
+      ],
+      "id": "p"
+    },
+    {
+      "decisions": [
+        {
+          "a": "act_q",
+          "i": "i0",
+          "t": "0"
+        }
+      ],
+      "id": "q"
+    },
+    {
+      "decisions": [
+        {
+          "a": "act_p",
+          "i": "i0",
+          "t": "0"
+        }
+      ],
+      "id": "s"
+    }
+  ],
+  "resources": {
+    "basis": [
+      "A"
+    ],
+    "demands": [
+      {
+        "basis": [
+          "A"
+        ],
+        "id": "d",
+        "resource": "R",
+        "unit": "L"
+      }
+    ],
+    "kinds": [
+      {
+        "id": "R",
+        "unit": "L"
+      }
+    ],
+    "values": [
+      {
+        "demand": "d",
+        "query": {
+          "path": [],
+          "policy": "p"
+        },
+        "value": "1/1"
+      },
+      {
+        "demand": "d",
+        "query": {
+          "path": [
+            "r"
+          ],
+          "policy": "p"
+        },
+        "value": "1/1"
+      },
+      {
+        "demand": "d",
+        "query": {
+          "path": [],
+          "policy": "q"
+        },
+        "value": "2/1"
+      },
+      {
+        "demand": "d",
+        "query": {
+          "path": [
+            "r"
+          ],
+          "policy": "q"
+        },
+        "value": "2/1"
+      },
+      {
+        "demand": "d",
+        "query": {
+          "path": [],
+          "policy": "s"
+        },
+        "value": "1/1"
+      },
+      {
+        "demand": "d",
+        "query": {
+          "path": [
+            "r"
+          ],
+          "policy": "s"
+        },
+        "value": "1/1"
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "r",
+      "inputs": [
+        "u_r"
+      ]
+    }
+  ],
+  "selection": {
+    "basis": [
+      "A"
+    ],
+    "mode": "priority",
+    "order": [
+      "p",
+      "s",
+      "q"
+    ]
+  },
+  "semantics": {
+    "basis": [
+      "A"
+    ],
+    "protocol": "FP1_EXACT_ENUM_V1",
+    "references": [
+      {
+        "leaf": {
+          "path": [
+            "r"
+          ],
+          "policy": "p"
+        },
+        "states": [
+          "sem_p_r"
+        ]
+      },
+      {
+        "leaf": {
+          "path": [
+            "r"
+          ],
+          "policy": "q"
+        },
+        "states": [
+          "sem_q_r"
+        ]
+      },
+      {
+        "leaf": {
+          "path": [
+            "r"
+          ],
+          "policy": "s"
+        },
+        "states": [
+          "sem_p_r"
+        ]
+      }
+    ],
+    "states": [
+      "sem_p_r",
+      "sem_q_r"
+    ],
+    "task": [
+      {
+        "state": "sem_p_r",
+        "value": "1"
+      },
+      {
+        "state": "sem_q_r",
+        "value": "1"
+      }
+    ]
+  },
+  "welfare": {
+    "applicability": [
+      {
+        "carrier": "c",
+        "dimension": "integrity",
+        "t": "0"
+      },
+      {
+        "carrier": "c",
+        "dimension": "integrity",
+        "t": "1"
+      }
+    ],
+    "basis": [
+      "SYN_W"
+    ],
+    "carriers": [
+      "c"
+    ],
+    "dimensions": [
+      {
+        "basis": [
+          "SYN_W"
+        ],
+        "id": "integrity"
+      }
+    ],
+    "existence": [
+      {
+        "carrier": "c",
+        "t": "0"
+      },
+      {
+        "carrier": "c",
+        "t": "1"
+      }
+    ],
+    "values": [
+      {
+        "carrier": "c",
+        "dimension": "integrity",
+        "query": {
+          "path": [],
+          "policy": "p"
+        },
+        "value": "1/1"
+      },
+      {
+        "carrier": "c",
+        "dimension": "integrity",
+        "query": {
+          "path": [
+            "r"
+          ],
+          "policy": "p"
+        },
+        "value": "3/1"
+      },
+      {
+        "carrier": "c",
+        "dimension": "integrity",
+        "query": {
+          "path": [],
+          "policy": "q"
+        },
+        "value": "1/1"
+      },
+      {
+        "carrier": "c",
+        "dimension": "integrity",
+        "query": {
+          "path": [
+            "r"
+          ],
+          "policy": "q"
+        },
+        "value": "2/1"
+      },
+      {
+        "carrier": "c",
+        "dimension": "integrity",
+        "query": {
+          "path": [],
+          "policy": "s"
+        },
+        "value": "1/1"
+      },
+      {
+        "carrier": "c",
+        "dimension": "integrity",
+        "query": {
+          "path": [
+            "r"
+          ],
+          "policy": "s"
+        },
+        "value": "3/1"
+      }
+    ]
+  }
+}

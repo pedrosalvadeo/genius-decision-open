@@ -1,0 +1,19 @@
+# Fuentes y versiones de diseño F4
+
+Consulta de fuentes primarias oficiales: 2026-09-23. Las URLs documentan el diseño; ejecutar el paquete no requiere red. Las reglas específicas de Genius están fijadas localmente en [CONTRACT](CONTRACT.md), no se recuperan de una página mutable durante una evaluación. No se incorporaron bibliotecas de terceros ni textos completos de normas.
+
+| Fuente oficial | Versión/secciones consultadas | Uso acotado |
+|---|---|---|
+| [JSON-RPC 2.0 Specification](https://www.jsonrpc.org/specification) | 2.0, §§4–6 y 8 | Estructura Request/Response, correlación por id, códigos estándar, silencio para notificaciones, arrays batch y prefijo reservado `rpc.`. Framing LF, handshake Genius y límites no proceden de esa norma. |
+| [RFC 8259](https://www.rfc-editor.org/rfc/rfc8259) | Diciembre 2017; §§4,6,8,9 | JSON UTF-8, interoperabilidad de nombres únicos, límites de parsers y precauciones de números/Unicode. Genius exige duplicados rechazados y strings de escalares; no atribuye a RFC el formato FP1. |
+| [RFC 4648](https://www.rfc-editor.org/rfc/rfc4648) | Octubre 2006; §§3.1–3.5 y 4 | Base64 estándar, padding, alfabeto y representación canónica. Genius exige decodificación estricta y recodificación idéntica antes de usar bytes. |
+| [Python base64](https://docs.python.org/3.12/library/base64.html) | Documentación 3.12.14; `b64encode`, `b64decode(validate=True)` | La opción estricta rechaza caracteres ajenos; recodificar permite exigir además representación canónica. No se usa la interfaz MIME que inserta saltos de línea. |
+| [Python json](https://docs.python.org/3.12/library/json.html) | Documentación 3.12.14; `object_pairs_hook`, `parse_int`, `parse_float`, `parse_constant` | Controles de parser para conservar/rechazar duplicados y evitar conversiones numéricas no autorizadas. Los defaults de un parser no definen conformidad Genius. |
+| [Node Buffer](https://nodejs.org/docs/latest-v24.x/api/buffer.html) | Rama 24.x; página servida como v24.21.0 en la consulta | Manejo de bytes y codificaciones. El consumidor debe comprobar base64 canónico/UTF-8 estricto, no confiar únicamente en decodificación tolerante. |
+| [Node crypto](https://nodejs.org/docs/latest-v24.x/api/crypto.html) | Rama 24.x; página servida como v24.21.0 en la consulta | API de hash para comprobar identidad de bytes en el consumidor. No añade autenticidad ni verificación de premisas. |
+
+El entorno local observado al preparar este contrato fue CPython 3.12.14 y Node v24.19.0. Las páginas `latest-v24.x` son documentación de la rama, no prueba de ejecución en v24.21.0. La página Node genérica consultada inicialmente servía v26.10.0; no se toma esa versión como runtime probado. La consulta de `latest-v24.x/api/child_process.html` devolvió error instrumental; no se usa ese resultado como fuente. Los reportes ejecutados son autoridad para versiones efectivamente ensayadas.
+
+Autoridad interna leída: mandato F4; README/RELEASE/STATE/ACCEPTANCE_REPORT/TEST_RESULTS/KNOWN_LIMITATIONS/BLOCKERS/NEXT_PHASE_INPUT de la baseline F3; MASTER_STATE; Specification 00–06 completas; INVARIANTS, AMENDMENTS, DECISIONS, GOVERNANCE, VERSIONING, TRANSFER_PROTOCOL y ROADMAP; documentación API/CLI Kernel; README Benchmark, hallazgos y ejemplo portable F3. La baseline acredita G3 PASS acotado, Kernel1.0.1 y Benchmark1.0.0, con sintéticos y revisión funcional interna. Este contrato no amplía esa evidencia.
+
+La designación `GENIUS-PROTOCOLS-1.0.0` pertenece al componente nuevo. `genius-protocols/1.0` es su perfil de mensajes; `genius-fp1/1.0` y `genius-fp1-result/1.0` conservan los objetos matemáticos previos; `FP1_EXACT_ENUM_V1` sigue siendo protocolo lógico interno de evidencia. Esta distinción evita atribuir soporte MCP/A2A o capacidades de otro estándar por coincidencia de palabras.

@@ -1,0 +1,251 @@
+{
+  "profile": "STOCK_FLOW_FINITE_V1",
+  "name": "Cuidado con reserva compartida — ejemplo hipotético",
+  "horizon": 3,
+  "step_unit": "day",
+  "stocks": [
+    {
+      "id": "water",
+      "label": "Agua compartida",
+      "unit": "L",
+      "kind": "persistent",
+      "initial": "8/1",
+      "capacity": "8/1"
+    },
+    {
+      "id": "time",
+      "label": "Tiempo de cuidado",
+      "unit": "minute",
+      "kind": "renewable",
+      "initial": "30/1",
+      "capacity": "30/1"
+    },
+    {
+      "id": "buffer",
+      "label": "Reserva del sistema vivo",
+      "unit": "L",
+      "kind": "persistent",
+      "initial": "2/1",
+      "capacity": "4/1"
+    }
+  ],
+  "carriers": [
+    {
+      "id": "A",
+      "label": "Persona cuidadora",
+      "kind": "person"
+    },
+    {
+      "id": "P",
+      "label": "Sistema vivo cuidado",
+      "kind": "living"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "care",
+      "label": "Cuidado manual organizado"
+    },
+    {
+      "id": "reserve_ready",
+      "label": "Reserva y protocolo operables"
+    }
+  ],
+  "initial_capabilities": [
+    "care"
+  ],
+  "actions": [
+    {
+      "id": "manual",
+      "label": "Cuidado ordinario",
+      "requires": [
+        "care"
+      ],
+      "withdrawals": {
+        "water": "1/1",
+        "time": "20/1"
+      },
+      "deposits": {
+        "buffer": "1/1"
+      },
+      "add_capabilities": [],
+      "remove_capabilities": []
+    },
+    {
+      "id": "prepare",
+      "label": "Preparar reserva",
+      "requires": [
+        "care"
+      ],
+      "withdrawals": {
+        "water": "2/1",
+        "time": "30/1"
+      },
+      "deposits": {
+        "buffer": "2/1"
+      },
+      "add_capabilities": [
+        "reserve_ready"
+      ],
+      "remove_capabilities": []
+    },
+    {
+      "id": "reserve_care",
+      "label": "Cuidado con reserva",
+      "requires": [
+        "care",
+        "reserve_ready"
+      ],
+      "withdrawals": {
+        "water": "2/1",
+        "time": "10/1"
+      },
+      "deposits": {
+        "buffer": "2/1"
+      },
+      "add_capabilities": [],
+      "remove_capabilities": []
+    }
+  ],
+  "policies": [
+    {
+      "id": "manual_policy",
+      "label": "Continuar cuidado manual",
+      "default_action": "manual",
+      "rules": []
+    },
+    {
+      "id": "reserve_policy",
+      "label": "Preparar y usar reserva",
+      "default_action": "reserve_care",
+      "rules": [
+        {
+          "steps": [
+            1
+          ],
+          "when": [],
+          "action": "prepare"
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "ordinary",
+      "label": "Demanda ordinaria",
+      "events": [
+        {
+          "inflows": {},
+          "renewables": {
+            "time": "30/1"
+          },
+          "drains": {
+            "buffer": "1/1"
+          },
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {
+            "time": "30/1"
+          },
+          "drains": {
+            "buffer": "1/1"
+          },
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {
+            "time": "30/1"
+          },
+          "drains": {
+            "buffer": "1/1"
+          },
+          "remove_capabilities": []
+        }
+      ]
+    },
+    {
+      "id": "peak",
+      "label": "Mayor demanda intermedia",
+      "events": [
+        {
+          "inflows": {},
+          "renewables": {
+            "time": "30/1"
+          },
+          "drains": {
+            "buffer": "1/1"
+          },
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {
+            "time": "30/1"
+          },
+          "drains": {
+            "buffer": "3/1"
+          },
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {
+            "time": "30/1"
+          },
+          "drains": {
+            "buffer": "0/1"
+          },
+          "remove_capabilities": []
+        }
+      ]
+    }
+  ],
+  "law": {
+    "ordinary": "2/3",
+    "peak": "1/3"
+  },
+  "welfare": [
+    {
+      "carrier": "A",
+      "dimension": "available_time",
+      "label": "Disponibilidad temporal",
+      "stock": "time",
+      "direction": "higher"
+    },
+    {
+      "carrier": "P",
+      "dimension": "resource_condition",
+      "label": "Condición material de sostén",
+      "stock": "buffer",
+      "direction": "higher"
+    }
+  ],
+  "task": {
+    "kind": "life_conditions",
+    "label": "Conservar la condición material de vida en todos los estados del horizonte",
+    "living_carriers": [
+      "P"
+    ],
+    "conditions": [
+      {
+        "stock": "buffer",
+        "op": "ge",
+        "threshold": "1/1"
+      }
+    ],
+    "require_action_success": false
+  },
+  "require_all_scenarios": true,
+  "selection": "unique",
+  "assumptions": [
+    {
+      "id": "Declared",
+      "kind": "SYNTHETIC",
+      "statement": "Modelo hipotético de soporte. El portador se estipula vivo; los umbrales, cantidades, tiempos y ley no son datos de campo ni estimaciones empíricas de supervivencia.",
+      "provenance": "Ejemplo de diseño D3"
+    }
+  ]
+}

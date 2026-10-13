@@ -1,0 +1,682 @@
+{
+  "type": "object",
+  "properties": {
+    "profile": {
+      "type": "string",
+      "enum": [
+        "STOCK_FLOW_FINITE_V1"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "horizon": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 30
+    },
+    "step_unit": {
+      "type": "string",
+      "enum": [
+        "day",
+        "hour",
+        "step"
+      ]
+    },
+    "stocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "unit": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "persistent",
+              "renewable"
+            ]
+          },
+          "initial": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+            "maxLength": 25,
+            "x-rational": true
+          },
+          "capacity": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+            "maxLength": 25,
+            "x-rational": true
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "unit",
+          "kind",
+          "initial",
+          "capacity"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 6
+    },
+    "carriers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "person",
+              "living",
+              "organization"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "kind"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 6
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "id",
+          "label"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 8
+    },
+    "initial_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+        "maxLength": 64
+      },
+      "minItems": 0,
+      "maxItems": 8,
+      "uniqueItems": true
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+              "maxLength": 64
+            },
+            "minItems": 0,
+            "maxItems": 8,
+            "uniqueItems": true
+          },
+          "withdrawals": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+              "maxLength": 25,
+              "x-rational": true
+            },
+            "maxProperties": 6
+          },
+          "deposits": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+              "maxLength": 25,
+              "x-rational": true
+            },
+            "maxProperties": 6
+          },
+          "add_capabilities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+              "maxLength": 64
+            },
+            "minItems": 0,
+            "maxItems": 8,
+            "uniqueItems": true
+          },
+          "remove_capabilities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+              "maxLength": 64
+            },
+            "minItems": 0,
+            "maxItems": 8,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "requires",
+          "withdrawals",
+          "deposits",
+          "add_capabilities",
+          "remove_capabilities"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 12
+    },
+    "policies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "default_action": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 30
+                  },
+                  "minItems": 1,
+                  "maxItems": 30,
+                  "uniqueItems": true
+                },
+                "when": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "stock"
+                            ]
+                          },
+                          "stock": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+                            "maxLength": 64
+                          },
+                          "op": {
+                            "type": "string",
+                            "enum": [
+                              "ge",
+                              "le"
+                            ]
+                          },
+                          "value": {
+                            "type": "string",
+                            "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+                            "maxLength": 25,
+                            "x-rational": true
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "stock",
+                          "op",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "capability"
+                            ]
+                          },
+                          "capability": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+                            "maxLength": 64
+                          },
+                          "present": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "capability",
+                          "present"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "minItems": 0,
+                  "maxItems": 12
+                },
+                "action": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "steps",
+                "when",
+                "action"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 30
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "default_action",
+          "rules"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 6
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "inflows": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+                    "maxLength": 25,
+                    "x-rational": true
+                  },
+                  "maxProperties": 6
+                },
+                "renewables": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+                    "maxLength": 25,
+                    "x-rational": true
+                  },
+                  "maxProperties": 6
+                },
+                "drains": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+                    "maxLength": 25,
+                    "x-rational": true
+                  },
+                  "maxProperties": 6
+                },
+                "remove_capabilities": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+                    "maxLength": 64
+                  },
+                  "minItems": 0,
+                  "maxItems": 8,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "inflows",
+                "renewables",
+                "drains",
+                "remove_capabilities"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 30
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "events"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 8
+    },
+    "law": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+            "maxLength": 25,
+            "x-rational": true
+          },
+          "minProperties": 1,
+          "maxProperties": 8
+        }
+      ]
+    },
+    "welfare": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "carrier": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "dimension": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "stock": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "higher",
+              "lower"
+            ]
+          }
+        },
+        "required": [
+          "carrier",
+          "dimension",
+          "label",
+          "stock",
+          "direction"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 12
+    },
+    "task": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "life_conditions",
+            "operational"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "living_carriers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "minItems": 0,
+          "maxItems": 6,
+          "uniqueItems": true
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "stock": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+                "maxLength": 64
+              },
+              "op": {
+                "type": "string",
+                "enum": [
+                  "ge",
+                  "le"
+                ]
+              },
+              "threshold": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+                    "maxLength": 25,
+                    "x-rational": true
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "stock",
+              "op",
+              "threshold"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 12
+        },
+        "require_action_success": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "label",
+        "living_carriers",
+        "conditions",
+        "require_action_success"
+      ],
+      "additionalProperties": false
+    },
+    "require_all_scenarios": {
+      "type": "boolean"
+    },
+    "selection": {
+      "type": "string",
+      "enum": [
+        "none",
+        "unique"
+      ]
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "MODEL",
+              "INITIALIZATION",
+              "INFORMATION",
+              "SEMANTIC",
+              "CALIBRATION",
+              "NORMATIVE",
+              "PROBABILITY",
+              "SYNTHETIC"
+            ]
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "provenance": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "statement",
+          "provenance"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 24
+    }
+  },
+  "required": [
+    "profile",
+    "name",
+    "horizon",
+    "step_unit",
+    "stocks",
+    "carriers",
+    "capabilities",
+    "initial_capabilities",
+    "actions",
+    "policies",
+    "scenarios",
+    "law",
+    "welfare",
+    "task",
+    "require_all_scenarios",
+    "selection",
+    "assumptions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "STOCK_FLOW_FINITE_V1",
+  "x-semantic-rules": [
+    "Reduced nonnegative rationals, numerator/denominator at most 12 digits",
+    "Unique IDs and valid references",
+    "P*S*(H+1)<=128; generated signatures<=16",
+    "Per-unit deposits<=withdrawals; no implicit conversion",
+    "Complete renewable availability per event",
+    "Unique complete event words; law null or exact normalized scenario map",
+    "Policies read only prior state; fixed carrier existence; no implicit mortality model"
+  ]
+}

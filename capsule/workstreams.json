@@ -1,0 +1,55 @@
+{
+  "format": "genius-open-work/1",
+  "ordering": "independent work may proceed according to actual dependencies",
+  "new_proposals_allowed": true,
+  "workstreams": [
+    {
+      "id": "MATH",
+      "title": "Mathematics, proofs and counterexamples",
+      "acceptance": "Formal claims with hypotheses and review",
+      "status": "OPEN"
+    },
+    {
+      "id": "REAL",
+      "title": "Real cases and evidence",
+      "acceptance": "Traceable observations and reproducible evaluation",
+      "status": "OPEN"
+    },
+    {
+      "id": "TWIN",
+      "title": "Dynamic model and observations",
+      "acceptance": "Versioned models, frozen predictions and revision",
+      "status": "OPEN"
+    },
+    {
+      "id": "INTERPRET",
+      "title": "Assisted interpretation",
+      "acceptance": "Correctable structured proposals from real situations",
+      "status": "OPEN"
+    },
+    {
+      "id": "ENGINE",
+      "title": "Complete decision engine",
+      "acceptance": "Substantive wellbeing, CAG, viability and PVS where justified",
+      "status": "OPEN"
+    },
+    {
+      "id": "M2M",
+      "title": "Agent interoperability",
+      "acceptance": "Twin API/MCP parity and real A2A adapter",
+      "status": "OPEN"
+    },
+    {
+      "id": "COLLAB",
+      "title": "Cooperation and propagation",
+      "acceptance": "Agent-host handoff and verified contributions",
+      "status": "OPEN"
+    },
+    {
+      "id": "PRODUCT",
+      "title": "Human experience and operation",
+      "acceptance": "Usable results and sustainable operation",
+      "status": "OPEN"
+    }
+  ]
+}

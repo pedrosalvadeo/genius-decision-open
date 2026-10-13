@@ -1,0 +1,42 @@
+{
+  "format": "genius-case-evidence/1",
+  "case_id": "genius-source-distribution-2026-10-13",
+  "question": "¿Qué formato transfiere estas mismas fuentes con menos bytes?",
+  "context": "Decisión real de empaquetado de la cápsula Genius; se comparan artefactos efectivamente construidos.",
+  "origin": "real",
+  "observed_at": "2026-10-13T16:19:17.919830+00:00",
+  "data_authority": "Archivos del proyecto creados durante esta tarea autorizada; sin datos personales",
+  "sources": [
+    {
+      "id": "build",
+      "reference": "capsule/cases/distribution/measurement.json",
+      "accessed_at": "2026-10-13T16:19:17.919830+00:00"
+    }
+  ],
+  "observations": [
+    {
+      "statement": "genius-source.tar: 6563840 bytes; SHA256 25d71aa95eef1863f1ad2c64e5ac3726d3d1a3e841ab771ca8a608d11d291c71",
+      "source_id": "build"
+    },
+    {
+      "statement": "genius-source.tar.gz: 1459503 bytes; SHA256 91d366e6992bde8c9e2f976dd0a471f6fa87caef886276640e6c571e2028c5f0",
+      "source_id": "build"
+    },
+    {
+      "statement": "genius-source.zip: 1681640 bytes; SHA256 016c6dd3cfb4231a883ab915c02fb631eb0242fb71fdd64f9f1496fdeb35dac1",
+      "source_id": "build"
+    }
+  ],
+  "assumptions": [
+    "Una transferencia íntegra; excluye cabeceras, reintentos, tiempo de CPU y compatibilidad del receptor.",
+    "Comparar menor cantidad de bytes transferidos conservando las mismas fuentes; el presupuesto equivale al TAR medido. No es bienestar humano ni PVS.",
+    "La masa unitaria describe únicamente el inventario de artefactos ya medidos. No estima éxito futuro de red."
+  ],
+  "unknowns": [
+    "CPU y memoria de extracción",
+    "Compatibilidad de clientes externos",
+    "Costos reales de red y reintentos"
+  ],
+  "empirical_status": "OBSERVATIONS_COLLECTED",
+  "publication": "public"
+}

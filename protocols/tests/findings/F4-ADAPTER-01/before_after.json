@@ -1,0 +1,51 @@
+{
+  "finding": "F4-ADAPTER-01",
+  "evidence_role": "AUTHOR_REGRESSION_NOT_INDEPENDENT_ACCEPTANCE",
+  "before_source": "wire_before.py",
+  "before_source_sha256": "288c0eddf3f70cfbc4c1d63aa8f8fbbdbf907d093e24ad77692e635c9a43c3d9",
+  "after_source": "../../../genius_protocols/wire.py",
+  "after_source_sha256": "cfd635a8155ced86347110ee8b52bdab7afacc47e517ee2a808551ae27fcedea",
+  "cases": [
+    {
+      "case": "duplicate_with_number",
+      "candidate_file": "duplicate_with_number.candidate",
+      "candidate_sha256": "1c53ee0df7b12fd4d65b976120c7fa6b847dc41dffd7f0331c3237a1ceab1756",
+      "expected": "CANDIDATE_SYNTAX",
+      "before": "CANDIDATE_TYPE",
+      "after": "CANDIDATE_SYNTAX"
+    },
+    {
+      "case": "truncated_with_number",
+      "candidate_file": "truncated_with_number.candidate",
+      "candidate_sha256": "880e9c79fdec2261160585730499727d63cd811a6d0792dcc04b46bce307d259",
+      "expected": "CANDIDATE_SYNTAX",
+      "before": "CANDIDATE_TYPE",
+      "after": "CANDIDATE_SYNTAX"
+    },
+    {
+      "case": "surrogate_with_number",
+      "candidate_file": "surrogate_with_number.candidate",
+      "candidate_sha256": "83de240f1d7861bc9db1e57dfbe5bbb2816435e825048595aa2af632bef8b5b0",
+      "expected": "CANDIDATE_SYNTAX",
+      "before": "CANDIDATE_TYPE",
+      "after": "CANDIDATE_SYNTAX"
+    },
+    {
+      "case": "valid_json_number",
+      "candidate_file": "valid_json_number.candidate",
+      "candidate_sha256": "015abd7f5cc57a2dd94b7590f04ad8084273905ee33ec5cebeae62276a97f862",
+      "expected": "CANDIDATE_TYPE",
+      "before": "CANDIDATE_TYPE",
+      "after": "CANDIDATE_TYPE"
+    },
+    {
+      "case": "long_number",
+      "candidate_file": "long_number.candidate",
+      "candidate_sha256": "f9f9b25a595645124bcd7931ffe927c51ebd91f278470673be9973c64967f79b",
+      "expected": "CANDIDATE_TYPE",
+      "before": "CANDIDATE_TYPE",
+      "after": "CANDIDATE_TYPE"
+    }
+  ],
+  "after_pass": true
+}
