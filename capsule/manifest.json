@@ -37,7 +37,6 @@
     "human_experience"
   ],
   "not_yet_implemented": [
-    "autonomous_twin_mcp",
     "a2a_endpoint",
     "automatic_outreach",
     "general_narrative_translation"
@@ -46,5 +45,14 @@
   "issues_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
   "pull_requests_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
   "source_revision": "66c158746a4290741398787236d1dd133ce8848b",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "source_capabilities": {
+    "autonomous_twin_mcp": {
+      "implemented": true,
+      "tools": 15,
+      "documentation": "beta/docs/AGENT_TWIN.md",
+      "deployment_status": "STAGED_NOT_DEPLOYED",
+      "deployment_commit": "103da8fcc76a552d06a3074f09f5a47188f10717"
+    }
+  }
 }
