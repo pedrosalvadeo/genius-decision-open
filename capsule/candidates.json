@@ -1,7 +1,7 @@
 {
   "format": "genius-collaboration-candidates/1",
   "checked_on": "2026-10-14",
-  "reviewed_genius_revision": "ac88ece1cfff805efb2d4f18604ab49b0f5d82b5",
+  "reviewed_genius_revision": "f68da9242e463875734a5b0de7f58fa862e8663b",
   "contacts_sent": 1,
   "invitations_drafted": 5,
   "confirmed_collaborations": 0,
@@ -58,8 +58,8 @@
         "GD-MCP-001"
       ],
       "channel": "Issue existente #770 y proceso de contribución del repositorio.",
-      "status": "DRAFT_PR_SUBMITTED",
-      "next_action": "Pedro debe completar HUMAN antes de marcar listo para revisión; los mantenedores deben autorizar los workflows del fork. Dar seguimiento al PR 772.",
+      "status": "PR_READY_FOR_REVIEW",
+      "next_action": "Dar seguimiento al PR 772; HUMAN completado por Pedro y descripción aprobada. Pendientes autorización de workflows y revisión por mantenedores.",
       "limitations": [
         "La clasificación automática no es aprobación de mantenedores ni ejecución del motor.",
         "Hay cero comentarios; la respuesta automática está en el cuerpo del issue.",
@@ -81,7 +81,7 @@
         {
           "url": "https://github.com/OpenHands/extensions/pull/772",
           "checked_on": "2026-10-14",
-          "observation": "PR 772 abierto como draft, vinculado al issue 770, dos archivos verificados. HUMAN sin completar; tres workflows esperan autorización de mantenedores."
+          "observation": "PR 772 abierto, draft=false, HUMAN completado por Pedro y validación de descripción aprobada. Tres workflows pendientes de autorización de mantenedores."
         }
       ],
       "draft": null,
@@ -100,10 +100,11 @@
       "released_client_verification": "integrations/openhands/verification.json",
       "upstream_pr_submitted": true,
       "pull_request_url": "https://github.com/OpenHands/extensions/pull/772",
-      "pull_request_draft": true,
+      "pull_request_draft": false,
       "pull_request_submitted_at": "2026-10-14T05:18:53Z",
       "pull_request_head_revision": "a05510f8db3ec7c606d90be2731b885baf5d289e",
-      "submission_receipt": "integrations/openhands/submission.json"
+      "submission_receipt": "integrations/openhands/submission.json",
+      "review_status_receipt": "integrations/openhands/review-status.json"
     },
     {
       "id": "GD-CAND-SMOLAGENTS",
@@ -116,10 +117,10 @@
         "GD-INT-001"
       ],
       "channel": "GitHub Discussions, categoría Show and tell.",
-      "status": "DRAFT_NOT_SENT",
-      "next_action": "Presentar una invitación a una prueba externa; cualquier integración específica se mantiene fuera del núcleo.",
+      "status": "CLIENT_INTEROP_VERIFIED_INVITATION_NOT_SENT",
+      "next_action": "Enviar la invitación con evidencia cuando esté autorizado el contacto y registrar su URL; solicitar reproducción independiente o contribución sobre un caso real.",
       "limitations": [
-        "La documentación admite MCP remoto, pero aquí no se ejecutó smolagents.",
+        "Prueba propia con MCPClient/Tool de smolagents 1.26.0, sin LLM; no acredita agente autónomo, adopción ni ejecución independiente.",
         "CONTRIBUTING exige issue aceptado antes de un PR sustantivo al núcleo."
       ],
       "evidence": [
@@ -141,12 +142,19 @@
           "url": "https://github.com/huggingface/smolagents/discussions",
           "checked_on": "2026-10-14",
           "observation": "Categoría Show and tell disponible."
+        },
+        {
+          "path": "integrations/smolagents/verification.json",
+          "checked_on": "2026-10-14",
+          "observation": "18 comprobaciones aprobadas; una evaluación sintética, borrado y revocación del token comprobados."
         }
       ],
-      "draft": "COLLABORATION.md#smolagents",
+      "draft": "integrations/smolagents/INVITATION.md",
       "contact_sent": false,
       "agreement_confirmed": false,
-      "external_agent_execution_confirmed": false
+      "external_agent_execution_confirmed": false,
+      "released_client_verification": "integrations/smolagents/verification.json",
+      "prepared_integration": "integrations/smolagents/README.md"
     },
     {
       "id": "GD-CAND-CAMEL",
@@ -346,8 +354,8 @@
         "GD-MCP-001"
       ],
       "channel": "Publicación de server.json mediante el flujo oficial y namespace verificado.",
-      "status": "IDENTIFIED_NOT_SUBMITTED",
-      "next_action": "Preparar y validar server.json y verificar el namespace antes de publicar.",
+      "status": "PREPARED_VALIDATED_NOT_PUBLISHED",
+      "next_action": "Revisar el alta, autenticar el namespace por GitHub y publicar cuando esté autorizado; verificar y registrar la entrada resultante.",
       "limitations": [
         "Un registro distribuye metadatos; no recibe invitaciones ni demuestra uso del servicio.",
         "No se registró el servidor en este catálogo."
@@ -362,12 +370,19 @@
           "url": "https://modelcontextprotocol.io/registry/authentication",
           "checked_on": "2026-10-14",
           "observation": "Mecanismos de autenticación y verificación de namespace."
+        },
+        {
+          "path": "integrations/mcp-registry/validation.json",
+          "checked_on": "2026-10-14",
+          "observation": "mcp-publisher 1.8.1 validate aprobó server.json contra el registro oficial; sin autenticación ni publicación."
         }
       ],
       "draft": null,
       "contact_sent": false,
       "agreement_confirmed": false,
-      "external_agent_execution_confirmed": false
+      "external_agent_execution_confirmed": false,
+      "prepared_metadata": "integrations/mcp-registry/server.json",
+      "validation_receipt": "integrations/mcp-registry/validation.json"
     }
   ],
   "contacts_sent_basis": "Proyectos contactados; el issue 770 y el PR 772 corresponden al mismo contacto OpenHands Extensions."

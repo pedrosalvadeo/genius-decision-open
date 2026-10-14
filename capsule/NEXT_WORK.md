@@ -23,9 +23,15 @@ Se verificaron nueve candidatos y canales y se prepararon cinco invitaciones con
 
 Integración OpenHands preparada en integrations/openhands: parche de dos archivos sobre f1919e4e3e02c0bab65c2417761aee775f1ffbaa, 117 pruebas del catálogo y sincronización aprobadas. SDK publicado 1.54.0 completó 18 comprobaciones contra producción, una evaluación real del ejemplo sintético, exportación y borrado por MCP; la credencial revocada respondió 401. No hubo llamadas LLM. Esta prueba propia no acredita adopción independiente.
 
-PR externo enviado con autorización: https://github.com/OpenHands/extensions/pull/772 (draft), creado el 14 de octubre de 2026 a las 05:18:53 UTC. Rama pedrosalvadeo/extensions:genius-decision-mcp, commit a05510f8db3ec7c606d90be2731b885baf5d289e, exactamente dos archivos que coinciden con los probados. El título convencional y los artefactos pasaron sus checks. Tres workflows de upstream esperan autorización de un mantenedor. Ver integrations/openhands/submission.json.
+PR externo enviado con autorización: https://github.com/OpenHands/extensions/pull/772 (originalmente draft; ahora listo para revisión), creado el 14 de octubre de 2026 a las 05:18:53 UTC. Rama pedrosalvadeo/extensions:genius-decision-mcp, commit a05510f8db3ec7c606d90be2731b885baf5d289e, exactamente dos archivos que coinciden con los probados. El título convencional y los artefactos pasaron sus checks. Tres workflows de upstream esperan autorización de un mantenedor. Ver integrations/openhands/submission.json.
 
-Siguiente tarea concreta: dar seguimiento al PR 772 y a su revisión humana. La plantilla de OpenHands exige conservar HUMAN sin que el agente lo complete: Pedro debe escribir su nota antes de marcar listo para revisión. Revisar los otros borradores y enviar sólo los contactos autorizados. Buscar fuentes/casos reales para GD-REAL-001. Registrar por separado contacto, respuesta, ejecución, aporte y aceptación. Diseñar el protocolo GD-ATTR-001 antes de ejecutar comparaciones.
+Actualización: Pedro completó HUMAN; PR 772 tiene draft=false y la validación de descripción pasó a las 05:50:54 UTC. Ver integrations/openhands/review-status.json.
+
+smolagents 1.26.0 completó 18 comprobaciones contra producción mediante MCPClient y Tool, con MCPAdapt 0.1.20/MCP 1.30.0. Una evaluación sintética válida; expediente y espacio eliminados, token revocado (401), cero llamadas LLM. La dependencia MCP 2.3.0 resolvía un import incompatible; el lock probado fija MCP 1.30.0 con websockets y soporte del proxy SOCKS. Ver integrations/smolagents/README.md, verification.json e INVITATION.md. El texto está preparado, sin enviar, y propone reproducción independiente o una decisión real sustentada en fuentes públicas.
+
+La ficha io.github.pedrosalvadeo/genius-decision, versión MCP 0.2.0, pasó mcp-publisher 1.8.1 validate contra el registro oficial. Ver integrations/mcp-registry. No se autenticó el namespace ni se publicó/reservó la entrada.
+
+Siguiente tarea concreta: enviar la invitación smolagents y autenticar/publicar el registro cuando esas acciones estén autorizadas. Dar seguimiento al PR 772 pendiente de mantenedores, sin volver a pedir a Pedro la sección HUMAN. Buscar fuentes/casos reales para GD-REAL-001. Registrar por separado contacto, respuesta, ejecución, aporte y aceptación. Diseñar el protocolo GD-ATTR-001 antes de ejecutar comparaciones.
 
 ## Encargo de continuación
 
