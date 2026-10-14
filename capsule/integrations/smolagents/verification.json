@@ -1,0 +1,137 @@
+{
+  "format": "genius-smolagents-interop/1",
+  "started_at": "2026-10-14T06:00:52.018677+00:00",
+  "mode": "live",
+  "service_url": "https://geniusdecision.app",
+  "packages": {
+    "smolagents": "1.26.0",
+    "mcpadapt": "0.1.20",
+    "mcp": "1.30.0",
+    "websockets": "17.2",
+    "pydantic": "2.14.1"
+  },
+  "client_path": "MCPClient -> MCPAdapt/SmolAgentsAdapter -> smolagents.Tool.__call__",
+  "script_sha256": "1e3f3da29d1bc136d772560b9ec9a869b2c953d1f6adaff4a3e3381f9c3764d9",
+  "input_kind": "published_synthetic_fixture",
+  "llm_calls": 0,
+  "independent_external_adoption": false,
+  "empirical_validation": false,
+  "execution_type": "deterministic_native_tool_harness",
+  "autonomous_llm_agent_tested": false,
+  "checks": [
+    {
+      "check": "live_manifest",
+      "passed": true
+    },
+    {
+      "check": "data_policy_and_auth",
+      "passed": true
+    },
+    {
+      "check": "client_public_discovery",
+      "passed": true
+    },
+    {
+      "check": "client_public_capabilities",
+      "passed": true
+    },
+    {
+      "check": "client_saved_demo",
+      "passed": true
+    },
+    {
+      "check": "required_scopes_available",
+      "passed": true
+    },
+    {
+      "check": "temporary_registration",
+      "passed": true
+    },
+    {
+      "check": "exact_scope_grant",
+      "passed": true
+    },
+    {
+      "check": "client_private_discovery",
+      "passed": true
+    },
+    {
+      "check": "client_twin_schema",
+      "passed": true
+    },
+    {
+      "check": "client_create_case",
+      "passed": true
+    },
+    {
+      "check": "client_explicit_fixture_acceptance",
+      "passed": true
+    },
+    {
+      "check": "client_engine_completed_and_verified",
+      "passed": true
+    },
+    {
+      "check": "client_job_readback",
+      "passed": true
+    },
+    {
+      "check": "client_export",
+      "passed": true
+    },
+    {
+      "check": "client_case_deleted",
+      "passed": true
+    },
+    {
+      "check": "client_space_deleted",
+      "passed": true
+    },
+    {
+      "check": "temporary_token_revoked",
+      "passed": true
+    }
+  ],
+  "cleanup": {
+    "mcp_space_deleted": true,
+    "revoked_token_http_status": 401
+  },
+  "outcome": "PASSED",
+  "manifest_sha256_canonical_json": "deda58e18b1bc72a727e9b0431d87d2c9215201bed0ac6cf5599813989bc647f",
+  "policy_version": "agent-access-2026-10-06-v1",
+  "public_tools": [
+    "get_capabilities",
+    "read_demo_result",
+    "run_demo"
+  ],
+  "private_tools": [
+    "delete_agent_space",
+    "get_capabilities",
+    "read_demo_result",
+    "run_demo",
+    "twin_accept",
+    "twin_capabilities",
+    "twin_compare",
+    "twin_create_case",
+    "twin_delete_case",
+    "twin_evaluate",
+    "twin_example",
+    "twin_export",
+    "twin_get_case",
+    "twin_get_job",
+    "twin_list_cases",
+    "twin_observe",
+    "twin_propose",
+    "twin_save_draft",
+    "twin_schema"
+  ],
+  "model_sha256_canonical_json": "51c4bdc63e163ebc0ff5048c7947ee7acafba8ef5751b4d63a3987ec52aaf54d",
+  "job_status": "completed",
+  "verification": {
+    "errors": [],
+    "status": "VALID",
+    "valid": true
+  },
+  "export_sha256_canonical_json": "52082c732afc67d20da44ce68094b75361c322b57ad60be5c6248df5f9f8e455",
+  "finished_at": "2026-10-14T06:01:40.274664+00:00"
+}

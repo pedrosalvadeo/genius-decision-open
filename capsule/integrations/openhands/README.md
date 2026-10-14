@@ -1,6 +1,6 @@
 # Integración de Genius con OpenHands
 
-**Estado: enviada como borrador en [PR 772](https://github.com/OpenHands/extensions/pull/772).** La propuesta [OpenHands/extensions#770](https://github.com/OpenHands/extensions/issues/770) recibió clasificación automática `ready-for-dev`. Este paquete implementa sus criterios técnicos sobre el commit `f1919e4e3e02c0bab65c2417761aee775f1ffbaa` de Extensions.
+**Estado: [PR 772](https://github.com/OpenHands/extensions/pull/772) abierto y listo para revisión.** La propuesta [OpenHands/extensions#770](https://github.com/OpenHands/extensions/issues/770) recibió clasificación automática `ready-for-dev`. Este paquete implementa sus criterios técnicos sobre el commit `f1919e4e3e02c0bab65c2417761aee775f1ffbaa` de Extensions.
 
 El [parche](genius-decision.patch) añade exactamente una entrada escrita a mano, `integrations/catalog/genius-decision.json`, y regenera `integrations/catalog-index.js` con el generador oficial. Declara MCP Streamable HTTP, Bearer y los permisos de las herramientas del gemelo; no contiene credenciales, OAuth ni cambios al runtime de OpenHands.
 
@@ -62,4 +62,4 @@ El [borrador](PR_DRAFT.md) conserva sin completar la sección `HUMAN` de la plan
 
 Enviado con autorización de Pedro el 14 de octubre de 2026 a las 05:18:53 UTC, vinculado al issue 770. Los dos archivos publicados coinciden con los probados. El título y los artefactos pasaron las validaciones automáticas; tres workflows esperan autorización de un mantenedor por ser una contribución desde un fork.
 
-Siguiente acción: Pedro revisa el resultado y completa la sección HUMAN con su propia nota antes de marcarlo listo para revisión. Los mantenedores de OpenHands deben autorizar los workflows y decidir la incorporación al catálogo. El PR permanece como **draft**; no se ha confirmado aceptación ni ejecución independiente.
+Actualización del 14 de octubre: Pedro completó HUMAN y el PR está listo para revisión (`draft: false`). La validación de descripción pasó a las 05:50:54 UTC. Ver [estado de revisión](review-status.json); el borrador y recibo de envío anteriores se conservan como historia. Los mantenedores deben autorizar los workflows y revisar la propuesta. No se ha confirmado aceptación ni ejecución independiente.

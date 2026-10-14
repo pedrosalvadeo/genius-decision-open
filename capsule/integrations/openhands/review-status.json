@@ -1,0 +1,19 @@
+{
+  "format": "genius-openhands-review-status/1",
+  "checked_at": "2026-10-14T06:07:42.488617+00:00",
+  "pull_request_url": "https://github.com/OpenHands/extensions/pull/772",
+  "state": "open",
+  "draft": false,
+  "head_revision": "a05510f8db3ec7c606d90be2731b885baf5d289e",
+  "pull_request_updated_at": "2026-10-14T05:50:42Z",
+  "human_note_completed_by_author": true,
+  "description_check": {
+    "conclusion": "success",
+    "completed_at": "2026-10-14T05:50:54Z"
+  },
+  "maintainer_workflow_approval_pending": true,
+  "maintainer_review_required": true,
+  "merged": false,
+  "independent_execution_confirmed": false,
+  "original_submission_receipt": "submission.json"
+}

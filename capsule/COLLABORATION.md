@@ -8,17 +8,17 @@ Se verificaron nueve proyectos, registros y tableros y se prepararon cinco invit
 
 | Candidato | Oportunidad | Evidencia y canal | Siguiente acción |
 |---|---|---|---|
-| OpenHands Extensions | GD-MCP-001 | [Issue 770](https://github.com/OpenHands/extensions/issues/770) abierto, `ready-for-dev`, clasificación automática en el cuerpo y cero comentarios | [PR 772](https://github.com/OpenHands/extensions/pull/772) enviado como draft; pendiente sección HUMAN y autorización de workflows por mantenedores |
+| OpenHands Extensions | GD-MCP-001 | [Issue 770](https://github.com/OpenHands/extensions/issues/770) abierto, `ready-for-dev`, clasificación automática en el cuerpo y cero comentarios | [PR 772](https://github.com/OpenHands/extensions/pull/772) listo para revisión; HUMAN completado por Pedro, pendientes revisión y autorización de workflows por mantenedores |
 | OpenHands SDK | GD-MCP-001, GD-OBS-001 | Framework de programación con MCP; [guía de contribución](https://github.com/OpenHands/software-agent-sdk/blob/main/CONTRIBUTING.md) | Cliente probado contra producción por el equipo de Genius; recibo vinculado desde el PR 772 |
-| smolagents | GD-MCP-001, GD-INT-001 | MCP remoto documentado; [Discussions](https://github.com/huggingface/smolagents/discussions), Show and tell | Presentar el borrador a operadores interesados; integración fuera del núcleo |
+| smolagents | GD-MCP-001, GD-INT-001 | MCP remoto documentado; [Discussions](https://github.com/huggingface/smolagents/discussions), Show and tell | 18 comprobaciones propias aprobadas; [invitación con evidencia](integrations/smolagents/INVITATION.md) preparada, sin enviar |
 | CAMEL | GD-INT-001, GD-REAL-001 | Framework multiagente; [comunidad oficial](https://discord.camel-ai.org/) | Seleccionar un canal pertinente y revisar el texto antes del envío |
 | LeanCopilot | GD-MATH-001 | Asistencia a pruebas en Lean; [Discussions](https://github.com/lean-dojo/LeanCopilot/discussions), Ideas | Consultar interés en formalizar un enunciado y sus hipótesis |
 | SwarmMemo | GD-MCP-001, GD-ATTR-001 | Tablero HTTP/MCP; documentación y lectura pública verificadas | Elegir sala y publicar una invitación cuando esté autorizado el envío |
 | NULLYARD | GD-MCP-001, GD-ATTR-001 | Tablero con propuestas estructuradas; guía MCP accesible | Revisar esquema/canal y preparar una raíz `collaboration` |
 | A2A samples | GD-A2A-001 | Ejemplos de protocolo; no es un directorio de agentes activos | Implementar y probar un adaptador antes de proponer un ejemplo |
-| MCP Registry | GD-MCP-001 | Registro de servidores; no es un agente | Preparar `server.json` y verificar el namespace mediante el flujo oficial |
+| MCP Registry | GD-MCP-001 | Registro de servidores; no es un agente | [Ficha validada](integrations/mcp-registry/README.md); pendiente autenticar el namespace y publicar |
 
-La etiqueta de OpenHands procede de su agente de clasificación. El cuerpo del issue ya propone una entrada MCP Streamable HTTP con Bearer, referencias de esquema y validaciones. **No constituye aprobación humana, incorporación al catálogo ni ejecución independiente de Genius.** La versión inicial de nuestra propuesta aún decía que el despliegue estaba pendiente; la prueba propia de producción ya está en [el recibo del 14 de octubre](receipts/live-twin-2026-10-14.json). La [integración y su prueba con SDK 1.54.0](integrations/openhands/README.md) ya están preparadas: 117 pruebas del catálogo y 18 comprobaciones de interoperabilidad aprobadas. El [PR 772](https://github.com/OpenHands/extensions/pull/772) se envió como borrador con autorización de Pedro. Requiere una sección HUMAN escrita por una persona antes de marcarlo listo para revisión; tres workflows esperan autorización de un mantenedor.
+La etiqueta de OpenHands procede de su agente de clasificación. El cuerpo del issue ya propone una entrada MCP Streamable HTTP con Bearer, referencias de esquema y validaciones. **No constituye aprobación humana, incorporación al catálogo ni ejecución independiente de Genius.** La versión inicial de nuestra propuesta aún decía que el despliegue estaba pendiente; la prueba propia de producción ya está en [el recibo del 14 de octubre](receipts/live-twin-2026-10-14.json). La [integración y su prueba con SDK 1.54.0](integrations/openhands/README.md) ya están preparadas: 117 pruebas del catálogo y 18 comprobaciones de interoperabilidad aprobadas. El [PR 772](https://github.com/OpenHands/extensions/pull/772) se envió como borrador con autorización de Pedro. Pedro completó HUMAN y lo marcó listo para revisión; la validación de descripción pasó. Tres workflows esperan autorización de un mantenedor.
 
 ## Qué se ofrece y qué se pide
 
@@ -34,19 +34,7 @@ Los textos están en inglés para los canales consultados. No prometen pago ni a
 
 ### smolagents
 
-**Destino:** Discussions → Show and tell. **Título:** `Genius Decision: looking for an independent smolagents MCP interoperability report`
-
-> I maintain Genius Decision, an Apache-2.0 decision engine with a portable collaboration capsule. I am looking for a smolagents operator interested in testing a concrete interoperability question (GD-MCP-001): can your independently operated client discover the service, evaluate a model with explicitly reviewed assumptions, and return a reproducible result or incompatibility report?
->
-> Capsule: https://github.com/pedrosalvadeo/genius-decision-open/tree/main/capsule
-> Service manifest: https://geniusdecision.app/agents/manifest.json
-> MCP endpoint: https://geniusdecision.app/mcp
->
-> Your MCPClient documentation describes remote Streamable HTTP. A useful contribution would record the released client version, source revision, steps, observed outcome and limitations, with credentials removed. The repository also supports local execution. The hosted service accepts synthetic or non-personal data; a synthetic example checks interoperability, not empirical validity.
->
-> I would keep a Genius-specific adapter outside smolagents core, following your contribution guidelines. If this is relevant to your work, please choose the scope you want to investigate. Reports and broader contributions can be returned as an issue or PR with GD-MCP-001 in the title: https://github.com/pedrosalvadeo/genius-decision-open/issues
->
-> This is an invitation, not a claim of smolagents adoption or endorsement. Prepared with AI assistance and offered for review.
+**Destino:** Discussions → Show and tell. El [texto exacto preparado](integrations/smolagents/INVITATION.md) ofrece una reproducción independiente GD-MCP-001 y una contribución sobre decisiones reales GD-INT-001/GD-REAL-001. Está respaldado por [18 comprobaciones propias](integrations/smolagents/verification.json) con smolagents 1.26.0; no hubo llamadas LLM. La invitación no fue enviada.
 
 ### CAMEL
 
@@ -108,6 +96,6 @@ Los textos están en inglés para los canales consultados. No prometen pago ni a
 
 ## Prioridad inmediata
 
-1. Dar seguimiento al [PR 772](https://github.com/OpenHands/extensions/pull/772), ya enviado con autorización y vinculado al issue 770. Conservarlo como borrador hasta que Pedro complete la sección HUMAN de su plantilla. Los workflows de la contribución esperan autorización de mantenedores. Código, reproducción y evidencia están en [el paquete de integración](integrations/openhands/README.md).
-2. Revisar y enviar las invitaciones autorizadas por los canales adecuados, conservando sus IDs. Comenzar por los canales que correspondan al aporte buscado; no hacer envíos duplicados al mismo proyecto.
+1. Dar seguimiento al [PR 772](https://github.com/OpenHands/extensions/pull/772), ya enviado con autorización y vinculado al issue 770. Ya está listo para revisión: Pedro completó HUMAN y su validación pasó. Los workflows de la contribución esperan autorización de mantenedores. Código, reproducción y evidencia están en [el paquete de integración](integrations/openhands/README.md).
+2. Revisar y enviar la invitación preparada de smolagents cuando el envío esté autorizado, conservando su URL y texto. Autenticar y publicar la ficha ya validada del MCP Registry cuando se autorice el alta. No hacer envíos duplicados al mismo proyecto.
 3. Reproducir cualquier aporte recibido y registrar qué cambió en Genius. La recepción por un tablero o la clasificación automática de un issue es una etapa distinta de una contribución aceptada.
