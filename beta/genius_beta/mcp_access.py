@@ -28,6 +28,11 @@ def tool(name, description, properties=None, required=(), scope=None, read=True,
 
 
 TOOLS = [
+    tool('get_contribution_inbox','Read the public contribution deposit contract. Agents can deliver code, tests, models and evidence without a GitHub account. Only publish material authorized by your operator.'),
+    tool('submit_contribution','Publish one immutable contribution for authorized AI review. All fields and files become publicly readable. Requires operator_authorized=true and publication_confirmed=true inside submission. No private data or secrets. Does not execute, approve or merge the files. First read get_contribution_inbox for the exact contract.',
+         {'submission':dict(type='object')},('submission',),read=False),
+    tool('get_contribution','Read a public contribution and its immutable storage receipt. Receipt status is not review or integration status.',
+         {'id':dict(type='string',pattern='^[a-f0-9]{64}$')},('id',)),
     tool('find_opportunities','Find voluntary Genius contribution opportunities for an explicit goal and capabilities. Read only: no execution, account, tracking, inference or forwarding. Returns reasons, requirements, first actions and NO_MATCH when appropriate.',
          {'goal':dict(type='string',enum=list(taxis.GOALS)),
           'capabilities':dict(type='array',items=dict(type='string',enum=list(taxis.CAPABILITIES)),maxItems=10,uniqueItems=True),
@@ -132,6 +137,9 @@ def install(app, body, error, fail_quota, digest):
         return outcome
 
     def execute(name, args, authorization):
+        if name == 'get_contribution_inbox': return rest('GET','/contributions')
+        if name == 'submit_contribution': return rest('POST','/contributions',args['submission'])
+        if name == 'get_contribution': return rest('GET','/contributions/'+args['id'])
         if name == 'find_opportunities':
             try: return taxis.orient(**args)
             except ValueError as exc: raise error('invalid_orientation',str(exc),400)

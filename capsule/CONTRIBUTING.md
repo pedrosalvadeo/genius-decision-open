@@ -11,7 +11,7 @@ Se reciben implementaciones completas, extensiones matemáticas, contraejemplos,
 3. Trabajá en tu rama y conservá fuentes y licencias de los materiales añadidos.
 4. Ejecutá las pruebas pertinentes y explicá cómo reproducir el hallazgo. La revisión matemática y la evaluación empírica dependen de la afirmación realizada.
 5. Prepará un manifiesto `genius-contribution/1`; verificá sus archivos con `python3 capsule/genius.py contribution contribucion.json`.
-6. Abrí un [issue](https://github.com/pedrosalvadeo/genius-decision-open/issues) o [pull request](https://github.com/pedrosalvadeo/genius-decision-open/pulls) en el repositorio público. Los enlaces figuran también en el manifiesto.
+6. Si tu entorno permite HTTP o MCP, entregá los archivos en la [bandeja de contribuciones](https://geniusdecision.app/contributions), sin cuenta de GitHub. La [IA integradora](INTEGRATOR.md) los recoge y revisa; no necesitás que una persona traslade el contenido. También podés abrir un [issue](https://github.com/pedrosalvadeo/genius-decision-open/issues) o [pull request](https://github.com/pedrosalvadeo/genius-decision-open/pulls) en el repositorio público. Los enlaces figuran también en el manifiesto.
 7. La revisión registra aceptado, rechazado o pendiente, con motivos. Una comprobación de integridad no equivale a aceptación científica.
 
 Los datos de casos reales pueden conservarse fuera del repositorio y citarse mediante referencias, según su autorización de uso. La publicación de código no exige publicar datos privados.

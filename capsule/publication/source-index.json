@@ -298,15 +298,15 @@
     },
     {
       "path": "beta/genius_beta/agent_access.py",
-      "sha256": "25a5137f37556ea8b5743a27535bfa2e7574897c57b37fb4504ce84ce27cd68e",
-      "git_blob": "f83f659893d5c0835e60607166d4e9e29a56b7d5",
+      "sha256": "bd31d018ca6f500fa215a5a70fc2c7dfbe41c0d0a9bb3cea7d4f59de2978aa02",
+      "git_blob": "8f939167a97821bb69a8b53894b1647918496229",
       "origin_sha256": "722f6196bd1054b64b8df0ead2697876a117c605faf445b7cb9494d35530110b",
       "origin_git_blob": "b87771fa8d3aaa702a6f3a7279248239caaeb4da"
     },
     {
       "path": "beta/genius_beta/app.py",
-      "sha256": "d1a544ea5729f953f811abf55cd3a8fff3bcbd3d91d9040e461ae1f29f37b876",
-      "git_blob": "e2bd94f78b0131bd6a28177ff412a8d9cf81044e",
+      "sha256": "eff568346f2f26aca4dc14f011bcbbde595179913bed33ef92d3cfd1067e165a",
+      "git_blob": "cd824962b26622830309980fabbefb633e57a3b6",
       "origin_sha256": "9da598380e41a34d6058657a3e3faa12e89c3b76bedd241d06086f1a650220a2",
       "origin_git_blob": "cffbe288611dcd909c1242844afefb73f5c565ea"
     },
@@ -326,6 +326,11 @@
       "git_blob": "3189850aaed742d3397027689c23bd7b9d2da501"
     },
     {
+      "path": "beta/genius_beta/contributions.py",
+      "sha256": "12877cb1447438ac91ae50529d9ac5e15d0173dadb6fe4404ceb4c2b9a48bad4",
+      "git_blob": "821922f163f9dc7d881c78ccd7be7f803af22c79"
+    },
+    {
       "path": "beta/genius_beta/db.py",
       "sha256": "3ab94e9896f905d3423bc106cbaeb67e18f783b5e813c35358a02df63ca5429b",
       "git_blob": "7ef566df8dd94d69e59de90490d1be74575176f9"
@@ -342,8 +347,8 @@
     },
     {
       "path": "beta/genius_beta/mcp_access.py",
-      "sha256": "414f7b0551aae0dd6e6d923ad76b709c808ef687c71cb17f88bfd3471712c11e",
-      "git_blob": "a95a883debeae22691fb55a58421ae78320732bb",
+      "sha256": "e15e59e9b613bf27a505c6d049081eb8c1138bb9cea1a09cd0097538c8636ba6",
+      "git_blob": "7d2297a86f61340f836f1136ccfebe36cad6ca2d",
       "origin_sha256": "5a6d8760d1a1e79bcaf2b1c211293f910e1f60e9bad97a11defa53e874224006",
       "origin_git_blob": "170c6c0186360cff3c1caec09bd6cbdf8bd02db4"
     },
@@ -359,8 +364,8 @@
     },
     {
       "path": "beta/genius_beta/static/agents.html",
-      "sha256": "b71c0073224bf0abdbc13991fc5fe62709e98289940a1c8840b4623879a5f4e9",
-      "git_blob": "8821252f9751ce5bbce1a4ac5192ece8d2768f1e",
+      "sha256": "cb205a929e1d6c5fe505c6966b0e6a1888b37ac4c3e285c932f5f19ffb423881",
+      "git_blob": "8ca90f219edf77dd02472ecf417dfc516b9019af",
       "origin_sha256": "68b230a7f65f025fbb0f2eaf8db5ce316882ea01db3ecb7ccef55b32572af813",
       "origin_git_blob": "94bddb3bcae3a493642d7ef1cc7c46585c9f23d2"
     },
@@ -401,8 +406,8 @@
     },
     {
       "path": "beta/genius_beta/static/llms.txt",
-      "sha256": "3323a62532eab33bd49af601b4dd520c518e6e7aa1f754c2e11a41436417a0ad",
-      "git_blob": "00b203dc0eb4c0deb854539db89b891e5e03dabf",
+      "sha256": "a69421667f7ddb760b1cb4846f24c946e27f048fc4b272cced84fb7e89da6639",
+      "git_blob": "48c81bb3f77abffc45511ed47d53dba3c4a71ade",
       "origin_sha256": "a3409d8f1f7b7fdb301778114f2b1e5b938e25b32a737880250c10ad65b65393",
       "origin_git_blob": "ed707594bda964215a36f572e6bfe440160e3bd3"
     },
@@ -442,8 +447,10 @@
     },
     {
       "path": "beta/genius_beta/taxis.py",
-      "sha256": "23041fc1961507f2e1537f11db7c30125a83a0bd5f6c6384bd6c012dcc31b9f8",
-      "git_blob": "e8d54bc0bc6a8bec603b329dbd728a3cec990175"
+      "sha256": "bd5343a2f9b74cdb73b980bf7c0252fca345502dd6d229a8bf8ef0c0d069e648",
+      "git_blob": "476e0a67b22c89e10034bf30c035301a321c1dbf",
+      "origin_sha256": "23041fc1961507f2e1537f11db7c30125a83a0bd5f6c6384bd6c012dcc31b9f8",
+      "origin_git_blob": "e8d54bc0bc6a8bec603b329dbd728a3cec990175"
     },
     {
       "path": "beta/genius_beta/twin_integration.py",
@@ -476,6 +483,11 @@
       "path": "beta/migrations/003_agent_access.sql",
       "sha256": "268f836e00138ddffea3b68dd754b67f0f82a4f29d48b0dd1cb7900568c6fc71",
       "git_blob": "72fcde4c3e6c6ce7a82302651f166d17ae3d9526"
+    },
+    {
+      "path": "beta/migrations/004_contribution_inbox.sql",
+      "sha256": "473b5730ab96ad4353b62dc8a84edc5a2a67171633f20894b4c1a8b6ccd0a2b1",
+      "git_blob": "1af4868f5de5012feb43b5f41c4a4da3cee0972c"
     },
     {
       "path": "beta/requirements.lock",
@@ -533,6 +545,11 @@
       "git_blob": "ec0446a19fadbcc1cf5d3d00a42b07ed2163f851"
     },
     {
+      "path": "beta/tests/test_contributions.py",
+      "sha256": "ef960e21df93e80a0b975b9c9bb92263e0b5391a6e52898db2be3527433df8f5",
+      "git_blob": "0c1bdac605e3adafc87ea6e28b9c4d9403bc79df"
+    },
+    {
       "path": "beta/tests/test_direct_agents.py",
       "sha256": "e8c24e727f00653880a28d0c448a1467af9e2a57aca8ab4a0d509f8b3b79471e",
       "git_blob": "0eed4630dea3b1f30db2b6ff3c32b01025d76458"
@@ -549,8 +566,8 @@
     },
     {
       "path": "beta/tests/test_mcp_access.py",
-      "sha256": "62fa88e0b636822c4ab5ee57d07a96c32961b6d24dfb30f7a990dd235a174442",
-      "git_blob": "75b3d38c64f16d115699e854b14b870a8ca54a5a",
+      "sha256": "bfd5b993711c6aee10f1d492862b421e9d7143c5bc72b1a2426dbb18c58deba3",
+      "git_blob": "0fcd54475b60e10a046390bb79c7c6c84b504cb0",
       "origin_sha256": "8e117c5c7fbb6f669225b65c9fab10e6851d7c86c696c36a0f6b58272edb1238",
       "origin_git_blob": "fc25f09d3eb30ce86d70cbfca6218b053dad18bb"
     },
