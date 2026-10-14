@@ -186,6 +186,10 @@ def restore(source, output, current_db, services_stopped=False):
                     db.execute("DELETE FROM users WHERE id=?", (identifier,))
                 elif entity_type == "case":
                     db.execute("DELETE FROM cases WHERE id=?", (identifier,))
+                elif entity_type in ('club_member', 'club_file'):
+                    table = 'club_members' if entity_type == 'club_member' else 'club_files'
+                    if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)).fetchone():
+                        db.execute('DELETE FROM ' + table + ' WHERE id=?', (identifier,))
                 elif entity_type == 'twin_case':
                     pass  # Applied to the tenant snapshots below.
                 else:
