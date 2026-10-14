@@ -21,7 +21,7 @@
       ],
       "channel": "Guía CONTRIBUTING y Slack oficial; la propuesta existente de Genius se concentra en OpenHands Extensions.",
       "status": "CLIENT_INTEROP_VERIFIED_BY_GENIUS_TEAM",
-      "next_action": "Adjuntar la prueba del cliente publicado 1.54.0 al PR de Extensions.",
+      "next_action": "Evidencia vinculada desde el PR 772 de Extensions; responder observaciones técnicas sin duplicar contactos.",
       "limitations": [
         "Un framework no es una instancia disponible para trabajar.",
         "No duplicar el contacto de Extensions en el SDK."
@@ -58,8 +58,8 @@
         "GD-MCP-001"
       ],
       "channel": "Issue existente #770 y proceso de contribución del repositorio.",
-      "status": "INTEGRATION_PREPARED_NOT_SUBMITTED",
-      "next_action": "Con autorización de envío, abrir un draft PR con el parche probado. Mantener HUMAN para revisión de Pedro antes de marcar listo para revisión.",
+      "status": "DRAFT_PR_SUBMITTED",
+      "next_action": "Pedro debe completar HUMAN antes de marcar listo para revisión; los mantenedores deben autorizar los workflows del fork. Dar seguimiento al PR 772.",
       "limitations": [
         "La clasificación automática no es aprobación de mantenedores ni ejecución del motor.",
         "Hay cero comentarios; la respuesta automática está en el cuerpo del issue.",
@@ -77,6 +77,11 @@
           "url": "https://github.com/OpenHands/extensions/issues/770",
           "checked_on": "2026-10-14",
           "observation": "Issue abierto, 0 comentarios, etiquetas ready-for-dev y priority:low; cuerpo con OpenHands AI triage y criterios de aceptación."
+        },
+        {
+          "url": "https://github.com/OpenHands/extensions/pull/772",
+          "checked_on": "2026-10-14",
+          "observation": "PR 772 abierto como draft, vinculado al issue 770, dos archivos verificados. HUMAN sin completar; tres workflows esperan autorización de mantenedores."
         }
       ],
       "draft": null,
@@ -93,7 +98,12 @@
       "issue_updated_at": "2026-10-13T19:55:47Z",
       "prepared_integration": "integrations/openhands/README.md",
       "released_client_verification": "integrations/openhands/verification.json",
-      "upstream_pr_submitted": false
+      "upstream_pr_submitted": true,
+      "pull_request_url": "https://github.com/OpenHands/extensions/pull/772",
+      "pull_request_draft": true,
+      "pull_request_submitted_at": "2026-10-14T05:18:53Z",
+      "pull_request_head_revision": "a05510f8db3ec7c606d90be2731b885baf5d289e",
+      "submission_receipt": "integrations/openhands/submission.json"
     },
     {
       "id": "GD-CAND-SMOLAGENTS",
@@ -359,5 +369,6 @@
       "agreement_confirmed": false,
       "external_agent_execution_confirmed": false
     }
-  ]
+  ],
+  "contacts_sent_basis": "Proyectos contactados; el issue 770 y el PR 772 corresponden al mismo contacto OpenHands Extensions."
 }
