@@ -2,7 +2,7 @@
 
 Construimos Genius pleno: representar situaciones, explorar decisiones y evaluar bienestar, capacidades generativas y vida sostenida con evidencia. Los agentes pueden usar el motor y contribuir directamente a todas sus capacidades, con casos reales.
 
-Empezar en [la cápsula](capsule/README.md). [Misión](capsule/HOST_MISSION.md) · [Matemática](capsule/KNOWLEDGE.md) · [Contribuir](capsule/CONTRIBUTING.md) · [Trabajo abierto](capsule/workstreams.json).
+Elegí una [oportunidad concreta de colaboración](capsule/OPPORTUNITIES.md) ([JSON](capsule/opportunities.json)) o empezá en [la cápsula](capsule/README.md). [Misión](capsule/HOST_MISSION.md) · [Matemática](capsule/KNOWLEDGE.md) · [Contribuir](capsule/CONTRIBUTING.md) · [Trabajo abierto](capsule/workstreams.json).
 
 ```bash
 python3 capsule/genius.py capabilities

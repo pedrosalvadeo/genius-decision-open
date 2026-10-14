@@ -1,0 +1,570 @@
+{
+  "format": "genius-collaboration-opportunities/1",
+  "version": "1.0.0",
+  "reviewed_at": "2026-10-14",
+  "reviewed_revision": "1342ab428fe7f328297a96d3c1dcacd119cbb012",
+  "public_repository_url": "https://github.com/pedrosalvadeo/genius-decision-open",
+  "scope": "Full Genius engine. Existing opportunities are entry points; larger or new proposals are welcome.",
+  "selection": "Choose by relevance to your authorized task and capabilities. No participation or forwarding obligation.",
+  "evidence_paths_relative_to": "repository_root",
+  "evidence_revision_rule": "Evidence describes reviewed_revision, not a guarantee about future main. Pin that commit or record changes before contributing.",
+  "workflow": [
+    "OPEN",
+    "PROPOSED",
+    "REPRODUCED",
+    "ACCEPTED",
+    "REJECTED"
+  ],
+  "workflow_note": "Opportunity status and contribution review are separate; reproduction alone does not imply scientific acceptance.",
+  "opportunities": [
+    {
+      "id": "GD-OBS-001",
+      "workstream": "TWIN",
+      "status": "OPEN",
+      "title": "Observaciones para modelos configurables",
+      "question": "¿Cómo comparar una observación real con una predicción congelada de STOCK_FLOW_FINITE_V1 sin reescribir su historia?",
+      "capabilities": [
+        "Python",
+        "modelado temporal",
+        "API/MCP",
+        "procedencia de datos"
+      ],
+      "verified_baseline": "El servicio registra observaciones sólo para SEMILLERO_14D_SYNTHETIC_V1; el registro de perfiles anuncia observations=false para STOCK_FLOW_FINITE_V1.",
+      "evidence": [
+        {
+          "path": "twin/genius_twin/service.py",
+          "sha256": "9795b955b6386107cf3de2f5b2122a5bcfb570880dd058f8bca1c5a1401d935a",
+          "finding": "Service.observe rechaza observation_profile_not_supported fuera de D1.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/genius_twin/service.py"
+        },
+        {
+          "path": "twin/genius_twin/registry.py",
+          "sha256": "74c66ddc001a78e0b57aa41787a68f808d1730417bc29a823b9c13d03aa3fae0",
+          "finding": "profiles declara observations=false para STOCKFLOW.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/genius_twin/registry.py"
+        },
+        {
+          "path": "beta/genius_beta/twin_mcp.py",
+          "sha256": "2e251c0b6cd5cdabb621b90bf72a0050fcca6c06b313e2607c05ae6a3d69deb2",
+          "finding": "twin_observe declara expresamente la restricción de perfil.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/beta/genius_beta/twin_mcp.py"
+        },
+        {
+          "path": "twin/docs/EMPIRICAL_PROTOCOL.md",
+          "sha256": "d4f59deabe037d4c5c371c7cb84394ec9d52503c0be419529aba8ca3630d8684",
+          "finding": "Contrato de predicción congelada, unidades, tiempos y discrepancia.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/docs/EMPIRICAL_PROTOCOL.md"
+        }
+      ],
+      "first_action": "Reproducir la restricción y proponer el contrato de observación para variables y unidades declaradas por el modelo.",
+      "acceptance": [
+        "Conservar versión y hash de predicción, política, escenario, variable, unidad, tiempo del fenómeno, observación y recepción.",
+        "Rechazar unidades o referencias incompatibles; conservar discrepancias y datos ausentes sin sustituirlos por predicciones.",
+        "Una nueva observación crea una revisión trazable; no calibra ni valida automáticamente el modelo.",
+        "Probar idempotencia, aislamiento entre cuentas, exportación y equivalencia REST/MCP con datos reales autorizados y pruebas controladas."
+      ],
+      "deliverables": [
+        "Contrato de observación",
+        "Implementación y pruebas de regresión",
+        "Expediente de evidencia y reproducción"
+      ],
+      "dependencies": [],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-OBS-001]"
+      },
+      "external_contribution_confirmed": false
+    },
+    {
+      "id": "GD-INT-001",
+      "workstream": "INTERPRET",
+      "status": "OPEN",
+      "title": "Del relato a un modelo revisable",
+      "question": "¿Puede un agente reconstruir recursos, afectados, alternativas y supuestos de una decisión sin inventar los datos que faltan?",
+      "capabilities": [
+        "interpretación de lenguaje",
+        "modelado de decisiones",
+        "Python",
+        "diseño conversacional"
+      ],
+      "verified_baseline": "Service.create_case conserva el relato; fuera del ejemplo de semillero abre MODELO_PENDIENTE. El modelo configurable se propone de forma estructurada.",
+      "evidence": [
+        {
+          "path": "twin/genius_twin/service.py",
+          "sha256": "9795b955b6386107cf3de2f5b2122a5bcfb570880dd058f8bca1c5a1401d935a",
+          "finding": "create_case y propose distinguen relato, plantilla sintética y modelo declarado.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/genius_twin/service.py"
+        },
+        {
+          "path": "twin/examples/stockflow_schema.json",
+          "sha256": "8cc61fb98056e3a74ba1f4bca0999e8dc4cc39efbf7945eff64ea49e75d1d2ae",
+          "finding": "Esquema de entrada configurable.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/examples/stockflow_schema.json"
+        },
+        {
+          "path": "twin/docs/STOCKFLOW_CONTRACT.md",
+          "sha256": "6abcf1d3080fe4f407554ab1e49c8ba707da97fe3ff1b4faf654f96b37ae7bd8",
+          "finding": "El perfil no infiere supuestos verdaderos desde prosa y declara sus límites.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/docs/STOCKFLOW_CONTRACT.md"
+        }
+      ],
+      "first_action": "Elegir una decisión real documentada, marcar cada dato explícito y construir una propuesta con preguntas para los faltantes materiales.",
+      "acceptance": [
+        "Trazar cada campo a una fuente, declaración, cálculo o supuesto propuesto; conservar desconocidos.",
+        "Separar interpretación, validación estructural y confirmación de premisas; no aceptar el modelo en nombre del responsable.",
+        "Detectar casos fuera del perfil y proponer una extensión explícita cuando corresponda.",
+        "Evaluar relatos ambiguos y correcciones; informar errores, cobertura y límites sobre ejemplos no usados para ajustar la propuesta."
+      ],
+      "deliverables": [
+        "Intérprete o adaptador",
+        "Casos con referencias y permisos",
+        "Evaluación de fidelidad y corrección"
+      ],
+      "dependencies": [
+        "Para evaluar fidelidad a un caso real se necesita una descripción y evidencia cuya utilización esté permitida."
+      ],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-INT-001]"
+      },
+      "external_contribution_confirmed": false
+    },
+    {
+      "id": "GD-REAL-001",
+      "workstream": "REAL",
+      "status": "OPEN",
+      "title": "Contraste de una decisión real",
+      "question": "¿Qué decisión real puede mejorar Genius y qué observación permitiría comprobar o refutar esa utilidad?",
+      "capabilities": [
+        "investigación de dominio",
+        "datos abiertos",
+        "modelado",
+        "evaluación empírica"
+      ],
+      "verified_baseline": "La cápsula admite evidencia real con fuentes; el caso de distribución mide archivos. El protocolo de campo y comprensión sigue PREPARADO, NO EJECUTADO en el documento revisado.",
+      "evidence": [
+        {
+          "path": "capsule/genius.py",
+          "sha256": "6e3a2c5fa4ff36ffb1596396c142ff8f3fbfbe5132cd99b63fe69e67a9921bb1",
+          "finding": "evidence_record y evaluate admiten origen real/mixed con fuentes; rechazan presentar la plantilla fija sintética como caso real.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/genius.py"
+        },
+        {
+          "path": "capsule/cases/distribution/README.md",
+          "sha256": "35d8fde76b29ec48650dc8609c1b370f640a8ddb98e6fc5869cb3517b5857962",
+          "finding": "Único caso real descrito aquí: mediciones de tamaños de archivo, con alcance limitado a bytes.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/cases/distribution/README.md"
+        },
+        {
+          "path": "twin/docs/EMPIRICAL_PROTOCOL.md",
+          "sha256": "d4f59deabe037d4c5c371c7cb84394ec9d52503c0be419529aba8ca3630d8684",
+          "finding": "Distingue corrección de software, comprensión y validez del modelo.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/docs/EMPIRICAL_PROTOCOL.md"
+        }
+      ],
+      "first_action": "Identificar una pregunta real y fuentes públicas o autorizadas; comprobar que las variables y el horizonte permiten una comparación pertinente.",
+      "acceptance": [
+        "Entregar modelo, evidencia genius-case-evidence/1, fuentes fechadas, unidades, supuestos y desconocidos.",
+        "Declarar aplicabilidad y criterio de contraste antes de observar el resultado reservado para evaluación.",
+        "Separar datos de ajuste y contraste; etiquetar un análisis retrospectivo como tal.",
+        "Comparar con una alternativa de referencia y conservar un resultado negativo o inconcluso.",
+        "No renombrar una tarea operacional como PVS de vida ni la ejecución formal como validación empírica."
+      ],
+      "deliverables": [
+        "Expediente real reproducible",
+        "Comparación con referencia",
+        "Dictamen de alcance y discrepancias"
+      ],
+      "dependencies": [
+        "Fuentes pertinentes y permisos de uso; para un estudio prospectivo, acceso a observaciones futuras. La preparación y los análisis retrospectivos pueden comenzar antes."
+      ],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-REAL-001]"
+      },
+      "external_contribution_confirmed": false
+    },
+    {
+      "id": "GD-DIST-001",
+      "workstream": "REAL",
+      "status": "OPEN",
+      "title": "Distribuir la cápsula con mediciones actualizadas",
+      "question": "¿Sigue siendo preferible el mismo formato cuando además de bytes consideramos tiempo de preparación y compatibilidad?",
+      "capabilities": [
+        "Python",
+        "medición de rendimiento",
+        "reproducibilidad"
+      ],
+      "verified_baseline": "El caso real existente compara bytes de tres archivos de un snapshot histórico; excluye CPU, compatibilidad y reintentos.",
+      "evidence": [
+        {
+          "path": "capsule/cases/distribution/README.md",
+          "sha256": "35d8fde76b29ec48650dc8609c1b370f640a8ddb98e6fc5869cb3517b5857962",
+          "finding": "Exige crear una versión nueva al medir fuentes nuevas y conservar la observación histórica.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/cases/distribution/README.md"
+        },
+        {
+          "path": "capsule/cases/distribution/measurement.json",
+          "sha256": "33011f55ad9a961d58baced7ac919745e56e380b6f784637d2ef51ac0d97ee56",
+          "finding": "Mediciones originales con tamaños y hashes.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/cases/distribution/measurement.json"
+        },
+        {
+          "path": "capsule/build_publication.py",
+          "sha256": "638bff24a7f3e444297cc56d8f57cd8a0147d22d8b339fff844ce5493ce4a1f6",
+          "finding": "Construye TAR, TAR.GZ y ZIP a partir del índice de fuentes.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/build_publication.py"
+        }
+      ],
+      "first_action": "Fijar un commit y construir los tres formatos en un directorio nuevo; medir el mismo inventario y registrar entorno y método.",
+      "acceptance": [
+        "Conservar la medición histórica y publicar una nueva versión con commit, hashes, tamaños y receta.",
+        "Separar tamaño observado, tiempos medidos y supuestos de red; no inferir latencia a partir de bytes únicamente.",
+        "Verificar extracción del mismo inventario y explicitar la norma que resuelve el intercambio entre criterios.",
+        "Limitar la conclusión al inventario y entornos observados; este caso no valida bienestar ni PVS."
+      ],
+      "deliverables": [
+        "Mediciones y método",
+        "Modelo y evidencia actualizados",
+        "Recibo de ejecución y verificación"
+      ],
+      "dependencies": [],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-DIST-001]"
+      },
+      "external_contribution_confirmed": false
+    },
+    {
+      "id": "GD-MATH-001",
+      "workstream": "MATH",
+      "status": "OPEN",
+      "title": "Auditar el puente entre matemática y compilador",
+      "question": "¿Conserva el compilador las hipótesis necesarias para distinguir CAG posible/robusta, dominancia y viabilidad de trayectoria?",
+      "capabilities": [
+        "matemática formal",
+        "contraejemplos",
+        "Python",
+        "verificación"
+      ],
+      "verified_baseline": "Hay fuentes, enmiendas, revisión deductiva y pruebas de límites. La revisión integrada declara que no es una demostración mecanizada ni validación empírica.",
+      "evidence": [
+        {
+          "path": "GENIUS_PROGRAM/theory/reviews/REVIEW_INTEGRATION.md",
+          "sha256": "d3b255a81a17a41539e7a6104d7072f267333c88dba326eb0acd04aff378df1e",
+          "finding": "Revisión condicional de teoremas integrados y obligaciones del DAG.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/GENIUS_PROGRAM/theory/reviews/REVIEW_INTEGRATION.md"
+        },
+        {
+          "path": "GENIUS_PROGRAM/theory/AMENDMENTS.md",
+          "sha256": "9288f85edad4c0eba97d04469d7ed178f55147b15407cf232d48cb6fd68ea6d6",
+          "finding": "Reparaciones y especializaciones explícitas de las fuentes.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/GENIUS_PROGRAM/theory/AMENDMENTS.md"
+        },
+        {
+          "path": "twin/genius_twin/stockflow_compiler.py",
+          "sha256": "0625fc433e594343ff12528d3e1129a604862f686cbea1a4083f1b17cb280071",
+          "finding": "compile_model y evaluate_model enlazan modelo, núcleo y resultados.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/genius_twin/stockflow_compiler.py"
+        },
+        {
+          "path": "kernel/tests/test_theory_boundaries.py",
+          "sha256": "628644063823e6cdcda27fcc5e4a7f5e1fd90f014f394541e615524084cab37f",
+          "finding": "Pruebas existentes en las fronteras de la teoría.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/kernel/tests/test_theory_boundaries.py"
+        }
+      ],
+      "first_action": "Elegir una afirmación concreta, enumerar sus hipótesis y rastrearlas desde la fuente enmendada hasta el resultado del compilador.",
+      "acceptance": [
+        "Identificar afirmación y versión; distinguir error matemático, especialización de perfil y defecto de implementación.",
+        "Entregar prueba con hipótesis explícitas o contraejemplo mínimo reproducible.",
+        "Conservar las distinciones entre cardinalidad y dominancia, posibilidad y robustez, escenario de masa cero y evento imposible, endpoint y trayectoria.",
+        "Si hay reparación, documentar el cambio semántico y la regresión; una prueba que pasa no reemplaza una demostración general."
+      ],
+      "deliverables": [
+        "Informe de prueba o contraejemplo",
+        "Correspondencia fuente/código",
+        "Parche y regresión si corresponde"
+      ],
+      "dependencies": [],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-MATH-001]"
+      },
+      "external_contribution_confirmed": false
+    },
+    {
+      "id": "GD-ENG-001",
+      "workstream": "ENGINE",
+      "status": "OPEN",
+      "title": "Bienestar y PVS con significado de dominio",
+      "question": "¿Qué modelo y evidencia hacen admisibles afirmaciones de bienestar y vida sostenida para un dominio real?",
+      "capabilities": [
+        "ciencia de dominio",
+        "probabilidad",
+        "medición de bienestar",
+        "modelado causal"
+      ],
+      "verified_baseline": "STOCK_FLOW_FINITE_V1 ofrece un perfil de condiciones, no un índice global de bienestar. La PVS depende de condiciones de vida declaradas; en tareas operacionales es NOT_APPLICABLE.",
+      "evidence": [
+        {
+          "path": "twin/docs/STOCKFLOW_CONTRACT.md",
+          "sha256": "6abcf1d3080fe4f407554ab1e49c8ba707da97fe3ff1b4faf654f96b37ae7bd8",
+          "finding": "Portadores, bienestar, ley conjunta, task_probability, pvs y límites.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/docs/STOCKFLOW_CONTRACT.md"
+        },
+        {
+          "path": "twin/genius_twin/stockflow_compiler.py",
+          "sha256": "0625fc433e594343ff12528d3e1129a604862f686cbea1a4083f1b17cb280071",
+          "finding": "wellbeing declara CONDITIONS_PROFILE_NOT_GLOBAL_INDEX; pvs separa life_conditions y operational.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/genius_twin/stockflow_compiler.py"
+        },
+        {
+          "path": "twin/docs/EMPIRICAL_PROTOCOL.md",
+          "sha256": "d4f59deabe037d4c5c371c7cb84394ec9d52503c0be419529aba8ca3630d8684",
+          "finding": "Requisitos de admisión para bienestar, CAG, viabilidad y PVS.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/docs/EMPIRICAL_PROTOCOL.md"
+        }
+      ],
+      "first_action": "Seleccionar un dominio y especificar portadores, dimensiones, evento de trayectoria, horizonte y fuentes antes de proponer una métrica o ley.",
+      "acceptance": [
+        "Justificar constructos y medidas; no convertir ausencia de medición en cero.",
+        "Declarar procedencia y aplicabilidad de la ley conjunta; mantener incertidumbre estructural y paramétrica separadas.",
+        "Conservar masa indeterminada y ausencia de ley; no fabricar equiprobabilidad ni extrapolar supervivencia.",
+        "Presentar una extensión matemática y de software cuando el perfil actual no represente el fenómeno.",
+        "Contrastar afirmaciones de dominio con evidencia proporcional; informar resultados condicionales cuando la validación no alcance."
+      ],
+      "deliverables": [
+        "Contrato de dominio",
+        "Extensión de modelo/motor cuando corresponda",
+        "Protocolo y evidencia de contraste"
+      ],
+      "dependencies": [
+        "La afirmación empírica requiere evidencia pertinente; el trabajo formal y de implementación puede avanzar por separado."
+      ],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-ENG-001]"
+      },
+      "external_contribution_confirmed": false
+    },
+    {
+      "id": "GD-MCP-001",
+      "workstream": "M2M",
+      "status": "OPEN",
+      "title": "Recepción independiente del motor por otro agente",
+      "question": "¿Puede un agente externo completar el recorrido y explicar correctamente qué demuestra el resultado?",
+      "capabilities": [
+        "cliente MCP/HTTP",
+        "Python",
+        "evaluación de agentes"
+      ],
+      "verified_baseline": "Se publicaron 15 herramientas del gemelo y un recibo técnico propio del ciclo completo. Ese recibo no acredita adopción ni ejecución por un colaborador independiente.",
+      "evidence": [
+        {
+          "path": "beta/docs/AGENT_TWIN.md",
+          "sha256": "a9b39fb44eff985e835f6540cc4e41724cdd235d6e64dd6b17fad5a883918478",
+          "finding": "Contrato y ciclo autónomo API/MCP.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/beta/docs/AGENT_TWIN.md"
+        },
+        {
+          "path": "capsule/receipts/live-twin-2026-10-14.json",
+          "sha256": "f5e3aa89f32ffa2c7e6808e4de6c974472162d05b327a3f314eedac64ad6f868",
+          "finding": "Recibo técnico propio con limpieza del espacio temporal.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/receipts/live-twin-2026-10-14.json"
+        },
+        {
+          "path": "capsule/NEXT_WORK.md",
+          "sha256": "77704170ac130fd67ba8786725b24eb6e7236f7f5793fa397370d94cb3eb09f5",
+          "finding": "Distingue verificación propia de recepción externa; propuesta enviada a OpenHands pendiente.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/NEXT_WORK.md"
+        }
+      ],
+      "first_action": "Leer el manifiesto vivo y elegir ejecución local o un cliente MCP compatible; registrar versión y relación del evaluador con el proyecto.",
+      "acceptance": [
+        "Conservar entrada, resultado, versiones, comandos y recibo verificable sin credenciales.",
+        "Informar qué operaciones pudo completar y cualquier límite del cliente, cuota o servicio.",
+        "Explicar supuestos, desconocidos y alcance de la conclusión; distinguir un ejemplo sintético de un caso real.",
+        "En el servicio, documentar creación y limpieza del espacio de prueba; en local no se exige cuenta.",
+        "Declarar independencia y participación del operador; una simulación interna no cuenta como recepción externa."
+      ],
+      "deliverables": [
+        "Recibo de recepción externa",
+        "Informe de comprensión y fallos",
+        "Contribución o issue reproducible"
+      ],
+      "dependencies": [
+        "Un participante externo que decida realizar y reportar la prueba."
+      ],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-MCP-001]"
+      },
+      "external_contribution_confirmed": false
+    },
+    {
+      "id": "GD-A2A-001",
+      "workstream": "M2M",
+      "status": "OPEN",
+      "title": "Intercambio A2A con un consumidor real",
+      "question": "¿Qué adaptador permite a otro agente solicitar una evaluación Genius y recibir artefactos trazables?",
+      "capabilities": [
+        "interoperabilidad A2A",
+        "Python",
+        "autenticación",
+        "API"
+      ],
+      "verified_baseline": "El manifiesto de la cápsula declara a2a_endpoint pendiente; MCP y HTTP no prueban compatibilidad A2A.",
+      "evidence": [
+        {
+          "path": "capsule/manifest.json",
+          "sha256": "de993f5a1164d69067cdec3fdf3af4b197dcbc955579e981ee01f196d55f75ec",
+          "finding": "not_yet_implemented incluye a2a_endpoint.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/manifest.json"
+        },
+        {
+          "path": "beta/docs/AGENT_TWIN.md",
+          "sha256": "a9b39fb44eff985e835f6540cc4e41724cdd235d6e64dd6b17fad5a883918478",
+          "finding": "Operaciones existentes que pueden sustentar el adaptador.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/beta/docs/AGENT_TWIN.md"
+        }
+      ],
+      "first_action": "Elegir un consumidor compatible y verificar la especificación A2A vigente; definir el mapeo hacia operaciones Genius existentes.",
+      "acceptance": [
+        "Publicar sólo capacidades implementadas y probar descubrimiento y mensajes con el consumidor identificado.",
+        "Preservar aislamiento, permisos, límites, errores y procedencia de artefactos.",
+        "Entregar evidencia de intercambio real entre cliente y servidor, diferenciada de mocks.",
+        "Separar interoperabilidad técnica de acuerdo de colaboración o adopción."
+      ],
+      "deliverables": [
+        "Adaptador y contrato versionado",
+        "Pruebas de integración",
+        "Recibo de interoperabilidad"
+      ],
+      "dependencies": [
+        "La prueba de interoperabilidad requiere un consumidor compatible; el diseño no depende de un acuerdo institucional."
+      ],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-A2A-001]"
+      },
+      "external_contribution_confirmed": false
+    },
+    {
+      "id": "GD-ATTR-001",
+      "workstream": "COLLAB",
+      "status": "OPEN",
+      "title": "Comprobar qué oportunidades eligen los agentes",
+      "question": "¿Una incógnita relevante y verificable aumenta la elección voluntaria de Genius frente a una descripción general?",
+      "capabilities": [
+        "diseño experimental",
+        "evaluación de agentes",
+        "analítica"
+      ],
+      "verified_baseline": "Existe una propuesta de colaboración enviada, pero no un experimento de atracción ejecutado ni evidencia de un estímulo universal.",
+      "evidence": [
+        {
+          "path": "capsule/candidates.json",
+          "sha256": "e2126497a8c9850d166d29f128e44674638d259a75dc3d3b7c86a37647bd0958",
+          "finding": "Registro de candidatos y de una propuesta enviada, sin ejecución externa confirmada.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/candidates.json"
+        },
+        {
+          "path": "capsule/DISCOVERY.md",
+          "sha256": "925a2abd217d6c3be0db514659b3a820e350f0f23b86232ecb2d0e0330dbbced",
+          "finding": "Búsqueda por contribución y trazabilidad de contactos.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/capsule/DISCOVERY.md"
+        }
+      ],
+      "first_action": "Predefinir un protocolo que compare descripción general, utilidad inmediata e incógnita verificable, con igual acceso al motor y libertad de no elegir Genius.",
+      "acceptance": [
+        "Registrar modelo/versión, tarea, herramientas disponibles, presupuesto, orden de exposición y unidad experimental.",
+        "Mantener contenido factual y condiciones de ejecución comparables; asignar variantes sin elegir ganadores retrospectivamente.",
+        "Separar exposición, elección, ejecución verificada, aporte recibido y aporte aceptado, con numeradores y denominadores.",
+        "Definir muestra, parada y análisis antes de ejecutar; reportar incertidumbre y resultados negativos.",
+        "Distinguir prueba por invitación directa de elección entre alternativas e identificar evaluaciones internas y externas.",
+        "No atribuir instintos universales ni contar visitas o descargas como colaboradores."
+      ],
+      "deliverables": [
+        "Protocolo previo",
+        "Registro de eventos desidentificado",
+        "Informe reproducible y límites"
+      ],
+      "dependencies": [
+        "Clientes o participantes disponibles y presupuesto explícito para ejecutar el experimento."
+      ],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-ATTR-001]"
+      },
+      "external_contribution_confirmed": false
+    },
+    {
+      "id": "GD-UX-001",
+      "workstream": "PRODUCT",
+      "status": "OPEN",
+      "title": "Comprensión humana de las conclusiones",
+      "question": "¿Las personas distinguen una recomendación condicional, una incertidumbre y una garantía formal al leer Genius?",
+      "capabilities": [
+        "investigación UX",
+        "diseño de información",
+        "evaluación de comprensión"
+      ],
+      "verified_baseline": "Existen vistas y un protocolo de comprensión; el documento revisado declara el ensayo no iniciado y excluye contar agentes como participantes humanos.",
+      "evidence": [
+        {
+          "path": "twin/docs/EMPIRICAL_PROTOCOL.md",
+          "sha256": "d4f59deabe037d4c5c371c7cb84394ec9d52503c0be419529aba8ca3630d8684",
+          "finding": "Sección de comprensión y preguntas que separan trayectoria, CAG, incertidumbre y versión.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/twin/docs/EMPIRICAL_PROTOCOL.md"
+        },
+        {
+          "path": "consumer_views/README.md",
+          "sha256": "5cd9727aabc819866ab755ad99956d7d8c2ce2f1cca9b17a76c5653c8b108afd",
+          "finding": "Vistas de consumidor del motor.",
+          "url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/1342ab428fe7f328297a96d3c1dcacd119cbb012/consumer_views/README.md"
+        }
+      ],
+      "first_action": "Preparar materiales versionados y criterios de evaluación; identificar usuarios que acepten participar en una prueba de comprensión.",
+      "acceptance": [
+        "Registrar material exacto, respuestas, ayuda recibida, método y denominadores.",
+        "Separar comprensión, utilidad de la decisión y validez del modelo.",
+        "Conservar errores y material original; evaluar una corrección como una versión nueva.",
+        "Desidentificar resultados y documentar permisos de uso; no sustituir personas por agentes."
+      ],
+      "deliverables": [
+        "Protocolo y materiales",
+        "Resultados de comprensión",
+        "Mejoras de interfaz con evidencia"
+      ],
+      "dependencies": [
+        "Participantes humanos y autorización para el estudio; la preparación de materiales puede comenzar ahora."
+      ],
+      "submission": {
+        "issue_url": "https://github.com/pedrosalvadeo/genius-decision-open/issues",
+        "pull_request_url": "https://github.com/pedrosalvadeo/genius-decision-open/pulls",
+        "contribution_contract": "capsule/CONTRACTS.md",
+        "title_prefix": "[GD-UX-001]"
+      },
+      "external_contribution_confirmed": false
+    }
+  ]
+}

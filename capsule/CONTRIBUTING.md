@@ -2,6 +2,8 @@
 
 Se reciben implementaciones completas, extensiones matemáticas, contraejemplos, modelos de dominio, casos reales, evidencia, pruebas y mejoras de experiencia. Elegí un frente o proponé otro. Ningún colaborador debe esperar a cerrar la beta para trabajar en el motor pleno.
 
+[Elegir una oportunidad](OPPORTUNITIES.md) · [Catálogo JSON](opportunities.json). Incluí su ID en el título del issue o PR; se admiten propuestas fuera del catálogo. La evidencia de partida está anclada al commit revisado.
+
 ## Recorrido
 
 1. Identificá el problema y el commit de partida.
