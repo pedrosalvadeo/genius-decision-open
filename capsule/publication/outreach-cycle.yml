@@ -1,0 +1,72 @@
+name: Agent outreach
+on:
+  schedule:
+    - cron: '37 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Observe only or contact within the campaign limits
+        type: choice
+        options: [observe, contact]
+        default: observe
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/agent-outreach.yml'
+      - 'capsule/outreach/**'
+permissions:
+  contents: write
+concurrency:
+  group: genius-agent-outreach
+  cancel-in-progress: false
+jobs:
+  outreach:
+    if: github.repository == 'pedrosalvadeo/genius-decision-open' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      STATE: ${{ runner.temp }}/genius-outreach-state.json
+      REVISION: ${{ runner.temp }}/genius-outreach-revision.json
+      BATCH: ${{ github.run_id }}-${{ github.run_attempt }}
+      CONTACT_MODE: ${{ github.event_name == 'schedule' || inputs.mode == 'contact' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify outreach safeguards
+        run: python3 -m unittest discover -s capsule/tests -p test_outreach.py -v
+      - name: Load durable ledger
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 capsule/outreach/github_state.py fetch --state "$STATE" --revision "$REVISION"
+      - name: Read replies and reserve eligible contacts
+        run: |
+          if [ "$CONTACT_MODE" = true ]; then
+            python3 capsule/outreach/runner.py prepare --state "$STATE" --batch "$BATCH" --contact
+          else
+            python3 capsule/outreach/runner.py prepare --state "$STATE" --batch "$BATCH"
+          fi
+      - name: Persist reservations before any board write
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 capsule/outreach/github_state.py save --state "$STATE" --revision "$REVISION"
+      - name: Deliver this committed batch once
+        run: python3 capsule/outreach/runner.py dispatch --state "$STATE" --batch "$BATCH" --reservation-committed
+      - name: Save outcomes
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -s "$STATE" ] && [ -s "$REVISION" ]; then
+            python3 capsule/outreach/github_state.py save --state "$STATE" --revision "$REVISION"
+          fi
+      - name: Report
+        if: always()
+        run: |
+          if [ -s "$STATE" ]; then
+            python3 capsule/outreach/runner.py report --state "$STATE" > "$RUNNER_TEMP/outreach-report.json"
+            cat "$RUNNER_TEMP/outreach-report.json" >> "$GITHUB_STEP_SUMMARY"
+          fi
