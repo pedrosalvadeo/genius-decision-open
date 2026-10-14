@@ -75,6 +75,29 @@ def install(app, db, body, error, fail_quota, capacity, backup_ready):
                     identity='Author is self-declared, not authenticated.',
                     meaning='Stored for authorized AI review. Not execution, acceptance or integration.')
 
+    def reserve_attempt():
+        if not available():
+            raise error('inbox_paused', 'Deposits are temporarily paused.', 503)
+        fail_quota('contribution-global', 30)
+        fail_quota('contribution-minute', 10, 60)
+        ip = hashlib.sha256((request.remote_addr or '').encode()).hexdigest()
+        fail_quota('contribution-ip:'+ip, 5)
+
+    def deposit(raw, ident):
+        # Caller holds an IMMEDIATE transaction, including any private provenance link.
+        row = db().execute('SELECT * FROM contribution_inbox WHERE id=?', (ident,)).fetchone()
+        if row is not None:
+            return row, True
+        count, size = db().execute('SELECT count(*),coalesce(sum(payload_bytes),0) FROM contribution_inbox').fetchone()
+        if count >= 200 or size + len(raw) > 16*1024*1024:
+            raise error('inbox_capacity', 'Inbox full; existing deposits remain readable.', 503)
+        capacity(len(raw)*3 + 65536)
+        db().execute('INSERT INTO contribution_inbox(id,received_at,payload_json,payload_bytes) VALUES(?,?,?,?)',
+                     (ident, int(time.time()), raw.decode('utf-8'), len(raw)))
+        return db().execute('SELECT * FROM contribution_inbox WHERE id=?', (ident,)).fetchone(), False
+
+    app.extensions['contribution_inbox'] = dict(receipt=receipt, reserve_attempt=reserve_attempt, deposit=deposit)
+
     @app.get('/contributions')
     def contribution_contract():
         return jsonify(format='genius-contribution-inbox/1', available=available(),
@@ -129,25 +152,11 @@ def install(app, db, body, error, fail_quota, capacity, backup_ready):
             raise error('invalid_query', 'Submission accepts no URL parameters.', 400)
         if request.headers.get('Origin') not in (None, app.config['PUBLIC_URL']) or request.headers.get('Sec-Fetch-Site') == 'cross-site':
             raise error('origin_denied', 'Origin denied.', 403)
-        if not available():
-            raise error('inbox_paused', 'Deposits are temporarily paused.', 503)
-        fail_quota('contribution-global', 30)
-        fail_quota('contribution-minute', 10, 60)
-        ip = hashlib.sha256((request.remote_addr or '').encode()).hexdigest()
-        fail_quota('contribution-ip:'+ip, 5)
+        reserve_attempt()
         try:
             raw, ident = validate(body())
         except (ValueError, UnicodeError, RecursionError):
             raise error('invalid_submission', 'Invalid contribution. Consult /contributions for fields and limits.', 400)
         with transaction(db()):
-            row = db().execute('SELECT * FROM contribution_inbox WHERE id=?', (ident,)).fetchone()
-            if row is not None:
-                return jsonify(receipt=receipt(row), duplicate=True), 200
-            count, size = db().execute('SELECT count(*),coalesce(sum(payload_bytes),0) FROM contribution_inbox').fetchone()
-            if count >= 200 or size + len(raw) > 16*1024*1024:
-                raise error('inbox_capacity', 'Inbox full; existing deposits remain readable.', 503)
-            capacity(len(raw)*3 + 65536)
-            db().execute('INSERT INTO contribution_inbox(id,received_at,payload_json,payload_bytes) VALUES(?,?,?,?)',
-                         (ident, int(time.time()), raw.decode('utf-8'), len(raw)))
-            row = db().execute('SELECT * FROM contribution_inbox WHERE id=?', (ident,)).fetchone()
-        return jsonify(receipt=receipt(row), duplicate=False), 201
+            row, duplicate = deposit(raw, ident)
+        return jsonify(receipt=receipt(row), duplicate=duplicate), 200 if duplicate else 201

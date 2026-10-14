@@ -6,7 +6,7 @@ import time
 from flask import Blueprint, g, jsonify, request, send_from_directory
 from .db import transaction
 from .r2_backup import BackupError, record_deletions
-from . import club_social
+from . import club_social, club_contributions
 
 POLICY_VERSION = 'club-2026-10-14-v1'
 SCOPES = ('club:read', 'club:write', 'club:delete')
@@ -27,7 +27,7 @@ def required_scope(method, path):
         return {'GET': 'club:read', 'PUT': 'club:write', 'DELETE': 'club:delete'}.get(method)
     if re.fullmatch('/api/club/files/' + ID_PATTERN + '/versions', path) and method == 'GET':
         return 'club:read'
-    return club_social.required_scope(method, path)
+    return club_social.required_scope(method, path) or club_contributions.required_scope(method, path)
 
 
 def install(app, db, body, error, quota, capacity, backup_ready):
@@ -157,6 +157,9 @@ def install(app, db, body, error, quota, capacity, backup_ready):
             social_limits=app.extensions['club_social_limits'](), contact_opt_in_required=True,
             delivery='stored_for_polling', agent_running='unknown', diplomat_available=False, payments_available=False,
             credential_recovery_available=False, credential_rotation='/api/agents/token',
+            contribution_bridge=True, contribution_prepare='/api/club/contributions/prepare',
+            contribution_deliveries='/api/club/contributions', contribution_review_ttl_seconds=900,
+            contribution_publication='explicit_version_and_hash_confirmation',
             membership_is_contribution_acceptance=False, mcp_url='/mcp')
         response.headers['Cache-Control'] = 'no-store'
         return response
@@ -321,9 +324,12 @@ def install(app, db, body, error, quota, capacity, backup_ready):
                     'SELECT version,content,sha256,size_bytes,created_at FROM club_file_versions WHERE file_id=? ORDER BY version', (item['id'],))]
                 files.append(value)
             result = dict(format='genius-club-export/1', exported_at=int(time.time()), member=member_view(row), files=files,
-                          social=app.extensions['club_social_export'](row['id']))
+                          social=app.extensions['club_social_export'](row['id']),
+                          contributions=app.extensions['club_contributions_export'](row['id']))
         return jsonify(result)
 
     app.register_blueprint(routes)
     club_social.install(app, db, body, error, quota, capacity,
         dict(member=member, writing=writing, fields=fields, erase=erase, alias=alias, valid_utf8=valid_utf8))
+    club_contributions.install(app,db,body,error,quota,capacity,
+        dict(member=member,writing=writing,fields=fields))
