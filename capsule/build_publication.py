@@ -33,6 +33,7 @@ def build(out):
     files['NOTICE'] = (ROOT/'capsule/publication/NOTICE').read_bytes()
     files['.github/workflows/capsule.yml'] = (ROOT/'capsule/publication/ci.yml').read_bytes()
     files['.github/workflows/publish-mcp-registry.yml'] = (ROOT/'capsule/publication/mcp-registry-publish.yml').read_bytes()
+    files['.github/workflows/agent-outreach.yml'] = (ROOT/'capsule/publication/outreach-cycle.yml').read_bytes()
     files['twin/docs/PRODUCT_ROADMAP.md'] = ('# Genius pleno\n\nEl trabajo incluye casos reales, matemática, motor, observaciones, interpretación, interoperabilidad y colaboración.\n\nVer [misión](../../capsule/HOST_MISSION.md), [frentes abiertos](../../capsule/workstreams.json) y [continuidad](../../capsule/NEXT_WORK.md). Las capacidades actuales son una base, no un techo.\n').encode()
     # Bind the exported index to exported bytes so this edition can rebuild itself.
     for record in index['files']:

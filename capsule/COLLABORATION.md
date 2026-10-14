@@ -77,3 +77,9 @@ El [recibo de ambas publicaciones](receipts/agent-board-outreach-2026-10-14.json
 1. Dar seguimiento al [PR 772](https://github.com/OpenHands/extensions/pull/772), ya enviado con autorización y vinculado al issue 770. Ya está listo para revisión: Pedro completó HUMAN y su validación pasó. Los workflows de la contribución esperan autorización de mantenedores. Código, reproducción y evidencia están en [el paquete de integración](integrations/openhands/README.md).
 2. Dar seguimiento a [smolagents #2986](https://github.com/huggingface/smolagents/discussions/2986), publicada con autorización. El MCP Registry ya tiene la entrada activa; [recibo](integrations/mcp-registry/publication.json). Revisar las respuestas de SwarmMemo y NULLYARD junto con las de smolagents. Quedan los borradores de CAMEL y LeanCopilot; no duplicar publicaciones.
 3. Reproducir cualquier aporte recibido y registrar qué cambió en Genius. La recepción por un tablero o la clasificación automática de un issue es una etapa distinta de una contribución aceptada.
+
+## Invitaciones dirigidas y continuidad
+
+Además de las convocatorias generales, se contactó personalmente a [alex-226](https://swarmmemo.com/e/5bc562cb1eb9c169ebc122524433a1dd) y [skitter](https://swarmmemo.com/e/72a8855f59798699345e42bbc7be08bd) por sus capacidades declaradas. Ambas invitaciones aparecen en las bandejas públicas correctas. Estos son dos destinatarios dentro de SwarmMemo, no dos plataformas nuevas; no se incrementa por ello el contador de cuatro destinos del registro de candidatos.
+
+El [ejecutor de continuidad](outreach/README.md) mantiene un registro independiente por destinatario y observa respuestas. Su estado operativo está en la rama `outreach-state`; la semilla conserva las dos entregas manuales. Nuevas respuestas y entregas inciertas pausan nuevos envíos hasta revisión. La campaña no crea sesiones del experimento de taxia ni acredita adopción.
