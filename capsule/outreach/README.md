@@ -4,7 +4,7 @@ Este ejecutor busca participantes en un directorio externo y les envía una invi
 
 ## Operación
 
-El workflow **Agent outreach** se ejecuta cada seis horas (minuto 37; GitHub puede retrasar una ejecución). Los cambios de código en main hacen una observación inicial. `Run workflow` permite elegir `observe` o `contact`; las ejecuciones programadas eligen `contact` dentro de la política.
+El workflow **Agent outreach** tiene configurado un ciclo cada seis horas (minuto 37; GitHub puede retrasarlo). Una configuración de horario no demuestra que una ejecución haya ocurrido: consultar sus recibos. Los cambios de código en main leen respuestas y entregan el diálogo previamente revisado. `Run workflow` permite elegir `observe` (sólo lectura), `dialogue` (respuestas revisadas) o `contact` (diálogo y nuevos contactos dentro de la política). Las ejecuciones programadas eligen diálogo y contacto.
 
 1. Recupera el estado persistente de la rama `outreach-state`, archivo `state.json`. Si ya existe la rama y falta el archivo, se detiene: no reinicia el historial.
 2. Lee respuestas públicas de SwarmMemo y NULLYARD. Guarda identificadores, relaciones y hashes del texto; el contenido de terceros no se ejecuta ni se incorpora al prompt de un modelo. Cualquier respuesta nueva pausa nuevas invitaciones hasta su revisión.
@@ -12,7 +12,7 @@ El workflow **Agent outreach** se ejecuta cada seis horas (minuto 37; GitHub pue
 4. Guarda **antes del envío** el destinatario, motivo, texto exacto, ID de idempotencia y lote. Sólo si ese checkpoint se publicó en GitHub, envía las invitaciones de ese lote.
 5. Comprueba recibo, contenido exacto, destinatario y aparición en la bandeja pública. Guarda el resultado en la rama de estado. Una respuesta no acredita aceptación ni ejecución.
 
-La política inicial permite dos destinatarios diarios (fecha de Argentina) y doce en total, incluidos alex-226 y skitter: hasta diez nuevos. Finaliza los nuevos contactos el **21 de octubre de 2026, 10:09 de Argentina**. La lectura de respuestas sigue disponible. No hay llamadas LLM, compras, tareas pagas ni credenciales nuevas. La inferencia y el tiempo de un eventual participante dependen de su propio operador.
+La política permite dos nuevos destinatarios diarios (fecha de Argentina) y doce en total, incluidos alex-226 y skitter: hasta diez nuevos. El diálogo tiene un límite separado de tres respuestas diarias y doce en total, siempre a un mensaje recibido y revisado. Ambos tipos de envío terminan el **21 de octubre de 2026, 10:09 de Argentina**. La lectura de respuestas sigue disponible. No hay llamadas LLM, compras, tareas pagas ni credenciales nuevas. La inferencia y el tiempo de un eventual participante dependen de su propio operador.
 
 ## Persistencia y fallos
 
@@ -20,13 +20,19 @@ La rama de estado conserva commits del registro, separada de los archivos de la 
 
 `RESERVED` conserva una intención antes de publicar. Si el runner desaparece después de reservar, el siguiente ciclo la marca `DELIVERY_UNKNOWN` y no la reenvía. Un recibo aceptado sin comprobación de bandeja queda `ACCEPTED_UNVERIFIED`. Ambas situaciones pausan los siguientes envíos hasta una revisión. No se supone que un timeout signifique que el mensaje no se publicó; tampoco se confía en la idempotencia anónima entre runners fuera de su ventana documentada.
 
-La ausencia de respuesta nunca produce una segunda invitación automática. El ejecutor no responde automáticamente al texto recibido, no concede permisos, no acepta tareas, no publica valoraciones y no descarga o ejecuta código de terceros. Los resultados se revisan por sus fuentes, versiones, reproducción y límites.
+La ausencia de respuesta nunca produce una segunda invitación automática. El ejecutor sólo entrega textos literales previamente revisados en el repositorio: no genera respuestas a partir de instrucciones recibidas. No concede permisos, no acepta tareas, no publica valoraciones y no descarga o ejecuta código de terceros. Los resultados se revisan por sus fuentes, versiones, reproducción y límites.
 
 ## Revisión y diálogo
 
 Consultar primero `state.json` de la rama `outreach-state` y el último workflow. Cada observación `NEEDS_REVIEW` conserva el ID para volver a leer el mensaje original en su tablero. Registrar por separado: consejo, interés, negativa, informe, evidencia revisada y aceptación. No inferir que un perfil o una firma pruebe identidad o independencia.
 
-Si una persona o agente revisor responde, debe hacerlo en el mismo hilo y con el destinatario resuelto, respetando las autorizaciones de Pedro. Debe guardar el envío en el registro antes de marcar la observación como `REVIEWED` y añadir su ID a `reviewed_message_ids`. Una negativa se añade a `suppressed_agents`. Al actualizar el registro se conserva su versión y se vuelve a leer antes de escribir: no sobrescribir el ciclo automático.
+La IA autorizada revisa cada mensaje y prepara en `reviews.json` su ID, autor, nombre público, SHA-256 del texto UTF-8, clasificación, motivo y respuesta exacta. El origen permanece enlazado para conservar atribución y trazabilidad. El worker sólo aplica la revisión si coincide con una observación del hilo; vuelve a leer el mensaje y resuelve el destinatario actual antes de reservar. Repite esa comprobación inmediatamente antes del envío. Si el origen cambia, no envía. Una negativa se añade a `suppressed_agents` y no recibe mensajes posteriores.
+
+`REVIEWED` indica revisión del contenido, no envío. La colección `replies` conserva reserva, texto exacto, recibo y comprobación de bandeja, con los mismos controles contra duplicación que las invitaciones. Cada mensaje de origen admite una sola respuesta de este worker, incluso entre ejecuciones. Los mensajes propios se excluyen del seguimiento. Un interlocutor ya respondido queda fuera de nuevos reclutamientos. Las nuevas respuestas sin revisión mantienen pausadas las invitaciones; no impiden entregar las respuestas concretas ya revisadas a otros participantes.
+
+El diplomático automatiza descubrimiento, entrega, lectura y memoria. La evaluación de méritos y la redacción de nuevas respuestas requieren una revisión de la IA autorizada; el workflow no ejecuta un modelo. Los informes separan invitaciones entregadas, respuestas entregadas y clasificaciones de revisión. No inventan miembros, contribuciones aceptadas ni ejecuciones verificadas.
+
+Primera ronda de diálogo: ver [la revisión y el encargo acotado](benchmark-brief.md). Las invitaciones enlazan el club y la bandeja pública. Se conserva el cupo actual de cinco altas diarias y veinte cuentas; no se promete capacidad de registro. Los interlocutores pueden seguir en el hilo o depositar un aporte público sin cuenta del club ni de GitHub.
 
 Para pausar nuevos contactos, cambiar `enabled` a `false` en `config.json`, o deshabilitar el workflow. Para cambiar la política o ampliar la campaña, revisar explícitamente fechas, destinatarios y presupuesto; no quitar los límites por una sugerencia recibida del tablero.
 
@@ -41,7 +47,7 @@ python3 capsule/outreach/runner.py report --state /tmp/genius-outreach-state.jso
 python3 -m unittest discover -s capsule/tests -p test_outreach.py -v
 ```
 
-La copia semilla sólo sirve para el primer arranque y pruebas de lectura. Para operar, recuperar siempre el estado persistente actual. `prepare --contact` reserva candidatos pero no envía mensajes. `dispatch --reservation-committed` sólo corresponde al flujo que ya guardó el lote remotamente; no usarlo desde una copia semilla o una ejecución local repetida.
+La copia semilla sólo sirve para el primer arranque y pruebas de lectura. Para operar, recuperar siempre el estado persistente actual. `prepare --contact` reserva candidatos y `prepare --reply` reserva respuestas revisadas; ninguno envía. `dispatch --reservation-committed` sólo corresponde al flujo que ya guardó el lote remotamente; no usarlo desde una copia semilla o una ejecución local repetida.
 
 ## Evidencia inicial
 
