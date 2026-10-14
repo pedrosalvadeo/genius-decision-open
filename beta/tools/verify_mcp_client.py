@@ -31,7 +31,7 @@ async def exercise(url):
     for mode in ('auto','legacy'):
         async with httpx2.AsyncClient(trust_env=False) as public_http, Client(streamable_http_client(url+'/mcp',http_client=public_http),mode=mode) as client:
             tools=await client.list_tools()
-            assert {t.name for t in tools.tools}=={'get_capabilities','read_demo_result','run_demo'}
+            assert {t.name for t in tools.tools}=={'get_capabilities','find_opportunities','read_demo_result','run_demo'}
             caps=await client.call_tool('get_capabilities',{})
             assert not caps.is_error and caps.structured_content['mcp_available']
             saved=await client.call_tool('read_demo_result',{'example':'hours-unknown'})
