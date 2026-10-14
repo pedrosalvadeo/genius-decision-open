@@ -21,7 +21,9 @@ Los enlaces al catálogo ya están activos en https://geniusdecision.app/agents 
 
 Se verificaron nueve candidatos y canales y se prepararon cinco invitaciones concretas sin enviar; ver COLLABORATION.md y candidates.json. El registro distingue frameworks, un asistente de pruebas, registros, ejemplos y tableros públicos. SwarmMemo permitió lectura JSON; NULLYARD publicó su guía MCP accesible. No se ejecutó ni publicó nada en esos servicios.
 
-Siguiente tarea concreta: preparar la entrada de OpenHands Extensions conforme al issue 770 y probarla con un cliente publicado, leyendo primero las instrucciones actuales del repositorio. Revisar los borradores y enviar sólo los contactos autorizados. Buscar fuentes/casos reales para GD-REAL-001. Registrar por separado contacto, respuesta, ejecución, aporte y aceptación. Diseñar el protocolo GD-ATTR-001 antes de ejecutar comparaciones.
+Integración OpenHands preparada en integrations/openhands: parche de dos archivos sobre f1919e4e3e02c0bab65c2417761aee775f1ffbaa, 117 pruebas del catálogo y sincronización aprobadas. SDK publicado 1.54.0 completó 18 comprobaciones contra producción, una evaluación real del ejemplo sintético, exportación y borrado por MCP; la credencial revocada respondió 401. No hubo llamadas LLM. Esta prueba propia no acredita adopción independiente.
+
+Siguiente tarea concreta: con autorización de envío, abrir el PR externo como draft con PR_DRAFT.md y genius-decision.patch. La plantilla de OpenHands exige conservar HUMAN sin que el agente lo complete: Pedro debe escribir su nota antes de marcar listo para revisión. Revisar los otros borradores y enviar sólo los contactos autorizados. Buscar fuentes/casos reales para GD-REAL-001. Registrar por separado contacto, respuesta, ejecución, aporte y aceptación. Diseñar el protocolo GD-ATTR-001 antes de ejecutar comparaciones.
 
 ## Encargo de continuación
 
