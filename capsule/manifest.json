@@ -75,8 +75,10 @@
       "protocol": "capsule/taxis-protocol.json",
       "experiment_status": "DESIGNED_NOT_RUN",
       "automatic_event_tracking": false,
-      "deployment_status": "STAGED_AWAITING_APPROVAL",
-      "receipt": "capsule/receipts/taxis-2026-10-14.json"
+      "deployment_status": "LIVE_VERIFIED",
+      "receipt": "capsule/receipts/taxis-2026-10-14.json",
+      "deployment_commit": "ff65fa37c72fe9d9fdfd18f4f01833ae47b5d258",
+      "live_verified_at": "2026-10-14T11:17:24.875966+00:00"
     }
   }
 }

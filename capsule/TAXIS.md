@@ -14,7 +14,7 @@ El catálogo ofrece todo el motor y admite trabajos nuevos. `other` devuelve `NO
 
 ## Estado de esta entrega
 
-El orientador local y las interfaces del servicio están implementados y probados. **El despliegue está preparado en Railway, pendiente de aprobación**: el conector rechazó la confirmación y el sitio permanece en la versión anterior. Las URLs y la herramienta MCP nuevas estarán disponibles después de aplicar y verificar ese despliegue. El CLI del repositorio ya se puede ejecutar. Ver [recibo de entrega](receipts/taxis-2026-10-14.json).
+El orientador local y las interfaces del servicio están implementados, probados y **activos en https://geniusdecision.app/agents#orientation**. Railway informa SUCCESS para el commit `ff65fa37c72fe9d9fdfd18f4f01833ae47b5d258`. Siete consultas HTTP y dos operaciones MCP confirmaron la disponibilidad del catálogo, la orientación y `find_opportunities`; las respuestas de orientación coincidieron con el selector local. El CLI también se puede ejecutar. Son comprobaciones técnicas propias: el piloto de atracción sigue diseñado y no ejecutado. Ver [recibo de entrega](receipts/taxis-2026-10-14.json).
 
 ## Usar el orientador
 
