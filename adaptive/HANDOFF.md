@@ -50,8 +50,10 @@ carpetas nuevas. Los tiempos, marcas de observación y RSS pueden variar.
 - Instalación limpia sin red desde los 41 wheels descargados, validando todos
   sus hashes; pruebas nuevas repetidas en ese entorno: correctas.
 - El Docker de pruebas y su workflow de GitHub Actions están preparados. Docker
-  no estaba disponible localmente y la CI remota no pudo arrancarse por el
-  bloqueo de escritura descrito abajo; no se presentan como verificados.
+  no estaba disponible localmente. Tras resolver el acceso, las verificaciones
+  remotas de recuperación y cápsula se iniciaron en el
+  [PR 24](https://github.com/pedrosalvadeo/genius-decision-open/pull/24).
+  Consultar sus checks para el resultado de la versión exacta que se integre.
 
 Antes de editar, la selección de 23 pruebas `test_adapter`, `test_choice` y
 `test_examples` mostró **5 fallos y 2 errores**. Los adaptadores FDQ apuntan a
@@ -75,23 +77,27 @@ retención, integrar el worker y comprobar recuperación en el volumen real.
 El prototipo actual es de un solo operador confiable. No requiere proveedor
 LLM; conectar generación de hipótesis sí requerirá resolver proveedor y costo.
 
-## Publicación pendiente por acceso
+## Publicación y acceso restablecido
 
 La conexión de GitHub pudo leer el repositorio y reportó permisos `push` y
 `admin` para la cuenta, pero rechazó tanto `create-tree` como `create-branch`
-con HTTP 403, `Resource not accessible by integration`. El intento de push
-desde Git local tampoco dispone de credenciales. No se creó una rama remota,
-un PR ni un despliegue de este código. Se conserva el commit local y un parche
-exportado. Reanudar la publicación requiere restaurar acceso de escritura de
-la integración; no hace falta reconstruir ni repetir el diseño.
+con HTTP 403, `Resource not accessible by integration`. La instalación sólo
+incluía `genius-decision`; faltaba autorizar `genius-decision-open`. Pedro agregó
+ese repositorio el 2026-10-14 y se comprobó la escritura.
+
+El árbol del commit local `ef91a356612254057e7eb0b4e3c296c9262a991d` se publicó
+sin diferencias como `28415610ca1863c28b7cd7ae9318cab081c9040c`, en la rama
+`work/adaptive-missions-20261014`. El
+[PR 24](https://github.com/pedrosalvadeo/genius-decision-open/pull/24) conserva
+el cambio, la revisión y la CI. La publicación de código es distinta de activar
+el coordinador en el servicio; la integración de producción sigue pendiente.
 
 ## Próximo encargo
 
 > Continuá Genius adaptativo desde `adaptive/HANDOFF.md` y la evidencia de
-> `adaptive/evidence/2026-10-14`; no reinicies la arquitectura. Primero publicá
-> el commit preparado cuando se restablezca la escritura de GitHub y verificá
-> su CI. Integrá el
-> coordinador persistente con el worker y el almacenamiento del servicio,
+> `adaptive/evidence/2026-10-14` y el PR 24; no reinicies la arquitectura ni
+> vuelvas a solicitar el acceso ya restablecido. Integrá el coordinador
+> persistente con el worker y el almacenamiento del servicio,
 > incluyendo permisos por titular, cuotas, retención y respaldo/restauración.
 > Prepará y probá una migración y un despliegue reversible sobre el servicio
 > existente. Conservá la conciliación de efectos inciertos y los contratos del
