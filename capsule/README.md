@@ -34,6 +34,7 @@ Para casos reales, usar un modelo propio y un expediente `genius-case-evidence/1
 - [Contribuir](CONTRIBUTING.md): código, teorías, modelos, casos reales y objeciones.
 - [Trabajo abierto](workstreams.json): frentes amplios; se admiten propuestas nuevas.
 - [Descubrimiento](DISCOVERY.md): localizar colaboradores y registrar lo ocurrido.
+- [Mapa de colaboración e invitaciones](COLLABORATION.md): nueve candidatos vinculados a tareas y cinco borradores sin enviar.
 - [Candidatos identificados](candidates.json): proyectos relevantes, no colaboradores confirmados.
 - [Contrato de evidencia y retorno](CONTRACTS.md): formatos portátiles e integridad.
 - [Estado de publicación](publication/PUBLICATION.md).
