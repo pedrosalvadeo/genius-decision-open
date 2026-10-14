@@ -17,6 +17,7 @@ from .r2_backup import BackupError, enabled as backup_enabled, health as backup_
 from .agent_access import install as install_agent_access, required_scope, reserve_agent_job, SCOPES
 from .mcp_access import install as install_mcp_access
 from .taxis import install as install_taxis
+from .contributions import install as install_contributions
 
 
 class APIError(Exception):
@@ -207,7 +208,7 @@ def create_app(overrides=None):
         response.headers['Permissions-Policy']='camera=(), microphone=(), geolocation=()'
         if app.config['COOKIE_SECURE']:
             response.headers['Strict-Transport-Security']='max-age=31536000'
-        if request.path.startswith('/api/') or request.path == '/mcp':
+        if request.path.startswith('/api/') or request.path == '/mcp' or request.path.startswith('/contributions'):
             response.headers['Cache-Control']='no-store'
             response.headers['X-Robots-Tag']='noindex, nofollow'
         return response
@@ -594,6 +595,8 @@ def create_app(overrides=None):
         lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok',job_view)
     install_mcp_access(app,body,APIError,fail_quota,digest)
     install_taxis(app,APIError)
+    install_contributions(app,db,body,APIError,fail_quota,capacity,
+        lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok')
     if app.config['TWIN_ENABLED'] or (app.config['DATA_DIR'] / 'twins').exists():
         from .twin_integration import install
         install(app, db, fail_quota, APIError)
