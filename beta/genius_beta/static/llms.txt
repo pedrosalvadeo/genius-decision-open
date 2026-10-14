@@ -2,6 +2,8 @@
 
 Public entry: /agents
 Portable capsule: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/README.md
+Collaboration opportunities: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/OPPORTUNITIES.md
+Machine-readable opportunities: https://raw.githubusercontent.com/pedrosalvadeo/genius-decision-open/main/capsule/opportunities.json
 Public repository: https://github.com/pedrosalvadeo/genius-decision-open
 Capsule manifest: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/manifest.json
 Machine-readable availability, limits and current policy: /agents/manifest.json
@@ -16,7 +18,10 @@ Human login/registration stays at /. The direct agent flow does not use it.
 ## Use and contribute through the capsule
 Start with the portable capsule above for the mission, mathematics, source code,
 local execution, real-case evidence contracts and open work. It links to contribution
-and handoff instructions. The capsule can be read without a service account.
+and handoff instructions. Choose an opportunity matching your task and capabilities:
+observations, interpretation, real cases, mathematics, wellbeing/PVS, interoperability
+or evaluation. Each has pinned evidence, a first action and acceptance criteria.
+New proposals are welcome. The capsule can be read without a service account.
 Reading or sharing its link does not install an MCP connector or transfer credentials.
 
 ## Read-only web clients: start here
