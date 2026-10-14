@@ -144,6 +144,7 @@ class OutreachTests(unittest.TestCase):
         self.assertEqual(self.board.posts, [])
 
     def test_daily_limit_includes_manual_seed_contacts(self):
+        self.config['max_per_day'] = 2
         s = json.loads((ROOT / 'capsule/outreach/seed-state.json').read_text())
         o.poll(s, self.board, NOW)
         s = o.prepare(s, self.config, self.board, datetime(2026, 10, 14, 17, tzinfo=timezone.utc), 'today', True)
@@ -248,6 +249,7 @@ class OutreachTests(unittest.TestCase):
         self.assertEqual(s['observations'][0]['review'], 'NEEDS_REVIEW')
 
     def test_three_reply_daily_budget_and_total_persist_across_batches(self):
+        self.config['max_replies_per_day'] = 3
         first = self.review()
         row = self.board.replies[0]
         self.board.replies = [dict(row, id=char * 32) for char in 'cdef']
@@ -270,6 +272,81 @@ class OutreachTests(unittest.TestCase):
             self.dialogue([review, review])
         self.board.replies = []
         self.assertEqual(self.dialogue([review])['replies'], [])
+
+    def test_expanded_policy_still_spreads_contacts_and_stops_at_daily_total(self):
+        self.config['max_per_day'] = 5
+        self.board.agents = [agent(char, 'agent-' + char) for char in 'abcdef']
+        s = state()
+        for i, expected in enumerate((2, 4, 5, 5)):
+            s = o.prepare(s, self.config, self.board, NOW, 'batch-' + str(i), True)
+            self.assertEqual(len(s['contacts']), expected)
+            # Simulate already verified deliveries; no network or external messages.
+            for contact in s['contacts']:
+                contact['status'] = 'DELIVERED'
+        self.assertEqual(s['dispatch_reason'], 'CONTACT_LIMIT')
+        self.config['max_total_contacts'] = 5
+        s = o.prepare(s, self.config, self.board, NOW + timedelta(days=1), 'tomorrow', True)
+        self.assertEqual(len(s['contacts']), 5)
+
+    def test_directory_pagination_reaches_candidate_after_first_page(self):
+        self.board.agents = [agent('a', 'later-page', 'python')]
+        original = self.board.request
+        calls = []
+        def paged(url, payload=None):
+            if '/api/agents?' in url:
+                calls.append(url)
+                if 'cursor=' not in url:
+                    return dict(ok=True, agents=[], next_cursor='page+2')
+                self.assertIn('cursor=page%2B2', url)
+            return original(url, payload)
+        self.board.request = paged
+        s = self.prepared()
+        self.assertEqual(s['last_selection'], ['later-page'])
+        self.assertEqual(s['contacts'][0]['match'], 'python')
+        self.assertEqual(s['discovery_pages_read'], 2)
+        self.assertTrue(s['discovery_complete'])
+
+    def test_directory_repeated_cursor_fails_and_page_budget_is_bounded(self):
+        original = self.board.request
+        def repeating(url, payload=None):
+            if '/api/agents?' in url:
+                return dict(ok=True, agents=[], next_cursor='same-cursor')
+            return original(url, payload)
+        self.board.request = repeating
+        with self.assertRaises(ValueError):
+            self.prepared()
+        self.config['max_discovery_pages'] = 1
+        s = self.prepared()
+        self.assertEqual(s['contacts'], [])
+        self.assertEqual(s['discovery_pages_read'], 1)
+        self.assertFalse(s['discovery_complete'])
+
+    def test_changed_invitation_recipient_is_cancelled_before_write(self):
+        s = self.prepared()
+        self.board.agents[0]['profile']['availability'] = 'busy'
+        o.dispatch(s, self.config, self.board, NOW, 'run-1', lambda _: None)
+        self.assertEqual(s['contacts'][0]['status'], 'CANCELLED_STALE_PROFILE')
+        self.assertEqual([p['to'] for p in self.board.posts], ['b' * 64])
+
+    def test_reviewed_dialogue_has_separate_per_run_budget(self):
+        first = self.review()
+        row = self.board.replies[0]
+        self.board.replies = [dict(row, id=char * 32) for char in 'cdef']
+        reviews = [dict(first, id=r['id']) for r in self.board.replies]
+        s = self.dialogue(reviews)
+        self.assertEqual(len(s['replies']), 3)
+        o.dispatch(s, self.config, self.board, NOW, 'reply-1', lambda _: None)
+        s = self.dialogue(reviews, s, batch='reply-2')
+        self.assertEqual(len(s['replies']), 4)
+
+    def test_invalid_or_excessive_policy_fails_before_board_calls(self):
+        for field, value in [('max_per_day', 21), ('max_contacts_per_run', 3),
+                             ('max_discovery_pages', 6), ('max_replies_per_day', 21),
+                             ('max_per_day', True), ('max_total_contacts', -1)]:
+            config = dict(self.config, **{field:value})
+            with self.assertRaises(ValueError):
+                o.prepare(state(), config, self.board, NOW, 'invalid', True)
+        self.assertEqual(self.board.posts, [])
 
 
 if __name__ == '__main__':

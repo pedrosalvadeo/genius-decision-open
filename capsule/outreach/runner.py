@@ -31,6 +31,13 @@ MATCHES = {
     'api-testing': ('GD-MCP-001', 'try the agent entry or MCP with your authorized tools and return a reproducible result or incompatibility'),
     'mcp': ('GD-MCP-001', 'try the agent entry or MCP with your authorized tools and return a reproducible result or incompatibility'),
     'data-checks': ('GD-REAL-001', 'check the sources and units of a real decision model and identify unsupported assumptions'),
+    'qa': ('GD-MCP-001', 'review the agent entry or MCP and report one reproducible incompatibility'),
+    'bug-repro': ('GD-MCP-001', 'reproduce one agent-entry or MCP issue with versions and exact steps'),
+    'docs-review': ('GD-MCP-001', 'check whether the public agent instructions match the available interface'),
+    'fact-checking': ('GD-REAL-001', 'check a public decision-model claim against its original sources and units'),
+    'research': ('GD-REAL-001', 'identify public evidence and missing assumptions for a real decision model'),
+    'python': ('GD-OBS-001', 'review the Python observation interface for configurable decision models and propose a traceable improvement'),
+    'writing': ('GD-UX-001', 'critique the explanation of a conditional decision and propose clearer wording without implying new empirical validation'),
 }
 
 
@@ -46,6 +53,16 @@ def parse_time(value):
 
 def digest(text):
     return hashlib.sha256(text.encode()).hexdigest()
+
+
+def validate_policy(config):
+    limits = {'max_per_day': 20, 'max_total_contacts': 100, 'max_contacts_per_run': 2,
+              'max_replies_per_day': 20, 'max_total_replies': 100,
+              'max_replies_per_run': 3, 'max_discovery_pages': 5}
+    for field, ceiling in limits.items():
+        value = config.get(field)
+        if type(value) is not int or not 0 <= value <= ceiling:
+            raise ValueError('Campaign limit exceeds this implementation: ' + field)
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -181,19 +198,17 @@ def reviewed_source(review, transport):
 
 def prepare_replies(state, config, reviews, transport, now, batch):
     """Only owner-reviewed literal replies from the repository enter the outbox."""
-    if not (0 <= config.get('max_replies_per_day', 0) <= 3 and
-            0 <= config.get('max_total_replies', 0) <= 12):
-        raise ValueError('Reply limits exceed this implementation')
     if any(c['status'] in ('DELIVERY_UNKNOWN', 'ACCEPTED_UNVERIFIED', 'RESERVED') for c in outbound(state)):
         return
     local_day = now.astimezone(ZoneInfo(config['timezone'])).date()
     today = sum(any(parse_time(c[k]).astimezone(ZoneInfo(config['timezone'])).date() == local_day
                     for k in ('reserved_at', 'attempted_at') if c.get(k)) for c in state['replies'])
     budget = min(config.get('max_replies_per_day', 0) - today,
-                 config.get('max_total_replies', 0) - len(state['replies']))
+                 config.get('max_total_replies', 0) - len(state['replies']),
+                 config['max_replies_per_run'])
     seen = {r['source']['id'] for r in state['replies']}
     ids = [r['id'] for r in reviews]
-    if len(ids) != len(set(ids)) or len(ids) > 50:
+    if len(ids) != len(set(ids)) or len(ids) > 200:
         raise ValueError('Duplicate or oversized review plan')
     for review in reviews:
         if review.get('service') != 'SwarmMemo' or review.get('decision') not in ('ADVICE', 'INTEREST', 'REVIEW', 'OFFER', 'DECLINED'):
@@ -262,6 +277,7 @@ def invitation(handle, match):
             f'Would you be interested in {oid}: {task}? Return versions, steps, evidence and limitations, '
             'or a precise critique. The full engine also welcomes mathematics, interpretation and real-case contributions.\n'
             f'Agent entry: {ENTRY} ; capsule and contribution instructions: {CAPSULE}\n'
+            'Reading-only review option: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/outreach/read-only-review.md\n'
             'Club: https://geniusdecision.app/club (optional name; registration quotas apply). '
             'Public contributions: https://geniusdecision.app/contributions (no GitHub account required). '
             'If relevant and authorized by your operator, reply here with the contribution you would investigate. '
@@ -270,6 +286,7 @@ def invitation(handle, match):
 
 
 def prepare(state, config, transport, now, batch, contact=False, reviews=None, reply=False):
+    validate_policy(config)
     state = copy.deepcopy(state)
     state.setdefault('replies', [])
     # A previous reserved batch may have sent before its runner stopped. Never retry it.
@@ -280,6 +297,9 @@ def prepare(state, config, transport, now, batch, contact=False, reviews=None, r
     state['last_prepare_at'] = stamp(now)
     state['last_batch'] = batch
     state['last_selection'] = []
+    state['discovery_pages_read'] = 0
+    state['discovery_profiles_read'] = 0
+    state['discovery_complete'] = False
     if reply and config['enabled'] and now < parse_time(config['ends_at']) and state['poll_complete']:
         prepare_replies(state, config, reviews or [], transport, now, batch)
     if any(r['status'] == 'RESERVED' and r.get('batch') == batch for r in state['replies']):
@@ -297,30 +317,48 @@ def prepare(state, config, transport, now, batch, contact=False, reviews=None, r
     local_day = now.astimezone(ZoneInfo(config['timezone'])).date()
     today = sum(any(parse_time(c[k]).astimezone(ZoneInfo(config['timezone'])).date() == local_day
                     for k in ('reserved_at', 'attempted_at') if c.get(k)) for c in state['contacts'])
-    budget = min(config['max_per_day'] - today, config['max_total_contacts'] - len(state['contacts']))
+    budget = min(config['max_per_day'] - today, config['max_total_contacts'] - len(state['contacts']),
+                 config['max_contacts_per_run'])
     if budget <= 0:
         state['dispatch_reason'] = 'CONTACT_LIMIT'
         return state
-    listing = read_swarm(BASE + '/api/agents?sort=active&limit=50', transport)
-    for agent in listing.get('agents', []):
-        candidate = eligible(agent, state, now)
-        if candidate is None:
-            continue
-        aid, _, _ = candidate
-        # Re-resolve the chosen recipient immediately before reserving it.
-        resolved = read_swarm(BASE + '/api/agent/' + aid, transport).get('agent', {})
-        checked = eligible(resolved, state, now)
-        if checked != candidate:
-            continue
-        aid, handle, match = checked
-        req = dict(operation='post', room='coordination-lab', page='main', kind='request',
-                   reply_to=ROOT_ID, to=aid, text=invitation(handle, match), request_id=str(uuid.uuid4()))
-        state['contacts'].append(dict(agent_id=aid, handle=handle, match=match, status='RESERVED',
-            reserved_at=stamp(now), batch=batch, request=req, response_ids=[],
-            profile_url=BASE + '/api/agent/' + aid, profile_checked_at=stamp(now)))
-        state['last_selection'].append(handle)
+    cursor, seen_cursors = None, set()
+    for _ in range(config['max_discovery_pages']):
+        url = BASE + '/api/agents?sort=active&limit=100'
+        if cursor:
+            url += '&cursor=' + urllib.parse.quote(cursor, safe='')
+        listing = read_swarm(url, transport)
+        rows = listing.get('agents')
+        if not isinstance(rows, list) or len(rows) > 100:
+            raise ValueError('Invalid directory page')
+        state['discovery_pages_read'] += 1
+        state['discovery_profiles_read'] += len(rows)
+        for agent in rows:
+            candidate = eligible(agent, state, now)
+            if candidate is None:
+                continue
+            aid, _, _ = candidate
+            resolved = read_swarm(BASE + '/api/agent/' + aid, transport).get('agent', {})
+            if eligible(resolved, state, now) != candidate:
+                continue
+            aid, handle, match = candidate
+            req = dict(operation='post', room='coordination-lab', page='main', kind='request',
+                       reply_to=ROOT_ID, to=aid, text=invitation(handle, match), request_id=str(uuid.uuid4()))
+            state['contacts'].append(dict(agent_id=aid, handle=handle, match=match, status='RESERVED',
+                reserved_at=stamp(now), batch=batch, request=req, response_ids=[],
+                profile_url=BASE + '/api/agent/' + aid, profile_checked_at=stamp(now)))
+            state['last_selection'].append(handle)
+            if len(state['last_selection']) >= budget:
+                break
         if len(state['last_selection']) >= budget:
             break
+        cursor = listing.get('next_cursor')
+        if not cursor:
+            state['discovery_complete'] = True
+            break
+        if not isinstance(cursor, str) or len(cursor) > 4096 or cursor in seen_cursors:
+            raise ValueError('Invalid or repeated directory cursor')
+        seen_cursors.add(cursor)
     state['dispatch_reason'] = 'RESERVED' if state['last_selection'] else 'NO_ELIGIBLE_CANDIDATE'
     return state
 
@@ -341,6 +379,7 @@ def verify_contact(contact, transport):
 
 
 def dispatch(state, config, transport, now, batch, persist):
+    validate_policy(config)
     if not config['enabled'] or now >= parse_time(config['ends_at']):
         return state
     if any(c['status'] in ('DELIVERY_UNKNOWN', 'ACCEPTED_UNVERIFIED') for c in outbound(state)):
@@ -355,6 +394,13 @@ def dispatch(state, config, transport, now, batch, persist):
                 contact.update(status='CANCELLED_STALE_REVIEW', error_type=type(exc).__name__)
                 persist(state)
                 break
+        else:
+            resolved = read_swarm(BASE + '/api/agent/' + contact['agent_id'], transport).get('agent', {})
+            recipient_state = dict(contacts=[], replies=[], suppressed_agents=state['suppressed_agents'])
+            if eligible(resolved, recipient_state, now) != (contact['agent_id'], contact['handle'], contact['match']):
+                contact.update(status='CANCELLED_STALE_PROFILE')
+                persist(state)
+                continue
         # The workflow already pushed this reservation. Local crash also fails closed.
         contact['status'] = 'DELIVERY_UNKNOWN'
         contact['attempted_at'] = stamp(now)
@@ -391,6 +437,9 @@ def report(state):
                 reviewed_responses=[{'id':x['id'], 'decision':x.get('decision')} for x in state['observations'] if x['review'] == 'REVIEWED'],
                 observations_needing_review=[{'service':x['service'], 'id':x['id']} for x in state['observations'] if x['review'] == 'NEEDS_REVIEW'],
                 dispatch_reason=state.get('dispatch_reason'), selected=state.get('last_selection', []),
+                discovery_pages_read=state.get('discovery_pages_read', 0),
+                discovery_profiles_read=state.get('discovery_profiles_read', 0),
+                discovery_complete=state.get('discovery_complete', False),
                 collaborations_accepted_by_this_worker=0, executions_verified_by_this_worker=0,
                 evidence_note='This worker verifies transport only. Participation and execution require separate evidence review.')
 
@@ -408,8 +457,7 @@ def main():
     args = parser.parse_args()
     state = load_state(args.state)
     config = json.loads(args.config.read_text())
-    if not (0 <= config['max_per_day'] <= 2 and 0 <= config['max_total_contacts'] <= 12):
-        raise ValueError('Campaign limits exceed this implementation')
+    validate_policy(config)
     now, transport = datetime.now(timezone.utc), Transport()
     if args.command != 'report' and not args.batch:
         raise ValueError('A unique execution batch is required')
