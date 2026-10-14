@@ -1,0 +1,80 @@
+name: Publish reviewed Genius MCP metadata
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Publish the reviewed metadata (leave unchecked to verify only)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genius-mcp-registry-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'pedrosalvadeo/genius-decision-open' && github.actor == 'pedrosalvadeo' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify the reviewed metadata and publisher
+        run: |
+          python3 - <<'PY'
+          import hashlib, io, os, pathlib, tarfile, urllib.request
+          metadata = pathlib.Path('capsule/integrations/mcp-registry/server.json')
+          assert hashlib.sha256(metadata.read_bytes()).hexdigest() == '8ae578eb858d2235cd2fa153d2696169f0c9c68fbb3950d35a5e380fd478c45c', 'Metadata differs from the approved file'
+          url = 'https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz'
+          with urllib.request.urlopen(url, timeout=60) as response:
+              archive = response.read()
+          assert hashlib.sha256(archive).hexdigest() == 'a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc', 'Publisher archive digest mismatch'
+          with tarfile.open(fileobj=io.BytesIO(archive), mode='r:gz') as bundle:
+              member = bundle.getmember('mcp-publisher')
+              assert member.isfile()
+              output = pathlib.Path(os.environ['RUNNER_TEMP']) / 'mcp-publisher'
+              output.write_bytes(bundle.extractfile(member).read())
+              output.chmod(0o700)
+          print('Approved metadata and official publisher verified')
+          PY
+      - name: Validate metadata
+        run: '"$RUNNER_TEMP/mcp-publisher" validate capsule/integrations/mcp-registry/server.json'
+      - name: Authenticate using GitHub OIDC
+        if: inputs.publish
+        run: '"$RUNNER_TEMP/mcp-publisher" login github-oidc'
+      - name: Publish the approved server metadata
+        if: inputs.publish
+        run: '"$RUNNER_TEMP/mcp-publisher" publish capsule/integrations/mcp-registry/server.json'
+      - name: Verify the official public entry
+        run: |
+          python3 - <<'PY'
+          import json, time, urllib.error, urllib.request
+          url = 'https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.pedrosalvadeo/genius-decision'
+          for attempt in range(3):
+              try:
+                  with urllib.request.urlopen(url, timeout=60) as response:
+                      result = json.load(response)
+                  break
+              except (TimeoutError, urllib.error.URLError):
+                  if attempt == 2:
+                      raise
+                  time.sleep(3)
+          matches = [entry for entry in result['servers'] if entry['server']['name'] == 'io.github.pedrosalvadeo/genius-decision' and entry['server']['version'] == '0.2.0']
+          assert len(matches) == 1, 'Expected exactly one published version'
+          assert matches[0]['server']['remotes'][0]['url'] == 'https://geniusdecision.app/mcp'
+          print('Verified public MCP Registry entry: io.github.pedrosalvadeo/genius-decision 0.2.0')
+          PY
+      - name: Remove the runner authentication file
+        if: always() && inputs.publish
+        run: |
+          if [ -x "$RUNNER_TEMP/mcp-publisher" ]; then
+            "$RUNNER_TEMP/mcp-publisher" logout
+          fi
