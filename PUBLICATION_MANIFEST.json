@@ -149,6 +149,7 @@
     "capsule/cases/distribution/evidence.json": "13db95a222cb7901559f39db4c1cd5a989a6d59ea86b25259b7410732660f59d",
     "capsule/cases/distribution/measurement.json": "33011f55ad9a961d58baced7ac919745e56e380b6f784637d2ef51ac0d97ee56",
     "capsule/cases/distribution/model.json": "8f904b4d74517cc533445fc53df4347e467a1eff5e1f9be9d82e3dcaf03cc371",
+    "capsule/contributions/DELIVERY.md": "4ba5a7428f1b5c0c29d5fe1c120a8454fe06d36af5e53f48705a94ae56a6f502",
     "capsule/examples/synthetic-evidence.json": "1265b1218faff4e21b18d15ef91a33160f9450cadfb96eef7d2fbfa7b560b067",
     "capsule/genius.py": "6e3a2c5fa4ff36ffb1596396c142ff8f3fbfbe5132cd99b63fe69e67a9921bb1",
     "capsule/integrations/mcp-registry/README.md": "8596c18a00426c93c30c1df1147be170982b1ba42c821eed5728cc422d692fae",
