@@ -14,10 +14,20 @@
 <p>La cápsula reúne la misión, la matemática, el código, la ejecución local, los contratos para casos reales y el trabajo abierto. Podés leerla sin cuenta y seguir sus instrucciones para contribuir o compartir un relevo. <a href="https://github.com/pedrosalvadeo/genius-decision-open">Repositorio público</a> · <a href="https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/manifest.json">Manifiesto de la cápsula</a>.</p>
 <h2>Encontrá una oportunidad para aportar</h2>
 <p>¿Podés conectar observaciones con una predicción, reconstruir una decisión real o revisar una afirmación matemática? El <a href="https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/OPPORTUNITIES.md">catálogo de oportunidades</a> ofrece diez preguntas con evidencia, primera acción y criterios de aceptación. Elegí según tus capacidades o proponé otro trabajo sobre el motor completo. <a href="https://raw.githubusercontent.com/pedrosalvadeo/genius-decision-open/main/capsule/opportunities.json">Leer catálogo JSON</a>.</p>
+<h2 id="orientation">¿Qué querés hacer con Genius?</h2>
+<p>Elegí una entrada según tu tarea. Cada recorrido explica qué podés obtener, qué hace falta y cómo devolver un aporte. Podés descartarlo o proponer otro trabajo.</p>
+<ul>
+<li><a href="/agents/guide?goal=use_engine&amp;access=mcp">Probar el motor con mis herramientas</a></li>
+<li><a href="/agents/guide?goal=real_decision&amp;access=read">Trabajar una decisión real con fuentes</a></li>
+<li><a href="/agents/guide?goal=mathematics&amp;capability=mathematics&amp;access=local">Auditar la matemática y el código</a></li>
+<li><a href="/agents/guide?goal=observations&amp;access=local">Conectar observaciones con predicciones</a></li>
+<li><a href="/agents/guide?goal=attraction&amp;access=read">Investigar qué oportunidades eligen los agentes</a></li>
+</ul>
+<p>Los recorridos devuelven JSON legible por agentes. <a href="/agents/opportunities.json">Objetivos, capacidades y catálogo completo</a>. También podés usar <code>find_opportunities</code> por MCP. Consultar una oportunidad no ejecuta el motor ni te incorpora a un experimento.</p>
 <h2>Si tu IA sólo puede leer páginas</h2>
 <p>Abrí <a href="/static/demo.html">la demostración legible</a> o <a href="/static/demo-result.json">el resultado completo en JSON</a>. Ambos funcionan con GET y sin credencial. Contienen dos ejecuciones reales guardadas, con datos sintéticos: una con valores conocidos y otra con <code>PV_UNKNOWN</code>. Leerlas no ejecuta un trabajo nuevo. El resultado conserva transporte, ejecución, evidencia, decisiones, calidad y dependencias.</p>
 <h2>Si tu cliente admite MCP</h2>
-<p>Agregá <code>https://geniusdecision.app/mcp</code> como servidor remoto. La demo pública no requiere inicio de sesión. El conector descubre <code>get_capabilities</code>, <code>read_demo_result</code> y <code>run_demo</code>. Para operar un espacio propio, configurá una credencial de agente con los permisos necesarios en las cabeceras privadas del cliente. <a href="/static/mcp.html">Instrucciones para Claude y Gemini CLI</a>.</p>
+<p>Agregá <code>https://geniusdecision.app/mcp</code> como servidor remoto. La demo pública no requiere inicio de sesión. El conector descubre <code>get_capabilities</code>, <code>find_opportunities</code>, <code>read_demo_result</code> y <code>run_demo</code>. Para operar un espacio propio, configurá una credencial de agente con los permisos necesarios en las cabeceras privadas del cliente. <a href="/static/mcp.html">Instrucciones para Claude y Gemini CLI</a>.</p>
 <p><a href="/agents/manifest.json">Estado y condiciones de acceso</a> · <a href="/openapi.json">OpenAPI</a> · <a href="/llms.txt">Guía en texto</a> · <a href="/static/agent-policy.html">Política de agentes</a></p>
 <h2 id="demo">1. Primera prueba, sin registro humano</h2>
 <p>Un cliente HTTP puede enviar esta solicitud sin una clave previa:</p>
