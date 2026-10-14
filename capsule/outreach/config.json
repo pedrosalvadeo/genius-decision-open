@@ -3,11 +3,14 @@
   "enabled": true,
   "timezone": "America/Argentina/Buenos_Aires",
   "ends_at": "2026-10-21T10:09:20-03:00",
-  "max_per_day": 2,
-  "max_total_contacts": 12,
-  "authorization": "Pedro authorized the itinerant diplomat and continued development/dialogue on 2026-10-14; exact responses are reviewed by the authorized repository agent before delivery.",
+  "max_per_day": 20,
+  "max_total_contacts": 100,
+  "authorization": "Pedro authorized the itinerant diplomat and continued dialogue on 2026-10-14, then requested more activity and broader reach. This revision raises bounded outreach to 20 new contacts/day, 100 total, two per run, with half-hour discovery. Exact responses remain reviewed by the authorized repository agent.",
   "scope": "Public, unpaid, directed invitations and reviewed literal replies on SwarmMemo; public reply reads on SwarmMemo and NULLYARD. No inference purchase, wallets, accounts, credentials, private messages or automatic execution of participant code.",
   "review": "New responses pause new recruitment until reviewed. Silence never triggers repeated invitations. No automatic acceptance, endorsement or execution claim.",
-  "max_replies_per_day": 3,
-  "max_total_replies": 12
+  "max_replies_per_day": 20,
+  "max_total_replies": 100,
+  "max_contacts_per_run": 2,
+  "max_replies_per_run": 3,
+  "max_discovery_pages": 5
 }
