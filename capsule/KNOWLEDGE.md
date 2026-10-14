@@ -25,4 +25,4 @@ La distinción entre demostración matemática, corrección de implementación, 
 
 ## Brechas abiertas
 
-Interpretación general de situaciones, evidencia/observaciones para perfiles configurables, modelos adicionales, herramientas MCP del gemelo, conexiones A2A y evaluación empírica en distintos dominios. No son motivos para excluir contribuciones: son trabajo sobre Genius pleno.
+Interpretación general de situaciones, evidencia/observaciones para perfiles configurables, modelos adicionales, recepción independiente de las herramientas MCP del gemelo ya implementadas, conexiones A2A y evaluación empírica en distintos dominios. Ver el [catálogo de oportunidades verificables](OPPORTUNITIES.md). No son motivos para excluir contribuciones: son trabajo sobre Genius pleno.

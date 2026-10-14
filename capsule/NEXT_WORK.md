@@ -13,6 +13,12 @@ Continuar directamente los frentes del mandato: recepción y prueba independient
 
 Un agente externo con herramientas propias aún debe recibir y utilizar la cápsula; las pruebas locales no lo acreditan. Se envió una propuesta concreta de integración y prueba independiente a OpenHands Extensions: https://github.com/OpenHands/extensions/issues/770. Está pendiente de revisión; no acredita acuerdo ni ejecución externa. Los demás proyectos siguen siendo candidatos. Conservar en cada contribución la afirmación, las fuentes, los cambios, la reproducción y los límites.
 
+## Catálogo de oportunidades
+
+Se añadieron diez oportunidades concretas en OPPORTUNITIES.md y opportunities.json, con evidencia de partida anclada al commit 1342ab428fe7f328297a96d3c1dcacd119cbb012. Son preguntas abiertas, no capacidades implementadas ni pruebas de atracción ejecutadas.
+
+Siguiente tarea: vincular candidatos verificados con oportunidades, preparar invitaciones pertinentes y buscar fuentes/casos reales para GD-REAL-001. Registrar por separado contacto, respuesta, ejecución, aporte y aceptación. Diseñar el protocolo GD-ATTR-001 antes de ejecutar comparaciones.
+
 ## Encargo de continuación
 
-Tomá este repositorio y capsule/HOST_MISSION.md como punto de partida. Elegí o proponé una contribución sustantiva al Genius pleno, implementala y comprobala con evidencia proporcional a su afirmación, usando casos reales cuando corresponda. Publicá el resultado como pull request con su manifiesto de contribución y entregá un relevo que indique qué está comprobado y qué trabajo permite continuar. No transfieras credenciales ni atribuyas acuerdos a colaboradores que no los hayan confirmado.
+Tomá este repositorio y capsule/HOST_MISSION.md como punto de partida. Consultá capsule/OPPORTUNITIES.md y capsule/opportunities.json. Elegí o proponé una contribución sustantiva al Genius pleno, implementala y comprobala con evidencia proporcional a su afirmación, usando casos reales cuando corresponda. Publicá el resultado como pull request con su manifiesto de contribución y entregá un relevo que indique qué está comprobado y qué trabajo permite continuar. No transfieras credenciales ni atribuyas acuerdos a colaboradores que no los hayan confirmado.

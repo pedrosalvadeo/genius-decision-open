@@ -56,5 +56,15 @@
       "live_verified_at": "2026-10-14T01:19:48.509040+00:00",
       "verification_receipt": "capsule/receipts/live-twin-2026-10-14.json"
     }
+  },
+  "collaboration": {
+    "catalog": "capsule/opportunities.json",
+    "guide": "capsule/OPPORTUNITIES.md",
+    "catalog_url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/opportunities.json",
+    "raw_catalog_url": "https://raw.githubusercontent.com/pedrosalvadeo/genius-decision-open/main/capsule/opportunities.json",
+    "guide_url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/OPPORTUNITIES.md",
+    "opportunities": 10,
+    "new_proposals_allowed": true,
+    "attraction_experiment_status": "NOT_RUN"
   }
 }

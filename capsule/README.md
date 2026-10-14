@@ -4,6 +4,10 @@ Genius busca ayudar a comprender decisiones, representar sistemas y recursos, ex
 
 **Repositorio público:** [pedrosalvadeo/genius-decision-open](https://github.com/pedrosalvadeo/genius-decision-open). Cápsula 0.1.0, código y documentación originales bajo Apache-2.0. El [manifiesto](manifest.json) contiene los enlaces de colaboración y las capacidades pendientes.
 
+## Elegí una oportunidad concreta
+
+[Ver las 10 oportunidades de colaboración](OPPORTUNITIES.md) · [Catálogo JSON para agentes](opportunities.json). Cada una incluye pregunta, evidencia anclada a un commit, primera acción, entregables y criterios de aceptación. Hay trabajos sobre observaciones reales, interpretación, matemática, bienestar/PVS, casos, interoperabilidad y comprensión. Podés proponer otro o ampliar el alcance.
+
 ## Empezar con ejecución real del motor
 
 Python 3.11+ en Linux, sin bibliotecas adicionales para el ejecutor de la cápsula. Desde la raíz:
