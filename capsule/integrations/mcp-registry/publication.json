@@ -1,0 +1,89 @@
+{
+  "format": "genius-mcp-registry-publication/1",
+  "verified_at": "2026-10-14T10:34:47.146397+00:00",
+  "registry_url": "https://registry.modelcontextprotocol.io",
+  "verification_url": "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.pedrosalvadeo/genius-decision",
+  "name": "io.github.pedrosalvadeo/genius-decision",
+  "version": "0.2.0",
+  "published": true,
+  "status": "active",
+  "published_at": "2026-10-14T10:32:10.364371Z",
+  "authentication_method": "github-oidc",
+  "user_authorized": true,
+  "source_revision": "c0c146b98830c1ee5767e21194ddb99108e5db02",
+  "workflow_run_url": "https://github.com/pedrosalvadeo/genius-decision-open/actions/runs/38550230162",
+  "workflow_run_id": 38550230162,
+  "workflow_job_id": 115806111677,
+  "authentication_step": "success",
+  "publication_step": "success",
+  "runner_token_cleanup_step": "success",
+  "initial_workflow_verification": "Timed out on a read-only GET after 30 seconds; no publication retry was made.",
+  "independent_followup_get": {
+    "http_status": 200,
+    "matching_versions": 1,
+    "metadata_matches_approved_file": true,
+    "normalization": "Official serialization omits isRequired:false; absent and false are equivalent."
+  },
+  "approved_server_json_sha256": "8ae578eb858d2235cd2fa153d2696169f0c9c68fbb3950d35a5e380fd478c45c",
+  "entry": {
+    "server": {
+      "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+      "name": "io.github.pedrosalvadeo/genius-decision",
+      "description": "Create and evaluate versioned decision models with reproducible results and declared assumptions.",
+      "title": "Genius Decision",
+      "repository": {
+        "url": "https://github.com/pedrosalvadeo/genius-decision-open",
+        "source": "github"
+      },
+      "version": "0.2.0",
+      "websiteUrl": "https://geniusdecision.app/agents",
+      "remotes": [
+        {
+          "type": "streamable-http",
+          "url": "https://geniusdecision.app/mcp",
+          "headers": [
+            {
+              "description": "Optional for public discovery. Private tools require Bearer followed by a scoped agent token; obtain it through https://geniusdecision.app/agents.",
+              "format": "string",
+              "isSecret": true,
+              "name": "Authorization"
+            }
+          ]
+        }
+      ],
+      "_meta": {
+        "io.modelcontextprotocol.registry/publisher-provided": {
+          "capsuleUrl": "https://github.com/pedrosalvadeo/genius-decision-open/tree/main/capsule",
+          "dataPolicy": "synthetic_or_non_personal_only",
+          "limitations": "Evaluations consume shared quota. Results are conditional on declared models and do not establish empirical validity. Registration default scopes do not include twin tools.",
+          "manifestUrl": "https://geniusdecision.app/agents/manifest.json",
+          "oauthAvailable": false,
+          "registration": {
+            "cleanupScopes": [
+              "twins:delete",
+              "account:delete"
+            ],
+            "method": "POST",
+            "twinScopes": [
+              "twins:read",
+              "twins:write",
+              "twins:evaluate"
+            ],
+            "url": "https://geniusdecision.app/api/agents/register"
+          },
+          "setupUrl": "https://geniusdecision.app/agents"
+        }
+      }
+    },
+    "_meta": {
+      "io.modelcontextprotocol.registry/official": {
+        "status": "active",
+        "statusChangedAt": "2026-10-14T10:32:10.364371Z",
+        "publishedAt": "2026-10-14T10:32:10.364371Z",
+        "updatedAt": "2026-10-14T10:32:10.364371Z",
+        "isLatest": true
+      }
+    }
+  },
+  "independent_adoption_confirmed": false
+}
