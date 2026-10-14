@@ -1,0 +1,128 @@
+{
+  "format": "genius-live-twin-check/1",
+  "started_at": "2026-10-14T01:17:04.866376+00:00",
+  "deployment_id": "4bf34782-4714-47cc-a31a-d26032364a23",
+  "deployment_commit": "103da8fcc76a552d06a3074f09f5a47188f10717",
+  "input_kind": "published_synthetic_fixture",
+  "empirical_validation": false,
+  "independent_external_adoption": false,
+  "checks": [
+    {
+      "check": "health_and_backup",
+      "passed": true
+    },
+    {
+      "check": "live_discovery",
+      "passed": true
+    },
+    {
+      "check": "opt_in_scopes_advertised",
+      "passed": true
+    },
+    {
+      "check": "unauthenticated_access_denied",
+      "passed": true
+    },
+    {
+      "check": "mcp_initialize_0_2_0",
+      "passed": true
+    },
+    {
+      "check": "scoped_machine_registration",
+      "passed": true
+    },
+    {
+      "check": "fifteen_scoped_twin_tools",
+      "passed": true
+    },
+    {
+      "check": "read_capabilities",
+      "passed": true
+    },
+    {
+      "check": "read_model_schema",
+      "passed": true
+    },
+    {
+      "check": "create_twin_via_mcp",
+      "passed": true
+    },
+    {
+      "check": "same_twin_read_via_rest",
+      "passed": true
+    },
+    {
+      "check": "explicit_fixture_proposal_accepted",
+      "passed": true
+    },
+    {
+      "check": "real_engine_completed_and_verified",
+      "passed": true
+    },
+    {
+      "check": "frozen_job_readback",
+      "passed": true
+    },
+    {
+      "check": "version_comparison",
+      "passed": true
+    },
+    {
+      "check": "dossier_export",
+      "passed": true
+    },
+    {
+      "check": "deleted_case_not_found",
+      "passed": true
+    },
+    {
+      "check": "agent_case_list_empty",
+      "passed": true
+    },
+    {
+      "check": "temporary_account_deleted",
+      "passed": true
+    },
+    {
+      "check": "temporary_token_revoked",
+      "passed": true
+    }
+  ],
+  "cleanup": {
+    "case_deleted": true,
+    "agent_delete_status": 204,
+    "revoked_token_status": 401
+  },
+  "mcp_server_info": {
+    "name": "genius-decision",
+    "version": "0.2.0"
+  },
+  "temporary_agent_id": "679451cf44af24d5eec0d686d69bb621",
+  "twin_tools": [
+    "twin_accept",
+    "twin_capabilities",
+    "twin_compare",
+    "twin_create_case",
+    "twin_delete_case",
+    "twin_evaluate",
+    "twin_example",
+    "twin_export",
+    "twin_get_case",
+    "twin_get_job",
+    "twin_list_cases",
+    "twin_observe",
+    "twin_propose",
+    "twin_save_draft",
+    "twin_schema"
+  ],
+  "temporary_case_id": "df44ce4fe56f4c73aa23583996a7082a",
+  "job_id": "a0843a600e33420e929650649be6dd6f",
+  "job_status": "completed",
+  "verification": {
+    "errors": [],
+    "status": "VALID",
+    "valid": true
+  },
+  "outcome": "PASSED",
+  "finished_at": "2026-10-14T01:19:48.509040+00:00"
+}
