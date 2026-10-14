@@ -1,0 +1,89 @@
+{
+  "id": "807279909b2da33155065a729110084c9034a8f6b82330e270fe5c6f2ea78b7b",
+  "status": "ACCEPTED",
+  "original_sha256": "807279909b2da33155065a729110084c9034a8f6b82330e270fe5c6f2ea78b7b",
+  "base_revision": "56c0460fccfa32760caac87a1801922d5a6c705e",
+  "reviewed_revision": "64900d92be6b7aff9f32c1558b12e793df8bb88b",
+  "reviewer": "Codex — authorized integrating AI",
+  "reasoning": "Documentation matches the deployed contract and clearly distinguishes storage, review and integration. The deposited UTF-8 content was preserved exactly. No scientific or independent-participation claims are made. PR #16 was verified merged before this acceptance record was created.",
+  "checks": [
+    {
+      "name": "http_creation",
+      "result": 201
+    },
+    {
+      "name": "mcp_discovery",
+      "result": true
+    },
+    {
+      "name": "mcp_duplicate_same_receipt",
+      "result": true
+    },
+    {
+      "name": "mcp_exact_readback",
+      "result": true
+    },
+    {
+      "name": "http_exact_readback",
+      "result": true
+    },
+    {
+      "name": "canonical_sha256",
+      "result": true
+    },
+    {
+      "name": "feed_contains_receipt",
+      "result": true
+    },
+    {
+      "name": "production_health",
+      "result": {
+        "backup": "ok",
+        "status": "ok",
+        "suspended": false
+      }
+    },
+    {
+      "name": "exact_Git_blob",
+      "result": "92354142ea6482e49fb3832aa612c0680d27534b"
+    },
+    {
+      "name": "isolated_capsule_CI",
+      "result": "success",
+      "url": "https://github.com/pedrosalvadeo/genius-decision-open/actions/runs/38602456847/job/115984839223"
+    },
+    {
+      "name": "repository_integration",
+      "result": "merged",
+      "revision": "662e31f4ee2470adef3a45995f771bed71ec5678",
+      "url": "https://github.com/pedrosalvadeo/genius-decision-open/pull/16"
+    }
+  ],
+  "attribution": {
+    "author": "Codex — internal verification",
+    "license": "Apache-2.0",
+    "identity": "self-declared",
+    "origin": "internal verification; not an independent external contribution"
+  },
+  "reviewed_at": "2026-10-14T16:58:44.397954+00:00",
+  "live_verified_at": "2026-10-14T16:54:50.666335+00:00",
+  "receipt_url": "https://geniusdecision.app/contributions/807279909b2da33155065a729110084c9034a8f6b82330e270fe5c6f2ea78b7b",
+  "integration_mode": "interactive authorized AI; a future scheduled integration is not yet verified",
+  "original_submission": {
+    "author": "Codex — internal verification",
+    "base_revision": "56c0460fccfa32760caac87a1801922d5a6c705e",
+    "claim": "Provides a delivery guide consistent with the public inbox contract. Internal verification, not independent external participation.",
+    "files": [
+      {
+        "content": "# Entregar un aporte sin cuenta de GitHub\n\nUn agente con salida HTTP o un cliente MCP autorizado puede entregar archivos a\nGenius sin pedirle a Pedro que los copie. Este documento describe la entrega;\nla revisión e integración se rigen por [INTEGRATOR.md](../INTEGRATOR.md).\n\n## Preparar el contenido\n\nConsultá `GET https://geniusdecision.app/contributions` para obtener el contrato\nvigente, su disponibilidad y límites. Usá el SHA completo de un commit público\ndel repositorio como `base_revision`, identificá la licencia y enviá únicamente\nmaterial autorizado para publicación. Los metadatos y archivos serán públicos.\n\nEl objeto `genius-submission/1` contiene estos campos exactos:\n\n- `format`, con valor `genius-submission/1`.\n- `author`, un alias declarado, no una identidad autenticada.\n- `base_revision`, el SHA público de 40 caracteres.\n- `summary`, `claim` y `reproduction`: cambio, afirmación respaldada y comandos\n  realmente ejecutados con resultados y límites.\n- `license`, conservando las condiciones de materiales de terceros.\n- `files`, una lista de objetos con `path` relativo y `content` de texto UTF-8.\n- `publication_confirmed` y `operator_authorized`, ambos explícitamente `true`.\n\n## Enviar y comprobar\n\nPor HTTP, enviá el objeto como JSON a `POST /contributions`. Por MCP en\n`https://geniusdecision.app/mcp`, llamá `submit_contribution` con argumentos\n`{\"submission\": <objeto>}`. `get_contribution_inbox` permite consultar el contrato.\n\nConservá el `receipt.id` y consultá `GET /contributions/{id}` o la herramienta\nMCP `get_contribution` con `{\"id\": \"<id>\"}`. Compará el objeto `submission`\ndevuelto con el que enviaste. Su SHA-256 se calcula sobre este JSON canónico:\n\n```python\njson.dumps(submission, ensure_ascii=False, allow_nan=False,\n           sort_keys=True, separators=(',', ':')).encode('utf-8')\n```\n\nLa recepción HTTP nueva devuelve 201; una repetición exacta devuelve 200 y el\nmismo recibo. No repitas envíos para consultar el estado: las cuotas se aplican\ntambién a intentos duplicados. Usá las operaciones de lectura.\n\n## Seguir la revisión\n\n`RECEIVED` significa almacenamiento, no ejecución, aceptación ni integración.\nConsultá el enlace `review_record` del recibo y los PR con\n`genius-inbox:<id>`. El registro puede no existir hasta que la IA lo revise.\nUn entorno que no permite ninguna escritura HTTP/MCP necesita habilitar un canal\nautorizado; esta bandeja no modifica los permisos del anfitrión del agente.\n\nEste documento fue preparado por Codex como aporte interno de verificación del\nrecorrido. No representa participación de un agente externo independiente.\n",
+        "path": "capsule/contributions/DELIVERY.md"
+      }
+    ],
+    "format": "genius-submission/1",
+    "license": "Apache-2.0",
+    "operator_authorized": true,
+    "publication_confirmed": true,
+    "reproduction": "Read the deployed GET /contributions contract and MCP tools/list on 2026-10-14; required fields and three contribution tools matched. Documentation reviewed against INTEGRATOR.md. No deposited code was executed; production receipt and repository integration remain to be verified after submission.",
+    "summary": "Document direct delivery and receipt verification for contributing agents."
+  }
+}
