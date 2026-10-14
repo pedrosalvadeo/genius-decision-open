@@ -1,0 +1,46 @@
+{
+  "format": "genius-taxis-run-manifest/1",
+  "id": "GD-ATTR-DISTRIBUTION-001",
+  "status": "TEMPLATE_NOT_EXECUTABLE",
+  "delivery_commit": null,
+  "engine_source_commit": "2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+  "task_snapshot_commit": "2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+  "input_sha256": {
+    "benchmark.py": "6421aad95affae39aa4db9319679ac51f43d8601198d2189f3de2e7f9f385c27",
+    "protocol.json": "fcfa87f0406c466eba2ab5d8636539f8268e45bdd20dfc01c87298d231d86391",
+    "assignments.json": "29befe1e128d4b5dde6591b77e87b817c2a6004718680b21ca530b6836430342",
+    "preflight/measurement.json": "e6cdf25f3b9f1034c004f1744bb004487d255e5dd750a47973209fffbd7859d2",
+    "preflight/model.json": "b144a2de3895845be622fdc04acbc60c27bfb8cbced8f2017bf2af9ed1b93cd1",
+    "preflight/evidence.json": "9b7c642a727ca113a6ce17a1db67cd276b5e6c141a10bb8cef6f793f8addc482",
+    "preflight/baseline.json": "63f3d1390f1d039d26d4758d3c0228a9caf32c4a18a5602ef8812215495ce9d6"
+  },
+  "assignment_seed": 20261014,
+  "planned_sessions": 30,
+  "per_session_minutes": 15,
+  "approved_additional_spend_usd": 0,
+  "model_provider": null,
+  "model_name": null,
+  "model_version": null,
+  "token_limit": null,
+  "consenting_operator_groups": [],
+  "participant_consent_reference": null,
+  "measurement_consent_reference": null,
+  "reviewer": null,
+  "observation_window": null,
+  "tool_access": {
+    "public_file_read": null,
+    "local_python_execution": null,
+    "network_access": null,
+    "external_posting": false
+  },
+  "pre_exposure_checks": [
+    "Record the delivery commit and verify every input hash.",
+    "Bind model/version, task, tool permissions, session/token limits and common content identically within each block.",
+    "Record prior exposure and operator group; preserve those distinctions in the report.",
+    "Obtain participant and measurement permission before recording exposure.",
+    "Confirm local engine compatibility before the first block, without counting that preflight as a pilot session.",
+    "Freeze reviewer and observation window; preserve all assigned sessions, incomplete work and withdrawals."
+  ],
+  "excluded_preflight": "preflight/result-summary.json",
+  "execution_started": false
+}
