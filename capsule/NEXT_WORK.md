@@ -11,13 +11,17 @@ Acceso autónomo API/MCP implementado en esta edición: 15 herramientas, permiso
 
 Continuar directamente los frentes del mandato: recepción y prueba independiente por agentes externos, observaciones reales del modelo, interpretación de problemas, aportes a matemática y perfiles completos, colaboración externa y experiencia humana. Ninguno requiere esperar una secuencia obligatoria de versiones reducidas.
 
-Un agente externo con herramientas propias aún debe recibir y utilizar la cápsula; las pruebas locales no lo acreditan. Se envió una propuesta concreta de integración y prueba independiente a OpenHands Extensions: https://github.com/OpenHands/extensions/issues/770. Está pendiente de revisión; no acredita acuerdo ni ejecución externa. Los demás proyectos siguen siendo candidatos. Conservar en cada contribución la afirmación, las fuentes, los cambios, la reproducción y los límites.
+Un agente externo con herramientas propias aún debe ejecutar el motor y devolver evidencia independiente; las pruebas locales no lo acreditan. Se envió una propuesta concreta a OpenHands Extensions: https://github.com/OpenHands/extensions/issues/770. Al 14 de octubre está abierta, tiene cero comentarios y recibió clasificación automática en su cuerpo, criterios de aceptación y la etiqueta ready-for-dev. Eso acredita recepción y clasificación de la propuesta, no aprobación humana, acuerdo ni ejecución externa del motor. Los demás proyectos siguen siendo candidatos. Conservar en cada contribución la afirmación, las fuentes, los cambios, la reproducción y los límites.
 
 ## Catálogo de oportunidades
 
 Se añadieron diez oportunidades concretas en OPPORTUNITIES.md y opportunities.json, con evidencia de partida anclada al commit 1342ab428fe7f328297a96d3c1dcacd119cbb012. Son preguntas abiertas, no capacidades implementadas ni pruebas de atracción ejecutadas.
 
-Siguiente tarea: vincular candidatos verificados con oportunidades, preparar invitaciones pertinentes y buscar fuentes/casos reales para GD-REAL-001. Registrar por separado contacto, respuesta, ejecución, aporte y aceptación. Diseñar el protocolo GD-ATTR-001 antes de ejecutar comparaciones.
+Los enlaces al catálogo ya están activos en https://geniusdecision.app/agents y https://geniusdecision.app/llms.txt. El despliegue Railway 212a73ec-7faf-4920-bbf2-0fe3b45b2f30, commit 138b1408a3d688dcf0639dc3324aaecdaa751879, figura SUCCESS; ambos recursos respondieron 200 y coincidieron con los archivos publicados. No había cambios pendientes de aplicar. Esta comprobación corresponde a los enlaces; la prueba funcional del gemelo permanece documentada en el recibo anterior.
+
+Se verificaron nueve candidatos y canales y se prepararon cinco invitaciones concretas sin enviar; ver COLLABORATION.md y candidates.json. El registro distingue frameworks, un asistente de pruebas, registros, ejemplos y tableros públicos. SwarmMemo permitió lectura JSON; NULLYARD publicó su guía MCP accesible. No se ejecutó ni publicó nada en esos servicios.
+
+Siguiente tarea concreta: preparar la entrada de OpenHands Extensions conforme al issue 770 y probarla con un cliente publicado, leyendo primero las instrucciones actuales del repositorio. Revisar los borradores y enviar sólo los contactos autorizados. Buscar fuentes/casos reales para GD-REAL-001. Registrar por separado contacto, respuesta, ejecución, aporte y aceptación. Diseñar el protocolo GD-ATTR-001 antes de ejecutar comparaciones.
 
 ## Encargo de continuación
 

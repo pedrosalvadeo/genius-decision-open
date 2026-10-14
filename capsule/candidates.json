@@ -1,43 +1,358 @@
 {
   "format": "genius-collaboration-candidates/1",
-  "checked_on": "2026-10-13",
+  "checked_on": "2026-10-14",
+  "reviewed_genius_revision": "ac88ece1cfff805efb2d4f18604ab49b0f5d82b5",
   "contacts_sent": 1,
+  "invitations_drafted": 5,
+  "confirmed_collaborations": 0,
+  "independent_engine_executions_confirmed": 0,
+  "scope": "Proyectos, registros y tableros. No es un censo de instancias autónomas ni de colaboradores disponibles.",
+  "evidence_policy": "Fuentes primarias consultadas; los hashes Git son de blobs, no de commits. Las páginas vivas pueden cambiar. La pertinencia para Genius es una evaluación propia, no una declaración de interés del candidato.",
   "candidates": [
     {
+      "id": "GD-CAND-OPENHANDS-SDK",
       "name": "OpenHands Software Agent SDK",
       "url": "https://github.com/OpenHands/software-agent-sdk",
       "kind": "agent_framework_project",
-      "potential": "Host coding agents for engine and integration work",
-      "channel": "Repository contribution process; review before contact",
-      "status": "IDENTIFIED_NOT_CONTACTED"
-    },
-    {
-      "name": "OpenHands Extensions",
-      "url": "https://github.com/openhands/extensions",
-      "kind": "extension_registry",
-      "potential": "Distribute a compatible capsule integration",
-      "channel": "Registry contribution process",
-      "status": "PROPOSAL_SENT_AWAITING_REVIEW",
-      "contact_url": "https://github.com/OpenHands/extensions/issues/770",
-      "contact_date": "2026-10-13",
+      "potential": "Ejecutar un cliente agente de programación y comprobar la integración MCP.",
+      "opportunity_ids": [
+        "GD-MCP-001",
+        "GD-OBS-001"
+      ],
+      "channel": "Guía CONTRIBUTING y Slack oficial; la propuesta existente de Genius se concentra en OpenHands Extensions.",
+      "status": "IDENTIFIED_NOT_CONTACTED",
+      "next_action": "Preparar una reproducción con una versión publicada del cliente; conservar versión, comandos y resultado.",
+      "limitations": [
+        "Un framework no es una instancia disponible para trabajar.",
+        "No duplicar el contacto de Extensions en el SDK."
+      ],
+      "evidence": [
+        {
+          "repository": "OpenHands/software-agent-sdk",
+          "path": "CONTRIBUTING.md",
+          "git_blob_sha": "163f37bb40a5fe8c3501c7c0656c49906cccf8d5",
+          "url": "https://github.com/OpenHands/software-agent-sdk/blob/main/CONTRIBUTING.md",
+          "checked_on": "2026-10-14"
+        },
+        {
+          "repository": "OpenHands/software-agent-sdk",
+          "path": "README.md",
+          "git_blob_sha": "386dc8945133cb51969192b0b29c8396719cbff6",
+          "url": "https://github.com/OpenHands/software-agent-sdk/blob/main/README.md",
+          "checked_on": "2026-10-14"
+        }
+      ],
+      "draft": null,
+      "contact_sent": false,
       "agreement_confirmed": false,
       "external_agent_execution_confirmed": false
     },
     {
+      "id": "GD-CAND-OPENHANDS-EXTENSIONS",
+      "name": "OpenHands Extensions",
+      "url": "https://github.com/OpenHands/extensions",
+      "kind": "extension_registry",
+      "potential": "Publicar una entrada del catálogo y obtener una prueba con el cliente publicado.",
+      "opportunity_ids": [
+        "GD-MCP-001"
+      ],
+      "channel": "Issue existente #770 y proceso de contribución del repositorio.",
+      "status": "PROPOSAL_AUTO_TRIAGED_READY_FOR_DEV",
+      "next_action": "Preparar la entrada y las validaciones exigidas por el issue; verificar con un cliente publicado antes de presentar el PR.",
+      "limitations": [
+        "La clasificación automática no es aprobación de mantenedores ni ejecución del motor.",
+        "Hay cero comentarios; la respuesta automática está en el cuerpo del issue."
+      ],
+      "evidence": [
+        {
+          "repository": "OpenHands/extensions",
+          "path": "README.md",
+          "git_blob_sha": "2c377095aa567ac53da771f617aec98cc039aff9",
+          "url": "https://github.com/OpenHands/extensions/blob/main/README.md",
+          "checked_on": "2026-10-14"
+        },
+        {
+          "url": "https://github.com/OpenHands/extensions/issues/770",
+          "checked_on": "2026-10-14",
+          "observation": "Issue abierto, 0 comentarios, etiquetas ready-for-dev y priority:low; cuerpo con OpenHands AI triage y criterios de aceptación."
+        }
+      ],
+      "draft": null,
+      "contact_sent": true,
+      "agreement_confirmed": false,
+      "external_agent_execution_confirmed": false,
+      "contact_url": "https://github.com/OpenHands/extensions/issues/770",
+      "contact_date": "2026-10-13",
+      "contact_checked_on": "2026-10-14",
+      "issue_state": "open",
+      "issue_comments": 0,
+      "automated_triage_observed": true,
+      "human_response_confirmed": false,
+      "issue_updated_at": "2026-10-13T19:55:47Z"
+    },
+    {
+      "id": "GD-CAND-SMOLAGENTS",
+      "name": "smolagents",
+      "url": "https://github.com/huggingface/smolagents",
+      "kind": "agent_framework_project",
+      "potential": "Probar recepción MCP con un agente y un modelo explícitamente revisado.",
+      "opportunity_ids": [
+        "GD-MCP-001",
+        "GD-INT-001"
+      ],
+      "channel": "GitHub Discussions, categoría Show and tell.",
+      "status": "DRAFT_NOT_SENT",
+      "next_action": "Presentar una invitación a una prueba externa; cualquier integración específica se mantiene fuera del núcleo.",
+      "limitations": [
+        "La documentación admite MCP remoto, pero aquí no se ejecutó smolagents.",
+        "CONTRIBUTING exige issue aceptado antes de un PR sustantivo al núcleo."
+      ],
+      "evidence": [
+        {
+          "repository": "huggingface/smolagents",
+          "path": "CONTRIBUTING.md",
+          "git_blob_sha": "b1e05aa11a82898cdecd544d894c79758ae0b99d",
+          "url": "https://github.com/huggingface/smolagents/blob/main/CONTRIBUTING.md",
+          "checked_on": "2026-10-14"
+        },
+        {
+          "repository": "huggingface/smolagents",
+          "path": "docs/source/en/tutorials/tools.md",
+          "git_blob_sha": "b4a73c1904eb4bcb7c8025e97906e0d8d3127bee",
+          "url": "https://github.com/huggingface/smolagents/blob/main/docs/source/en/tutorials/tools.md",
+          "checked_on": "2026-10-14"
+        },
+        {
+          "url": "https://github.com/huggingface/smolagents/discussions",
+          "checked_on": "2026-10-14",
+          "observation": "Categoría Show and tell disponible."
+        }
+      ],
+      "draft": "COLLABORATION.md#smolagents",
+      "contact_sent": false,
+      "agreement_confirmed": false,
+      "external_agent_execution_confirmed": false
+    },
+    {
+      "id": "GD-CAND-CAMEL",
+      "name": "CAMEL",
+      "url": "https://github.com/camel-ai/camel",
+      "kind": "multi_agent_framework_project",
+      "potential": "Interpretar una decisión documentada y revisar por separado fuentes, supuestos y desconocidos.",
+      "opportunity_ids": [
+        "GD-INT-001",
+        "GD-REAL-001"
+      ],
+      "channel": "Comunidad Discord enlazada desde el proyecto: https://discord.camel-ai.org/; falta seleccionar el canal pertinente.",
+      "status": "DRAFT_CHANNEL_REVIEW_REQUIRED",
+      "next_action": "Revisar el canal comunitario y proponer una colaboración de interpretación con evidencia.",
+      "limitations": [
+        "No se ingresó en Discord ni se verificó un canal interno.",
+        "Los aportes asistidos por IA requieren revisión humana antes de una presentación upstream; los PR requieren una discusión o issue aceptado."
+      ],
+      "evidence": [
+        {
+          "repository": "camel-ai/camel",
+          "path": "CONTRIBUTING.md",
+          "git_blob_sha": "cd2ecdc4c38b6da85b4f32fafcd6f7c51b4654d9",
+          "url": "https://github.com/camel-ai/camel/blob/master/CONTRIBUTING.md",
+          "checked_on": "2026-10-14"
+        },
+        {
+          "repository": "camel-ai/camel",
+          "path": "README.md",
+          "git_blob_sha": "92076babf5e2e66552069caea60ce56363823d1d",
+          "url": "https://github.com/camel-ai/camel/blob/master/README.md",
+          "checked_on": "2026-10-14"
+        },
+        {
+          "repository": "camel-ai/camel",
+          "path": "camel/toolkits/mcp_toolkit.py",
+          "git_blob_sha": "2b333f30bd28686d3af808b2fc5b370299c937e6",
+          "url": "https://github.com/camel-ai/camel/blob/master/camel/toolkits/mcp_toolkit.py",
+          "checked_on": "2026-10-14"
+        }
+      ],
+      "draft": "COLLABORATION.md#camel",
+      "contact_sent": false,
+      "agreement_confirmed": false,
+      "external_agent_execution_confirmed": false
+    },
+    {
+      "id": "GD-CAND-LEANCOPILOT",
+      "name": "LeanCopilot",
+      "url": "https://github.com/lean-dojo/LeanCopilot",
+      "kind": "proof_assistant_project",
+      "potential": "Formalizar un enunciado de Genius, sus hipótesis y una prueba o contraejemplo.",
+      "opportunity_ids": [
+        "GD-MATH-001"
+      ],
+      "channel": "GitHub Discussions, categoría Ideas.",
+      "status": "DRAFT_NOT_SENT",
+      "next_action": "Preguntar por interés en una colaboración y elegir un primer enunciado con especialistas en Lean.",
+      "limitations": [
+        "LeanCopilot trabaja dentro de Lean; Genius aún no ofrece aquí una formalización Lean.",
+        "Una prueba de un lema no certifica el motor completo ni la validez empírica."
+      ],
+      "evidence": [
+        {
+          "repository": "lean-dojo/LeanCopilot",
+          "path": "README.md",
+          "git_blob_sha": "9f8dee19d4b0c305abb524110b56b56fed0bfdcb",
+          "url": "https://github.com/lean-dojo/LeanCopilot/blob/main/README.md",
+          "checked_on": "2026-10-14"
+        },
+        {
+          "url": "https://github.com/lean-dojo/LeanCopilot/discussions",
+          "checked_on": "2026-10-14",
+          "observation": "Categoría Ideas disponible."
+        }
+      ],
+      "draft": "COLLABORATION.md#leancopilot",
+      "contact_sent": false,
+      "agreement_confirmed": false,
+      "external_agent_execution_confirmed": false
+    },
+    {
+      "id": "GD-CAND-SWARMMEMO",
+      "name": "SwarmMemo",
+      "url": "https://swarmmemo.com",
+      "kind": "public_agent_message_board",
+      "potential": "Ofrecer una oportunidad reproducible a participantes de un tablero público accesible por HTTP/MCP.",
+      "opportunity_ids": [
+        "GD-MCP-001",
+        "GD-ATTR-001"
+      ],
+      "channel": "Tablero público; elegir sala y leer sus reglas antes de publicar una única invitación.",
+      "status": "DRAFT_NOT_SENT",
+      "next_action": "Revisar sala y condiciones vigentes y, con autorización de envío, publicar la invitación con un ID rastreable.",
+      "limitations": [
+        "Se verificaron documentación y lectura HTTP, no una conexión MCP ni publicación.",
+        "Los perfiles y mensajes no prueban identidad, independencia, disponibilidad ni interés.",
+        "No usar recompensas, créditos, inferencia o tareas pagas sin un encargo separado."
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/huggingface/smolagents/discussions/2753",
+          "checked_on": "2026-10-14",
+          "observation": "Anuncio del creador; piloto sin garantía de adopción independiente."
+        },
+        {
+          "url": "https://swarmmemo.com/llms.txt",
+          "checked_on": "2026-10-14",
+          "observation": "Documentación HTTP/MCP y lectura pública.",
+          "sha256": "adbcf21ad59e57af6f5cabbadabf15c034390f93ecf82b2be0903f2a98243642"
+        },
+        {
+          "url": "https://swarmmemo.com/api/messages?limit=3",
+          "checked_on": "2026-10-14",
+          "observation": "HTTP 200 con JSON ok=true y mensajes públicos; no se republica su contenido.",
+          "sha256": "3954fc92ee418f6d89ba8ca86a3795a12d6f7971b8ea09f767209ec898a4cded"
+        }
+      ],
+      "draft": "COLLABORATION.md#swarmmemo",
+      "contact_sent": false,
+      "agreement_confirmed": false,
+      "external_agent_execution_confirmed": false
+    },
+    {
+      "id": "GD-CAND-NULLYARD",
+      "name": "NULLYARD",
+      "url": "https://nullyard.net",
+      "kind": "public_agent_message_board",
+      "potential": "Presentar una colaboración estructurada y recibir un informe público con evidencia.",
+      "opportunity_ids": [
+        "GD-MCP-001",
+        "GD-ATTR-001"
+      ],
+      "channel": "Tablero público; MCP publish_note documenta raíces de tipo collaboration.",
+      "status": "DRAFT_NOT_SENT",
+      "next_action": "Revisar el esquema y canal vigente y, con autorización de envío, publicar una única propuesta estructurada.",
+      "limitations": [
+        "Página y guía MCP respondieron HTTP 200; no se llamó al MCP ni se publicó.",
+        "No existe identidad autenticada obligatoria; los campos actor/modelo son autodeclarados.",
+        "No hay programación automática ni prueba de continuidad de los participantes."
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/huggingface/smolagents/discussions/2760",
+          "checked_on": "2026-10-14",
+          "observation": "Anuncio del creador, sin integración smolagents comprobada."
+        },
+        {
+          "url": "https://nullyard.net/mcp.md",
+          "checked_on": "2026-10-14",
+          "observation": "Describe Streamable HTTP, lecturas y publish_note con idempotencia.",
+          "sha256": "451192cbc00c9e227a9ac26d2a4940bb3e7d0f8d1c5cfc68a056182acdf09f7a"
+        }
+      ],
+      "draft": "COLLABORATION.md#nullyard",
+      "contact_sent": false,
+      "agreement_confirmed": false,
+      "external_agent_execution_confirmed": false
+    },
+    {
+      "id": "GD-CAND-A2A-SAMPLES",
       "name": "A2A sample ecosystem",
       "url": "https://github.com/a2aproject/a2a-samples",
       "kind": "protocol_examples",
-      "potential": "Build and test a Genius A2A adapter",
-      "channel": "Repository contribution process",
-      "status": "IDENTIFIED_NOT_CONTACTED"
+      "potential": "Usar ejemplos como referencia para un adaptador Genius y un consumidor compatibles.",
+      "opportunity_ids": [
+        "GD-A2A-001"
+      ],
+      "channel": "Issues para cuestiones técnicas y contribuciones sobre ejemplos.",
+      "status": "IDENTIFIED_NOT_CONTACTED",
+      "next_action": "Construir y probar un adaptador A2A real antes de proponer un ejemplo o anunciar compatibilidad.",
+      "limitations": [
+        "Es un repositorio de ejemplos, no una red de agentes disponibles.",
+        "Genius no anuncia A2A implementado."
+      ],
+      "evidence": [
+        {
+          "repository": "a2aproject/a2a-samples",
+          "path": "README.md",
+          "git_blob_sha": "467ef0df0651ee638c319d800dc583af29ad6de4",
+          "url": "https://github.com/a2aproject/a2a-samples/blob/main/README.md",
+          "checked_on": "2026-10-14"
+        }
+      ],
+      "draft": null,
+      "contact_sent": false,
+      "agreement_confirmed": false,
+      "external_agent_execution_confirmed": false
     },
     {
+      "id": "GD-CAND-MCP-REGISTRY",
       "name": "Official MCP Registry",
       "url": "https://registry.modelcontextprotocol.io",
       "kind": "server_registry_not_agent",
-      "potential": "Publish Genius server metadata after release",
-      "channel": "Verified namespace publication",
-      "status": "IDENTIFIED_NOT_SUBMITTED"
+      "potential": "Hacer encontrables los metadatos del MCP público de Genius.",
+      "opportunity_ids": [
+        "GD-MCP-001"
+      ],
+      "channel": "Publicación de server.json mediante el flujo oficial y namespace verificado.",
+      "status": "IDENTIFIED_NOT_SUBMITTED",
+      "next_action": "Preparar y validar server.json y verificar el namespace antes de publicar.",
+      "limitations": [
+        "Un registro distribuye metadatos; no recibe invitaciones ni demuestra uso del servicio.",
+        "No se registró el servidor en este catálogo."
+      ],
+      "evidence": [
+        {
+          "url": "https://modelcontextprotocol.io/registry/quickstart",
+          "checked_on": "2026-10-14",
+          "observation": "Flujo oficial de publicación y server.json."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/registry/authentication",
+          "checked_on": "2026-10-14",
+          "observation": "Mecanismos de autenticación y verificación de namespace."
+        }
+      ],
+      "draft": null,
+      "contact_sent": false,
+      "agreement_confirmed": false,
+      "external_agent_execution_confirmed": false
     }
   ]
 }
