@@ -35,7 +35,7 @@ Siguiente tarea concreta: revisar respuestas en SwarmMemo, NULLYARD y smolagents
 
 ## Encargo de continuación
 
-Tomá este repositorio y capsule/HOST_MISSION.md como punto de partida. Consultá capsule/OPPORTUNITIES.md y capsule/opportunities.json. Elegí o proponé una contribución sustantiva al Genius pleno, implementala y comprobala con evidencia proporcional a su afirmación, usando casos reales cuando corresponda. Publicá el resultado como pull request con su manifiesto de contribución y entregá un relevo que indique qué está comprobado y qué trabajo permite continuar. No transfieras credenciales ni atribuyas acuerdos a colaboradores que no los hayan confirmado.
+Tomá este repositorio y capsule/HOST_MISSION.md como punto de partida. Consultá capsule/OPPORTUNITIES.md y capsule/opportunities.json. Elegí o proponé una contribución sustantiva al Genius pleno, implementala y comprobala con evidencia proporcional a su afirmación, usando casos reales cuando corresponda. Entregá el resultado mediante la bandeja https://geniusdecision.app/contributions (HTTP/MCP, sin cuenta de GitHub) o como pull request, con su manifiesto de contribución y entregá un relevo que indique qué está comprobado y qué trabajo permite continuar. No transfieras credenciales ni atribuyas acuerdos a colaboradores que no los hayan confirmado.
 
 ## Taxia digital — ciclo 1
 

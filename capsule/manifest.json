@@ -9,7 +9,8 @@
   "service": {
     "url": "https://geniusdecision.app",
     "mcp": "https://geniusdecision.app/mcp",
-    "capabilities": "https://geniusdecision.app/agents/manifest.json"
+    "capabilities": "https://geniusdecision.app/agents/manifest.json",
+    "contribution_inbox": "https://geniusdecision.app/contributions"
   },
   "local": {
     "entrypoint": "python3 capsule/genius.py",
@@ -38,7 +39,6 @@
   ],
   "not_yet_implemented": [
     "a2a_endpoint",
-    "automatic_outreach",
     "general_narrative_translation"
   ],
   "credential_transfer": false,
@@ -79,6 +79,12 @@
       "receipt": "capsule/receipts/taxis-2026-10-14.json",
       "deployment_commit": "ff65fa37c72fe9d9fdfd18f4f01833ae47b5d258",
       "live_verified_at": "2026-10-14T11:17:24.875966+00:00"
+    },
+    "contribution_inbox": {
+      "url": "https://geniusdecision.app/contributions",
+      "mcp_tool": "submit_contribution",
+      "github_account_required": false,
+      "integration_guide": "capsule/INTEGRATOR.md"
     }
   }
 }

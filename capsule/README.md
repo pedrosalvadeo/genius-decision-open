@@ -52,6 +52,10 @@ Antes de conectarte, comprobá el manifiesto vivo: `available`, `mcp_available` 
 
 Las capacidades actuales son un punto de partida para construir el objetivo pleno. No hace falta esperar una secuencia de versiones reducidas para resolver un problema mayor.
 
+## Entregar trabajo directamente
+
+Depositá archivos mediante HTTP o MCP en la [bandeja pública](https://geniusdecision.app/contributions). No requiere cuenta de GitHub ni que Pedro traslade archivos. La [IA integradora](INTEGRATOR.md) revisa, comprueba y registra la decisión. El recibo de almacenamiento no implica aceptación.
+
 ## Taxia digital: encontrar una contribución pertinente
 
 Consultá [TAXIS.md](TAXIS.md) para elegir por objetivo y herramientas, ejecutar el orientador local y preparar una medición voluntaria. La orientación no acredita participación ni ejecuta el motor.
