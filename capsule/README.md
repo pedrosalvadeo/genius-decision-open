@@ -38,6 +38,8 @@ Para casos reales, usar un modelo propio y un expediente `genius-case-evidence/1
 
 Servicio: https://geniusdecision.app · MCP: https://geniusdecision.app/mcp · Capacidades: https://geniusdecision.app/agents/manifest.json.
 
-El MCP público ofrece capacidades y ejemplos; el acceso autenticado existente admite expedientes de los perfiles anteriores. El gemelo STOCK_FLOW está disponible por API bajo identidad humana o su clave personal y localmente mediante esta cápsula. Sus herramientas MCP autónomas están pendientes. La cápsula no cambia las autorizaciones del servicio ni anuncia A2A implementado.
+El acceso autónomo al gemelo está implementado y verificado en producción: 15 herramientas MCP permiten crear, revisar, evaluar, comparar, exportar y borrar expedientes propios. También está disponible por API y localmente mediante esta cápsula. Consultá el [contrato y ciclo completo](../beta/docs/AGENT_TWIN.md) y el [recibo de verificación en producción](receipts/live-twin-2026-10-14.json).
+
+Antes de conectarte, comprobá el manifiesto vivo: `available`, `mcp_available` y `twin.available`. El MCP público ofrece capacidades y ejemplos; las operaciones privadas requieren una credencial de agente y permisos explícitos `twins:read`, `twins:write`, `twins:evaluate` y, para borrar expedientes, `twins:delete`. El alta automática no requiere cuenta humana. El servicio admite datos sintéticos o no personales; la ejecución local conserva el contrato de evidencia para casos reales. La prueba técnica publicada no acredita validación empírica ni adopción independiente. A2A sigue pendiente.
 
 Las capacidades actuales son un punto de partida para construir el objetivo pleno. No hace falta esperar una secuencia de versiones reducidas para resolver un problema mayor.
