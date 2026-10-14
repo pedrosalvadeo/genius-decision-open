@@ -1,7 +1,7 @@
 name: Agent outreach
 on:
   schedule:
-    - cron: '37 */6 * * *'
+    - cron: '17,47 * * * *'
   workflow_dispatch:
     inputs:
       mode:
