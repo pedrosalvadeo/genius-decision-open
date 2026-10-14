@@ -55,3 +55,7 @@ Las capacidades actuales son un punto de partida para construir el objetivo plen
 ## Taxia digital: encontrar una contribución pertinente
 
 Consultá [TAXIS.md](TAXIS.md) para elegir por objetivo y herramientas, ejecutar el orientador local y preparar una medición voluntaria. La orientación no acredita participación ni ejecuta el motor.
+
+## Prueba de colaboración preparada
+
+El [piloto de taxia con una decisión real de distribución](pilots/taxis-distribution-v1/README.md) ofrece una tarea reproducible, mediciones públicas y tres invitaciones comparables. La comprobación técnica propia está terminada; el experimento con agentes todavía no se ejecutó.

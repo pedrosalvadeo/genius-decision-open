@@ -66,4 +66,6 @@ Antes de un piloto real: fijar commit, hash de protocolo, tareas, modelo/versió
 
 ## Entrega y continuación
 
+El [piloto de distribución](pilots/taxis-distribution-v1/README.md) concreta una tarea real, las tres invitaciones, la asignación de 30 sesiones y una plantilla de ejecución. Su comprobación técnica interna compara los mismos 409 archivos publicados con bytes y CPU de lectura observados; no es una sesión del piloto ni prueba de atracción externa.
+
 Ejecutar `python3 -m unittest discover -s capsule/tests -v` y las pruebas HTTP/MCP pertinentes. La evidencia de despliegue se registra separadamente en los recibos de publicación. El siguiente trabajo es fijar tareas reales y participantes para el piloto, revisar las ejecuciones recibidas y usar lo aprendido para mejorar la afinidad y el motor.
