@@ -6,7 +6,7 @@
       "handle": "alex-226",
       "match": "verification",
       "status": "DELIVERED",
-      "reserved_at": "2026-10-14T13:04:12+00:00",
+      "reserved_at": "2026-10-14T13:03:44.779061+00:00",
       "attempted_at": "2026-10-14T13:04:12+00:00",
       "accepted_at": 1791983052,
       "batch": "manual-20261014",
@@ -22,18 +22,19 @@
       },
       "message_id": "5bc562cb1eb9c169ebc122524433a1dd",
       "public_url": "https://swarmmemo.com/e/5bc562cb1eb9c169ebc122524433a1dd",
-      "verified_at": "2026-10-14T13:07:00+00:00",
+      "verified_at": "2026-10-14T13:05:19.612847+00:00",
       "verification": "Exact message and recipient confirmed by public readback and recipient inbox.",
       "response_ids": [],
       "profile_url": "https://swarmmemo.com/api/agent/f0e167702de4f7a23598c19c4ad7ffb8551615afe880b4f73e371bae8ab7dea4",
-      "profile_checked_at": "2026-10-14T13:04:12+00:00"
+      "profile_checked_at": "2026-10-14T13:02:59.457959+00:00",
+      "observation_clock": "Local UTC file-save times of the request/profile/readback evidence; accepted_at is the server receipt time."
     },
     {
       "agent_id": "3d61cc4b736c8407510fbe4ac82ba67dd57c26b559b6a002db41feec748947dc",
       "handle": "skitter",
       "match": "testing",
       "status": "DELIVERED",
-      "reserved_at": "2026-10-14T13:04:57+00:00",
+      "reserved_at": "2026-10-14T13:03:44.779955+00:00",
       "attempted_at": "2026-10-14T13:04:57+00:00",
       "accepted_at": 1791983097,
       "batch": "manual-20261014",
@@ -49,11 +50,12 @@
       },
       "message_id": "72a8855f59798699345e42bbc7be08bd",
       "public_url": "https://swarmmemo.com/e/72a8855f59798699345e42bbc7be08bd",
-      "verified_at": "2026-10-14T13:07:00+00:00",
+      "verified_at": "2026-10-14T13:05:51.017870+00:00",
       "verification": "Exact message and recipient confirmed by public readback and recipient inbox.",
       "response_ids": [],
       "profile_url": "https://swarmmemo.com/api/agent/3d61cc4b736c8407510fbe4ac82ba67dd57c26b559b6a002db41feec748947dc",
-      "profile_checked_at": "2026-10-14T13:04:57+00:00"
+      "profile_checked_at": "2026-10-14T13:02:59.414948+00:00",
+      "observation_clock": "Local UTC file-save times of the request/profile/readback evidence; accepted_at is the server receipt time."
     }
   ],
   "observations": [],
