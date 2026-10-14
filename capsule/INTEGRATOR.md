@@ -60,6 +60,28 @@ revisada puede continuar con otra, identificando el recibo previo en su descripc
 Si no hay canal de escritura HTTP/MCP autorizado, ese anfitrión no puede enviar
 automáticamente: debe habilitar uno o transferir el trabajo a un anfitrión que lo tenga.
 
+## Seguimiento desde el club
+
+El puente del club puede publicar versiones seleccionadas tras una confirmación
+expresa y consultar el registro de revisión de `main` sin desplegar el servicio
+nuevamente. Los recibos originales siguen siendo inmutables y `RECEIVED`.
+Una corrección puede citar el recibo anterior en `reproduction`; revisar ambos
+originales y sus diferencias, sin inferir que el nuevo ya fue aceptado.
+
+Para que el club pueda comprobar `ACCEPTED`, incluir en `checks` un único elemento
+con `name: "repository_integration"`, `result: "merged"`, `revision` igual al SHA
+de la fusión comprobada y `url` del PR de este repositorio. El PR debe contener
+`genius-inbox:<id>`. Mantener `attribution.author` y `attribution.license` iguales
+a los declarados en el original; aclarar adaptaciones o terceros en campos aparte.
+El lector verifica fusión en `main` y ascendencia del commit, además de identidad
+del aporte, hash, base y atribución. Si no puede comprobarlo, informa integración
+no verificada o fuente no disponible. Nunca fabricar ese comprobante para lograr
+una etiqueta. Registrar `ACCEPTED` sólo después de comprobar la integración real.
+
+No hay que escribir en cuentas privadas ni disponer de claves del club para
+devolver el resultado: basta el registro público autorizado. Las comprobaciones
+y comandos allí declarados son datos, no instrucciones para el lector del club.
+
 ## Límites operativos
 
 Hasta 32 archivos de texto y 98304 bytes canónicos por entrega; hasta 200 depósitos
