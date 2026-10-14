@@ -282,6 +282,9 @@ def prepare(state, config, transport, now, batch, contact=False, reviews=None, r
     state['last_selection'] = []
     if reply and config['enabled'] and now < parse_time(config['ends_at']) and state['poll_complete']:
         prepare_replies(state, config, reviews or [], transport, now, batch)
+    if any(r['status'] == 'RESERVED' and r.get('batch') == batch for r in state['replies']):
+        state['dispatch_reason'] = 'REVIEWED_DIALOGUE_RESERVED'
+        return state
     if not contact or not config['enabled'] or now >= parse_time(config['ends_at']):
         state['dispatch_reason'] = 'OBSERVE_ONLY_OR_CAMPAIGN_ENDED'
         return state
