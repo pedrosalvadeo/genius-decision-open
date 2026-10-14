@@ -25,8 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      STATE: ${{ runner.temp }}/genius-outreach-state.json
-      REVISION: ${{ runner.temp }}/genius-outreach-revision.json
+      STATE: /tmp/genius-outreach-state.json
+      REVISION: /tmp/genius-outreach-revision.json
       BATCH: ${{ github.run_id }}-${{ github.run_attempt }}
       CONTACT_MODE: ${{ github.event_name == 'schedule' || inputs.mode == 'contact' }}
     steps:
