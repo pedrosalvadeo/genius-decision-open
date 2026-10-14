@@ -1,8 +1,8 @@
 {
   "format": "genius-collaboration-candidates/1",
   "checked_on": "2026-10-14",
-  "reviewed_genius_revision": "f68da9242e463875734a5b0de7f58fa862e8663b",
-  "contacts_sent": 1,
+  "reviewed_genius_revision": "c0c146b98830c1ee5767e21194ddb99108e5db02",
+  "contacts_sent": 2,
   "invitations_drafted": 5,
   "confirmed_collaborations": 0,
   "independent_engine_executions_confirmed": 0,
@@ -117,8 +117,8 @@
         "GD-INT-001"
       ],
       "channel": "GitHub Discussions, categoría Show and tell.",
-      "status": "CLIENT_INTEROP_VERIFIED_INVITATION_NOT_SENT",
-      "next_action": "Enviar la invitación con evidencia cuando esté autorizado el contacto y registrar su URL; solicitar reproducción independiente o contribución sobre un caso real.",
+      "status": "INVITATION_PUBLISHED",
+      "next_action": "Revisar las respuestas de la discusión 2986; reproducir los aportes o informes recibidos antes de afirmar adopción independiente.",
       "limitations": [
         "Prueba propia con MCPClient/Tool de smolagents 1.26.0, sin LLM; no acredita agente autónomo, adopción ni ejecución independiente.",
         "CONTRIBUTING exige issue aceptado antes de un PR sustantivo al núcleo."
@@ -147,14 +147,23 @@
           "path": "integrations/smolagents/verification.json",
           "checked_on": "2026-10-14",
           "observation": "18 comprobaciones aprobadas; una evaluación sintética, borrado y revocación del token comprobados."
+        },
+        {
+          "url": "https://github.com/huggingface/smolagents/discussions/2986",
+          "checked_on": "2026-10-14",
+          "observation": "Invitación publicada por pedrosalvadeo en Show and tell con autorización; texto completo verificado, 0 comentarios al verificar."
         }
       ],
       "draft": "integrations/smolagents/INVITATION.md",
-      "contact_sent": false,
+      "contact_sent": true,
       "agreement_confirmed": false,
       "external_agent_execution_confirmed": false,
       "released_client_verification": "integrations/smolagents/verification.json",
-      "prepared_integration": "integrations/smolagents/README.md"
+      "prepared_integration": "integrations/smolagents/README.md",
+      "contact_url": "https://github.com/huggingface/smolagents/discussions/2986",
+      "contact_date": "2026-10-14",
+      "contact_checked_on": "2026-10-14",
+      "submission_receipt": "integrations/smolagents/submission.json"
     },
     {
       "id": "GD-CAND-CAMEL",
@@ -354,11 +363,11 @@
         "GD-MCP-001"
       ],
       "channel": "Publicación de server.json mediante el flujo oficial y namespace verificado.",
-      "status": "PREPARED_VALIDATED_NOT_PUBLISHED",
-      "next_action": "Revisar el alta, autenticar el namespace por GitHub y publicar cuando esté autorizado; verificar y registrar la entrada resultante.",
+      "status": "PUBLISHED_ACTIVE",
+      "next_action": "Conservar los metadatos actualizados y registrar por separado cualquier ejecución independiente; no confundir registro con adopción.",
       "limitations": [
         "Un registro distribuye metadatos; no recibe invitaciones ni demuestra uso del servicio.",
-        "No se registró el servidor en este catálogo."
+        "El alta está activa; no prueba que agentes hayan encontrado o usado el servidor."
       ],
       "evidence": [
         {
@@ -375,6 +384,11 @@
           "path": "integrations/mcp-registry/validation.json",
           "checked_on": "2026-10-14",
           "observation": "mcp-publisher 1.8.1 validate aprobó server.json contra el registro oficial; sin autenticación ni publicación."
+        },
+        {
+          "url": "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.pedrosalvadeo/genius-decision",
+          "checked_on": "2026-10-14",
+          "observation": "HTTP 200; una versión 0.2.0 activa; metadata coincide con la ficha autorizada. Autenticación GitHub OIDC y publicación comprobadas."
         }
       ],
       "draft": null,
@@ -382,8 +396,14 @@
       "agreement_confirmed": false,
       "external_agent_execution_confirmed": false,
       "prepared_metadata": "integrations/mcp-registry/server.json",
-      "validation_receipt": "integrations/mcp-registry/validation.json"
+      "validation_receipt": "integrations/mcp-registry/validation.json",
+      "registry_published": true,
+      "registry_name": "io.github.pedrosalvadeo/genius-decision",
+      "registry_version": "0.2.0",
+      "publication_receipt": "integrations/mcp-registry/publication.json"
     }
   ],
-  "contacts_sent_basis": "Proyectos contactados; el issue 770 y el PR 772 corresponden al mismo contacto OpenHands Extensions."
+  "contacts_sent_basis": "Proyectos contactados: OpenHands Extensions (issue 770 y PR 772) y smolagents (discusión 2986). Las altas en catálogos se registran por separado.",
+  "invitations_pending": 4,
+  "registrations_published": 1
 }

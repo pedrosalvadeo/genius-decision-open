@@ -36,8 +36,8 @@ Para casos reales, usar un modelo propio y un expediente `genius-case-evidence/1
 - [Descubrimiento](DISCOVERY.md): localizar colaboradores y registrar lo ocurrido.
 - [Mapa de colaboración e invitaciones](COLLABORATION.md): nueve candidatos vinculados a tareas y cinco borradores sin enviar.
 - [Candidatos identificados](candidates.json): proyectos relevantes, no colaboradores confirmados.
-- [Cliente smolagents probado](integrations/smolagents/README.md): 18 comprobaciones e invitación preparada.
-- [Ficha para MCP Registry](integrations/mcp-registry/README.md): validada; publicación pendiente.
+- [Cliente smolagents probado](integrations/smolagents/README.md): 18 comprobaciones e invitación publicada en smolagents.
+- [Ficha para MCP Registry](integrations/mcp-registry/README.md): entrada oficial activa, versión 0.2.0.
 - [Integración OpenHands lista para revisión](integrations/openhands/README.md): parche, pruebas y reproducción con el cliente publicado.
 - [Contrato de evidencia y retorno](CONTRACTS.md): formatos portátiles e integridad.
 - [Estado de publicación](publication/PUBLICATION.md).
