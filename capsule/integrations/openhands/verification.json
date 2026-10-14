@@ -1,0 +1,134 @@
+{
+  "format": "genius-openhands-interop/1",
+  "started_at": "2026-10-14T04:47:33.188266+00:00",
+  "mode": "live",
+  "service_url": "https://geniusdecision.app",
+  "packages": {
+    "openhands-sdk": "1.54.0",
+    "fastmcp": "3.4.8",
+    "mcp": "1.30.0",
+    "pydantic": "2.14.1"
+  },
+  "client_path": "create_mcp_tools -> MCPToolDefinition.action_from_arguments -> MCPToolExecutor",
+  "script_sha256": "e0fe0475044d41cce68da2d133942e27559adea374afd202f783eb286d383fab",
+  "input_kind": "published_synthetic_fixture",
+  "llm_calls": 0,
+  "independent_external_adoption": false,
+  "empirical_validation": false,
+  "checks": [
+    {
+      "check": "live_manifest",
+      "passed": true
+    },
+    {
+      "check": "data_policy_and_auth",
+      "passed": true
+    },
+    {
+      "check": "sdk_public_discovery",
+      "passed": true
+    },
+    {
+      "check": "sdk_public_capabilities",
+      "passed": true
+    },
+    {
+      "check": "sdk_saved_demo",
+      "passed": true
+    },
+    {
+      "check": "required_scopes_available",
+      "passed": true
+    },
+    {
+      "check": "temporary_registration",
+      "passed": true
+    },
+    {
+      "check": "exact_scope_grant",
+      "passed": true
+    },
+    {
+      "check": "sdk_private_discovery",
+      "passed": true
+    },
+    {
+      "check": "sdk_twin_schema",
+      "passed": true
+    },
+    {
+      "check": "sdk_create_case",
+      "passed": true
+    },
+    {
+      "check": "sdk_explicit_fixture_acceptance",
+      "passed": true
+    },
+    {
+      "check": "sdk_engine_completed_and_verified",
+      "passed": true
+    },
+    {
+      "check": "sdk_job_readback",
+      "passed": true
+    },
+    {
+      "check": "sdk_export",
+      "passed": true
+    },
+    {
+      "check": "sdk_case_deleted",
+      "passed": true
+    },
+    {
+      "check": "sdk_space_deleted",
+      "passed": true
+    },
+    {
+      "check": "temporary_token_revoked",
+      "passed": true
+    }
+  ],
+  "cleanup": {
+    "mcp_space_deleted": true,
+    "revoked_token_http_status": 401
+  },
+  "outcome": "PASSED",
+  "manifest_sha256_canonical_json": "deda58e18b1bc72a727e9b0431d87d2c9215201bed0ac6cf5599813989bc647f",
+  "policy_version": "agent-access-2026-10-06-v1",
+  "public_tools": [
+    "get_capabilities",
+    "read_demo_result",
+    "run_demo"
+  ],
+  "private_tools": [
+    "delete_agent_space",
+    "get_capabilities",
+    "read_demo_result",
+    "run_demo",
+    "twin_accept",
+    "twin_capabilities",
+    "twin_compare",
+    "twin_create_case",
+    "twin_delete_case",
+    "twin_evaluate",
+    "twin_example",
+    "twin_export",
+    "twin_get_case",
+    "twin_get_job",
+    "twin_list_cases",
+    "twin_observe",
+    "twin_propose",
+    "twin_save_draft",
+    "twin_schema"
+  ],
+  "model_sha256_canonical_json": "51c4bdc63e163ebc0ff5048c7947ee7acafba8ef5751b4d63a3987ec52aaf54d",
+  "job_status": "completed",
+  "verification": {
+    "errors": [],
+    "status": "VALID",
+    "valid": true
+  },
+  "export_sha256_canonical_json": "460239d110278563a0fb721e57c98147e492cd602f31be1fe1dacf61abc97a99",
+  "finished_at": "2026-10-14T04:48:13.701202+00:00"
+}

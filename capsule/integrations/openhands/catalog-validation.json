@@ -1,0 +1,36 @@
+{
+  "format": "genius-openhands-catalog-validation/1",
+  "checked_on": "2026-10-14",
+  "upstream_repository": "https://github.com/OpenHands/extensions",
+  "base_revision": "f1919e4e3e02c0bab65c2417761aee775f1ffbaa",
+  "patch_sha256": "96654e786fefd2aaae601a8c0fa376ab550e91fd23fbda0d8fa5c180b4f6150c",
+  "requirements_sha256": "56e20ed7ca944a579b3644e9c6e40ec4cd22adff82b1c8bf4fa49a058ea65289",
+  "commands": [
+    {
+      "command": "npm run build:integrations",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m pytest -q tests/test_catalog_schema.py tests/test_catalogs.py tests/test_integration_catalog_in_sync.py",
+      "exit_code": 0,
+      "passed": 117
+    },
+    {
+      "command": "python scripts/sync_extensions.py --check",
+      "exit_code": 0,
+      "warnings": [
+        "Non-blocking upstream coverage warning: ./plugins/issue-duplicate-checker is not in any marketplace."
+      ]
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0
+    }
+  ],
+  "live_receipt": "verification.json",
+  "app_url_http_status": 200,
+  "docs_url_http_status": 200,
+  "upstream_pr_submitted": false,
+  "human_review_completed": false,
+  "gui_cloud_cli_flow_tested": false
+}

@@ -20,8 +20,8 @@
         "GD-OBS-001"
       ],
       "channel": "Guía CONTRIBUTING y Slack oficial; la propuesta existente de Genius se concentra en OpenHands Extensions.",
-      "status": "IDENTIFIED_NOT_CONTACTED",
-      "next_action": "Preparar una reproducción con una versión publicada del cliente; conservar versión, comandos y resultado.",
+      "status": "CLIENT_INTEROP_VERIFIED_BY_GENIUS_TEAM",
+      "next_action": "Adjuntar la prueba del cliente publicado 1.54.0 al PR de Extensions.",
       "limitations": [
         "Un framework no es una instancia disponible para trabajar.",
         "No duplicar el contacto de Extensions en el SDK."
@@ -45,7 +45,8 @@
       "draft": null,
       "contact_sent": false,
       "agreement_confirmed": false,
-      "external_agent_execution_confirmed": false
+      "external_agent_execution_confirmed": false,
+      "released_client_verification": "integrations/openhands/verification.json"
     },
     {
       "id": "GD-CAND-OPENHANDS-EXTENSIONS",
@@ -57,11 +58,12 @@
         "GD-MCP-001"
       ],
       "channel": "Issue existente #770 y proceso de contribución del repositorio.",
-      "status": "PROPOSAL_AUTO_TRIAGED_READY_FOR_DEV",
-      "next_action": "Preparar la entrada y las validaciones exigidas por el issue; verificar con un cliente publicado antes de presentar el PR.",
+      "status": "INTEGRATION_PREPARED_NOT_SUBMITTED",
+      "next_action": "Con autorización de envío, abrir un draft PR con el parche probado. Mantener HUMAN para revisión de Pedro antes de marcar listo para revisión.",
       "limitations": [
         "La clasificación automática no es aprobación de mantenedores ni ejecución del motor.",
-        "Hay cero comentarios; la respuesta automática está en el cuerpo del issue."
+        "Hay cero comentarios; la respuesta automática está en el cuerpo del issue.",
+        "La prueba con SDK 1.54.0 fue ejecutada por el equipo de Genius, sin LLM; no es adopción independiente ni una prueba de Cloud/GUI/CLI."
       ],
       "evidence": [
         {
@@ -88,7 +90,10 @@
       "issue_comments": 0,
       "automated_triage_observed": true,
       "human_response_confirmed": false,
-      "issue_updated_at": "2026-10-13T19:55:47Z"
+      "issue_updated_at": "2026-10-13T19:55:47Z",
+      "prepared_integration": "integrations/openhands/README.md",
+      "released_client_verification": "integrations/openhands/verification.json",
+      "upstream_pr_submitted": false
     },
     {
       "id": "GD-CAND-SMOLAGENTS",

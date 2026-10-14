@@ -8,8 +8,8 @@ Se verificaron nueve proyectos, registros y tableros y se prepararon cinco invit
 
 | Candidato | Oportunidad | Evidencia y canal | Siguiente acción |
 |---|---|---|---|
-| OpenHands Extensions | GD-MCP-001 | [Issue 770](https://github.com/OpenHands/extensions/issues/770) abierto, `ready-for-dev`, clasificación automática en el cuerpo y cero comentarios | Preparar la entrada del catálogo y la prueba con un cliente publicado; no duplicar el contacto |
-| OpenHands SDK | GD-MCP-001, GD-OBS-001 | Framework de programación con MCP; [guía de contribución](https://github.com/OpenHands/software-agent-sdk/blob/main/CONTRIBUTING.md) | Utilizarlo para la prueba de Extensions; sin otra invitación por ahora |
+| OpenHands Extensions | GD-MCP-001 | [Issue 770](https://github.com/OpenHands/extensions/issues/770) abierto, `ready-for-dev`, clasificación automática en el cuerpo y cero comentarios | Entrada preparada; SDK 1.54.0 probado con éxito. Enviar PR como borrador cuando esté autorizado |
+| OpenHands SDK | GD-MCP-001, GD-OBS-001 | Framework de programación con MCP; [guía de contribución](https://github.com/OpenHands/software-agent-sdk/blob/main/CONTRIBUTING.md) | Cliente probado contra producción por el equipo de Genius; adjuntar el recibo al PR |
 | smolagents | GD-MCP-001, GD-INT-001 | MCP remoto documentado; [Discussions](https://github.com/huggingface/smolagents/discussions), Show and tell | Presentar el borrador a operadores interesados; integración fuera del núcleo |
 | CAMEL | GD-INT-001, GD-REAL-001 | Framework multiagente; [comunidad oficial](https://discord.camel-ai.org/) | Seleccionar un canal pertinente y revisar el texto antes del envío |
 | LeanCopilot | GD-MATH-001 | Asistencia a pruebas en Lean; [Discussions](https://github.com/lean-dojo/LeanCopilot/discussions), Ideas | Consultar interés en formalizar un enunciado y sus hipótesis |
@@ -18,7 +18,7 @@ Se verificaron nueve proyectos, registros y tableros y se prepararon cinco invit
 | A2A samples | GD-A2A-001 | Ejemplos de protocolo; no es un directorio de agentes activos | Implementar y probar un adaptador antes de proponer un ejemplo |
 | MCP Registry | GD-MCP-001 | Registro de servidores; no es un agente | Preparar `server.json` y verificar el namespace mediante el flujo oficial |
 
-La etiqueta de OpenHands procede de su agente de clasificación. El cuerpo del issue ya propone una entrada MCP Streamable HTTP con Bearer, referencias de esquema y validaciones. **No constituye aprobación humana, incorporación al catálogo ni ejecución independiente de Genius.** La versión inicial de nuestra propuesta aún decía que el despliegue estaba pendiente; la prueba propia de producción ya está en [el recibo del 14 de octubre](receipts/live-twin-2026-10-14.json). Esa actualización debe acompañar el futuro PR con evidencia del cliente publicado.
+La etiqueta de OpenHands procede de su agente de clasificación. El cuerpo del issue ya propone una entrada MCP Streamable HTTP con Bearer, referencias de esquema y validaciones. **No constituye aprobación humana, incorporación al catálogo ni ejecución independiente de Genius.** La versión inicial de nuestra propuesta aún decía que el despliegue estaba pendiente; la prueba propia de producción ya está en [el recibo del 14 de octubre](receipts/live-twin-2026-10-14.json). La [integración y su prueba con SDK 1.54.0](integrations/openhands/README.md) ya están preparadas: 117 pruebas del catálogo y 18 comprobaciones de interoperabilidad aprobadas. El PR aún no se envió; requiere una sección HUMAN escrita por una persona antes de marcarlo listo para revisión.
 
 ## Qué se ofrece y qué se pide
 
@@ -108,6 +108,6 @@ Los textos están en inglés para los canales consultados. No prometen pago ni a
 
 ## Prioridad inmediata
 
-1. Preparar la integración de OpenHands conforme al issue 770, leer sus instrucciones actuales y comprobar el flujo con una versión publicada del cliente. Adjuntar el resultado, incluido cualquier fallo.
+1. Enviar, con autorización, el PR de OpenHands preparado según el issue 770. Conservarlo como borrador hasta que Pedro complete la sección HUMAN de su plantilla. Código, reproducción y evidencia están en [el paquete de integración](integrations/openhands/README.md).
 2. Revisar y enviar las invitaciones autorizadas por los canales adecuados, conservando sus IDs. Comenzar por los canales que correspondan al aporte buscado; no hacer envíos duplicados al mismo proyecto.
 3. Reproducir cualquier aporte recibido y registrar qué cambió en Genius. La recepción por un tablero o la clasificación automática de un issue es una etapa distinta de una contribución aceptada.

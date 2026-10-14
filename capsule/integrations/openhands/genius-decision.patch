@@ -1,0 +1,90 @@
+diff --git a/integrations/catalog-index.js b/integrations/catalog-index.js
+index 2c68198..3b86a23 100644
+--- a/integrations/catalog-index.js
++++ b/integrations/catalog-index.js
+@@ -65,22 +65,23 @@ import entry59 from "./catalog/exa.json" with { type: "json" };
+ import entry60 from "./catalog/fetch.json" with { type: "json" };
+ import entry61 from "./catalog/filesystem.json" with { type: "json" };
+ import entry62 from "./catalog/firecrawl.json" with { type: "json" };
+-import entry63 from "./catalog/git.json" with { type: "json" };
+-import entry64 from "./catalog/granola.json" with { type: "json" };
+-import entry65 from "./catalog/huggingface.json" with { type: "json" };
+-import entry66 from "./catalog/kagi.json" with { type: "json" };
+-import entry67 from "./catalog/memory.json" with { type: "json" };
+-import entry68 from "./catalog/mongodb.json" with { type: "json" };
+-import entry69 from "./catalog/neon.json" with { type: "json" };
+-import entry70 from "./catalog/obsidian.json" with { type: "json" };
+-import entry71 from "./catalog/paypal.json" with { type: "json" };
+-import entry72 from "./catalog/playwright.json" with { type: "json" };
+-import entry73 from "./catalog/redis.json" with { type: "json" };
+-import entry74 from "./catalog/reportportal.json" with { type: "json" };
+-import entry75 from "./catalog/resend.json" with { type: "json" };
+-import entry76 from "./catalog/sequential-thinking.json" with { type: "json" };
+-import entry77 from "./catalog/superhuman-mail.json" with { type: "json" };
+-import entry78 from "./catalog/time.json" with { type: "json" };
++import entry63 from "./catalog/genius-decision.json" with { type: "json" };
++import entry64 from "./catalog/git.json" with { type: "json" };
++import entry65 from "./catalog/granola.json" with { type: "json" };
++import entry66 from "./catalog/huggingface.json" with { type: "json" };
++import entry67 from "./catalog/kagi.json" with { type: "json" };
++import entry68 from "./catalog/memory.json" with { type: "json" };
++import entry69 from "./catalog/mongodb.json" with { type: "json" };
++import entry70 from "./catalog/neon.json" with { type: "json" };
++import entry71 from "./catalog/obsidian.json" with { type: "json" };
++import entry72 from "./catalog/paypal.json" with { type: "json" };
++import entry73 from "./catalog/playwright.json" with { type: "json" };
++import entry74 from "./catalog/redis.json" with { type: "json" };
++import entry75 from "./catalog/reportportal.json" with { type: "json" };
++import entry76 from "./catalog/resend.json" with { type: "json" };
++import entry77 from "./catalog/sequential-thinking.json" with { type: "json" };
++import entry78 from "./catalog/superhuman-mail.json" with { type: "json" };
++import entry79 from "./catalog/time.json" with { type: "json" };
+ 
+ export const INTEGRATION_CATALOG_ENTRIES = [
+   entry0,
+@@ -162,4 +163,5 @@ export const INTEGRATION_CATALOG_ENTRIES = [
+   entry76,
+   entry77,
+   entry78,
++  entry79,
+ ];
+diff --git a/integrations/catalog/genius-decision.json b/integrations/catalog/genius-decision.json
+new file mode 100644
+index 0000000..10cbf62
+--- /dev/null
++++ b/integrations/catalog/genius-decision.json
+@@ -0,0 +1,34 @@
++{
++  "id": "genius-decision",
++  "name": "Genius Decision",
++  "description": "Create, review, evaluate, and export versioned decision models with reproducible engine receipts.",
++  "categories": [
++    "Research",
++    "Productivity"
++  ],
++  "appUrl": "https://geniusdecision.app",
++  "docsUrl": "https://geniusdecision.app/agents",
++  "notes": "The hosted service accepts synthetic or non-personal data only. Results are conditional on declared model assumptions and do not establish empirical validity. OAuth is not available.",
++  "installHint": "Read the live manifest and data policy linked from the setup guide, then register an isolated agent at POST /api/agents/register with explicit scopes. Default scopes do not include the twin model tools: request twins:read, twins:write, and twins:evaluate for those operations. Request twins:delete or account:delete only when cleanup is intended. Evaluation consumes the service's shared quota; inspect errors before retrying.",
++  "connectionOptions": [
++    {
++      "id": "api",
++      "provider": "mcp",
++      "transport": {
++        "kind": "shttp",
++        "url": "https://geniusdecision.app/mcp"
++      },
++      "auth": {
++        "strategy": "bearer",
++        "credentialLabel": "Genius agent token",
++        "credentialHelp": "Obtain a scoped machine token using the [agent setup guide](https://geniusdecision.app/agents). Paste only the token; the client sends it in the Authorization: Bearer header. This credential accesses its own agent space, not a human account."
++      }
++    }
++  ],
++  "keywords": [
++    "decision models",
++    "digital twin",
++    "evidence",
++    "reproducibility"
++  ]
++}
