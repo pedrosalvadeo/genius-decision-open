@@ -1,0 +1,99 @@
+{
+  "format": "genius-taxis-task-protocol/1",
+  "version": "1.0.0",
+  "id": "GD-ATTR-DISTRIBUTION-001",
+  "status": "PREPARED_NOT_RUN",
+  "parent_protocol": "capsule/taxis-protocol.json",
+  "change_from_parent": "A real, measured source-distribution task with local execution replaces the fixed synthetic MCP demonstration; prior protocol and measurements remain unchanged.",
+  "opportunities": [
+    "GD-ATTR-001",
+    "GD-DIST-001",
+    "GD-REAL-001"
+  ],
+  "source_commit": "2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+  "variants": {
+    "general": "Genius Decision is an open-source decision engine. Its capsule provides source code, mathematical references and contribution contracts for agents.",
+    "utility": "Compare the measured bytes and local reading CPU needed to deliver the Genius capsule. Its executable model preserves trade-offs and produces a reproducible receipt.",
+    "question": "Can your tools reproduce the trade-off between bytes and local reading CPU for the Genius capsule? Inspect the evidence and explain which conclusions need more information."
+  },
+  "common_content": {
+    "task": "Assess delivery of the same 409 source files at commit 2571e0d54a4a3b1a7f25bf0398582b0b3eea4482 as TAR, TAR.GZ or ZIP. Compare measured archive bytes and reading/hash CPU without mixing units. Explain the choice or unresolved trade-off, the recipient information still needed, and the limits of these observations.",
+    "resources": [
+      "https://geniusdecision.app/agents#orientation",
+      "https://github.com/pedrosalvadeo/genius-decision-open"
+    ],
+    "frozen_resources_rule": "Before execution, record the delivery commit and provide the identical frozen checkout and preflight files listed in the run manifest to every arm. Current main and live orientation are discovery links, not substitutes for frozen experimental inputs.",
+    "facts": "Public Apache-2.0 sources; real internal file measurements; CPU varies by environment; no external adoption demonstrated. Local Python standard-library execution on Linux is available. This is an operational task, not PVS or human wellbeing. No payment or endorsement is promised.",
+    "choice": "Use Genius only if useful for your assigned task. Another method, an evidence-backed limitation report or declining is permitted. Do not forward messages or contact third parties without separate authorization.",
+    "deliverable": "Give your assessment, sources, method, assumptions and unknowns. If you voluntarily run Genius, return a new complete receipt bundle that can be recomputed. A saved-result read is not a new execution. Contributions may be returned to the operator; publication is optional and separately authorized.",
+    "case_path": "capsule/pilots/taxis-distribution-v1/preflight"
+  },
+  "delivery": "Exactly one assigned variant followed by all common_content, in that order. Same task and resource hashes, model/version, tool permissions, budget and session limits within each block. Disclose study participation identically to all arms without revealing other signals.",
+  "pilot": {
+    "sessions": 30,
+    "blocks": 10,
+    "sessions_per_variant": 10,
+    "seed": 20261014,
+    "assignment": "assignments.json",
+    "fresh_context": true,
+    "stop": "Finish 30 assignments or exhaust the approved resource/time budget. Keep incomplete and withdrawn sessions; no stopping on a preferred result.",
+    "inference": "Descriptive feasibility only; repeated sessions from one operator are clustered, not independent adopters."
+  },
+  "primary": "Reviewed new Genius execution / exposed assigned sessions, with counts and denominators by arm and operator relationship.",
+  "secondary": [
+    "Selection / exposure",
+    "Reviewed reproducible contribution / exposure",
+    "Accepted contribution / exposure",
+    "Task-quality rubric below, separate from engine selection"
+  ],
+  "rubric": [
+    {
+      "criterion": "source_integrity",
+      "pass": "Correct pinned input edition and all 409 contents preserved, or a reproducible, correctly scoped integrity failure."
+    },
+    {
+      "criterion": "units_and_method",
+      "pass": "Bytes and CPU retain units; time includes reading and content hashing, with no claim that network or disk extraction was measured."
+    },
+    {
+      "criterion": "conclusion",
+      "pass": "Recomputed results match the declared input or differences are explained with evidence. Multiple criteria do not imply a fabricated total winner."
+    },
+    {
+      "criterion": "limits",
+      "pass": "Distinguishes internal retrospective observations, external compatibility unknowns, timing variation, operational criteria and PVS non-applicability."
+    },
+    {
+      "criterion": "receipt_if_executed",
+      "pass": "Complete model/evidence/evaluation/receipt bundle passes capsule/genius.py verify at the recorded source version. Execution logs/operator attestation establish provenance; otherwise report only self-reported newness."
+    }
+  ],
+  "evidence_review": {
+    "reviewer": "Must be assigned in the run manifest before exposure; mask signal variant in artifact review where feasible.",
+    "freshness": "Record session window, source identity and action log plus receipt. Hashes, timestamps and successful recomputation establish consistency, not independent authorship or freshness on their own.",
+    "contribution": "A reviewable limitation or incompatibility is a useful contribution even without engine execution; record separately, without forcing execution stages.",
+    "acceptance": "Requires an explicit review decision; submission is not acceptance."
+  },
+  "confounders": [
+    "Prior exposure to Genius or any variant, including preparation work, must be recorded and reported separately. Public materials do not guarantee blinding.",
+    "Missing tools are a pre-exposure eligibility issue; failures after exposure remain recorded.",
+    "Do not count internal preflight or saved-result reading as participant execution.",
+    "Report internal and externally operated sessions separately; identify unique consenting operator clusters pseudonymously.",
+    "Separate no exposure, decline, failure, withdrawal and missing observation; no exposure is not rejection.",
+    "Timing comparisons in the shared case use point observations with overlapping ranges; no universal performance ranking."
+  ],
+  "consent": "Participation and measurement are opt-in. Use pseudonymous unit/operator codes. Do not enroll ordinary site visitors or publish account identifiers, credentials or private prompts.",
+  "events": "Use the existing strict local event schema in capsule/taxis.py. Store disposition, consent evidence, prior exposure and operator group in a separate operator-local context record; do not weaken the event schema.",
+  "current_counts": {
+    "sessions_exposed": 0,
+    "paid_inference_calls": 0,
+    "external_operators_confirmed": 0
+  },
+  "prepared_limits": {
+    "per_session_minutes": 15,
+    "maximum_additional_spend": 0,
+    "currency": "USD",
+    "token_limit": null,
+    "reason": "No model or consenting operator environment has yet been selected."
+  }
+}
