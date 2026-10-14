@@ -13,13 +13,76 @@
     "independent_external_tests": 0
   },
   "deployment": {
-    "status": "STAGED_AWAITING_APPROVAL",
+    "status": "LIVE_VERIFIED",
     "site": "https://geniusdecision.app",
     "previous_runtime_revision": "138b1408a3d688dcf0639dc3324aaecdaa751879",
     "only_staged_change": "source.commitSha",
-    "confirmation_result": "Cancelled — the user did not approve this action. No changes were made.",
-    "new_deployment_triggered": false,
-    "live_orientation_verified": false
+    "new_deployment_triggered": true,
+    "live_orientation_verified": true,
+    "deployment_id": "6a996dc3-0545-478b-a3c2-3fe1c118f18c",
+    "deployment_created_at": "2026-10-14T11:09:59.470Z",
+    "railway_status": "SUCCESS",
+    "source_revision": "ff65fa37c72fe9d9fdfd18f4f01833ae47b5d258",
+    "initial_confirmation_result": "Cancelled — the user did not approve this action. No changes were made.",
+    "live_verified_at": "2026-10-14T11:17:24.875966+00:00",
+    "subsequent_observation": "Railway later reported this successful deployment at the intended revision, with no staged changes. The actor or cause of the transition was not established.",
+    "checks": [
+      {
+        "path": "/api/health",
+        "status": 200,
+        "sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "verified": true
+      },
+      {
+        "path": "/agents/manifest.json",
+        "status": 200,
+        "sha256": "5464606b57a30fa99c02d9289e8f1cfffc71d06fbe6b62ca7f785e4fdd961e50",
+        "verified": true
+      },
+      {
+        "path": "/agents/opportunities.json",
+        "status": 200,
+        "sha256": "139d25b46809182921b2e31102139404dd9874860d618ffcb172f2c9b244f904",
+        "local_bytes_match": true,
+        "verified": true
+      },
+      {
+        "path": "/agents/guide?goal=mathematics&capability=lean&access=local",
+        "status": 200,
+        "sha256": "5a1ac9204b57c945fdf9a62309b5fafd7bb563ff93069348cfa6643002cf9801",
+        "local_parity": true,
+        "verified": true
+      },
+      {
+        "path": "/agents/guide?goal=other",
+        "status": 200,
+        "sha256": "ccd78642505cde9693aaef11c57412d5272f8b17d7e645591d868053b75db855",
+        "local_parity": true,
+        "verified": true
+      },
+      {
+        "path": "/agents",
+        "status": 200,
+        "sha256": "b71c0073224bf0abdbc13991fc5fe62709e98289940a1c8840b4623879a5f4e9",
+        "verified": true
+      },
+      {
+        "path": "/llms.txt",
+        "status": 200,
+        "sha256": "3323a62532eab33bd49af601b4dd520c518e6e7aa1f754c2e11a41436417a0ad",
+        "verified": true
+      },
+      {
+        "method": "tools/list",
+        "status": 200,
+        "verified": true
+      },
+      {
+        "method": "tools/call",
+        "status": 200,
+        "verified": true
+      }
+    ]
   },
   "measurement": {
     "protocol": "capsule/taxis-protocol.json",
@@ -29,5 +92,5 @@
     "external_participants_confirmed": 0,
     "automatic_event_tracking": false
   },
-  "next_action": "Apply the reviewed staged runtime revision after deployment approval, confirm Railway SUCCESS, and verify public GET/MCP parity. Freeze pilot participants, task/model configuration and budget before any experiment."
+  "next_action": "Freeze a pertinent real task, participants, model/tool configuration, consent and budget before the descriptive pilot. Record external evidence separately from internal technical tests."
 }
