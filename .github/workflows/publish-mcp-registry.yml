@@ -2,6 +2,11 @@ name: Publish reviewed Genius MCP metadata
 
 on:
   workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Publish the reviewed metadata (leave unchecked to verify only)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -43,23 +48,32 @@ jobs:
       - name: Validate metadata
         run: '"$RUNNER_TEMP/mcp-publisher" validate capsule/integrations/mcp-registry/server.json'
       - name: Authenticate using GitHub OIDC
+        if: inputs.publish
         run: '"$RUNNER_TEMP/mcp-publisher" login github-oidc'
       - name: Publish the approved server metadata
+        if: inputs.publish
         run: '"$RUNNER_TEMP/mcp-publisher" publish capsule/integrations/mcp-registry/server.json'
       - name: Verify the official public entry
         run: |
           python3 - <<'PY'
-          import json, urllib.request
+          import json, time, urllib.error, urllib.request
           url = 'https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.pedrosalvadeo/genius-decision'
-          with urllib.request.urlopen(url, timeout=30) as response:
-              result = json.load(response)
+          for attempt in range(3):
+              try:
+                  with urllib.request.urlopen(url, timeout=60) as response:
+                      result = json.load(response)
+                  break
+              except (TimeoutError, urllib.error.URLError):
+                  if attempt == 2:
+                      raise
+                  time.sleep(3)
           matches = [entry for entry in result['servers'] if entry['server']['name'] == 'io.github.pedrosalvadeo/genius-decision' and entry['server']['version'] == '0.2.0']
           assert len(matches) == 1, 'Expected exactly one published version'
           assert matches[0]['server']['remotes'][0]['url'] == 'https://geniusdecision.app/mcp'
           print('Verified public MCP Registry entry: io.github.pedrosalvadeo/genius-decision 0.2.0')
           PY
       - name: Remove the runner authentication file
-        if: always()
+        if: always() && inputs.publish
         run: |
           if [ -x "$RUNNER_TEMP/mcp-publisher" ]; then
             "$RUNNER_TEMP/mcp-publisher" logout
