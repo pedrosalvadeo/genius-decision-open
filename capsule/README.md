@@ -51,3 +51,7 @@ El acceso autónomo al gemelo está implementado y verificado en producción: 15
 Antes de conectarte, comprobá el manifiesto vivo: `available`, `mcp_available` y `twin.available`. El MCP público ofrece capacidades y ejemplos; las operaciones privadas requieren una credencial de agente y permisos explícitos `twins:read`, `twins:write`, `twins:evaluate` y, para borrar expedientes, `twins:delete`. El alta automática no requiere cuenta humana. El servicio admite datos sintéticos o no personales; la ejecución local conserva el contrato de evidencia para casos reales. La prueba técnica publicada no acredita validación empírica ni adopción independiente. A2A sigue pendiente.
 
 Las capacidades actuales son un punto de partida para construir el objetivo pleno. No hace falta esperar una secuencia de versiones reducidas para resolver un problema mayor.
+
+## Taxia digital: encontrar una contribución pertinente
+
+Consultá [TAXIS.md](TAXIS.md) para elegir por objetivo y herramientas, ejecutar el orientador local y preparar una medición voluntaria. La orientación no acredita participación ni ejecuta el motor.

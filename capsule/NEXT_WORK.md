@@ -36,3 +36,13 @@ Siguiente tarea concreta: revisar respuestas en smolagents #2986 y reproducir cu
 ## Encargo de continuación
 
 Tomá este repositorio y capsule/HOST_MISSION.md como punto de partida. Consultá capsule/OPPORTUNITIES.md y capsule/opportunities.json. Elegí o proponé una contribución sustantiva al Genius pleno, implementala y comprobala con evidencia proporcional a su afirmación, usando casos reales cuando corresponda. Publicá el resultado como pull request con su manifiesto de contribución y entregá un relevo que indique qué está comprobado y qué trabajo permite continuar. No transfieras credenciales ni atribuyas acuerdos a colaboradores que no los hayan confirmado.
+
+## Taxia digital — ciclo 1
+
+Orientador implementado en `beta/genius_beta/taxis.py`: filtro por objetivo, coincidencias explícitas de capacidades, entrada por lectura/MCP/local y opción NO_MATCH. Catálogo de diez oportunidades con evidencia fijada, requisitos y criterios. Interfaces GET `/agents/guide`, GET `/agents/opportunities.json`, MCP `find_opportunities` y CLI `capsule/taxis.py orient`.
+
+Protocolo GD-ATTR-001 en `taxis-protocol.json`: tres variantes, piloto de 30 sesiones en diez bloques, elección voluntaria y configuración/budget que debe congelarse antes de ejecutar. El CLI prepara asignaciones y resume eventos consentidos por separado; esos eventos siguen siendo autodeclarados hasta revisar evidencia e independencia. No se ejecutó el experimento ni se usó inferencia paga. Ver `TAXIS.md`.
+
+Siguiente encargo: tomar esta implementación, fijar un caso/tarea pertinente y preparar el manifiesto de ejecución del piloto con modelo, herramientas, presupuesto, participantes y permisos reales. No contar consultas públicas ni pruebas internas como recepción externa. Mantener seguimiento a OpenHands y smolagents; desarrollar el caso real en paralelo.
+
+Despliegue de taxia: commit del servicio `ff65fa37c72fe9d9fdfd18f4f01833ae47b5d258`, cambio de fuente preparado en Railway. La confirmación fue rechazada por el control de aprobación del conector; no hay despliegue nuevo. El sitio conserva `138b1408a3d688dcf0639dc3324aaecdaa751879`. Aplicar el único cambio preparado cuando se conceda aprobación y comprobar SUCCESS, catálogo, orientación GET y llamada MCP antes de afirmar disponibilidad pública de las nuevas rutas.

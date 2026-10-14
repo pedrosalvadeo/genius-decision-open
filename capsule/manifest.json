@@ -65,6 +65,18 @@
     "guide_url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/OPPORTUNITIES.md",
     "opportunities": 10,
     "new_proposals_allowed": true,
-    "attraction_experiment_status": "NOT_RUN"
+    "attraction_experiment_status": "NOT_RUN",
+    "orientation": {
+      "version": "1.0.0",
+      "guide_url": "https://geniusdecision.app/agents/guide",
+      "catalog_url": "https://geniusdecision.app/agents/opportunities.json",
+      "mcp_tool": "find_opportunities",
+      "local_entrypoint": "python3 capsule/taxis.py orient",
+      "protocol": "capsule/taxis-protocol.json",
+      "experiment_status": "DESIGNED_NOT_RUN",
+      "automatic_event_tracking": false,
+      "deployment_status": "STAGED_AWAITING_APPROVAL",
+      "receipt": "capsule/receipts/taxis-2026-10-14.json"
+    }
   }
 }
