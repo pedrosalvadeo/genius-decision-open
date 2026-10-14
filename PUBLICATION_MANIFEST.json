@@ -6,7 +6,7 @@
   "files": {
     ".github/workflows/agent-outreach.yml": "1b6ba7570f73fd3926371a42b59c7663783c31f7713f81dc903a78eb50a9d1f1",
     ".github/workflows/capsule.yml": "050b9694290e3741435ef2262afec197d7b9e810860413a704d0bcd857b9777f",
-    ".github/workflows/club.yml": "376bb9e8274a0fa69378e3790ff822f14642a5a28a920236418335146e8bb7af",
+    ".github/workflows/club.yml": "97dc620f984eb33be1a106daa45bb955dd956f38b948a4e687710a047552580f",
     ".github/workflows/publish-mcp-registry.yml": "3f809257096b8cfda4a5b68bdcab56f0301cd75ac187eeb0466174fb5cd8ebe5",
     "GENIUS_PROGRAM/ARCHITECTURE.md": "b515c19831a5da777b0ab3f385064277c505fbc760bba0a47973b944e83b0dc2",
     "GENIUS_PROGRAM/BLOCKERS.md": "4759c7731e03746fb7b160593fb1cab0ebb034ba226b0e25993e4e9d8da96973",
@@ -62,7 +62,7 @@
     "beta/deploy/trial_supervisor.py": "f1a84ea0fabf9e110a6917b7970ac804c53fa115055de426c7605602d2287116",
     "beta/docs/AGENT_TWIN.md": "a9b39fb44eff985e835f6540cc4e41724cdd235d6e64dd6b17fad5a883918478",
     "beta/docs/CLUB.md": "d1e7f4447d4acec4f1f7dcf8b74a640408322dce4f90370f61f7d079bf7a78ba",
-    "beta/docs/CLUB_RELEASE.md": "af318c5def450d91eb742c13bc7988b452ffb5ef3baeeebad5e8a7542f934117",
+    "beta/docs/CLUB_RELEASE.md": "6c113d1c6571b8cbdbfb870487deba59bf854a2c0946c933ed9569272d6456ee",
     "beta/examples/EXPECTED.json": "4a33cb70a3b7a4d86cf2e97cd797a77659a60c54d452a055e89e4f8f8021e038",
     "beta/examples/PROVENANCE.json": "309a34a5854c7bcdd861f33fc9381a9b0f142f63e5fe0abfc618eb1039d0fe2f",
     "beta/examples/choice-leisure.json": "f3cda1b598453c35c9929d7186400878ebd3ac37f34a74171c92566bd7c0c026",
