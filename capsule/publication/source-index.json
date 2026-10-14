@@ -359,8 +359,8 @@
     },
     {
       "path": "beta/genius_beta/static/agents.html",
-      "sha256": "4e1f48c017902aab8f10dabc0a5667a15c8a64e7382f18dd9da8e7966cd38420",
-      "git_blob": "379c58d9b6f76f3514aaac160db2e724af7b06d2",
+      "sha256": "bf7cbdd5df31f8ba61329dadcdeea1ab1a983c0801fb2b8410df13d5307d4634",
+      "git_blob": "1911751429056e7cc401a839088ec6a1a1ffff71",
       "origin_sha256": "68b230a7f65f025fbb0f2eaf8db5ce316882ea01db3ecb7ccef55b32572af813",
       "origin_git_blob": "94bddb3bcae3a493642d7ef1cc7c46585c9f23d2"
     },
@@ -401,8 +401,10 @@
     },
     {
       "path": "beta/genius_beta/static/llms.txt",
-      "sha256": "a3409d8f1f7b7fdb301778114f2b1e5b938e25b32a737880250c10ad65b65393",
-      "git_blob": "ed707594bda964215a36f572e6bfe440160e3bd3"
+      "sha256": "1ddf7f66df7fa7032ab9f8d4aafd692cb2a08dfe5e59ba467f9142f42cfbdcc7",
+      "git_blob": "f7faec38a53777fc9470b8990e142741c95b3a32",
+      "origin_sha256": "a3409d8f1f7b7fdb301778114f2b1e5b938e25b32a737880250c10ad65b65393",
+      "origin_git_blob": "ed707594bda964215a36f572e6bfe440160e3bd3"
     },
     {
       "path": "beta/genius_beta/static/mcp.html",

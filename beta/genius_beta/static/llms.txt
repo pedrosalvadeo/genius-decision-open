@@ -1,6 +1,9 @@
 # Genius Decision — direct agent access
 
 Public entry: /agents
+Portable capsule: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/README.md
+Public repository: https://github.com/pedrosalvadeo/genius-decision-open
+Capsule manifest: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/manifest.json
 Machine-readable availability, limits and current policy: /agents/manifest.json
 OpenAPI 3.1.1: /openapi.json
 Technical data policy: /static/agent-policy.html
@@ -9,6 +12,12 @@ Service privacy notice: /static/privacy.html
 
 This guide is a reading aid, not authentication or a universal discovery standard.
 Human login/registration stays at /. The direct agent flow does not use it.
+
+## Use and contribute through the capsule
+Start with the portable capsule above for the mission, mathematics, source code,
+local execution, real-case evidence contracts and open work. It links to contribution
+and handoff instructions. The capsule can be read without a service account.
+Reading or sharing its link does not install an MCP connector or transfer credentials.
 
 ## Read-only web clients: start here
 GET /static/demo.html is a readable saved demonstration, with no JavaScript or login.
@@ -25,7 +34,7 @@ Streamable HTTP, JSON responses, protocol versions 2026-07-28 and 2025-11-25,
 Public tools: get_capabilities, read_demo_result, run_demo.
 read_demo_result reads the saved receipt. run_demo executes a fixed synthetic fixture,
 waits at most 10 seconds and deletes its temporary space; it does not return a token.
-Private tools: prepare_decision, revise_case, list_cases, get_case, create_case, run_case, get_job, cancel_job,
+Private case tools: prepare_decision, revise_case, list_cases, get_case, create_case, run_case, get_job, cancel_job,
 delete_case, delete_agent_space. Configure a machine Bearer credential in the
 connector's private Authorization header. Never pass secrets in tool arguments.
 Tools are filtered by the credential's scopes and rechecked on every operation.
@@ -55,14 +64,34 @@ cleanup after expiration, subject to durable deletion records; backups last 7 da
 Read the manifest and policy. If available, POST /api/agents/register:
 {"policy_version":"agent-access-2026-10-06-v1","data_policy_acknowledged":true}
 Fetch the current version rather than assuming the example is current.
-Optional scopes can narrow these defaults:
+Omitting scopes grants these defaults:
 cases:read, cases:write, jobs:run, account:delete.
-cases:delete is separately available at registration and is not a default.
+Supply scopes explicitly to choose from registration.available_scopes in the live
+manifest. cases:delete and the four twins:* scopes are opt-in, not defaults.
 Response 201 contains the new agent identity, credential and limits.
 No email, password, adult declaration, human consent or cookie is requested.
 Only synthetic or non-personal data may be submitted. This technical acknowledgment
 does not grant permission over other people's data or human accounts. There is
 no automatic personal-data detector. Research and follow-up cannot be enabled.
+
+## Versioned twin through REST and MCP
+The autonomous twin is implemented and was verified in production. Check the live
+manifest before use: available, mcp_available and twin.available must be true.
+Request twins:read, twins:write, twins:evaluate and, for case deletion, twins:delete
+at machine registration. Include account:delete to erase the complete agent space.
+Existing credentials do not gain these scopes automatically; rotation only reduces
+permissions. The 15 twin tools are filtered by the granted scopes:
+twin_capabilities, twin_schema, twin_example, twin_list_cases, twin_get_case,
+twin_create_case, twin_save_draft, twin_propose, twin_accept, twin_evaluate,
+twin_get_job, twin_observe, twin_compare, twin_export, twin_delete_case.
+Contract, payloads, supported profiles and limits:
+https://github.com/pedrosalvadeo/genius-decision-open/blob/main/beta/docs/AGENT_TWIN.md
+The twin and traditional agent jobs share compute quotas. Confirm declared model
+assumptions only within the decision owner's authority; do not invent observations.
+Narrative is preserved, not automatically translated into model parameters.
+Stockflow observations remain open work; twin_observe supports the semillero contract.
+The hosted data policy remains synthetic or non-personal only. A successful engine
+run is not empirical validation. Use the capsule's evidence contract for real cases.
 
 ## Credential lifecycle
 Use Authorization: Bearer <token> over HTTPS, never a URL parameter.
