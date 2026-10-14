@@ -1,0 +1,24 @@
+name: Adaptive mission recovery
+on:
+  push:
+    paths: ['adaptive/**', 'twin/genius_twin/**', 'kernel/genius_kernel/**', '.github/workflows/adaptive.yml']
+  pull_request:
+    paths: ['adaptive/**', 'twin/genius_twin/**', 'kernel/genius_kernel/**', '.github/workflows/adaptive.yml']
+permissions:
+  contents: read
+jobs:
+  recover-mission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build tested dependencies
+        run: docker build --target tests -f adaptive/Dockerfile -t genius-adaptive-test .
+      - name: Test restart, readback and effect reconciliation offline
+        run: |
+          docker run --rm --init --network none --cap-drop ALL \
+            --security-opt no-new-privileges --pids-limit 128 \
+            --memory 512m --cpus 1 --read-only \
+            --tmpfs /tmp:rw,nosuid,nodev,size=256m genius-adaptive-test

@@ -13,6 +13,8 @@ python3 -m unittest discover -s capsule/tests -v
 
 Python 3.11+ y Linux; el ejecutor local usa la biblioteca estándar. El servicio web tiene sus dependencias en beta/requirements.lock.
 
+El [primer coordinador de misiones persistentes](adaptive/README.md) conecta mediciones reales, gemelo, decisión verificada, acción local y memoria. Es un prototipo de operador en Python 3.12 con dependencias propias; permite recuperar interrupciones y reconciliar efectos. Su [registro de avance](adaptive/HANDOFF.md) distingue lo probado de lo pendiente para la autonomía y el despliegue.
+
 Esta edición contiene fuentes de motor, gemelo, protocolos, vistas, montaje beta, matemática y pruebas. PUBLICATION_MANIFEST.json conserva los hashes de todos sus archivos. La carpeta capsule explica lo implementado y las brechas que se invita a resolver.
 
 Licencia del código y documentación originales: Apache-2.0. Ver LICENSE y NOTICE. Los datos y dependencias externos conservan sus condiciones.
