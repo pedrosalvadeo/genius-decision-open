@@ -18,6 +18,7 @@ from .agent_access import install as install_agent_access, required_scope, reser
 from .mcp_access import install as install_mcp_access
 from .taxis import install as install_taxis
 from .contributions import install as install_contributions
+from .club import install as install_club
 
 
 class APIError(Exception):
@@ -593,6 +594,8 @@ def create_app(overrides=None):
 
     install_agent_access(app,db,body,digest,APIError,fail_quota,capacity,delete_entity,
         lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok',job_view)
+    install_club(app,db,body,APIError,fail_quota,capacity,
+        lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok')
     install_mcp_access(app,body,APIError,fail_quota,digest)
     install_taxis(app,APIError)
     install_contributions(app,db,body,APIError,fail_quota,capacity,

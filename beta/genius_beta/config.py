@@ -14,6 +14,14 @@ def settings(overrides=None):
     c.setdefault('TWIN_STORAGE_BYTES', 134217728)
     if c['TWIN_ENABLED']:
         c['MAX_CONTENT_LENGTH'] = max(c['MAX_CONTENT_LENGTH'], 262144)
+    c.setdefault('CLUB_ENABLED', os.environ.get('GENIUS_CLUB_ENABLED', 'true') == 'true')
+    if os.environ.get('GENIUS_CLUB_ENABLED', 'true') not in ('true', 'false') or type(c['CLUB_ENABLED']) is not bool:
+        raise ValueError('GENIUS_CLUB_ENABLED must be true or false')
+    for key, value in dict(CLUB_MAX_FILES=20, CLUB_MAX_VERSIONS=20, CLUB_FILE_BYTES=65536,
+                           CLUB_MEMBER_BYTES=1048576, CLUB_GLOBAL_BYTES=16777216, CLUB_WRITES_DAILY=100).items():
+        c.setdefault(key, value)
+        if type(c[key]) is not int or c[key] < 1:
+            raise ValueError(key + ' must be a positive integer')
     agent_defaults = dict(MAX_AGENT_ACCOUNTS=20, MAX_AGENT_REGISTRATIONS_DAILY=5,
         MAX_AGENT_DEMOS_DAILY=20, MAX_AGENT_CASES=5, MAX_AGENT_REVISIONS=5,
         MAX_AGENT_JOBS_DAILY=5, MAX_AGENT_GLOBAL_JOBS_DAILY=20, MAX_AGENT_QUEUE=4,

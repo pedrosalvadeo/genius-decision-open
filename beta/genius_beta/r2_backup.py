@@ -223,7 +223,7 @@ def record_deletions(rows, store=None, key=None):
         return
     clean = []
     for identifier, kind, when in rows:
-        if kind not in ('user', 'case', 'twin_case') or not isinstance(identifier, str) or not 1 <= len(identifier) <= 128 or type(when) is not int:
+        if kind not in ('user', 'case', 'twin_case', 'club_member', 'club_file') or not isinstance(identifier, str) or not 1 <= len(identifier) <= 128 or type(when) is not int:
             raise BackupError('INVALID_PRIVACY_EVENT')
         clean.append([identifier, kind, when])
     payload = canonical({'format': 'genius-deletion-intents/1', 'events': sorted(clean)})
@@ -259,7 +259,7 @@ def read_deletions(store, key):
             if doc.get('format') != 'genius-deletion-intents/1' or not isinstance(doc.get('events'), list):
                 raise BackupError('PRIVACY_FORMAT')
             for identifier, kind, when in doc['events']:
-                if kind not in ('user', 'case', 'twin_case') or not isinstance(identifier, str) or not 1 <= len(identifier) <= 128 or type(when) is not int:
+                if kind not in ('user', 'case', 'twin_case', 'club_member', 'club_file') or not isinstance(identifier, str) or not 1 <= len(identifier) <= 128 or type(when) is not int:
                     raise BackupError('INVALID_PRIVACY_EVENT')
                 ledger[identifier, kind] = max(when, ledger.get((identifier, kind), when))
                 if len(ledger) > MAX_OBJECTS:
@@ -432,9 +432,12 @@ def recover(store, key, object_key, output, services_stopped=False):
         expected = [(p.name, hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(MIGRATIONS.glob('*.sql'))]
         with contextlib.closing(helper.read_only(saved)) as db, contextlib.closing(sqlite3.connect(privacy)) as current:
             saved_versions = helper.versions(db)
-            # Only this reviewed additive upgrade may restore its immediate predecessor.
-            previous = expected[:-1] if expected and expected[-1][0] == '003_agent_access.sql' else None
-            if saved_versions != expected and saved_versions != previous:
+            # Reviewed additive migrations 003/004/005 may upgrade exact historical prefixes.
+            # Never accept reordered, skipped or modified historical migrations.
+            approved = ('003_agent_access.sql', '004_contribution_inbox.sql', '005_club.sql')
+            supported = [expected[:n] for n in range(2, len(expected) + 1)
+                         if all(name in approved for name, _ in expected[n:])]
+            if saved_versions not in supported:
                 raise BackupError('RESTORE_SCHEMA_MISMATCH')
             current.executescript('CREATE TABLE schema_migrations(version TEXT,sha256 TEXT); CREATE TABLE users(id TEXT PRIMARY KEY); CREATE TABLE deletion_ledger(id TEXT PRIMARY KEY,entity_type TEXT,deleted_at INTEGER);')
             current.executemany('INSERT INTO schema_migrations VALUES(?,?)', saved_versions)
