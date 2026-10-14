@@ -213,6 +213,8 @@ def restore(source, output, current_db, services_stopped=False):
                 db.execute('DELETE FROM club_social_profiles')
                 db.execute('UPDATE club_members SET social_version=social_version+1')
                 db.execute("UPDATE club_conversations SET status='closed',version=version+1")
+            if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='contribution_review_cache'").fetchone():
+                db.execute('DELETE FROM contribution_review_cache')
             db.execute("DELETE FROM sessions")
             db.execute("DELETE FROM api_tokens")
             db.execute("DELETE FROM research_candidates")
