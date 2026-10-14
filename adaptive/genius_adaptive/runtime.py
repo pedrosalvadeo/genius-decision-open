@@ -78,7 +78,7 @@ def run(directory, adapter, *, after_stage=None):
                     history[stage] = perform(stage, history).result()
                 return history["remember"]
 
-            config = {"configurable": {"thread_id": spec["id"]}, "recursion_limit": 32}
+            config = {"configurable": {"thread_id": spec["id"]}, "recursion_limit": 32, "max_concurrency": 4}
             snapshot = mission.get_state(config)
             value = mission.invoke(None if snapshot.created_at else spec, config, durability="sync")
             return {"status": "completed", "memory": value, "reused": False}

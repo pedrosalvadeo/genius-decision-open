@@ -12,7 +12,7 @@ import time
 from flask import jsonify, request
 from werkzeug.test import EnvironBuilder
 from .agent_access import EXAMPLES
-from . import twin_mcp, club_mcp, taxis
+from . import twin_mcp, club_mcp, mission_mcp, taxis
 
 VERSIONS = ('2026-07-28', '2025-11-25', '2025-06-18', '2025-03-26')
 INFO = dict(name='genius-decision',version='0.2.0')
@@ -66,6 +66,7 @@ TOOLS = [
 ]
 TOOLS += twin_mcp.definitions(tool)
 TOOLS += club_mcp.definitions(tool)
+TOOLS += mission_mcp.definitions(tool)
 BY_NAME = {t['name']:t for t in TOOLS}
 
 
@@ -138,6 +139,8 @@ def install(app, body, error, fail_quota, digest):
         return outcome
 
     def execute(name, args, authorization):
+        if name in mission_mcp.ROUTES:
+            return mission_mcp.execute(name,args,authorization,rest)
         if name in club_mcp.ROUTES:
             return club_mcp.execute(name, args, authorization, rest)
         if name == 'get_contribution_inbox': return rest('GET','/contributions')
@@ -253,7 +256,8 @@ def install(app, body, error, fail_quota, digest):
         if method == 'tools/list':
             if params.get('cursor') is not None: return rpc_error(ident,-32602,'No pagination cursor supported')
             listing = {'tools':[t for t in TOOLS if t['_meta']['app.geniusdecision/required-scope'] in [None,*scopes]
-                and (app.config['TWIN_ENABLED'] or t['name'] not in twin_mcp.ROUTES)]}
+                and (app.config['TWIN_ENABLED'] or t['name'] not in twin_mcp.ROUTES)
+                and (app.config['ADAPTIVE_ENABLED'] or t['name'] not in ('mission_create','mission_run'))]}
             if modern: listing.update(ttlMs=0,cacheScope='private')
             return success(listing)
         if method != 'tools/call':

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Misiones persistentes · Genius</title>
+<style>body{font:17px/1.6 system-ui;max-width:850px;margin:3rem auto;padding:0 1.2rem;color:#19252b;background:#f8faf9}pre{background:#eaf0ed;padding:1rem;overflow:auto;border-radius:8px}a{color:#12674c}code{font-size:.9em}h1{line-height:1.15}</style>
+<main><a href="/">Genius</a><h1>Misiones que conservan su avance</h1>
+<p>Genius puede medir alternativas, representarlas, evaluarlas, producir una entrega privada, verificarla y guardar lo observado. Cada etapa confirmada queda registrada para continuar después de una interrupción.</p>
+<h2>Primera operación: distribución de archivos</h2>
+<p>Envía hasta 16 archivos de texto UTF-8, con un máximo total de 65.536 bytes. Genius compara TAR, gzip y ZIP y elige el menor que conserva exactamente los contenidos. El archivo resultante queda disponible exclusivamente para tu cuenta. La entrada se identifica como una instantánea enviada, sin atribuirle un commit de Git.</p>
+<p>Este experimento mide bytes e integridad. Sus resultados no demuestran bienestar humano ni sostenimiento de la vida. La memoria conserva observaciones; esta versión no modifica su código ni sus modelos por sí sola.</p>
+<h2>API y permisos</h2>
+<p>Obtén una credencial según <a href="/agents/manifest.json">el manifiesto de agentes</a>, solicitando los permisos <code>missions:write</code>, <code>missions:run</code>, <code>missions:read</code> y, para borrar, <code>missions:delete</code>. Los agentes admiten únicamente datos sintéticos o no personales. Usa <code>Authorization: Bearer TU_CREDENCIAL</code>; nunca incluyas la credencial en los archivos.</p>
+<p>Crea un borrador con <code>POST /api/missions</code> y el siguiente JSON. Las confirmaciones deben proceder de quien tiene autoridad sobre esos archivos:</p>
+<pre>{
+  "idempotency_key": "ejemplo-genius-001",
+  "files": {"saludo.txt": "Hola, Genius.\n"},
+  "processing_permission": true,
+  "technical_scope_acknowledged": true
+}</pre>
+<p>Envía <code>{}</code> a <code>POST /api/missions/ID/run</code> para ejecutarlo. Consulta <code>GET /api/missions/ID</code> hasta recibir <code>completed</code>. <code>GET /api/missions/ID/artifact</code> devuelve el archivo en base64, su nombre y SHA-256. <code>GET /api/missions/ID/export</code> incluye la entrada y los recibos de evidencia.</p>
+<p><code>POST /api/missions/ID/cancel</code> detiene la ejecución conservando la memoria. <code>DELETE /api/missions/ID</code> con <code>{"confirm":true}</code> borra entrada, estado y entrega. Borrar la cuenta borra también sus misiones.</p>
+<p>Repetir la creación con la misma clave y el mismo contenido devuelve el mismo borrador; cambiar el contenido exige otra clave. Ejecutar una misión completada devuelve su resultado existente. Una misión interrumpida puede reanudarse con <code>/run</code>; una que requiera revisión no se reintenta automáticamente.</p>
+<h2>Persistencia y capacidad</h2>
+<p>El servicio conserva hasta tres misiones por cuenta y dieciséis en total. Hay cuotas diarias compartidas para agentes, un único worker, un máximo de tres intentos por misión y sesenta segundos por intento. Exporta y borra misiones anteriores para liberar espacio. Los datos caducan por la política de retención de la cuenta, como máximo noventa días sin actividad de la misión.</p>
+<p>Los respaldos incluyen el avance. Una restauración deja las misiones activas interrumpidas y requiere una reanudación explícita. Un cambio de código o dependencias invalida la reanudación automática del estado antiguo. Los efectos de esta versión se limitan al archivo privado; no realiza publicaciones ni acciones externas.</p>
+<p>Las mismas operaciones están disponibles como herramientas <code>mission_*</code> en <a href="/mcp">MCP</a>, sujetas a los mismos permisos.</p></main></html>

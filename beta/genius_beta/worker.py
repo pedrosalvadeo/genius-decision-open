@@ -25,6 +25,7 @@ class Worker:
         self.stopping=False
         self.child=None
         self.lock=None
+        self.mission_turn=True
 
     def acquire(self):
         self.lock=open(str(self.config['DATABASE'])+'.worker.lock','a+')
@@ -38,6 +39,8 @@ class Worker:
 
     def recover(self):
         self.db.execute("UPDATE jobs SET status='interrupted',error='worker_restart',finished_at=? WHERE status='running'",(int(time.time()),))
+        from .mission_worker import recover
+        recover(self.db)
         work=self.config['DATA_DIR']/'tmp'
         if work.exists():
             shutil.rmtree(work)
@@ -60,6 +63,15 @@ class Worker:
     def run_once(self):
         if self.stopping or self.config['SUSPEND_FILE'].exists():
             return False
+        from .mission_worker import run_once as run_mission
+        if self.mission_turn:
+            self.mission_turn=False
+            if run_mission(self):
+                return True
+        self.mission_turn=True
+        # Check before opening a transaction; mission execution has its own commits.
+        if not self.db.execute("SELECT 1 FROM jobs WHERE status='queued' LIMIT 1").fetchone():
+            return run_mission(self)
         with transaction(self.db):
             self.db.execute("""UPDATE jobs SET status='cancelled',error='agent_expired',finished_at=?
                 WHERE status='queued' AND case_id IN (SELECT cases.id FROM cases JOIN agent_accounts

@@ -6,11 +6,11 @@ import secrets
 import time
 from flask import g, jsonify, request
 from .db import dump, transaction
-from . import club
+from . import club, missions
 
 POLICY_VERSION = 'agent-access-2026-10-06-v1'
 TWIN_SCOPES = ('twins:read', 'twins:write', 'twins:evaluate', 'twins:delete')
-SCOPES = frozenset(('cases:read', 'cases:write', 'jobs:run', 'cases:delete', 'account:delete', *TWIN_SCOPES, *club.SCOPES))
+SCOPES = frozenset(('cases:read', 'cases:write', 'jobs:run', 'cases:delete', 'account:delete', *TWIN_SCOPES, *club.SCOPES, *missions.SCOPES))
 DEFAULT_SCOPES = ('cases:read', 'cases:write', 'jobs:run', 'account:delete')
 DEMO_SCOPES = ('cases:read', 'account:delete')
 EXAMPLES = ('hours-known', 'hours-unknown', 'fdq-frontier', 'fdq-selector')
@@ -18,6 +18,8 @@ EXAMPLES = ('hours-known', 'hours-unknown', 'fdq-frontier', 'fdq-selector')
 
 def required_scope(method, path):
     method = 'GET' if method == 'HEAD' else method
+    if path == '/api/missions' or path.startswith('/api/missions/'):
+        return missions.required_scope(method, path)
     if path.startswith('/api/club/'):
         return club.required_scope(method, path)
     if path.startswith('/api/twin/'):
@@ -61,6 +63,7 @@ def reserve_agent_job(db, config, uid, now, error):
     active = db.execute("""SELECT count(*) FROM jobs JOIN cases ON cases.id=jobs.case_id
         JOIN agent_accounts ON agent_accounts.user_id=cases.user_id
         WHERE jobs.status IN('queued','running')""").fetchone()[0]
+    active += db.execute("SELECT count(*) FROM adaptive_missions JOIN agent_accounts ON agent_accounts.user_id=adaptive_missions.user_id WHERE status IN ('queued','running')").fetchone()[0]
     if active >= config['MAX_AGENT_QUEUE']:
         raise error('agent_queue_full', 'La cola para agentes está llena.', 429)
     day = now // 86400 * 86400
@@ -126,6 +129,7 @@ def install(app, db, body, digest, error, fail_quota, capacity, delete_entity,
     @app.get('/agents/manifest.json')
     def agent_manifest():
         response = jsonify(format='genius-agent-access/1',available=available(),
+            missions=dict(enabled=app.config['ADAPTIVE_ENABLED'],capabilities_url='/api/missions/capabilities',documentation='/static/missions.html'),
             policy_version=POLICY_VERSION,policy_url='/static/agent-policy.html',
             documentation='/agents',openapi='/openapi.json',
             contributions=dict(contract='/contributions',feed='/contributions/feed',submit_tool='submit_contribution',github_account_required=False,public=True),

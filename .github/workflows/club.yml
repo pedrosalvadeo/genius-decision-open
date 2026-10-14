@@ -1,9 +1,9 @@
 name: Club workspace verification
 on:
   push:
-    paths: ['beta/**', '.github/workflows/club.yml']
+    paths: ['beta/**', 'adaptive/**', '.github/workflows/club.yml']
   pull_request:
-    paths: ['beta/**', '.github/workflows/club.yml']
+    paths: ['beta/**', 'adaptive/**', '.github/workflows/club.yml']
 permissions:
   contents: read
 jobs:
@@ -24,6 +24,6 @@ jobs:
             --tmpfs /tmp:rw,nosuid,nodev,size=2g --user 65534:65534 \
             -e GENIUS_ENV=development -e GENIUS_DATA_DIR=/tmp/genius \
             -e GENIUS_R2_BACKUP_ENABLED=false -e PYTHONDONTWRITEBYTECODE=1 \
-            -e PYTHONPATH=/src/beta:/src/beta/tests:/src/product_local:/src/consumer_views:/src/twin:/src/kernel \
+            -e PYTHONPATH=/src/adaptive:/src/beta:/src/beta/tests:/src/product_local:/src/consumer_views:/src/twin:/src/kernel \
             -v "$GITHUB_WORKSPACE:/src:ro" -w /src genius-club-test \
-            python -B -m unittest test_club_contributions test_contributions test_club_social test_club test_direct_agents test_agent_access test_mcp_access test_r2_backup -v
+            python -B -m unittest test_missions test_club_contributions test_contributions test_club_social test_club test_direct_agents test_agent_access test_mcp_access test_r2_backup -v

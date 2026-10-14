@@ -270,7 +270,7 @@ def create_app(overrides=None):
     @app.get('/api/config')
     @app.get('/api/meta')
     def config():
-        return jsonify(service='Genius beta',version='0.4.0' if app.config['TWIN_ENABLED'] else '0.3.0',twin_enabled=app.config['TWIN_ENABLED'],twin_url='/twin/' if app.config['TWIN_ENABLED'] else None,environment=app.config['ENV'],registration_open=app.config['REGISTRATION_OPEN'] and not app.config['SUSPEND_FILE'].exists() and (not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok'),scope=('Gemelo dinámico configurable bajo premisas declaradas. ' if app.config['TWIN_ENABLED'] else '')+'Comparación guiada de alternativas declaradas para ocio y organización personal; créditos formales y consultas FDQ. Sin interpretación libre universal ni Radar/Solver general.',limits={k.lower():app.config[k] for k in ('MAX_CONTENT_LENGTH','MAX_CASES','MAX_REVISIONS','MAX_JOBS_DAILY','MAX_GLOBAL_JOBS_DAILY','MAX_GLOBAL_USERS','MAX_QUEUE')},privacy=dict(notice_url='/static/privacy.html',version=app.config['PRIVACY_VERSION'],controller=app.config['PRIVACY_CONTROLLER'] or None,contact=app.config['PRIVACY_CONTACT'] or None,retention_days=app.config['RETENTION_DAYS']),suspended=app.config['SUSPEND_FILE'].exists())
+        return jsonify(service='Genius beta',version='0.4.0' if app.config['TWIN_ENABLED'] else '0.3.0',adaptive_enabled=app.config['ADAPTIVE_ENABLED'],twin_enabled=app.config['TWIN_ENABLED'],twin_url='/twin/' if app.config['TWIN_ENABLED'] else None,environment=app.config['ENV'],registration_open=app.config['REGISTRATION_OPEN'] and not app.config['SUSPEND_FILE'].exists() and (not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok'),scope=('Gemelo dinámico configurable bajo premisas declaradas. ' if app.config['TWIN_ENABLED'] else '')+'Comparación guiada de alternativas declaradas para ocio y organización personal; créditos formales y consultas FDQ. Sin interpretación libre universal ni Radar/Solver general.',limits={k.lower():app.config[k] for k in ('MAX_CONTENT_LENGTH','MAX_CASES','MAX_REVISIONS','MAX_JOBS_DAILY','MAX_GLOBAL_JOBS_DAILY','MAX_GLOBAL_USERS','MAX_QUEUE')},privacy=dict(notice_url='/static/privacy.html',version=app.config['PRIVACY_VERSION'],controller=app.config['PRIVACY_CONTROLLER'] or None,contact=app.config['PRIVACY_CONTACT'] or None,retention_days=app.config['RETENTION_DAYS']),suspended=app.config['SUSPEND_FILE'].exists())
 
     @app.post('/api/register')
     def register():
@@ -568,6 +568,8 @@ def create_app(overrides=None):
         response = dict(export_version='1',exported_at=int(time.time()),user=user_view(g.user),cases=[details(cid) for cid in ids],research_candidates=[dict(r) for r in db().execute('SELECT research_candidates.* FROM research_candidates JOIN cases ON cases.id=research_candidates.case_id WHERE cases.user_id=?',(g.user['id'],))])
         if 'twin_export_user' in app.extensions and (not g.agent_account or 'twins:read' in g.agent_scopes):
             response['twins'] = app.extensions['twin_export_user']()
+        if not g.agent_account or 'missions:read' in g.agent_scopes:
+            response['missions'] = app.extensions['mission_export_user']()
         return jsonify(response)
 
     @app.get('/api/tokens')
@@ -596,6 +598,8 @@ def create_app(overrides=None):
         lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok',job_view)
     install_club(app,db,body,APIError,fail_quota,capacity,
         lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok')
+    from .missions import install as install_missions
+    install_missions(app,db,body,APIError,capacity)
     install_mcp_access(app,body,APIError,fail_quota,digest)
     install_taxis(app,APIError)
     install_contributions(app,db,body,APIError,fail_quota,capacity,

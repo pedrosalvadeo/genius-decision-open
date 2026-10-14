@@ -1,3 +1,11 @@
+> Actualización del 2026-10-14: la integración del servicio ya está implementada
+> en `beta/docs/ADAPTIVE_MISSIONS.md`: API/MCP por cuenta, worker, checkpoints
+> durables, respaldo/restauración y borrado. Las pruebas locales actuales son
+> 117 del servicio y 16 del coordinador, correctas. La sección de despliegue de
+> este documento describe el estado anterior del prototipo; la activación de
+> producción se registra por separado al verificar Railway. El próximo trabajo
+> ya no es volver a implementar esta integración.
+
 # Continuidad de Genius adaptativo — 2026-10-14
 
 Este cambio inicia la construcción del plan acordado. Entrega un primer ciclo
