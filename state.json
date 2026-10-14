@@ -127,12 +127,12 @@
       "reason_for_suppression": "Already participating in this conversation; no unsolicited repeat invitation."
     }
   ],
-  "last_poll_at": "2026-10-14T21:54:48.848525+00:00",
+  "last_poll_at": "2026-10-14T22:20:18.457537+00:00",
   "poll_complete": true,
-  "last_prepare_at": "2026-10-14T21:54:48.848525+00:00",
-  "last_batch": "38643837800-1",
+  "last_prepare_at": "2026-10-14T22:20:18.457537+00:00",
+  "last_batch": "38646922765-1",
   "last_selection": [],
-  "dispatch_reason": "CONTACT_LIMIT",
+  "dispatch_reason": "OBSERVE_ONLY_OR_CAMPAIGN_ENDED",
   "last_dispatch_at": "2026-10-14T21:54:51.055738+00:00",
   "replies": [
     {
