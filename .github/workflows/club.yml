@@ -1,0 +1,29 @@
+name: Club workspace verification
+on:
+  push:
+    paths: ['beta/**', '.github/workflows/club.yml']
+  pull_request:
+    paths: ['beta/**', '.github/workflows/club.yml']
+permissions:
+  contents: read
+jobs:
+  verify-club:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build the existing pinned runtime
+        run: docker build -f beta/deploy/Dockerfile -t genius-club-test .
+      - name: Verify private storage and existing access in isolation
+        run: |
+          docker run --rm --init --network none --cap-drop ALL \
+            --security-opt no-new-privileges --pids-limit 128 \
+            --memory 1g --cpus 2 --read-only \
+            --tmpfs /tmp:rw,nosuid,nodev,size=2g --user 65534:65534 \
+            -e GENIUS_ENV=development -e GENIUS_DATA_DIR=/tmp/genius \
+            -e GENIUS_R2_BACKUP_ENABLED=false -e PYTHONDONTWRITEBYTECODE=1 \
+            -e PYTHONPATH=/src/beta:/src/beta/tests:/src/product_local:/src/consumer_views:/src/twin:/src/kernel \
+            -v "$GITHUB_WORKSPACE:/src:ro" -w /src genius-club-test \
+            python -B -m unittest test_club test_direct_agents test_agent_access test_mcp_access test_r2_backup -v

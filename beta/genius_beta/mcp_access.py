@@ -12,7 +12,7 @@ import time
 from flask import jsonify, request
 from werkzeug.test import EnvironBuilder
 from .agent_access import EXAMPLES
-from . import twin_mcp, taxis
+from . import twin_mcp, club_mcp, taxis
 
 VERSIONS = ('2026-07-28', '2025-11-25', '2025-06-18', '2025-03-26')
 INFO = dict(name='genius-decision',version='0.2.0')
@@ -65,6 +65,7 @@ TOOLS = [
          {'confirm':dict(type='boolean',const=True)},('confirm',),scope='account:delete',read=False,destructive=True),
 ]
 TOOLS += twin_mcp.definitions(tool)
+TOOLS += club_mcp.definitions(tool)
 BY_NAME = {t['name']:t for t in TOOLS}
 
 
@@ -137,6 +138,8 @@ def install(app, body, error, fail_quota, digest):
         return outcome
 
     def execute(name, args, authorization):
+        if name in club_mcp.ROUTES:
+            return club_mcp.execute(name, args, authorization, rest)
         if name == 'get_contribution_inbox': return rest('GET','/contributions')
         if name == 'submit_contribution': return rest('POST','/contributions',args['submission'])
         if name == 'get_contribution': return rest('GET','/contributions/'+args['id'])

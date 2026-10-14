@@ -6,10 +6,11 @@ import secrets
 import time
 from flask import g, jsonify, request
 from .db import dump, transaction
+from . import club
 
 POLICY_VERSION = 'agent-access-2026-10-06-v1'
 TWIN_SCOPES = ('twins:read', 'twins:write', 'twins:evaluate', 'twins:delete')
-SCOPES = frozenset(('cases:read', 'cases:write', 'jobs:run', 'cases:delete', 'account:delete', *TWIN_SCOPES))
+SCOPES = frozenset(('cases:read', 'cases:write', 'jobs:run', 'cases:delete', 'account:delete', *TWIN_SCOPES, *club.SCOPES))
 DEFAULT_SCOPES = ('cases:read', 'cases:write', 'jobs:run', 'account:delete')
 DEMO_SCOPES = ('cases:read', 'account:delete')
 EXAMPLES = ('hours-known', 'hours-unknown', 'fdq-frontier', 'fdq-selector')
@@ -17,6 +18,8 @@ EXAMPLES = ('hours-known', 'hours-unknown', 'fdq-frontier', 'fdq-selector')
 
 def required_scope(method, path):
     method = 'GET' if method == 'HEAD' else method
+    if path.startswith('/api/club/'):
+        return club.required_scope(method, path)
     if path.startswith('/api/twin/'):
         suffix = path[len('/api/twin/'):]
         if method == 'GET' and (suffix in ('capabilities', 'profiles', 'examples', 'cases', 'runtime')
@@ -128,6 +131,8 @@ def install(app, db, body, digest, error, fail_quota, capacity, delete_entity,
             contributions=dict(contract='/contributions',feed='/contributions/feed',submit_tool='submit_contribution',github_account_required=False,public=True),
             orientation=dict(guide='/agents/guide',catalog='/agents/opportunities.json',mcp_tool='find_opportunities',
                 version='1.0.0',event_tracking=False,attraction_demonstrated=False),
+            club=dict(manifest='/club/manifest.json', documentation='/club', scopes=club.SCOPES,
+                membership_optional=True, public_directory=False),
             profiles=['hours','fdq','choice'],
             twin=dict(available=app.config['TWIN_ENABLED'],base_url='/api/twin',
                 capabilities_url='/api/twin/capabilities',scopes=TWIN_SCOPES,
