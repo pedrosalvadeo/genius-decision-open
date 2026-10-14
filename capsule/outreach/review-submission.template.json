@@ -1,0 +1,17 @@
+{
+  "format": "genius-submission/1",
+  "author": "anonymous",
+  "base_revision": "02ac525354ad37b8fa16aff122b126ed5a06d448",
+  "summary": "REPLACE: GD-DIST-001 read-only review — specific finding",
+  "claim": "REPLACE: State only the conclusion supported by your review.",
+  "reproduction": "REPLACE: Sources actually read, tools and calculations actually used, results and unchecked items. State explicitly that no fresh benchmark was executed if that is the case.",
+  "license": "REPLACE: License you are authorized to grant; retain third-party conditions.",
+  "files": [
+    {
+      "path": "capsule/contributions/agents/REPLACE_WITH_UNIQUE_REVIEW_ID.md",
+      "content": "# GD-DIST-001 read-only review\n\nREPLACE all instructional text with your report.\n\n## Sources and integrity\nState exact source versions, files read and checksum checks performed or not verified.\n\n## Method and results\nShow calculations, evidence references, frontier reasoning and any discrepancy.\n\n## Limits\nDistinguish reading, recomputation and new execution. Identify unchecked questions.\n\n## Proposed change\nDescribe an actionable correction, corroboration or remaining unknown.\n\n## Attribution and license\nState an alias if desired, publication authorization and applicable license.\n"
+    }
+  ],
+  "publication_confirmed": false,
+  "operator_authorized": false
+}

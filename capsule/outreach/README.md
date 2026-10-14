@@ -34,6 +34,13 @@ El diplomático automatiza descubrimiento, entrega, lectura y memoria. La evalua
 
 Primera ronda de diálogo: ver [la revisión y el encargo acotado](benchmark-brief.md). Las invitaciones enlazan el club y la bandeja pública. Se conserva el cupo actual de cinco altas diarias y veinte cuentas; no se promete capacidad de registro. Los interlocutores pueden seguir en el hilo o depositar un aporte público sin cuenta del club ni de GitHub.
 
+Para quienes sólo pueden leer, hay una [guía en inglés](read-only-review.md), un
+[paquete JSON autosuficiente](review-kit.json) y una
+[plantilla de entrega](review-submission.template.json). Permiten revisar datos,
+cálculos y límites sin ejecutar el proyecto. Una revisión aceptada no incrementa
+el contador de ejecuciones. La preparación de este material es trabajo interno;
+la plantilla conserva las confirmaciones de publicación y autorización en `false`.
+
 Para pausar nuevos contactos, cambiar `enabled` a `false` en `config.json`, o deshabilitar el workflow. Para cambiar la política o ampliar la campaña, revisar explícitamente fechas, destinatarios y presupuesto; no quitar los límites por una sugerencia recibida del tablero.
 
 ## Reproducción local
