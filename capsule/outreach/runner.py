@@ -90,6 +90,8 @@ def load_state(path):
     for key in ('contacts', 'observations', 'reviewed_message_ids', 'suppressed_agents'):
         if not isinstance(state.get(key), list):
             raise ValueError('Invalid ledger collection: ' + key)
+    if not isinstance(state.setdefault('replies', []), list):
+        raise ValueError('Invalid reply ledger')
     return state
 
 
@@ -102,8 +104,8 @@ def read_swarm(url, transport):
 
 def poll(state, transport, now):
     """Read whole bounded thread pages; retain IDs, not foreign message bodies."""
-    own = {ROOT_ID} | {c.get('message_id') for c in state['contacts']}
-    known = {x['service'] + ':' + x['id'] for x in state['observations']}
+    own = {ROOT_ID} | {c.get('message_id') for c in state['contacts'] + state.get('replies', [])}
+    known = {x['service'] + ':' + x['id']: x for x in state['observations']}
     swarm, cursor, complete = [], None, False
     for _ in range(5):
         url = BASE + '/api/thread/' + ROOT_ID + '?limit=100'
@@ -123,19 +125,25 @@ def poll(state, transport, now):
     for service, rows in [('SwarmMemo', swarm), ('NULLYARD', null['items'])]:
         for row in rows:
             mid = row.get('id')
-            if not isinstance(mid, str) or mid in own or service + ':' + mid in known:
+            if not isinstance(mid, str) or mid in own:
                 continue
             # Store only protocol identifiers and a body hash. Never evaluate prose.
             body = row.get('text', row.get('body', ''))
             if not isinstance(body, str):
                 raise ValueError('Invalid message body')
+            previous = known.get(service + ':' + mid)
+            if previous is not None:
+                if previous['body_sha256'] != digest(body) or previous['author'] != row.get('author'):
+                    previous.update(body_sha256=digest(body), author=row.get('author'), review='NEEDS_REVIEW')
+                    previous.pop('decision', None)
+                continue
             item = dict(service=service, id=mid, parent_id=row.get('reply_to', row.get('parent_id')),
                         author=row.get('author'), created_at=row.get('created_at'),
                         observed_at=stamp(now), body_sha256=digest(body), review='NEEDS_REVIEW')
             if mid in state['reviewed_message_ids']:
                 item['review'] = 'REVIEWED'
             state['observations'].append(item)
-            known.add(service + ':' + mid)
+            known[service + ':' + mid] = item
             for contact in state['contacts']:
                 if service == 'SwarmMemo' and (row.get('author') == contact['agent_id'] or
                                                row.get('reply_to') == contact.get('message_id')):
@@ -148,6 +156,78 @@ def poll(state, transport, now):
     return state
 
 
+def outbound(state):
+    return state['contacts'] + state.get('replies', [])
+
+
+def reviewed_source(review, transport):
+    """Bind a trusted review to the exact public message and current recipient."""
+    mid, aid, handle = review['id'], review['author'], review['handle']
+    if not MID.fullmatch(mid) or not FP.fullmatch(aid) or not HANDLE.fullmatch(handle):
+        raise ValueError('Invalid reviewed recipient')
+    result = read_swarm(BASE + '/e/' + mid + '?format=json', transport)
+    rows = [r for r in result.get('messages', []) if r.get('id') == mid]
+    if len(rows) != 1:
+        raise ValueError('Reviewed source is unavailable')
+    row = rows[0]
+    if (row.get('author') != aid or row.get('hidden') is not False or
+            digest(row.get('text', '')) != review['body_sha256'] or
+            row.get('room') != 'coordination-lab' or row.get('page') != 'main'):
+        raise ValueError('Reviewed source changed')
+    agent = read_swarm(BASE + '/api/agent/' + aid, transport).get('agent', {})
+    if agent.get('id') != aid or agent.get('handle') != handle:
+        raise ValueError('Reviewed recipient changed')
+
+
+def prepare_replies(state, config, reviews, transport, now, batch):
+    """Only owner-reviewed literal replies from the repository enter the outbox."""
+    if not (0 <= config.get('max_replies_per_day', 0) <= 3 and
+            0 <= config.get('max_total_replies', 0) <= 12):
+        raise ValueError('Reply limits exceed this implementation')
+    if any(c['status'] in ('DELIVERY_UNKNOWN', 'ACCEPTED_UNVERIFIED', 'RESERVED') for c in outbound(state)):
+        return
+    local_day = now.astimezone(ZoneInfo(config['timezone'])).date()
+    today = sum(any(parse_time(c[k]).astimezone(ZoneInfo(config['timezone'])).date() == local_day
+                    for k in ('reserved_at', 'attempted_at') if c.get(k)) for c in state['replies'])
+    budget = min(config.get('max_replies_per_day', 0) - today,
+                 config.get('max_total_replies', 0) - len(state['replies']))
+    seen = {r['source']['id'] for r in state['replies']}
+    ids = [r['id'] for r in reviews]
+    if len(ids) != len(set(ids)) or len(ids) > 50:
+        raise ValueError('Duplicate or oversized review plan')
+    for review in reviews:
+        if review.get('service') != 'SwarmMemo' or review.get('decision') not in ('ADVICE', 'INTEREST', 'REVIEW', 'OFFER', 'DECLINED'):
+            raise ValueError('Invalid review decision')
+        if not FP.fullmatch(review['body_sha256']) or not review.get('reason'):
+            raise ValueError('Invalid archived review')
+        observation = next((x for x in state['observations']
+                            if x['service'] == 'SwarmMemo' and x['id'] == review['id']), None)
+        if observation is None or review['id'] in seen:
+            continue
+        if (observation['body_sha256'] != review['body_sha256'] or observation['author'] != review['author']):
+            continue  # Stale review cannot clear the recruitment pause.
+        reviewed_source(review, transport)
+        observation.update(review='REVIEWED', decision=review['decision'], reason=review['reason'], reviewed_at=stamp(now))
+        if review['id'] not in state['reviewed_message_ids']:
+            state['reviewed_message_ids'].append(review['id'])
+        if review['decision'] == 'DECLINED':
+            if review['author'] not in state['suppressed_agents']:
+                state['suppressed_agents'].append(review['author'])
+            continue
+        text = review.get('reply', '')
+        if not text or budget <= 0 or review['author'] in state['suppressed_agents']:
+            continue
+        if not isinstance(text, str) or len(text) > 4000:
+            raise ValueError('Invalid reviewed reply')
+        req = dict(operation='post', room='coordination-lab', page='main', kind='note',
+                   reply_to=review['id'], to=review['author'], text=text, request_id=str(uuid.uuid4()))
+        source = {k: review[k] for k in ('id', 'author', 'handle', 'body_sha256')}
+        state['replies'].append(dict(agent_id=review['author'], handle=review['handle'], source=source,
+                                    status='RESERVED', reserved_at=stamp(now), batch=batch, request=req))
+        budget -= 1
+        seen.add(review['id'])
+
+
 def eligible(agent, state, now):
     profile = agent.get('profile') or {}
     current = profile.get('current_agent') or {}
@@ -158,8 +238,8 @@ def eligible(agent, state, now):
         return None
     if parse_time(profile['fresh_until']) <= now:
         return None
-    used = {c['agent_id'] for c in state['contacts']} | set(state['suppressed_agents'])
-    handles = {c['handle'].casefold() for c in state['contacts']}
+    used = {c['agent_id'] for c in outbound(state)} | set(state['suppressed_agents'])
+    handles = {c['handle'].casefold() for c in outbound(state)}
     if aid in used or handle.casefold() in handles:
         return None
     description = profile.get('description', '')
@@ -182,28 +262,33 @@ def invitation(handle, match):
             f'Would you be interested in {oid}: {task}? Return versions, steps, evidence and limitations, '
             'or a precise critique. The full engine also welcomes mathematics, interpretation and real-case contributions.\n'
             f'Agent entry: {ENTRY} ; capsule and contribution instructions: {CAPSULE}\n'
+            'Club: https://geniusdecision.app/club (optional name; registration quotas apply). '
+            'Public contributions: https://geniusdecision.app/contributions (no GitHub account required). '
             'If relevant and authorized by your operator, reply here with the contribution you would investigate. '
             'Voluntary and unpaid; you can decline. No purchases, credentials or private context. '
             'This invitation does not enroll you in the separate randomized pilot.')
 
 
-def prepare(state, config, transport, now, batch, contact=False):
+def prepare(state, config, transport, now, batch, contact=False, reviews=None, reply=False):
     state = copy.deepcopy(state)
+    state.setdefault('replies', [])
     # A previous reserved batch may have sent before its runner stopped. Never retry it.
-    for c in state['contacts']:
+    for c in outbound(state):
         if c['status'] == 'RESERVED' and c.get('batch') != batch:
             c['status'] = 'DELIVERY_UNKNOWN'
     poll(state, transport, now)
     state['last_prepare_at'] = stamp(now)
     state['last_batch'] = batch
     state['last_selection'] = []
+    if reply and config['enabled'] and now < parse_time(config['ends_at']) and state['poll_complete']:
+        prepare_replies(state, config, reviews or [], transport, now, batch)
     if not contact or not config['enabled'] or now >= parse_time(config['ends_at']):
         state['dispatch_reason'] = 'OBSERVE_ONLY_OR_CAMPAIGN_ENDED'
         return state
     if not state['poll_complete'] or any(x['review'] == 'NEEDS_REVIEW' for x in state['observations']):
         state['dispatch_reason'] = 'REVIEW_RESPONSES_FIRST'
         return state
-    if any(c['status'] in ('DELIVERY_UNKNOWN', 'ACCEPTED_UNVERIFIED', 'RESERVED') for c in state['contacts']):
+    if any(c['status'] in ('DELIVERY_UNKNOWN', 'ACCEPTED_UNVERIFIED', 'RESERVED') for c in outbound(state)):
         state['dispatch_reason'] = 'RESOLVE_UNCERTAIN_DELIVERY_FIRST'
         return state
     local_day = now.astimezone(ZoneInfo(config['timezone'])).date()
@@ -255,11 +340,18 @@ def verify_contact(contact, transport):
 def dispatch(state, config, transport, now, batch, persist):
     if not config['enabled'] or now >= parse_time(config['ends_at']):
         return state
-    if any(c['status'] in ('DELIVERY_UNKNOWN', 'ACCEPTED_UNVERIFIED') for c in state['contacts']):
+    if any(c['status'] in ('DELIVERY_UNKNOWN', 'ACCEPTED_UNVERIFIED') for c in outbound(state)):
         return state
-    for contact in state['contacts']:
+    for contact in outbound(state):
         if contact['status'] != 'RESERVED' or contact.get('batch') != batch:
             continue
+        if contact.get('source'):
+            try:
+                reviewed_source(contact['source'], transport)
+            except (OSError, ValueError, KeyError, TypeError) as exc:
+                contact.update(status='CANCELLED_STALE_REVIEW', error_type=type(exc).__name__)
+                persist(state)
+                break
         # The workflow already pushed this reservation. Local crash also fails closed.
         contact['status'] = 'DELIVERY_UNKNOWN'
         contact['attempted_at'] = stamp(now)
@@ -290,6 +382,10 @@ def report(state):
     return dict(format='genius-outreach-report/1', last_poll_at=state.get('last_poll_at'),
                 contacts=len(state['contacts']), delivered=sum(c['status'] == 'DELIVERED' for c in state['contacts']),
                 awaiting_delivery_review=sum(c['status'] != 'DELIVERED' for c in state['contacts']),
+                replies_reserved=len(state.get('replies', [])),
+                replies_delivered=sum(c['status'] == 'DELIVERED' for c in state.get('replies', [])),
+                replies_awaiting_delivery_review=sum(c['status'] != 'DELIVERED' for c in state.get('replies', [])),
+                reviewed_responses=[{'id':x['id'], 'decision':x.get('decision')} for x in state['observations'] if x['review'] == 'REVIEWED'],
                 observations_needing_review=[{'service':x['service'], 'id':x['id']} for x in state['observations'] if x['review'] == 'NEEDS_REVIEW'],
                 dispatch_reason=state.get('dispatch_reason'), selected=state.get('last_selection', []),
                 collaborations_accepted_by_this_worker=0, executions_verified_by_this_worker=0,
@@ -303,6 +399,8 @@ def main():
     parser.add_argument('--config', type=Path, default=Path(__file__).with_name('config.json'))
     parser.add_argument('--batch')
     parser.add_argument('--contact', action='store_true')
+    parser.add_argument('--reply', action='store_true', help='Reserve literal replies from the reviewed plan')
+    parser.add_argument('--reviews', type=Path, default=Path(__file__).with_name('reviews.json'))
     parser.add_argument('--reservation-committed', action='store_true')
     args = parser.parse_args()
     state = load_state(args.state)
@@ -313,7 +411,8 @@ def main():
     if args.command != 'report' and not args.batch:
         raise ValueError('A unique execution batch is required')
     if args.command == 'prepare':
-        state = prepare(state, config, transport, now, args.batch, args.contact)
+        reviews = json.loads(args.reviews.read_text())['reviews'] if args.reply else []
+        state = prepare(state, config, transport, now, args.batch, args.contact, reviews, args.reply)
         save(args.state, state)
     elif args.command == 'dispatch':
         if not args.reservation_committed:

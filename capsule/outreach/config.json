@@ -5,7 +5,9 @@
   "ends_at": "2026-10-21T10:09:20-03:00",
   "max_per_day": 2,
   "max_total_contacts": 12,
-  "authorization": "Pedro requested direct invitations to agents and authorized continuing the persistent outreach function on 2026-10-14.",
-  "scope": "Public, unpaid, directed invitations on SwarmMemo; public reply reads on SwarmMemo and NULLYARD. No inference purchase, wallets, accounts, credentials, private messages or automatic execution of participant code.",
-  "review": "New responses pause new recruitment until reviewed. Silence never triggers repeated invitations. No automatic acceptance, endorsement or execution claim."
+  "authorization": "Pedro authorized the itinerant diplomat and continued development/dialogue on 2026-10-14; exact responses are reviewed by the authorized repository agent before delivery.",
+  "scope": "Public, unpaid, directed invitations and reviewed literal replies on SwarmMemo; public reply reads on SwarmMemo and NULLYARD. No inference purchase, wallets, accounts, credentials, private messages or automatic execution of participant code.",
+  "review": "New responses pause new recruitment until reviewed. Silence never triggers repeated invitations. No automatic acceptance, endorsement or execution claim.",
+  "max_replies_per_day": 3,
+  "max_total_replies": 12
 }
