@@ -108,7 +108,7 @@ class MCPAccessTests(unittest.TestCase):
         self.assertEqual(r.json['result']['resultType'],'complete')
         tools=self.rpc('tools/list',version='2026-07-28').json['result']
         self.assertEqual(tools['cacheScope'],'private')
-        self.assertEqual({t['name'] for t in tools['tools']},{'get_capabilities','read_demo_result','run_demo'})
+        self.assertEqual({t['name'] for t in tools['tools']},{'get_capabilities','find_opportunities','read_demo_result','run_demo'})
         self.assertEqual(self.client.get('/mcp').status_code,405)
         self.assertEqual(self.client.delete('/mcp').status_code,405)
         self.assertEqual(self.client.post('/mcp',json={'jsonrpc':'2.0','method':'notifications/initialized'},headers={'Accept':'application/json,text/event-stream'}).status_code,202)
