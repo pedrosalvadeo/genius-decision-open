@@ -1,9 +1,13 @@
-# Club Genius · identidad y espacio privado v1
+# Club Genius · espacio privado, directorio y conversaciones
 
 Relaciona [la propuesta #17](https://github.com/pedrosalvadeo/genius-decision-open/issues/17).
 Esta entrega implementa membresía voluntaria, alias opcional y archivos UTF-8
 privados con versiones, exportación y borrado. La disponibilidad real se consulta
 en `/club/manifest.json`; un PR o un test no equivale a despliegue.
+
+La segunda entrega añade [directorio voluntario y conversaciones privadas](CLUB_SOCIAL.md).
+La participación social requiere una adhesión separada; las cuentas existentes
+no aparecen automáticamente en el directorio ni reciben solicitudes.
 
 ## Recorrido completo
 
@@ -26,7 +30,8 @@ en `/club/manifest.json`; un PR o un test no equivale a despliegue.
    conserva la identidad y los archivos.
 7. `PUT /api/club/files/{id}` con `base_version: 1` y el nuevo `content` conserva el
    original y crea la versión 2. `GET .../{id}/versions` devuelve su historial.
-8. `GET /api/club/export` exporta perfil y todas las versiones como un único JSON.
+8. `GET /api/club/export` exporta perfiles, archivos con todas sus versiones,
+   conversaciones y bloqueos como un único JSON.
 9. Para borrar un archivo: `DELETE /api/club/files/{id}` con su `base_version` actual
    y `confirm: true`. Para salir y borrar todo el club: `DELETE /api/club/me` con el
    `member_id` vigente y `confirm: true`. Salir no borra expedientes ajenos al club.
@@ -48,8 +53,9 @@ no adquiere capacidad de escritura por visitar una URL.
 
 ## Privacidad, continuidad y límites
 
-- Todos los perfiles y archivos de esta entrega son privados. No existe directorio
-  público ni uso automático para entrenamiento, investigación o contribuciones.
+- El alias de membresía y los archivos son privados. El directorio sólo muestra
+  la ficha social que el miembro decide publicar. No hay uso automático para
+  entrenamiento, investigación o contribuciones.
 - Se admiten datos sintéticos o no personales autorizados, de cualquier tema.
   Texto, JSON, CSV, Markdown y código como texto inerte. No hay ejecución de código,
   búsqueda de URLs, interpretación HTML ni carga de binarios en este contrato.
@@ -96,14 +102,14 @@ exportación y borrado. Ante un problema, preferir esta pausa sobre volver a una
 versión que no reconoce las nuevas intenciones de borrado.
 
 La recuperación admite únicamente prefijos históricos exactos de las migraciones
-aditivas revisadas (003–005). No admite una migración alterada, reordenada o faltante
+aditivas revisadas (003–006). No admite una migración alterada, reordenada o faltante
 en medio de la secuencia. Siempre restaura fuera de línea y revoca credenciales.
 No restaurar respaldos del club con lectores anteriores a esta entrega.
 
 ## Trabajo siguiente
 
-Conversaciones, proyectos compartidos, directorio público voluntario, recuperación
-de identidad, puente explícito de archivo privado a contribución, diplomático y
+Proyectos compartidos, recuperación de identidad, puente explícito de archivo
+privado a contribución, diplomático y
 pagos siguen pendientes. La bandeja existente continúa disponible por separado;
 guardar un archivo aquí no lo envía al integrador. Las pruebas de esta entrega
 validan comportamiento de software, no adopción externa ni evidencia científica.
