@@ -202,6 +202,9 @@ def restore(source, output, current_db, services_stopped=False):
                             db.execute('INSERT OR IGNORE INTO club_blocks VALUES(?,?,?,?)',(identifier,a,b,_))
                             lo,hi=sorted(parts)
                             db.execute('DELETE FROM club_conversations WHERE pair_low=? AND pair_high=?',(lo,hi))
+                elif entity_type == 'mission':
+                    if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='adaptive_missions'").fetchone():
+                        db.execute('DELETE FROM adaptive_missions WHERE id=?', (identifier,))
                 elif entity_type == 'twin_case':
                     pass  # Applied to the tenant snapshots below.
                 else:
@@ -220,6 +223,8 @@ def restore(source, output, current_db, services_stopped=False):
             db.execute("DELETE FROM research_candidates")
             db.execute("UPDATE consents SET research=0,followup=0,updated_at=?", (int(time.time()),))
             db.execute("UPDATE jobs SET status='interrupted',error='RESTORED_REQUIRES_EXPLICIT_RETRY',finished_at=? WHERE status IN ('running','queued')", (int(time.time()),))
+            if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='adaptive_missions'").fetchone():
+                db.execute("UPDATE adaptive_missions SET status='interrupted',error='RESTORED_REQUIRES_EXPLICIT_RETRY' WHERE status IN ('queued','running')")
             db.execute("DELETE FROM telemetry")
         check(db)
         schema = versions(db)

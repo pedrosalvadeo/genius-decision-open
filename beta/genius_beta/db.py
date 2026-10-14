@@ -62,11 +62,13 @@ def purge(db, retention_days=90, now=None):
     with transaction(db):
         cases = [r[0] for r in db.execute('SELECT id FROM cases WHERE updated_at<?', (cutoff,))]
         users = [r[0] for r in db.execute('SELECT id FROM users WHERE last_active<? OR id IN (SELECT user_id FROM agent_accounts WHERE expires_at<=?)', (cutoff,now))]
-        events = [(i, 'case', now) for i in cases] + [(i, 'user', now) for i in users]
+        missions = [r[0] for r in db.execute('SELECT id FROM adaptive_missions WHERE updated_at<?', (cutoff,))]
+        events = [(i, 'mission', now) for i in missions] + [(i, 'case', now) for i in cases] + [(i, 'user', now) for i in users]
         from .r2_backup import record_deletions
         record_deletions(events)
         db.executemany('INSERT OR IGNORE INTO deletion_ledger VALUES(?,?,?)', events)
         db.execute('DELETE FROM cases WHERE updated_at<?', (cutoff,))
+        db.execute('DELETE FROM adaptive_missions WHERE updated_at<?', (cutoff,))
         db.executemany('DELETE FROM users WHERE id=?',[(uid,) for uid in users])
         db.execute('DELETE FROM api_tokens WHERE id IN (SELECT token_id FROM agent_token_grants WHERE expires_at<=?)',(now,))
         db.execute('DELETE FROM sessions WHERE expires_at<?', (now,))

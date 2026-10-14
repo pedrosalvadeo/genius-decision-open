@@ -4,14 +4,15 @@ FROM python:3.12-slim-bookworm@sha256:54c85f3c47607a77f32adec749d3c81d1348bf2583
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PYTHONPATH=/app/beta:/app/product_local:/app/consumer_views:/app/twin:/app/kernel \
+    PYTHONPATH=/app/adaptive:/app/beta:/app/product_local:/app/consumer_views:/app/twin:/app/kernel \
     GENIUS_DATA_DIR=/data/genius \
     GENIUS_ENV=production \
     PORT=8080
 
 WORKDIR /app
 COPY beta/requirements.lock /app/beta/requirements.lock
-RUN python -m pip install --no-cache-dir --only-binary=:all: --require-hashes -r /app/beta/requirements.lock \
+COPY adaptive/requirements.lock /app/adaptive/requirements.lock
+RUN python -m pip install --no-cache-dir --only-binary=:all: --require-hashes -r /app/beta/requirements.lock -r /app/adaptive/requirements.lock \
     && groupadd --gid 10001 genius \
     && useradd --uid 10001 --gid 10001 --no-create-home --shell /usr/sbin/nologin genius \
     && mkdir -p /data/genius \
@@ -19,6 +20,7 @@ RUN python -m pip install --no-cache-dir --only-binary=:all: --require-hashes -r
     && chmod 700 /data/genius
 
 COPY beta /app/beta
+COPY adaptive/genius_adaptive /app/adaptive/genius_adaptive
 COPY product_local/genius_local /app/product_local/genius_local
 COPY consumer_views/genius_views /app/consumer_views/genius_views
 COPY twin/genius_twin /app/twin/genius_twin

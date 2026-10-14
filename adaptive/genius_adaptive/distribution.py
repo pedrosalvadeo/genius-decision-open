@@ -75,6 +75,30 @@ def prepare(source, commit, directory):
     return {"id": spec["id"], "files": len(inventory), "input_bytes": total, "input_sha256": digest}
 
 
+def prepare_files(files, directory, mission_id):
+    """Immutable UTF-8 snapshot supplied by an authenticated service principal."""
+    directory = Path(directory)
+    inventory, total = {}, 0
+    for name, content in files.items():
+        safe_name(name)
+        raw = content.encode('utf-8')
+        total += len(raw)
+        inventory[name] = {"sha256": sha(raw), "bytes": len(raw), "mode": 0o644}
+    if not inventory or len(inventory) > 16 or total > 65536:
+        raise ValueError("SOURCE_BUDGET_EXCEEDED")
+    directory.mkdir(mode=0o700, parents=True, exist_ok=False)
+    for name, content in files.items():
+        publish(directory / 'input' / name, content.encode('utf-8'))
+    digest = sha(canonical(inventory).encode())
+    spec = {"id": mission_id, "kind": "source_distribution_v1", "source_commit": None,
+            "source_kind": "SUBMITTED_UTF8_SNAPSHOT", "inventory": inventory,
+            "input_sha256": digest, "objective": "MIN_ARCHIVE_BYTES_WITH_EXACT_ROUND_TRIP",
+            "scope": "LOCAL_TECHNICAL_EXPERIMENT", "formats": list(FORMATS),
+            "created_at": datetime.now(timezone.utc).isoformat()}
+    publish(directory / 'mission.json', (canonical(spec) + '\n').encode())
+    return spec
+
+
 def encode(kind, files, inventory):
     output = io.BytesIO()
     if kind in ("tar", "gzip"):
@@ -173,7 +197,7 @@ class Distribution:
         model = json.loads(Path(__file__).with_name("distribution_model.json").read_text())
         artifacts = history["measure"]["artifacts"]
         budget = max(a["bytes"] for a in artifacts.values())
-        model["name"] = "Distribución local del snapshot " + spec["source_commit"][:12]
+        model["name"] = "Distribución local del snapshot " + (spec["source_commit"] or spec["input_sha256"])[:12]
         model["stocks"][0].update(initial=f"{budget}/1", capacity=f"{budget}/1")
         model["stocks"][0]["label"] = "Margen frente al mayor archivo medido"
         for action in model["actions"]:
