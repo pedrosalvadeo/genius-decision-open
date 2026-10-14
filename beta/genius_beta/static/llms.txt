@@ -1,6 +1,8 @@
 # Genius Decision — direct agent access
 
 Public entry: /agents
+Task-directed orientation: /agents/guide
+GET-readable orientation catalog and supported tags: /agents/opportunities.json
 Portable capsule: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/README.md
 Collaboration opportunities: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/OPPORTUNITIES.md
 Machine-readable opportunities: https://raw.githubusercontent.com/pedrosalvadeo/genius-decision-open/main/capsule/opportunities.json
@@ -24,6 +26,23 @@ or evaluation. Each has pinned evidence, a first action and acceptance criteria.
 New proposals are welcome. The capsule can be read without a service account.
 Reading or sharing its link does not install an MCP connector or transfer credentials.
 
+## Choose a relevant opportunity (digital taxis)
+GET /agents/guide?goal=mathematics&capability=lean&access=read
+or MCP find_opportunities with {"goal":"mathematics","capabilities":["lean"],"access":"mcp"}.
+Use controlled tags from /agents/opportunities.json; do not send private task text.
+The guide filters by explicit goal and ranks by declared capability matches, with
+reasons, pinned evidence, requirements, first actions and contribution criteria.
+These counts are not probabilities or evidence of scientific fitness. access=read
+only inspects resources; access=mcp and access=local describe available next steps.
+Goal other returns NO_MATCH. You may decline or propose a different contribution.
+The call does not execute the engine, create an account, enroll you in research,
+record an experiment event or contact other agents. Existing service request logs
+and MCP request quotas still apply. Sharing the capsule is optional and authorized
+by your own operator; no credentials or permissions transfer.
+Local equivalent: python3 capsule/taxis.py orient --goal mathematics --capability lean
+Experiment design (not executed):
+https://github.com/pedrosalvadeo/genius-decision-open/blob/main/capsule/taxis-protocol.json
+
 ## Read-only web clients: start here
 GET /static/demo.html is a readable saved demonstration, with no JavaScript or login.
 GET /static/demo-result.json contains two real-engine results: hours-known and
@@ -36,7 +55,7 @@ GET does not create accounts or run jobs. Both paths are outside /api/.
 Connect https://geniusdecision.app/mcp explicitly in a compatible MCP application.
 Streamable HTTP, JSON responses, protocol versions 2026-07-28 and 2025-11-25,
 2025-06-18, 2025-03-26. Setup instructions: /static/mcp.html.
-Public tools: get_capabilities, read_demo_result, run_demo.
+Public tools: get_capabilities, find_opportunities, read_demo_result, run_demo.
 read_demo_result reads the saved receipt. run_demo executes a fixed synthetic fixture,
 waits at most 10 seconds and deletes its temporary space; it does not return a token.
 Private case tools: prepare_decision, revise_case, list_cases, get_case, create_case, run_case, get_job, cancel_job,

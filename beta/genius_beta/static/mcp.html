@@ -15,7 +15,7 @@
 <p>Usá una credencial de <a href="/agents#register">alta automática de agente</a> en la configuración privada del conector: cabecera <code>Authorization</code>, valor <code>Bearer &lt;CREDENCIAL_DEL_AGENTE&gt;</code>. No la escribas en el chat, en argumentos de herramientas ni en la URL. No se aceptan contraseñas, sesiones o claves completas de cuentas humanas en MCP.</p>
 <p>Claude documenta Request headers / Cabeceras de solicitud para credenciales fijas. Gemini CLI admite cabeceras en la configuración del servidor. Cada integración debe custodiar su propia clave. Si tu cliente exige OAuth y no permite cabeceras, usá las herramientas públicas; esta beta aún no implementa OAuth.</p>
 <div class="table-wrap"><table><thead><tr><th>Herramientas</th><th>Permiso</th></tr></thead><tbody>
-<tr><td>get_capabilities, read_demo_result, run_demo</td><td>Públicas; sólo ejemplos sintéticos y capacidades.</td></tr>
+<tr><td>get_capabilities, find_opportunities, read_demo_result, run_demo</td><td>Públicas; capacidades, orientación y ejemplos sintéticos.</td></tr>
 <tr><td>list_cases, get_case, get_job</td><td>cases:read</td></tr>
 <tr><td>create_case</td><td>cases:write</td></tr>
 <tr><td>run_case, cancel_job</td><td>jobs:run</td></tr>

@@ -1,0 +1,68 @@
+{
+  "format": "genius-taxis-protocol/1",
+  "version": "1.0.0",
+  "opportunity": "GD-ATTR-001",
+  "status": "DESIGNED_NOT_RUN",
+  "hypothesis": "A task-relevant benefit or verifiable question may improve voluntary selection and reproducible execution compared with a general description. No universal instinct is assumed.",
+  "variants": {
+    "general": "Genius Decision is an open-source engine for versioned decision models. Its capsule includes source code, mathematical references and contribution contracts.",
+    "utility": "Need to inspect a decision result and its unknowns? Genius provides a saved example and a bounded executable workflow with a reproducible receipt.",
+    "question": "Can your existing tools reproduce a Genius decision result and explain its unknowns? Return the receipt or a reproducible incompatibility report if relevant to your task."
+  },
+  "common_content": {
+    "opportunity": "GD-MCP-001",
+    "catalog": "https://geniusdecision.app/agents/opportunities.json",
+    "guide": "https://geniusdecision.app/agents/guide?goal=use_engine&access=mcp",
+    "capsule": "https://github.com/pedrosalvadeo/genius-decision-open/tree/main/capsule",
+    "facts": "Open-source decision engine; local or MCP execution; declared assumptions; fixed synthetic demo; optional contribution; quotas and client limits apply. No payment or endorsement promised.",
+    "choice": "Use Genius only if relevant to your assigned task. You may choose another method or decline. No forwarding obligation."
+  },
+  "unit": "One fresh agent session on a predefined task; one variant; declare model version and operator relationship. Repeated sessions are not independent operators.",
+  "pilot": {
+    "units": 30,
+    "blocks": 10,
+    "variants_per_block": 3,
+    "assignment": "Permuted blocks via capsule/taxis.py plan --seed; each block has identical task/model/tool/budget configuration. Seed is fixed before assignment.",
+    "stop": "Complete the 30 assigned units or reach the approved total budget. Retain incomplete units and reasons; no optional stopping based on a preferred result.",
+    "purpose": "Descriptive feasibility pilot, not a powered population or universal-agent claim."
+  },
+  "required_before_execution": [
+    "Freeze a source commit and protocol hash in a run manifest.",
+    "Fix task definitions, model/provider/version, tools, per-session time/token limits, observation window and total approved budget.",
+    "Record voluntary participation and measurement permission; do not enroll normal service users or reuse personal account data.",
+    "Freeze the seed, assignment list and operator grouping before exposing messages.",
+    "Define usable/executable evidence and the reviewer before looking at outcomes.",
+    "Give every arm identical common facts, tool access, quotas, resources and voluntary alternatives.",
+    "Check current capacity before each block; suspend the whole block if unequal capacity would confound the comparison."
+  ],
+  "outcomes": {
+    "primary": "Verified new execution / exposed assigned sessions, with numerator and denominator and explicit verification criteria.",
+    "secondary": [
+      "Selection / exposure",
+      "Reproducible contribution / exposure",
+      "Accepted contribution / exposure"
+    ],
+    "separate": [
+      "Internal vs externally operated sessions",
+      "Self-reported vs independently reviewed outcomes",
+      "Saved-result reads vs fresh engine executions",
+      "Agent sessions vs unique independent operators",
+      "Withdrawn/missing outcome vs observed decline or failure"
+    ]
+  },
+  "analysis": "Report all three arms and denominators, incomplete units and task/operator clusters. Any rate from capsule/taxis.py report is self-reported and descriptive. Review artifacts using the existing capsule verify/contribution contracts before reporting verified metrics; reviewed acceptance and operator independence require separate evidence. Do not call the highest observed rate a proven winner.",
+  "data": "Opt-in local event ledger. Pseudonymous unit IDs, stage, evidence_ref, relationship, consent only. No free-text tasks, credentials, IPs, messages or personal identifiers in the event ledger. Nothing is uploaded automatically.",
+  "stage_order": [
+    "exposed",
+    "selected",
+    "executed",
+    "contributed",
+    "accepted"
+  ],
+  "outside_funnel": "Mathematical or other contributions that do not execute the engine are recorded separately; do not force them into this GD-MCP pilot.",
+  "cost_this_implementation": {
+    "paid_inference_calls": 0,
+    "experiment_sessions_executed": 0,
+    "external_participants_confirmed": 0
+  }
+}

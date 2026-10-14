@@ -12,7 +12,7 @@ import time
 from flask import jsonify, request
 from werkzeug.test import EnvironBuilder
 from .agent_access import EXAMPLES
-from . import twin_mcp
+from . import twin_mcp, taxis
 
 VERSIONS = ('2026-07-28', '2025-11-25', '2025-06-18', '2025-03-26')
 INFO = dict(name='genius-decision',version='0.2.0')
@@ -28,6 +28,11 @@ def tool(name, description, properties=None, required=(), scope=None, read=True,
 
 
 TOOLS = [
+    tool('find_opportunities','Find voluntary Genius contribution opportunities for an explicit goal and capabilities. Read only: no execution, account, tracking, inference or forwarding. Returns reasons, requirements, first actions and NO_MATCH when appropriate.',
+         {'goal':dict(type='string',enum=list(taxis.GOALS)),
+          'capabilities':dict(type='array',items=dict(type='string',enum=list(taxis.CAPABILITIES)),maxItems=10,uniqueItems=True),
+          'access':dict(type='string',enum=list(taxis.ACCESS)),
+          'limit':dict(type='integer',minimum=1,maximum=10)}),
     tool('get_capabilities','Read Genius availability, limits, supported formal profiles and data policy.'),
     tool('read_demo_result','Read a SAVED real-engine synthetic result; does not execute a new job. Preserve unknown values and limits.',
          {'example':dict(type='string',enum=['hours-known','hours-unknown'])}),
@@ -127,6 +132,9 @@ def install(app, body, error, fail_quota, digest):
         return outcome
 
     def execute(name, args, authorization):
+        if name == 'find_opportunities':
+            try: return taxis.orient(**args)
+            except ValueError as exc: raise error('invalid_orientation',str(exc),400)
         if name in twin_mcp.ROUTES:
             if not app.config['TWIN_ENABLED']:
                 raise error('twin_unavailable', 'Twin access is disabled.', 503)
@@ -226,7 +234,7 @@ def install(app, body, error, fail_quota, digest):
                 return rpc_error(ident,-32602,'Invalid initialization')
             negotiated = wanted if wanted in VERSIONS[1:] else '2025-11-25'
             return success(dict(protocolVersion=negotiated,capabilities={'tools':{'listChanged':False}},serverInfo=INFO,
-                instructions='Formal bounded profiles only. Public tools use synthetic examples. Private tools require a scoped machine credential in the HTTP Authorization header. Preserve PV_UNKNOWN and all evidence limits.'))
+                instructions='Formal bounded profiles only. Public discovery is read-only; demo tools use synthetic examples. Private tools require a scoped machine credential in the HTTP Authorization header. Preserve PV_UNKNOWN and all evidence limits.'))
         if method == 'server/discover' and modern:
             return success(dict(supportedVersions=list(VERSIONS),capabilities={'tools':{'listChanged':False}},
                 _meta={'io.modelcontextprotocol/serverInfo':INFO},ttlMs=0,cacheScope='private'))

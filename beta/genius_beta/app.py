@@ -16,6 +16,7 @@ from .db import connect, dump, initialize, transaction
 from .r2_backup import BackupError, enabled as backup_enabled, health as backup_health, record_deletions
 from .agent_access import install as install_agent_access, required_scope, reserve_agent_job, SCOPES
 from .mcp_access import install as install_mcp_access
+from .taxis import install as install_taxis
 
 
 class APIError(Exception):
@@ -592,6 +593,7 @@ def create_app(overrides=None):
     install_agent_access(app,db,body,digest,APIError,fail_quota,capacity,delete_entity,
         lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok',job_view)
     install_mcp_access(app,body,APIError,fail_quota,digest)
+    install_taxis(app,APIError)
     if app.config['TWIN_ENABLED'] or (app.config['DATA_DIR'] / 'twins').exists():
         from .twin_integration import install
         install(app, db, fail_quota, APIError)
