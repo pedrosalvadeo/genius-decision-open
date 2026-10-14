@@ -1,0 +1,18 @@
+{
+  "format": "genius-mcp-registry-validation/1",
+  "validated_on": "2026-10-14",
+  "command": "mcp-publisher validate capsule/integrations/mcp-registry/server.json",
+  "publisher_version": "1.8.1",
+  "publisher_commit": "f52dc8525a441a3abf5fedc9912152d95af5aab1",
+  "release_url": "https://github.com/modelcontextprotocol/registry/releases/tag/v1.8.1",
+  "linux_amd64_archive_sha256": "a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc",
+  "archive_digest_verified": true,
+  "server_json_sha256": "8ae578eb858d2235cd2fa153d2696169f0c9c68fbb3950d35a5e380fd478c45c",
+  "registry_url": "https://registry.modelcontextprotocol.io",
+  "exit_code": 0,
+  "stdout": "Validating against https://registry.modelcontextprotocol.io...\n✅ server.json is valid\n",
+  "validation_passed": true,
+  "namespace_authenticated": false,
+  "published": false,
+  "name_reserved": false
+}

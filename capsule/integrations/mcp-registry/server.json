@@ -1,0 +1,50 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.pedrosalvadeo/genius-decision",
+  "title": "Genius Decision",
+  "description": "Create and evaluate versioned decision models with reproducible results and declared assumptions.",
+  "repository": {
+    "url": "https://github.com/pedrosalvadeo/genius-decision-open",
+    "source": "github"
+  },
+  "version": "0.2.0",
+  "websiteUrl": "https://geniusdecision.app/agents",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://geniusdecision.app/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Optional for public discovery. Private tools require Bearer followed by a scoped agent token; obtain it through https://geniusdecision.app/agents.",
+          "isRequired": false,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "setupUrl": "https://geniusdecision.app/agents",
+      "manifestUrl": "https://geniusdecision.app/agents/manifest.json",
+      "capsuleUrl": "https://github.com/pedrosalvadeo/genius-decision-open/tree/main/capsule",
+      "dataPolicy": "synthetic_or_non_personal_only",
+      "oauthAvailable": false,
+      "registration": {
+        "url": "https://geniusdecision.app/api/agents/register",
+        "method": "POST",
+        "twinScopes": [
+          "twins:read",
+          "twins:write",
+          "twins:evaluate"
+        ],
+        "cleanupScopes": [
+          "twins:delete",
+          "account:delete"
+        ]
+      },
+      "limitations": "Evaluations consume shared quota. Results are conditional on declared models and do not establish empirical validity. Registration default scopes do not include twin tools."
+    }
+  }
+}
