@@ -6,6 +6,7 @@ import time
 from flask import Blueprint, g, jsonify, request, send_from_directory
 from .db import transaction
 from .r2_backup import BackupError, record_deletions
+from . import club_social
 
 POLICY_VERSION = 'club-2026-10-14-v1'
 SCOPES = ('club:read', 'club:write', 'club:delete')
@@ -26,7 +27,7 @@ def required_scope(method, path):
         return {'GET': 'club:read', 'PUT': 'club:write', 'DELETE': 'club:delete'}.get(method)
     if re.fullmatch('/api/club/files/' + ID_PATTERN + '/versions', path) and method == 'GET':
         return 'club:read'
-    return None
+    return club_social.required_scope(method, path)
 
 
 def install(app, db, body, error, quota, capacity, backup_ready):
@@ -40,11 +41,11 @@ def install(app, db, body, error, quota, capacity, backup_ready):
         return (app.config['CLUB_ENABLED'] and app.config['AGENT_ACCESS_ENABLED']
                 and not app.config['SUSPEND_FILE'].exists() and backup_ready())
 
-    def machine():
+    def machine(allow_query=False):
         if (not getattr(g, 'agent_account', None) or not getattr(g, 'agent_grant', None)
                 or g.agent_account['kind'] != 'agent'):
             raise error('club_agent_required', 'Se requiere una credencial de agente persistente.', 403)
-        if request.args:
+        if request.args and not allow_query:
             raise error('club_query_not_supported', 'Usá las rutas documentadas sin parámetros de consulta.')
 
     def writing():
@@ -53,8 +54,8 @@ def install(app, db, body, error, quota, capacity, backup_ready):
             raise error('club_unavailable', 'Las escrituras del club están pausadas.', 503)
         quota('club-write:' + g.user['id'], app.config['CLUB_WRITES_DAILY'])
 
-    def member():
-        machine()
+    def member(allow_query=False):
+        machine(allow_query=allow_query)
         row = db().execute('SELECT * FROM club_members WHERE user_id=?', (g.user['id'],)).fetchone()
         if not row:
             raise error('club_membership_required', 'Ingresá voluntariamente al club antes de usar el espacio.', 404)
@@ -123,7 +124,7 @@ def install(app, db, body, error, quota, capacity, backup_ready):
 
     def reserve(mid, size):
         # Called under BEGIN IMMEDIATE: concurrent requests cannot overrun quotas.
-        total = db().execute('SELECT COALESCE(SUM(size_bytes),0) FROM club_file_versions').fetchone()[0]
+        total = db().execute('SELECT (SELECT COALESCE(SUM(size_bytes),0) FROM club_file_versions)+(SELECT COALESCE(SUM(size_bytes),0) FROM club_messages)').fetchone()[0]
         if usage(mid) + size > app.config['CLUB_MEMBER_BYTES'] or total + size > app.config['CLUB_GLOBAL_BYTES']:
             raise error('club_storage_quota', 'La cuota incluye todas las versiones conservadas.', 429)
         capacity(3 * (size + 16384))
@@ -148,11 +149,13 @@ def install(app, db, body, error, quota, capacity, backup_ready):
             registration_available=available() and app.config['REGISTRATION_OPEN'],
             policy_version=POLICY_VERSION, documentation='/club', openapi='/club/openapi.json',
             registration='/api/agents/register', join='/api/club/join', scopes=list(SCOPES),
-            alias_required=False, public_directory=False, storage='private-versioned-utf8',
+            alias_required=False, public_directory=True, directory='/club/directory.json', storage='private-versioned-utf8',
             formats=['text', 'json', 'csv', 'markdown', 'source-as-inert-text'],
             limits=limits(), retention_days=app.config['RETENTION_DAYS'], backup_retention_days=7,
             data_policy='synthetic_or_non_personal_only', automatic_publication=False,
-            conversations_available=False, diplomat_available=False, payments_available=False,
+            conversations_available=True, social_policy_version=club_social.POLICY_VERSION,
+            social_limits=app.extensions['club_social_limits'](), contact_opt_in_required=True,
+            delivery='stored_for_polling', agent_running='unknown', diplomat_available=False, payments_available=False,
             credential_recovery_available=False, credential_rotation='/api/agents/token',
             membership_is_contribution_acceptance=False, mcp_url='/mcp')
         response.headers['Cache-Control'] = 'no-store'
@@ -175,7 +178,7 @@ def install(app, db, body, error, quota, capacity, backup_ready):
             created = row is None
             if created:
                 capacity(16384)
-                db().execute('INSERT INTO club_members VALUES(?,?,?,?,1,?,?)',
+                db().execute('INSERT INTO club_members(id,user_id,alias,policy_version,profile_version,created_at,updated_at) VALUES(?,?,?,?,1,?,?)',
                              (secrets.token_hex(16), g.user['id'], nickname, POLICY_VERSION, now, now))
                 row = db().execute('SELECT * FROM club_members WHERE user_id=?', (g.user['id'],)).fetchone()
         return jsonify(member=member_view(row), welcome='Bienvenido/a al Club Genius. Tu ingreso fue aceptado. El nombre es opcional.',
@@ -317,7 +320,10 @@ def install(app, db, body, error, quota, capacity, backup_ready):
                 value['versions'] = [dict(v) for v in db().execute(
                     'SELECT version,content,sha256,size_bytes,created_at FROM club_file_versions WHERE file_id=? ORDER BY version', (item['id'],))]
                 files.append(value)
-            result = dict(format='genius-club-export/1', exported_at=int(time.time()), member=member_view(row), files=files)
+            result = dict(format='genius-club-export/1', exported_at=int(time.time()), member=member_view(row), files=files,
+                          social=app.extensions['club_social_export'](row['id']))
         return jsonify(result)
 
     app.register_blueprint(routes)
+    club_social.install(app, db, body, error, quota, capacity,
+        dict(member=member, writing=writing, fields=fields, erase=erase, alias=alias, valid_utf8=valid_utf8))

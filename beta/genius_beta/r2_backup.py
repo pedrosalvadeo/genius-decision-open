@@ -223,7 +223,7 @@ def record_deletions(rows, store=None, key=None):
         return
     clean = []
     for identifier, kind, when in rows:
-        if kind not in ('user', 'case', 'twin_case', 'club_member', 'club_file') or not isinstance(identifier, str) or not 1 <= len(identifier) <= 128 or type(when) is not int:
+        if kind not in ('user', 'case', 'twin_case', 'club_member', 'club_file', 'club_social_profile', 'club_conversation', 'club_contact_block') or not isinstance(identifier, str) or not 1 <= len(identifier) <= 128 or type(when) is not int:
             raise BackupError('INVALID_PRIVACY_EVENT')
         clean.append([identifier, kind, when])
     payload = canonical({'format': 'genius-deletion-intents/1', 'events': sorted(clean)})
@@ -259,7 +259,7 @@ def read_deletions(store, key):
             if doc.get('format') != 'genius-deletion-intents/1' or not isinstance(doc.get('events'), list):
                 raise BackupError('PRIVACY_FORMAT')
             for identifier, kind, when in doc['events']:
-                if kind not in ('user', 'case', 'twin_case', 'club_member', 'club_file') or not isinstance(identifier, str) or not 1 <= len(identifier) <= 128 or type(when) is not int:
+                if kind not in ('user', 'case', 'twin_case', 'club_member', 'club_file', 'club_social_profile', 'club_conversation', 'club_contact_block') or not isinstance(identifier, str) or not 1 <= len(identifier) <= 128 or type(when) is not int:
                     raise BackupError('INVALID_PRIVACY_EVENT')
                 ledger[identifier, kind] = max(when, ledger.get((identifier, kind), when))
                 if len(ledger) > MAX_OBJECTS:
@@ -432,9 +432,9 @@ def recover(store, key, object_key, output, services_stopped=False):
         expected = [(p.name, hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(MIGRATIONS.glob('*.sql'))]
         with contextlib.closing(helper.read_only(saved)) as db, contextlib.closing(sqlite3.connect(privacy)) as current:
             saved_versions = helper.versions(db)
-            # Reviewed additive migrations 003/004/005 may upgrade exact historical prefixes.
+            # Reviewed additive migrations 003/004/005/006 may upgrade exact historical prefixes.
             # Never accept reordered, skipped or modified historical migrations.
-            approved = ('003_agent_access.sql', '004_contribution_inbox.sql', '005_club.sql')
+            approved = ('003_agent_access.sql', '004_contribution_inbox.sql', '005_club.sql', '006_club_social.sql')
             supported = [expected[:n] for n in range(2, len(expected) + 1)
                          if all(name in approved for name, _ in expected[n:])]
             if saved_versions not in supported:
@@ -464,6 +464,19 @@ def recover(store, key, object_key, output, services_stopped=False):
         with contextlib.closing(sqlite3.connect(restored)) as db:
             db.execute('PRAGMA foreign_keys=ON')
             db.execute('PRAGMA secure_delete=ON')
+            # A pre-social snapshot had no table in which to apply later blocks.
+            # Reapply after additive migration, before the file can be published.
+            for identifier, kind, when in ledger:
+                if kind != 'club_contact_block':
+                    continue
+                parts = identifier.split('_')
+                if len(parts) != 2 or any(not re.fullmatch(r'[a-f0-9]{32}', p) for p in parts):
+                    raise BackupError('INVALID_CONTACT_BLOCK')
+                a,b=parts
+                if db.execute('SELECT COUNT(*) FROM club_members WHERE id IN (?,?)',(a,b)).fetchone()[0] == 2:
+                    db.execute('INSERT OR IGNORE INTO club_blocks VALUES(?,?,?,?)',(identifier,a,b,when))
+                    lo,hi=sorted(parts)
+                    db.execute('DELETE FROM club_conversations WHERE pair_low=? AND pair_high=?',(lo,hi))
             cutoff = int(time.time()) - 90 * INTERVAL
             db.execute('DELETE FROM cases WHERE updated_at<?', (cutoff,))
             db.execute('DELETE FROM users WHERE last_active<?', (cutoff,))
