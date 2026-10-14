@@ -152,9 +152,9 @@ def create_app(overrides=None):
                 raise APIError('origin_denied', 'Origen no autorizado.', 403)
             if request.headers.get('Sec-Fetch-Site') == 'cross-site':
                 raise APIError('origin_denied', 'Solicitud entre sitios no autorizada.', 403)
-            if backup_enabled() and backup_health(app.config['DATA_DIR']) != 'ok' and request.method != 'DELETE' and not request.path.endswith('/cancel') and request.path not in ('/api/logout', '/api/login', '/api/me'):
+            if backup_enabled() and backup_health(app.config['DATA_DIR']) != 'ok' and request.method != 'DELETE' and not request.path.endswith('/cancel') and request.path != '/api/club/blocks' and request.path not in ('/api/logout', '/api/login', '/api/me'):
                 raise APIError('backup_unavailable', 'Las nuevas operaciones están temporalmente pausadas. Tus datos siguen disponibles.', 503)
-            if app.config['SUSPEND_FILE'].exists() and request.method != 'DELETE' and not request.path.endswith('/cancel') and request.path not in ('/api/logout', '/api/login', '/api/me'):
+            if app.config['SUSPEND_FILE'].exists() and request.method != 'DELETE' and not request.path.endswith('/cancel') and request.path != '/api/club/blocks' and request.path not in ('/api/logout', '/api/login', '/api/me'):
                 raise APIError('service_suspended', 'Servicio temporalmente suspendido.', 503)
         if request.path.startswith('/api/examples/') or request.path in ('/api/config', '/api/meta', '/api/health', '/api/register', '/api/login', '/api/agents/register', '/api/agents/demo'):
             return
@@ -194,7 +194,7 @@ def create_app(overrides=None):
             if scope is None or (scope and scope not in scopes):
                 raise APIError('insufficient_scope','Esta credencial no permite la operación.',403)
             if (not app.config['AGENT_ACCESS_ENABLED'] and request.method not in ('GET','HEAD','DELETE')
-                    and not request.path.endswith('/cancel')):
+                    and not request.path.endswith('/cancel') and request.path != '/api/club/blocks'):
                 raise APIError('agent_access_closed','Las nuevas operaciones de agentes están pausadas.',503)
             g.agent_grant, g.agent_scopes = grant, scopes
         db().execute('UPDATE users SET last_active=? WHERE id=?', (now,uid))

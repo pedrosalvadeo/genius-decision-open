@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import sqlite3
 import tempfile
@@ -186,10 +187,21 @@ def restore(source, output, current_db, services_stopped=False):
                     db.execute("DELETE FROM users WHERE id=?", (identifier,))
                 elif entity_type == "case":
                     db.execute("DELETE FROM cases WHERE id=?", (identifier,))
-                elif entity_type in ('club_member', 'club_file'):
-                    table = 'club_members' if entity_type == 'club_member' else 'club_files'
+                elif entity_type in ('club_member', 'club_file', 'club_social_profile', 'club_conversation'):
+                    table = {'club_member':'club_members', 'club_file':'club_files',
+                             'club_social_profile':'club_social_profiles', 'club_conversation':'club_conversations'}[entity_type]
                     if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)).fetchone():
                         db.execute('DELETE FROM ' + table + ' WHERE id=?', (identifier,))
+                elif entity_type == 'club_contact_block':
+                    parts = identifier.split('_')
+                    if len(parts) != 2 or any(not re.fullmatch(r'[a-f0-9]{32}', p) for p in parts):
+                        raise RuntimeError('Invalid contact block; keep restored file offline')
+                    if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='club_blocks'").fetchone():
+                        a,b=parts
+                        if db.execute('SELECT COUNT(*) FROM club_members WHERE id IN (?,?)',(a,b)).fetchone()[0] == 2:
+                            db.execute('INSERT OR IGNORE INTO club_blocks VALUES(?,?,?,?)',(identifier,a,b,_))
+                            lo,hi=sorted(parts)
+                            db.execute('DELETE FROM club_conversations WHERE pair_low=? AND pair_high=?',(lo,hi))
                 elif entity_type == 'twin_case':
                     pass  # Applied to the tenant snapshots below.
                 else:
@@ -197,6 +209,10 @@ def restore(source, output, current_db, services_stopped=False):
             for (identifier,) in db.execute("SELECT id FROM users").fetchall():
                 if identifier not in live_users:
                     db.execute("DELETE FROM users WHERE id=?", (identifier,))
+            if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='club_social_profiles'").fetchone():
+                db.execute('DELETE FROM club_social_profiles')
+                db.execute('UPDATE club_members SET social_version=social_version+1')
+                db.execute("UPDATE club_conversations SET status='closed',version=version+1")
             db.execute("DELETE FROM sessions")
             db.execute("DELETE FROM api_tokens")
             db.execute("DELETE FROM research_candidates")
