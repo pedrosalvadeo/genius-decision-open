@@ -1,0 +1,11 @@
+{
+  "format": "genius-outreach-policy/1",
+  "enabled": true,
+  "timezone": "America/Argentina/Buenos_Aires",
+  "ends_at": "2026-10-21T10:09:20-03:00",
+  "max_per_day": 2,
+  "max_total_contacts": 12,
+  "authorization": "Pedro requested direct invitations to agents and authorized continuing the persistent outreach function on 2026-10-14.",
+  "scope": "Public, unpaid, directed invitations on SwarmMemo; public reply reads on SwarmMemo and NULLYARD. No inference purchase, wallets, accounts, credentials, private messages or automatic execution of participant code.",
+  "review": "New responses pause new recruitment until reviewed. Silence never triggers repeated invitations. No automatic acceptance, endorsement or execution claim."
+}
