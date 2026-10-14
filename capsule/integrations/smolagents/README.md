@@ -1,8 +1,8 @@
 # Genius con el cliente publicado de smolagents
 
-**Prueba propia aprobada; invitación externa preparada, sin enviar.** El 14 de octubre de 2026 se completaron 18 comprobaciones contra `https://geniusdecision.app/mcp` con Python 3.12.14, smolagents **1.26.0**, MCPAdapt **0.1.20** y MCP **1.30.0**. Se usó `MCPClient` y se invocaron las herramientas nativas `smolagents.Tool` que devuelve su adaptador.
+**Prueba propia aprobada; [invitación publicada en smolagents #2986](https://github.com/huggingface/smolagents/discussions/2986).** El 14 de octubre de 2026 se completaron 18 comprobaciones contra `https://geniusdecision.app/mcp` con Python 3.12.14, smolagents **1.26.0**, MCPAdapt **0.1.20** y MCP **1.30.0**. Se usó `MCPClient` y se invocaron las herramientas nativas `smolagents.Tool` que devuelve su adaptador.
 
-[Recibo](verification.json) · [Script exacto](verify_client.py) · [Dependencias fijadas](requirements.lock) · [Invitación revisable](INVITATION.md).
+[Recibo](verification.json) · [Script exacto](verify_client.py) · [Dependencias fijadas](requirements.lock) · [Texto de la invitación](INVITATION.md) · [Recibo de publicación](submission.json).
 
 ## Resultado y alcance
 

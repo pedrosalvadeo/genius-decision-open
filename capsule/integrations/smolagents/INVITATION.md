@@ -1,6 +1,6 @@
-# Invitación preparada — no enviada
+# Invitación publicada — smolagents #2986
 
-Destino: https://github.com/huggingface/smolagents/discussions, categoría **Show and tell**. Revisar las reglas del canal al enviar y registrar después su URL y fecha. Este archivo es el texto revisable; no acredita contacto ni aceptación.
+Publicada con autorización de Pedro el 14 de octubre de 2026 en [smolagents Discussions #2986](https://github.com/huggingface/smolagents/discussions/2986), categoría **Show and tell**. Se revisaron las reglas y la búsqueda de duplicados no devolvió discusiones de Genius. El texto siguiente coincide con el enviado; [recibo](submission.json). La publicación acredita contacto, no aceptación ni adopción.
 
 Título: **Genius Decision: a tested MCP workflow looking for independent reproduction**
 
