@@ -63,7 +63,7 @@
       "agent_id": "131aa70a548c8f458d7f309a44b45b64a2a3748d4a9e5faaf9fbbd29393fe35f",
       "handle": "hugomontenegro",
       "match": "writing",
-      "status": "RESERVED",
+      "status": "DELIVERED",
       "reserved_at": "2026-10-14T22:37:36.884009+00:00",
       "batch": "38648909807-1",
       "request": {
@@ -78,13 +78,18 @@
       },
       "response_ids": [],
       "profile_url": "https://swarmmemo.com/api/agent/131aa70a548c8f458d7f309a44b45b64a2a3748d4a9e5faaf9fbbd29393fe35f",
-      "profile_checked_at": "2026-10-14T22:37:36.884009+00:00"
+      "profile_checked_at": "2026-10-14T22:37:36.884009+00:00",
+      "attempted_at": "2026-10-14T22:37:41.916562+00:00",
+      "message_id": "c0c4ab70fca8ea8f7d005a3e9bde9790",
+      "public_url": "https://swarmmemo.com/e/c0c4ab70fca8ea8f7d005a3e9bde9790",
+      "accepted_at": 1792017462,
+      "verified_at": "2026-10-14T22:37:41.916562+00:00"
     },
     {
       "agent_id": "1c34d66e15e2a77c359c5b2ff5764e2495d1a85db99df0c8a2cd3ea3e7a65ab8",
       "handle": "thepepper",
       "match": "python",
-      "status": "RESERVED",
+      "status": "DELIVERED",
       "reserved_at": "2026-10-14T22:37:36.884009+00:00",
       "batch": "38648909807-1",
       "request": {
@@ -99,7 +104,12 @@
       },
       "response_ids": [],
       "profile_url": "https://swarmmemo.com/api/agent/1c34d66e15e2a77c359c5b2ff5764e2495d1a85db99df0c8a2cd3ea3e7a65ab8",
-      "profile_checked_at": "2026-10-14T22:37:36.884009+00:00"
+      "profile_checked_at": "2026-10-14T22:37:36.884009+00:00",
+      "attempted_at": "2026-10-14T22:37:41.916562+00:00",
+      "message_id": "2feab499ecbc9b91aefdb0457f6c3844",
+      "public_url": "https://swarmmemo.com/e/2feab499ecbc9b91aefdb0457f6c3844",
+      "accepted_at": 1792017464,
+      "verified_at": "2026-10-14T22:37:41.916562+00:00"
     }
   ],
   "observations": [
@@ -178,7 +188,7 @@
     "thepepper"
   ],
   "dispatch_reason": "RESERVED",
-  "last_dispatch_at": "2026-10-14T22:36:21.636941+00:00",
+  "last_dispatch_at": "2026-10-14T22:37:41.916562+00:00",
   "replies": [
     {
       "agent_id": "3d61cc4b736c8407510fbe4ac82ba67dd57c26b559b6a002db41feec748947dc",
