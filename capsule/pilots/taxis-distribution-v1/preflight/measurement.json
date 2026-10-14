@@ -1,0 +1,256 @@
+{
+  "format": "genius-distribution-benchmark/1",
+  "source_commit": "2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+  "manifest_sha256": "dbf40982b6d492fa7d594a5e2024dea08e4064e850f2519f144c2a35d5573bda",
+  "observed_at": "2026-10-14T11:49:12.386875+00:00",
+  "files": 409,
+  "environment": {
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "system": "Linux",
+    "machine": "x86_64",
+    "zlib_compile_version": "1.3.2",
+    "zlib_runtime_version": "1.3.2"
+  },
+  "method": "In-memory creation and reading/hash verification of every file; one warm-up per format, five measured repetitions in seeded order. No network or disk extraction.",
+  "artifacts": {
+    "tar": {
+      "bytes": 7106560,
+      "sha256": "62d2c04bdd8338a4a067e6e739351bfdcd84572c52fdeb3f17b541f226ad442d",
+      "median_read_cpu_ns": 34021020,
+      "median_create_cpu_ns": 43993333
+    },
+    "gzip": {
+      "bytes": 1565558,
+      "sha256": "729be3678ec4e87076283534d762b7d9c468e04f3537ae0617b58a1c57fac203",
+      "median_read_cpu_ns": 79468027,
+      "median_create_cpu_ns": 891483298
+    },
+    "zip": {
+      "bytes": 1814523,
+      "sha256": "cee555e2d02f9b9f2dca917983da8b22c9b0eb0efd7a97602ed1e026a6efbfb8",
+      "median_read_cpu_ns": 81851747,
+      "median_create_cpu_ns": 415163236
+    }
+  },
+  "samples": [
+    {
+      "repeat": 1,
+      "position": 1,
+      "format": "gzip",
+      "create": {
+        "wall_ns": 534776577,
+        "cpu_ns": 534001580
+      },
+      "read_and_hash": {
+        "wall_ns": 73517822,
+        "cpu_ns": 73467595
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 1,
+      "position": 2,
+      "format": "tar",
+      "create": {
+        "wall_ns": 78720719,
+        "cpu_ns": 78724003
+      },
+      "read_and_hash": {
+        "wall_ns": 46803981,
+        "cpu_ns": 46772285
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 1,
+      "position": 3,
+      "format": "zip",
+      "create": {
+        "wall_ns": 619518461,
+        "cpu_ns": 609998519
+      },
+      "read_and_hash": {
+        "wall_ns": 153814863,
+        "cpu_ns": 153822246
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 2,
+      "position": 1,
+      "format": "gzip",
+      "create": {
+        "wall_ns": 1982710299,
+        "cpu_ns": 1982460424
+      },
+      "read_and_hash": {
+        "wall_ns": 126185961,
+        "cpu_ns": 126193585
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 2,
+      "position": 2,
+      "format": "tar",
+      "create": {
+        "wall_ns": 73390300,
+        "cpu_ns": 73394941
+      },
+      "read_and_hash": {
+        "wall_ns": 34016389,
+        "cpu_ns": 34021020
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 2,
+      "position": 3,
+      "format": "zip",
+      "create": {
+        "wall_ns": 831945771,
+        "cpu_ns": 831197230
+      },
+      "read_and_hash": {
+        "wall_ns": 79786254,
+        "cpu_ns": 79791696
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 3,
+      "position": 1,
+      "format": "tar",
+      "create": {
+        "wall_ns": 43991459,
+        "cpu_ns": 43993333
+      },
+      "read_and_hash": {
+        "wall_ns": 32279726,
+        "cpu_ns": 32286080
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 3,
+      "position": 2,
+      "format": "zip",
+      "create": {
+        "wall_ns": 390203085,
+        "cpu_ns": 390190280
+      },
+      "read_and_hash": {
+        "wall_ns": 86341810,
+        "cpu_ns": 86360815
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 3,
+      "position": 3,
+      "format": "gzip",
+      "create": {
+        "wall_ns": 1278928131,
+        "cpu_ns": 1278891814
+      },
+      "read_and_hash": {
+        "wall_ns": 79461634,
+        "cpu_ns": 79468027
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 4,
+      "position": 1,
+      "format": "tar",
+      "create": {
+        "wall_ns": 23901096,
+        "cpu_ns": 23901495
+      },
+      "read_and_hash": {
+        "wall_ns": 25655683,
+        "cpu_ns": 25661512
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 4,
+      "position": 2,
+      "format": "gzip",
+      "create": {
+        "wall_ns": 891500327,
+        "cpu_ns": 891483298
+      },
+      "read_and_hash": {
+        "wall_ns": 84349197,
+        "cpu_ns": 84355464
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 4,
+      "position": 3,
+      "format": "zip",
+      "create": {
+        "wall_ns": 415154358,
+        "cpu_ns": 415163236
+      },
+      "read_and_hash": {
+        "wall_ns": 81856568,
+        "cpu_ns": 81851747
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 5,
+      "position": 1,
+      "format": "tar",
+      "create": {
+        "wall_ns": 29759446,
+        "cpu_ns": 29759476
+      },
+      "read_and_hash": {
+        "wall_ns": 37801654,
+        "cpu_ns": 37784346
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 5,
+      "position": 2,
+      "format": "zip",
+      "create": {
+        "wall_ns": 312764690,
+        "cpu_ns": 312754289
+      },
+      "read_and_hash": {
+        "wall_ns": 40564019,
+        "cpu_ns": 40568628
+      },
+      "integrity_verified": true
+    },
+    {
+      "repeat": 5,
+      "position": 3,
+      "format": "gzip",
+      "create": {
+        "wall_ns": 493702371,
+        "cpu_ns": 493676565
+      },
+      "read_and_hash": {
+        "wall_ns": 41829633,
+        "cpu_ns": 41834715
+      },
+      "integrity_verified": true
+    }
+  ],
+  "limits": [
+    "CPU timings vary across runs and machines; medians are observations, not universal constants.",
+    "Wall time includes scheduling; CPU time is local process time.",
+    "Only this Python reader was tested; external-client compatibility is unknown.",
+    "Network latency, transfer success, retries, peak memory and disk extraction were not measured."
+  ],
+  "experiment_sessions": 0,
+  "independent_external_operators": 0
+}

@@ -1,0 +1,49 @@
+{
+  "format": "genius-case-evidence/1",
+  "case_id": "genius-distribution-public-2026-10-14",
+  "question": "¿Qué formatos preservan las fuentes y qué compromisos presentan entre bytes y CPU de lectura local?",
+  "context": "Decisión operacional real sobre la cápsula pública; análisis retrospectivo interno.",
+  "origin": "real",
+  "observed_at": "2026-10-14T11:49:12.386875+00:00",
+  "data_authority": "Fuentes Genius públicas Apache-2.0; mediciones locales sin datos personales.",
+  "sources": [
+    {
+      "id": "measurement",
+      "reference": "measurement.json",
+      "accessed_at": "2026-10-14T11:49:12.386875+00:00"
+    },
+    {
+      "id": "source",
+      "reference": "https://github.com/pedrosalvadeo/genius-decision-open/tree/2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+      "accessed_at": "2026-10-14T11:49:12.386875+00:00"
+    }
+  ],
+  "observations": [
+    {
+      "source_id": "measurement",
+      "statement": "tar: 7106560 bytes, SHA256 62d2c04bdd8338a4a067e6e739351bfdcd84572c52fdeb3f17b541f226ad442d, mediana CPU de lectura 34021020 ns; 409 archivos íntegros en cada repetición."
+    },
+    {
+      "source_id": "measurement",
+      "statement": "gzip: 1565558 bytes, SHA256 729be3678ec4e87076283534d762b7d9c468e04f3537ae0617b58a1c57fac203, mediana CPU de lectura 79468027 ns; 409 archivos íntegros en cada repetición."
+    },
+    {
+      "source_id": "measurement",
+      "statement": "zip: 1814523 bytes, SHA256 cee555e2d02f9b9f2dca917983da8b22c9b0eb0efd7a97602ed1e026a6efbfb8, mediana CPU de lectura 81851747 ns; 409 archivos íntegros en cada repetición."
+    }
+  ],
+  "assumptions": [
+    "Tamaños y mediana de CPU de lectura/hash medidos en measurement.json. Análisis retrospectivo del snapshot.",
+    "Una lectura local completa, en memoria, con este Python. Excluye red, reintentos, memoria máxima, escritura a disco y otros clientes.",
+    "Reducir bytes y CPU de lectura sin sumar unidades ni inventar ponderaciones. Presupuestos comparativos iguales al máximo observado por dimensión; no son límites de producción.",
+    "Masa unitaria sobre el inventario observado. No estima distribuciones futuras de CPU, éxito de red ni PVS."
+  ],
+  "unknowns": [
+    "CPU timings vary across runs and machines; medians are observations, not universal constants.",
+    "Wall time includes scheduling; CPU time is local process time.",
+    "Only this Python reader was tested; external-client compatibility is unknown.",
+    "Network latency, transfer success, retries, peak memory and disk extraction were not measured."
+  ],
+  "empirical_status": "OBSERVATIONS_COLLECTED",
+  "publication": "public"
+}

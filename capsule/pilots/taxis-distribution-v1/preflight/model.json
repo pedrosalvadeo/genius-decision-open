@@ -1,0 +1,183 @@
+{
+  "profile": "STOCK_FLOW_FINITE_V1",
+  "name": "Distribución de cápsula publicada — bytes y CPU de lectura observados",
+  "horizon": 1,
+  "step_unit": "step",
+  "stocks": [
+    {
+      "id": "remaining",
+      "label": "Margen de transferencia respecto del TAR medido",
+      "unit": "byte",
+      "kind": "persistent",
+      "initial": "7106560/1",
+      "capacity": "7106560/1"
+    },
+    {
+      "id": "cpu_remaining",
+      "label": "Margen comparativo de CPU de lectura",
+      "unit": "cpu_nanosecond",
+      "kind": "persistent",
+      "initial": "81851747/1",
+      "capacity": "81851747/1"
+    }
+  ],
+  "carriers": [
+    {
+      "id": "project",
+      "label": "Proyecto Genius (condición operacional, no bienestar humano)",
+      "kind": "organization"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "deliver",
+      "label": "Entregar las mismas fuentes"
+    }
+  ],
+  "initial_capabilities": [
+    "deliver"
+  ],
+  "actions": [
+    {
+      "id": "send_tar",
+      "label": "Enviar tar",
+      "requires": [
+        "deliver"
+      ],
+      "withdrawals": {
+        "remaining": "7106560/1",
+        "cpu_remaining": "34021020/1"
+      },
+      "deposits": {},
+      "add_capabilities": [],
+      "remove_capabilities": []
+    },
+    {
+      "id": "send_gzip",
+      "label": "Enviar gzip",
+      "requires": [
+        "deliver"
+      ],
+      "withdrawals": {
+        "remaining": "1565558/1",
+        "cpu_remaining": "79468027/1"
+      },
+      "deposits": {},
+      "add_capabilities": [],
+      "remove_capabilities": []
+    },
+    {
+      "id": "send_zip",
+      "label": "Enviar zip",
+      "requires": [
+        "deliver"
+      ],
+      "withdrawals": {
+        "remaining": "1814523/1",
+        "cpu_remaining": "81851747/1"
+      },
+      "deposits": {},
+      "add_capabilities": [],
+      "remove_capabilities": []
+    }
+  ],
+  "policies": [
+    {
+      "id": "tar",
+      "label": "tar",
+      "default_action": "send_tar",
+      "rules": []
+    },
+    {
+      "id": "gzip",
+      "label": "gzip",
+      "default_action": "send_gzip",
+      "rules": []
+    },
+    {
+      "id": "zip",
+      "label": "zip",
+      "default_action": "send_zip",
+      "rules": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "measured_snapshot",
+      "label": "Artefactos producidos y medidos en esta ejecución",
+      "events": [
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {},
+          "remove_capabilities": []
+        }
+      ]
+    }
+  ],
+  "law": {
+    "measured_snapshot": "1/1"
+  },
+  "welfare": [
+    {
+      "carrier": "project",
+      "dimension": "transfer_margin",
+      "label": "Margen de bytes; condición operacional declarada",
+      "stock": "remaining",
+      "direction": "higher"
+    },
+    {
+      "carrier": "project",
+      "dimension": "read_cpu_margin",
+      "label": "Margen de CPU local observada; sin agregación con bytes",
+      "stock": "cpu_remaining",
+      "direction": "higher"
+    }
+  ],
+  "task": {
+    "kind": "operational",
+    "label": "Conservar todas las fuentes dentro de presupuestos comparativos declarados",
+    "living_carriers": [],
+    "conditions": [
+      {
+        "stock": "remaining",
+        "op": "ge",
+        "threshold": "0/1"
+      },
+      {
+        "stock": "cpu_remaining",
+        "op": "ge",
+        "threshold": "0/1"
+      }
+    ],
+    "require_action_success": true
+  },
+  "require_all_scenarios": true,
+  "selection": "unique",
+  "assumptions": [
+    {
+      "id": "Measurement",
+      "kind": "CALIBRATION",
+      "statement": "Tamaños y mediana de CPU de lectura/hash medidos en measurement.json. Análisis retrospectivo del snapshot.",
+      "provenance": "Medición interna directa; no evaluación externa"
+    },
+    {
+      "id": "Scope",
+      "kind": "MODEL",
+      "statement": "Una lectura local completa, en memoria, con este Python. Excluye red, reintentos, memoria máxima, escritura a disco y otros clientes.",
+      "provenance": "Método de benchmark.py"
+    },
+    {
+      "id": "Criterion",
+      "kind": "NORMATIVE",
+      "statement": "Reducir bytes y CPU de lectura sin sumar unidades ni inventar ponderaciones. Presupuestos comparativos iguales al máximo observado por dimensión; no son límites de producción.",
+      "provenance": "Criterio técnico propuesto; sujeto a revisión del receptor"
+    },
+    {
+      "id": "SnapshotLaw",
+      "kind": "PROBABILITY",
+      "statement": "Masa unitaria sobre el inventario observado. No estima distribuciones futuras de CPU, éxito de red ni PVS.",
+      "provenance": "Modelo determinista de observaciones ya recogidas"
+    }
+  ]
+}

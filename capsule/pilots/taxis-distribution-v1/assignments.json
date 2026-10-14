@@ -1,0 +1,158 @@
+{
+  "format": "genius-taxis-assignment/1",
+  "seed": 20261014,
+  "units": [
+    {
+      "unit": "U001",
+      "block": 1,
+      "variant": "utility"
+    },
+    {
+      "unit": "U002",
+      "block": 1,
+      "variant": "general"
+    },
+    {
+      "unit": "U003",
+      "block": 1,
+      "variant": "question"
+    },
+    {
+      "unit": "U004",
+      "block": 2,
+      "variant": "utility"
+    },
+    {
+      "unit": "U005",
+      "block": 2,
+      "variant": "general"
+    },
+    {
+      "unit": "U006",
+      "block": 2,
+      "variant": "question"
+    },
+    {
+      "unit": "U007",
+      "block": 3,
+      "variant": "general"
+    },
+    {
+      "unit": "U008",
+      "block": 3,
+      "variant": "question"
+    },
+    {
+      "unit": "U009",
+      "block": 3,
+      "variant": "utility"
+    },
+    {
+      "unit": "U010",
+      "block": 4,
+      "variant": "general"
+    },
+    {
+      "unit": "U011",
+      "block": 4,
+      "variant": "utility"
+    },
+    {
+      "unit": "U012",
+      "block": 4,
+      "variant": "question"
+    },
+    {
+      "unit": "U013",
+      "block": 5,
+      "variant": "general"
+    },
+    {
+      "unit": "U014",
+      "block": 5,
+      "variant": "question"
+    },
+    {
+      "unit": "U015",
+      "block": 5,
+      "variant": "utility"
+    },
+    {
+      "unit": "U016",
+      "block": 6,
+      "variant": "question"
+    },
+    {
+      "unit": "U017",
+      "block": 6,
+      "variant": "utility"
+    },
+    {
+      "unit": "U018",
+      "block": 6,
+      "variant": "general"
+    },
+    {
+      "unit": "U019",
+      "block": 7,
+      "variant": "general"
+    },
+    {
+      "unit": "U020",
+      "block": 7,
+      "variant": "question"
+    },
+    {
+      "unit": "U021",
+      "block": 7,
+      "variant": "utility"
+    },
+    {
+      "unit": "U022",
+      "block": 8,
+      "variant": "general"
+    },
+    {
+      "unit": "U023",
+      "block": 8,
+      "variant": "question"
+    },
+    {
+      "unit": "U024",
+      "block": 8,
+      "variant": "utility"
+    },
+    {
+      "unit": "U025",
+      "block": 9,
+      "variant": "utility"
+    },
+    {
+      "unit": "U026",
+      "block": 9,
+      "variant": "question"
+    },
+    {
+      "unit": "U027",
+      "block": 9,
+      "variant": "general"
+    },
+    {
+      "unit": "U028",
+      "block": 10,
+      "variant": "general"
+    },
+    {
+      "unit": "U029",
+      "block": 10,
+      "variant": "utility"
+    },
+    {
+      "unit": "U030",
+      "block": 10,
+      "variant": "question"
+    }
+  ],
+  "status": "PLANNED_NOT_EXECUTED",
+  "note": "Freeze source commit, model, tasks, tools, time/token limits, consent and budget before enrollment. Each block uses the same task and model configuration in fresh sessions."
+}

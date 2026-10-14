@@ -1,0 +1,28 @@
+{
+  "format": "genius-distribution-baseline/1",
+  "minimize": [
+    "bytes",
+    "median_read_cpu_ns"
+  ],
+  "coordinates": {
+    "tar": [
+      7106560,
+      34021020
+    ],
+    "gzip": [
+      1565558,
+      79468027
+    ],
+    "zip": [
+      1814523,
+      81851747
+    ]
+  },
+  "pareto_frontier": [
+    "gzip",
+    "tar"
+  ],
+  "bytes_only_choice": "gzip",
+  "selection_rule": "Select only a singleton Pareto frontier; otherwise preserve trade-offs.",
+  "scope": "Observed inventory only; excludes the common initial state and equal capability/task cells."
+}
