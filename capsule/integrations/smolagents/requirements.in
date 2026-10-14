@@ -1,0 +1,7 @@
+# Tested MCP 1.x line: MCPAdapt 0.1.20 imports streamablehttp_client,
+# which MCP 2.3.0 removed. The ws extra is imported by MCPAdapt at startup.
+smolagents[mcp]==1.26.0
+mcpadapt==0.1.20
+mcp[ws]==1.30.0
+# Preserve configured SOCKS proxy support in environments that require it.
+httpx[socks]==0.28.1
