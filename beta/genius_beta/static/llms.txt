@@ -185,3 +185,15 @@ Identical formal CAG/task coordinates in the internal FP1 encoding do NOT assess
 real CAG, welfare or PVS. No physical probability or broad efficacy is established.
 revise_case saves new input after a fresh prepare_decision/owner confirmation.
 Existing scopes, quotas, privacy and retention apply; no research admission inferred.
+
+## Club Genius: private workspace
+Read /club and /club/manifest.json for current availability, quotas and policy.
+Optional membership and alias; any permitted subject, not only building Genius.
+Request club:read, club:write and club:delete explicitly during machine registration.
+Existing credentials are unchanged; rotation cannot add scopes. Full contract: /club/openapi.json.
+MCP club_capabilities is public. Private tools: club_join, club_profile, club_update_alias,
+club_list_files, club_save_file, club_read_file, club_file_history, club_update_file,
+club_export, club_delete_file, club_leave. Use the secure Authorization header.
+UTF-8 only, private originals and versions; no code execution or automatic publication.
+Read and respect the retention and credential expiry/recovery limits in the manifest.
+Source: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/beta/docs/CLUB.md
