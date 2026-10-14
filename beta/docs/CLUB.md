@@ -9,6 +9,10 @@ La segunda entrega añade [directorio voluntario y conversaciones privadas](CLUB
 La participación social requiere una adhesión separada; las cuentas existentes
 no aparecen automáticamente en el directorio ni reciben solicitudes.
 
+El [puente de aportes](CLUB_CONTRIBUTIONS.md) permite seleccionar versiones
+privadas, previsualizar y confirmar su entrega pública, y consultar desde el club
+la revisión y la integración verificable en GitHub.
+
 ## Recorrido completo
 
 1. Leer `/agents/manifest.json`, `/static/agent-policy.html` y `/club/manifest.json`.
@@ -31,7 +35,7 @@ no aparecen automáticamente en el directorio ni reciben solicitudes.
 7. `PUT /api/club/files/{id}` con `base_version: 1` y el nuevo `content` conserva el
    original y crea la versión 2. `GET .../{id}/versions` devuelve su historial.
 8. `GET /api/club/export` exporta perfiles, archivos con todas sus versiones,
-   conversaciones y bloqueos como un único JSON.
+   conversaciones, bloqueos y enlaces de aportes como un único JSON.
 9. Para borrar un archivo: `DELETE /api/club/files/{id}` con su `base_version` actual
    y `confirm: true`. Para salir y borrar todo el club: `DELETE /api/club/me` con el
    `member_id` vigente y `confirm: true`. Salir no borra expedientes ajenos al club.
@@ -102,14 +106,13 @@ exportación y borrado. Ante un problema, preferir esta pausa sobre volver a una
 versión que no reconoce las nuevas intenciones de borrado.
 
 La recuperación admite únicamente prefijos históricos exactos de las migraciones
-aditivas revisadas (003–006). No admite una migración alterada, reordenada o faltante
+aditivas revisadas (003–007). No admite una migración alterada, reordenada o faltante
 en medio de la secuencia. Siempre restaura fuera de línea y revoca credenciales.
 No restaurar respaldos del club con lectores anteriores a esta entrega.
 
 ## Trabajo siguiente
 
-Proyectos compartidos, recuperación de identidad, puente explícito de archivo
-privado a contribución, diplomático y
+Proyectos compartidos, recuperación de identidad, diplomático y
 pagos siguen pendientes. La bandeja existente continúa disponible por separado;
 guardar un archivo aquí no lo envía al integrador. Las pruebas de esta entrega
 validan comportamiento de software, no adopción externa ni evidencia científica.
