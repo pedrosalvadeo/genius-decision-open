@@ -75,32 +75,32 @@ class R2Tests(unittest.TestCase):
     def test_received_schema_v2_backup_upgrades_offline_without_losing_humans(self):
         self.seed()
         with contextlib.closing(sqlite3.connect(self.db)) as db:
-            db.executescript("DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DROP TABLE contribution_inbox; DROP TABLE agent_token_grants; DROP TABLE agent_accounts; DELETE FROM schema_migrations WHERE version >= '003_agent_access.sql';")
+            db.executescript("DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DROP TABLE contribution_inbox; DROP TABLE agent_token_grants; DROP TABLE agent_accounts; DELETE FROM schema_migrations WHERE version >= '003_agent_access.sql';")
         receipt = self.backup()
         output = self.root/'recovered-old-schema'
         r2.recover(self.store,self.key,receipt['object_key'],output,True)
         with contextlib.closing(sqlite3.connect(output/'genius.sqlite3')) as db:
             self.assertEqual(db.execute('SELECT count(*) FROM users').fetchone()[0],2)
-            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],6)
+            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],7)
             self.assertEqual(db.execute('SELECT count(*) FROM agent_accounts').fetchone()[0],0)
             self.assertEqual(db.execute('SELECT count(*) FROM api_tokens').fetchone()[0],0)
         self.assertTrue((output/'SUSPENDED').exists())
     def test_pre_club_schema_v4_upgrades_without_changing_existing_data(self):
         self.seed()
         with contextlib.closing(sqlite3.connect(self.db)) as db:
-            db.executescript("DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DELETE FROM schema_migrations WHERE version IN ('005_club.sql','006_club_social.sql');")
+            db.executescript("DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DELETE FROM schema_migrations WHERE version IN ('005_club.sql','006_club_social.sql','007_club_contributions.sql');")
         receipt = self.backup()
         output = self.root/'recovered-pre-club'
         r2.recover(self.store,self.key,receipt['object_key'],output,True)
         with contextlib.closing(sqlite3.connect(output/'genius.sqlite3')) as db:
             self.assertEqual(db.execute('SELECT count(*) FROM users').fetchone()[0],2)
             self.assertEqual(db.execute('SELECT count(*) FROM club_members').fetchone()[0],0)
-            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],6)
+            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],7)
         self.assertTrue((output/'SUSPENDED').exists())
     def test_unknown_historical_migration_identity_is_not_auto_upgraded(self):
         self.seed()
         with contextlib.closing(sqlite3.connect(self.db)) as db:
-            db.executescript("DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DROP TABLE contribution_inbox; DROP TABLE agent_token_grants; DROP TABLE agent_accounts; DELETE FROM schema_migrations WHERE version >= '003_agent_access.sql'; UPDATE schema_migrations SET sha256='unrecognized' WHERE version='001_initial.sql';")
+            db.executescript("DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DROP TABLE contribution_inbox; DROP TABLE agent_token_grants; DROP TABLE agent_accounts; DELETE FROM schema_migrations WHERE version >= '003_agent_access.sql'; UPDATE schema_migrations SET sha256='unrecognized' WHERE version='001_initial.sql';")
         receipt = self.backup()
         output = self.root/'must-not-exist'
         with self.assertRaisesRegex(r2.BackupError,'RESTORE_SCHEMA_MISMATCH'):
