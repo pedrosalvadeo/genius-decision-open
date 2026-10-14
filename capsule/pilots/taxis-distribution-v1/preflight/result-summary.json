@@ -1,0 +1,31 @@
+{
+  "format": "genius-distribution-preflight/1",
+  "status": "INTERNAL_TECHNICAL_CHECK_PASSED",
+  "source_commit": "2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+  "evaluation_sha256": "edaf3bfd3e2f38442d0ca1e34cea7a67df3f6c18504cc421e6f1dff3cb0e3db1",
+  "engine_verification_valid": true,
+  "independent_recomputation": "capsule/genius.py verify: VERIFIED, two native runs",
+  "decision": {
+    "frontier": [
+      "gzip",
+      "tar"
+    ],
+    "selected": null,
+    "selection_status": "OUTSIDE_DOMAIN",
+    "feasible": [
+      "gzip",
+      "tar",
+      "zip"
+    ]
+  },
+  "baseline_frontier": [
+    "gzip",
+    "tar"
+  ],
+  "baseline_agrees": true,
+  "complete_execution_bundle_included": false,
+  "reproduce": "python3 capsule/genius.py evaluate capsule/pilots/taxis-distribution-v1/preflight/model.json --evidence capsule/pilots/taxis-distribution-v1/preflight/evidence.json --out /tmp/genius-preflight-new; python3 capsule/genius.py verify /tmp/genius-preflight-new",
+  "note": "This summary is not a participant receipt. Recreate the complete bundle with the command. Internal preflight is excluded from all pilot outcomes. CPU observations describe one environment.",
+  "pilot_sessions_executed": 0,
+  "external_adoption_confirmed": false
+}
