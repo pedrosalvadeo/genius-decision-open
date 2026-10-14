@@ -47,6 +47,15 @@ de un contenedor sin red, sin credenciales persistidas, con montaje de fuente
 de sólo lectura y recursos limitados. La preparación del workflow no acredita
 que CI haya terminado; consultar el resultado asociado al commit.
 
+## Ajuste del entorno de CI
+
+La primera ejecución aislada detectó dos restricciones del propio runner:
+`/tmp` tenía 256 MiB, menos que la reserva de espacio que exigen los respaldos,
+y el proceso de pruebas era PID 1, que el supervisor del motor rechaza.
+Se añadió `--init` y un máximo virtual de 2 GiB para `/tmp`, manteniendo el
+límite de memoria de 1 GiB, red deshabilitada, fuente de sólo lectura y usuario
+sin privilegios. No se relajaron comprobaciones de la aplicación.
+
 ## Publicación prevista
 
 Reutilizar `genius-public-beta` en el entorno production del proyecto
