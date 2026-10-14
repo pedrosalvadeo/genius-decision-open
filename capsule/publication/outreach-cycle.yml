@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Observe only or contact within the campaign limits
+        description: Observe only, deliver reviewed dialogue, or recruit within limits
         type: choice
-        options: [observe, contact]
+        options: [observe, dialogue, contact]
         default: observe
   push:
     branches: [main]
@@ -28,6 +28,7 @@ jobs:
       STATE: /tmp/genius-outreach-state.json
       REVISION: /tmp/genius-outreach-revision.json
       BATCH: ${{ github.run_id }}-${{ github.run_attempt }}
+      REPLY_MODE: ${{ github.event_name == 'schedule' || github.event_name == 'push' || inputs.mode == 'dialogue' || inputs.mode == 'contact' }}
       CONTACT_MODE: ${{ github.event_name == 'schedule' || inputs.mode == 'contact' }}
     steps:
       - uses: actions/checkout@v4
@@ -42,13 +43,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 capsule/outreach/github_state.py fetch --state "$STATE" --revision "$REVISION"
-      - name: Read replies and reserve eligible contacts
+      - name: Read responses and reserve reviewed dialogue or eligible contacts
         run: |
-          if [ "$CONTACT_MODE" = true ]; then
-            python3 capsule/outreach/runner.py prepare --state "$STATE" --batch "$BATCH" --contact
-          else
-            python3 capsule/outreach/runner.py prepare --state "$STATE" --batch "$BATCH"
-          fi
+          args=()
+          if [ "$CONTACT_MODE" = true ]; then args+=(--contact); fi
+          if [ "$REPLY_MODE" = true ]; then args+=(--reply); fi
+          python3 capsule/outreach/runner.py prepare --state "$STATE" --batch "$BATCH" "${args[@]}"
       - name: Persist reservations before any board write
         env:
           GH_TOKEN: ${{ github.token }}
