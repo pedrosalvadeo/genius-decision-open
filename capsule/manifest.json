@@ -51,8 +51,10 @@
       "implemented": true,
       "tools": 15,
       "documentation": "beta/docs/AGENT_TWIN.md",
-      "deployment_status": "STAGED_NOT_DEPLOYED",
-      "deployment_commit": "103da8fcc76a552d06a3074f09f5a47188f10717"
+      "deployment_status": "LIVE_VERIFIED",
+      "deployment_commit": "103da8fcc76a552d06a3074f09f5a47188f10717",
+      "live_verified_at": "2026-10-14T01:19:48.509040+00:00",
+      "verification_receipt": "capsule/receipts/live-twin-2026-10-14.json"
     }
   }
 }

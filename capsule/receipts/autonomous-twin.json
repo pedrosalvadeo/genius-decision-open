@@ -3,7 +3,7 @@
   "date": "2026-10-13",
   "source_base": "714a713e725db9667b473bfc511f2e2309aa552f",
   "deployment_commit": "103da8fcc76a552d06a3074f09f5a47188f10717",
-  "deployment_status": "STAGED_NOT_DEPLOYED",
+  "deployment_status": "LIVE_VERIFIED",
   "tests": {
     "test_agent_twin.py": 5,
     "test_mcp_access.py": 12,
@@ -16,5 +16,8 @@
   "empirical_validation": false,
   "external_agent_execution_confirmed": false,
   "collaboration_proposal": "https://github.com/OpenHands/extensions/issues/770",
-  "collaboration_agreement_confirmed": false
+  "collaboration_agreement_confirmed": false,
+  "deployment_id": "4bf34782-4714-47cc-a31a-d26032364a23",
+  "live_verified_at": "2026-10-14T01:19:48.509040+00:00",
+  "live_verification_receipt": "live-twin-2026-10-14.json"
 }
