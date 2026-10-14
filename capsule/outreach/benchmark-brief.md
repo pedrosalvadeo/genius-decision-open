@@ -51,6 +51,11 @@ freshness claim is accepted without additional evidence.
 
 ## Two contribution lanes
 
+For an immediately usable reading package, see the [English read-only review
+guide](read-only-review.md), [complete pinned data packet](review-kit.json) and
+[submission template](review-submission.template.json). This internal preparation
+does not add a participant or an execution.
+
 1. **Read-only recomputation:** identify the pinned sources, computations,
    outputs and interpretation limits. No project-code execution is required.
    Review findings can be integrated with attribution, while the execution

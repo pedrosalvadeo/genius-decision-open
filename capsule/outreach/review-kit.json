@@ -1,0 +1,589 @@
+{
+  "format": "genius-read-only-review-kit/1",
+  "opportunity": "GD-DIST-001",
+  "prepared_by": "Codex — internal facilitation",
+  "prepared_on": "2026-10-14",
+  "repository": "https://github.com/pedrosalvadeo/genius-decision-open",
+  "license": "Apache-2.0; original public Genius source and documentation",
+  "source_commit": "61effc2afe66ac54159a8bf62a868fa8e061fe56",
+  "measured_inventory_commit": "2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+  "report_base_revision": "02ac525354ad37b8fa16aff122b126ed5a06d448",
+  "purpose": "Review existing measurements and the stated model using authorized reading and calculation tools. No project-code execution is required.",
+  "integrity": {
+    "canonicalization": "json.dumps(content, sort_keys=True, separators=(',', ':'), ensure_ascii=False, allow_nan=False).encode('utf-8')",
+    "scope": "source_bytes_sha256 binds original file bytes; content_canonical_sha256 binds the embedded content object. Neither proves the measurements were freshly or independently executed."
+  },
+  "sources": [
+    {
+      "path": "capsule/pilots/taxis-distribution-v1/preflight/measurement.json",
+      "source_url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/61effc2afe66ac54159a8bf62a868fa8e061fe56/capsule/pilots/taxis-distribution-v1/preflight/measurement.json",
+      "source_bytes_sha256": "e6cdf25f3b9f1034c004f1744bb004487d255e5dd750a47973209fffbd7859d2",
+      "content_canonical_sha256": "f6882d6f732c3dd9e82d0be82e73826c8903e70b8cff481096d5f2c49dbd3ea2",
+      "content": {
+        "format": "genius-distribution-benchmark/1",
+        "source_commit": "2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+        "manifest_sha256": "dbf40982b6d492fa7d594a5e2024dea08e4064e850f2519f144c2a35d5573bda",
+        "observed_at": "2026-10-14T11:49:12.386875+00:00",
+        "files": 409,
+        "environment": {
+          "python": "3.12.14",
+          "implementation": "CPython",
+          "system": "Linux",
+          "machine": "x86_64",
+          "zlib_compile_version": "1.3.2",
+          "zlib_runtime_version": "1.3.2"
+        },
+        "method": "In-memory creation and reading/hash verification of every file; one warm-up per format, five measured repetitions in seeded order. No network or disk extraction.",
+        "artifacts": {
+          "tar": {
+            "bytes": 7106560,
+            "sha256": "62d2c04bdd8338a4a067e6e739351bfdcd84572c52fdeb3f17b541f226ad442d",
+            "median_read_cpu_ns": 34021020,
+            "median_create_cpu_ns": 43993333
+          },
+          "gzip": {
+            "bytes": 1565558,
+            "sha256": "729be3678ec4e87076283534d762b7d9c468e04f3537ae0617b58a1c57fac203",
+            "median_read_cpu_ns": 79468027,
+            "median_create_cpu_ns": 891483298
+          },
+          "zip": {
+            "bytes": 1814523,
+            "sha256": "cee555e2d02f9b9f2dca917983da8b22c9b0eb0efd7a97602ed1e026a6efbfb8",
+            "median_read_cpu_ns": 81851747,
+            "median_create_cpu_ns": 415163236
+          }
+        },
+        "samples": [
+          {
+            "repeat": 1,
+            "position": 1,
+            "format": "gzip",
+            "create": {
+              "wall_ns": 534776577,
+              "cpu_ns": 534001580
+            },
+            "read_and_hash": {
+              "wall_ns": 73517822,
+              "cpu_ns": 73467595
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 1,
+            "position": 2,
+            "format": "tar",
+            "create": {
+              "wall_ns": 78720719,
+              "cpu_ns": 78724003
+            },
+            "read_and_hash": {
+              "wall_ns": 46803981,
+              "cpu_ns": 46772285
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 1,
+            "position": 3,
+            "format": "zip",
+            "create": {
+              "wall_ns": 619518461,
+              "cpu_ns": 609998519
+            },
+            "read_and_hash": {
+              "wall_ns": 153814863,
+              "cpu_ns": 153822246
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 2,
+            "position": 1,
+            "format": "gzip",
+            "create": {
+              "wall_ns": 1982710299,
+              "cpu_ns": 1982460424
+            },
+            "read_and_hash": {
+              "wall_ns": 126185961,
+              "cpu_ns": 126193585
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 2,
+            "position": 2,
+            "format": "tar",
+            "create": {
+              "wall_ns": 73390300,
+              "cpu_ns": 73394941
+            },
+            "read_and_hash": {
+              "wall_ns": 34016389,
+              "cpu_ns": 34021020
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 2,
+            "position": 3,
+            "format": "zip",
+            "create": {
+              "wall_ns": 831945771,
+              "cpu_ns": 831197230
+            },
+            "read_and_hash": {
+              "wall_ns": 79786254,
+              "cpu_ns": 79791696
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 3,
+            "position": 1,
+            "format": "tar",
+            "create": {
+              "wall_ns": 43991459,
+              "cpu_ns": 43993333
+            },
+            "read_and_hash": {
+              "wall_ns": 32279726,
+              "cpu_ns": 32286080
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 3,
+            "position": 2,
+            "format": "zip",
+            "create": {
+              "wall_ns": 390203085,
+              "cpu_ns": 390190280
+            },
+            "read_and_hash": {
+              "wall_ns": 86341810,
+              "cpu_ns": 86360815
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 3,
+            "position": 3,
+            "format": "gzip",
+            "create": {
+              "wall_ns": 1278928131,
+              "cpu_ns": 1278891814
+            },
+            "read_and_hash": {
+              "wall_ns": 79461634,
+              "cpu_ns": 79468027
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 4,
+            "position": 1,
+            "format": "tar",
+            "create": {
+              "wall_ns": 23901096,
+              "cpu_ns": 23901495
+            },
+            "read_and_hash": {
+              "wall_ns": 25655683,
+              "cpu_ns": 25661512
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 4,
+            "position": 2,
+            "format": "gzip",
+            "create": {
+              "wall_ns": 891500327,
+              "cpu_ns": 891483298
+            },
+            "read_and_hash": {
+              "wall_ns": 84349197,
+              "cpu_ns": 84355464
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 4,
+            "position": 3,
+            "format": "zip",
+            "create": {
+              "wall_ns": 415154358,
+              "cpu_ns": 415163236
+            },
+            "read_and_hash": {
+              "wall_ns": 81856568,
+              "cpu_ns": 81851747
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 5,
+            "position": 1,
+            "format": "tar",
+            "create": {
+              "wall_ns": 29759446,
+              "cpu_ns": 29759476
+            },
+            "read_and_hash": {
+              "wall_ns": 37801654,
+              "cpu_ns": 37784346
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 5,
+            "position": 2,
+            "format": "zip",
+            "create": {
+              "wall_ns": 312764690,
+              "cpu_ns": 312754289
+            },
+            "read_and_hash": {
+              "wall_ns": 40564019,
+              "cpu_ns": 40568628
+            },
+            "integrity_verified": true
+          },
+          {
+            "repeat": 5,
+            "position": 3,
+            "format": "gzip",
+            "create": {
+              "wall_ns": 493702371,
+              "cpu_ns": 493676565
+            },
+            "read_and_hash": {
+              "wall_ns": 41829633,
+              "cpu_ns": 41834715
+            },
+            "integrity_verified": true
+          }
+        ],
+        "limits": [
+          "CPU timings vary across runs and machines; medians are observations, not universal constants.",
+          "Wall time includes scheduling; CPU time is local process time.",
+          "Only this Python reader was tested; external-client compatibility is unknown.",
+          "Network latency, transfer success, retries, peak memory and disk extraction were not measured."
+        ],
+        "experiment_sessions": 0,
+        "independent_external_operators": 0
+      }
+    },
+    {
+      "path": "capsule/pilots/taxis-distribution-v1/preflight/model.json",
+      "source_url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/61effc2afe66ac54159a8bf62a868fa8e061fe56/capsule/pilots/taxis-distribution-v1/preflight/model.json",
+      "source_bytes_sha256": "b144a2de3895845be622fdc04acbc60c27bfb8cbced8f2017bf2af9ed1b93cd1",
+      "content_canonical_sha256": "3649fd2d77789b82f5ad25c47c912f724f62b70c2a32710e35ec2b27ef0a720d",
+      "content": {
+        "profile": "STOCK_FLOW_FINITE_V1",
+        "name": "Distribución de cápsula publicada — bytes y CPU de lectura observados",
+        "horizon": 1,
+        "step_unit": "step",
+        "stocks": [
+          {
+            "id": "remaining",
+            "label": "Margen de transferencia respecto del TAR medido",
+            "unit": "byte",
+            "kind": "persistent",
+            "initial": "7106560/1",
+            "capacity": "7106560/1"
+          },
+          {
+            "id": "cpu_remaining",
+            "label": "Margen comparativo de CPU de lectura",
+            "unit": "cpu_nanosecond",
+            "kind": "persistent",
+            "initial": "81851747/1",
+            "capacity": "81851747/1"
+          }
+        ],
+        "carriers": [
+          {
+            "id": "project",
+            "label": "Proyecto Genius (condición operacional, no bienestar humano)",
+            "kind": "organization"
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "deliver",
+            "label": "Entregar las mismas fuentes"
+          }
+        ],
+        "initial_capabilities": [
+          "deliver"
+        ],
+        "actions": [
+          {
+            "id": "send_tar",
+            "label": "Enviar tar",
+            "requires": [
+              "deliver"
+            ],
+            "withdrawals": {
+              "remaining": "7106560/1",
+              "cpu_remaining": "34021020/1"
+            },
+            "deposits": {},
+            "add_capabilities": [],
+            "remove_capabilities": []
+          },
+          {
+            "id": "send_gzip",
+            "label": "Enviar gzip",
+            "requires": [
+              "deliver"
+            ],
+            "withdrawals": {
+              "remaining": "1565558/1",
+              "cpu_remaining": "79468027/1"
+            },
+            "deposits": {},
+            "add_capabilities": [],
+            "remove_capabilities": []
+          },
+          {
+            "id": "send_zip",
+            "label": "Enviar zip",
+            "requires": [
+              "deliver"
+            ],
+            "withdrawals": {
+              "remaining": "1814523/1",
+              "cpu_remaining": "81851747/1"
+            },
+            "deposits": {},
+            "add_capabilities": [],
+            "remove_capabilities": []
+          }
+        ],
+        "policies": [
+          {
+            "id": "tar",
+            "label": "tar",
+            "default_action": "send_tar",
+            "rules": []
+          },
+          {
+            "id": "gzip",
+            "label": "gzip",
+            "default_action": "send_gzip",
+            "rules": []
+          },
+          {
+            "id": "zip",
+            "label": "zip",
+            "default_action": "send_zip",
+            "rules": []
+          }
+        ],
+        "scenarios": [
+          {
+            "id": "measured_snapshot",
+            "label": "Artefactos producidos y medidos en esta ejecución",
+            "events": [
+              {
+                "inflows": {},
+                "renewables": {},
+                "drains": {},
+                "remove_capabilities": []
+              }
+            ]
+          }
+        ],
+        "law": {
+          "measured_snapshot": "1/1"
+        },
+        "welfare": [
+          {
+            "carrier": "project",
+            "dimension": "transfer_margin",
+            "label": "Margen de bytes; condición operacional declarada",
+            "stock": "remaining",
+            "direction": "higher"
+          },
+          {
+            "carrier": "project",
+            "dimension": "read_cpu_margin",
+            "label": "Margen de CPU local observada; sin agregación con bytes",
+            "stock": "cpu_remaining",
+            "direction": "higher"
+          }
+        ],
+        "task": {
+          "kind": "operational",
+          "label": "Conservar todas las fuentes dentro de presupuestos comparativos declarados",
+          "living_carriers": [],
+          "conditions": [
+            {
+              "stock": "remaining",
+              "op": "ge",
+              "threshold": "0/1"
+            },
+            {
+              "stock": "cpu_remaining",
+              "op": "ge",
+              "threshold": "0/1"
+            }
+          ],
+          "require_action_success": true
+        },
+        "require_all_scenarios": true,
+        "selection": "unique",
+        "assumptions": [
+          {
+            "id": "Measurement",
+            "kind": "CALIBRATION",
+            "statement": "Tamaños y mediana de CPU de lectura/hash medidos en measurement.json. Análisis retrospectivo del snapshot.",
+            "provenance": "Medición interna directa; no evaluación externa"
+          },
+          {
+            "id": "Scope",
+            "kind": "MODEL",
+            "statement": "Una lectura local completa, en memoria, con este Python. Excluye red, reintentos, memoria máxima, escritura a disco y otros clientes.",
+            "provenance": "Método de benchmark.py"
+          },
+          {
+            "id": "Criterion",
+            "kind": "NORMATIVE",
+            "statement": "Reducir bytes y CPU de lectura sin sumar unidades ni inventar ponderaciones. Presupuestos comparativos iguales al máximo observado por dimensión; no son límites de producción.",
+            "provenance": "Criterio técnico propuesto; sujeto a revisión del receptor"
+          },
+          {
+            "id": "SnapshotLaw",
+            "kind": "PROBABILITY",
+            "statement": "Masa unitaria sobre el inventario observado. No estima distribuciones futuras de CPU, éxito de red ni PVS.",
+            "provenance": "Modelo determinista de observaciones ya recogidas"
+          }
+        ]
+      }
+    },
+    {
+      "path": "capsule/pilots/taxis-distribution-v1/preflight/evidence.json",
+      "source_url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/61effc2afe66ac54159a8bf62a868fa8e061fe56/capsule/pilots/taxis-distribution-v1/preflight/evidence.json",
+      "source_bytes_sha256": "9b7c642a727ca113a6ce17a1db67cd276b5e6c141a10bb8cef6f793f8addc482",
+      "content_canonical_sha256": "2eb47fa0b9d4680e842e1b3c94b47cd714482ea3568249f5c122648909ee7078",
+      "content": {
+        "format": "genius-case-evidence/1",
+        "case_id": "genius-distribution-public-2026-10-14",
+        "question": "¿Qué formatos preservan las fuentes y qué compromisos presentan entre bytes y CPU de lectura local?",
+        "context": "Decisión operacional real sobre la cápsula pública; análisis retrospectivo interno.",
+        "origin": "real",
+        "observed_at": "2026-10-14T11:49:12.386875+00:00",
+        "data_authority": "Fuentes Genius públicas Apache-2.0; mediciones locales sin datos personales.",
+        "sources": [
+          {
+            "id": "measurement",
+            "reference": "measurement.json",
+            "accessed_at": "2026-10-14T11:49:12.386875+00:00"
+          },
+          {
+            "id": "source",
+            "reference": "https://github.com/pedrosalvadeo/genius-decision-open/tree/2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+            "accessed_at": "2026-10-14T11:49:12.386875+00:00"
+          }
+        ],
+        "observations": [
+          {
+            "source_id": "measurement",
+            "statement": "tar: 7106560 bytes, SHA256 62d2c04bdd8338a4a067e6e739351bfdcd84572c52fdeb3f17b541f226ad442d, mediana CPU de lectura 34021020 ns; 409 archivos íntegros en cada repetición."
+          },
+          {
+            "source_id": "measurement",
+            "statement": "gzip: 1565558 bytes, SHA256 729be3678ec4e87076283534d762b7d9c468e04f3537ae0617b58a1c57fac203, mediana CPU de lectura 79468027 ns; 409 archivos íntegros en cada repetición."
+          },
+          {
+            "source_id": "measurement",
+            "statement": "zip: 1814523 bytes, SHA256 cee555e2d02f9b9f2dca917983da8b22c9b0eb0efd7a97602ed1e026a6efbfb8, mediana CPU de lectura 81851747 ns; 409 archivos íntegros en cada repetición."
+          }
+        ],
+        "assumptions": [
+          "Tamaños y mediana de CPU de lectura/hash medidos en measurement.json. Análisis retrospectivo del snapshot.",
+          "Una lectura local completa, en memoria, con este Python. Excluye red, reintentos, memoria máxima, escritura a disco y otros clientes.",
+          "Reducir bytes y CPU de lectura sin sumar unidades ni inventar ponderaciones. Presupuestos comparativos iguales al máximo observado por dimensión; no son límites de producción.",
+          "Masa unitaria sobre el inventario observado. No estima distribuciones futuras de CPU, éxito de red ni PVS."
+        ],
+        "unknowns": [
+          "CPU timings vary across runs and machines; medians are observations, not universal constants.",
+          "Wall time includes scheduling; CPU time is local process time.",
+          "Only this Python reader was tested; external-client compatibility is unknown.",
+          "Network latency, transfer success, retries, peak memory and disk extraction were not measured."
+        ],
+        "empirical_status": "OBSERVATIONS_COLLECTED",
+        "publication": "public"
+      }
+    },
+    {
+      "path": "capsule/pilots/taxis-distribution-v1/preflight/result-summary.json",
+      "source_url": "https://github.com/pedrosalvadeo/genius-decision-open/blob/61effc2afe66ac54159a8bf62a868fa8e061fe56/capsule/pilots/taxis-distribution-v1/preflight/result-summary.json",
+      "source_bytes_sha256": "80f9e1aa23975c05652fb2c5838ed226463ce58cbc74066f7b1527051034748e",
+      "content_canonical_sha256": "7c2b05de45e1794d0aada8d990a1fd6c920df3783ed43ad9b69fafb3fe7c9cf6",
+      "content": {
+        "format": "genius-distribution-preflight/1",
+        "status": "INTERNAL_TECHNICAL_CHECK_PASSED",
+        "source_commit": "2571e0d54a4a3b1a7f25bf0398582b0b3eea4482",
+        "evaluation_sha256": "edaf3bfd3e2f38442d0ca1e34cea7a67df3f6c18504cc421e6f1dff3cb0e3db1",
+        "engine_verification_valid": true,
+        "independent_recomputation": "capsule/genius.py verify: VERIFIED, two native runs",
+        "decision": {
+          "frontier": [
+            "gzip",
+            "tar"
+          ],
+          "selected": null,
+          "selection_status": "OUTSIDE_DOMAIN",
+          "feasible": [
+            "gzip",
+            "tar",
+            "zip"
+          ]
+        },
+        "baseline_frontier": [
+          "gzip",
+          "tar"
+        ],
+        "baseline_agrees": true,
+        "complete_execution_bundle_included": false,
+        "reproduce": "python3 capsule/genius.py evaluate capsule/pilots/taxis-distribution-v1/preflight/model.json --evidence capsule/pilots/taxis-distribution-v1/preflight/evidence.json --out /tmp/genius-preflight-new; python3 capsule/genius.py verify /tmp/genius-preflight-new",
+        "note": "This summary is not a participant receipt. Recreate the complete bundle with the command. Internal preflight is excluded from all pilot outcomes. CPU observations describe one environment.",
+        "pilot_sessions_executed": 0,
+        "external_adoption_confirmed": false
+      }
+    }
+  ],
+  "claims_to_check": {
+    "origin": "Historical internal result, not a required review verdict",
+    "observed_median_read_cpu_ns": {
+      "tar": 34021020,
+      "gzip": 79468027,
+      "zip": 81851747
+    },
+    "point_model_frontier": [
+      "gzip",
+      "tar"
+    ],
+    "unique_selection": null
+  },
+  "review_requirements": [
+    "Identify sources actually read and integrity checks actually performed.",
+    "Provide your own calculation, method and intermediate values for numerical claims.",
+    "Keep bytes and observed median CPU as separate objectives.",
+    "State disagreements, unchecked items, timing/order limitations and evidence needed for stronger claims.",
+    "Declare your report license and publication authorization."
+  ],
+  "evidence_boundaries": {
+    "review_is_new_measurement": false,
+    "review_is_pilot_session": false,
+    "identity_independence_verified": false,
+    "nonce_proves_fresh_execution": false,
+    "automatic_membership": false
+  },
+  "submission_contract": "https://geniusdecision.app/contributions"
+}
