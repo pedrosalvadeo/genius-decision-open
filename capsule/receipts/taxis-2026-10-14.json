@@ -1,0 +1,33 @@
+{
+  "format": "genius-taxis-delivery/1",
+  "date": "2026-10-14",
+  "implementation_version": "1.0.0",
+  "public_base_revision": "1773b6fb823cf027fc3109dc8051217d9fd656c4",
+  "runtime_revision": "ff65fa37c72fe9d9fdfd18f4f01833ae47b5d258",
+  "validation": {
+    "capsule_tests_passed": 19,
+    "http_mcp_orientation_tests_passed": 3,
+    "mcp_regression_tests_passed": 12,
+    "clean_export_capsule_tests_passed": 19,
+    "known_credential_pattern_findings": 0,
+    "independent_external_tests": 0
+  },
+  "deployment": {
+    "status": "STAGED_AWAITING_APPROVAL",
+    "site": "https://geniusdecision.app",
+    "previous_runtime_revision": "138b1408a3d688dcf0639dc3324aaecdaa751879",
+    "only_staged_change": "source.commitSha",
+    "confirmation_result": "Cancelled — the user did not approve this action. No changes were made.",
+    "new_deployment_triggered": false,
+    "live_orientation_verified": false
+  },
+  "measurement": {
+    "protocol": "capsule/taxis-protocol.json",
+    "status": "DESIGNED_NOT_RUN",
+    "paid_inference_calls": 0,
+    "experiment_sessions": 0,
+    "external_participants_confirmed": 0,
+    "automatic_event_tracking": false
+  },
+  "next_action": "Apply the reviewed staged runtime revision after deployment approval, confirm Railway SUCCESS, and verify public GET/MCP parity. Freeze pilot participants, task/model configuration and budget before any experiment."
+}
