@@ -2,7 +2,7 @@
   "format": "genius-collaboration-candidates/1",
   "checked_on": "2026-10-14",
   "reviewed_genius_revision": "c0c146b98830c1ee5767e21194ddb99108e5db02",
-  "contacts_sent": 2,
+  "contacts_sent": 4,
   "invitations_drafted": 5,
   "confirmed_collaborations": 0,
   "independent_engine_executions_confirmed": 0,
@@ -252,14 +252,15 @@
       "kind": "public_agent_message_board",
       "potential": "Ofrecer una oportunidad reproducible a participantes de un tablero público accesible por HTTP/MCP.",
       "opportunity_ids": [
-        "GD-MCP-001",
-        "GD-ATTR-001"
+        "GD-DIST-001",
+        "GD-ATTR-001",
+        "GD-MCP-001"
       ],
-      "channel": "Tablero público; elegir sala y leer sus reglas antes de publicar una única invitación.",
-      "status": "DRAFT_NOT_SENT",
-      "next_action": "Revisar sala y condiciones vigentes y, con autorización de envío, publicar la invitación con un ID rastreable.",
+      "channel": "coordination-lab/main",
+      "status": "INVITATION_PUBLISHED",
+      "next_action": "Leer respuestas del hilo y revisar evidencia antes de atribuir interés, independencia, ejecución o aceptación; no duplicar la invitación.",
       "limitations": [
-        "Se verificaron documentación y lectura HTTP, no una conexión MCP ni publicación.",
+        "Publicación HTTP aceptada y texto visible verificado; cero respuestas en la lectura inicial. No se ejecutó el motor desde el tablero.",
         "Los perfiles y mensajes no prueban identidad, independencia, disponibilidad ni interés.",
         "No usar recompensas, créditos, inferencia o tareas pagas sin un encargo separado."
       ],
@@ -280,12 +281,21 @@
           "checked_on": "2026-10-14",
           "observation": "HTTP 200 con JSON ok=true y mensajes públicos; no se republica su contenido.",
           "sha256": "3954fc92ee418f6d89ba8ca86a3795a12d6f7971b8ea09f767209ec898a4cded"
+        },
+        {
+          "url": "https://swarmmemo.com/e/968ea66bbe2fc09af7f513291ff4a87b",
+          "checked_on": "2026-10-14",
+          "observation": "Invitación publicada por encargo de Pedro; lectura exacta y visibilidad comprobadas, sin colaboración confirmada."
         }
       ],
       "draft": "COLLABORATION.md#swarmmemo",
-      "contact_sent": false,
+      "contact_sent": true,
       "agreement_confirmed": false,
-      "external_agent_execution_confirmed": false
+      "external_agent_execution_confirmed": false,
+      "contact_url": "https://swarmmemo.com/e/968ea66bbe2fc09af7f513291ff4a87b",
+      "submission_receipt": "receipts/agent-board-outreach-2026-10-14.json",
+      "contacted_at": 1791981876,
+      "reply_count_at_check": 0
     },
     {
       "id": "GD-CAND-NULLYARD",
@@ -294,14 +304,15 @@
       "kind": "public_agent_message_board",
       "potential": "Presentar una colaboración estructurada y recibir un informe público con evidencia.",
       "opportunity_ids": [
-        "GD-MCP-001",
-        "GD-ATTR-001"
+        "GD-DIST-001",
+        "GD-ATTR-001",
+        "GD-MCP-001"
       ],
-      "channel": "Tablero público; MCP publish_note documenta raíces de tipo collaboration.",
-      "status": "DRAFT_NOT_SENT",
-      "next_action": "Revisar el esquema y canal vigente y, con autorización de envío, publicar una única propuesta estructurada.",
+      "channel": "experiments",
+      "status": "INVITATION_PUBLISHED",
+      "next_action": "Leer respuestas del hilo y revisar evidencia antes de atribuir interés, independencia, ejecución o aceptación; no duplicar la invitación.",
       "limitations": [
-        "Página y guía MCP respondieron HTTP 200; no se llamó al MCP ni se publicó.",
+        "Publicación HTTP aceptada y texto visible verificado; cero respuestas en la lectura inicial. No se ejecutó el motor desde el tablero.",
         "No existe identidad autenticada obligatoria; los campos actor/modelo son autodeclarados.",
         "No hay programación automática ni prueba de continuidad de los participantes."
       ],
@@ -316,12 +327,21 @@
           "checked_on": "2026-10-14",
           "observation": "Describe Streamable HTTP, lecturas y publish_note con idempotencia.",
           "sha256": "451192cbc00c9e227a9ac26d2a4940bb3e7d0f8d1c5cfc68a056182acdf09f7a"
+        },
+        {
+          "url": "https://nullyard.net/t/2cec4538-da38-4906-adc9-bcc97ff3c15b",
+          "checked_on": "2026-10-14",
+          "observation": "Invitación publicada por encargo de Pedro; lectura exacta y visibilidad comprobadas, sin colaboración confirmada."
         }
       ],
       "draft": "COLLABORATION.md#nullyard",
-      "contact_sent": false,
+      "contact_sent": true,
       "agreement_confirmed": false,
-      "external_agent_execution_confirmed": false
+      "external_agent_execution_confirmed": false,
+      "contact_url": "https://nullyard.net/t/2cec4538-da38-4906-adc9-bcc97ff3c15b",
+      "submission_receipt": "receipts/agent-board-outreach-2026-10-14.json",
+      "contacted_at": "2026-10-14T12:44:58.398Z",
+      "reply_count_at_check": 0
     },
     {
       "id": "GD-CAND-A2A-SAMPLES",
@@ -403,7 +423,7 @@
       "publication_receipt": "integrations/mcp-registry/publication.json"
     }
   ],
-  "contacts_sent_basis": "Proyectos contactados: OpenHands Extensions (issue 770 y PR 772) y smolagents (discusión 2986). Las altas en catálogos se registran por separado.",
-  "invitations_pending": 4,
+  "contacts_sent_basis": "Destinos contactados: OpenHands Extensions (issue 770 y PR 772), smolagents (discusión 2986), SwarmMemo (coordination-lab/main) y NULLYARD (experiments). Las altas en catálogos se registran por separado.",
+  "invitations_pending": 2,
   "registrations_published": 1
 }
