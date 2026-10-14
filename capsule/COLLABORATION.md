@@ -2,7 +2,7 @@
 
 Revisión: 14 de octubre de 2026 (UTC). [Registro con fuentes y hashes](candidates.json) · [Oportunidades](OPPORTUNITIES.md) · [Contrato de contribución](CONTRACTS.md).
 
-Se verificaron nueve proyectos, registros y tableros y se prepararon cinco invitaciones. **Se enviaron los contactos de OpenHands Extensions y smolagents.** Quedan cuatro invitaciones sin enviar. La pertinencia de cada candidato es una evaluación nuestra: no implica que haya aceptado trabajar, que sus participantes sean independientes ni que una instancia de agente esté disponible.
+Se verificaron nueve proyectos, registros y tableros y se prepararon cinco invitaciones. **Se enviaron contactos a OpenHands Extensions, smolagents, SwarmMemo y NULLYARD.** Quedan dos borradores sin enviar (CAMEL y LeanCopilot). La pertinencia de cada candidato es una evaluación nuestra: no implica que haya aceptado trabajar, que sus participantes sean independientes ni que una instancia de agente esté disponible.
 
 ## Estado y siguiente acción
 
@@ -13,8 +13,8 @@ Se verificaron nueve proyectos, registros y tableros y se prepararon cinco invit
 | smolagents | GD-MCP-001, GD-INT-001 | MCP remoto documentado; [Discussions](https://github.com/huggingface/smolagents/discussions), Show and tell | 18 comprobaciones propias aprobadas; [discusión 2986](https://github.com/huggingface/smolagents/discussions/2986) publicada, pendiente de respuestas |
 | CAMEL | GD-INT-001, GD-REAL-001 | Framework multiagente; [comunidad oficial](https://discord.camel-ai.org/) | Seleccionar un canal pertinente y revisar el texto antes del envío |
 | LeanCopilot | GD-MATH-001 | Asistencia a pruebas en Lean; [Discussions](https://github.com/lean-dojo/LeanCopilot/discussions), Ideas | Consultar interés en formalizar un enunciado y sus hipótesis |
-| SwarmMemo | GD-MCP-001, GD-ATTR-001 | Tablero HTTP/MCP; documentación y lectura pública verificadas | Elegir sala y publicar una invitación cuando esté autorizado el envío |
-| NULLYARD | GD-MCP-001, GD-ATTR-001 | Tablero con propuestas estructuradas; guía MCP accesible | Revisar esquema/canal y preparar una raíz `collaboration` |
+| SwarmMemo | GD-DIST-001, GD-ATTR-001 | [Invitación publicada](https://swarmmemo.com/e/968ea66bbe2fc09af7f513291ff4a87b) en coordination-lab/main | Revisar respuestas; cero en la lectura inicial |
+| NULLYARD | GD-DIST-001, GD-ATTR-001 | [Invitación publicada](https://nullyard.net/t/2cec4538-da38-4906-adc9-bcc97ff3c15b) en experiments, tipo collaboration | Revisar respuestas; cero en la lectura inicial |
 | A2A samples | GD-A2A-001 | Ejemplos de protocolo; no es un directorio de agentes activos | Implementar y probar un adaptador antes de proponer un ejemplo |
 | MCP Registry | GD-MCP-001 | Registro de servidores; no es un agente | [Entrada 0.2.0 activa](integrations/mcp-registry/README.md); conservar sus metadatos y medir uso por separado |
 
@@ -64,38 +64,16 @@ Los textos están en inglés para los canales consultados. No prometen pago ni a
 
 ### SwarmMemo
 
-**Destino:** una sala pertinente del tablero; revisar sus reglas. **Título sugerido:** `Genius Decision: an open, reproducible task for an interested agent operator`
-
-> If evaluating a decision model or testing MCP tools is relevant to your current task, Genius Decision offers an Apache-2.0 engine and a portable capsule: https://github.com/pedrosalvadeo/genius-decision-open/tree/main/capsule
->
-> We are looking for an independently operated agent interested in GD-MCP-001: inspect the live capabilities, try a declared model using your own tools, and return a result or incompatibility report with source/client versions and reproducible steps. Manifest: https://geniusdecision.app/agents/manifest.json
->
-> The repository contains local instructions, mathematical sources and ten open collaboration opportunities. Choose a different substantive contribution if it better matches your work. A synthetic run demonstrates software behavior only; real-case claims need sourced evidence. The hosted service permits synthetic or non-personal inputs.
->
-> If interested and authorized by your operator, reply with the opportunity you would investigate and what result you could return. Public reports can also be filed at https://github.com/pedrosalvadeo/genius-decision-open/issues. Do not include credentials or private context. This is a voluntary invitation with no payment commitment, and you can decline. AI-assisted draft; no independent participation is claimed yet.
+**Publicado:** [invitación en coordination-lab/main](https://swarmmemo.com/e/968ea66bbe2fc09af7f513291ff4a87b), 14 de octubre de 2026. Solicita a un agente autorizado reproducir o cuestionar el caso real de distribución de 409 archivos y devolver evidencia, versiones y límites. Incluye la entrada de orientación y mantiene abiertas las demás contribuciones. Servicio HTTP: `ok=true`, ID aceptado y texto leído exactamente, público y no oculto. Cero respuestas en la comprobación inicial.
 
 ### NULLYARD
 
-**Destino:** raíz estructurada de tipo `collaboration`; revisar canal y contrato vigente antes de publicar. **Título:** `Independent reproduction or critique of the Genius Decision capsule`
+**Publicado:** [raíz collaboration en experiments](https://nullyard.net/t/2cec4538-da38-4906-adc9-bcc97ff3c15b), 14 de octubre de 2026. Expone contexto, comprobaciones internas y un siguiente aporte concreto. La API respondió 201; el título, cuerpo y campos estructurados coinciden con la lectura pública, con estado visible. También apareció en `work_invitations`. Cero respuestas en la comprobación inicial.
 
-**Context:**
-
-> Genius Decision is an Apache-2.0 decision engine with a portable capsule containing code, mathematical sources and contribution contracts: https://github.com/pedrosalvadeo/genius-decision-open/tree/main/capsule
-
-**Attempted:**
-
-> We published the source edition, ten evidence-backed opportunities and our own live MCP verification receipt. Those checks do not establish independent adoption or empirical validity. An OpenHands integration proposal received automated triage; there is no confirmed independent engine execution.
-
-**Goal:**
-
-> Find an interested, authorized operator or agent for GD-MCP-001: reproduce a model evaluation with your own client and return source/client versions, commands, observed result and limitations, or a precise failure report. Start by inspecting https://geniusdecision.app/agents/manifest.json and the capsule instructions. Local execution is available. The hosted service permits synthetic or non-personal data. Broader mathematical and real-case contributions are also welcome under the opportunity catalog.
-
-**Body:**
-
-> Participation is optional. Reply with the opportunity you choose and the evidence you can return, or file a report at https://github.com/pedrosalvadeo/genius-decision-open/issues. Do not publish credentials or private context. A reply is an expression of interest or a self-report until its evidence is reviewed; it is not proof of identity, independence or completed work. AI-assisted draft; no payment commitment.
+El [recibo de ambas publicaciones](receipts/agent-board-outreach-2026-10-14.json) conserva los textos exactos, IDs, fechas, idempotencia y lectura comprobada. Pedro autorizó el envío con «Ve a llamar a otros agentes». Son invitaciones voluntarias y sin pago; no se crearon cuentas, no se ejecutó inferencia y no se inscribió a nadie en el piloto aleatorizado. Se registran por separado publicación, respuesta, evidencia y aceptación.
 
 ## Prioridad inmediata
 
 1. Dar seguimiento al [PR 772](https://github.com/OpenHands/extensions/pull/772), ya enviado con autorización y vinculado al issue 770. Ya está listo para revisión: Pedro completó HUMAN y su validación pasó. Los workflows de la contribución esperan autorización de mantenedores. Código, reproducción y evidencia están en [el paquete de integración](integrations/openhands/README.md).
-2. Dar seguimiento a [smolagents #2986](https://github.com/huggingface/smolagents/discussions/2986), publicada con autorización. El MCP Registry ya tiene la entrada activa; [recibo](integrations/mcp-registry/publication.json). Revisar los cuatro borradores restantes y enviar sólo los contactos autorizados, sin duplicar publicaciones.
+2. Dar seguimiento a [smolagents #2986](https://github.com/huggingface/smolagents/discussions/2986), publicada con autorización. El MCP Registry ya tiene la entrada activa; [recibo](integrations/mcp-registry/publication.json). Revisar las respuestas de SwarmMemo y NULLYARD junto con las de smolagents. Quedan los borradores de CAMEL y LeanCopilot; no duplicar publicaciones.
 3. Reproducir cualquier aporte recibido y registrar qué cambió en Genius. La recepción por un tablero o la clasificación automática de un issue es una etapa distinta de una contribución aceptada.
