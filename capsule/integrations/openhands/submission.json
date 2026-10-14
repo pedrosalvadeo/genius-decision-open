@@ -1,0 +1,38 @@
+{
+  "format": "genius-openhands-submission/1",
+  "submitted_at": "2026-10-14T05:18:53Z",
+  "checked_on": "2026-10-14",
+  "pull_request_url": "https://github.com/OpenHands/extensions/pull/772",
+  "issue_url": "https://github.com/OpenHands/extensions/issues/770",
+  "title": "feat(integrations): add Genius Decision MCP integration",
+  "state": "open",
+  "draft": true,
+  "base_repository": "OpenHands/extensions",
+  "base_branch": "main",
+  "base_revision": "f1919e4e3e02c0bab65c2417761aee775f1ffbaa",
+  "head_repository": "pedrosalvadeo/extensions",
+  "head_branch": "genius-decision-mcp",
+  "head_revision": "a05510f8db3ec7c606d90be2731b885baf5d289e",
+  "changed_files": {
+    "integrations/catalog/genius-decision.json": "10cbf62cfc35949cf0c9a7adc0dc11ae79dd6367",
+    "integrations/catalog-index.js": "3b86a23276c97de6eac5d2448aec1d1c29798c93"
+  },
+  "file_hash_type": "git_blob_sha1",
+  "published_files_match_tested_files": true,
+  "submission_authorized_by_owner": true,
+  "human_section_completed": false,
+  "maintainer_acceptance_confirmed": false,
+  "independent_adoption_confirmed": false,
+  "ci": {
+    "conventional_title": "success_after_title_correction",
+    "pr_artifacts": "success",
+    "pr_description": "skipped_while_draft",
+    "maintainer_workflow_approval_required": [
+      "Deprecation deadlines",
+      "Check Extensions",
+      "Tests"
+    ]
+  },
+  "catalog_validation": "catalog-validation.json",
+  "live_sdk_verification": "verification.json"
+}
