@@ -1,0 +1,70 @@
+{
+  "format": "genius-regulation-history-summary/1",
+  "recorded_at": "2026-10-15T16:48:22.579653+00:00",
+  "status": "REJECTED_BY_EVALUATION",
+  "selected_step_seconds": 30,
+  "training_loss": {
+    "baseline": 242210,
+    "candidate": 241955
+  },
+  "evaluation_loss": {
+    "baseline": 286155,
+    "candidate": 301995
+  },
+  "evaluation_cases": {
+    "improved": 0,
+    "equal": 9,
+    "worse": 7
+  },
+  "evaluation_totals": {
+    "baseline": {
+      "completed": 585,
+      "operational_failures": 63,
+      "unfinished": 136,
+      "exposure_seconds": 266255
+    },
+    "candidate": {
+      "completed": 584,
+      "operational_failures": 60,
+      "unfinished": 140,
+      "exposure_seconds": 281995
+    }
+  },
+  "local_tests": {
+    "status": "PASS",
+    "count": 42,
+    "new_history_tests": 13,
+    "previous_study_tests": 15,
+    "runtime_regulation_tests": 14
+  },
+  "preceding_experiment_sources_unchanged": {
+    "beta/tools/regulation_study.py": true,
+    "beta/tests/test_regulation_study.py": true,
+    "beta/genius_beta/regulation.py": true,
+    "beta/genius_beta/db.py": true,
+    "beta/migrations/011_mission_regulation.sql": true,
+    "beta/experiments/regulation/plan.json": true,
+    "beta/experiments/regulation/training.json": true,
+    "beta/experiments/regulation/evaluation.json": true,
+    "beta/experiments/regulation/predeclaration.json": true
+  },
+  "runtime_matches_deployed_commit": {
+    "beta/genius_beta/regulation.py": true,
+    "beta/genius_beta/db.py": true,
+    "beta/migrations/011_mission_regulation.sql": true
+  },
+  "deployed_commit": "3f366854bb4d266070f309646518106abb13096a",
+  "production_changed": false,
+  "promotion_requested": false,
+  "public_probe": {
+    "status": "PENDING_PREVIOUS_REGISTRATION_429",
+    "attempted_again_this_cycle": false,
+    "account_or_credential_created": false
+  },
+  "receipt_hashes": {
+    "candidate.json": "33c5e298732ab2c2950886eaf0248680138ad47ecde43e849c372b33e76a0508",
+    "evaluation.json": "6736b6d5ef6c6fa50e8b6e90843349a113bd286079a889e962eb6e7c612c17c8",
+    "lock.json": "05144ca132ffddbe603ea8eaaf0dde06b636a0a6fe861efcc558de1837a79f45",
+    "tests.txt": "4503db82833bec3bfa657a6d2910f7cf80c3d94260d6fa91056506b7ade07bb8"
+  }
+}

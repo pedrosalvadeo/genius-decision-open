@@ -1,0 +1,43 @@
+{
+  "format": "genius-regulation-history-plan/1",
+  "id": "observed-failure-backoff-2026-10-15-v1",
+  "evidence_origin": "synthetic",
+  "baseline_commit": "3f366854bb4d266070f309646518106abb13096a",
+  "baseline_policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+  "rule": "min(180, 60 + step_seconds * max(0, consecutive_operational_failures - 3))",
+  "candidate_step_seconds": [15, 30, 60],
+  "baseline_step_seconds": 0,
+  "first_wait_seconds": 60,
+  "maximum_wait_seconds": 180,
+  "failure_threshold": 3,
+  "allowed_rule_inputs": ["consecutive_operational_failures_after_current_observed_result"],
+  "reset": "completed resets consecutive failures; neutral outcomes do not clear them",
+  "step_seconds": 5,
+  "max_pending": 4,
+  "loss_weights": {"operational_failure": 100, "unfinished": 100, "exposure_second": 1},
+  "selection": "nominate the positive step with minimum summed training loss; ties choose smallest; baseline is the control, not a selectable challenger",
+  "gates": {
+    "strict_training_loss_improvement": true,
+    "strict_evaluation_loss_improvement": true,
+    "per_case_loss_not_worse": true,
+    "per_case_completed_not_fewer": true,
+    "per_case_failures_not_more": true,
+    "per_case_unfinished_not_more": true,
+    "max_success_latency_regression_seconds": 30,
+    "zero_safety_violations": true
+  },
+  "training_file": "training.json",
+  "evaluation_file": "evaluation.json",
+  "production_promotion": false,
+  "limits": [
+    "Fresh deterministic synthetic trajectories; public and not blinded, not real-traffic evidence.",
+    "No scenario from the previous study is relabeled as new evaluation.",
+    "Only a local proposed finish adapter changes cooldown; the live controller remains unchanged.",
+    "The adapter receives only committed failure history and the current observed outcome, never future windows.",
+    "A positive-step challenger is evaluated even when training does not beat the control; that failure disqualifies promotion.",
+    "The loss weights and all nonregression gates match the preceding study and are not retuned after observing results.",
+    "The simulator excludes authentication, registration, daily quotas, backups, CPU and network; it simulates mission processes.",
+    "Synthetic loss is not money, energy, wellbeing or probability of sustained life.",
+    "Eligibility permits review only. No production learning, automatic deploy or permissions change."
+  ]
+}

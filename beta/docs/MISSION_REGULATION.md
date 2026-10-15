@@ -102,3 +102,9 @@ El primer ensayo retuvo los 60 s actuales: ninguna alternativa mejoró su objeti
 de entrenamiento. No instala aprendizaje ni cambios de política en producción.
 No se permite que el controlador cambie sus umbrales a partir de
 una única ejecución, se financie, amplíe cuotas, modifique permisos o promueva código.
+
+El [ensayo según historial de fallos](../experiments/regulation-history/README.md)
+implementa en laboratorio un aumento acotado de espera tras nuevas pruebas
+fallidas. El incremento elegido de 30 s mejoró apenas entrenamiento y empeoró
+evaluación; quedó rechazado. La política pública conserva 60 s. Los dos estudios
+se reproducen por separado y no instalan aprendizaje en el servicio.
