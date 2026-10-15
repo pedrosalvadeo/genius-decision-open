@@ -1,0 +1,43 @@
+{
+  "base_commit": "5d605386ffed5657116a9c7f04c9624274b45833",
+  "date": "2026-10-15",
+  "deployment_read": {
+    "commit": "3f366854bb4d266070f309646518106abb13096a",
+    "deployment_id": "bb6b9074-d964-4c4a-909b-982c59fa499b",
+    "staged_changes": false,
+    "status": "SUCCESS"
+  },
+  "files": {
+    "adaptive/evidence/2026-10-15-regulation-observation/synthetic.json": "63b2f444911757c3a0c40016b03c907384ab2cb78fc1b4aefa4653840e8ba46a",
+    "adaptive/evidence/2026-10-15-regulation-observation/tests.txt": "ffd982dd2af76cf1d54bc7c404dd6954e0a2d9f8d2c9b148dfa245a75b6b8b76",
+    "beta/docs/MISSION_OBSERVATION.md": "3efd8e05757516daa6799164f43dbbb48a4578fd4c3606c91cc2c3ce286c3256",
+    "beta/experiments/regulation-observation/example.py": "9b2fdf14cda680858e3644aef28a3020af58e777a5dc729d6da401da3a070020",
+    "beta/tests/test_regulation_observation.py": "2105d982d07b86e932cf03ca2ad39b0d17ff2981df1b72ce7b317939dee2a6c5",
+    "beta/tools/regulation_observation.py": "004f887d72a43124cfe5f9b31b985642974fab5eb75009388ad84b1d5e2d7f99"
+  },
+  "format": "genius-regulation-observation-validation/1",
+  "local_tests": {
+    "count": 55,
+    "status": "PASS",
+    "suites": [
+      "test_regulation_observation",
+      "test_regulation_study",
+      "test_regulation_history",
+      "test_regulation"
+    ]
+  },
+  "private_production_report_executed": false,
+  "production_deployment_changed": false,
+  "production_policy_changed": false,
+  "public_mission_probe": {
+    "account_created": false,
+    "at": "2026-10-15T19:41:18Z",
+    "cleanup_required": false,
+    "credential_issued": false,
+    "error": "rate_limit",
+    "http_status": 429,
+    "method": "POST",
+    "mission_created": false,
+    "path": "/api/agents/register"
+  }
+}
