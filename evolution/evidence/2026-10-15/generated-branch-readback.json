@@ -1,0 +1,22 @@
+{
+  "format": "genius-generated-branch-readback/1",
+  "status": "PASS",
+  "commit": "5cfdd8bcf479acb1d5ddcb0961555e99687c83c6",
+  "base_revision": "589817af2658740a212ff3dd81d3f1a920a51bab",
+  "paths": [
+    "PUBLICATION_MANIFEST.json",
+    "evolution/candidates/697ab0d851a72ecf7a6f8fcc.py",
+    "evolution/proposals/697ab0d851a72ecf7a6f8fcc/README.md",
+    "evolution/proposals/697ab0d851a72ecf7a6f8fcc/proposal.json"
+  ],
+  "sha256": {
+    "evolution/candidates/697ab0d851a72ecf7a6f8fcc.py": "44e7b927550e2cf097243e57c330f601e0e1c4c71d076b38ca64ab6f8a4f3bf7",
+    "evolution/proposals/697ab0d851a72ecf7a6f8fcc/proposal.json": "a9f93f440e09cb0a52e41177b55f637c7e0153ef3f61d0fca7e5c1f1935ecca0",
+    "evolution/proposals/697ab0d851a72ecf7a6f8fcc/README.md": "33dfea8c5dd2019f0bc3ca38a318d4d24661a0c0322a4466402d88cce280b758",
+    "PUBLICATION_MANIFEST.json": "8afa89ddd1613a8e101999bff1976864df2b4b5192feb9ca94d491e53e6da223"
+  },
+  "author": "github-actions[bot]",
+  "created_at": "2026-10-15T05:32:40Z",
+  "scope": "EXACT_DIFF_AND_BYTE_RECOMPUTATION",
+  "production_activated": false
+}

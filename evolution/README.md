@@ -97,3 +97,18 @@ se registran en `adaptive/HANDOFF.md` y `evolution/evidence/`.
 
 El runtime público sigue fijado al PR 36. Ningún resultado sintético de este
 componente mide bienestar, PVS ni justifica sustituir la política desplegada.
+
+
+### Estado comprobado del primer ciclo
+
+Framework integrado por PR 38. Ejecución de main `38687301389` completada,
+con evaluación aislada y rama publicada por `github-actions[bot]` en
+`5cfdd8bcf479acb1d5ddcb0961555e99687c83c6`. Lectura posterior PASS: padre,
+alcance de cuatro archivos y bytes exactos contra recomputación.
+
+GitHub rechazó la apertura del PR con **HTTP 403**. Por eso el resultado final es
+`BRANCH_PUBLISHED_PR_BLOCKED`, aunque el workflow conserva el resultado y termina
+success. El PR no se creó. La rama y evaluación rechazada están disponibles;
+no se intentó otra identidad. Permiso pendiente y recuperación en el handoff.
+Recibos: `evolution/evidence/2026-10-15/publication.json` y
+`generated-branch-readback.json`; el informe original está en `generated-proposal.json`.

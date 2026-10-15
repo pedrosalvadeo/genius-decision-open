@@ -1,36 +1,45 @@
-# Genius — propuestas de evolución de código implementadas
+# Genius — generación y registro automático de propuestas verificados
 
-15 de octubre de 2026. Se incorporó `evolution/`: generación aritmética de una
-estrategia desde memoria pública, evaluación separada y publicador de una rama/PR
-borrador. La rama `work/code-evolution-20261015` registra el incremento; su PR
-conservará el commit probado y CI. **La ejecución automática en GitHub aún debe
-verificarse después de integrar el workflow.** No confundir pruebas locales con
-publicación realizada por Genius.
+15 de octubre de 2026, 05:32 UTC (02:32 Argentina). El [PR 38](https://github.com/pedrosalvadeo/genius-decision-open/pull/38)
+quedó integrado en `589817af2658740a212ff3dd81d3f1a920a51bab`; cuatro CI aprobaron
+el head `709c18415c3a10f9ca8ac9a618c472592300bd0b`. Veintiuna pruebas locales
+nuevas pasan. No cambió el runtime público: sigue fijado al PR 36, sin nuevo Apply.
 
-Contrato y uso: [evolution/README.md](../evolution/README.md). Veintiuna pruebas
-locales pasan, incluyendo aislamiento de ejecución, separación de datos, rechazo
-de regresiones, modificación de recibos, escritura fuera de alcance, recuperación
-de respuestas perdidas, main adelantado, ramas alteradas y bloqueo de permisos.
-Evidencia: [evolution/evidence/2026-10-15](../evolution/evidence/2026-10-15).
+El workflow **Genius code evolution**, ejecución `38687301389`, evaluó y publicó
+por sí mismo la rama `genius/evolution/697ab0d851a72ecf7a6f8fcc`.
+Commit `5cfdd8bcf479acb1d5ddcb0961555e99687c83c6`, autor `github-actions[bot]`.
+Se verificaron por lectura posterior el padre exacto, cuatro archivos modificados,
+todos sus bytes/hashes y el recálculo del informe. No se atribuye esta publicación
+a una acción manual del asistente. Código/informe:
+https://github.com/pedrosalvadeo/genius-decision-open/tree/genius/evolution/697ab0d851a72ecf7a6f8fcc
 
-La primera solicitud usa sólo el recibo sintético público del PR 37 como memoria.
+**Bloqueo concreto:** GitHub respondió HTTP 403 al intentar abrir el PR borrador.
+Estado `BRANCH_PUBLISHED_PR_BLOCKED`. La rama existe; el PR automático todavía no.
+El workflow finalizó success porque conserva el resultado parcial explícito, no
+porque haya creado el PR. No se cambió de identidad ni se alteraron permisos.
+Revisar Settings → Actions → General → Workflow permissions → Allow GitHub Actions
+to create and approve pull requests. Después de habilitarlo, reejecutar sólo el job
+publish `116265089203` de la ejecución anterior; recuperará la misma rama sin
+regenerar/sobrescribir ni duplicar una propuesta. No promover el candidato rechazado.
+
+La primera solicitud usa el recibo sintético público del PR 37 como memoria.
 Aprende y escribe `110 - valor_anterior`, con error de entrenamiento 420 → 0.
 La evaluación fija de seis casos lo rechaza: empeora estabilidad, deriva y shocks.
-El candidato conserva el estado `REJECTED_BY_EVALUATION` y no puede promoverse
-bajo ese contrato. No se altera la suite para convertir este rechazo en aprobación.
-Los costos de sobre/subestimación ya se declaran por separado (1/1, unidades de
-prueba), sin inventar una equivalencia monetaria ni de bienestar.
+Estado `REJECTED_BY_EVALUATION`, `promotion_eligible=false`. El resultado negativo
+se conserva. Costos de sobre/subestimación explícitos 1/1 en unidades de prueba;
+no equivalen a dinero, bienestar ni PVS. No se modifica la suite para aprobarlo.
 
-El workflow evalúa PRs con permisos de lectura. Al cambiar el generador o el
-paquete público activo en main, evalúa sin red ni credenciales y otro job publica
-una rama inmutable `genius/evolution/ID`. No hace merge, aprobación propia ni deploy.
-Si GitHub impide el PR, conserva rama/enlace/estado explícito; no elude la restricción.
-No está conectado automáticamente a las bases privadas ni es un editor de código
-general: v1 genera programas afines con uno, dos o tres retardos. Una elegibilidad
-sintética permitiría revisión, no demostraría generalización o beneficio real.
+Contrato: [evolution/README.md](../evolution/README.md). Evidencia verificada:
+[evolution/evidence/2026-10-15](../evolution/evidence/2026-10-15), con publicación,
+lectura de rama, informe generado y pruebas locales. La versión local previa se
+conserva identificada como tal; la ejecución de GitHub la complementa.
 
-El runtime público sigue en `7fdb633` (PR 36) con prueba pública PASS del PR 37.
-Este incremento vive en GitHub Actions, fuera del runtime; no requiere otro Apply.
+El generador v1 produce programas afines exactos con retardos 1/2/3 a partir de
+paquetes ya públicos. No es un editor general, no usa LLM, no lee bases privadas,
+no tiene cron y no hace merge ni deploy de sus propias propuestas. Actúa al
+incorporar generador/solicitud/datos en main o por workflow_dispatch. Los PR sólo
+evalúan. La conexión automática desde cuentas y la promoción a runtime siguen
+pendientes de contratos específicos. Una elegibilidad sintética sólo abre revisión.
 
 # Genius adaptativo — integración contextual activa y verificada
 
@@ -347,14 +356,17 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 ## Siguiente prompt
 
 > Continuá desde `adaptive/HANDOFF.md` y `evolution/README.md`.
-> El siguiente ciclo vigente es evolución de código, no repetir el despliegue REST.
-> Verificá el PR de `work/code-evolution-20261015` y su ejecución de GitHub Actions.
-> Confirmá la rama/propuesta realmente publicada por el workflow y el estado de
-> permisos/CI; si la publicación quedó incierta, reconciliá por ID sin sobrescribir.
-> Conservá el primer rechazo (fórmula 110 - valor previo) y la suite congelada.
-> No ajustes datos o guardas para aprobar ese candidato. No lo actives en producción.
-> El próximo incremento requiere definir un problema y objetivo nuevos para
-> estrategias condicionadas al régimen, con nueva evaluación antes de generar.
-> La conexión de memoria privada a publicaciones necesita un contrato explícito
-> de consentimiento y minimización; no publiques observaciones de cuentas.
-> Entregá evidencia, límites y siguiente prompt. Bienestar/PVS siguen sin medirse.
+> El PR 38 está integrado, cuatro CI aprobaron, y el workflow 38687301389 creó
+> automáticamente la rama genius/evolution/697ab0d851a72ecf7a6f8fcc en 5cfdd8b.
+> El PR borrador quedó bloqueado por HTTP 403. Si Pedro confirma el permiso de
+> GitHub Actions, reejecutá sólo publish (job 116265089203) y comprobá recuperación
+> de la rama existente y apertura del borrador. No eludas permisos ni publiques
+> el PR generado mediante otra identidad. Conservá recibos y estado parcial.
+> El candidato 110 - valor previo fue rechazado; no lo fusiones ni lo despliegues,
+> ni cambies guardas/datos para aprobarlo. Conservá el ensayo HTTP negativo v1.
+> Después de resolver el permiso, definí un nuevo problema para estrategias
+> condicionadas al régimen, con objetivo y nueva evaluación antes de generar.
+> No publiques memoria privada: la conexión de cuentas necesita consentimiento
+> y minimización explícitos. La promoción al runtime requiere su propio contrato
+> y pruebas; no está implementada. Entregá evidencia, límites y siguiente prompt.
+> Bienestar/PVS siguen sin medirse; no hace falta Apply en Railway por este trabajo.
