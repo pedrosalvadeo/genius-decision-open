@@ -11,15 +11,17 @@ from .db import dump, transaction
 from .mission_state import MAX_BUNDLE, digest
 
 SCOPES = ('missions:read', 'missions:write', 'missions:run', 'missions:delete')
-RESERVATION = MAX_BUNDLE + 262144
+RESERVATION = MAX_BUNDLE + 262144 + 131072
 
 def required_scope(method, path):
     if path in ('/api/missions', '/api/missions/capabilities') and method == 'GET':
         return 'missions:read'
     if path == '/api/missions' and method == 'POST':
         return 'missions:write'
-    if re.fullmatch(r'/api/missions/[a-f0-9]{32}(/artifact|/export)?', path) and method == 'GET':
+    if re.fullmatch(r'/api/missions/[a-f0-9]{32}(/artifact|/export|/forecast)?', path) and method == 'GET':
         return 'missions:read'
+    if re.fullmatch(r'/api/missions/[a-f0-9]{32}/(forecast|observations)', path) and method == 'POST':
+        return 'missions:write'
     if re.fullmatch(r'/api/missions/[a-f0-9]{32}/(run|cancel)', path) and method == 'POST':
         return 'missions:run'
     if re.fullmatch(r'/api/missions/[a-f0-9]{32}', path) and method == 'DELETE':
@@ -54,8 +56,14 @@ def install(app, db, body, error, capacity):
         if not row:
             raise error('not_found', 'Misión no encontrada.', 404)
         return row
+    from . import mission_forecasts
+    def exported(row):
+        result = view(row, True)
+        result['forecast'] = mission_forecasts.read(db(), row['id'])
+        return result
+    mission_forecasts.install(app, db, body, error, enabled, own, capacity)
     def export_all():
-        return [view(r, True) for r in db().execute('SELECT * FROM adaptive_missions WHERE user_id=? ORDER BY created_at,id', (g.user['id'],))]
+        return [exported(r) for r in db().execute('SELECT * FROM adaptive_missions WHERE user_id=? ORDER BY created_at,id', (g.user['id'],))]
     app.extensions['mission_export_user'] = export_all
 
     @app.get('/api/missions/capabilities')
@@ -66,7 +74,10 @@ def install(app, db, body, error, capacity):
             limits=dict(files=16,input_bytes=65536,missions_per_user=3,global_missions=16,timeout_seconds=60),
             memory='snapshot_receipts_and_context_bound_estimates', self_modification=False,
             learning=dict(rule='LOWER_MEDIAN_HOLDOUT_MAE_V1', parameter_updates=True,
-                records=32, validation='RETROSPECTIVE_ONLY', external_actions=False),
+                records=32, validation='RETROSPECTIVE_CALIBRATION_AND_POST_FREEZE_SUBMISSIONS', external_actions=False),
+            forecasts=dict(protocol='resource_forecast_v1', expected_records_min=3, expected_records_max=30,
+                receipt_time='SERVER_UTC_MICROSECONDS', event_time='DECLARED_NOT_ATTESTED',
+                training_requires_complete_report=True),
             wellbeing='UNMEASURED', sustained_life_probability='UNMEASURED')
 
     @app.get('/api/missions')
@@ -90,14 +101,14 @@ def install(app, db, body, error, capacity):
         from .mission_inputs import resolve
         def resolved_input():
             try:
-                return resolve(data, own)
+                return resolve(data, own, lambda mid: mission_forecasts.completed_training(db(), mid))
             except OverflowError:
                 raise error('mission_input_limit', 'Máximo de archivos: 65536 bytes.', 413) from None
             except (ValueError, TypeError, KeyError):
                 raise error('mission_input', 'Entrada inválida: revisá el contrato de archivos o calibración y la continuidad del contexto.') from None
         # Validate standalone requests before idempotence, preserving protocol 1.
         # Parent lookup is deferred until after a retry can reuse its frozen child.
-        resolved = None if 'parent_mission_id' in data else resolved_input()
+        resolved = None if any(key in data for key in ('parent_mission_id','forecast_mission_id')) else resolved_input()
         encoded = json.dumps(data, sort_keys=True, ensure_ascii=False, separators=(',', ':'))
         request_sha = digest(encoded.encode())
         mid, now = secrets.token_hex(16), int(time.time())
@@ -126,7 +137,7 @@ def install(app, db, body, error, capacity):
 
     @app.get('/api/missions/<mid>/export')
     def mission_export(mid):
-        return jsonify(mission=view(own(mid), True))
+        return jsonify(mission=exported(own(mid)))
 
     @app.get('/api/missions/<mid>/artifact')
     def mission_artifact(mid):

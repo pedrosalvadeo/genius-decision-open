@@ -1,0 +1,15 @@
+{
+  "status": "LOCAL_PASS",
+  "base_commit": "69426455e354c1b2b1e4766630a888215d6e3f93",
+  "service_tests": 129,
+  "new_tests": 9,
+  "protocol": "resource_forecast_v1",
+  "migration": "009_mission_forecasts.sql",
+  "prospective_evidence": "SERVER_RECEIPT_ORDER_ONLY",
+  "test_events": "SYNTHETIC_SIMULATED_CLOCK",
+  "live_deployment": "PENDING",
+  "independent_source_verification": false,
+  "wellbeing": "UNMEASURED",
+  "life_sustainment": "UNMEASURED",
+  "new_dependencies": 0
+}
