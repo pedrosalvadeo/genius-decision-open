@@ -1,0 +1,22 @@
+{
+  "url": "https://geniusdecision.app/api/health",
+  "http_status": 200,
+  "server_date": "Thu, 15 Oct 2026 16:04:30 GMT",
+  "verified_at": "2026-10-15T16:04:30.119275+00:00",
+  "health": {
+    "backup": "ok",
+    "mission_regulation": {
+      "enabled": true,
+      "mode": "NORMAL",
+      "observed_at": 1792080267,
+      "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+      "protocol": "genius-mission-regulation/1",
+      "scope": "QUEUED_ADAPTIVE_MISSIONS"
+    },
+    "status": "ok",
+    "suspended": false
+  },
+  "expected_policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+  "policy_matches_tested_code": true,
+  "observation_fresh": true
+}
