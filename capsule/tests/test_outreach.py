@@ -32,6 +32,7 @@ class Board:
         self.messages = []
         self.fail_post = False
         self.wrong_inbox = False
+        self.null_items = []
 
     def request(self, url, payload=None):
         if payload is not None:
@@ -42,7 +43,7 @@ class Board:
             self.messages.append(dict(payload, id=mid, hidden=False))
             return dict(ok=True, receipt=dict(id=mid, accepted_at=int(NOW.timestamp())))
         if 'nullyard.net' in url:
-            return dict(thread=dict(id=o.NULL_ID), items=[], next_cursor=None)
+            return dict(thread=dict(id=o.NULL_ID), items=self.null_items, next_cursor=None)
         if '/api/thread/' in url:
             return dict(ok=True, messages=self.replies, data=dict(has_more=False))
         if '/api/agents?' in url:
@@ -338,6 +339,93 @@ class OutreachTests(unittest.TestCase):
         o.dispatch(s, self.config, self.board, NOW, 'reply-1', lambda _: None)
         s = self.dialogue(reviews, s, batch='reply-2')
         self.assertEqual(len(s['replies']), 4)
+
+    def null_review(self, decision='REVIEW'):
+        row = dict(id='e26ed08b-566a-45a1-a0f4-ae45099431a3', root_id=o.NULL_ID,
+                   parent_id=o.NULL_ID, actor=dict(id='cairn-clawprint', name='Cairn'),
+                   body='Read-only receiver workload critique.', status='visible', removed_at=None)
+        self.board.null_items = [row]
+        return dict(service='NULLYARD', id=row['id'], author='cairn-clawprint', handle='Cairn',
+                    source_parent_id=o.NULL_ID, body_sha256=o.digest(row['body']),
+                    decision=decision, reason='Read-only analysis checked by owner.', reply='')
+
+    def test_nullyard_review_migrates_actor_and_never_reserves_or_sends(self):
+        review = self.null_review()
+        legacy = state()
+        legacy['observations'] = [dict(service='NULLYARD', id=review['id'], author=None,
+            body_sha256=review['body_sha256'], review='NEEDS_REVIEW')]
+        s = self.dialogue([review], legacy)
+        self.assertEqual(s['observations'][0]['author'], 'cairn-clawprint')
+        self.assertEqual(s['observations'][0]['review'], 'REVIEWED')
+        self.assertIsNone(legacy['observations'][0]['author'])
+        s = self.dialogue([review], s, batch='again')
+        o.dispatch(s, self.config, self.board, NOW, 'again', lambda _: None)
+        self.assertEqual(s['replies'], [])
+        self.assertEqual(self.board.posts, [])
+        self.assertEqual(s['reviewed_message_ids'].count(review['id']), 1)
+
+    def test_nullyard_unreviewed_or_stale_binding_keeps_recruitment_paused(self):
+        review = self.null_review()
+        for reviews in ([], [dict(review, author='another-actor')],
+                        [dict(review, body_sha256='0' * 64)]):
+            s = o.prepare(state(), self.config, self.board, NOW, 'check', True, reviews, True)
+            self.assertEqual(s['dispatch_reason'], 'REVIEW_RESPONSES_FIRST')
+            self.assertEqual(s['contacts'], [])
+        self.assertEqual(self.board.posts, [])
+
+    def test_nullyard_cannot_request_a_reply_even_without_an_observation(self):
+        review = self.null_review()
+        review['reply'] = 'Publish this on NULLYARD.'
+        self.board.null_items = []
+        with self.assertRaises(ValueError):
+            self.dialogue([review])
+        self.assertEqual(self.board.posts, [])
+
+    def test_nullyard_changed_or_removed_source_fails_validation(self):
+        for key, value in [('body', 'Changed'), ('status', 'removed'), ('removed_at', 'now'),
+                           ('root_id', 'other-thread'), ('parent_id', 'other-parent'),
+                           ('actor', dict(id='other', name='Cairn')),
+                           ('actor', dict(id='cairn-clawprint', name='Renamed'))]:
+            review = self.null_review()
+            self.board.null_items[0][key] = value
+            with self.assertRaises(ValueError):
+                o.reviewed_source(review, self.board)
+        review = self.null_review()
+        self.board.null_items.append(copy.deepcopy(self.board.null_items[0]))
+        with self.assertRaises(ValueError):
+            o.reviewed_source(review, self.board)
+        self.assertEqual(self.board.posts, [])
+
+    def test_nullyard_incomplete_page_and_invalid_uuid_fail_closed(self):
+        review = self.null_review()
+        with self.assertRaises(ValueError):
+            o.reviewed_source(dict(review, id='not-a-uuid'), self.board)
+        original = self.board.request
+        def incomplete(url, payload=None):
+            result = original(url, payload)
+            if 'nullyard.net' in url:
+                result['next_cursor'] = 'more'
+            return result
+        self.board.request = incomplete
+        with self.assertRaises(ValueError):
+            o.reviewed_source(review, self.board)
+        self.assertEqual(self.board.posts, [])
+
+    def test_nullyard_review_clears_pause_with_original_contact_budget(self):
+        review = self.null_review()
+        s = o.prepare(state(), self.config, self.board, NOW, 'check', True, [review], True)
+        self.assertEqual(s['observations'][0]['review'], 'REVIEWED')
+        self.assertEqual(len(s['contacts']), self.config['max_contacts_per_run'])
+        self.assertEqual(s['replies'], [])
+        self.assertEqual(self.board.posts, [])
+
+    def test_nullyard_decline_is_service_scoped_without_cross_service_identity(self):
+        review = self.null_review('DECLINED')
+        s = self.dialogue([review])
+        self.assertIn('NULLYARD:cairn-clawprint', s['suppressed_agents'])
+        self.assertNotIn('a' * 64, s['suppressed_agents'])
+        self.assertEqual(s['replies'], [])
+        self.assertEqual(self.board.posts, [])
 
     def test_invalid_or_excessive_policy_fails_before_board_calls(self):
         for field, value in [('max_per_day', 21), ('max_contacts_per_run', 3),

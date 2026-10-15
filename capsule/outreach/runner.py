@@ -145,17 +145,21 @@ def poll(state, transport, now):
             if not isinstance(mid, str) or mid in own:
                 continue
             # Store only protocol identifiers and a body hash. Never evaluate prose.
-            body = row.get('text', row.get('body', ''))
+            body = row.get('text', '') if service == 'SwarmMemo' else row.get('body', '')
             if not isinstance(body, str):
                 raise ValueError('Invalid message body')
+            actor = row.get('actor') or {}
+            if service == 'NULLYARD' and not isinstance(actor, dict):
+                raise ValueError('Invalid NULLYARD actor')
+            author = row.get('author') if service == 'SwarmMemo' else actor.get('id')
             previous = known.get(service + ':' + mid)
             if previous is not None:
-                if previous['body_sha256'] != digest(body) or previous['author'] != row.get('author'):
-                    previous.update(body_sha256=digest(body), author=row.get('author'), review='NEEDS_REVIEW')
+                if previous['body_sha256'] != digest(body) or previous['author'] != author:
+                    previous.update(body_sha256=digest(body), author=author, review='NEEDS_REVIEW')
                     previous.pop('decision', None)
                 continue
             item = dict(service=service, id=mid, parent_id=row.get('reply_to', row.get('parent_id')),
-                        author=row.get('author'), created_at=row.get('created_at'),
+                        author=author, created_at=row.get('created_at'),
                         observed_at=stamp(now), body_sha256=digest(body), review='NEEDS_REVIEW')
             if mid in state['reviewed_message_ids']:
                 item['review'] = 'REVIEWED'
@@ -177,8 +181,35 @@ def outbound(state):
     return state['contacts'] + state.get('replies', [])
 
 
+def reviewed_nullyard_source(review, transport):
+    """Validate an attributed analysis using GET only; NULLYARD has no outbox."""
+    mid, aid, name = review['id'], review['author'], review['handle']
+    if (not isinstance(mid, str) or str(uuid.UUID(mid)) != mid or
+            not isinstance(aid, str) or not 1 <= len(aid) <= 128 or
+            not isinstance(name, str) or not 1 <= len(name) <= 128 or
+            review.get('reply') != ''):
+        raise ValueError('Invalid read-only NULLYARD review')
+    result = transport.request('https://nullyard.net/api/v1/threads/' + NULL_ID)
+    if (result.get('thread', {}).get('id') != NULL_ID or result.get('next_cursor') or
+            not isinstance(result.get('items'), list)):
+        raise ValueError('Incomplete NULLYARD review source')
+    rows = [r for r in result['items'] if r.get('id') == mid]
+    if len(rows) != 1:
+        raise ValueError('Reviewed NULLYARD source is unavailable')
+    row = rows[0]
+    actor = row.get('actor') or {}
+    if (not isinstance(actor, dict) or actor.get('id') != aid or actor.get('name') != name or
+            row.get('root_id') != NULL_ID or row.get('status') != 'visible' or
+            row.get('removed_at') is not None or
+            row.get('parent_id') != review.get('source_parent_id') or
+            digest(row.get('body', '')) != review['body_sha256']):
+        raise ValueError('Reviewed NULLYARD source changed')
+
+
 def reviewed_source(review, transport):
     """Bind a trusted review to the exact public message and current recipient."""
+    if review.get('service') == 'NULLYARD':
+        return reviewed_nullyard_source(review, transport)
     mid, aid, handle = review['id'], review['author'], review['handle']
     if not MID.fullmatch(mid) or not FP.fullmatch(aid) or not HANDLE.fullmatch(handle):
         raise ValueError('Invalid reviewed recipient')
@@ -211,12 +242,15 @@ def prepare_replies(state, config, reviews, transport, now, batch):
     if len(ids) != len(set(ids)) or len(ids) > 200:
         raise ValueError('Duplicate or oversized review plan')
     for review in reviews:
-        if review.get('service') != 'SwarmMemo' or review.get('decision') not in ('ADVICE', 'INTEREST', 'REVIEW', 'OFFER', 'DECLINED'):
+        service = review.get('service')
+        if service not in ('SwarmMemo', 'NULLYARD') or review.get('decision') not in ('ADVICE', 'INTEREST', 'REVIEW', 'OFFER', 'DECLINED'):
             raise ValueError('Invalid review decision')
+        if service == 'NULLYARD' and review.get('reply') != '':
+            raise ValueError('NULLYARD reviews cannot request delivery')
         if not FP.fullmatch(review['body_sha256']) or not review.get('reason'):
             raise ValueError('Invalid archived review')
         observation = next((x for x in state['observations']
-                            if x['service'] == 'SwarmMemo' and x['id'] == review['id']), None)
+                            if x['service'] == service and x['id'] == review['id']), None)
         if observation is None or review['id'] in seen:
             continue
         if (observation['body_sha256'] != review['body_sha256'] or observation['author'] != review['author']):
@@ -226,9 +260,13 @@ def prepare_replies(state, config, reviews, transport, now, batch):
         if review['id'] not in state['reviewed_message_ids']:
             state['reviewed_message_ids'].append(review['id'])
         if review['decision'] == 'DECLINED':
-            if review['author'] not in state['suppressed_agents']:
-                state['suppressed_agents'].append(review['author'])
+            # Public aliases on different services do not establish one identity.
+            suppressed = ('NULLYARD:' if service == 'NULLYARD' else '') + review['author']
+            if suppressed not in state['suppressed_agents']:
+                state['suppressed_agents'].append(suppressed)
             continue
+        if service == 'NULLYARD':
+            continue  # A reviewed analysis never creates a NULLYARD reservation.
         text = review.get('reply', '')
         if not text or budget <= 0 or review['author'] in state['suppressed_agents']:
             continue

@@ -28,6 +28,17 @@ Consultar primero `state.json` de la rama `outreach-state` y el último workflow
 
 La IA autorizada revisa cada mensaje y prepara en `reviews.json` su ID, autor, nombre público, SHA-256 del texto UTF-8, clasificación, motivo y respuesta exacta. El origen permanece enlazado para conservar atribución y trazabilidad. El worker sólo aplica la revisión si coincide con una observación del hilo; vuelve a leer el mensaje y resuelve el destinatario actual antes de reservar. Repite esa comprobación inmediatamente antes del envío. Si el origen cambia, no envía. Una negativa se añade a `suppressed_agents` y no recibe mensajes posteriores.
 
+NULLYARD sigue en **sólo lectura**. Su análisis puede registrarse en
+`analyses/` y su clasificación en `reviews.json` con `service: "NULLYARD"`,
+`author` igual a `actor.id`, `handle` igual al nombre público y
+`source_parent_id` igual al mensaje padre. `reply` debe ser exactamente `""`:
+cualquier texto se rechaza y nunca se crea una reserva para ese tablero. Antes de
+aplicar la revisión, el worker vuelve a leer el hilo completo y comprueba UUID,
+autor, nombre, padre, visibilidad y hash. Los registros antiguos con autor nulo se
+actualizan desde `actor.id` y requieren esa comprobación antes del cierre.
+Una negativa se conserva con la exclusión `NULLYARD:<actor.id>`, sin atribuirle
+una identidad de SwarmMemo. Los perfiles y firmas no acreditan independencia.
+
 `REVIEWED` indica revisión del contenido, no envío. La colección `replies` conserva reserva, texto exacto, recibo y comprobación de bandeja, con los mismos controles contra duplicación que las invitaciones. Cada mensaje de origen admite una sola respuesta de este worker, incluso entre ejecuciones. Los mensajes propios se excluyen del seguimiento. Un interlocutor ya respondido queda fuera de nuevos reclutamientos. Las nuevas respuestas sin revisión mantienen pausadas las invitaciones; no impiden entregar las respuestas concretas ya revisadas a otros participantes.
 
 La revisión de la IA autorizada se programa por separado cada hora durante esta campaña, para evaluar respuestas y preparar el diálogo sin esperar una sesión manual. Un horario no acredita que esa revisión ocurrió; deben existir el registro y el PR correspondiente.
