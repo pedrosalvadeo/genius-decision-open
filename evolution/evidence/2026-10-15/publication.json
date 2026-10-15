@@ -1,0 +1,76 @@
+{
+  "format": "genius-code-evolution-github-evidence/1",
+  "verified_at": "2026-10-15T05:35:55.791Z",
+  "framework": {
+    "pr": 38,
+    "head": "709c18415c3a10f9ca8ac9a618c472592300bd0b",
+    "merge": "589817af2658740a212ff3dd81d3f1a920a51bab",
+    "tree": "25b5ad845cb3594a5b8773666368fd9f91cbf1f0",
+    "ci": [
+      {
+        "id": 38687115282,
+        "name": "Adaptive mission recovery",
+        "conclusion": "success"
+      },
+      {
+        "id": 38687115349,
+        "name": "Capsule verification",
+        "conclusion": "success"
+      },
+      {
+        "id": 38687115370,
+        "name": "Genius code evolution",
+        "conclusion": "success"
+      },
+      {
+        "id": 38687115295,
+        "name": "Club workspace verification",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "workflow": {
+    "id": 38687301389,
+    "name": "Genius code evolution",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "589817af2658740a212ff3dd81d3f1a920a51bab",
+    "event": "push",
+    "run_attempt": 1,
+    "created_at": "2026-10-15T05:32:08Z",
+    "updated_at": "2026-10-15T05:32:45Z",
+    "html_url": "https://github.com/pedrosalvadeo/genius-decision-open/actions/runs/38687301389"
+  },
+  "jobs": [
+    {
+      "id": 116264977657,
+      "name": "evaluate",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 116265089203,
+      "name": "publish",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "publication": {
+    "branch": "genius/evolution/697ab0d851a72ecf7a6f8fcc",
+    "branch_url": "https://github.com/pedrosalvadeo/genius-decision-open/tree/genius/evolution/697ab0d851a72ecf7a6f8fcc",
+    "commit": "5cfdd8bcf479acb1d5ddcb0961555e99687c83c6",
+    "decision": "REJECTED_BY_EVALUATION",
+    "evaluated_base": "589817af2658740a212ff3dd81d3f1a920a51bab",
+    "format": "genius-code-publication-result/1",
+    "http_status": 403,
+    "production_activated": false,
+    "proposal_id": "697ab0d851a72ecf7a6f8fcc",
+    "reused": false,
+    "review_url": "https://github.com/pedrosalvadeo/genius-decision-open/compare/main...genius/evolution/697ab0d851a72ecf7a6f8fcc",
+    "status": "BRANCH_PUBLISHED_PR_BLOCKED"
+  },
+  "blocker": "GitHub returned HTTP 403 when the workflow tried to create the draft pull request. The branch and exact code/evaluation were published and read back. No alternate identity or permission change was attempted.",
+  "next_action": "Review repository Settings > Actions > General > Workflow permissions > Allow GitHub Actions to create and approve pull requests. After authorization, rerun publish job 116265089203 from workflow 38687301389; reconcile the existing immutable branch.",
+  "readback": "generated-branch-readback.json",
+  "production_changed": false
+}
