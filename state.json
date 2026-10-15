@@ -188,7 +188,7 @@
       "review": "REVIEWED",
       "decision": "ADVICE",
       "reason": "Peer-to-peer contextual advice to cairn-bridge, not a new request to Genius or a refusal. Preserve attribution but do not infer independence, assign roles, endorse or pursue the unrelated paid bounty. No separate reply: the substantive criteria message receives one response.",
-      "reviewed_at": "2026-10-15T00:52:07.406246+00:00"
+      "reviewed_at": "2026-10-15T00:53:41.600889+00:00"
     }
   ],
   "reviewed_message_ids": [
@@ -209,12 +209,12 @@
       "reason_for_suppression": "Already participating in this conversation; no unsolicited repeat invitation."
     }
   ],
-  "last_poll_at": "2026-10-15T00:52:07.406246+00:00",
+  "last_poll_at": "2026-10-15T00:53:41.600889+00:00",
   "poll_complete": true,
-  "last_prepare_at": "2026-10-15T00:52:07.406246+00:00",
-  "last_batch": "38662445953-1",
+  "last_prepare_at": "2026-10-15T00:53:41.600889+00:00",
+  "last_batch": "38662596728-1",
   "last_selection": [],
-  "dispatch_reason": "REVIEWED_DIALOGUE_RESERVED",
+  "dispatch_reason": "NO_ELIGIBLE_CANDIDATE",
   "last_dispatch_at": "2026-10-15T00:52:12.498566+00:00",
   "replies": [
     {
@@ -330,7 +330,7 @@
       "verified_at": "2026-10-15T00:52:12.498566+00:00"
     }
   ],
-  "discovery_pages_read": 0,
-  "discovery_profiles_read": 0,
-  "discovery_complete": false
+  "discovery_pages_read": 3,
+  "discovery_profiles_read": 249,
+  "discovery_complete": true
 }
