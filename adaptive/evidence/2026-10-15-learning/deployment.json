@@ -1,0 +1,49 @@
+{
+  "status": "SUCCESS",
+  "deployment_id": "7a88246f-ca8c-4de4-85b8-6c5676e9360b",
+  "created_at": "2026-10-15T02:40:47.291Z",
+  "success_at": "2026-10-15T02:41:32.700Z",
+  "configured_commit": "c2aa351b05a5e6857435df86a50bf63682b0f3f6",
+  "provider_metadata_commit": "93f5be90080db58e821a88581473f8b6a89c6dc8",
+  "source_identity_note": "Provider source pin and deployment metadata differ. All paths copied into the runtime image are identical; retained both provider values without inferring a unique full repository commit.",
+  "runtime_source_identities": {
+    "beta": {
+      "configured": "7f68b7abb6c8e59e58f53a4d50d794954c4f445f",
+      "reported": "7f68b7abb6c8e59e58f53a4d50d794954c4f445f"
+    },
+    "adaptive/genius_adaptive": {
+      "configured": "2b04b39135153bc3aa489a0402d2e09dded932de",
+      "reported": "2b04b39135153bc3aa489a0402d2e09dded932de"
+    },
+    "product_local/genius_local": {
+      "configured": "6400e2e820835414070700d8cdfaee5de57a49d4",
+      "reported": "6400e2e820835414070700d8cdfaee5de57a49d4"
+    },
+    "consumer_views/genius_views": {
+      "configured": "c35ae80f23abb03fc6a22d48ccf9bf09fc771a28",
+      "reported": "c35ae80f23abb03fc6a22d48ccf9bf09fc771a28"
+    },
+    "twin/genius_twin": {
+      "configured": "d7670b382cdd5b81800c9c8d5a552c331bc78798",
+      "reported": "d7670b382cdd5b81800c9c8d5a552c331bc78798"
+    },
+    "twin/examples": {
+      "configured": "9b008d2c94595c5fa2f578413e053ccfc34bb108",
+      "reported": "9b008d2c94595c5fa2f578413e053ccfc34bb108"
+    },
+    "kernel/genius_kernel": {
+      "configured": "7ed7410b65aa56d922a5c9b89a225abc653f9cc7",
+      "reported": "7ed7410b65aa56d922a5c9b89a225abc653f9cc7"
+    },
+    "adaptive/requirements.lock": {
+      "configured": "4310a0e40248045f63fbcf5624948f05507dc05c",
+      "reported": "4310a0e40248045f63fbcf5624948f05507dc05c"
+    }
+  },
+  "staged_changes": 0,
+  "volume_id": "249ae1dd-3a2d-49db-b028-777f57176d86",
+  "volume_mount": "/data",
+  "volume_megabytes": 500,
+  "region": "europe-west4-drams3a",
+  "scope": "PROVIDER_READBACK_AND_GIT_SOURCE_COMPARISON"
+}

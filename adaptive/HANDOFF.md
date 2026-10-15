@@ -1,117 +1,113 @@
-# Genius adaptativo — continuidad y aprendizaje de recursos
+# Genius adaptativo — aprendizaje activado y comprobado
 
-Estado comprobado el 15 de octubre de 2026 UTC (14 de octubre por la noche en
-Argentina). La integración del coordinador con el servicio está terminada y
-activada. No volver a implementar este incremento ni solicitar nuevamente los
-accesos ya habilitados.
+Estado comprobado el 15 de octubre de 2026 UTC (14 por la noche en Argentina).
+El usuario aplicó el cambio en Railway. La calibración de recursos está activa y
+la prueba de continuidad por API pasó. No volver a solicitar aquella activación,
+reimplementar este incremento ni repetir sus pruebas sin una razón concreta.
 
-## Incremento de aprendizaje preparado en esta edición
-
-`resource_calibration_v1` agrega propuestas de estimación, comparación nativa de
-error, guardas de subestimación, adopción interna y continuidad por memoria de una
-misión propia. Contrato [RESOURCE_CALIBRATION.md](../beta/docs/RESOURCE_CALIBRATION.md),
-ejemplo [resource-calibration.json](examples/resource-calibration.json).
-No cambia la base de datos, dependencias ni infraestructura; usa el worker y respaldo
-existentes. Es una actualización acotada de un parámetro, con validación retrospectiva.
-La evidencia local está en [2026-10-15-learning](evidence/2026-10-15-learning).
-
-La versión activa que figura debajo es la última comprobada **antes de desplegar
-este incremento**. Consultar el PR de la rama `work/resource-learning-20261015` y
-Railway para el estado posterior; no dar por activado un cambio sólo porque esté
-mergeado. El despliegue debe fijarse al commit probado de ese PR y conservar el
-volumen/configuración. Si el conector vuelve a cancelar `accept_deploy`, dejar el
-cambio concreto preparado para aplicar en el panel, sin otra vía de mutación.
-
-## Versión activa
+## Servicio y versiones
 
 - URL: https://geniusdecision.app
-- PR de implementación: https://github.com/pedrosalvadeo/genius-decision-open/pull/25
-- Commit desplegado: `40086349dbcde45c292434dedea70612171fd6fc`.
-- Railway: despliegue `4fcdf600-7473-4dea-bb3f-e6330905f18e`, estado `SUCCESS`.
+- Implementación de aprendizaje: https://github.com/pedrosalvadeo/genius-decision-open/pull/28
+- Pin configurado: `c2aa351b05a5e6857435df86a50bf63682b0f3f6`.
+- Railway: despliegue `7a88246f-ca8c-4de4-85b8-6c5676e9360b`, `SUCCESS`.
+- Creado `2026-10-15T02:40:47.291Z`, exitoso `02:41:32.700Z`.
+- Metadatos de despliegue: `93f5be90080db58e821a88581473f8b6a89c6dc8`.
+  El pin configurado y los metadatos del proveedor difieren. Se conservaron ambos:
+  todos los archivos copiados en la imagen tienen los mismos objetos Git; entre
+  esos commits sólo cambiaron metadatos de publicación y registros de revisión.
+  No afirmar una identidad única del repositorio completo sin resolver esa diferencia.
 - Proyecto `a93aa08c-f3b6-4a5b-accc-9812d6314f00`, entorno
   `1addd5b8-5a47-4301-aeca-d9596bceb4e0`, servicio
   `dafd0be5-61aa-4843-a3a3-3c1f487d9640`.
-- `GENIUS_ADAPTIVE_ENABLED=true`; sin cambios pendientes en Railway.
-- Se reutilizan el volumen de 500 MB en `/data`, una réplica y los límites existentes.
+- Sin cambios pendientes; volumen existente de 500 MB en `/data`, una réplica.
+- Salud y respaldo `ok`, servicio no suspendido. Capacidades de aprendizaje
+  confirmadas por la API autenticada y ejecución real.
 
-Pedro aplicó los dos cambios preparados en el panel después de que el conector
-cancelara dos intentos de activación, incluso tras autorización explícita. El
-reinicio posterior sí pudo ejecutarse mediante el conector, con autorización.
-No repetir aquella solicitud de permiso ni confundir ese bloqueo histórico con
-el estado actual, que ya está activo.
+El conector había cancelado `accept_deploy` indicando falta de aprobación; Pedro
+lo resolvió aplicando el cambio en el panel. Es un bloqueo histórico resuelto,
+no una autorización pendiente. Esta edición de evidencia no modifica el runtime.
 
-## Lo que puede hacer
+## Capacidades implementadas
 
-Misiones privadas por cuenta mediante REST y herramientas MCP `mission_*`.
-La primera operación recibe archivos UTF-8, compara TAR/gzip/ZIP, construye y
-evalúa su modelo con el gemelo y núcleo existentes, entrega el archivo privado,
-verifica contenido y registra memoria empírica. Las entradas de la API se
-identifican como instantáneas enviadas; la CLI también admite commits Git explícitos.
+Misiones privadas por cuenta mediante REST y MCP `mission_*`, con seis etapas
+persistentes: medir, representar, evaluar, actuar, observar, recordar. El worker
+conserva cada etapa antes de avanzar; entradas, evidencia y entregas forman parte
+de la base principal y sus respaldos cifrados. Hay permisos por operación,
+idempotencia, cancelación, retención, borrado y revisión ante cambios del runtime.
 
-El worker existente conserva cada etapa antes de permitir la siguiente. Los
-checkpoints, entradas, evidencia y entrega están en la base principal, incluidos
-en sus respaldos cifrados y en el borrado por cuenta. Hay permisos separados para
-crear, ejecutar, leer y borrar; cuotas persistentes, cancelación, retención y
-revisión ante cambios de identidad de ejecución. Contrato y límites:
-[ADAPTIVE_MISSIONS.md](../beta/docs/ADAPTIVE_MISSIONS.md).
-Guía pública: https://geniusdecision.app/static/missions.html.
+1. `source_distribution_v1`: archivos UTF-8 enviados; mide TAR/gzip/ZIP, compara
+   mediante el núcleo, entrega el menor archivo íntegro y registra sus mediciones.
+   La CLI original también admite un commit Git explícito.
+2. `resource_calibration_v1`: propone una mediana inferior usando sólo registros
+   de aprendizaje. Compara errores de la base y propuesta en registros posteriores
+   de comprobación con el núcleo nativo. Adopta sólo si el error total baja,
+   la máxima subestimación no empeora y cumple la tolerancia declarada.
+   Si no, conserva la base; conservarla no certifica que sea adecuada.
 
-## Evidencia
+La entrega privada `resource-estimate.json` conserva la estimación y su evidencia.
+Otro ciclo puede heredar la estimación de una misión propia completada por
+`parent_mission_id`, con iguales contexto/recurso/unidad/tipo de datos y registros
+más nuevos. Guarda hash e identidad del padre, sin copiar recursivamente su historial.
+Es una actualización acotada de un parámetro; no reescribe código ni actúa sobre
+el mundo físico. Reutiliza infraestructura, dependencias y migración 008 existentes.
 
-- 117 pruebas locales de servicio, recuperación y privacidad; 16 del coordinador.
-  Registros en [2026-10-14-service](evidence/2026-10-14-service).
-- CI del PR 25 sobre `83881b5bf096e390576efe496e81cfb39c7f3fae`:
-  servicio Docker sin red (109 pruebas), recuperación adaptativa y cápsula: correctas.
-  El árbol del merge desplegado coincide con ese código probado.
-- Prueba de producción en [2026-10-15-live](evidence/2026-10-15-live): una misión
-  sintética completó seis etapas en un intento; gzip de 263 bytes conservó los dos
-  archivos enviados frente a TAR de 20.480 bytes. Estos tamaños corresponden al
-  contenido repetitivo de la prueba, no a una estimación general de ahorro.
-- Reinicio ordenado real del servicio: cierre de procesos a las 00:10:17 UTC y
-  nueva inicialización a las 00:10:19–20. La misión, exportación y hash de entrega
-  quedaron iguales; pedir ejecutar de nuevo reutilizó el resultado.
-- La cuenta sintética fue eliminada; su credencial quedó revocada. El estado
-  temporal se sustituyó por un recibo sin secretos y no forma parte del repositorio.
-- Salud y respaldo después del reinicio: `ok`, servicio no suspendido.
+Contratos: [ADAPTIVE_MISSIONS.md](../beta/docs/ADAPTIVE_MISSIONS.md) y
+[RESOURCE_CALIBRATION.md](../beta/docs/RESOURCE_CALIBRATION.md).
+Guía: https://geniusdecision.app/static/missions.html.
+Ejemplo: [resource-calibration.json](examples/resource-calibration.json).
 
-La prueba en producción comprueba conservación de una misión completada durante
-un reinicio ordenado. El corte forzado durante etapas activas y la restauración
-con filtrado de borrados se comprobaron separadamente en pruebas aisladas.
-El script de prueba respeta el proxy HTTPS del entorno y rechaza redirecciones.
-Su corrección y esta evidencia no modifican los módulos del runtime desplegado;
-Railway permanece fijado a `4008634`.
+## Evidencia recibida
 
-La misión original sobre los 460 archivos del repositorio sigue documentada en
-[evidence/2026-10-14](evidence/2026-10-14): 7.220.896 bytes de contenido,
-TAR 7.587.840, gzip 1.674.327 y ZIP 1.923.171, con integridad comprobada.
+[2026-10-15-learning](evidence/2026-10-15-learning) contiene código de la prueba,
+recibos públicos sin credenciales, comparación de fuentes y resultados:
 
-## Pendientes reales
+- 120 pruebas locales de servicio/privacidad/recuperación y 24 adaptativas.
+- CI del PR 28 en `6ec2cd54082d393e5bf4368bfe53d0ac080fc729`: servicio Docker
+  sin red (112 pruebas), recuperación adaptativa y cápsula correctos.
+- Dos ciclos sintéticos ejecutados en producción, seis etapas y un intento cada uno.
+  Primer ciclo: base 50 -> estimación 100, error absoluto total 105 -> 5.
+  Segundo: heredó 100 y el hash del padre -> estimación 115, error 35 -> 5.
+  Resultados nativos verificados y hashes de las entregas comprobados.
+- Solicitar otra ejecución reutilizó ambos resultados completados.
+- Cuenta sintética eliminada y credencial revocada (401); estado privado reemplazado
+  por recibo sin secretos. No hay una credencial de prueba pendiente de limpieza.
 
-La calibración implementada aprende un estimador constante mediante mediana de
-entrenamiento y contrasta errores en registros posteriores enviados juntos. La
-adopción cambia sólo el artefacto privado y la base de un ciclo siguiente autorizado.
-No demuestra generalización futura, ahorro de agua, bienestar o PVS. Las fuentes y
-fechas son declaraciones del remitente, no certificaciones de sensores. No genera
-estructuras arbitrarias ni modifica código por sí misma. Para una comprobación
-prospectiva se necesita congelar primero la estimación y recibir registros nuevos
-después, sin usarlos para ajustar esa misma predicción. No requiere proveedor LLM.
+La prueba actual no reinició el servicio. La prueba previa de distribución,
+con reinicio ordenado y conservación de la misión/exportación/archivo, está en
+[evidence/2026-10-15-live](evidence/2026-10-15-live). Cortes forzados y restauración
+con protección de borrados fueron probados separadamente de manera aislada.
+La captura original de 460 archivos permanece en [2026-10-14](evidence/2026-10-14).
 
-Defecto heredado separado: los adaptadores FDQ apuntan a `beta/vendor/R0` y `R1`,
-ausentes en el repositorio público. La selección previa de 23 pruebas mostró
-5 fallos y 2 errores por `PR_DEPENDENCY`. No se inventaron fuentes ni se cambiaron
-sus pins para ocultarlo. Recuperar las fuentes exactas o declarar indisponibilidad
-sigue pendiente; esta misión usa el gemelo y núcleo públicos presentes.
+## Pendiente real
+
+La validación actual es retrospectiva: las dos particiones se envían juntas.
+La procedencia y fechas son declaraciones, sin certificación de sensores.
+Los casos de esta prueba son sintéticos; no demuestran generalización futura,
+ahorro de agua, bienestar ni probabilidad de vida sostenida. No se necesita un
+proveedor LLM para el siguiente avance.
+
+El siguiente incremento debe congelar una estimación antes de recibir observaciones
+posteriores, compararlas sin ajustar esa misma predicción y luego permitir usarlas
+como datos de un nuevo aprendizaje. Registrar la fecha real de recepción además
+de la fecha declarada del evento; no confundir posterioridad de recepción con
+veracidad independiente de la observación. Conservar hipótesis y resultados distintos.
+
+Defecto heredado separado: adaptadores FDQ apuntan a `beta/vendor/R0` y `R1`, ausentes.
+La selección histórica de 23 pruebas tuvo 5 fallos y 2 errores `PR_DEPENDENCY`.
+No se inventaron esas fuentes ni se relajaron sus hashes; las misiones usan el
+gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendiente.
 
 ## Siguiente prompt
 
-> Continuá desde `adaptive/HANDOFF.md` y el PR de `work/resource-learning-20261015`.
-> Confirmá primero la versión activa; si el despliegue preparado ya fue aplicado,
-> verificá por API dos ciclos sintéticos, la estimación heredada y el borrado de la
-> cuenta de prueba. La distribución persistente ya está activa y comprobada. La
-> calibración añade propuestas de mediana, evaluación nativa de error, guardas y
-> memoria contextual; no la vuelvas a implementar. El próximo incremento útil es
-> contrastar una estimación congelada con observaciones recibidas posteriormente,
-> antes de usarlas en otro aprendizaje, y conservar esa evidencia prospectiva.
-> Separá los resultados sintéticos, los registros declarados y los efectos realmente
-> medidos. Conservá permisos, privacidad, recuperación y código en Git; no reinicies
-> la arquitectura ni infieras bienestar/PVS a partir del error de estimación.
+> Continuá Genius desde `adaptive/HANDOFF.md`. La calibración de recursos del
+> PR 28 ya está activa en Railway y los dos ciclos sintéticos de producción
+> están comprobados; no repitas esa activación ni reconstruyas el historial.
+> Implementá la comprobación prospectiva de una estimación congelada: recibir
+> observaciones nuevas, conservar sus fechas de recepción y origen declarado,
+> compararlas con la predicción anterior antes de incorporarlas al próximo
+> aprendizaje y registrar la evidencia. Conservá la distinción entre datos
+> sintéticos, observaciones declaradas y efectos independientes comprobados.
+> Reutilizá el núcleo, permisos, privacidad y recuperación existentes; no
+> infieras bienestar/PVS del error de estimación. Guardá código y evidencia en
+> Git, verificá el incremento y entregá el próximo prompt de continuidad.
