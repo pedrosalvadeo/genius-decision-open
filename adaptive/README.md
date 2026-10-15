@@ -2,9 +2,10 @@
 
 El observador incorpora [selección entre estrategias según contexto previo](observers/CONTEXT_STRATEGIES.md).
 Cada predicción se guarda antes de recibir su objetivo; la elección usa sólo
-puntuaciones anteriores. Es un módulo ejecutable del operador, aún no una misión
-REST/MCP. Su evaluación separa la política realmente ejecutada de las alternativas
-comparadas retrospectivamente.
+puntuaciones anteriores. El [contrato de servicio contextual](../beta/docs/CONTEXT_FORECASTS.md)
+lo integra en REST/MCP con recibos emitidos por el servidor y cierre nativo acotado.
+El estado efectivo de despliegue está en [HANDOFF.md](HANDOFF.md). La evaluación
+separa la política realmente ejecutada de las alternativas comparadas retrospectivamente.
 
 Un [observador HTTP de datos reales](observers/README.md) permite medir el servicio
 público desde un cliente, aprender una estimación, congelarla y evaluarla con

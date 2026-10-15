@@ -1,0 +1,322 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Genius contextual forecasts",
+    "version": "resource_context_forecast_v1",
+    "description": "Scoped sequential predictions before targets. Additive protocol; does not replace fixed forecasts."
+  },
+  "servers": [
+    {
+      "url": "https://geniusdecision.app"
+    }
+  ],
+  "paths": {
+    "/api/missions/{id}/context-forecast": {
+      "get": {
+        "operationId": "mission_context_get",
+        "summary": "get",
+        "description": "Requires missions:read. Full semantics and chronology: /static/missions.html. Submitted event times are not independently attested.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing immutable receipt or current state"
+          },
+          "default": {
+            "description": "JSON error with error.code and error.message"
+          }
+        }
+      },
+      "post": {
+        "operationId": "mission_context_freeze",
+        "summary": "freeze",
+        "description": "Requires missions:write. Full semantics and chronology: /static/missions.html. Submitted event times are not independently attested.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing immutable receipt or current state"
+          },
+          "default": {
+            "description": "JSON error with error.code and error.message"
+          },
+          "201": {
+            "description": "New durable plan, prediction, observation or completed report"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "artifact_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "warmup_count": {
+                    "type": "integer",
+                    "minimum": 3,
+                    "maximum": 10
+                  },
+                  "scored_count": {
+                    "type": "integer",
+                    "minimum": 6,
+                    "maximum": 30
+                  }
+                },
+                "required": [
+                  "artifact_sha256",
+                  "warmup_count",
+                  "scored_count"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/missions/{id}/context-forecast/predictions": {
+      "post": {
+        "operationId": "mission_context_predict",
+        "summary": "predict",
+        "description": "Requires missions:write. Full semantics and chronology: /static/missions.html. Submitted event times are not independently attested.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing immutable receipt or current state"
+          },
+          "default": {
+            "description": "JSON error with error.code and error.message"
+          },
+          "201": {
+            "description": "New durable plan, prediction, observation or completed report"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "forecast_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "prediction_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                  }
+                },
+                "required": [
+                  "forecast_sha256",
+                  "prediction_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/missions/{id}/context-forecast/observations": {
+      "post": {
+        "operationId": "mission_context_observe",
+        "summary": "observe",
+        "description": "Requires missions:write. Full semantics and chronology: /static/missions.html. Submitted event times are not independently attested.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing immutable receipt or current state"
+          },
+          "default": {
+            "description": "JSON error with error.code and error.message"
+          },
+          "201": {
+            "description": "New durable plan, prediction, observation or completed report"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "forecast_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "prediction_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "observation": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                      },
+                      "value": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 1000000
+                      },
+                      "observed_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "maxLength": 40
+                      },
+                      "source": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 240
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "value",
+                      "observed_at",
+                      "source"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "forecast_sha256",
+                  "prediction_sha256",
+                  "observation"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/missions/{id}/context-forecast/close": {
+      "post": {
+        "operationId": "mission_context_close",
+        "summary": "close",
+        "description": "Requires missions:run. Full semantics and chronology: /static/missions.html. Submitted event times are not independently attested.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing immutable receipt or current state"
+          },
+          "default": {
+            "description": "JSON error with error.code and error.message"
+          },
+          "201": {
+            "description": "New durable plan, prediction, observation or completed report"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "forecast_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "required": [
+                  "forecast_sha256"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

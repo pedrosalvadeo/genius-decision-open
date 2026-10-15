@@ -129,7 +129,8 @@ def install(app, db, body, digest, error, fail_quota, capacity, delete_entity,
     @app.get('/agents/manifest.json')
     def agent_manifest():
         response = jsonify(format='genius-agent-access/1',available=available(),
-            missions=dict(enabled=app.config['ADAPTIVE_ENABLED'],capabilities_url='/api/missions/capabilities',documentation='/static/missions.html'),
+            missions=dict(enabled=app.config['ADAPTIVE_ENABLED'],capabilities_url='/api/missions/capabilities',documentation='/static/missions.html',
+                contextual_forecast_protocol='resource_context_forecast_v1',contextual_openapi='/static/context-forecast-openapi.json'),
             policy_version=POLICY_VERSION,policy_url='/static/agent-policy.html',
             documentation='/agents',openapi='/openapi.json',
             contributions=dict(contract='/contributions',feed='/contributions/feed',submit_tool='submit_contribution',github_account_required=False,public=True),
