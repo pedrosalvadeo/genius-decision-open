@@ -1,0 +1,11 @@
+{
+  "format": "genius-regulation-predeclaration/1",
+  "declared_at": "2026-10-15T16:25:08.935898+00:00",
+  "status": "CRITERIA_AND_FIXTURES_FIXED_BEFORE_FIRST_STUDY_RUN",
+  "files": {
+    "beta/experiments/regulation/evaluation.json": "96f54cf50ad31932c0e03f722255ea22793d1713c44a75fb90d3e1e2f921ca5a",
+    "beta/experiments/regulation/plan.json": "b86135a6ffe2d97477741e2284e1e29a6994864083374c6ab36a333d9174a8d6",
+    "beta/experiments/regulation/training.json": "4862ce359252f98dbe9b3e1e05ef91c911b11639098926e763ee3f8164583a42"
+  },
+  "note": "Internal timestamp and content hashes, not an independent or blinded preregistration."
+}

@@ -1,0 +1,396 @@
+{
+  "format": "genius-regulation-candidate/1",
+  "lock_sha256": "57e4213955ab5d78c1850eb8ba2a0f01c74ee2b81af0417f987e3d48e99307ca",
+  "selected_cooldown_seconds": 60,
+  "training": [
+    {
+      "cooldown_seconds": 60,
+      "loss": 5435,
+      "cases": [
+        {
+          "id": "train-steady",
+          "offered": 11,
+          "cooldown_seconds": 60,
+          "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+          "metrics": {
+            "completed": 11,
+            "operational_failures": 0,
+            "exposure_seconds": 55,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 5,
+            "unfinished": 0,
+            "loss": 55
+          },
+          "mode_seconds": {
+            "NORMAL": 360
+          },
+          "trace_sha256": "096d8d9ce80cb61d50628e9124baad27509b02585501a30f9ac99244c13f8a81"
+        },
+        {
+          "id": "train-long-outage",
+          "offered": 31,
+          "cooldown_seconds": 60,
+          "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+          "metrics": {
+            "completed": 27,
+            "operational_failures": 4,
+            "exposure_seconds": 1475,
+            "admission_deferrals": 226,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 115,
+            "unfinished": 0,
+            "loss": 1875
+          },
+          "mode_seconds": {
+            "COOLDOWN": 120,
+            "DRAINING": 90,
+            "NORMAL": 380,
+            "PROBING": 10
+          },
+          "trace_sha256": "9310b64d3a7c6e94a4b3562afac362ca0f4990bf0aa70c593a015167852ae5fa"
+        },
+        {
+          "id": "train-recurrent",
+          "offered": 37,
+          "cooldown_seconds": 60,
+          "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+          "metrics": {
+            "completed": 29,
+            "operational_failures": 8,
+            "exposure_seconds": 1385,
+            "admission_deferrals": 210,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 105,
+            "unfinished": 0,
+            "loss": 2185
+          },
+          "mode_seconds": {
+            "COOLDOWN": 240,
+            "DRAINING": 60,
+            "NORMAL": 520,
+            "PROBING": 20
+          },
+          "trace_sha256": "e7f23ba6e1c2e7a946a1108f39b6e7806e244ac82531c388305cc57c611f22f8"
+        },
+        {
+          "id": "train-burst",
+          "offered": 12,
+          "cooldown_seconds": 60,
+          "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+          "metrics": {
+            "completed": 12,
+            "operational_failures": 0,
+            "exposure_seconds": 1320,
+            "admission_deferrals": 132,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 180,
+            "unfinished": 0,
+            "loss": 1320
+          },
+          "mode_seconds": {
+            "DRAINING": 180,
+            "NORMAL": 420
+          },
+          "trace_sha256": "f412a1c9e21377f32af801179041f71b8a3f00fe218bbaf29bfdd96cefd4cac6"
+        }
+      ]
+    },
+    {
+      "cooldown_seconds": 90,
+      "loss": 6355,
+      "cases": [
+        {
+          "id": "train-steady",
+          "offered": 11,
+          "cooldown_seconds": 90,
+          "policy_sha256": "75e113ee91f2afe1eada654679819c4e2893c6e5ef975e67fae780ba1b2e0b8c",
+          "metrics": {
+            "completed": 11,
+            "operational_failures": 0,
+            "exposure_seconds": 55,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 5,
+            "unfinished": 0,
+            "loss": 55
+          },
+          "mode_seconds": {
+            "NORMAL": 360
+          },
+          "trace_sha256": "096d8d9ce80cb61d50628e9124baad27509b02585501a30f9ac99244c13f8a81"
+        },
+        {
+          "id": "train-long-outage",
+          "offered": 31,
+          "cooldown_seconds": 90,
+          "policy_sha256": "75e113ee91f2afe1eada654679819c4e2893c6e5ef975e67fae780ba1b2e0b8c",
+          "metrics": {
+            "completed": 27,
+            "operational_failures": 4,
+            "exposure_seconds": 3075,
+            "admission_deferrals": 535,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 175,
+            "unfinished": 0,
+            "loss": 3475
+          },
+          "mode_seconds": {
+            "COOLDOWN": 180,
+            "DRAINING": 120,
+            "NORMAL": 290,
+            "PROBING": 10
+          },
+          "trace_sha256": "0cc0c321a7f2c9a7d7ef6a5396aa3b62702e7537787fc41e02d7f4979ede9b0f"
+        },
+        {
+          "id": "train-recurrent",
+          "offered": 37,
+          "cooldown_seconds": 90,
+          "policy_sha256": "75e113ee91f2afe1eada654679819c4e2893c6e5ef975e67fae780ba1b2e0b8c",
+          "metrics": {
+            "completed": 31,
+            "operational_failures": 6,
+            "exposure_seconds": 905,
+            "admission_deferrals": 122,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 85,
+            "unfinished": 0,
+            "loss": 1505
+          },
+          "mode_seconds": {
+            "COOLDOWN": 180,
+            "DRAINING": 30,
+            "NORMAL": 620,
+            "PROBING": 10
+          },
+          "trace_sha256": "0f9be34acff77aa49fd2df1f0a5da11f363e88ff66bb0aae689cf389c713bbd1"
+        },
+        {
+          "id": "train-burst",
+          "offered": 12,
+          "cooldown_seconds": 90,
+          "policy_sha256": "75e113ee91f2afe1eada654679819c4e2893c6e5ef975e67fae780ba1b2e0b8c",
+          "metrics": {
+            "completed": 12,
+            "operational_failures": 0,
+            "exposure_seconds": 1320,
+            "admission_deferrals": 132,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 180,
+            "unfinished": 0,
+            "loss": 1320
+          },
+          "mode_seconds": {
+            "DRAINING": 180,
+            "NORMAL": 420
+          },
+          "trace_sha256": "f412a1c9e21377f32af801179041f71b8a3f00fe218bbaf29bfdd96cefd4cac6"
+        }
+      ]
+    },
+    {
+      "cooldown_seconds": 120,
+      "loss": 8605,
+      "cases": [
+        {
+          "id": "train-steady",
+          "offered": 11,
+          "cooldown_seconds": 120,
+          "policy_sha256": "5d710e44b0c74f3fb37262f0e1d10f7f19a48ce075f97dc7f22e8e36e512f68b",
+          "metrics": {
+            "completed": 11,
+            "operational_failures": 0,
+            "exposure_seconds": 55,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 5,
+            "unfinished": 0,
+            "loss": 55
+          },
+          "mode_seconds": {
+            "NORMAL": 360
+          },
+          "trace_sha256": "096d8d9ce80cb61d50628e9124baad27509b02585501a30f9ac99244c13f8a81"
+        },
+        {
+          "id": "train-long-outage",
+          "offered": 31,
+          "cooldown_seconds": 120,
+          "policy_sha256": "5d710e44b0c74f3fb37262f0e1d10f7f19a48ce075f97dc7f22e8e36e512f68b",
+          "metrics": {
+            "completed": 27,
+            "operational_failures": 4,
+            "exposure_seconds": 4725,
+            "admission_deferrals": 865,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 235,
+            "unfinished": 0,
+            "loss": 5125
+          },
+          "mode_seconds": {
+            "COOLDOWN": 240,
+            "DRAINING": 120,
+            "NORMAL": 230,
+            "PROBING": 10
+          },
+          "trace_sha256": "74e03f62bb029382c298766e4be68d6396228bbc128f9311cc81a3e42829eaed"
+        },
+        {
+          "id": "train-recurrent",
+          "offered": 37,
+          "cooldown_seconds": 120,
+          "policy_sha256": "5d710e44b0c74f3fb37262f0e1d10f7f19a48ce075f97dc7f22e8e36e512f68b",
+          "metrics": {
+            "completed": 31,
+            "operational_failures": 6,
+            "exposure_seconds": 1505,
+            "admission_deferrals": 230,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 115,
+            "unfinished": 0,
+            "loss": 2105
+          },
+          "mode_seconds": {
+            "COOLDOWN": 240,
+            "DRAINING": 60,
+            "NORMAL": 530,
+            "PROBING": 10
+          },
+          "trace_sha256": "41b1e9a3a173f7c4834a45553bcd0fdc2793d6aeca1a2d8a6bf0323fe4b002b8"
+        },
+        {
+          "id": "train-burst",
+          "offered": 12,
+          "cooldown_seconds": 120,
+          "policy_sha256": "5d710e44b0c74f3fb37262f0e1d10f7f19a48ce075f97dc7f22e8e36e512f68b",
+          "metrics": {
+            "completed": 12,
+            "operational_failures": 0,
+            "exposure_seconds": 1320,
+            "admission_deferrals": 132,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 180,
+            "unfinished": 0,
+            "loss": 1320
+          },
+          "mode_seconds": {
+            "DRAINING": 180,
+            "NORMAL": 420
+          },
+          "trace_sha256": "f412a1c9e21377f32af801179041f71b8a3f00fe218bbaf29bfdd96cefd4cac6"
+        }
+      ]
+    },
+    {
+      "cooldown_seconds": 180,
+      "loss": 10475,
+      "cases": [
+        {
+          "id": "train-steady",
+          "offered": 11,
+          "cooldown_seconds": 180,
+          "policy_sha256": "a582030eb2a215de7649eb30c6206cd70cd10d37d319afd090df2b762f507034",
+          "metrics": {
+            "completed": 11,
+            "operational_failures": 0,
+            "exposure_seconds": 55,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 5,
+            "unfinished": 0,
+            "loss": 55
+          },
+          "mode_seconds": {
+            "NORMAL": 360
+          },
+          "trace_sha256": "096d8d9ce80cb61d50628e9124baad27509b02585501a30f9ac99244c13f8a81"
+        },
+        {
+          "id": "train-long-outage",
+          "offered": 31,
+          "cooldown_seconds": 180,
+          "policy_sha256": "a582030eb2a215de7649eb30c6206cd70cd10d37d319afd090df2b762f507034",
+          "metrics": {
+            "completed": 28,
+            "operational_failures": 3,
+            "exposure_seconds": 3165,
+            "admission_deferrals": 551,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 180,
+            "unfinished": 0,
+            "loss": 3465
+          },
+          "mode_seconds": {
+            "COOLDOWN": 180,
+            "DRAINING": 120,
+            "NORMAL": 295,
+            "PROBING": 5
+          },
+          "trace_sha256": "0755a497365662dc7c2845a3122f98a5fc54ea2769ed9f49ea9dfbc58be381c1"
+        },
+        {
+          "id": "train-recurrent",
+          "offered": 37,
+          "cooldown_seconds": 180,
+          "policy_sha256": "a582030eb2a215de7649eb30c6206cd70cd10d37d319afd090df2b762f507034",
+          "metrics": {
+            "completed": 31,
+            "operational_failures": 6,
+            "exposure_seconds": 5035,
+            "admission_deferrals": 799,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 275,
+            "unfinished": 0,
+            "loss": 5635
+          },
+          "mode_seconds": {
+            "COOLDOWN": 360,
+            "DRAINING": 145,
+            "NORMAL": 325,
+            "PROBING": 10
+          },
+          "trace_sha256": "aefce8151b7ea3ad50a8f3dc07ae8d5455af3b41236b15f0a81100b95205a2d0"
+        },
+        {
+          "id": "train-burst",
+          "offered": 12,
+          "cooldown_seconds": 180,
+          "policy_sha256": "a582030eb2a215de7649eb30c6206cd70cd10d37d319afd090df2b762f507034",
+          "metrics": {
+            "completed": 12,
+            "operational_failures": 0,
+            "exposure_seconds": 1320,
+            "admission_deferrals": 132,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 180,
+            "unfinished": 0,
+            "loss": 1320
+          },
+          "mode_seconds": {
+            "DRAINING": 180,
+            "NORMAL": 420
+          },
+          "trace_sha256": "f412a1c9e21377f32af801179041f71b8a3f00fe218bbaf29bfdd96cefd4cac6"
+        }
+      ]
+    }
+  ],
+  "candidate_sha256": "9b84a2e4972225dbdcaf6a2187082d5543aed49a174a0a4b853d06346c895b6e"
+}

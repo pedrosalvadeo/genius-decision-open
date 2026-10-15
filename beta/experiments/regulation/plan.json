@@ -1,0 +1,34 @@
+{
+  "format": "genius-regulation-study-plan/1",
+  "id": "cooldown-selection-2026-10-15-v1",
+  "evidence_origin": "synthetic",
+  "baseline_commit": "3f366854bb4d266070f309646518106abb13096a",
+  "baseline_policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+  "candidate_cooldown_seconds": [60, 90, 120, 180],
+  "step_seconds": 5,
+  "max_pending": 4,
+  "loss_weights": {"operational_failure": 100, "unfinished": 100, "exposure_second": 1},
+  "selection": "minimum summed training loss; ties choose the shortest cooldown",
+  "gates": {
+    "strict_training_loss_improvement": true,
+    "strict_evaluation_loss_improvement": true,
+    "per_case_loss_not_worse": true,
+    "per_case_completed_not_fewer": true,
+    "per_case_failures_not_more": true,
+    "per_case_unfinished_not_more": true,
+    "max_success_latency_regression_seconds": 30,
+    "zero_safety_violations": true
+  },
+  "training_file": "training.json",
+  "evaluation_file": "evaluation.json",
+  "production_promotion": false,
+  "limits": [
+    "Public fixtures are predeclared, not blinded or empirical.",
+    "The clock, arrivals, storage sensors, process durations and failures are simulated.",
+    "The existing controller and SQLite transitions execute locally; no mission subprocess runs.",
+    "Only the cooldown parameter is selected from training. No online threshold learning is installed.",
+    "The simulator excludes authentication, registration and daily quotas, backup health, CPU and network.",
+    "The loss is an explicit synthetic proxy, not money, wellbeing or probability of sustained life.",
+    "Even eligibility only permits review; deployment and real-traffic validation remain separate."
+  ]
+}
