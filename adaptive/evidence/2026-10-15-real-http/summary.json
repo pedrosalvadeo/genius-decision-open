@@ -1,0 +1,52 @@
+{
+  "status": "LOCAL_AND_LIVE_PROTOCOL_PASS",
+  "base_commit": "e2533895581fd6211be272fabad8f54f73fe4289",
+  "source": "https://geniusdecision.app/api/health",
+  "source_scope": "CLIENT_OBSERVED_HTTP_LATENCY_INCLUDING_NETWORK_PROXY_AND_LOCAL_VALIDATION",
+  "planned_measurements": 16,
+  "prospective_measurements": 5,
+  "tolerance_milliseconds": 1000,
+  "local_checks": [
+    {
+      "command": "python -B -m unittest discover -s adaptive/tests -v",
+      "tests": 32,
+      "result": "PASS",
+      "log": "adaptive-tests.txt"
+    },
+    {
+      "command": "python -B -m unittest adaptive.tests.test_http_observer adaptive.integration.test_http_observer -v",
+      "tests": 9,
+      "result": "PASS",
+      "note": "Includes 8 source tests also in the 32-test discovery; integration adds one distinct test."
+    },
+    {
+      "command": "python -B -m unittest adaptive.tests.test_http_observer.RecoveryTests.test_normalized_record_cannot_diverge_from_the_measurement_receipt -v",
+      "tests": 1,
+      "result": "PASS",
+      "note": "Additional source/normalized-record integrity check added after the discovery run."
+    }
+  ],
+  "new_dependencies": 0,
+  "new_infrastructure": false,
+  "production_runtime_changed": false,
+  "new_deployment_required": false,
+  "independent_attestation": false,
+  "wellbeing": "UNMEASURED",
+  "life_sustainment": "UNMEASURED",
+  "live_improvement_confirmed": false,
+  "live_forecast_outcome": "NO_CONFIRMED_IMPROVEMENT",
+  "parent_decision": "KEEP_BASELINE",
+  "child_decision": "KEEP_BASELINE",
+  "estimate_ms": 7835,
+  "completed_at": "2026-10-15T04:07:15.953529+00:00",
+  "account_erased": true,
+  "credential_revoked": true,
+  "private_checkpoint_token_removed": true,
+  "source_hashes_verified": true,
+  "server_scorer_hashes_match_local": true,
+  "live_receipt_sha256": "ffe66fc0c93f5a71e77b852956cf88e9ad0b8546f71d69b8fd953d41d5e59e25",
+  "observer_code_sha256": {
+    "http_latency.py": "f9b15700658cae40081e4af87299fa65fec5ca069285a005fd49a0db1726381c",
+    "study.py": "b96aa33ade974b8c69387c4b27e8261291cbe44c6ce6f3ebbea4c80aef6106f7"
+  }
+}

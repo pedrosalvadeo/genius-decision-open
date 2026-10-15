@@ -1,5 +1,10 @@
 # Genius adaptativo — ejecución persistente
 
+Un [observador HTTP de datos reales](observers/README.md) permite medir el servicio
+público desde un cliente, aprender una estimación, congelarla y evaluarla con
+solicitudes posteriores. Conserva recibos y recuperación sin sustituir mediciones
+fallidas. Usa las misiones ya desplegadas; no requiere otra infraestructura.
+
 Genius puede ejecutar una misión técnica completa, guardar la evidencia y
 continuarla en otro proceso. Este incremento construye el soporte de ejecución
 del plan adaptativo. La calibración de recursos añade propuestas y revisión de
