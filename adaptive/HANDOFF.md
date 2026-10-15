@@ -1,6 +1,67 @@
-# Genius adaptativo — primer ciclo de observación HTTP real completado
+# Genius adaptativo — selector contextual implementado y ensayo cerrado
 
-Último ciclo completado el 15 de octubre de 2026 a las 04:07 UTC (01:07 en Argentina).
+Último incremento: 15 de octubre de 2026, ensayo terminado a las 04:30:14 UTC
+(01:30 en Argentina). Código y plan publicados antes de medir en
+`20503abac466166d8938a1ac36e71f4a0c50144b`, PR 35. Hay un selector ejecutable
+entre cuatro estrategias usando sólo observaciones previas del mismo contexto.
+**Es un módulo del observador operador; todavía no está integrado en REST/MCP.**
+No cambió el runtime del servicio ni se requiere otro Apply por este incremento.
+
+Contrato en [observers/CONTEXT_STRATEGIES.md](observers/CONTEXT_STRATEGIES.md),
+evidencia en [evidence/2026-10-15-context-http](evidence/2026-10-15-context-http).
+Los recibos congelan cada predicción antes de medir; al reanudar se recalculan
+las decisiones desde cada prefijo. Fuente, código, núcleo, plan y contexto quedan
+ligados por hashes. Una medición fallida o incierta detiene el ensayo sin reemplazo.
+La evaluación del núcleo compara errores observados; no aporta verdad del sensor.
+
+## Resultado real nuevo
+
+18 solicitudes de salud: seis iniciales y doce puntuadas. Base heredada 7835 ms,
+tolerancia 1000 ms. Todas las observaciones quedaron bajo la base; las doce
+puntuadas tuvieron el mismo contexto (`previous_at_or_below_baseline`).
+
+| Estrategia | Error absoluto total (ms) | Máxima subestimación (ms) |
+| --- | ---: | ---: |
+| Base fija | 29316 | 0 |
+| Mediana reciente | 2521 | 760 |
+| Último valor | 3823 | 1026 |
+| Mediana contextual | 2521 | 760 |
+| Selector efectivamente ejecutado | 29316 | 0 |
+
+El selector conservó la base en las doce decisiones: las alternativas no pasaron
+su evidencia previa y la guarda de no empeorar la subestimación frente a una base
+con máximo cero. El informe principal es **NO_CONFIRMED_IMPROVEMENT**. Las medianas
+tuvieron menor error como alternativas observadas, pero no fueron adoptadas.
+No sustituir la política ejecutada por el ganador retrospectivo. El caso revela
+una restricción del objetivo actual: una base demasiado alta puede impedir
+adoptar estimadores más precisos que alguna vez subestimen. No cambiar las guardas
+para aprobar este mismo ensayo. Una regla distinta requiere otro contrato y datos
+posteriores con objetivos/costes explícitos.
+
+Las pruebas sintéticas sí muestran elección según dos contextos y un caso de
+reversión desfavorable. Este ensayo real, con un único contexto, no acredita una
+ventaja específica de condicionar por contexto ni generalización. Las medidas
+incluyen red/proxy desde este entorno; no miden procesamiento del servidor,
+reducción causal de latencia, bienestar ni PVS.
+
+45 pruebas adaptativas locales pasan, incluidas 12 nuevas. CI del código inicial
+aprobado: adaptativo 38681634388, servicio 38681634395, cápsula 38681634383.
+El PR 35 registra también la comprobación del commit final con evidencia.
+Reabrir el ensayo completo con una fuente que rechaza cualquier llamada confirmó
+cero mediciones nuevas y evidencia idéntica. No se crearon cuentas ni credenciales.
+
+## Próximo incremento
+
+Integrar las predicciones y elecciones contextuales en un contrato de servicio
+con permisos, persistencia y recuperación, manteniendo el contrato constante ya
+publicado y su historial. Separar esa ingeniería de la decisión sobre pérdidas
+asimétricas y tolerancias: la guarda actual tiene un coste observable, y un nuevo
+objetivo debe quedar versionado antes de nuevos datos. La falta de una mejora en
+este ensayo no bloquea la integración ni autoriza a afirmar beneficio vital.
+
+# Antecedente: primer ciclo de observación HTTP real completado
+
+Ciclo anterior completado el 15 de octubre de 2026 a las 04:07 UTC (01:07 en Argentina).
 El servicio del PR 31 sigue activo. Un nuevo observador cliente ejecutó el ciclo
 completo con 16 mediciones reales de latencia HTTP. El protocolo pasó; **no hubo
 mejora predictiva confirmada**. La cuenta dedicada fue borrada y la credencial
@@ -171,18 +232,20 @@ La selección histórica de 23 pruebas tuvo 5 fallos y 2 errores `PR_DEPENDENCY`
 No se inventaron esas fuentes ni se relajaron sus hashes; las misiones usan el
 gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendiente.
 
+
 ## Siguiente prompt
 
-> Continuá desde `adaptive/HANDOFF.md`, `adaptive/observers/README.md` y la evidencia
-> `2026-10-15-real-http`. El servicio y los ciclos sintéticos previos ya están
-> verificados. El nuevo ciclo con 16 mediciones HTTP reales completó el protocolo,
-> rechazó dos propuestas peores y conservó la base; cuenta borrada y token revocado.
-> No repitas ese ensayo ni pidas otro Apply: el observador usa el servicio existente.
-> Avanzá en contexto observable y estrategias adaptativas que puedan contrastarse
-> con datos posteriores, y en fuentes reales pertinentes a bienestar/condiciones
-> de vida cuando haya datos autorizados adecuados. Elegí el siguiente incremento
-> según las dependencias efectivas, sin convertir la espera de datos en un bloqueo
-> de ingeniería. Fijá el plan antes de observar, conservá resultados negativos y no
-> ajustes tolerancias para aprobar datos ya vistos. Diferenciá medición del cliente,
-> verdad de la fuente y efectos causales. Conservá pruebas, evidencia y recuperación
-> en Git y entregá el siguiente prompt junto con el resultado.
+> Continuá desde `adaptive/HANDOFF.md` y `adaptive/observers/CONTEXT_STRATEGIES.md`.
+> El PR 35 añade selección entre cuatro estrategias con contexto previo y recibos
+> persistidos antes de cada medición. Es un módulo del observador, aún no REST/MCP.
+> El ensayo de 18 solicitudes terminó: mediana reciente/contextual error 2521 y
+> subestimación máxima 760; base y política ejecutada error 29316, subestimación 0.
+> El selector conservó la base y el informe es NO_CONFIRMED_IMPROVEMENT. Hubo un
+> solo contexto real; no afirmar mejora contextual ni beneficio de bienestar/PVS.
+> No repitas el ensayo ni ajustes sus guardas después de ver resultados.
+> Integrá esta capacidad en un nuevo contrato de servicio con predicciones
+> persistidas antes de recibir objetivos, aislamiento por cuenta, recuperación,
+> exportación/borrado y validación del núcleo. Conservá los contratos existentes.
+> Separá la integración de cualquier revisión versionada de costes de error y
+> subestimación, que debe fijarse antes de otro ensayo. Publicá con CI aprobado,
+> verificá el despliegue si cambia el runtime y entregá evidencia y siguiente prompt.

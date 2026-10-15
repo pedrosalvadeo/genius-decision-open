@@ -1,5 +1,10 @@
 # Observaciones reales desde un cliente operador
 
+La [comparación contextual de estrategias](CONTEXT_STRATEGIES.md) añade un segundo
+modo local: registrar varias predicciones antes de cada medición y elegir entre
+ellas con evidencia anterior del mismo contexto. Ese modo aún no es una operación
+REST/MCP; el ciclo con misiones desplegadas descrito abajo mantiene su contrato.
+
 Este adaptador mide el tiempo de respuesta de `GET https://geniusdecision.app/api/health`
 y alimenta las misiones públicas existentes. La medición es real cuando se ejecuta
 contra esa URL; las pruebas automatizadas usan respuestas y valores simulados.

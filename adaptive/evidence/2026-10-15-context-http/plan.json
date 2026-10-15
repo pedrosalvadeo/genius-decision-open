@@ -1,0 +1,13 @@
+{
+  "format": "genius-context-study/1",
+  "rule": "PAST_ONLY_CONTEXT_SELECTOR_V1",
+  "baseline": 7835,
+  "baseline_reference": "2026-10-15-real-http/live-study.json; resource-estimate.json SHA256 1697ea2f4d055c7b9257ebdf8b771398fc69293be713ba900f2754b16ac3dab3; accepted estimate 7835 ms",
+  "max_underprediction": 1000,
+  "warmup_count": 6,
+  "scored_count": 12,
+  "context": "PREVIOUS_VALUE_GT_FROZEN_BASELINE",
+  "strategies": ["baseline", "rolling_median", "last_value", "context_median"],
+  "selection": "PAST_SCORED_SAME_CONTEXT_MIN3_GUARDED_LOWEST_ERROR_FIXED_TIES",
+  "stopping": "FIXED_COUNT_OR_FIRST_FAILED_OR_UNKNOWN_MEASUREMENT"
+}
