@@ -20,7 +20,7 @@ let logs='',browser; server.stderr.on('data',x=>logs+=x.toString());
  const idle=()=>page.waitForFunction(()=>!document.querySelector('#main').hasAttribute('aria-busy'));
  await page.goto(base+'/twin/');await idle();
  check((await page.request.get(base+'/api/twin/cases')).status()===401,'anonymous private API denied');
- await page.goto(base+'/');await page.locator('#mode-register').click();await page.locator('#username').fill('browser-d3');await page.locator('#password').fill('Browser-test-password-123');await page.locator('#privacy-accepted').check();await page.locator('#adult-confirmed').check();await page.locator('#auth-submit').click();await page.locator('#workspace').waitFor({state:'visible'});
+ await page.goto(base+'/app');await page.locator('#mode-register').click();await page.locator('#username').fill('browser-d3');await page.locator('#password').fill('Browser-test-password-123');await page.locator('#privacy-accepted').check();await page.locator('#adult-confirmed').check();await page.locator('#auth-submit').click();await page.locator('#workspace').waitFor({state:'visible'});
  check(await page.locator('#twin-link').isVisible(),'authenticated account exposes dynamic workspace');
  await page.locator('#twin-link').click();await idle();
  await page.locator('#narrative').fill('Comparar un plan de cuidado: prueba técnica sintética.');await page.getByRole('button',{name:/Construir propuesta/}).click();await idle();await page.locator('[data-example="stockflow_care"]').click();await idle();

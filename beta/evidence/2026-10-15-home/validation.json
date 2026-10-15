@@ -1,0 +1,54 @@
+{
+  "format": "genius-home-validation/1",
+  "date": "2026-10-15",
+  "base_commit": "913840070a208ffd952bffe08af15b3eac53fe8d",
+  "local_tests": {
+    "count": 26,
+    "status": "PASS",
+    "suites": [
+      "test_public_launch",
+      "test_agent_access",
+      "test_mcp_access"
+    ]
+  },
+  "local_routes": [
+    "/",
+    "/agents",
+    "/app",
+    "/club",
+    "/contributions",
+    "/static/demo.html",
+    "/static/missions.html",
+    "/static/privacy.html",
+    "/twin/"
+  ],
+  "repository_paths": [
+    ".github/workflows",
+    "GENIUS_PROGRAM/theory/AMENDMENTS.md",
+    "GENIUS_PROGRAM/theory/sources/S1_READABLE.md",
+    "adaptive",
+    "adaptive/HANDOFF.md",
+    "beta",
+    "capsule",
+    "capsule/HOMO_GENIUS.md",
+    "capsule/KNOWLEDGE.md",
+    "capsule/OPPORTUNITIES.md",
+    "capsule/outreach",
+    "evolution",
+    "kernel",
+    "twin"
+  ],
+  "anchor_count": 9,
+  "all_link_targets_pass": true,
+  "local_browser_preview": "NOT_EXECUTED",
+  "local_mobile_visual_check": "NOT_EXECUTED",
+  "public_deployment_receipt": "Recorded in delivery pull request after release",
+  "files": {
+    "beta/genius_beta/static/index.html": "b64789e3b5a3b8bb073b33a7a20fdd4a188a07a0816b2936a3fc086d200190e4",
+    "beta/genius_beta/static/home.css": "641a77762e2b8850bca72ff4badc39bd782a689b0f035bc43598dcf568ae2305",
+    "beta/genius_beta/static/workspace.html": "e48b10051546cbf02a4a5ad67b03947ca9b9e74ddfd8c498ad7537dc4bd90443",
+    "beta/genius_beta/app.py": "c5c7a9438da24cb4808190b1df690479e975f34f5ef2b65b7d8c3e607574a2a4",
+    "beta/tests/test_public_launch.py": "0d58493edcba42f3a921800bf8916fd1d6766a3f790ce1d485607944234a4943",
+    "capsule/HOMO_GENIUS.md": "97ef99be6fd9c4b821c6e9deca76eb7a1e526335b2bb5d39424ec915cef7af09"
+  }
+}

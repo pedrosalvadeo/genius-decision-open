@@ -9,7 +9,7 @@ import shutil
 import sqlite3
 import time
 from pathlib import Path
-from flask import Flask, g, jsonify, request, send_from_directory, send_file
+from flask import Flask, g, jsonify, request, send_from_directory, send_file, redirect
 from werkzeug.exceptions import HTTPException
 from .config import settings
 from .db import connect, dump, initialize, transaction
@@ -243,7 +243,14 @@ def create_app(overrides=None):
 
     @app.get('/')
     def index():
+        # Keep the existing account-integration bookmark working after the new home.
+        if request.args.get('access') == 'api':
+            return redirect('/app?access=api', code=302)
         return send_from_directory(app.static_folder,'index.html')
+
+    @app.get('/app')
+    def workspace():
+        return send_from_directory(app.static_folder, 'workspace.html')
 
     @app.get('/robots.txt')
     def robots():

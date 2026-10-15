@@ -21,6 +21,38 @@ class PublicLaunchTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
+    def test_project_home_and_account_workspace_are_separate_public_entries(self):
+        with self.client.get('/') as response:
+            self.assertEqual(response.status_code, 200)
+            home = response.get_data(as_text=True)
+            self.assertIn('href="/app"', home)
+            self.assertNotIn('id="auth-form"', home)
+            self.assertNotIn('/static/app.js', home)
+            self.assertNotIn('Set-Cookie', response.headers)
+        with self.client.get('/app') as response:
+            self.assertEqual(response.status_code, 200)
+            workspace = response.get_data(as_text=True)
+            for marker in ('id="auth-form"', 'id="workspace"', '/static/app.js', '/static/choice.js'):
+                self.assertIn(marker, workspace)
+            self.assertIn("script-src 'self'", response.headers['Content-Security-Policy'])
+        self.assertEqual(self.client.get('/api/me').status_code, 401)
+
+    def test_existing_api_access_bookmark_reaches_same_workspace_without_external_redirect(self):
+        response = self.client.get('/?access=api&next=https://example.invalid')
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.headers['Location'], '/app?access=api')
+        with self.client.get(response.headers['Location']) as workspace:
+            self.assertEqual(workspace.status_code, 200)
+            self.assertIn('id="workspace"', workspace.get_data(as_text=True))
+
+    def test_home_and_workspace_remain_readable_when_registration_is_closed(self):
+        self.app.config['REGISTRATION_OPEN'] = False
+        self.app.config['SUSPEND_FILE'].touch()
+        for path in ('/', '/app', '/static/home.css'):
+            with self.client.get(path) as response:
+                self.assertEqual(response.status_code, 200)
+        self.assertFalse(self.client.get('/api/config').json['registration_open'])
+
     def test_closing_registration_preserves_existing_access_export_and_deletion(self):
         response = self.client.post('/api/register', json=self.payload)
         self.assertEqual(response.status_code, 201)
