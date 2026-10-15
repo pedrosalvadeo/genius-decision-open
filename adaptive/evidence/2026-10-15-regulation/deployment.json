@@ -1,0 +1,50 @@
+{
+  "format": "genius-mission-regulation-deployment/1",
+  "verified_at": "2026-10-15T16:04:08.406Z",
+  "status": "DEPLOYED_HEALTHY_REGULATOR_ENABLED",
+  "github": {
+    "runtime_commit": "3f366854bb4d266070f309646518106abb13096a",
+    "implementation_pr": 45
+  },
+  "railway": {
+    "project_id": "a93aa08c-f3b6-4a5b-accc-9812d6314f00",
+    "environment": {
+      "id": "1addd5b8-5a47-4301-aeca-d9596bceb4e0",
+      "name": "production"
+    },
+    "service": {
+      "id": "dafd0be5-61aa-4843-a3a3-3c1f487d9640",
+      "name": "genius-public-beta",
+      "state": "live"
+    },
+    "deployment": {
+      "id": "bb6b9074-d964-4c4a-909b-982c59fa499b",
+      "status": "SUCCESS",
+      "createdAt": "2026-10-15T15:10:06.137Z",
+      "url": null
+    },
+    "source": {
+      "repo": "pedrosalvadeo/genius-decision-open",
+      "branch": "main",
+      "commitSha": "3f366854bb4d266070f309646518106abb13096a"
+    },
+    "staged": null,
+    "staged_change_count": 0
+  },
+  "apply_repeated": false,
+  "previous_receipt": "publication.json",
+  "previous_receipt_note": "The earlier cancelled Apply and pending patch are historical. A later readback confirms the intended source is live and no patch remains; the actor who applied it is not inferred.",
+  "public_probe": {
+    "status": "BLOCKED_BY_EXISTING_RATE_LIMIT",
+    "phase": "agent_registration",
+    "http_status": 429,
+    "error_code": "rate_limit",
+    "mission_created": false,
+    "credential_issued": false,
+    "private_state_file_created": false,
+    "authenticated_rest_verified": false,
+    "authenticated_mcp_verified": false,
+    "restart_verified": false,
+    "failure_injection": false
+  }
+}

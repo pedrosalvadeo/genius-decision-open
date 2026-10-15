@@ -1,4 +1,4 @@
-# Genius — regulación operativa de misiones implementada
+# Genius — regulación operativa activa en producción
 
 15 de octubre de 2026. Nuevo controlador `genius-mission-regulation/1`, probado
 localmente con 154 pruebas de servicio, integración y recuperación aprobadas.
@@ -20,23 +20,30 @@ respaldada en R2; GitHub recibe únicamente código y evidencia sintética. API/
 exponen estado resumido. Fallos de sensor, reloj incoherente y política distinta
 impiden afirmar recuperación. Un SIGKILL real y admisión concurrente fueron probados.
 
-**Activación pendiente de aprobación:** Railway conserva el parche
-`7a2a4a28-0063-440d-bbe6-ed09f3ebbdda`, STAGED, con exactamente dos cambios:
-pin `3f366854bb4d266070f309646518106abb13096a` y
-`GENIUS_MISSION_REGULATION_ENABLED=true`. El conector canceló Apply porque no
-recibió aprobación. La lectura posterior confirmó que el despliegue anterior
-`ec8dada7-baae-4f79-9e28-9ec1329cbc47` sigue SUCCESS, con pin vivo
-`7fdb633549473984e16bfb67ed60b629cafe91d5`; la regulación aún no está activa.
-Recibo: [publication.json](evidence/2026-10-15-regulation/publication.json).
+**Activación confirmada:** Railway ya no tiene cambios pendientes. El despliegue
+`bb6b9074-d964-4c4a-909b-982c59fa499b`, iniciado el 15 de octubre a las
+15:10:06 UTC (12:10 Argentina), terminó SUCCESS con el pin previsto
+`3f366854bb4d266070f309646518106abb13096a`. La consulta pública de salud confirma
+`enabled=true`, `mode=NORMAL`, política idéntica al código probado, observación
+reciente, respaldo `ok` y servicio no suspendido. No hay otro Apply que solicitar.
+Recibos: [deployment.json](evidence/2026-10-15-regulation/deployment.json) y
+[live-health.json](evidence/2026-10-15-regulation/live-health.json).
+El [recibo anterior](evidence/2026-10-15-regulation/publication.json) conserva
+la cancelación inicial como antecedente; su estado pendiente quedó superado por
+esta lectura. No se atribuye la aprobación posterior a un actor no observado.
 
 Proyecto `a93aa08c-f3b6-4a5b-accc-9812d6314f00`, entorno production
 `1addd5b8-5a47-4301-aeca-d9596bceb4e0`, servicio genius-public-beta
 `dafd0be5-61aa-4843-a3a3-3c1f487d9640`. No se crean recursos ni aumentan límites.
-Después de que Pedro apruebe, leer primero el estado: si el parche ya fue aplicado,
-no repetirlo. Comprobar SUCCESS, pin exacto, estado del controlador y una misión
-sintética autorizada con limpieza. No se provocaron fallos ni presión públicos.
+La misión sintética de comprobación quedó bloqueada en el registro de cuenta:
+`POST /api/agents/register` devolvió `429 rate_limit`. No se emitió credencial,
+creó cuenta ni misión; no quedó estado privado que limpiar. No se reintentó por
+otra vía ni se cambiaron cuotas. La comprobación pública de ejecución, lectura
+REST autenticada y MCP permanece pendiente hasta que el límite permita la prueba.
+No se provocaron fallos ni presión públicos y no se reinició el servicio.
 Las identidades matemáticas y los pronósticos no cambiaron; la regulación limita
-cuándo se ejecutan misiones. La prueba pública permanece pendiente del despliegue.
+cuándo se ejecutan misiones. Despliegue y salud están verificados; la prueba
+funcional autenticada no se presenta como aprobada.
 
 # Genius — propuesta automática publicada como PR borrador
 
@@ -417,11 +424,14 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 > El controlador v1 está implementado: cola, almacenamiento, espera por fallos y
 > una sola ejecución de recuperación, con memoria privada y estado público resumido.
 > El PR 45 está integrado y sus tres CI aprobaron; leé la evidencia 2026-10-15-regulation.
-> El Apply fue cancelado por falta de aprobación: esperan dos cambios en el parche
-> 7a2a4a28-0063-440d-bbe6-ed09f3ebbdda. Esperá la habilitación de Pedro; no uses otra vía.
-> Verificá primero si la activación pendiente ya fue aplicada en Railway; no repitas
-> el despliegue ni supongas que un parche preparado está activo. Tras SUCCESS, comprobá
-> salud/estado/MCP y una misión autorizada con limpieza, sin provocar fallos públicos.
+> El despliegue bb6b9074-d964-4c4a-909b-982c59fa499b terminó SUCCESS con pin
+> 3f366854bb4d266070f309646518106abb13096a; no quedan cambios pendientes en Railway.
+> Salud pública y regulador activo NORMAL están verificados. No repitas Apply.
+> La prueba de misión quedó bloqueada antes de emitir credencial por 429 rate_limit
+> al registrar cuenta; no se ejecutó ni quedó cuenta de prueba por limpiar.
+> Cuando la cuota vuelva a permitirlo, comprobá REST/MCP autenticados y una misión
+> sintética con lectura, idempotencia y limpieza. No eludas ni aumentes cuotas.
+> No se realizó reinicio: los recibos seed/verify solos no prueban recuperación.
 > Conservá por separado las pruebas locales y la verificación efectiva del despliegue.
 > Los umbrales son fijos; el siguiente paso es definir objetivo y evaluación previa
 > para comparar políticas adaptativas, sin convertir autorregulación en autoaumento
