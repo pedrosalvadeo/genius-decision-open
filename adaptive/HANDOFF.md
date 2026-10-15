@@ -1,4 +1,24 @@
-# Genius — generación y registro automático de propuestas verificados
+# Genius — propuesta automática publicada como PR borrador
+
+15 de octubre de 2026, 05:49 UTC (02:49 Argentina). Tras la confirmación de Pedro
+del permiso de GitHub Actions, se reintentó únicamente el job de publicación de
+la ejecución `38687301389`. El intento 2 terminó success y devolvió `PUBLISHED`,
+`reused=true`. El [PR borrador 40](https://github.com/pedrosalvadeo/genius-decision-open/pull/40)
+fue creado por `github-actions[bot]`; lectura posterior confirma un único PR,
+abierto, draft, sin merge y con el mismo commit `5cfdd8bcf479acb1d5ddcb0961555e99687c83c6`.
+La rama, el código y la evaluación originales se conservaron sin cambios.
+
+El candidato sigue `REJECTED_BY_EVALUATION`; no es elegible para promoción.
+Los dos workflows del PR generado figuran `action_required`: no se presentan
+como CI aprobados. La evaluación aislada previa del workflow de main sí terminó
+correctamente y rechazó la propuesta. No se aprobó CI del borrador ni se activó
+producción. No hace falta otra acción en Railway por esta publicación.
+
+Recuperación y lectura posterior: [publication-recovery.json](../evolution/evidence/2026-10-15/publication-recovery.json).
+El recibo original HTTP 403 se conserva como antecedente; el bloqueo de apertura
+del PR quedó resuelto. No reejecutar para regenerar o duplicar esta propuesta.
+
+## Antecedente: primera publicación y recuperación del permiso
 
 15 de octubre de 2026, 05:32 UTC (02:32 Argentina). El [PR 38](https://github.com/pedrosalvadeo/genius-decision-open/pull/38)
 quedó integrado en `589817af2658740a212ff3dd81d3f1a920a51bab`; cuatro CI aprobaron
@@ -13,14 +33,12 @@ todos sus bytes/hashes y el recálculo del informe. No se atribuye esta publicac
 a una acción manual del asistente. Código/informe:
 https://github.com/pedrosalvadeo/genius-decision-open/tree/genius/evolution/697ab0d851a72ecf7a6f8fcc
 
-**Bloqueo concreto:** GitHub respondió HTTP 403 al intentar abrir el PR borrador.
-Estado `BRANCH_PUBLISHED_PR_BLOCKED`. La rama existe; el PR automático todavía no.
-El workflow finalizó success porque conserva el resultado parcial explícito, no
-porque haya creado el PR. No se cambió de identidad ni se alteraron permisos.
-Revisar Settings → Actions → General → Workflow permissions → Allow GitHub Actions
-to create and approve pull requests. Después de habilitarlo, reejecutar sólo el job
-publish `116265089203` de la ejecución anterior; recuperará la misma rama sin
-regenerar/sobrescribir ni duplicar una propuesta. No promover el candidato rechazado.
+**Bloqueo del intento 1, ya resuelto:** GitHub respondió HTTP 403 al intentar abrir
+el PR borrador y dejó `BRANCH_PUBLISHED_PR_BLOCKED`. El workflow finalizó success
+porque conservó el resultado parcial explícito, no porque hubiera creado el PR.
+Después de que Pedro confirmó el permiso de Actions, el reintento del job
+`116265089203` recuperó la misma rama y abrió el PR 40 con la identidad del bot.
+No se sobrescribió ni duplicó la propuesta. No promover el candidato rechazado.
 
 La primera solicitud usa el recibo sintético público del PR 37 como memoria.
 Aprende y escribe `110 - valor_anterior`, con error de entrenamiento 420 → 0.
@@ -358,13 +376,13 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 > Continuá desde `adaptive/HANDOFF.md` y `evolution/README.md`.
 > El PR 38 está integrado, cuatro CI aprobaron, y el workflow 38687301389 creó
 > automáticamente la rama genius/evolution/697ab0d851a72ecf7a6f8fcc en 5cfdd8b.
-> El PR borrador quedó bloqueado por HTTP 403. Si Pedro confirma el permiso de
-> GitHub Actions, reejecutá sólo publish (job 116265089203) y comprobá recuperación
-> de la rama existente y apertura del borrador. No eludas permisos ni publiques
-> el PR generado mediante otra identidad. Conservá recibos y estado parcial.
+> El permiso quedó resuelto: intento 2 del mismo workflow, PUBLISHED/reused=true.
+> El bot abrió el PR 40 como borrador sobre el mismo commit; no lo regeneres ni
+> dupliques. Recibos original y de recuperación conservados en evolution/evidence.
+> Los workflows del PR 40 indican action_required; no equivalen a CI aprobados.
 > El candidato 110 - valor previo fue rechazado; no lo fusiones ni lo despliegues,
 > ni cambies guardas/datos para aprobarlo. Conservá el ensayo HTTP negativo v1.
-> Después de resolver el permiso, definí un nuevo problema para estrategias
+> El siguiente incremento es definir un nuevo problema para estrategias
 > condicionadas al régimen, con objetivo y nueva evaluación antes de generar.
 > No publiques memoria privada: la conexión de cuentas necesita consentimiento
 > y minimización explícitos. La promoción al runtime requiere su propio contrato

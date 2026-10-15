@@ -106,9 +106,19 @@ con evaluación aislada y rama publicada por `github-actions[bot]` en
 `5cfdd8bcf479acb1d5ddcb0961555e99687c83c6`. Lectura posterior PASS: padre,
 alcance de cuatro archivos y bytes exactos contra recomputación.
 
-GitHub rechazó la apertura del PR con **HTTP 403**. Por eso el resultado final es
-`BRANCH_PUBLISHED_PR_BLOCKED`, aunque el workflow conserva el resultado y termina
-success. El PR no se creó. La rama y evaluación rechazada están disponibles;
-no se intentó otra identidad. Permiso pendiente y recuperación en el handoff.
-Recibos: `evolution/evidence/2026-10-15/publication.json` y
-`generated-branch-readback.json`; el informe original está en `generated-proposal.json`.
+El primer intento dejó `BRANCH_PUBLISHED_PR_BLOCKED` por **HTTP 403** al abrir
+el PR. Después de que Pedro confirmó el permiso de GitHub Actions, el reintento
+del job de publicación terminó `PUBLISHED`, `reused=true`, y creó automáticamente
+el [PR borrador 40](https://github.com/pedrosalvadeo/genius-decision-open/pull/40)
+con autor `github-actions[bot]`. La lectura posterior confirma el mismo commit,
+un único PR abierto, draft y sin merge. La decisión sigue
+`REJECTED_BY_EVALUATION`; no se modificó el candidato ni se activó producción.
+
+Los dos workflows del PR generado figuran `action_required`; no se presentan
+como CI aprobados. La evaluación aislada del workflow de main y el job de
+publicación terminaron success, conservando el resultado negativo del candidato.
+
+Recibos en `evolution/evidence/2026-10-15/`: `publication.json` conserva el
+HTTP 403 inicial, `publication-recovery.json` registra la recuperación y el PR,
+`generated-branch-readback.json` verifica los archivos originales, y
+`generated-proposal.json` conserva el informe. El handoff contiene el próximo paso.
