@@ -1,0 +1,79 @@
+{
+  "format": "genius-mission-regulation-publication/1",
+  "verified_at": "2026-10-15T14:45:38.817Z",
+  "status": "IMPLEMENTED_VERIFIED_DEPLOYMENT_PENDING_APPROVAL",
+  "github": {
+    "pr": 45,
+    "head": "7c95dc6d60d0fff78a1eabc429980c5c72728d89",
+    "merge": "3f366854bb4d266070f309646518106abb13096a",
+    "tree": "7898ddff14045311a08cf87c3cb65842138f5dcc",
+    "ci": [
+      {
+        "id": 38753544854,
+        "name": "Capsule verification",
+        "conclusion": "success"
+      },
+      {
+        "id": 38753544641,
+        "name": "Adaptive mission recovery",
+        "conclusion": "success"
+      },
+      {
+        "id": 38753544918,
+        "name": "Club workspace verification",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "railway": {
+    "project_id": "a93aa08c-f3b6-4a5b-accc-9812d6314f00",
+    "environment": {
+      "id": "1addd5b8-5a47-4301-aeca-d9596bceb4e0",
+      "name": "production"
+    },
+    "service_id": "dafd0be5-61aa-4843-a3a3-3c1f487d9640",
+    "live_deployment": {
+      "id": "ec8dada7-baae-4f79-9e28-9ec1329cbc47",
+      "status": "SUCCESS",
+      "createdAt": "2026-10-15T04:57:17.430Z",
+      "url": null
+    },
+    "previous_pin": "7fdb633549473984e16bfb67ed60b629cafe91d5",
+    "target_pin": "3f366854bb4d266070f309646518106abb13096a",
+    "activation_variable": {
+      "GENIUS_MISSION_REGULATION_ENABLED": "true"
+    },
+    "patch": {
+      "patchId": "7a2a4a28-0063-440d-bbe6-ed09f3ebbdda",
+      "status": "STAGED",
+      "changeCount": 2,
+      "message": null,
+      "createdAt": "2026-10-15T14:44:05.755Z",
+      "updatedAt": "2026-10-15T14:44:07.401Z"
+    },
+    "changes": [
+      {
+        "path": "services.dafd0be5-61aa-4843-a3a3-3c1f487d9640.source.commitSha",
+        "displayName": "Commit Sha",
+        "type": "updated",
+        "from": "7fdb633549473984e16bfb67ed60b629cafe91d5",
+        "to": "3f366854bb4d266070f309646518106abb13096a",
+        "destructive": false
+      },
+      {
+        "path": "services.dafd0be5-61aa-4843-a3a3-3c1f487d9640.variables.GENIUS_MISSION_REGULATION_ENABLED.encryptedValue",
+        "displayName": "GENIUS_MISSION_REGULATION_ENABLED",
+        "type": "added",
+        "from": "",
+        "to": "<redacted>",
+        "destructive": false
+      }
+    ],
+    "destructive": false
+  },
+  "apply_result": "Cancelled — the user did not approve this action. No changes were made.",
+  "readback": "The old live deployment is still SUCCESS and the same two changes remain STAGED. No retry or alternate deployment route was used.",
+  "production_activated": false,
+  "public_probe_executed": false,
+  "next_action": "Approve the existing two-change patch in the production environment. Then verify terminal SUCCESS, exact source commit, enabled controller state and an authorized synthetic mission with cleanup. Do not inject failures or storage pressure into production."
+}

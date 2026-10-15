@@ -3,8 +3,9 @@
 15 de octubre de 2026. Nuevo controlador `genius-mission-regulation/1`, probado
 localmente con 154 pruebas de servicio, integración y recuperación aprobadas.
 Contrato: [MISSION_REGULATION.md](../beta/docs/MISSION_REGULATION.md). Evidencia:
-[2026-10-15-regulation](evidence/2026-10-15-regulation). La publicación y CI se
-registran en el PR de la rama `work/mission-regulation-20261015`.
+[2026-10-15-regulation](evidence/2026-10-15-regulation). El [PR 45](https://github.com/pedrosalvadeo/genius-decision-open/pull/45)
+está integrado en `3f366854bb4d266070f309646518106abb13096a`; tres CI aprobaron
+el head `7c95dc6d60d0fff78a1eabc429980c5c72728d89`.
 
 Conecta señales de cola/almacenamiento y resultados de ejecución con pausas de
 admisión, drenaje de cola y una prueba de recuperación tras fallos repetidos.
@@ -19,13 +20,23 @@ respaldada en R2; GitHub recibe únicamente código y evidencia sintética. API/
 exponen estado resumido. Fallos de sensor, reloj incoherente y política distinta
 impiden afirmar recuperación. Un SIGKILL real y admisión concurrente fueron probados.
 
-**Activación pendiente en esta evidencia local:** configurar
-`GENIUS_MISSION_REGULATION_ENABLED=true` junto al commit verificado en el servicio
-existente. No crear infraestructura ni subir límites. El pin público leído antes
-de preparar este cambio sigue en `7fdb633549473984e16bfb67ed60b629cafe91d5`.
-Verificar el estado efectivo de Railway y los recibos posteriores antes de aplicar:
-no repetir un parche ya consumido. Las identidades matemáticas y pronósticos no
-cambiaron; la regulación limita cuándo se ejecutan misiones.
+**Activación pendiente de aprobación:** Railway conserva el parche
+`7a2a4a28-0063-440d-bbe6-ed09f3ebbdda`, STAGED, con exactamente dos cambios:
+pin `3f366854bb4d266070f309646518106abb13096a` y
+`GENIUS_MISSION_REGULATION_ENABLED=true`. El conector canceló Apply porque no
+recibió aprobación. La lectura posterior confirmó que el despliegue anterior
+`ec8dada7-baae-4f79-9e28-9ec1329cbc47` sigue SUCCESS, con pin vivo
+`7fdb633549473984e16bfb67ed60b629cafe91d5`; la regulación aún no está activa.
+Recibo: [publication.json](evidence/2026-10-15-regulation/publication.json).
+
+Proyecto `a93aa08c-f3b6-4a5b-accc-9812d6314f00`, entorno production
+`1addd5b8-5a47-4301-aeca-d9596bceb4e0`, servicio genius-public-beta
+`dafd0be5-61aa-4843-a3a3-3c1f487d9640`. No se crean recursos ni aumentan límites.
+Después de que Pedro apruebe, leer primero el estado: si el parche ya fue aplicado,
+no repetirlo. Comprobar SUCCESS, pin exacto, estado del controlador y una misión
+sintética autorizada con limpieza. No se provocaron fallos ni presión públicos.
+Las identidades matemáticas y los pronósticos no cambiaron; la regulación limita
+cuándo se ejecutan misiones. La prueba pública permanece pendiente del despliegue.
 
 # Genius — propuesta automática publicada como PR borrador
 
@@ -405,7 +416,9 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 > Continuá desde este handoff y beta/docs/MISSION_REGULATION.md.
 > El controlador v1 está implementado: cola, almacenamiento, espera por fallos y
 > una sola ejecución de recuperación, con memoria privada y estado público resumido.
-> Leé la evidencia 2026-10-15-regulation y el PR de work/mission-regulation-20261015.
+> El PR 45 está integrado y sus tres CI aprobaron; leé la evidencia 2026-10-15-regulation.
+> El Apply fue cancelado por falta de aprobación: esperan dos cambios en el parche
+> 7a2a4a28-0063-440d-bbe6-ed09f3ebbdda. Esperá la habilitación de Pedro; no uses otra vía.
 > Verificá primero si la activación pendiente ya fue aplicada en Railway; no repitas
 > el despliegue ni supongas que un parche preparado está activo. Tras SUCCESS, comprobá
 > salud/estado/MCP y una misión autorizada con limpieza, sin provocar fallos públicos.
