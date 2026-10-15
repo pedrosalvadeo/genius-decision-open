@@ -12,6 +12,7 @@ import tempfile
 import time
 from .db import dump, transaction
 from .mission_state import digest, MAX_BUNDLE
+from . import regulation
 
 STAGES = ('measure','represent','evaluate','act','observe','remember')
 ARTIFACT_NAMES = {
@@ -19,12 +20,17 @@ ARTIFACT_NAMES = {
     'resource_calibration_v1': ('resource-estimate.json',),
 }
 
-def recover(db):
+def recover(db, config=None):
     db.execute("UPDATE adaptive_missions SET status=CASE WHEN attempts<3 THEN 'queued' ELSE 'interrupted' END,error='WORKER_RESTART' WHERE status='running'")
+    if config is not None:
+        regulation.recover(db,config)
 
 def run_once(worker, after_checkpoint=None):
     if not worker.config['ADAPTIVE_ENABLED']:
         return False
+    if worker.stopping or worker.config['SUSPEND_FILE'].exists():
+        return False
+    regulation.refresh(worker.db,worker.config)
     # Share compiler capacity with synchronous twin evaluations.
     folder = worker.config['DATA_DIR'] / 'twin-locks'
     folder.mkdir(mode=0o700, parents=True, exist_ok=True)
@@ -42,6 +48,10 @@ def execute(worker, after_checkpoint):
         row = db.execute("SELECT * FROM adaptive_missions WHERE status='queued' ORDER BY updated_at,id LIMIT 1").fetchone()
         if not row:
             return False
+        control = regulation.refresh(db,worker.config,force=True)
+        if not regulation.starts(control):
+            return False
+        control_token = regulation.begin(db,worker.config,control)
         db.execute("UPDATE adaptive_missions SET status='running',attempts=attempts+1,updated_at=? WHERE id=?", (int(time.time()),row['id']))
     mid = row['id']
     mission_input = json.loads(row['input_json'])
@@ -67,6 +77,7 @@ def execute(worker, after_checkpoint):
             with selectors.DefaultSelector() as selector:
                 selector.register(worker.child.stdout, selectors.EVENT_READ)
                 while final is None:
+                    regulation.refresh(db,worker.config)
                     active = db.execute("SELECT m.status,m.cancel_requested,a.expires_at FROM adaptive_missions m LEFT JOIN agent_accounts a ON a.user_id=m.user_id WHERE m.id=?", (mid,)).fetchone()
                     if not active or active['status'] != 'running' or active['cancel_requested']:
                         status,reason='cancelled','CANCELLED'
@@ -122,7 +133,8 @@ def execute(worker, after_checkpoint):
                     if final['result'].get('status') != 'completed':
                         raise ValueError('RESULT_INVALID')
                     with transaction(db):
-                        db.execute("UPDATE adaptive_missions SET status='completed',result_json=?,artifact=?,artifact_name=?,artifact_sha256=?,error=NULL,updated_at=? WHERE id=? AND status='running' AND cancel_requested=0 AND last_stage='remember'", (dump(final['result']),artifact,final['artifact_name'],digest(artifact),int(time.time()),mid))
+                        changed = db.execute("UPDATE adaptive_missions SET status='completed',result_json=?,artifact=?,artifact_name=?,artifact_sha256=?,error=NULL,updated_at=? WHERE id=? AND status='running' AND cancel_requested=0 AND last_stage='remember'", (dump(final['result']),artifact,final['artifact_name'],digest(artifact),int(time.time()),mid)).rowcount
+                        regulation.finish(db,worker.config,control_token,'completed' if changed else 'cancelled',None)
                     return True
                 if final.get('type') == 'failed':
                     reason='MISSION_EXECUTION_FAILED'
@@ -137,5 +149,7 @@ def execute(worker, after_checkpoint):
                 with contextlib.suppress(OSError):
                     stream.close()
             worker.child = None
-    db.execute("UPDATE adaptive_missions SET status=?,error=?,updated_at=? WHERE id=? AND status='running'", (status,reason,int(time.time()),mid))
+    with transaction(db):
+        changed = db.execute("UPDATE adaptive_missions SET status=?,error=?,updated_at=? WHERE id=? AND status='running'", (status,reason,int(time.time()),mid)).rowcount
+        regulation.finish(db,worker.config,control_token,status if changed else 'cancelled',reason)
     return True

@@ -1,3 +1,32 @@
+# Genius — regulación operativa de misiones implementada
+
+15 de octubre de 2026. Nuevo controlador `genius-mission-regulation/1`, probado
+localmente con 154 pruebas de servicio, integración y recuperación aprobadas.
+Contrato: [MISSION_REGULATION.md](../beta/docs/MISSION_REGULATION.md). Evidencia:
+[2026-10-15-regulation](evidence/2026-10-15-regulation). La publicación y CI se
+registran en el PR de la rama `work/mission-regulation-20261015`.
+
+Conecta señales de cola/almacenamiento y resultados de ejecución con pausas de
+admisión, drenaje de cola y una prueba de recuperación tras fallos repetidos.
+Los márgenes de entrada/salida evitan oscilaciones. La memoria guarda transiciones
+antes/después y resultados operativos; no aprende nuevos umbrales. Controla sólo
+las misiones en cola, no expedientes, gemelos síncronos, cierre de pronósticos,
+diplomático ni publicador de propuestas. Las cuotas y permisos previos permanecen.
+
+Migración aditiva 011; máximo 512 eventos operativos y siete días de retención,
+sin contenido de usuario ni identificadores de cuenta/misión. Memoria privada,
+respaldada en R2; GitHub recibe únicamente código y evidencia sintética. API/MCP
+exponen estado resumido. Fallos de sensor, reloj incoherente y política distinta
+impiden afirmar recuperación. Un SIGKILL real y admisión concurrente fueron probados.
+
+**Activación pendiente en esta evidencia local:** configurar
+`GENIUS_MISSION_REGULATION_ENABLED=true` junto al commit verificado en el servicio
+existente. No crear infraestructura ni subir límites. El pin público leído antes
+de preparar este cambio sigue en `7fdb633549473984e16bfb67ed60b629cafe91d5`.
+Verificar el estado efectivo de Railway y los recibos posteriores antes de aplicar:
+no repetir un parche ya consumido. Las identidades matemáticas y pronósticos no
+cambiaron; la regulación limita cuándo se ejecutan misiones.
+
 # Genius — propuesta automática publicada como PR borrador
 
 15 de octubre de 2026, 05:49 UTC (02:49 Argentina). Tras la confirmación de Pedro
@@ -373,18 +402,17 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 
 ## Siguiente prompt
 
-> Continuá desde `adaptive/HANDOFF.md` y `evolution/README.md`.
-> El PR 38 está integrado, cuatro CI aprobaron, y el workflow 38687301389 creó
-> automáticamente la rama genius/evolution/697ab0d851a72ecf7a6f8fcc en 5cfdd8b.
-> El permiso quedó resuelto: intento 2 del mismo workflow, PUBLISHED/reused=true.
-> El bot abrió el PR 40 como borrador sobre el mismo commit; no lo regeneres ni
-> dupliques. Recibos original y de recuperación conservados en evolution/evidence.
-> Los workflows del PR 40 indican action_required; no equivalen a CI aprobados.
-> El candidato 110 - valor previo fue rechazado; no lo fusiones ni lo despliegues,
-> ni cambies guardas/datos para aprobarlo. Conservá el ensayo HTTP negativo v1.
-> El siguiente incremento es definir un nuevo problema para estrategias
-> condicionadas al régimen, con objetivo y nueva evaluación antes de generar.
-> No publiques memoria privada: la conexión de cuentas necesita consentimiento
-> y minimización explícitos. La promoción al runtime requiere su propio contrato
-> y pruebas; no está implementada. Entregá evidencia, límites y siguiente prompt.
-> Bienestar/PVS siguen sin medirse; no hace falta Apply en Railway por este trabajo.
+> Continuá desde este handoff y beta/docs/MISSION_REGULATION.md.
+> El controlador v1 está implementado: cola, almacenamiento, espera por fallos y
+> una sola ejecución de recuperación, con memoria privada y estado público resumido.
+> Leé la evidencia 2026-10-15-regulation y el PR de work/mission-regulation-20261015.
+> Verificá primero si la activación pendiente ya fue aplicada en Railway; no repitas
+> el despliegue ni supongas que un parche preparado está activo. Tras SUCCESS, comprobá
+> salud/estado/MCP y una misión autorizada con limpieza, sin provocar fallos públicos.
+> Conservá por separado las pruebas locales y la verificación efectiva del despliegue.
+> Los umbrales son fijos; el siguiente paso es definir objetivo y evaluación previa
+> para comparar políticas adaptativas, sin convertir autorregulación en autoaumento
+> de cuotas o permisos. Bienestar/PVS siguen sin medirse.
+> El PR 40 permanece borrador rechazado: no lo fusiones, regeneres ni despliegues.
+> La actividad diplomática es independiente; preservá sus revisiones y cambios nuevos.
+> Entregá evidencia, límites y siguiente prompt actualizado.

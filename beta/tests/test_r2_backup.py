@@ -75,58 +75,70 @@ class R2Tests(unittest.TestCase):
     def test_received_schema_v2_backup_upgrades_offline_without_losing_humans(self):
         self.seed()
         with contextlib.closing(sqlite3.connect(self.db)) as db:
-            db.executescript("DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DROP TABLE adaptive_missions; DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DROP TABLE contribution_inbox; DROP TABLE agent_token_grants; DROP TABLE agent_accounts; DELETE FROM schema_migrations WHERE version >= '003_agent_access.sql';")
+            db.executescript("DROP TABLE mission_regulation_events; DROP TABLE mission_regulation; DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DROP TABLE adaptive_missions; DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DROP TABLE contribution_inbox; DROP TABLE agent_token_grants; DROP TABLE agent_accounts; DELETE FROM schema_migrations WHERE version >= '003_agent_access.sql';")
         receipt = self.backup()
         output = self.root/'recovered-old-schema'
         r2.recover(self.store,self.key,receipt['object_key'],output,True)
         with contextlib.closing(sqlite3.connect(output/'genius.sqlite3')) as db:
             self.assertEqual(db.execute('SELECT count(*) FROM users').fetchone()[0],2)
-            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],10)
+            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],11)
             self.assertEqual(db.execute('SELECT count(*) FROM agent_accounts').fetchone()[0],0)
             self.assertEqual(db.execute('SELECT count(*) FROM api_tokens').fetchone()[0],0)
         self.assertTrue((output/'SUSPENDED').exists())
     def test_pre_club_schema_v4_upgrades_without_changing_existing_data(self):
         self.seed()
         with contextlib.closing(sqlite3.connect(self.db)) as db:
-            db.executescript("DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DROP TABLE adaptive_missions; DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DELETE FROM schema_migrations WHERE version IN ('005_club.sql','006_club_social.sql','007_club_contributions.sql','008_adaptive_missions.sql','009_mission_forecasts.sql','010_context_forecasts.sql');")
+            db.executescript("DROP TABLE mission_regulation_events; DROP TABLE mission_regulation; DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DROP TABLE adaptive_missions; DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DELETE FROM schema_migrations WHERE version IN ('005_club.sql','006_club_social.sql','007_club_contributions.sql','008_adaptive_missions.sql','009_mission_forecasts.sql','010_context_forecasts.sql','011_mission_regulation.sql');")
         receipt = self.backup()
         output = self.root/'recovered-pre-club'
         r2.recover(self.store,self.key,receipt['object_key'],output,True)
         with contextlib.closing(sqlite3.connect(output/'genius.sqlite3')) as db:
             self.assertEqual(db.execute('SELECT count(*) FROM users').fetchone()[0],2)
             self.assertEqual(db.execute('SELECT count(*) FROM club_members').fetchone()[0],0)
-            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],10)
+            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],11)
         self.assertTrue((output/'SUSPENDED').exists())
     def test_mission_schema_v8_upgrades_to_forecasts_without_data_loss(self):
         self.seed()
         with contextlib.closing(sqlite3.connect(self.db)) as db:
-            db.executescript("DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DELETE FROM schema_migrations WHERE version IN ('009_mission_forecasts.sql','010_context_forecasts.sql');")
+            db.executescript("DROP TABLE mission_regulation_events; DROP TABLE mission_regulation; DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DELETE FROM schema_migrations WHERE version IN ('009_mission_forecasts.sql','010_context_forecasts.sql','011_mission_regulation.sql');")
         receipt=self.backup();output=self.root/'recovered-mission-schema'
         r2.recover(self.store,self.key,receipt['object_key'],output,True)
         with contextlib.closing(sqlite3.connect(output/'genius.sqlite3')) as db:
             self.assertEqual(db.execute('SELECT count(*) FROM users').fetchone()[0],2)
-            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],10)
+            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],11)
             self.assertEqual(db.execute('SELECT count(*) FROM mission_forecasts').fetchone()[0],0)
             self.assertEqual(db.execute('SELECT count(*) FROM mission_forecast_observations').fetchone()[0],0)
 
     def test_forecast_schema_v9_upgrades_to_context_without_losing_legacy_rows(self):
         self.seed()
         with contextlib.closing(sqlite3.connect(self.db)) as db:
-            db.executescript("DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DELETE FROM schema_migrations WHERE version='010_context_forecasts.sql';")
+            db.executescript("DROP TABLE mission_regulation_events; DROP TABLE mission_regulation; DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DELETE FROM schema_migrations WHERE version IN ('010_context_forecasts.sql','011_mission_regulation.sql');")
             db.execute("INSERT INTO adaptive_missions(id,user_id,idempotency_key,request_sha256,input_json,status,created_at,updated_at) VALUES('legacy','kept','legacy','hash','{}','completed',?,?)",(self.now,self.now))
             db.execute("INSERT INTO mission_forecasts VALUES('legacy','request','{\"legacy\":true}','digest',1,3,NULL,NULL)")
             db.commit()
         receipt=self.backup();output=self.root/'recovered-v9'
         r2.recover(self.store,self.key,receipt['object_key'],output,True)
         with contextlib.closing(sqlite3.connect(output/'genius.sqlite3')) as db:
-            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],10)
+            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],11)
             self.assertEqual(db.execute('SELECT frozen_json FROM mission_forecasts').fetchone()[0],'{"legacy":true}')
             self.assertEqual(db.execute('SELECT count(*) FROM mission_context_forecasts').fetchone()[0],0)
+
+    def test_context_schema_v10_upgrades_to_empty_regulation_without_losing_users(self):
+        self.seed()
+        with contextlib.closing(sqlite3.connect(self.db)) as db:
+            db.executescript("DROP TABLE mission_regulation_events; DROP TABLE mission_regulation; DELETE FROM schema_migrations WHERE version='011_mission_regulation.sql';")
+        receipt=self.backup();output=self.root/'recovered-v10'
+        r2.recover(self.store,self.key,receipt['object_key'],output,True)
+        with contextlib.closing(sqlite3.connect(output/'genius.sqlite3')) as db:
+            self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],11)
+            self.assertEqual(db.execute('SELECT count(*) FROM users').fetchone()[0],2)
+            self.assertEqual(db.execute('SELECT count(*) FROM mission_regulation').fetchone()[0],0)
+        self.assertTrue((output/'SUSPENDED').exists())
 
     def test_unknown_historical_migration_identity_is_not_auto_upgraded(self):
         self.seed()
         with contextlib.closing(sqlite3.connect(self.db)) as db:
-            db.executescript("DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DROP TABLE adaptive_missions; DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DROP TABLE contribution_inbox; DROP TABLE agent_token_grants; DROP TABLE agent_accounts; DELETE FROM schema_migrations WHERE version >= '003_agent_access.sql'; UPDATE schema_migrations SET sha256='unrecognized' WHERE version='001_initial.sql';")
+            db.executescript("DROP TABLE mission_regulation_events; DROP TABLE mission_regulation; DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DROP TABLE adaptive_missions; DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_blocks; DROP TABLE club_social_profiles; DROP TABLE club_file_versions; DROP TABLE club_files; DROP TABLE club_members; DROP TABLE contribution_inbox; DROP TABLE agent_token_grants; DROP TABLE agent_accounts; DELETE FROM schema_migrations WHERE version >= '003_agent_access.sql'; UPDATE schema_migrations SET sha256='unrecognized' WHERE version='001_initial.sql';")
         receipt = self.backup()
         output = self.root/'must-not-exist'
         with self.assertRaisesRegex(r2.BackupError,'RESTORE_SCHEMA_MISMATCH'):

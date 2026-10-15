@@ -1,0 +1,35 @@
+{
+  "format": "genius-mission-regulation-local-evidence/1",
+  "verified_at": "2026-10-15T14:39:09.935806+00:00",
+  "status": "PASS",
+  "scope": "LOCAL_SERVICE_AND_NATIVE_CHILD_TESTS",
+  "tests": 154,
+  "new_controller_tests": 14,
+  "new_historical_schema_test": 1,
+  "production_activated": false,
+  "observations": [
+    "Simultaneous admissions serialize at the queue high-water mark; accepted work drains to the low-water mark.",
+    "Three injected operational process failures pause admissions without consuming execution quota for blocked requests.",
+    "Cooldown requires an actual successful mission; waiting alone does not clear failures.",
+    "A real worker receives SIGKILL after its evaluate checkpoint; restart records unknown outcome, waits and resumes its exact durable mission.",
+    "Existing API/MCP scopes, quotas, forecasting, club and encrypted backup recovery remain covered."
+  ],
+  "limits": [
+    "Fixed feedback policy, not learned thresholds.",
+    "Queued adaptive missions only; no global scheduler or CPU/cost controller.",
+    "Tests are controlled experiments, not production availability or wellbeing/PVS measurements.",
+    "No production failures or storage pressure were injected."
+  ],
+  "corrected_test_harness_issues": [
+    "Unit probe test initially mixed simulated and real clocks; the clock is now held consistently.",
+    "MCP test initially omitted the existing required text/event-stream Accept value.",
+    "The historical v5 migration fixture now removes v11 tables when simulating a pre-v6 database."
+  ],
+  "files": {
+    "beta/genius_beta/regulation.py": "bfa3019dac06af986c0263922d9bc0f4389079df82266f149c318cb14e2a3655",
+    "beta/genius_beta/mission_worker.py": "6bc28e9a20de813bbb89cf8959e388abc450cd194d6555e36fa66b571f46a30a",
+    "beta/migrations/011_mission_regulation.sql": "611511df4c19007252ac1ada0fe5ec583632bdd0b35531a710a0983a0daac168",
+    "beta/tests/test_regulation.py": "504b9177d056e2e037e00cab14113f0bba795bef5e86028167c85f31590ad304",
+    "adaptive/evidence/2026-10-15-regulation/local-tests.txt": "aa8d91b827446fdf9840a4f37083fd15222340170c4c126af264eb9f22399014"
+  }
+}
