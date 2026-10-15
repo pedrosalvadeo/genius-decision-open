@@ -1,0 +1,56 @@
+{
+  "format": "genius-service-release/1",
+  "source_commit": "40086349dbcde45c292434dedea70612171fd6fc",
+  "deployment": {
+    "id": "4fcdf600-7473-4dea-bb3f-e6330905f18e",
+    "status": "SUCCESS",
+    "createdAt": "2026-10-15T00:06:56.773Z",
+    "url": null
+  },
+  "url": "https://geniusdecision.app",
+  "project_id": "a93aa08c-f3b6-4a5b-accc-9812d6314f00",
+  "environment_id": "1addd5b8-5a47-4301-aeca-d9596bceb4e0",
+  "service_id": "dafd0be5-61aa-4843-a3a3-3c1f487d9640",
+  "staged_changes": null,
+  "feature_enabled": true,
+  "health_after_restart": {
+    "status": "ok",
+    "backup": "ok",
+    "suspended": false
+  },
+  "restart_response": {
+    "deploymentId": "4fcdf600-7473-4dea-bb3f-e6330905f18e",
+    "service": {
+      "id": "dafd0be5-61aa-4843-a3a3-3c1f487d9640",
+      "name": "genius-public-beta"
+    },
+    "environmentId": "1addd5b8-5a47-4301-aeca-d9596bceb4e0"
+  },
+  "restart_log_evidence": [
+    {
+      "timestamp": "2026-10-15T00:10:17.744202123Z",
+      "message": "service_child_reaped index=0 returncode=0"
+    },
+    {
+      "timestamp": "2026-10-15T00:10:17.744206613Z",
+      "message": "service_child_reaped index=1 returncode=0"
+    },
+    {
+      "timestamp": "2026-10-15T00:10:17.744210423Z",
+      "message": "service_child_reaped index=2 returncode=0"
+    },
+    {
+      "timestamp": "2026-10-15T00:10:19.304855792Z",
+      "message": "service_child_started index=0 pid=2"
+    },
+    {
+      "timestamp": "2026-10-15T00:10:19.304864922Z",
+      "message": "service_child_started index=1 pid=3"
+    },
+    {
+      "timestamp": "2026-10-15T00:10:20.197732377Z",
+      "message": "[2026-10-15 00:10:20 +0000] [5] [INFO] Booting worker with pid: 5"
+    }
+  ],
+  "limits": "Live test proves completed synthetic mission persistence and reuse after an authorized orderly restart; hard-kill active-stage recovery and privacy-filtered restore are verified by separate isolated tests."
+}

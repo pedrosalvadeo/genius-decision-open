@@ -6,7 +6,6 @@ Only the separate receipt is public evidence. Never use a real user's account.
 import argparse
 import base64
 import hashlib
-import http.client
 import io
 import json
 import os
@@ -15,6 +14,8 @@ import secrets
 import tarfile
 import time
 from urllib.parse import urlsplit
+from urllib.request import build_opener, HTTPRedirectHandler, Request
+from urllib.error import HTTPError
 import zipfile
 
 
@@ -37,16 +38,23 @@ def main():
         if token:headers['Authorization']='Bearer '+token
         data=None if payload is None else json.dumps(payload).encode()
         if data is not None:headers['Content-Type']='application/json'
-        connection=http.client.HTTPSConnection(origin.hostname,origin.port or 443,timeout=20)
+        # Honor the host's HTTPS proxy, while refusing redirects that could carry
+        # the Authorization header to another origin. No proxy values are logged.
+        class NoRedirect(HTTPRedirectHandler):
+            def redirect_request(self, req, fp, code, msg, headers, newurl):
+                return None
+        opener=build_opener(NoRedirect())
         try:
-            connection.request(method,path,body=data,headers=headers)
-            response=connection.getresponse();raw=response.read(4*1024*1024)
+            response=opener.open(Request(args.origin+path,data=data,headers=headers,method=method),timeout=20)
+        except HTTPError as exc:
+            response=exc
+        with response:
+            raw=response.read(4*1024*1024)
             value=json.loads(raw) if raw else None
             if response.status>=300:
                 code=value.get('error',{}).get('code') if isinstance(value,dict) else 'non_json'
                 raise RuntimeError(str(response.status)+':'+str(code))
             return value
-        finally:connection.close()
     if args.phase=='seed':
         if args.state.exists():raise SystemExit('State file already exists; verify or erase its probe first')
         manifest=request('GET','/agents/manifest.json')

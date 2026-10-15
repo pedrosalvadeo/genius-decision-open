@@ -1,0 +1,14 @@
+{
+  "phase": "verify",
+  "status": "PASS",
+  "origin": "https://geniusdecision.app",
+  "mission_id": "dbe8b3a13df8437453c7dd0c7a100162",
+  "completed_mission_unchanged": true,
+  "export_unchanged": true,
+  "artifact_sha256": "af05f383114c5e77034d6e50cbb7a9f31991faf9be22d26b24b550d5768ed209",
+  "explicit_run_reused": true,
+  "probe_account_erased": true,
+  "credential_revoked": true,
+  "verified_at": 1792023085,
+  "restart_attestation": "operator must pair with provider restart receipt"
+}
