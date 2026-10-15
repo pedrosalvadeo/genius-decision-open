@@ -1,3 +1,33 @@
+# Genius — regla según fallos evaluada y rechazada; producción conservada
+
+15 de octubre de 2026. [Contrato y reproducción del nuevo ensayo](../beta/experiments/regulation-history/README.md).
+Regla local: primera pausa 60 s tras tres fallos; ante otra prueba fallida,
+`min(180, 60 + incremento × max(0, fallos consecutivos − 3))`. Aprende el incremento
+entre 15/30/60 s usando entrenamiento; la regla usa sólo el contador observado
+persistido. Un éxito reinicia el contador, los resultados neutros no lo borran.
+Adaptador y memoria funcionan en laboratorio; no están instalados en producción.
+
+Se fijaron antes de medir 16 casos de entrenamiento y 16 de evaluación nuevos,
+sin reutilizar trayectorias del ensayo previo. Pesos y condiciones de aceptación
+permanecen iguales. El candidato nominado incrementa 30 s: pérdida de entrenamiento
+242210 → 241955, pero evaluación **286155 → 301995**. Siete casos empeoran, nueve
+empatan y ninguno mejora su pérdida. Estado **REJECTED_BY_EVALUATION**; conservar
+la política actual. Menos fallos no compensaron la demora ni las tareas pendientes.
+No cambiar criterios ni activar esta regla para obtener una mejora aparente.
+
+Evidencia: [2026-10-15-regulation-history](evidence/2026-10-15-regulation-history).
+Trece pruebas nuevas más las 29 anteriores pasan (42). Incluyen recarga de historia,
+clasificación/neutralidad, rollback, ausencia de anticipación de fallos futuros,
+trayectorias del control idénticas al simulador anterior y reproducción exacta.
+Código, datos y recibos del primer estudio se conservaron sin modificaciones.
+No se tocaron recursos, cuotas, código del runtime, pin ni configuración de Railway.
+
+La misión pública continúa pendiente del 429 de registro ya documentado; no se
+repitieron altas en la misma hora ni quedó cuenta por borrar. La próxima prioridad
+es cerrar esa prueba cuando la cuota lo permita y definir observación en sombra
+con métricas reales antes de ampliar otra búsqueda sintética de reglas. La relación
+con bienestar/PVS sigue sin medirse. Este incremento no requiere Apply.
+
 # Genius — laboratorio de regulación ejecutado; política actual conservada
 
 15 de octubre de 2026. [Contrato y reproducción](../beta/experiments/regulation/README.md).
@@ -462,9 +492,15 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 > Conservá por separado las pruebas locales y la verificación efectiva del despliegue.
 > Ya existe beta/experiments/regulation/README.md y el primer estudio reproducible.
 > Seleccionó 60 s y no justificó cambiar producción: conservá el resultado negativo.
-> La espera más larga ayudó en un contexto y perjudicó en otro. El siguiente ensayo
-> puede proponer una regla dependiente sólo de historia observada, fijando primero
-> señales, objetivo y casos nuevos. Los casos ya examinados no son evaluación inédita.
+> El ensayo beta/experiments/regulation-history/README.md ya evaluó una regla causal
+> dependiente del contador de fallos. Seleccionó incremento de 30 s: mejora marginal
+> en entrenamiento y empeora evaluación (286155 → 301995); quedó rechazado.
+> Conservá ambos ensayos y no actives la candidata. No renombres casos examinados
+> como evaluación inédita ni ajustes los criterios para obtener aprobación.
+> La prioridad es cerrar la misión pública al renovarse la cuota y definir
+> observación en sombra: métricas reales de demora, fallos, demanda y resultados
+> incompletos, sin exportar memoria privada a GitHub. Primero precisá objetivo
+> operativo y evidencia necesaria; no abras otra búsqueda sintética sin ese fundamento.
 > No conviertas autorregulación en autoaumento de cuotas o permisos. No se instaló
 > aprendizaje de umbrales en producción; bienestar/PVS siguen sin medirse.
 > El PR 40 permanece borrador rechazado: no lo fusiones, regeneres ni despliegues.

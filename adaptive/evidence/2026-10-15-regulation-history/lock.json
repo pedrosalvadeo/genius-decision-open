@@ -1,0 +1,21 @@
+{
+  "format": "genius-regulation-history-lock/1",
+  "files": {
+    "beta/tools/regulation_study.py": "5e0b9eac497fa67b7188a7165fd34004d140b278ed5b0829042f2353417201bf",
+    "beta/tests/test_regulation_study.py": "589314c48a4970bc6f15901d07b3dada4f80b5a8d1e262bad330dc7636c9751d",
+    "beta/genius_beta/regulation.py": "bfa3019dac06af986c0263922d9bc0f4389079df82266f149c318cb14e2a3655",
+    "beta/genius_beta/db.py": "f0cb48dd183ec5f68efc3e64d6cb5f49c811cf540aa1d13fd867af5981455532",
+    "beta/migrations/011_mission_regulation.sql": "611511df4c19007252ac1ada0fe5ec583632bdd0b35531a710a0983a0daac168",
+    "beta/experiments/regulation/plan.json": "b86135a6ffe2d97477741e2284e1e29a6994864083374c6ab36a333d9174a8d6",
+    "beta/experiments/regulation/training.json": "4862ce359252f98dbe9b3e1e05ef91c911b11639098926e763ee3f8164583a42",
+    "beta/experiments/regulation/evaluation.json": "96f54cf50ad31932c0e03f722255ea22793d1713c44a75fb90d3e1e2f921ca5a",
+    "beta/experiments/regulation/predeclaration.json": "4968134f119568cbdcc1e50b483b6a8095f2500d51eabfd5a0664a6efc884818",
+    "beta/tools/regulation_history_study.py": "3426f86849ca4bbc19caa9e8bcc45491b4642dacac681fcc1267ccb86753724b",
+    "beta/tests/test_regulation_history.py": "50ad555598e1f60b184e4715c3cf670c097ca02b3040b7c75e1d49ca63e52c80",
+    "beta/experiments/regulation-history/generate_fixtures.py": "91feb4b749ee46892a8c81b2bbfe0a86e682e3bc5b1eef3d237b7423c1f1f9db",
+    "beta/experiments/regulation-history/plan.json": "0a4b26974ae30126e8181f3429bab98ac8096e548fdcc5755419bc628f1c74c5",
+    "beta/experiments/regulation-history/training.json": "037c81d6ecf9eaa18f328a8a9fc72d7aa3d64e53bccefdf66bf7e086a9a2898c",
+    "beta/experiments/regulation-history/evaluation.json": "229309459e2c842de0433b9c2c970f40abcf710a7a1e6e594effaffce704f01c",
+    "beta/experiments/regulation-history/predeclaration.json": "3860334b15bf0a96f1a363195e9bde7f5c6ea3f59393d104fc1b980f0b434c0c"
+  }
+}

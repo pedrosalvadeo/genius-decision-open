@@ -1,0 +1,14 @@
+{
+  "format": "genius-regulation-history-predeclaration/1",
+  "declared_at": "2026-10-15T16:42:20.441239+00:00",
+  "status": "FIXED_BEFORE_FIRST_RUN",
+  "training_cases": 16,
+  "evaluation_cases": 16,
+  "files": {
+    "beta/experiments/regulation-history/plan.json": "0a4b26974ae30126e8181f3429bab98ac8096e548fdcc5755419bc628f1c74c5",
+    "beta/experiments/regulation-history/generate_fixtures.py": "91feb4b749ee46892a8c81b2bbfe0a86e682e3bc5b1eef3d237b7423c1f1f9db",
+    "beta/experiments/regulation-history/training.json": "037c81d6ecf9eaa18f328a8a9fc72d7aa3d64e53bccefdf66bf7e086a9a2898c",
+    "beta/experiments/regulation-history/evaluation.json": "229309459e2c842de0433b9c2c970f40abcf710a7a1e6e594effaffce704f01c"
+  },
+  "note": "Internal timestamp; publicly inspectable deterministic fixtures, not blinded or independent preregistration."
+}

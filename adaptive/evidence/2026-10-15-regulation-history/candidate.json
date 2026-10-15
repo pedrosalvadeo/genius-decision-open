@@ -1,0 +1,2030 @@
+{
+  "format": "genius-regulation-history-candidate/1",
+  "lock_sha256": "d8a4179ac0f21fb47602676d18ffece39c3a8d5acf0cfe28d145646e2dae4ee8",
+  "selected_step_seconds": 30,
+  "baseline_training": {
+    "step_seconds": 0,
+    "loss": 242210,
+    "cases": [
+      {
+        "id": "train-00-steady-sparse",
+        "offered": 14,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 14,
+          "operational_failures": 0,
+          "exposure_seconds": 280,
+          "admission_deferrals": 0,
+          "max_pending": 1,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 20,
+          "unfinished": 0,
+          "loss": 280
+        },
+        "mode_seconds": {
+          "NORMAL": 1200
+        },
+        "trace_sha256": "c5e68af1ded743c0f2693462e87b4ff94f8c32309b2d3321391393161a6bd405"
+      },
+      {
+        "id": "train-00-steady-busy",
+        "offered": 120,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 79,
+          "operational_failures": 0,
+          "exposure_seconds": 60285,
+          "admission_deferrals": 11349,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 795,
+          "unfinished": 41,
+          "loss": 64385
+        },
+        "mode_seconds": {
+          "DRAINING": 1165,
+          "NORMAL": 35
+        },
+        "trace_sha256": "8b4421a205a9989b662c1673237ff6548679fc42b240d4d37ca4ad66f6d035ec"
+      },
+      {
+        "id": "train-01-short-sparse",
+        "offered": 14,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 13,
+          "operational_failures": 1,
+          "exposure_seconds": 280,
+          "admission_deferrals": 0,
+          "max_pending": 1,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 20,
+          "unfinished": 0,
+          "loss": 380
+        },
+        "mode_seconds": {
+          "NORMAL": 1200
+        },
+        "trace_sha256": "5149417615009692b5f21c9bf9cd47cef42a920c1c7aeea496069c29ab90b0db"
+      },
+      {
+        "id": "train-01-short-busy",
+        "offered": 120,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 117,
+          "operational_failures": 3,
+          "exposure_seconds": 8035,
+          "admission_deferrals": 1243,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 70,
+          "unfinished": 0,
+          "loss": 8335
+        },
+        "mode_seconds": {
+          "COOLDOWN": 60,
+          "DRAINING": 570,
+          "NORMAL": 565,
+          "PROBING": 5
+        },
+        "trace_sha256": "47ac1a4fff75b15319e47caa3e2454f80e988ddf5e684a58b58f1a9695897d7e"
+      },
+      {
+        "id": "train-02-long-sparse",
+        "offered": 14,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 8,
+          "operational_failures": 6,
+          "exposure_seconds": 985,
+          "admission_deferrals": 118,
+          "max_pending": 3,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 165,
+          "unfinished": 0,
+          "loss": 1585
+        },
+        "mode_seconds": {
+          "COOLDOWN": 240,
+          "NORMAL": 880,
+          "PROBING": 80
+        },
+        "trace_sha256": "c2472a906b1cdcb981a628c941f0beb033efdfeb28f3e0a0d90f22aea5a5d927"
+      },
+      {
+        "id": "train-02-long-busy",
+        "offered": 60,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 55,
+          "operational_failures": 5,
+          "exposure_seconds": 19740,
+          "admission_deferrals": 3408,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 490,
+          "unfinished": 0,
+          "loss": 20240
+        },
+        "mode_seconds": {
+          "COOLDOWN": 180,
+          "DRAINING": 765,
+          "NORMAL": 210,
+          "PROBING": 45
+        },
+        "trace_sha256": "4be4580e40020706181b28813ce886f22406a1d9ea866ad36de66df402b84f91"
+      },
+      {
+        "id": "train-03-recurrent-sparse",
+        "offered": 14,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 7,
+          "operational_failures": 7,
+          "exposure_seconds": 505,
+          "admission_deferrals": 41,
+          "max_pending": 2,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 95,
+          "unfinished": 0,
+          "loss": 1205
+        },
+        "mode_seconds": {
+          "COOLDOWN": 180,
+          "NORMAL": 960,
+          "PROBING": 60
+        },
+        "trace_sha256": "24ab3d9341c37bd808516c6565332bb5fb83876886b6cf58007b588650b7c5f9"
+      },
+      {
+        "id": "train-03-recurrent-busy",
+        "offered": 120,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 110,
+          "operational_failures": 10,
+          "exposure_seconds": 38605,
+          "admission_deferrals": 7329,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 370,
+          "unfinished": 0,
+          "loss": 39605
+        },
+        "mode_seconds": {
+          "COOLDOWN": 360,
+          "DRAINING": 550,
+          "NORMAL": 260,
+          "PROBING": 30
+        },
+        "trace_sha256": "44fa4fc0f460a7aaf205096c7f53872679f5912660a612c0e0030a042654855b"
+      },
+      {
+        "id": "train-04-shift-sparse",
+        "offered": 18,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 8,
+          "operational_failures": 10,
+          "exposure_seconds": 1335,
+          "admission_deferrals": 131,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 155,
+          "unfinished": 0,
+          "loss": 2335
+        },
+        "mode_seconds": {
+          "COOLDOWN": 240,
+          "DRAINING": 60,
+          "NORMAL": 820,
+          "PROBING": 80
+        },
+        "trace_sha256": "d97953a1d826ee0784dc122f65acc585eccd39467cecf380ec6bf834b66d79f1"
+      },
+      {
+        "id": "train-04-shift-busy",
+        "offered": 40,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 28,
+          "operational_failures": 12,
+          "exposure_seconds": 3120,
+          "admission_deferrals": 534,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 200,
+          "unfinished": 0,
+          "loss": 4320
+        },
+        "mode_seconds": {
+          "COOLDOWN": 360,
+          "DRAINING": 75,
+          "NORMAL": 735,
+          "PROBING": 30
+        },
+        "trace_sha256": "262fb730e815346de0f193bbb988eeed0992214ed9b2029a8254d6625985584a"
+      },
+      {
+        "id": "train-05-storage-sparse",
+        "offered": 18,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 18,
+          "operational_failures": 0,
+          "exposure_seconds": 660,
+          "admission_deferrals": 79,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 150,
+          "unfinished": 0,
+          "loss": 660
+        },
+        "mode_seconds": {
+          "DRAINING": 30,
+          "NORMAL": 1030,
+          "RESOURCE_PAUSED": 140
+        },
+        "trace_sha256": "19b854a891278102cba4a230c6409b6b8a94fb36b89e92e346dcac14b0380fa8"
+      },
+      {
+        "id": "train-05-storage-busy",
+        "offered": 40,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 40,
+          "operational_failures": 0,
+          "exposure_seconds": 1030,
+          "admission_deferrals": 144,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 130,
+          "unfinished": 0,
+          "loss": 1030
+        },
+        "mode_seconds": {
+          "DRAINING": 45,
+          "NORMAL": 1025,
+          "RESOURCE_PAUSED": 130
+        },
+        "trace_sha256": "dbbf9b65b23c8a0f23c296cf94287bdcc611e6d250a31ea0892d7e53c43e1337"
+      },
+      {
+        "id": "train-06-sensors-sparse",
+        "offered": 11,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 11,
+          "operational_failures": 0,
+          "exposure_seconds": 315,
+          "admission_deferrals": 27,
+          "max_pending": 2,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 95,
+          "unfinished": 0,
+          "loss": 315
+        },
+        "mode_seconds": {
+          "NORMAL": 1075,
+          "SENSOR_PAUSED": 125
+        },
+        "trace_sha256": "04a4900bf7d7dbfc8ff9a726d43a476d560be3710c8aa4b87a63637bccf8320d"
+      },
+      {
+        "id": "train-06-sensors-busy",
+        "offered": 60,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 60,
+          "operational_failures": 0,
+          "exposure_seconds": 7450,
+          "admission_deferrals": 1120,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 135,
+          "unfinished": 0,
+          "loss": 7450
+        },
+        "mode_seconds": {
+          "DRAINING": 570,
+          "NORMAL": 505,
+          "SENSOR_PAUSED": 125
+        },
+        "trace_sha256": "f8260239fdc3ce21f6ba566e881bfc40f06bacac17b8f0c3bac6d5b886619134"
+      },
+      {
+        "id": "train-07-mixed-sparse",
+        "offered": 14,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 8,
+          "operational_failures": 6,
+          "exposure_seconds": 390,
+          "admission_deferrals": 34,
+          "max_pending": 2,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 80,
+          "unfinished": 0,
+          "loss": 990
+        },
+        "mode_seconds": {
+          "COOLDOWN": 120,
+          "NORMAL": 955,
+          "PROBING": 30,
+          "RESOURCE_PAUSED": 55,
+          "SENSOR_PAUSED": 40
+        },
+        "trace_sha256": "4e3952e584934787dcfa4f4f72efaad46ba1a3af62ec27a3ddf0573e378bf3e8"
+      },
+      {
+        "id": "train-07-mixed-busy",
+        "offered": 120,
+        "step_seconds": 0,
+        "policy_decisions": [],
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 46,
+          "operational_failures": 9,
+          "exposure_seconds": 81695,
+          "admission_deferrals": 15783,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 910,
+          "unfinished": 65,
+          "loss": 89095
+        },
+        "mode_seconds": {
+          "COOLDOWN": 260,
+          "DRAINING": 735,
+          "NORMAL": 35,
+          "PROBING": 75,
+          "RESOURCE_PAUSED": 55,
+          "SENSOR_PAUSED": 40
+        },
+        "trace_sha256": "6b0dd29677275bbd70b655462ae1eb41c0d743105e7e483fd0dfce6579834a51"
+      }
+    ]
+  },
+  "training": [
+    {
+      "step_seconds": 15,
+      "loss": 246560,
+      "cases": [
+        {
+          "id": "train-00-steady-sparse",
+          "offered": 14,
+          "step_seconds": 15,
+          "policy_decisions": [],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 14,
+            "operational_failures": 0,
+            "exposure_seconds": 280,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 20,
+            "unfinished": 0,
+            "loss": 280
+          },
+          "mode_seconds": {
+            "NORMAL": 1200
+          },
+          "trace_sha256": "c5e68af1ded743c0f2693462e87b4ff94f8c32309b2d3321391393161a6bd405"
+        },
+        {
+          "id": "train-00-steady-busy",
+          "offered": 120,
+          "step_seconds": 15,
+          "policy_decisions": [],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 79,
+            "operational_failures": 0,
+            "exposure_seconds": 60285,
+            "admission_deferrals": 11349,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 795,
+            "unfinished": 41,
+            "loss": 64385
+          },
+          "mode_seconds": {
+            "DRAINING": 1165,
+            "NORMAL": 35
+          },
+          "trace_sha256": "8b4421a205a9989b662c1673237ff6548679fc42b240d4d37ca4ad66f6d035ec"
+        },
+        {
+          "id": "train-01-short-sparse",
+          "offered": 14,
+          "step_seconds": 15,
+          "policy_decisions": [],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 13,
+            "operational_failures": 1,
+            "exposure_seconds": 280,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 20,
+            "unfinished": 0,
+            "loss": 380
+          },
+          "mode_seconds": {
+            "NORMAL": 1200
+          },
+          "trace_sha256": "5149417615009692b5f21c9bf9cd47cef42a920c1c7aeea496069c29ab90b0db"
+        },
+        {
+          "id": "train-01-short-busy",
+          "offered": 120,
+          "step_seconds": 15,
+          "policy_decisions": [
+            {
+              "observed_at": 25,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 117,
+            "operational_failures": 3,
+            "exposure_seconds": 8035,
+            "admission_deferrals": 1243,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 70,
+            "unfinished": 0,
+            "loss": 8335
+          },
+          "mode_seconds": {
+            "COOLDOWN": 60,
+            "DRAINING": 570,
+            "NORMAL": 565,
+            "PROBING": 5
+          },
+          "trace_sha256": "47ac1a4fff75b15319e47caa3e2454f80e988ddf5e684a58b58f1a9695897d7e"
+        },
+        {
+          "id": "train-02-long-sparse",
+          "offered": 14,
+          "step_seconds": 15,
+          "policy_decisions": [
+            {
+              "observed_at": 130,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 210,
+              "failures": 4,
+              "wait_seconds": 75
+            },
+            {
+              "observed_at": 305,
+              "failures": 5,
+              "wait_seconds": 90
+            }
+          ],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 9,
+            "operational_failures": 5,
+            "exposure_seconds": 955,
+            "admission_deferrals": 108,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 175,
+            "unfinished": 0,
+            "loss": 1455
+          },
+          "mode_seconds": {
+            "COOLDOWN": 225,
+            "DRAINING": 55,
+            "NORMAL": 860,
+            "PROBING": 60
+          },
+          "trace_sha256": "378a4028456e48f6d328ebe220afd72ab43009296f17448890046891e41a9e22"
+        },
+        {
+          "id": "train-02-long-busy",
+          "offered": 60,
+          "step_seconds": 15,
+          "policy_decisions": [
+            {
+              "observed_at": 50,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 125,
+              "failures": 4,
+              "wait_seconds": 75
+            },
+            {
+              "observed_at": 215,
+              "failures": 5,
+              "wait_seconds": 90
+            }
+          ],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 55,
+            "operational_failures": 5,
+            "exposure_seconds": 22230,
+            "admission_deferrals": 3903,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 535,
+            "unfinished": 0,
+            "loss": 22730
+          },
+          "mode_seconds": {
+            "COOLDOWN": 225,
+            "DRAINING": 765,
+            "NORMAL": 165,
+            "PROBING": 45
+          },
+          "trace_sha256": "62bf1151e3bf0c9cc12aa7b6e2ea2ef55b21e22d9a0508168a0b2cbc154a7615"
+        },
+        {
+          "id": "train-03-recurrent-sparse",
+          "offered": 14,
+          "step_seconds": 15,
+          "policy_decisions": [
+            {
+              "observed_at": 125,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 400,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 480,
+              "failures": 4,
+              "wait_seconds": 75
+            }
+          ],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 7,
+            "operational_failures": 7,
+            "exposure_seconds": 565,
+            "admission_deferrals": 50,
+            "max_pending": 2,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 110,
+            "unfinished": 0,
+            "loss": 1265
+          },
+          "mode_seconds": {
+            "COOLDOWN": 195,
+            "NORMAL": 945,
+            "PROBING": 60
+          },
+          "trace_sha256": "25a26907b3951c46c0b4a8fbb94a53750121017b14ab85b3303721e3904e23e8"
+        },
+        {
+          "id": "train-03-recurrent-busy",
+          "offered": 120,
+          "step_seconds": 15,
+          "policy_decisions": [
+            {
+              "observed_at": 20,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 85,
+              "failures": 4,
+              "wait_seconds": 75
+            },
+            {
+              "observed_at": 165,
+              "failures": 5,
+              "wait_seconds": 90
+            },
+            {
+              "observed_at": 315,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 380,
+              "failures": 4,
+              "wait_seconds": 75
+            }
+          ],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 111,
+            "operational_failures": 9,
+            "exposure_seconds": 40885,
+            "admission_deferrals": 7781,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 370,
+            "unfinished": 0,
+            "loss": 41785
+          },
+          "mode_seconds": {
+            "COOLDOWN": 360,
+            "DRAINING": 550,
+            "NORMAL": 265,
+            "PROBING": 25
+          },
+          "trace_sha256": "f1c2adcdeb7f0e388b09e4bc51c62aafce57b24ae6c7c93d5f7f472bb8feb95e"
+        },
+        {
+          "id": "train-04-shift-sparse",
+          "offered": 18,
+          "step_seconds": 15,
+          "policy_decisions": [
+            {
+              "observed_at": 275,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 355,
+              "failures": 4,
+              "wait_seconds": 75
+            }
+          ],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 10,
+            "operational_failures": 8,
+            "exposure_seconds": 825,
+            "admission_deferrals": 65,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 125,
+            "unfinished": 0,
+            "loss": 1625
+          },
+          "mode_seconds": {
+            "COOLDOWN": 135,
+            "DRAINING": 45,
+            "NORMAL": 980,
+            "PROBING": 40
+          },
+          "trace_sha256": "d5f1f9efd1f1186ed96cdaa0090230ba2e7e387a21e8d625a975b2466e523407"
+        },
+        {
+          "id": "train-04-shift-busy",
+          "offered": 40,
+          "step_seconds": 15,
+          "policy_decisions": [
+            {
+              "observed_at": 35,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 245,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 310,
+              "failures": 4,
+              "wait_seconds": 75
+            },
+            {
+              "observed_at": 390,
+              "failures": 5,
+              "wait_seconds": 90
+            },
+            {
+              "observed_at": 565,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 29,
+            "operational_failures": 11,
+            "exposure_seconds": 2700,
+            "admission_deferrals": 435,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 200,
+            "unfinished": 0,
+            "loss": 3800
+          },
+          "mode_seconds": {
+            "COOLDOWN": 345,
+            "DRAINING": 75,
+            "NORMAL": 755,
+            "PROBING": 25
+          },
+          "trace_sha256": "d30e7be7773fdbb7909d48f8a45141bb2cfc1cd1eb66720d064357d41b1e9603"
+        },
+        {
+          "id": "train-05-storage-sparse",
+          "offered": 18,
+          "step_seconds": 15,
+          "policy_decisions": [],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 18,
+            "operational_failures": 0,
+            "exposure_seconds": 660,
+            "admission_deferrals": 79,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 150,
+            "unfinished": 0,
+            "loss": 660
+          },
+          "mode_seconds": {
+            "DRAINING": 30,
+            "NORMAL": 1030,
+            "RESOURCE_PAUSED": 140
+          },
+          "trace_sha256": "19b854a891278102cba4a230c6409b6b8a94fb36b89e92e346dcac14b0380fa8"
+        },
+        {
+          "id": "train-05-storage-busy",
+          "offered": 40,
+          "step_seconds": 15,
+          "policy_decisions": [],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 40,
+            "operational_failures": 0,
+            "exposure_seconds": 1030,
+            "admission_deferrals": 144,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 130,
+            "unfinished": 0,
+            "loss": 1030
+          },
+          "mode_seconds": {
+            "DRAINING": 45,
+            "NORMAL": 1025,
+            "RESOURCE_PAUSED": 130
+          },
+          "trace_sha256": "dbbf9b65b23c8a0f23c296cf94287bdcc611e6d250a31ea0892d7e53c43e1337"
+        },
+        {
+          "id": "train-06-sensors-sparse",
+          "offered": 11,
+          "step_seconds": 15,
+          "policy_decisions": [],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 11,
+            "operational_failures": 0,
+            "exposure_seconds": 315,
+            "admission_deferrals": 27,
+            "max_pending": 2,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 95,
+            "unfinished": 0,
+            "loss": 315
+          },
+          "mode_seconds": {
+            "NORMAL": 1075,
+            "SENSOR_PAUSED": 125
+          },
+          "trace_sha256": "04a4900bf7d7dbfc8ff9a726d43a476d560be3710c8aa4b87a63637bccf8320d"
+        },
+        {
+          "id": "train-06-sensors-busy",
+          "offered": 60,
+          "step_seconds": 15,
+          "policy_decisions": [],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 60,
+            "operational_failures": 0,
+            "exposure_seconds": 7450,
+            "admission_deferrals": 1120,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 135,
+            "unfinished": 0,
+            "loss": 7450
+          },
+          "mode_seconds": {
+            "DRAINING": 570,
+            "NORMAL": 505,
+            "SENSOR_PAUSED": 125
+          },
+          "trace_sha256": "f8260239fdc3ce21f6ba566e881bfc40f06bacac17b8f0c3bac6d5b886619134"
+        },
+        {
+          "id": "train-07-mixed-sparse",
+          "offered": 14,
+          "step_seconds": 15,
+          "policy_decisions": [
+            {
+              "observed_at": 110,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 185,
+              "failures": 4,
+              "wait_seconds": 75
+            }
+          ],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 8,
+            "operational_failures": 6,
+            "exposure_seconds": 435,
+            "admission_deferrals": 40,
+            "max_pending": 2,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 95,
+            "unfinished": 0,
+            "loss": 1035
+          },
+          "mode_seconds": {
+            "COOLDOWN": 135,
+            "NORMAL": 940,
+            "PROBING": 30,
+            "RESOURCE_PAUSED": 55,
+            "SENSOR_PAUSED": 40
+          },
+          "trace_sha256": "12b2bf63fa8da4ebbc62949f2ac73b63412590b58b3e4324ad0a30db7c5c79e5"
+        },
+        {
+          "id": "train-07-mixed-busy",
+          "offered": 120,
+          "step_seconds": 15,
+          "policy_decisions": [
+            {
+              "observed_at": 55,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 130,
+              "failures": 4,
+              "wait_seconds": 75
+            },
+            {
+              "observed_at": 220,
+              "failures": 5,
+              "wait_seconds": 90
+            },
+            {
+              "observed_at": 445,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "aa6217ec41eea82552ae68a923bfeac1c2d21f8c8a0de07d145e1610ae23b444",
+          "metrics": {
+            "completed": 46,
+            "operational_failures": 8,
+            "exposure_seconds": 82630,
+            "admission_deferrals": 15970,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 910,
+            "unfinished": 66,
+            "loss": 90030
+          },
+          "mode_seconds": {
+            "COOLDOWN": 275,
+            "DRAINING": 735,
+            "NORMAL": 35,
+            "PROBING": 60,
+            "RESOURCE_PAUSED": 55,
+            "SENSOR_PAUSED": 40
+          },
+          "trace_sha256": "cded637891aba3e13ee8c0052cfad81d0569a86ad458e1310695de2f8aae4b96"
+        }
+      ]
+    },
+    {
+      "step_seconds": 30,
+      "loss": 241955,
+      "cases": [
+        {
+          "id": "train-00-steady-sparse",
+          "offered": 14,
+          "step_seconds": 30,
+          "policy_decisions": [],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 14,
+            "operational_failures": 0,
+            "exposure_seconds": 280,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 20,
+            "unfinished": 0,
+            "loss": 280
+          },
+          "mode_seconds": {
+            "NORMAL": 1200
+          },
+          "trace_sha256": "c5e68af1ded743c0f2693462e87b4ff94f8c32309b2d3321391393161a6bd405"
+        },
+        {
+          "id": "train-00-steady-busy",
+          "offered": 120,
+          "step_seconds": 30,
+          "policy_decisions": [],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 79,
+            "operational_failures": 0,
+            "exposure_seconds": 60285,
+            "admission_deferrals": 11349,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 795,
+            "unfinished": 41,
+            "loss": 64385
+          },
+          "mode_seconds": {
+            "DRAINING": 1165,
+            "NORMAL": 35
+          },
+          "trace_sha256": "8b4421a205a9989b662c1673237ff6548679fc42b240d4d37ca4ad66f6d035ec"
+        },
+        {
+          "id": "train-01-short-sparse",
+          "offered": 14,
+          "step_seconds": 30,
+          "policy_decisions": [],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 13,
+            "operational_failures": 1,
+            "exposure_seconds": 280,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 20,
+            "unfinished": 0,
+            "loss": 380
+          },
+          "mode_seconds": {
+            "NORMAL": 1200
+          },
+          "trace_sha256": "5149417615009692b5f21c9bf9cd47cef42a920c1c7aeea496069c29ab90b0db"
+        },
+        {
+          "id": "train-01-short-busy",
+          "offered": 120,
+          "step_seconds": 30,
+          "policy_decisions": [
+            {
+              "observed_at": 25,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 117,
+            "operational_failures": 3,
+            "exposure_seconds": 8035,
+            "admission_deferrals": 1243,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 70,
+            "unfinished": 0,
+            "loss": 8335
+          },
+          "mode_seconds": {
+            "COOLDOWN": 60,
+            "DRAINING": 570,
+            "NORMAL": 565,
+            "PROBING": 5
+          },
+          "trace_sha256": "47ac1a4fff75b15319e47caa3e2454f80e988ddf5e684a58b58f1a9695897d7e"
+        },
+        {
+          "id": "train-02-long-sparse",
+          "offered": 14,
+          "step_seconds": 30,
+          "policy_decisions": [
+            {
+              "observed_at": 130,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 210,
+              "failures": 4,
+              "wait_seconds": 90
+            },
+            {
+              "observed_at": 320,
+              "failures": 5,
+              "wait_seconds": 120
+            }
+          ],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 9,
+            "operational_failures": 5,
+            "exposure_seconds": 1310,
+            "admission_deferrals": 165,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 220,
+            "unfinished": 0,
+            "loss": 1810
+          },
+          "mode_seconds": {
+            "COOLDOWN": 270,
+            "DRAINING": 60,
+            "NORMAL": 810,
+            "PROBING": 60
+          },
+          "trace_sha256": "0cdd21dad0a4479f5be130ec9db3bd6d9769501b28e8959890e75046e1906e26"
+        },
+        {
+          "id": "train-02-long-busy",
+          "offered": 60,
+          "step_seconds": 30,
+          "policy_decisions": [
+            {
+              "observed_at": 50,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 125,
+              "failures": 4,
+              "wait_seconds": 90
+            },
+            {
+              "observed_at": 230,
+              "failures": 5,
+              "wait_seconds": 120
+            }
+          ],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 55,
+            "operational_failures": 5,
+            "exposure_seconds": 24720,
+            "admission_deferrals": 4398,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 580,
+            "unfinished": 0,
+            "loss": 25220
+          },
+          "mode_seconds": {
+            "COOLDOWN": 270,
+            "DRAINING": 765,
+            "NORMAL": 120,
+            "PROBING": 45
+          },
+          "trace_sha256": "05b7ca8ce999826de585b223c569eec9df52765efbfa15166f450b65ab82e3d1"
+        },
+        {
+          "id": "train-03-recurrent-sparse",
+          "offered": 14,
+          "step_seconds": 30,
+          "policy_decisions": [
+            {
+              "observed_at": 125,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 400,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 480,
+              "failures": 4,
+              "wait_seconds": 90
+            }
+          ],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 7,
+            "operational_failures": 7,
+            "exposure_seconds": 625,
+            "admission_deferrals": 59,
+            "max_pending": 3,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 125,
+            "unfinished": 0,
+            "loss": 1325
+          },
+          "mode_seconds": {
+            "COOLDOWN": 210,
+            "NORMAL": 930,
+            "PROBING": 60
+          },
+          "trace_sha256": "3bec0e1b2f2865cf61ee3f6d327e0d00eb5f68cc8c167555ceb2c5c30c8e8f07"
+        },
+        {
+          "id": "train-03-recurrent-busy",
+          "offered": 120,
+          "step_seconds": 30,
+          "policy_decisions": [
+            {
+              "observed_at": 20,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 85,
+              "failures": 4,
+              "wait_seconds": 90
+            },
+            {
+              "observed_at": 315,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 380,
+              "failures": 4,
+              "wait_seconds": 90
+            }
+          ],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 112,
+            "operational_failures": 8,
+            "exposure_seconds": 31555,
+            "admission_deferrals": 5942,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 310,
+            "unfinished": 0,
+            "loss": 32355
+          },
+          "mode_seconds": {
+            "COOLDOWN": 300,
+            "DRAINING": 555,
+            "NORMAL": 325,
+            "PROBING": 20
+          },
+          "trace_sha256": "b9bc364ab75ae74000aaa8a4f65818a8c976403dd6681d1f8394bb2f071a405f"
+        },
+        {
+          "id": "train-04-shift-sparse",
+          "offered": 18,
+          "step_seconds": 30,
+          "policy_decisions": [
+            {
+              "observed_at": 275,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 355,
+              "failures": 4,
+              "wait_seconds": 90
+            },
+            {
+              "observed_at": 605,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 9,
+            "operational_failures": 9,
+            "exposure_seconds": 1005,
+            "admission_deferrals": 92,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 140,
+            "unfinished": 0,
+            "loss": 1905
+          },
+          "mode_seconds": {
+            "COOLDOWN": 210,
+            "DRAINING": 60,
+            "NORMAL": 870,
+            "PROBING": 60
+          },
+          "trace_sha256": "15463292a432443d457fc28b0f46b3b80994635eb1984db223ad0efe07a49019"
+        },
+        {
+          "id": "train-04-shift-busy",
+          "offered": 40,
+          "step_seconds": 30,
+          "policy_decisions": [
+            {
+              "observed_at": 35,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 245,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 310,
+              "failures": 4,
+              "wait_seconds": 90
+            },
+            {
+              "observed_at": 405,
+              "failures": 5,
+              "wait_seconds": 120
+            },
+            {
+              "observed_at": 565,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 29,
+            "operational_failures": 11,
+            "exposure_seconds": 4200,
+            "admission_deferrals": 722,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 245,
+            "unfinished": 0,
+            "loss": 5300
+          },
+          "mode_seconds": {
+            "COOLDOWN": 390,
+            "DRAINING": 85,
+            "NORMAL": 700,
+            "PROBING": 25
+          },
+          "trace_sha256": "8b89077dba957308e173b85eb5e914def93c384892b5b7274e8a68cf9c3143f7"
+        },
+        {
+          "id": "train-05-storage-sparse",
+          "offered": 18,
+          "step_seconds": 30,
+          "policy_decisions": [],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 18,
+            "operational_failures": 0,
+            "exposure_seconds": 660,
+            "admission_deferrals": 79,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 150,
+            "unfinished": 0,
+            "loss": 660
+          },
+          "mode_seconds": {
+            "DRAINING": 30,
+            "NORMAL": 1030,
+            "RESOURCE_PAUSED": 140
+          },
+          "trace_sha256": "19b854a891278102cba4a230c6409b6b8a94fb36b89e92e346dcac14b0380fa8"
+        },
+        {
+          "id": "train-05-storage-busy",
+          "offered": 40,
+          "step_seconds": 30,
+          "policy_decisions": [],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 40,
+            "operational_failures": 0,
+            "exposure_seconds": 1030,
+            "admission_deferrals": 144,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 130,
+            "unfinished": 0,
+            "loss": 1030
+          },
+          "mode_seconds": {
+            "DRAINING": 45,
+            "NORMAL": 1025,
+            "RESOURCE_PAUSED": 130
+          },
+          "trace_sha256": "dbbf9b65b23c8a0f23c296cf94287bdcc611e6d250a31ea0892d7e53c43e1337"
+        },
+        {
+          "id": "train-06-sensors-sparse",
+          "offered": 11,
+          "step_seconds": 30,
+          "policy_decisions": [],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 11,
+            "operational_failures": 0,
+            "exposure_seconds": 315,
+            "admission_deferrals": 27,
+            "max_pending": 2,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 95,
+            "unfinished": 0,
+            "loss": 315
+          },
+          "mode_seconds": {
+            "NORMAL": 1075,
+            "SENSOR_PAUSED": 125
+          },
+          "trace_sha256": "04a4900bf7d7dbfc8ff9a726d43a476d560be3710c8aa4b87a63637bccf8320d"
+        },
+        {
+          "id": "train-06-sensors-busy",
+          "offered": 60,
+          "step_seconds": 30,
+          "policy_decisions": [],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 60,
+            "operational_failures": 0,
+            "exposure_seconds": 7450,
+            "admission_deferrals": 1120,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 135,
+            "unfinished": 0,
+            "loss": 7450
+          },
+          "mode_seconds": {
+            "DRAINING": 570,
+            "NORMAL": 505,
+            "SENSOR_PAUSED": 125
+          },
+          "trace_sha256": "f8260239fdc3ce21f6ba566e881bfc40f06bacac17b8f0c3bac6d5b886619134"
+        },
+        {
+          "id": "train-07-mixed-sparse",
+          "offered": 14,
+          "step_seconds": 30,
+          "policy_decisions": [
+            {
+              "observed_at": 110,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 185,
+              "failures": 4,
+              "wait_seconds": 90
+            }
+          ],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 8,
+            "operational_failures": 6,
+            "exposure_seconds": 560,
+            "admission_deferrals": 49,
+            "max_pending": 3,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 110,
+            "unfinished": 0,
+            "loss": 1160
+          },
+          "mode_seconds": {
+            "COOLDOWN": 150,
+            "NORMAL": 925,
+            "PROBING": 30,
+            "RESOURCE_PAUSED": 55,
+            "SENSOR_PAUSED": 40
+          },
+          "trace_sha256": "07ccd69e51f163bdab2dcbe3f43d3994aa2cd19b7aaa7f9efa6985f2f674283d"
+        },
+        {
+          "id": "train-07-mixed-busy",
+          "offered": 120,
+          "step_seconds": 30,
+          "policy_decisions": [
+            {
+              "observed_at": 55,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 130,
+              "failures": 4,
+              "wait_seconds": 90
+            },
+            {
+              "observed_at": 235,
+              "failures": 5,
+              "wait_seconds": 120
+            },
+            {
+              "observed_at": 445,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "712988428b0bbcce5d0b2f0bc76684a6610c9e687e05bda2da3833d8e86139b5",
+          "metrics": {
+            "completed": 46,
+            "operational_failures": 8,
+            "exposure_seconds": 82645,
+            "admission_deferrals": 15970,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 910,
+            "unfinished": 66,
+            "loss": 90045
+          },
+          "mode_seconds": {
+            "COOLDOWN": 275,
+            "DRAINING": 735,
+            "NORMAL": 35,
+            "PROBING": 60,
+            "RESOURCE_PAUSED": 55,
+            "SENSOR_PAUSED": 40
+          },
+          "trace_sha256": "19255aea3ebd87f7a47f09be117058a0635343eea99ea9f575edf9a325e683c3"
+        }
+      ]
+    },
+    {
+      "step_seconds": 60,
+      "loss": 255600,
+      "cases": [
+        {
+          "id": "train-00-steady-sparse",
+          "offered": 14,
+          "step_seconds": 60,
+          "policy_decisions": [],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 14,
+            "operational_failures": 0,
+            "exposure_seconds": 280,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 20,
+            "unfinished": 0,
+            "loss": 280
+          },
+          "mode_seconds": {
+            "NORMAL": 1200
+          },
+          "trace_sha256": "c5e68af1ded743c0f2693462e87b4ff94f8c32309b2d3321391393161a6bd405"
+        },
+        {
+          "id": "train-00-steady-busy",
+          "offered": 120,
+          "step_seconds": 60,
+          "policy_decisions": [],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 79,
+            "operational_failures": 0,
+            "exposure_seconds": 60285,
+            "admission_deferrals": 11349,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 795,
+            "unfinished": 41,
+            "loss": 64385
+          },
+          "mode_seconds": {
+            "DRAINING": 1165,
+            "NORMAL": 35
+          },
+          "trace_sha256": "8b4421a205a9989b662c1673237ff6548679fc42b240d4d37ca4ad66f6d035ec"
+        },
+        {
+          "id": "train-01-short-sparse",
+          "offered": 14,
+          "step_seconds": 60,
+          "policy_decisions": [],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 13,
+            "operational_failures": 1,
+            "exposure_seconds": 280,
+            "admission_deferrals": 0,
+            "max_pending": 1,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 20,
+            "unfinished": 0,
+            "loss": 380
+          },
+          "mode_seconds": {
+            "NORMAL": 1200
+          },
+          "trace_sha256": "5149417615009692b5f21c9bf9cd47cef42a920c1c7aeea496069c29ab90b0db"
+        },
+        {
+          "id": "train-01-short-busy",
+          "offered": 120,
+          "step_seconds": 60,
+          "policy_decisions": [
+            {
+              "observed_at": 25,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 117,
+            "operational_failures": 3,
+            "exposure_seconds": 8035,
+            "admission_deferrals": 1243,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 70,
+            "unfinished": 0,
+            "loss": 8335
+          },
+          "mode_seconds": {
+            "COOLDOWN": 60,
+            "DRAINING": 570,
+            "NORMAL": 565,
+            "PROBING": 5
+          },
+          "trace_sha256": "47ac1a4fff75b15319e47caa3e2454f80e988ddf5e684a58b58f1a9695897d7e"
+        },
+        {
+          "id": "train-02-long-sparse",
+          "offered": 14,
+          "step_seconds": 60,
+          "policy_decisions": [
+            {
+              "observed_at": 130,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 210,
+              "failures": 4,
+              "wait_seconds": 120
+            },
+            {
+              "observed_at": 350,
+              "failures": 5,
+              "wait_seconds": 180
+            }
+          ],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 9,
+            "operational_failures": 5,
+            "exposure_seconds": 2150,
+            "admission_deferrals": 322,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 310,
+            "unfinished": 0,
+            "loss": 2650
+          },
+          "mode_seconds": {
+            "COOLDOWN": 360,
+            "DRAINING": 120,
+            "NORMAL": 660,
+            "PROBING": 60
+          },
+          "trace_sha256": "3fe79b74c6f743615e604ff3f69497969e17a51e12ae27edbb681e7d8b84fb3a"
+        },
+        {
+          "id": "train-02-long-busy",
+          "offered": 60,
+          "step_seconds": 60,
+          "policy_decisions": [
+            {
+              "observed_at": 50,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 125,
+              "failures": 4,
+              "wait_seconds": 120
+            }
+          ],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 56,
+            "operational_failures": 4,
+            "exposure_seconds": 19800,
+            "admission_deferrals": 3399,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 490,
+            "unfinished": 0,
+            "loss": 20200
+          },
+          "mode_seconds": {
+            "COOLDOWN": 180,
+            "DRAINING": 810,
+            "NORMAL": 180,
+            "PROBING": 30
+          },
+          "trace_sha256": "8380115e667b757f96ba859502519f50a88333ddeb3cee0d62dab2712a28167e"
+        },
+        {
+          "id": "train-03-recurrent-sparse",
+          "offered": 14,
+          "step_seconds": 60,
+          "policy_decisions": [
+            {
+              "observed_at": 125,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 400,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 480,
+              "failures": 4,
+              "wait_seconds": 120
+            }
+          ],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 7,
+            "operational_failures": 7,
+            "exposure_seconds": 745,
+            "admission_deferrals": 81,
+            "max_pending": 3,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 155,
+            "unfinished": 0,
+            "loss": 1445
+          },
+          "mode_seconds": {
+            "COOLDOWN": 240,
+            "NORMAL": 900,
+            "PROBING": 60
+          },
+          "trace_sha256": "0b5e847bf1ac3764591a9edf06b520632cf70b7fd0874828f431e481aceb2888"
+        },
+        {
+          "id": "train-03-recurrent-busy",
+          "offered": 120,
+          "step_seconds": 60,
+          "policy_decisions": [
+            {
+              "observed_at": 20,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 85,
+              "failures": 4,
+              "wait_seconds": 120
+            },
+            {
+              "observed_at": 315,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 380,
+              "failures": 4,
+              "wait_seconds": 120
+            }
+          ],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 112,
+            "operational_failures": 8,
+            "exposure_seconds": 38725,
+            "admission_deferrals": 7376,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 370,
+            "unfinished": 0,
+            "loss": 39525
+          },
+          "mode_seconds": {
+            "COOLDOWN": 360,
+            "DRAINING": 555,
+            "NORMAL": 265,
+            "PROBING": 20
+          },
+          "trace_sha256": "ebda90e6159c86ac6c84adfb87a56d70df77026aa493999f25a6655737249369"
+        },
+        {
+          "id": "train-04-shift-sparse",
+          "offered": 18,
+          "step_seconds": 60,
+          "policy_decisions": [
+            {
+              "observed_at": 275,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 355,
+              "failures": 4,
+              "wait_seconds": 120
+            },
+            {
+              "observed_at": 595,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 9,
+            "operational_failures": 9,
+            "exposure_seconds": 1395,
+            "admission_deferrals": 134,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 170,
+            "unfinished": 0,
+            "loss": 2295
+          },
+          "mode_seconds": {
+            "COOLDOWN": 240,
+            "DRAINING": 85,
+            "NORMAL": 815,
+            "PROBING": 60
+          },
+          "trace_sha256": "a26fdd2833d31c9f8e6725207aa15b222d3729d7809922a0100558cc458317de"
+        },
+        {
+          "id": "train-04-shift-busy",
+          "offered": 40,
+          "step_seconds": 60,
+          "policy_decisions": [
+            {
+              "observed_at": 35,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 245,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 310,
+              "failures": 4,
+              "wait_seconds": 120
+            },
+            {
+              "observed_at": 435,
+              "failures": 5,
+              "wait_seconds": 180
+            }
+          ],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 32,
+            "operational_failures": 8,
+            "exposure_seconds": 5340,
+            "admission_deferrals": 986,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 335,
+            "unfinished": 0,
+            "loss": 6140
+          },
+          "mode_seconds": {
+            "COOLDOWN": 420,
+            "DRAINING": 90,
+            "NORMAL": 670,
+            "PROBING": 20
+          },
+          "trace_sha256": "75ce49acdb4bef6b8052cdd4bf34cc933728bd41479d6c85c8ab322489869afa"
+        },
+        {
+          "id": "train-05-storage-sparse",
+          "offered": 18,
+          "step_seconds": 60,
+          "policy_decisions": [],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 18,
+            "operational_failures": 0,
+            "exposure_seconds": 660,
+            "admission_deferrals": 79,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 150,
+            "unfinished": 0,
+            "loss": 660
+          },
+          "mode_seconds": {
+            "DRAINING": 30,
+            "NORMAL": 1030,
+            "RESOURCE_PAUSED": 140
+          },
+          "trace_sha256": "19b854a891278102cba4a230c6409b6b8a94fb36b89e92e346dcac14b0380fa8"
+        },
+        {
+          "id": "train-05-storage-busy",
+          "offered": 40,
+          "step_seconds": 60,
+          "policy_decisions": [],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 40,
+            "operational_failures": 0,
+            "exposure_seconds": 1030,
+            "admission_deferrals": 144,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 130,
+            "unfinished": 0,
+            "loss": 1030
+          },
+          "mode_seconds": {
+            "DRAINING": 45,
+            "NORMAL": 1025,
+            "RESOURCE_PAUSED": 130
+          },
+          "trace_sha256": "dbbf9b65b23c8a0f23c296cf94287bdcc611e6d250a31ea0892d7e53c43e1337"
+        },
+        {
+          "id": "train-06-sensors-sparse",
+          "offered": 11,
+          "step_seconds": 60,
+          "policy_decisions": [],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 11,
+            "operational_failures": 0,
+            "exposure_seconds": 315,
+            "admission_deferrals": 27,
+            "max_pending": 2,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 95,
+            "unfinished": 0,
+            "loss": 315
+          },
+          "mode_seconds": {
+            "NORMAL": 1075,
+            "SENSOR_PAUSED": 125
+          },
+          "trace_sha256": "04a4900bf7d7dbfc8ff9a726d43a476d560be3710c8aa4b87a63637bccf8320d"
+        },
+        {
+          "id": "train-06-sensors-busy",
+          "offered": 60,
+          "step_seconds": 60,
+          "policy_decisions": [],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 60,
+            "operational_failures": 0,
+            "exposure_seconds": 7450,
+            "admission_deferrals": 1120,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 135,
+            "unfinished": 0,
+            "loss": 7450
+          },
+          "mode_seconds": {
+            "DRAINING": 570,
+            "NORMAL": 505,
+            "SENSOR_PAUSED": 125
+          },
+          "trace_sha256": "f8260239fdc3ce21f6ba566e881bfc40f06bacac17b8f0c3bac6d5b886619134"
+        },
+        {
+          "id": "train-07-mixed-sparse",
+          "offered": 14,
+          "step_seconds": 60,
+          "policy_decisions": [
+            {
+              "observed_at": 110,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 185,
+              "failures": 4,
+              "wait_seconds": 120
+            },
+            {
+              "observed_at": 445,
+              "failures": 3,
+              "wait_seconds": 60
+            }
+          ],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 7,
+            "operational_failures": 7,
+            "exposure_seconds": 1020,
+            "admission_deferrals": 138,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 190,
+            "unfinished": 0,
+            "loss": 1720
+          },
+          "mode_seconds": {
+            "COOLDOWN": 235,
+            "DRAINING": 45,
+            "NORMAL": 780,
+            "PROBING": 45,
+            "RESOURCE_PAUSED": 55,
+            "SENSOR_PAUSED": 40
+          },
+          "trace_sha256": "d2aeca3ffff6c2595c8bc72d6c7113d82c9fe331e27b4fe9c2c81d9b800bcd88"
+        },
+        {
+          "id": "train-07-mixed-busy",
+          "offered": 120,
+          "step_seconds": 60,
+          "policy_decisions": [
+            {
+              "observed_at": 55,
+              "failures": 3,
+              "wait_seconds": 60
+            },
+            {
+              "observed_at": 130,
+              "failures": 4,
+              "wait_seconds": 120
+            },
+            {
+              "observed_at": 265,
+              "failures": 5,
+              "wait_seconds": 180
+            },
+            {
+              "observed_at": 460,
+              "failures": 6,
+              "wait_seconds": 180
+            }
+          ],
+          "policy_sha256": "8ac9c694c52fcfa0d4d923d3e3fcac155cdd9f2f26976022e3b4cd7de3e097e2",
+          "metrics": {
+            "completed": 37,
+            "operational_failures": 6,
+            "exposure_seconds": 90490,
+            "admission_deferrals": 17682,
+            "max_pending": 4,
+            "safety_violations": 0,
+            "max_success_latency_seconds": 975,
+            "unfinished": 77,
+            "loss": 98790
+          },
+          "mode_seconds": {
+            "COOLDOWN": 445,
+            "DRAINING": 565,
+            "NORMAL": 35,
+            "PROBING": 60,
+            "RESOURCE_PAUSED": 55,
+            "SENSOR_PAUSED": 40
+          },
+          "trace_sha256": "1d0472aba7af4b28b1001fa2bb2b50e7176892d0533b3e0c1518b6a960d67a9f"
+        }
+      ]
+    }
+  ],
+  "candidate_sha256": "0dbec0469a714c957e3b3296766f874d2f1158342f136a25037bbfdd45808977"
+}
