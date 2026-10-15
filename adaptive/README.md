@@ -38,6 +38,15 @@ Esto añade aprendizaje de un parámetro con una regla fija y evidencia retrospe
 No aprende estructuras arbitrarias, no modifica código ni demuestra efectos futuros.
 La CLI de archivos mantiene su contrato; la calibración se ofrece por REST/MCP.
 
+## Comprobación con registros posteriores
+
+El servicio incorpora predicciones congeladas y observaciones recibidas después,
+con fecha de recepción del servidor, cantidad de datos fijada de antemano, recibos
+inmutables e informe cerrado antes de reutilizar sus datos en otro aprendizaje.
+Contrato: [PROSPECTIVE_VALIDATION.md](../beta/docs/PROSPECTIVE_VALIDATION.md).
+El estado de despliegue se conserva en `HANDOFF.md`; los registros enviados no
+se convierten por ello en mediciones independientes ni evidencia de bienestar.
+
 ## Ejecutar la CLI
 
 Desde la raíz del repositorio, en Linux x86_64 con Python 3.12 y Git:

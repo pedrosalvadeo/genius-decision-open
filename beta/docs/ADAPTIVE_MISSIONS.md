@@ -37,7 +37,7 @@ SQLite database, FK-cascaded on user erasure and covered by existing encrypted R
 backups. Individual deletion records remote privacy intent before the local delete;
 restore replays that intent. Backup restore interrupts active missions and requires
 explicit retry; it also revokes credentials through the existing recovery policy.
-R2 recovery accepts the exact reviewed historical migration prefixes through 008.
+R2 recovery accepts the exact reviewed historical migration prefixes through 009.
 Ninety-day mission retention and shorter account lifetime still apply.
 
 Default service limits are three missions per account, sixteen globally, three
@@ -56,3 +56,13 @@ It uses the same table, privacy boundary, child protocol and artifact delivery,
 without a new migration or external action. This does not demonstrate wellbeing/PVS
 impact or code self-modification. Runtime updates require review of unfinished
 missions pinned to a previous runtime; completed rows remain readable and reusable.
+
+
+## Post-freeze observations
+
+Migration 009 adds immutable forecasts and scored observations under each mission,
+with cascading privacy deletion and a 128 KiB admission allowance per mission.
+See [PROSPECTIVE_VALIDATION.md](PROSPECTIVE_VALIDATION.md) for freeze/observe/read
+routes, MCP tools, server receipt time, code-identity checks, planned sample counts,
+sealed reports and reuse of scored observations in a new calibration. Forecast
+scoring uses fixed predictions and exact arithmetic; it never silently refits them.

@@ -97,3 +97,13 @@ the proposed 100 has error sum 5 and maximum underprediction 5 instead of 55.
 With tolerance 10 it is adopted. With baseline 150, the same proposal has smaller
 error but worsens maximum underprediction from 0 to 5, so 150 is retained.
 These are synthetic arithmetic checks, not measured water savings.
+
+
+## Subsequent checking
+
+The completed artifact can now be frozen through `/api/missions/ID/forecast`, then
+checked against separately received observations. The original artifact remains
+unchanged. A complete report may supply training for a new mission through
+`forecast_mission_id`; newly supplied later validation records test that new fit.
+See [PROSPECTIVE_VALIDATION.md](PROSPECTIVE_VALIDATION.md). This does not retrospectively
+upgrade the calibration artifact's original holdout or its provenance.

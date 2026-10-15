@@ -24,10 +24,12 @@ def distribution(data):
     return data
 
 
-def resolve(data, own):
+def resolve(data, own, forecast_lookup=None):
     if data.get('kind', 'source_distribution_v1') == 'source_distribution_v1':
         distribution({key: value for key, value in data.items() if key != 'kind'})
         return data
+    if 'forecast_mission_id' in data:
+        return from_forecast(data, own, forecast_lookup)
     fields = {'kind','calibration','idempotency_key','processing_permission','technical_scope_acknowledged'}
     if data['kind'] != KIND or set(data) not in (fields, fields | {'parent_mission_id'}):
         raise ValueError('MISSION_KIND_OR_FIELDS')
@@ -59,3 +61,24 @@ def resolve(data, own):
     validate_input(calibration)
     data['lineage'] = lineage
     return data
+
+
+def from_forecast(data, own, forecast_lookup):
+    fields = {'kind','calibration','idempotency_key','processing_permission','technical_scope_acknowledged','forecast_mission_id'}
+    if (set(data) != fields or data['kind'] != KIND or not isinstance(data['calibration'], dict)
+            or set(data['calibration']) != {'validation'}):
+        raise ValueError('FORECAST_LEARNING_FIELDS')
+    mid = data['forecast_mission_id']
+    if not isinstance(mid, str) or not re.fullmatch('[a-f0-9]{32}', mid):
+        raise ValueError('FORECAST_MISSION_ID')
+    own(mid)
+    forecast = forecast_lookup(mid)
+    frozen = forecast['frozen']
+    calibration = {key:frozen[key] for key in ('context','resource','unit','data_kind','max_underprediction')}
+    calibration.update(baseline=frozen['estimate'],
+        training=[entry['receipt']['observation'] for entry in forecast['observations']],
+        validation=data['calibration']['validation'])
+    validate_input(calibration)  # New held-out dates and IDs must follow the scored training records.
+    return {**data, 'calibration':calibration,
+        'lineage':dict(mission_id=mid, artifact_sha256=frozen['artifact_sha256'], estimate=frozen['estimate'],
+                      forecast_sha256=forecast['sha256'], report_sha256=forecast['report_sha256'])}

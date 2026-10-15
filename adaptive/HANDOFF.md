@@ -5,6 +5,35 @@ El usuario aplicó el cambio en Railway. La calibración de recursos está activ
 la prueba de continuidad por API pasó. No volver a solicitar aquella activación,
 reimplementar este incremento ni repetir sus pruebas sin una razón concreta.
 
+## Incremento de comprobación preparado en esta edición
+
+`resource_forecast_v1` congela una estimación, su base, contexto, tolerancia y
+cantidad prevista (3..30) antes de aceptar observaciones en peticiones posteriores.
+Registra fecha del servidor y fecha declarada, encadena recibos inmutables y cierra
+el informe al completar la cantidad prevista. No reajusta la predicción. Un informe
+completo permite una nueva calibración mediante `forecast_mission_id`, usando los
+registros ya puntuados como aprendizaje y otros posteriores como comprobación.
+
+Contrato: [PROSPECTIVE_VALIDATION.md](../beta/docs/PROSPECTIVE_VALIDATION.md).
+Migración aditiva 009, recuperación cifrada y borrado por cascada comprobados.
+129 pruebas locales pasan, incluidas 9 nuevas; evidencia en
+[evidence/2026-10-15-prospective](evidence/2026-10-15-prospective).
+El hash del código de puntuación queda congelado; un cambio bloquea nuevas
+observaciones hasta revisión, conservando lectura, exportación y borrado.
+
+El estado de producción debajo corresponde a la calibración del PR 28, **antes de
+activar este nuevo incremento**. Consultar el PR de la rama
+`work/prospective-validation-20261015` para CI, commit y resultado de despliegue.
+No darlo por activo sólo por estar mergeado. Si `accept_deploy` vuelve a cancelarse,
+dejar el cambio concreto preparado en el panel, sin intentar otra vía de escritura.
+
+Una vez desplegado, `beta/deploy/prospective_probe.py` permite comprobar por API
+la secuencia congelar -> recibir tres registros -> cerrar informe -> aprender en
+otra misión. Argumentos: ruta privada nueva para estado temporal, ruta pública de
+recibo y `adaptive/examples/resource-calibration.json`. Crea y borra una cuenta
+sintética. Compara hashes del código servido, recibos y entregas; nunca publica su
+credencial. Este ensayo no certifica sensores ni un beneficio real para la vida.
+
 ## Servicio y versiones
 
 - URL: https://geniusdecision.app
@@ -87,11 +116,12 @@ Los casos de esta prueba son sintéticos; no demuestran generalización futura,
 ahorro de agua, bienestar ni probabilidad de vida sostenida. No se necesita un
 proveedor LLM para el siguiente avance.
 
-El siguiente incremento debe congelar una estimación antes de recibir observaciones
-posteriores, compararlas sin ajustar esa misma predicción y luego permitir usarlas
-como datos de un nuevo aprendizaje. Registrar la fecha real de recepción además
-de la fecha declarada del evento; no confundir posterioridad de recepción con
-veracidad independiente de la observación. Conservar hipótesis y resultados distintos.
+El incremento preparado implementa la separación temporal de recepción y puntuación.
+Aún queda comprobarlo en producción tras activarlo. No identifica observaciones
+copiadas manualmente a otras solicitudes, no certifica relojes externos ni evita
+que un remitente seleccione u omita datos. La ruta de reutilización del informe
+sólo se habilita tras completarlo. La calibración hija conserva sus propias
+limitaciones retrospectivas hasta congelar y comprobar su estimación por separado.
 
 Defecto heredado separado: adaptadores FDQ apuntan a `beta/vendor/R0` y `R1`, ausentes.
 La selección histórica de 23 pruebas tuvo 5 fallos y 2 errores `PR_DEPENDENCY`.
@@ -100,14 +130,13 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 
 ## Siguiente prompt
 
-> Continuá Genius desde `adaptive/HANDOFF.md`. La calibración de recursos del
-> PR 28 ya está activa en Railway y los dos ciclos sintéticos de producción
-> están comprobados; no repitas esa activación ni reconstruyas el historial.
-> Implementá la comprobación prospectiva de una estimación congelada: recibir
-> observaciones nuevas, conservar sus fechas de recepción y origen declarado,
-> compararlas con la predicción anterior antes de incorporarlas al próximo
-> aprendizaje y registrar la evidencia. Conservá la distinción entre datos
-> sintéticos, observaciones declaradas y efectos independientes comprobados.
-> Reutilizá el núcleo, permisos, privacidad y recuperación existentes; no
-> infieras bienestar/PVS del error de estimación. Guardá código y evidencia en
-> Git, verificá el incremento y entregá el próximo prompt de continuidad.
+> Continuá desde `adaptive/HANDOFF.md` y el PR de `work/prospective-validation-20261015`.
+> El aprendizaje del PR 28 ya está activo y verificado; la nueva comprobación
+> `resource_forecast_v1` está implementada y probada. Primero confirmá si se aplicó
+> el despliegue preparado. Cuando esté activo, ejecutá el ensayo sintético de
+> `beta/deploy/prospective_probe.py`, comprobá hashes y secuencia temporal, informe
+> inmutable, aprendizaje posterior y borrado de la cuenta. No repitas el desarrollo.
+> Después, avanzá hacia la entrada de observaciones de una fuente real autorizada
+> con contexto, unidad y procedencia explícitos. Diferenciá el orden de recepción
+> comprobado de la veracidad independiente del evento y de efectos de bienestar/PVS.
+> Conservá permisos, recuperación y evidencia en Git y entregá el siguiente prompt.

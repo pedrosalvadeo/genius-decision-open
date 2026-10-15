@@ -257,7 +257,7 @@ def install(app, body, error, fail_quota, digest):
             if params.get('cursor') is not None: return rpc_error(ident,-32602,'No pagination cursor supported')
             listing = {'tools':[t for t in TOOLS if t['_meta']['app.geniusdecision/required-scope'] in [None,*scopes]
                 and (app.config['TWIN_ENABLED'] or t['name'] not in twin_mcp.ROUTES)
-                and (app.config['ADAPTIVE_ENABLED'] or t['name'] not in ('mission_create','mission_run'))]}
+                and (app.config['ADAPTIVE_ENABLED'] or t['name'] not in ('mission_create','mission_run','mission_freeze','mission_observe'))]}
             if modern: listing.update(ttlMs=0,cacheScope='private')
             return success(listing)
         if method != 'tools/call':
