@@ -1,0 +1,1152 @@
+{
+  "account_erased": true,
+  "completed_at": "2026-10-15T04:07:15.953529+00:00",
+  "config": {
+    "baseline_rule": "FIRST_SEPARATE_MEASUREMENT",
+    "child_validation_count": 2,
+    "code": {
+      "http_latency.py": "f9b15700658cae40081e4af87299fa65fec5ca069285a005fd49a0db1726381c",
+      "study.py": "b96aa33ade974b8c69387c4b27e8261291cbe44c6ce6f3ebbea4c80aef6106f7"
+    },
+    "count": 5,
+    "source": {
+      "accepted_response": "HTTP_200_JSON_HEALTH_OK_BACKUP_OK_NOT_SUSPENDED",
+      "clock": "time.monotonic_ns",
+      "completion": "READ_COMPLETE_BODY_UP_TO_65536_BYTES",
+      "format": "genius-http-latency-source/1",
+      "method": "GET",
+      "proxy_configured": true,
+      "redirects": "REJECT",
+      "resource": "client_observed_http_response_time",
+      "retries_per_sample": 0,
+      "rounding": "CEILING_NANOSECONDS_TO_MILLISECONDS",
+      "source_truth": "OBSERVER_RECORDED_NOT_INDEPENDENTLY_ATTESTED",
+      "target": "https://geniusdecision.app/api/health",
+      "timeout_seconds": 20,
+      "unit": "millisecond"
+    },
+    "tolerance": 1000,
+    "training_count": 5,
+    "validation_count": 3
+  },
+  "created_at": "2026-10-15T04:02:54.153090+00:00",
+  "credential_revoked": true,
+  "format": "genius-real-observation-study/1",
+  "generalization": "NOT_ESTABLISHED",
+  "independent_attestation": false,
+  "life_sustainment": "UNMEASURED",
+  "old_report_unchanged": true,
+  "protocol_status": "PASS",
+  "run_id": "dad01020dc38b1e52c4b7683",
+  "samples": {
+    "baseline": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:03:28.493426+00:00",
+        "elapsed_ns": 7834742912,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-baseline",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 7835,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:03:20.658670+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-baseline",
+        "observed_at": "2026-10-15T04:03:28.493426+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 5e7af6aef84a54c17f47bd71ce33cc0ccb749b490df0cf18c0674a3c1929f7e9",
+        "value": 7835
+      },
+      "sha256": "5e7af6aef84a54c17f47bd71ce33cc0ccb749b490df0cf18c0674a3c1929f7e9"
+    },
+    "child-validation-0": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:06:33.376578+00:00",
+        "elapsed_ns": 8511536686,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-child-validation-0",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 8512,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:06:24.865032+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-child-validation-0",
+        "observed_at": "2026-10-15T04:06:33.376578+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 433aa126ee614862ece61290d5389cfb16274def833b3ad40529b5a58146dd6a",
+        "value": 8512
+      },
+      "sha256": "433aa126ee614862ece61290d5389cfb16274def833b3ad40529b5a58146dd6a"
+    },
+    "child-validation-1": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:06:41.229824+00:00",
+        "elapsed_ns": 7851159631,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-child-validation-1",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 7852,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:06:33.378656+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-child-validation-1",
+        "observed_at": "2026-10-15T04:06:41.229824+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 02d0694e3d7846414c86907ba32ba69c2bad881713cec39a5b557b4764d730de",
+        "value": 7852
+      },
+      "sha256": "02d0694e3d7846414c86907ba32ba69c2bad881713cec39a5b557b4764d730de"
+    },
+    "prospective-0": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:05:14.121387+00:00",
+        "elapsed_ns": 6740934308,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-prospective-0",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 6741,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:05:07.380443+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-prospective-0",
+        "observed_at": "2026-10-15T04:05:14.121387+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 83ffa8d40ada67d502ba51e9885213d49cc9b89aed13fe4b23a38302b6190949",
+        "value": 6741
+      },
+      "sha256": "83ffa8d40ada67d502ba51e9885213d49cc9b89aed13fe4b23a38302b6190949"
+    },
+    "prospective-1": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:05:28.780507+00:00",
+        "elapsed_ns": 7279459968,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-prospective-1",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 7280,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:05:21.501035+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-prospective-1",
+        "observed_at": "2026-10-15T04:05:28.780507+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 edeb6ebf84471a15785f622f90b071bc075e1766c081d17b71b76d6cd8ca237b",
+        "value": 7280
+      },
+      "sha256": "edeb6ebf84471a15785f622f90b071bc075e1766c081d17b71b76d6cd8ca237b"
+    },
+    "prospective-2": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:05:42.059551+00:00",
+        "elapsed_ns": 6208516326,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-prospective-2",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 6209,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:05:35.851025+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-prospective-2",
+        "observed_at": "2026-10-15T04:05:42.059551+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 28f99bad6563234d742342833d951b64ce34c13b9650c67ebb0b2e3e6f6edc50",
+        "value": 6209
+      },
+      "sha256": "28f99bad6563234d742342833d951b64ce34c13b9650c67ebb0b2e3e6f6edc50"
+    },
+    "prospective-3": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:05:56.496238+00:00",
+        "elapsed_ns": 7639414613,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-prospective-3",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 7640,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:05:48.856814+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-prospective-3",
+        "observed_at": "2026-10-15T04:05:56.496238+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 94b980ed3bf428c33319cfc82120a8a3e74feeac47a92172aad638156353df44",
+        "value": 7640
+      },
+      "sha256": "94b980ed3bf428c33319cfc82120a8a3e74feeac47a92172aad638156353df44"
+    },
+    "prospective-4": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:06:10.337672+00:00",
+        "elapsed_ns": 6699913978,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-prospective-4",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 6700,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:06:03.637747+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-prospective-4",
+        "observed_at": "2026-10-15T04:06:10.337672+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 3eabb82a79d93ff7d5a7fa9d041b1178e8ee18dc05dcd9cff19b43dcd027bfaa",
+        "value": 6700
+      },
+      "sha256": "3eabb82a79d93ff7d5a7fa9d041b1178e8ee18dc05dcd9cff19b43dcd027bfaa"
+    },
+    "training-0": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:03:35.366366+00:00",
+        "elapsed_ns": 6871369010,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-training-0",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 6872,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:03:28.494988+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-training-0",
+        "observed_at": "2026-10-15T04:03:35.366366+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 31efa4c1fcbd5bf5b15a8fc5f792e1cdee8032ad4ec734820a64c72e56178937",
+        "value": 6872
+      },
+      "sha256": "31efa4c1fcbd5bf5b15a8fc5f792e1cdee8032ad4ec734820a64c72e56178937"
+    },
+    "training-1": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:03:43.147865+00:00",
+        "elapsed_ns": 7779088910,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-training-1",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 7780,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:03:35.368764+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-training-1",
+        "observed_at": "2026-10-15T04:03:43.147865+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 eb21e2f462016b4de52677c75f57dac600551d54d533faf3fdf2dbb1360dd275",
+        "value": 7780
+      },
+      "sha256": "eb21e2f462016b4de52677c75f57dac600551d54d533faf3fdf2dbb1360dd275"
+    },
+    "training-2": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:03:51.406787+00:00",
+        "elapsed_ns": 8256956798,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-training-2",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 8257,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:03:43.149821+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-training-2",
+        "observed_at": "2026-10-15T04:03:51.406787+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 3a651c3e6a913bb7c465110faffaf8a31aa7f5d4e9d46dffc788b82775c68f1d",
+        "value": 8257
+      },
+      "sha256": "3a651c3e6a913bb7c465110faffaf8a31aa7f5d4e9d46dffc788b82775c68f1d"
+    },
+    "training-3": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:03:59.296102+00:00",
+        "elapsed_ns": 7885819284,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-training-3",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 7886,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:03:51.410261+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-training-3",
+        "observed_at": "2026-10-15T04:03:59.296102+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 775f805ca84efb4901cd8b3d80c58a5cec15bd2b07eb45d5550cf8785c806148",
+        "value": 7886
+      },
+      "sha256": "775f805ca84efb4901cd8b3d80c58a5cec15bd2b07eb45d5550cf8785c806148"
+    },
+    "training-4": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:04:08.542617+00:00",
+        "elapsed_ns": 9244930181,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-training-4",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 9245,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:03:59.297677+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-training-4",
+        "observed_at": "2026-10-15T04:04:08.542617+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 385cb2d0e084c8710f09259ae13b568e166d4afd9a17adb978843d5eab2e9bb7",
+        "value": 9245
+      },
+      "sha256": "385cb2d0e084c8710f09259ae13b568e166d4afd9a17adb978843d5eab2e9bb7"
+    },
+    "validation-0": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:04:16.272840+00:00",
+        "elapsed_ns": 7726472239,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-validation-0",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 7727,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:04:08.546358+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-validation-0",
+        "observed_at": "2026-10-15T04:04:16.272840+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 b6944eb46d4e975d9c2bdb5ba8d4508e7197e6da24c3a238ae65c1d24203dbf1",
+        "value": 7727
+      },
+      "sha256": "b6944eb46d4e975d9c2bdb5ba8d4508e7197e6da24c3a238ae65c1d24203dbf1"
+    },
+    "validation-1": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:04:24.403206+00:00",
+        "elapsed_ns": 8128701778,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-validation-1",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 8129,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:04:16.274495+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-validation-1",
+        "observed_at": "2026-10-15T04:04:24.403206+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 90276f0dd2f54d2ffc8b682416f7641e1be8daed3d1904ed02f848673bd8bb9a",
+        "value": 8129
+      },
+      "sha256": "90276f0dd2f54d2ffc8b682416f7641e1be8daed3d1904ed02f848673bd8bb9a"
+    },
+    "validation-2": {
+      "measurement": {
+        "completed_at": "2026-10-15T04:04:31.414286+00:00",
+        "elapsed_ns": 7009004051,
+        "failure": null,
+        "format": "genius-http-sample/1",
+        "health": {
+          "backup": "ok",
+          "status": "ok",
+          "suspended": false
+        },
+        "http_status": 200,
+        "id": "dad01020dc38b1e52c4b7683-validation-2",
+        "outcome": "OBSERVED",
+        "response_bytes": 48,
+        "response_sha256": "9b279982a5265ab1364fbd85b7ea555671f2b574bd1a1ecbe9921433755cd5e7",
+        "rounded_milliseconds": 7010,
+        "source_contract_sha256": "17a5db0e22f7ff5c0709c78fd70e41a81fc68af823ed13951f46ac471244d8ef",
+        "started_at": "2026-10-15T04:04:24.405271+00:00",
+        "target": "https://geniusdecision.app/api/health"
+      },
+      "observation": {
+        "id": "dad01020dc38b1e52c4b7683-validation-2",
+        "observed_at": "2026-10-15T04:04:31.414286+00:00",
+        "source": "Genius HTTP observer v1; receipt SHA256 f8fffa75db5c9a831716e94a3b58ca3d065e7a234e45e499ab48c32b8452112e",
+        "value": 7010
+      },
+      "sha256": "f8fffa75db5c9a831716e94a3b58ca3d065e7a234e45e499ab48c32b8452112e"
+    }
+  },
+  "scope": "REAL_CLIENT_OBSERVED_HTTP_LATENCY",
+  "steps": {
+    "capabilities": {
+      "effects": "private_artifact",
+      "enabled": true,
+      "forecasts": {
+        "event_time": "DECLARED_NOT_ATTESTED",
+        "expected_records_max": 30,
+        "expected_records_min": 3,
+        "protocol": "resource_forecast_v1",
+        "receipt_time": "SERVER_UTC_MICROSECONDS",
+        "training_requires_complete_report": true
+      },
+      "kinds": [
+        "source_distribution_v1",
+        "resource_calibration_v1"
+      ],
+      "learning": {
+        "external_actions": false,
+        "parameter_updates": true,
+        "records": 32,
+        "rule": "LOWER_MEDIAN_HOLDOUT_MAE_V1",
+        "validation": "RETROSPECTIVE_CALIBRATION_AND_POST_FREEZE_SUBMISSIONS"
+      },
+      "limits": {
+        "files": 16,
+        "global_missions": 16,
+        "input_bytes": 65536,
+        "missions_per_user": 3,
+        "timeout_seconds": 60
+      },
+      "memory": "snapshot_receipts_and_context_bound_estimates",
+      "protocol": "genius-service-missions/1",
+      "self_modification": false,
+      "source": "explicit_utf8_snapshot_or_submitted_resource_records",
+      "stages": [
+        "measure",
+        "represent",
+        "evaluate",
+        "act",
+        "observe",
+        "remember"
+      ],
+      "sustained_life_probability": "UNMEASURED",
+      "wellbeing": "UNMEASURED"
+    },
+    "child_completed": {
+      "artifact_sha256": "b8e97378fce4126e130dac6ac77ee174147b127e8d45780a53d60c86e9e835eb",
+      "id": "f1f7306986c6c05dc2969b55011600d6",
+      "memory": {
+        "baseline": 7835,
+        "checks": {
+          "lower_holdout_error": false,
+          "no_worse_underprediction": false,
+          "within_declared_limit": false
+        },
+        "comparison": {
+          "baseline": {
+            "absolute_error_sum": 694,
+            "count": 2,
+            "max_underprediction": 677
+          },
+          "proposal": {
+            "absolute_error_sum": 2882,
+            "count": 2,
+            "max_underprediction": 1771
+          }
+        },
+        "context": "Sequential public Genius health GETs from one observer and its configured network/proxy; elapsed time includes connection and complete body read.",
+        "data_kind": "submitted_observations",
+        "decision": "KEEP_BASELINE",
+        "estimate": 7835,
+        "external_actions": 0,
+        "format": "resource_calibration_v1",
+        "input_sha256": "37db864c23e20630f2eb0acb6886cab2f59f746d33e89e6fa33b5fa0f97d7f67",
+        "last_observed_at": "2026-10-15T04:06:41.229824+00:00",
+        "life_sustainment_effect": "UNMEASURED",
+        "lineage": {
+          "artifact_sha256": "1697ea2f4d055c7b9257ebdf8b771398fc69293be713ba900f2754b16ac3dab3",
+          "estimate": 7835,
+          "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+          "mission_id": "b4e2a27ec2e13e670e6809ff4e2d1759",
+          "report_sha256": "955c2a690bbe42006b9b6cd08507f2d173d37be26b684da3cc2e74995c7defd6"
+        },
+        "max_underprediction": 1000,
+        "mission_id": "f1f7306986c6c05dc2969b55011600d6",
+        "proposal": 6741,
+        "prospective_validation": "PENDING",
+        "provenance": "SUBMITTED_NOT_INDEPENDENTLY_VERIFIED",
+        "resource": "client_observed_http_response_time",
+        "rule": "LOWER_MEDIAN_HOLDOUT_MAE_V1",
+        "unit": "millisecond",
+        "validation": "RETROSPECTIVE_ONLY",
+        "wellbeing_effect": "UNMEASURED"
+      }
+    },
+    "child_created": {
+      "mission": {
+        "artifact_name": null,
+        "artifact_sha256": null,
+        "attempts": 0,
+        "created_at": 1792037208,
+        "error": null,
+        "id": "f1f7306986c6c05dc2969b55011600d6",
+        "kind": "resource_calibration_v1",
+        "last_stage": null,
+        "result": null,
+        "state_sha256": null,
+        "status": "draft",
+        "updated_at": 1792037208
+      }
+    },
+    "child_input": {
+      "calibration": {
+        "validation": [
+          {
+            "id": "dad01020dc38b1e52c4b7683-child-validation-0",
+            "observed_at": "2026-10-15T04:06:33.376578+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 433aa126ee614862ece61290d5389cfb16274def833b3ad40529b5a58146dd6a",
+            "value": 8512
+          },
+          {
+            "id": "dad01020dc38b1e52c4b7683-child-validation-1",
+            "observed_at": "2026-10-15T04:06:41.229824+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 02d0694e3d7846414c86907ba32ba69c2bad881713cec39a5b557b4764d730de",
+            "value": 7852
+          }
+        ]
+      },
+      "forecast_mission_id": "b4e2a27ec2e13e670e6809ff4e2d1759",
+      "idempotency_key": "dad01020dc38b1e52c4b7683-child",
+      "kind": "resource_calibration_v1",
+      "processing_permission": true,
+      "technical_scope_acknowledged": true
+    },
+    "freeze": {
+      "frozen": {
+        "artifact_sha256": "1697ea2f4d055c7b9257ebdf8b771398fc69293be713ba900f2754b16ac3dab3",
+        "baseline": 7835,
+        "context": "Sequential public Genius health GETs from one observer and its configured network/proxy; elapsed time includes connection and complete body read.",
+        "data_kind": "submitted_observations",
+        "estimate": 7835,
+        "event_times": "DECLARED_NOT_ATTESTED",
+        "expected_count": 5,
+        "format": "resource_forecast_v1",
+        "frozen_at": "2026-10-15T04:05:07.312700Z",
+        "frozen_at_us": 1792037107312700,
+        "max_underprediction": 1000,
+        "mission_id": "b4e2a27ec2e13e670e6809ff4e2d1759",
+        "resource": "client_observed_http_response_time",
+        "rule": "FIXED_ESTIMATES_ABSOLUTE_ERROR_V1",
+        "scorer_identity": {
+          "calibration_sha256": "129c10d4533081a7e8d978441437c059d53157e5ef642468a74298217e647469",
+          "rule": "FIXED_ESTIMATES_ABSOLUTE_ERROR_V1",
+          "scorer_sha256": "bc184469b90c3c2ac7cb0ae8000ddc23cf49b74cad3fb6a34002e7dc0d1f945a"
+        },
+        "unit": "millisecond"
+      },
+      "observations": [],
+      "received_count": 0,
+      "report": null,
+      "report_sha256": null,
+      "sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+      "status": "collecting"
+    },
+    "parent_completed": {
+      "artifact_sha256": "1697ea2f4d055c7b9257ebdf8b771398fc69293be713ba900f2754b16ac3dab3",
+      "id": "b4e2a27ec2e13e670e6809ff4e2d1759",
+      "memory": {
+        "baseline": 7835,
+        "checks": {
+          "lower_holdout_error": false,
+          "no_worse_underprediction": true,
+          "within_declared_limit": true
+        },
+        "comparison": {
+          "baseline": {
+            "absolute_error_sum": 1227,
+            "count": 3,
+            "max_underprediction": 294
+          },
+          "proposal": {
+            "absolute_error_sum": 1278,
+            "count": 3,
+            "max_underprediction": 243
+          }
+        },
+        "context": "Sequential public Genius health GETs from one observer and its configured network/proxy; elapsed time includes connection and complete body read.",
+        "data_kind": "submitted_observations",
+        "decision": "KEEP_BASELINE",
+        "estimate": 7835,
+        "external_actions": 0,
+        "format": "resource_calibration_v1",
+        "input_sha256": "9336cb0b1206e05583e03c82abd3fea98cb3d2ab0c9ad1f50c0b27998aa7ee11",
+        "last_observed_at": "2026-10-15T04:04:31.414286+00:00",
+        "life_sustainment_effect": "UNMEASURED",
+        "lineage": null,
+        "max_underprediction": 1000,
+        "mission_id": "b4e2a27ec2e13e670e6809ff4e2d1759",
+        "proposal": 7886,
+        "prospective_validation": "PENDING",
+        "provenance": "SUBMITTED_NOT_INDEPENDENTLY_VERIFIED",
+        "resource": "client_observed_http_response_time",
+        "rule": "LOWER_MEDIAN_HOLDOUT_MAE_V1",
+        "unit": "millisecond",
+        "validation": "RETROSPECTIVE_ONLY",
+        "wellbeing_effect": "UNMEASURED"
+      }
+    },
+    "parent_created": {
+      "mission": {
+        "artifact_name": null,
+        "artifact_sha256": null,
+        "attempts": 0,
+        "created_at": 1792037077,
+        "error": null,
+        "id": "b4e2a27ec2e13e670e6809ff4e2d1759",
+        "kind": "resource_calibration_v1",
+        "last_stage": null,
+        "result": null,
+        "state_sha256": null,
+        "status": "draft",
+        "updated_at": 1792037077
+      }
+    },
+    "parent_input": {
+      "calibration": {
+        "baseline": 7835,
+        "context": "Sequential public Genius health GETs from one observer and its configured network/proxy; elapsed time includes connection and complete body read.",
+        "data_kind": "submitted_observations",
+        "max_underprediction": 1000,
+        "resource": "client_observed_http_response_time",
+        "training": [
+          {
+            "id": "dad01020dc38b1e52c4b7683-training-0",
+            "observed_at": "2026-10-15T04:03:35.366366+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 31efa4c1fcbd5bf5b15a8fc5f792e1cdee8032ad4ec734820a64c72e56178937",
+            "value": 6872
+          },
+          {
+            "id": "dad01020dc38b1e52c4b7683-training-1",
+            "observed_at": "2026-10-15T04:03:43.147865+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 eb21e2f462016b4de52677c75f57dac600551d54d533faf3fdf2dbb1360dd275",
+            "value": 7780
+          },
+          {
+            "id": "dad01020dc38b1e52c4b7683-training-2",
+            "observed_at": "2026-10-15T04:03:51.406787+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 3a651c3e6a913bb7c465110faffaf8a31aa7f5d4e9d46dffc788b82775c68f1d",
+            "value": 8257
+          },
+          {
+            "id": "dad01020dc38b1e52c4b7683-training-3",
+            "observed_at": "2026-10-15T04:03:59.296102+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 775f805ca84efb4901cd8b3d80c58a5cec15bd2b07eb45d5550cf8785c806148",
+            "value": 7886
+          },
+          {
+            "id": "dad01020dc38b1e52c4b7683-training-4",
+            "observed_at": "2026-10-15T04:04:08.542617+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 385cb2d0e084c8710f09259ae13b568e166d4afd9a17adb978843d5eab2e9bb7",
+            "value": 9245
+          }
+        ],
+        "unit": "millisecond",
+        "validation": [
+          {
+            "id": "dad01020dc38b1e52c4b7683-validation-0",
+            "observed_at": "2026-10-15T04:04:16.272840+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 b6944eb46d4e975d9c2bdb5ba8d4508e7197e6da24c3a238ae65c1d24203dbf1",
+            "value": 7727
+          },
+          {
+            "id": "dad01020dc38b1e52c4b7683-validation-1",
+            "observed_at": "2026-10-15T04:04:24.403206+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 90276f0dd2f54d2ffc8b682416f7641e1be8daed3d1904ed02f848673bd8bb9a",
+            "value": 8129
+          },
+          {
+            "id": "dad01020dc38b1e52c4b7683-validation-2",
+            "observed_at": "2026-10-15T04:04:31.414286+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 f8fffa75db5c9a831716e94a3b58ca3d065e7a234e45e499ab48c32b8452112e",
+            "value": 7010
+          }
+        ]
+      },
+      "idempotency_key": "dad01020dc38b1e52c4b7683-parent",
+      "kind": "resource_calibration_v1",
+      "processing_permission": true,
+      "technical_scope_acknowledged": true
+    },
+    "report": {
+      "frozen": {
+        "artifact_sha256": "1697ea2f4d055c7b9257ebdf8b771398fc69293be713ba900f2754b16ac3dab3",
+        "baseline": 7835,
+        "context": "Sequential public Genius health GETs from one observer and its configured network/proxy; elapsed time includes connection and complete body read.",
+        "data_kind": "submitted_observations",
+        "estimate": 7835,
+        "event_times": "DECLARED_NOT_ATTESTED",
+        "expected_count": 5,
+        "format": "resource_forecast_v1",
+        "frozen_at": "2026-10-15T04:05:07.312700Z",
+        "frozen_at_us": 1792037107312700,
+        "max_underprediction": 1000,
+        "mission_id": "b4e2a27ec2e13e670e6809ff4e2d1759",
+        "resource": "client_observed_http_response_time",
+        "rule": "FIXED_ESTIMATES_ABSOLUTE_ERROR_V1",
+        "scorer_identity": {
+          "calibration_sha256": "129c10d4533081a7e8d978441437c059d53157e5ef642468a74298217e647469",
+          "rule": "FIXED_ESTIMATES_ABSOLUTE_ERROR_V1",
+          "scorer_sha256": "bc184469b90c3c2ac7cb0ae8000ddc23cf49b74cad3fb6a34002e7dc0d1f945a"
+        },
+        "unit": "millisecond"
+      },
+      "observations": [
+        {
+          "receipt": {
+            "errors": {
+              "baseline": {
+                "absolute": 1094,
+                "underprediction": 0
+              },
+              "estimate": {
+                "absolute": 1094,
+                "underprediction": 0
+              }
+            },
+            "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+            "observation": {
+              "id": "dad01020dc38b1e52c4b7683-prospective-0",
+              "observed_at": "2026-10-15T04:05:14.121387+00:00",
+              "source": "Genius HTTP observer v1; receipt SHA256 83ffa8d40ada67d502ba51e9885213d49cc9b89aed13fe4b23a38302b6190949",
+              "value": 6741
+            },
+            "previous_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+            "received_at": "2026-10-15T04:05:21.424710Z",
+            "received_at_us": 1792037121424710,
+            "sequence": 1
+          },
+          "sha256": "f4992758a35f8f5eb6612bf3e7425bb55f9f908a2573bdd5e4f20335a815f94c"
+        },
+        {
+          "receipt": {
+            "errors": {
+              "baseline": {
+                "absolute": 555,
+                "underprediction": 0
+              },
+              "estimate": {
+                "absolute": 555,
+                "underprediction": 0
+              }
+            },
+            "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+            "observation": {
+              "id": "dad01020dc38b1e52c4b7683-prospective-1",
+              "observed_at": "2026-10-15T04:05:28.780507+00:00",
+              "source": "Genius HTTP observer v1; receipt SHA256 edeb6ebf84471a15785f622f90b071bc075e1766c081d17b71b76d6cd8ca237b",
+              "value": 7280
+            },
+            "previous_sha256": "f4992758a35f8f5eb6612bf3e7425bb55f9f908a2573bdd5e4f20335a815f94c",
+            "received_at": "2026-10-15T04:05:35.783862Z",
+            "received_at_us": 1792037135783862,
+            "sequence": 2
+          },
+          "sha256": "6352b2542a647abdf61f355e5f4bfc972996002a72270c6c23f9cc4d07b17069"
+        },
+        {
+          "receipt": {
+            "errors": {
+              "baseline": {
+                "absolute": 1626,
+                "underprediction": 0
+              },
+              "estimate": {
+                "absolute": 1626,
+                "underprediction": 0
+              }
+            },
+            "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+            "observation": {
+              "id": "dad01020dc38b1e52c4b7683-prospective-2",
+              "observed_at": "2026-10-15T04:05:42.059551+00:00",
+              "source": "Genius HTTP observer v1; receipt SHA256 28f99bad6563234d742342833d951b64ce34c13b9650c67ebb0b2e3e6f6edc50",
+              "value": 6209
+            },
+            "previous_sha256": "6352b2542a647abdf61f355e5f4bfc972996002a72270c6c23f9cc4d07b17069",
+            "received_at": "2026-10-15T04:05:48.787364Z",
+            "received_at_us": 1792037148787364,
+            "sequence": 3
+          },
+          "sha256": "2658403e150e603134ba5ee654496a1d2277bb132136214d57420c774d9deb59"
+        },
+        {
+          "receipt": {
+            "errors": {
+              "baseline": {
+                "absolute": 195,
+                "underprediction": 0
+              },
+              "estimate": {
+                "absolute": 195,
+                "underprediction": 0
+              }
+            },
+            "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+            "observation": {
+              "id": "dad01020dc38b1e52c4b7683-prospective-3",
+              "observed_at": "2026-10-15T04:05:56.496238+00:00",
+              "source": "Genius HTTP observer v1; receipt SHA256 94b980ed3bf428c33319cfc82120a8a3e74feeac47a92172aad638156353df44",
+              "value": 7640
+            },
+            "previous_sha256": "2658403e150e603134ba5ee654496a1d2277bb132136214d57420c774d9deb59",
+            "received_at": "2026-10-15T04:06:03.571765Z",
+            "received_at_us": 1792037163571765,
+            "sequence": 4
+          },
+          "sha256": "3d490228750cd6c29dd88c0a49c03c8a6f072eb2483059bf2f6cffd4367c672e"
+        },
+        {
+          "receipt": {
+            "errors": {
+              "baseline": {
+                "absolute": 1135,
+                "underprediction": 0
+              },
+              "estimate": {
+                "absolute": 1135,
+                "underprediction": 0
+              }
+            },
+            "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+            "observation": {
+              "id": "dad01020dc38b1e52c4b7683-prospective-4",
+              "observed_at": "2026-10-15T04:06:10.337672+00:00",
+              "source": "Genius HTTP observer v1; receipt SHA256 3eabb82a79d93ff7d5a7fa9d041b1178e8ee18dc05dcd9cff19b43dcd027bfaa",
+              "value": 6700
+            },
+            "previous_sha256": "3d490228750cd6c29dd88c0a49c03c8a6f072eb2483059bf2f6cffd4367c672e",
+            "received_at": "2026-10-15T04:06:17.411316Z",
+            "received_at_us": 1792037177411316,
+            "sequence": 5
+          },
+          "sha256": "9069000331c2bdd541c21edcdbc421b20d1652886daddd10613965b9eb3abcda"
+        }
+      ],
+      "received_count": 5,
+      "report": {
+        "baseline": 7835,
+        "checks": {
+          "lower_error": false,
+          "no_worse_underprediction": true,
+          "within_declared_limit": true
+        },
+        "closed_at": "2026-10-15T04:06:17.411316Z",
+        "closed_at_us": 1792037177411316,
+        "comparison": {
+          "baseline": {
+            "absolute_error_sum": 4605,
+            "count": 5,
+            "max_underprediction": 0
+          },
+          "estimate": {
+            "absolute_error_sum": 4605,
+            "count": 5,
+            "max_underprediction": 0
+          }
+        },
+        "data_kind": "submitted_observations",
+        "estimate": 7835,
+        "event_times": "DECLARED_NOT_ATTESTED",
+        "evidence_status": "POST_FREEZE_SUBMISSIONS",
+        "expected_count": 5,
+        "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+        "format": "resource_forecast_v1",
+        "life_sustainment_effect": "UNMEASURED",
+        "model_changed": false,
+        "outcome": "NO_CONFIRMED_IMPROVEMENT",
+        "receipt_sha256s": [
+          "f4992758a35f8f5eb6612bf3e7425bb55f9f908a2573bdd5e4f20335a815f94c",
+          "6352b2542a647abdf61f355e5f4bfc972996002a72270c6c23f9cc4d07b17069",
+          "2658403e150e603134ba5ee654496a1d2277bb132136214d57420c774d9deb59",
+          "3d490228750cd6c29dd88c0a49c03c8a6f072eb2483059bf2f6cffd4367c672e",
+          "9069000331c2bdd541c21edcdbc421b20d1652886daddd10613965b9eb3abcda"
+        ],
+        "source_verification": "NOT_INDEPENDENTLY_VERIFIED",
+        "unit": "millisecond",
+        "wellbeing_effect": "UNMEASURED"
+      },
+      "report_sha256": "955c2a690bbe42006b9b6cd08507f2d173d37be26b684da3cc2e74995c7defd6",
+      "sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+      "status": "complete"
+    },
+    "submitted-0": {
+      "forecast_status": "collecting",
+      "observation": {
+        "receipt": {
+          "errors": {
+            "baseline": {
+              "absolute": 1094,
+              "underprediction": 0
+            },
+            "estimate": {
+              "absolute": 1094,
+              "underprediction": 0
+            }
+          },
+          "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+          "observation": {
+            "id": "dad01020dc38b1e52c4b7683-prospective-0",
+            "observed_at": "2026-10-15T04:05:14.121387+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 83ffa8d40ada67d502ba51e9885213d49cc9b89aed13fe4b23a38302b6190949",
+            "value": 6741
+          },
+          "previous_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+          "received_at": "2026-10-15T04:05:21.424710Z",
+          "received_at_us": 1792037121424710,
+          "sequence": 1
+        },
+        "sha256": "f4992758a35f8f5eb6612bf3e7425bb55f9f908a2573bdd5e4f20335a815f94c"
+      },
+      "report_sha256": null
+    },
+    "submitted-1": {
+      "forecast_status": "collecting",
+      "observation": {
+        "receipt": {
+          "errors": {
+            "baseline": {
+              "absolute": 555,
+              "underprediction": 0
+            },
+            "estimate": {
+              "absolute": 555,
+              "underprediction": 0
+            }
+          },
+          "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+          "observation": {
+            "id": "dad01020dc38b1e52c4b7683-prospective-1",
+            "observed_at": "2026-10-15T04:05:28.780507+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 edeb6ebf84471a15785f622f90b071bc075e1766c081d17b71b76d6cd8ca237b",
+            "value": 7280
+          },
+          "previous_sha256": "f4992758a35f8f5eb6612bf3e7425bb55f9f908a2573bdd5e4f20335a815f94c",
+          "received_at": "2026-10-15T04:05:35.783862Z",
+          "received_at_us": 1792037135783862,
+          "sequence": 2
+        },
+        "sha256": "6352b2542a647abdf61f355e5f4bfc972996002a72270c6c23f9cc4d07b17069"
+      },
+      "report_sha256": null
+    },
+    "submitted-2": {
+      "forecast_status": "collecting",
+      "observation": {
+        "receipt": {
+          "errors": {
+            "baseline": {
+              "absolute": 1626,
+              "underprediction": 0
+            },
+            "estimate": {
+              "absolute": 1626,
+              "underprediction": 0
+            }
+          },
+          "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+          "observation": {
+            "id": "dad01020dc38b1e52c4b7683-prospective-2",
+            "observed_at": "2026-10-15T04:05:42.059551+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 28f99bad6563234d742342833d951b64ce34c13b9650c67ebb0b2e3e6f6edc50",
+            "value": 6209
+          },
+          "previous_sha256": "6352b2542a647abdf61f355e5f4bfc972996002a72270c6c23f9cc4d07b17069",
+          "received_at": "2026-10-15T04:05:48.787364Z",
+          "received_at_us": 1792037148787364,
+          "sequence": 3
+        },
+        "sha256": "2658403e150e603134ba5ee654496a1d2277bb132136214d57420c774d9deb59"
+      },
+      "report_sha256": null
+    },
+    "submitted-3": {
+      "forecast_status": "collecting",
+      "observation": {
+        "receipt": {
+          "errors": {
+            "baseline": {
+              "absolute": 195,
+              "underprediction": 0
+            },
+            "estimate": {
+              "absolute": 195,
+              "underprediction": 0
+            }
+          },
+          "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+          "observation": {
+            "id": "dad01020dc38b1e52c4b7683-prospective-3",
+            "observed_at": "2026-10-15T04:05:56.496238+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 94b980ed3bf428c33319cfc82120a8a3e74feeac47a92172aad638156353df44",
+            "value": 7640
+          },
+          "previous_sha256": "2658403e150e603134ba5ee654496a1d2277bb132136214d57420c774d9deb59",
+          "received_at": "2026-10-15T04:06:03.571765Z",
+          "received_at_us": 1792037163571765,
+          "sequence": 4
+        },
+        "sha256": "3d490228750cd6c29dd88c0a49c03c8a6f072eb2483059bf2f6cffd4367c672e"
+      },
+      "report_sha256": null
+    },
+    "submitted-4": {
+      "forecast_status": "complete",
+      "observation": {
+        "receipt": {
+          "errors": {
+            "baseline": {
+              "absolute": 1135,
+              "underprediction": 0
+            },
+            "estimate": {
+              "absolute": 1135,
+              "underprediction": 0
+            }
+          },
+          "forecast_sha256": "7fe4646615b6831453b68cdfc4d457ef9f59ff409ced1f9becea89b27397b2bc",
+          "observation": {
+            "id": "dad01020dc38b1e52c4b7683-prospective-4",
+            "observed_at": "2026-10-15T04:06:10.337672+00:00",
+            "source": "Genius HTTP observer v1; receipt SHA256 3eabb82a79d93ff7d5a7fa9d041b1178e8ee18dc05dcd9cff19b43dcd027bfaa",
+            "value": 6700
+          },
+          "previous_sha256": "3d490228750cd6c29dd88c0a49c03c8a6f072eb2483059bf2f6cffd4367c672e",
+          "received_at": "2026-10-15T04:06:17.411316Z",
+          "received_at_us": 1792037177411316,
+          "sequence": 5
+        },
+        "sha256": "9069000331c2bdd541c21edcdbc421b20d1652886daddd10613965b9eb3abcda"
+      },
+      "report_sha256": "955c2a690bbe42006b9b6cd08507f2d173d37be26b684da3cc2e74995c7defd6"
+    }
+  },
+  "wellbeing": "UNMEASURED"
+}

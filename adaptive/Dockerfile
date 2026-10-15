@@ -21,6 +21,7 @@ FROM runtime AS tests
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
 COPY adaptive/tests /app/adaptive/tests
+COPY adaptive/observers /app/adaptive/observers
 USER 65534:65534
 ENTRYPOINT ["python", "-m", "unittest", "discover", "-s", "adaptive/tests", "-v"]
 CMD []

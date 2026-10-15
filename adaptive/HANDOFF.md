@@ -1,12 +1,38 @@
-# Genius adaptativo — comprobación prospectiva activada y verificada
+# Genius adaptativo — primer ciclo de observación HTTP real completado
 
-Estado comprobado el 15 de octubre de 2026 a las 03:37 UTC (00:37 en Argentina).
-El usuario aplicó el cambio del PR 31 en Railway. La comprobación prospectiva está
-activa y pasó el ensayo sintético completo por API. La cuenta de prueba fue borrada
-y su credencial revocada. No volver a solicitar esta activación, reimplementar el
-incremento ni repetir sus pruebas sin una razón concreta.
+Último ciclo completado el 15 de octubre de 2026 a las 04:07 UTC (01:07 en Argentina).
+El servicio del PR 31 sigue activo. Un nuevo observador cliente ejecutó el ciclo
+completo con 16 mediciones reales de latencia HTTP. El protocolo pasó; **no hubo
+mejora predictiva confirmada**. La cuenta dedicada fue borrada y la credencial
+revocada y retirada del estado privado. No repetir este ensayo para buscar un
+resultado favorable ni volver a pedir la activación de Railway ya resuelta.
 
-## Incremento de comprobación activo
+## Observador real incorporado
+
+Código y contrato en [observers/README.md](observers/README.md); evidencia completa
+en [evidence/2026-10-15-real-http](evidence/2026-10-15-real-http). Funciona bajo
+demanda desde un cliente operador usando la API desplegada: no instala un colector
+permanente, no cambia el runtime del servicio y no requiere otro Apply.
+
+Mide el tiempo de `GET /api/health` visto desde este entorno, incluyendo red/proxy,
+conexión, lectura y validación local de respuesta. La primera medición separada
+aportó base 7835 ms; cinco observaciones entrenaron y tres posteriores comprobaron
+una propuesta 7886 ms. Su error fue mayor (1278 frente a 1227), por lo que se
+conservó la base. Después de congelarla, cinco mediciones nuevas produjeron error
+total 4605 para ambas predicciones, con informe `NO_CONFIRMED_IMPROVEMENT`.
+La misión hija propuso 6741 ms usando esos cinco registros ya puntuados; en dos
+mediciones nuevas tuvo error 2882 frente a 694 y subestimación máxima 1771, fuera
+de la tolerancia 1000. También conservó 7835 ms. No afirmar que el ensayo mejoró
+latencia o que esa base sea óptima en general.
+
+El cliente conserva cada intento antes de medir y el resultado antes de enviarlo;
+reenviar una observación recibida reusa su ID. Una muestra fallida o incierta no
+se sustituye. Se comprobaron recuperación tras perder una respuesta, hashes de
+fuente y normalización, cadena temporal, cálculo fijo, procedencia hija, informe
+anterior intacto y limpieza. Los resultados desconocidos de alta o borrado tienen
+límites explícitos de recuperación. El estado privado nunca se publica.
+
+## Comprobación del PR 31: ensayo sintético previo
 
 `resource_forecast_v1` congela una estimación, su base, contexto, tolerancia y
 cantidad prevista (3..30) antes de aceptar observaciones en peticiones posteriores.
@@ -92,6 +118,11 @@ Ejemplo: [resource-calibration.json](examples/resource-calibration.json).
 
 ## Evidencia recibida
 
+[2026-10-15-real-http](evidence/2026-10-15-real-http) añade el ensayo real descrito
+arriba. Los logs locales y el resumen distinguen pruebas superpuestas; el PR de
+`work/real-observer-20261015` conserva CI del código final y su integración.
+La evidencia del observador no acredita un sensor independiente ni impacto vital.
+
 [2026-10-15-prospective](evidence/2026-10-15-prospective) conserva las 129 pruebas
 locales, identidades de CI/despliegue, salud y recibo completo del ensayo en vivo.
 Incluye fechas del servidor, cadena de hashes, resultado negativo de la guarda,
@@ -120,12 +151,14 @@ La captura original de 460 archivos permanece en [2026-10-14](evidence/2026-10-1
 
 ## Pendiente real
 
-El siguiente avance requiere una fuente real autorizada con contexto, unidad,
-procedencia y criterios de evaluación explícitos. Ninguna fuente real se eligió o
-conectó en este ensayo. La procedencia y las fechas de evento siguen siendo
-declaraciones; el servidor comprueba el orden de recepción. Los casos son sintéticos;
-no demuestran generalización futura, ahorro de agua, bienestar ni probabilidad de
-vida sostenida. No se necesita un proveedor LLM para el siguiente avance.
+Ya se usó una fuente real: latencia del propio servicio desde un observador. Sigue
+pendiente conectar fuentes pertinentes a condiciones de vida y casos reales de
+consumidores, con contexto, unidad, procedencia y criterios explícitos. Las fechas
+de evento y procedencia son declaraciones; el servidor comprueba el orden de
+recepción. La nueva evidencia operacional no demuestra generalización, ahorro de
+agua, bienestar ni probabilidad de vida sostenida. Tampoco prueba que la propuesta
+de mediana sea adecuada para la variación temporal observada. No se necesita un
+proveedor LLM para continuar con observaciones y comparación de estrategias.
 
 El incremento activo separa temporalmente recepción y puntuación. No identifica observaciones
 copiadas manualmente a otras solicitudes, no certifica relojes externos ni evita
@@ -140,12 +173,16 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 
 ## Siguiente prompt
 
-> Continuá desde `adaptive/HANDOFF.md` y `adaptive/evidence/2026-10-15-prospective`.
-> El aprendizaje del PR 28 y la comprobación `resource_forecast_v1` del PR 31 están
-> activos y verificados en producción. El ensayo sintético pasó: predicción fija,
-> recepción posterior, guarda de tolerancia, informe inmutable, nuevo aprendizaje
-> y borrado/revocación. No repitas ese desarrollo, despliegue ni ensayo cerrado.
-> Avanzá hacia la entrada de observaciones de una fuente real autorizada
-> con contexto, unidad y procedencia explícitos. Diferenciá el orden de recepción
-> comprobado de la veracidad independiente del evento y de efectos de bienestar/PVS.
-> Conservá permisos, recuperación y evidencia en Git y entregá el siguiente prompt.
+> Continuá desde `adaptive/HANDOFF.md`, `adaptive/observers/README.md` y la evidencia
+> `2026-10-15-real-http`. El servicio y los ciclos sintéticos previos ya están
+> verificados. El nuevo ciclo con 16 mediciones HTTP reales completó el protocolo,
+> rechazó dos propuestas peores y conservó la base; cuenta borrada y token revocado.
+> No repitas ese ensayo ni pidas otro Apply: el observador usa el servicio existente.
+> Avanzá en contexto observable y estrategias adaptativas que puedan contrastarse
+> con datos posteriores, y en fuentes reales pertinentes a bienestar/condiciones
+> de vida cuando haya datos autorizados adecuados. Elegí el siguiente incremento
+> según las dependencias efectivas, sin convertir la espera de datos en un bloqueo
+> de ingeniería. Fijá el plan antes de observar, conservá resultados negativos y no
+> ajustes tolerancias para aprobar datos ya vistos. Diferenciá medición del cliente,
+> verdad de la fuente y efectos causales. Conservá pruebas, evidencia y recuperación
+> en Git y entregá el siguiente prompt junto con el resultado.
