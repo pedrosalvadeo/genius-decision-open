@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-10-15T03:36:22.711Z",
+  "project_id": "a93aa08c-f3b6-4a5b-accc-9812d6314f00",
+  "environment_id": "1addd5b8-5a47-4301-aeca-d9596bceb4e0",
+  "service_id": "dafd0be5-61aa-4843-a3a3-3c1f487d9640",
+  "service_state": "live",
+  "configured_source": {
+    "repo": "pedrosalvadeo/genius-decision-open",
+    "branch": "main",
+    "commitSha": "2de2b7b0a1a885b62d7eb6597ea3b2d74741e90f"
+  },
+  "latest_deployment": {
+    "id": "1d736e8d-65a0-4abf-9d96-f1f0b23b2e99",
+    "status": "SUCCESS",
+    "created_at": "2026-10-15T03:32:07.033Z",
+    "updated_at": "2026-10-15T03:32:37.058Z",
+    "metadata_commit_hash": "2de2b7b0a1a885b62d7eb6597ea3b2d74741e90f",
+    "branch": "main",
+    "regions": [
+      "europe-west4-drams3a"
+    ]
+  },
+  "pending_changes": [],
+  "staged_patch": null,
+  "volume": {
+    "id": "249ae1dd-3a2d-49db-b028-777f57176d86",
+    "mount_path": "/data",
+    "size_mb": 500
+  },
+  "activation": "USER_APPLIED_PREPARED_CHANGE",
+  "previous_patch_id": "5938798d-fa3c-45ac-849f-0bdfb9ef2d6a"
+}
