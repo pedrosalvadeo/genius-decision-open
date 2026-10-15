@@ -264,8 +264,9 @@ def create_app(overrides=None):
 
     @app.get('/api/health')
     def health():
+        from .regulation import public_status
         db().execute('SELECT 1').fetchone()
-        return jsonify(status='ok',suspended=app.config['SUSPEND_FILE'].exists(),backup=backup_health(app.config['DATA_DIR']))
+        return jsonify(status='ok',suspended=app.config['SUSPEND_FILE'].exists(),backup=backup_health(app.config['DATA_DIR']),mission_regulation=public_status(db(),app.config))
 
     @app.get('/api/config')
     @app.get('/api/meta')

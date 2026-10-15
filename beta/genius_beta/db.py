@@ -74,6 +74,7 @@ def purge(db, retention_days=90, now=None):
         db.execute('DELETE FROM sessions WHERE expires_at<?', (now,))
         db.execute('DELETE FROM counters WHERE bucket<?', (now - 7 * 86400,))
         db.execute('DELETE FROM telemetry WHERE created_at<?', (now - 7 * 86400,))
+        db.execute('DELETE FROM mission_regulation_events WHERE created_at<?', (now - 7 * 86400,))
         db.execute('DELETE FROM deletion_ledger WHERE deleted_at<?', (now - 7 * 86400,))
     db.execute('PRAGMA wal_checkpoint(TRUNCATE)')
     return {'cases': len(cases), 'users': len(users)}

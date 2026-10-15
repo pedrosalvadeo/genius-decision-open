@@ -69,6 +69,53 @@
                     },
                     "suspended": {
                       "type": "boolean"
+                    },
+                    "mission_regulation": {
+                      "type": "object",
+                      "required": [
+                        "protocol",
+                        "enabled",
+                        "mode",
+                        "observed_at",
+                        "scope",
+                        "policy_sha256"
+                      ],
+                      "properties": {
+                        "protocol": {
+                          "const": "genius-mission-regulation/1"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "mode": {
+                          "type": "string",
+                          "enum": [
+                            "DISABLED",
+                            "OBSERVING",
+                            "NORMAL",
+                            "DRAINING",
+                            "RESOURCE_PAUSED",
+                            "COOLDOWN",
+                            "PROBING",
+                            "SENSOR_PAUSED",
+                            "REVIEW_REQUIRED",
+                            "OBSERVATION_STALE"
+                          ]
+                        },
+                        "observed_at": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "scope": {
+                          "const": "QUEUED_ADAPTIVE_MISSIONS"
+                        },
+                        "policy_sha256": {
+                          "type": "string",
+                          "pattern": "^[a-f0-9]{64}$"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -953,6 +1000,83 @@
           },
           "403": {
             "description": "Requires cases:write for agents; humans require session and CSRF."
+          }
+        }
+      }
+    },
+    "/api/missions/regulation": {
+      "get": {
+        "operationId": "mission_regulation",
+        "summary": "Read coarse feedback-control status for queued missions",
+        "description": "Requires missions:read. Read only; excludes tenant counts, private inputs and operator controls. A NORMAL controller state does not override other service restrictions. See /static/missions.html.",
+        "responses": {
+          "200": {
+            "description": "Current status; stale observations are identified",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "regulation"
+                  ],
+                  "properties": {
+                    "regulation": {
+                      "type": "object",
+                      "required": [
+                        "protocol",
+                        "enabled",
+                        "mode",
+                        "observed_at",
+                        "scope",
+                        "policy_sha256"
+                      ],
+                      "properties": {
+                        "protocol": {
+                          "const": "genius-mission-regulation/1"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "mode": {
+                          "type": "string",
+                          "enum": [
+                            "DISABLED",
+                            "OBSERVING",
+                            "NORMAL",
+                            "DRAINING",
+                            "RESOURCE_PAUSED",
+                            "COOLDOWN",
+                            "PROBING",
+                            "SENSOR_PAUSED",
+                            "REVIEW_REQUIRED",
+                            "OBSERVATION_STALE"
+                          ]
+                        },
+                        "observed_at": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "scope": {
+                          "const": "QUEUED_ADAPTIVE_MISSIONS"
+                        },
+                        "policy_sha256": {
+                          "type": "string",
+                          "pattern": "^[a-f0-9]{64}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "missions:read required"
           }
         }
       }

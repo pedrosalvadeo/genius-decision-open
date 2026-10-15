@@ -40,7 +40,7 @@ class Worker:
     def recover(self):
         self.db.execute("UPDATE jobs SET status='interrupted',error='worker_restart',finished_at=? WHERE status='running'",(int(time.time()),))
         from .mission_worker import recover
-        recover(self.db)
+        recover(self.db,self.config)
         work=self.config['DATA_DIR']/'tmp'
         if work.exists():
             shutil.rmtree(work)

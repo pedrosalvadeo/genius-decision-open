@@ -21,7 +21,7 @@ def required_scope(method, path):
         return 'missions:write'
     if re.fullmatch(r'/api/missions/[a-f0-9]{32}/context-forecast/close', path) and method == 'POST':
         return 'missions:run'
-    if path in ('/api/missions', '/api/missions/capabilities') and method == 'GET':
+    if path in ('/api/missions', '/api/missions/capabilities', '/api/missions/regulation') and method == 'GET':
         return 'missions:read'
     if path == '/api/missions' and method == 'POST':
         return 'missions:write'
@@ -75,9 +75,16 @@ def install(app, db, body, error, capacity):
         return [exported(r) for r in db().execute('SELECT * FROM adaptive_missions WHERE user_id=? ORDER BY created_at,id', (g.user['id'],))]
     app.extensions['mission_export_user'] = export_all
 
+    @app.get('/api/missions/regulation')
+    def mission_regulation():
+        from .regulation import public_status
+        return jsonify(regulation=public_status(db(),app.config))
+
     @app.get('/api/missions/capabilities')
     def mission_capabilities():
+        from .regulation import public_status
         return jsonify(protocol='genius-service-missions/1', enabled=app.config['ADAPTIVE_ENABLED'],
+            regulation=public_status(db(),app.config),
             kinds=['source_distribution_v1','resource_calibration_v1'], stages=['measure','represent','evaluate','act','observe','remember'],
             source='explicit_utf8_snapshot_or_submitted_resource_records', effects='private_artifact',
             limits=dict(files=16,input_bytes=65536,missions_per_user=3,global_missions=16,timeout_seconds=60),
@@ -174,6 +181,12 @@ def install(app, db, body, error, capacity):
                 return jsonify(mission=view(row))
             if row['status'] == 'needs_review' or row['attempts'] >= 3:
                 raise error('mission_review_required', 'El estado requiere revisión; no se reintentará automáticamente.', 409)
+            from . import regulation
+            control = regulation.refresh(db(),app.config,force=True)
+            if not regulation.admits(control):
+                # Return (rather than raise) so the observation commits, without
+                # reserving a job or consuming execution quota on rejection.
+                return regulation.blocked_response()
             from .agent_access import reserve_agent_job
             now = int(time.time())
             day = now // 86400 * 86400
