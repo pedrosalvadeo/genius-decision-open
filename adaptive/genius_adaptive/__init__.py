@@ -1,1 +1,1 @@
-"""Persistent mission experiments; no public or unattended runtime yet."""
+"""Persistent registered missions and bounded, auditable parameter learning."""

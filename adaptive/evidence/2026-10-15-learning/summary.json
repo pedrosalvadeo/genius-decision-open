@@ -1,0 +1,16 @@
+{
+  "status": "LOCAL_PASS",
+  "base_commit": "9a8bee30cbb02b1bf0b806386351308367288aac",
+  "service_tests": 120,
+  "adaptive_tests": 24,
+  "new_tests": 11,
+  "implementation": "resource_calibration_v1",
+  "learning_rule": "LOWER_MEDIAN_HOLDOUT_MAE_V1",
+  "validation": "RETROSPECTIVE_CHRONOLOGICAL_HOLDOUT",
+  "evidence": "SYNTHETIC_TESTS_ONLY",
+  "live_deployment": "PENDING",
+  "wellbeing": "UNMEASURED",
+  "life_sustainment": "UNMEASURED",
+  "new_dependencies": 0,
+  "new_database_migrations": 0
+}

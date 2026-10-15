@@ -2,10 +2,10 @@
 
 Genius puede ejecutar una misión técnica completa, guardar la evidencia y
 continuarla en otro proceso. Este incremento construye el soporte de ejecución
-del plan adaptativo; la revisión de modelos, la generación de hipótesis y la
-mejora autónoma de código siguen abiertas.
+del plan adaptativo. La calibración de recursos añade propuestas y revisión de
+un parámetro; la generación general de hipótesis y la mejora de código siguen abiertas.
 
-La misión implementada toma los archivos de un **commit Git explícito**, mide
+La misión original toma los archivos de un **commit Git explícito**, mide
 TAR, gzip y ZIP, construye un modelo de existencias y flujos con esos tamaños,
 lo evalúa con el gemelo y núcleo existentes, publica el archivo elegido en una
 carpeta local, verifica su contenido y recuerda el resultado. Conserva los bits
@@ -22,6 +22,21 @@ UTF-8 explícitos, con permisos por cuenta, y ejecuta el mismo ciclo desde el wo
 Guía: https://geniusdecision.app/static/missions.html. Contrato y garantías:
 [ADAPTIVE_MISSIONS.md](../beta/docs/ADAPTIVE_MISSIONS.md).
 La prueba de despliegue y reinicio está en [HANDOFF.md](HANDOFF.md).
+
+## Aprendizaje de estimaciones de recursos
+
+La nueva operación `resource_calibration_v1` propone una mediana usando sólo los
+registros de aprendizaje enviados, la compara con una estimación base mediante
+el núcleo existente y aplica guardas explícitas de error y subestimación. Guarda
+la estimación adoptada o conservada en un artefacto privado. Otro ciclo puede
+heredar esa memoria por `parent_mission_id` bajo igual contexto y registros nuevos.
+Contrato: [RESOURCE_CALIBRATION.md](../beta/docs/RESOURCE_CALIBRATION.md).
+Ejemplo sintético: [resource-calibration.json](examples/resource-calibration.json).
+La activación de esta versión se registra en `HANDOFF.md`.
+
+Esto añade aprendizaje de un parámetro con una regla fija y evidencia retrospectiva.
+No aprende estructuras arbitrarias, no modifica código ni demuestra efectos futuros.
+La CLI de archivos mantiene su contrato; la calibración se ofrece por REST/MCP.
 
 ## Ejecutar la CLI
 
@@ -83,10 +98,10 @@ grafo estático de situaciones. SQLite conserva los estados de este prototipo
 local de un solo escritor. El diario de Genius conserva además las evidencias
 y los efectos; las garantías de efecto no se delegan al caché de tareas.
 
-La secuencia actual verifica la infraestructura con un adaptador concreto. No
-constituye todavía planificación general ni una representación universal. El
-modelo se instancia con mediciones nuevas; almacenar una observación no equivale
-a aprender automáticamente su estructura o a mejorar el propio programa.
+Los adaptadores actuales verifican distribución y aprendizaje de una estimación.
+No constituyen planificación general ni una representación universal. En distribución,
+el modelo se instancia con mediciones nuevas; en calibración se propone y contrasta
+un parámetro. Ninguno aprende automáticamente una estructura nueva ni mejora el código.
 
 No requiere claves de modelos ni hace inferencia pagada. No incorpora un cliente
 LLM. Las dependencias transitivas están fijadas con hashes para la plataforma

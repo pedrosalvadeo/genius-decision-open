@@ -1,0 +1,101 @@
+{
+  "scope": "LOCAL_SYNTHETIC_EXPERIMENT",
+  "results": {
+    "adopt": {
+      "kind": "RESOURCE_ESTIMATE_MEMORY",
+      "decision": "ADOPT_PROPOSAL",
+      "estimate": 100,
+      "baseline": 50,
+      "proposal": 100,
+      "comparison": {
+        "baseline": {
+          "absolute_error_sum": 105,
+          "count": 2,
+          "max_underprediction": 55
+        },
+        "proposal": {
+          "absolute_error_sum": 5,
+          "count": 2,
+          "max_underprediction": 5
+        }
+      },
+      "checks": {
+        "lower_holdout_error": true,
+        "no_worse_underprediction": true,
+        "within_declared_limit": true
+      },
+      "artifact_sha256": "7fba284dea41d5dc5fa2db93ea51d67763eb9729ad097cecb5eae0a9bc4c2e0f",
+      "lineage": null,
+      "learning_status": "BOUNDED_PARAMETER_UPDATE; NO_CODE_SELF_MODIFICATION",
+      "reuse_condition": "Same context, resource, unit and data kind; only later records in a new cycle",
+      "prospective_validation": "PENDING",
+      "wellbeing_effect": "UNMEASURED",
+      "life_sustainment_effect": "UNMEASURED"
+    },
+    "reject_worse_underprediction": {
+      "kind": "RESOURCE_ESTIMATE_MEMORY",
+      "decision": "KEEP_BASELINE",
+      "estimate": 150,
+      "baseline": 150,
+      "proposal": 100,
+      "comparison": {
+        "baseline": {
+          "absolute_error_sum": 95,
+          "count": 2,
+          "max_underprediction": 0
+        },
+        "proposal": {
+          "absolute_error_sum": 5,
+          "count": 2,
+          "max_underprediction": 5
+        }
+      },
+      "checks": {
+        "lower_holdout_error": true,
+        "no_worse_underprediction": false,
+        "within_declared_limit": true
+      },
+      "artifact_sha256": "0a2a07c55abe0a11594df567bb7248210ccb80a608d6b78bb59cc461be6e3b79",
+      "lineage": null,
+      "learning_status": "BOUNDED_PARAMETER_UPDATE; NO_CODE_SELF_MODIFICATION",
+      "reuse_condition": "Same context, resource, unit and data kind; only later records in a new cycle",
+      "prospective_validation": "PENDING",
+      "wellbeing_effect": "UNMEASURED",
+      "life_sustainment_effect": "UNMEASURED"
+    },
+    "reject_shift": {
+      "kind": "RESOURCE_ESTIMATE_MEMORY",
+      "decision": "KEEP_BASELINE",
+      "estimate": 50,
+      "baseline": 50,
+      "proposal": 100,
+      "comparison": {
+        "baseline": {
+          "absolute_error_sum": 100,
+          "count": 2,
+          "max_underprediction": 0
+        },
+        "proposal": {
+          "absolute_error_sum": 200,
+          "count": 2,
+          "max_underprediction": 0
+        }
+      },
+      "checks": {
+        "lower_holdout_error": false,
+        "no_worse_underprediction": true,
+        "within_declared_limit": true
+      },
+      "artifact_sha256": "e599ce99c4f65278c3f780c4a47e3c864577a5b1f94b9e607ee94e5994c3b8c8",
+      "lineage": null,
+      "learning_status": "BOUNDED_PARAMETER_UPDATE; NO_CODE_SELF_MODIFICATION",
+      "reuse_condition": "Same context, resource, unit and data kind; only later records in a new cycle",
+      "prospective_validation": "PENDING",
+      "wellbeing_effect": "UNMEASURED",
+      "life_sustainment_effect": "UNMEASURED"
+    }
+  },
+  "water_savings": "UNMEASURED",
+  "wellbeing": "UNMEASURED",
+  "life_sustainment": "UNMEASURED"
+}

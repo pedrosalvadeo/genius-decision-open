@@ -1,9 +1,26 @@
-# Genius adaptativo — continuidad después del despliegue
+# Genius adaptativo — continuidad y aprendizaje de recursos
 
 Estado comprobado el 15 de octubre de 2026 UTC (14 de octubre por la noche en
 Argentina). La integración del coordinador con el servicio está terminada y
 activada. No volver a implementar este incremento ni solicitar nuevamente los
 accesos ya habilitados.
+
+## Incremento de aprendizaje preparado en esta edición
+
+`resource_calibration_v1` agrega propuestas de estimación, comparación nativa de
+error, guardas de subestimación, adopción interna y continuidad por memoria de una
+misión propia. Contrato [RESOURCE_CALIBRATION.md](../beta/docs/RESOURCE_CALIBRATION.md),
+ejemplo [resource-calibration.json](examples/resource-calibration.json).
+No cambia la base de datos, dependencias ni infraestructura; usa el worker y respaldo
+existentes. Es una actualización acotada de un parámetro, con validación retrospectiva.
+La evidencia local está en [2026-10-15-learning](evidence/2026-10-15-learning).
+
+La versión activa que figura debajo es la última comprobada **antes de desplegar
+este incremento**. Consultar el PR de la rama `work/resource-learning-20261015` y
+Railway para el estado posterior; no dar por activado un cambio sólo porque esté
+mergeado. El despliegue debe fijarse al commit probado de ese PR y conservar el
+volumen/configuración. Si el conector vuelve a cancelar `accept_deploy`, dejar el
+cambio concreto preparado para aplicar en el panel, sin otra vía de mutación.
 
 ## Versión activa
 
@@ -70,11 +87,14 @@ TAR 7.587.840, gzip 1.674.327 y ZIP 1.923.171, con integridad comprobada.
 
 ## Pendientes reales
 
-La memoria conserva observaciones y reutiliza resultados bajo igual contexto.
-Todavía no genera hipótesis, modifica modelos o código por sí misma ni realiza
-acciones externas. Bienestar humano y PVS permanecen sin medir. No se necesita
-proveedor LLM para la operación actual; agregar inferencia requiere una decisión
-de proveedor y costo, sin bloquear el desarrollo que no la necesite.
+La calibración implementada aprende un estimador constante mediante mediana de
+entrenamiento y contrasta errores en registros posteriores enviados juntos. La
+adopción cambia sólo el artefacto privado y la base de un ciclo siguiente autorizado.
+No demuestra generalización futura, ahorro de agua, bienestar o PVS. Las fuentes y
+fechas son declaraciones del remitente, no certificaciones de sensores. No genera
+estructuras arbitrarias ni modifica código por sí misma. Para una comprobación
+prospectiva se necesita congelar primero la estimación y recibir registros nuevos
+después, sin usarlos para ajustar esa misma predicción. No requiere proveedor LLM.
 
 Defecto heredado separado: los adaptadores FDQ apuntan a `beta/vendor/R0` y `R1`,
 ausentes en el repositorio público. La selección previa de 23 pruebas mostró
@@ -84,12 +104,14 @@ sigue pendiente; esta misión usa el gemelo y núcleo públicos presentes.
 
 ## Siguiente prompt
 
-> Continuá Genius adaptativo desde `adaptive/HANDOFF.md`. La integración del
-> servicio y la prueba de persistencia en Railway ya están completas. Conservá
-> esa base y avanzá hacia un ciclo que use observaciones para proponer y evaluar
-> mejoras: ampliar el registro de misiones, comparar resultados con el objetivo,
-> registrar propuestas y contrastarlas antes de adoptarlas. Elegí una aplicación
-> útil alineada con bienestar y sostenimiento de la vida, separando sus hipótesis
-> de efectos realmente medidos. No reinicies la arquitectura ni repitas las
-> verificaciones cerradas. Implementá un incremento verificable, preservá sus
-> cambios y evidencia en Git y entregá el próximo prompt de continuidad.
+> Continuá desde `adaptive/HANDOFF.md` y el PR de `work/resource-learning-20261015`.
+> Confirmá primero la versión activa; si el despliegue preparado ya fue aplicado,
+> verificá por API dos ciclos sintéticos, la estimación heredada y el borrado de la
+> cuenta de prueba. La distribución persistente ya está activa y comprobada. La
+> calibración añade propuestas de mediana, evaluación nativa de error, guardas y
+> memoria contextual; no la vuelvas a implementar. El próximo incremento útil es
+> contrastar una estimación congelada con observaciones recibidas posteriormente,
+> antes de usarlas en otro aprendizaje, y conservar esa evidencia prospectiva.
+> Separá los resultados sintéticos, los registros declarados y los efectos realmente
+> medidos. Conservá permisos, privacidad, recuperación y código en Git; no reinicies
+> la arquitectura ni infieras bienestar/PVS a partir del error de estimación.

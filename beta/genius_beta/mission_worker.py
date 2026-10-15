@@ -14,6 +14,10 @@ from .db import dump, transaction
 from .mission_state import digest, MAX_BUNDLE
 
 STAGES = ('measure','represent','evaluate','act','observe','remember')
+ARTIFACT_NAMES = {
+    'source_distribution_v1': ('source.tar','source.tar.gz','source.zip'),
+    'resource_calibration_v1': ('resource-estimate.json',),
+}
 
 def recover(db):
     db.execute("UPDATE adaptive_missions SET status=CASE WHEN attempts<3 THEN 'queued' ELSE 'interrupted' END,error='WORKER_RESTART' WHERE status='running'")
@@ -40,7 +44,9 @@ def execute(worker, after_checkpoint):
             return False
         db.execute("UPDATE adaptive_missions SET status='running',attempts=attempts+1,updated_at=? WHERE id=?", (int(time.time()),row['id']))
     mid = row['id']
-    payload = dict(id=mid, files=json.loads(row['input_json'])['files'])
+    mission_input = json.loads(row['input_json'])
+    kind = mission_input.get('kind', 'source_distribution_v1')
+    payload = dict(id=mid, input=mission_input)
     if row['state_bundle'] is not None:
         payload.update(state=base64.b64encode(row['state_bundle']).decode(), state_sha256=row['state_sha256'])
     root = Path(__file__).resolve().parents[2]
@@ -111,7 +117,7 @@ def execute(worker, after_checkpoint):
             if final:
                 if final.get('type') == 'completed':
                     artifact = base64.b64decode(final['artifact'], validate=True)
-                    if len(artifact)>262144 or digest(artifact)!=final['artifact_sha256'] or final['artifact_name'] not in ('source.tar','source.tar.gz','source.zip'):
+                    if len(artifact)>262144 or digest(artifact)!=final['artifact_sha256'] or final['artifact_name'] not in ARTIFACT_NAMES.get(kind, ()):
                         raise ValueError('ARTIFACT_INVALID')
                     if final['result'].get('status') != 'completed':
                         raise ValueError('RESULT_INVALID')

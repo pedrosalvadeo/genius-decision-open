@@ -242,3 +242,84 @@ run_once(w,hook)
             r=self.client.delete('/api/missions/'+mid,headers=h,json={'confirm':True})
         self.assertEqual(r.status_code,503,r.json)
         self.assertEqual(self.client.get('/api/missions/'+mid,headers=h).status_code,200)
+
+    def calibration_payload(self, parent=None, offset=0):
+        values = (90,100,110,100,105) if not parent else (110,115,120,115,120)
+        rows=[dict(id=f'observation-{i}', value=value, observed_at=f'2026-01-{i+offset:02d}T12:00:00Z',source='Synthetic service test') for i,value in enumerate(values,1)]
+        data=dict(kind='resource_calibration_v1',idempotency_key=secrets.token_hex(16),
+            processing_permission=True,technical_scope_acknowledged=True,
+            calibration=dict(context='Fixed water operation',resource='water',unit='millilitre',
+                max_underprediction=10,data_kind='synthetic',training=rows[:3],validation=rows[3:]))
+        if parent:data['parent_mission_id']=parent
+        else:data['calibration']['baseline']=50
+        return data
+
+    def test_calibration_learning_continuation_and_private_lineage(self):
+        h=self.register();other=self.register()
+        data=self.calibration_payload()
+        r=self.client.post('/api/missions',headers=h,json=data)
+        self.assertEqual(r.status_code,201,r.json)
+        mid=r.json['mission']['id'];self.start(h,mid);self.work()
+        result=self.get(h,mid)
+        self.assertEqual(result['status'],'completed',result)
+        self.assertEqual(result['kind'],'resource_calibration_v1')
+        self.assertEqual(result['result']['memory']['estimate'],100)
+        data2=self.calibration_payload(mid,offset=5)
+        self.assertEqual(self.client.post('/api/missions',headers=other,json=data2).status_code,404)
+        for altered in (self.calibration_payload(mid),{**data2,'calibration':{**data2['calibration'],'unit':'hour'}},
+                        {**data2,'calibration':{**data2['calibration'],'baseline':1}}):
+            self.assertEqual(self.client.post('/api/missions',headers=h,json=altered).status_code,400)
+        r=self.client.post('/api/missions',headers=h,json=data2)
+        self.assertEqual(r.status_code,201,r.json)
+        child=r.json['mission']['id']
+        exported=self.client.get('/api/missions/'+child+'/export',headers=h).json['mission']['input']
+        self.assertEqual(exported['calibration']['baseline'],100)
+        self.assertEqual(exported['lineage']['mission_id'],mid)
+        self.assertEqual(self.client.delete('/api/missions/'+mid,headers=h,json={'confirm':True}).status_code,204)
+        # Idempotent retry survives deletion of parent; continuation is a frozen snapshot.
+        r=self.client.post('/api/missions',headers=h,json=data2)
+        self.assertEqual(r.status_code,200,r.json);self.assertEqual(r.json['mission']['id'],child)
+        self.start(h,child);self.work()
+        result=self.get(h,child);self.assertEqual(result['status'],'completed',result)
+        self.assertEqual(result['result']['memory']['baseline'],100)
+        self.assertEqual(result['result']['memory']['estimate'],115)
+        self.assertEqual(self.client.get('/api/missions/'+child+'/export',headers=other).status_code,404)
+        artifact=self.client.get('/api/missions/'+child+'/artifact',headers=h).json
+        self.assertEqual(artifact['name'],'resource-estimate.json')
+        raw=base64.b64decode(artifact['content_base64'])
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),artifact['sha256'])
+        self.assertEqual(json.loads(raw)['prospective_validation'],'PENDING')
+        self.assertEqual(self.client.delete('/api/agents/me',headers=h,json={}).status_code,204)
+        with contextlib.closing(connect(self.config['DATABASE'])) as db:
+            self.assertEqual(db.execute('SELECT count(*) FROM adaptive_missions').fetchone()[0],0)
+
+    def test_calibration_checkpoint_restore_and_erasure(self):
+        h=self.register();data=self.calibration_payload()
+        r=self.client.post('/api/missions',headers=h,json=data);self.assertEqual(r.status_code,201,r.json)
+        mid=r.json['mission']['id'];self.start(h,mid)
+        def interrupt(stage):
+            if stage=='act':raise ValueError('TEST_INTERRUPT')
+        self.work(interrupt)
+        self.assertEqual(self.get(h,mid)['last_stage'],'act')
+        self.start(h,mid);self.work()
+        result=self.get(h,mid);self.assertEqual(result['status'],'completed',result)
+        self.assertEqual(result['attempts'],2)
+        helper=r2_backup.sqlite_backup();saved=Path(self.tmp.name)/'calibration-backup.sqlite3'
+        helper.snapshot(self.config['DATABASE'],saved)
+        self.assertEqual(self.client.delete('/api/missions/'+mid,headers=h,json={'confirm':True}).status_code,204)
+        restored=Path(self.tmp.name)/'calibration-erased.sqlite3'
+        helper.restore(saved,restored,self.config['DATABASE'],services_stopped=True)
+        with contextlib.closing(connect(restored)) as db:
+            self.assertEqual(db.execute('SELECT count(*) FROM adaptive_missions').fetchone()[0],0)
+
+    def test_calibration_contract_is_available_through_mcp(self):
+        h=self.register()
+        headers={**h,'Content-Type':'application/json','Accept':'application/json, text/event-stream','MCP-Protocol-Version':'2025-11-25'}
+        r=self.client.post('/mcp',headers=headers,json={'jsonrpc':'2.0','id':1,'method':'tools/call',
+            'params':{'name':'mission_create','arguments':{'payload':self.calibration_payload()}}})
+        self.assertEqual(r.status_code,200,r.json)
+        self.assertFalse(r.json['result']['isError'],r.json)
+        caps=self.client.get('/api/missions/capabilities',headers=h).json
+        self.assertIn('resource_calibration_v1',caps['kinds'])
+        self.assertTrue(caps['learning']['parameter_updates'])
+        self.assertFalse(caps['self_modification'])
