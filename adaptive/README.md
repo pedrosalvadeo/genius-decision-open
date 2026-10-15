@@ -1,4 +1,4 @@
-# Genius adaptativo — primer ciclo persistente
+# Genius adaptativo — ejecución persistente
 
 Genius puede ejecutar una misión técnica completa, guardar la evidencia y
 continuarla en otro proceso. Este incremento construye el soporte de ejecución
@@ -15,7 +15,15 @@ El criterio declarado es minimizar bytes preservando el contenido. Los tiempos
 de CPU son observaciones de una ejecución y no intervienen en la selección.
 Este resultado operacional no mide bienestar humano ni sostenimiento de vida.
 
-## Ejecutar
+## Servicio público
+
+La integración está activa en https://geniusdecision.app. La API recibe archivos
+UTF-8 explícitos, con permisos por cuenta, y ejecuta el mismo ciclo desde el worker.
+Guía: https://geniusdecision.app/static/missions.html. Contrato y garantías:
+[ADAPTIVE_MISSIONS.md](../beta/docs/ADAPTIVE_MISSIONS.md).
+La prueba de despliegue y reinicio está en [HANDOFF.md](HANDOFF.md).
+
+## Ejecutar la CLI
 
 Desde la raíz del repositorio, en Linux x86_64 con Python 3.12 y Git:
 
@@ -83,14 +91,11 @@ a aprender automáticamente su estructura o a mejorar el propio programa.
 No requiere claves de modelos ni hace inferencia pagada. No incorpora un cliente
 LLM. Las dependencias transitivas están fijadas con hashes para la plataforma
 probada. La traza remota se desactiva en la imagen y la CLI rechaza su activación.
-El estado es de operador de confianza; no acepta carpetas ni checkpoints de
-terceros ni se expone a usuarios del servicio público.
-
-La adopción en Railway requiere decidir cómo integrar permisos por usuario,
-cuotas persistentes, migraciones, retención y respaldo/restauración. Los backups
-actuales del servicio **no incluyen estas bases**. Hasta completar esa integración,
-conservar una copia de la carpeta completa con el proceso detenido; el repositorio
-guarda fuentes y evidencia pública, no el estado privado de futuras misiones.
+Las carpetas de la CLI son de operador de confianza; no aceptan checkpoints de
+terceros. La integración pública conserva su estado en la base principal y añade
+permisos, cuotas, retención y respaldo/restauración. Los respaldos del servicio
+incluyen esas misiones; las carpetas independientes de la CLI deben respaldarse
+por separado con sus procesos detenidos.
 
 ## Verificación
 
@@ -106,4 +111,5 @@ Referencias de la decisión técnica, consultadas el 2026-10-14:
 [Functional API](https://docs.langchain.com/oss/python/langgraph/functional-api),
 [persistencia](https://docs.langchain.com/oss/python/langgraph/persistence).
 La documentación presenta SQLite como almacenamiento local de desarrollo;
-no se da por resuelto el despliegue multiusuario o de múltiples réplicas.
+la integración pública usa una sola réplica y un único worker; no demuestra
+escalado con múltiples réplicas.

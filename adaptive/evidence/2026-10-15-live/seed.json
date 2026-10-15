@@ -1,0 +1,26 @@
+{
+  "phase": "seed",
+  "status": "PASS",
+  "origin": "https://geniusdecision.app",
+  "mission_id": "dbe8b3a13df8437453c7dd0c7a100162",
+  "artifact_sha256": "af05f383114c5e77034d6e50cbb7a9f31991faf9be22d26b24b550d5768ed209",
+  "last_stage": "remember",
+  "selected": "gzip",
+  "observation": {
+    "archive_bytes": 263,
+    "artifact_sha256": "af05f383114c5e77034d6e50cbb7a9f31991faf9be22d26b24b550d5768ed209",
+    "bytes_avoided_vs_tar": 20217,
+    "files_verified": 2,
+    "human_wellbeing_effect": "UNMEASURED",
+    "independent_users": 0,
+    "input_sha256": "101af2deb2f2ce61f798854d41a660665b56dac51ffe8a088b55cef20ecbc094",
+    "life_sustainment_effect": "UNMEASURED",
+    "network_transfers": 0,
+    "readback_verified": true,
+    "tar_bytes": 20480
+  },
+  "attempts": 1,
+  "export_digest": "956d0998d9e5cb27df6d6a8404b946c2fc8783d858e5e042be16669930a328c7",
+  "completed_at": 1792023006,
+  "restart_verified": false
+}
