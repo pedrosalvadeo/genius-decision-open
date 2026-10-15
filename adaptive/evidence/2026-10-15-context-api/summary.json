@@ -14,8 +14,58 @@
   "legacy_fixed_scorer_unchanged": true,
   "operator_v1_unchanged": true,
   "migration": "010_context_forecasts.sql",
-  "deployment": "PENDING_VERIFICATION",
-  "live_probe": "NOT_YET_RUN",
+  "deployment": "SUCCESS",
+  "live_probe": "PASS",
   "wellbeing_effect": "UNMEASURED",
-  "life_sustainment_effect": "UNMEASURED"
+  "life_sustainment_effect": "UNMEASURED",
+  "deployment_commit": "7fdb633549473984e16bfb67ed60b629cafe91d5",
+  "deployment_id": "ec8dada7-baae-4f79-9e28-9ec1329cbc47",
+  "live_probe_scope": "LIVE_SYNTHETIC_SERVICE_INTEGRATION",
+  "live_probe_sha256": "0bb5eb2a30b39b3a0e6555dcbacead31506025676eb864637a3f3bacb6cdfcfc",
+  "live_started_at": "2026-10-15T04:59:56.784686+00:00",
+  "live_completed_at": "2026-10-15T05:04:04.071768+00:00",
+  "synthetic_warmup": 3,
+  "synthetic_scored": 12,
+  "synthetic_comparison": {
+    "adaptive": {
+      "absolute_error_sum": 420,
+      "count": 12,
+      "max_underprediction": 50
+    },
+    "baseline": {
+      "absolute_error_sum": 540,
+      "count": 12,
+      "max_underprediction": 50
+    },
+    "context_median": {
+      "absolute_error_sum": 180,
+      "count": 12,
+      "max_underprediction": 90
+    },
+    "last_value": {
+      "absolute_error_sum": 1080,
+      "count": 12,
+      "max_underprediction": 90
+    },
+    "rolling_median": {
+      "absolute_error_sum": 1080,
+      "count": 12,
+      "max_underprediction": 90
+    }
+  },
+  "synthetic_selected_counts": {
+    "baseline": 9,
+    "context_median": 3,
+    "last_value": 0,
+    "rolling_median": 0
+  },
+  "synthetic_outcome": "OBSERVED_GUARDED_IMPROVEMENT",
+  "report_sha256": "6dae54469befc0acccea88b8840127a90f25a27f307983bba97b88ef8d9997a9",
+  "native_verified": true,
+  "closed_report_replayed": true,
+  "export_verified": true,
+  "account_erased": true,
+  "credential_revoked": true,
+  "production_restart_tested_in_this_probe": false,
+  "public_mcp_transport_tested_in_this_probe": false
 }

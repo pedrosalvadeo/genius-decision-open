@@ -1,11 +1,18 @@
-# Genius adaptativo — integración contextual REST/MCP preparada
+# Genius adaptativo — integración contextual activa y verificada
 
-15 de octubre de 2026. Implementado `resource_context_forecast_v1` como contrato
-aditivo del servicio. Código en la rama `work/context-api-20261015`; el PR registra
-commit probado, CI y pin solicitado para Railway. **No asumir que ya esté desplegado:**
-la última lectura previa a esta publicación mostró activo el PR 31, commit
-`2de2b7b0a1a885b62d7eb6597ea3b2d74741e90f`, sin cambios pendientes. Verificar el
-resultado del despliegue y la prueba por API antes de declarar activación.
+15 de octubre de 2026. `resource_context_forecast_v1` está integrado por el
+[PR 36](https://github.com/pedrosalvadeo/genius-decision-open/pull/36) y servido en
+https://geniusdecision.app. Pin `7fdb633549473984e16bfb67ed60b629cafe91d5`,
+despliegue Railway `ec8dada7-baae-4f79-9e28-9ec1329cbc47`, estado SUCCESS;
+lectura posterior sin cambios pendientes. La prueba REST pública terminó PASS
+el 15 de octubre a las 05:04:04 UTC (02:04 en Argentina), con borrado de cuenta
+y revocación de credencial confirmados después. No falta otro Apply.
+
+Código probado `611d1dcf1d313a3831913f5c3853d48113aba4b4`; el merge conserva
+su árbol. 139 pruebas de servicio y 46 adaptativas pasan; los tres trabajos CI
+del PR 36 aprobaron. Evidencia: [2026-10-15-context-api](evidence/2026-10-15-context-api),
+con identidad de despliegue, recibos públicos, resumen y hashes. Este documento
+no altera el runtime ni solicita desplegar de nuevo sólo por actualizar evidencia.
 
 ## Implementación disponible
 
@@ -36,37 +43,36 @@ Se comprobó elección contextual en datos sintéticos, fallo del núcleo, cuota
 concurrencia, reinicio entre predicción y observación, borrado durante cálculo,
 recuperación cifrada y compatibilidad con el pronóstico constante. El simulador
 local de API pierde una respuesta aceptada, reanuda el mismo objetivo, completa
-el informe, verifica exportación y borra cuenta/credencial. No atribuir esos
-resultados locales a la API pública hasta ejecutar la prueba desplegada.
+el informe, verifica exportación y borra cuenta/credencial. La prueba pública posterior se describe a continuación; recuperación y reinicios
+locales mantienen su alcance propio.
 
-## Despliegue y comprobación pendientes
+## Verificación pública y alcance
 
-El incremento cambia archivos del runtime y agrega una migración. Hay que fijar
-Railway al merge probado, revisar que el único cambio sea el pin, aplicar y observar
-`SUCCESS`. El servicio existente conserva proyecto/entorno/volumen y los límites
-actuales. Las misiones antiguas incompletas pueden requerir revisión al cambiar
-la identidad del runtime; las completadas conservan entregas. Los pronósticos
-constantes conservan su propio evaluador sin cambios.
+La prueba `beta/deploy/context_probe.py` completó 15 predicciones emitidas antes
+de enviar sus objetivos sintéticos: tres iniciales y doce puntuados. Comprobó
+identidad del evaluador, hashes, cadena temporal, selección desde prefijos,
+cierre nativo, reintento del cierre, exportación idéntica y borrado/revocación.
+La política aplicada eligió la base nueve veces y mediana contextual tres veces.
+Error absoluto total 540 → 420, máxima subestimación 50 → 50, límite declarado 50.
+Ambos contextos tuvieron seis objetivos puntuados. El informe distingue la política
+realmente ejecutada de las alternativas descriptivas; no selecciona a posteriori.
 
-Cliente preparado, reanudable y probado localmente:
+La secuencia alternante estaba predefinida para comprobar el contrato. **No es
+un nuevo ensayo empírico de mejora** ni sustituye el resultado HTTP negativo
+anterior. Bienestar y PVS continúan sin medirse. No se reinició producción ni
+se probó el transporte MCP público en este recorrido; esas rutas y recuperación
+se verificaron por separado localmente. No queda una credencial de prueba activa.
 
-```bash
-PYTHONPATH=adaptive:beta:twin:kernel python3.12 -B -m deploy.context_probe \
-  --state /ruta/privada/context-api.json --out /ruta/evidencia/context-api.json
-```
+Se conserva proyecto, entorno, volumen y límites existentes. La migración 010 es
+aditiva. Misiones antiguas incompletas pueden requerir revisión al cambiar la
+identidad del runtime; las completadas conservan sus entregas. El pronóstico
+constante mantiene su evaluador. El conector informó primero una cancelación de
+Apply; una lectura posterior confirmó el pin aplicado y SUCCESS. No se reintentó
+por otra vía y no se debe volver a aplicar un parche ya consumido.
 
-Usar rutas distintas; el estado privado contiene una credencial hasta la limpieza
-final. El modo `--cleanup-only` elimina la cuenta sin continuar el protocolo.
-No publicar ese estado. La salida pública omite el token. El cliente comprueba
-primero el manifiesto y no crea cuenta si el contrato aún no está servido. Respetar
-las cuotas; no eludirlas creando identidades o fuentes de acceso alternativas.
-
-La secuencia sintética está definida de antemano para probar selección y contratos;
-los objetivos se envían después de recibir sus predicciones. **No es un nuevo
-ensayo empírico de mejora** ni sustituye el resultado HTTP negativo del PR 35.
-Revisa fuentes servidas, hashes, cadena temporal, decisión efectivamente aplicada,
-verificación nativa, informe inmutable, exportación y eliminación de la cuenta.
-Si un alta o borrado queda incierto, conservar ese límite y no afirmar éxito.
+El cliente conserva reanudación y `--cleanup-only`. Para futuras pruebas usar
+estado privado separado de la salida pública, respetar cuotas y no reemplazar
+objetivos. La prueba actual ya terminó: no repetirla para obtener otro resultado.
 
 # Antecedente: selector contextual del observador y ensayo cerrado
 
@@ -74,8 +80,8 @@ Incremento anterior: 15 de octubre de 2026, ensayo terminado a las 04:30:14 UTC
 (01:30 en Argentina). Código y plan publicados antes de medir en
 `20503abac466166d8938a1ac36e71f4a0c50144b`, PR 35. Hay un selector ejecutable
 entre cuatro estrategias usando sólo observaciones previas del mismo contexto.
-**Es un módulo del observador operador; todavía no está integrado en REST/MCP.**
-No cambió el runtime del servicio ni se requiere otro Apply por este incremento.
+En ese incremento era un módulo del observador operador, sin integración en
+REST/MCP; el PR 36 posterior completa esa integración. El PR 35 no cambió el runtime.
 
 Contrato en [observers/CONTEXT_STRATEGIES.md](observers/CONTEXT_STRATEGIES.md),
 evidencia en [evidence/2026-10-15-context-http](evidence/2026-10-15-context-http).
@@ -307,16 +313,14 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 ## Siguiente prompt
 
 > Continuá desde `adaptive/HANDOFF.md` y `beta/docs/CONTEXT_FORECASTS.md`.
-> El contrato contextual REST/MCP está implementado; 139 pruebas de servicio y
-> 46 adaptativas pasan. Consultá el PR de `work/context-api-20261015` para obtener
-> el merge probado, CI y estado del despliegue. Verificá Railway y el manifiesto:
-> no confundas código integrado con servicio activo. Si el pin aún está pendiente,
-> completá su aplicación autorizada y esperá SUCCESS. Luego ejecutá la prueba
-> `beta/deploy/context_probe.py`, respetando cuotas, conservando estado privado
-> fuera de Git, sin reemplazar objetivos y borrando la cuenta temporal al terminar.
-> Publicá el recibo público, la identidad del despliegue, límites y siguiente prompt.
-> Conservá el resultado HTTP negativo previo y la regla v1. Después de verificar
-> el servicio, abordá los costes de sobre/subestimación como un objetivo nuevo y
-> versionado antes de nuevos datos; no ajustes el criterio para aprobar lo ya visto.
-> Bienestar/PVS siguen sin medirse: no convertir pruebas sintéticas de integración
-> en evidencia de beneficios reales. No repitas la implementación ni ensayos cerrados.
+> El contrato contextual está desplegado: PR 36, pin 7fdb633, Railway SUCCESS,
+> prueba REST pública PASS con 15 pares de recibos, informe/exportación verificados
+> y cuenta temporal borrada. No repitas ese despliegue ni la prueba completada.
+> Conservá la regla v1, sus recibos y el ensayo HTTP negativo previo.
+> El siguiente incremento es definir un objetivo v2 explícito para los costes de
+> sobreestimación y subestimación, con unidades, parámetros y límites revisables.
+> Prepará contrato, implementación y pruebas sintéticas antes de nuevos datos;
+> no modifiques la regla antigua ni ajustes el criterio para aprobar lo observado.
+> Si falta un coste o preferencia del caso real, dejalo explícito y configurable;
+> no inventes valores que pretendan representar bienestar o sostenimiento de vida.
+> Actualizá evidencia y este handoff al terminar. Bienestar/PVS siguen sin medirse.
