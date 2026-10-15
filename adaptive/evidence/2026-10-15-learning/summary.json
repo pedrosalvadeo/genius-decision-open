@@ -1,5 +1,5 @@
 {
-  "status": "LOCAL_PASS",
+  "status": "LOCAL_AND_LIVE_PASS",
   "base_commit": "9a8bee30cbb02b1bf0b806386351308367288aac",
   "service_tests": 120,
   "adaptive_tests": 24,
@@ -7,10 +7,18 @@
   "implementation": "resource_calibration_v1",
   "learning_rule": "LOWER_MEDIAN_HOLDOUT_MAE_V1",
   "validation": "RETROSPECTIVE_CHRONOLOGICAL_HOLDOUT",
-  "evidence": "SYNTHETIC_TESTS_ONLY",
-  "live_deployment": "PENDING",
+  "evidence": "LOCAL_SYNTHETIC_TESTS_AND_LIVE_SYNTHETIC_TWO_CYCLE_PROBE",
+  "live_deployment": "SUCCESS",
   "wellbeing": "UNMEASURED",
   "life_sustainment": "UNMEASURED",
   "new_dependencies": 0,
-  "new_database_migrations": 0
+  "new_database_migrations": 0,
+  "deployment_id": "7a88246f-ca8c-4de4-85b8-6c5676e9360b",
+  "implementation_pr": 28,
+  "configured_commit": "c2aa351b05a5e6857435df86a50bf63682b0f3f6",
+  "provider_metadata_commit": "93f5be90080db58e821a88581473f8b6a89c6dc8",
+  "runtime_sources_identical": true,
+  "live_probe": "live-probe.json",
+  "probe_account_erased": true,
+  "credential_revoked": true
 }

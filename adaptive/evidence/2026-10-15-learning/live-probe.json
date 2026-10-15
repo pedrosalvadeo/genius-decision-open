@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "origin": "https://geniusdecision.app",
+  "scope": "LIVE_SERVICE_SYNTHETIC_TWO_CYCLE_PROBE",
+  "cycles": [
+    {
+      "cycle": 1,
+      "mission_id": "3b43bdfce1000d34c897cf05fde2075c",
+      "baseline": 50,
+      "estimate": 100,
+      "comparison": {
+        "baseline": {
+          "absolute_error_sum": 105,
+          "count": 2,
+          "max_underprediction": 55
+        },
+        "proposal": {
+          "absolute_error_sum": 5,
+          "count": 2,
+          "max_underprediction": 5
+        }
+      },
+      "decision": "ADOPT_PROPOSAL",
+      "native_verified": true,
+      "artifact_sha256": "194435091c80967c3e806422fa0cf4a5075626ac45429dd8f5ff351d0e4d0f02",
+      "last_stage": "remember",
+      "attempts": 1,
+      "explicit_run_reused": true,
+      "lineage": null
+    },
+    {
+      "cycle": 2,
+      "mission_id": "e0463716d7bf7c456004049d7b55aa11",
+      "baseline": 100,
+      "estimate": 115,
+      "comparison": {
+        "baseline": {
+          "absolute_error_sum": 35,
+          "count": 2,
+          "max_underprediction": 20
+        },
+        "proposal": {
+          "absolute_error_sum": 5,
+          "count": 2,
+          "max_underprediction": 5
+        }
+      },
+      "decision": "ADOPT_PROPOSAL",
+      "native_verified": true,
+      "artifact_sha256": "83e14a455bf1b77878a7f0395d6677215e7cee8f5a18a8739957ad41022b8979",
+      "last_stage": "remember",
+      "attempts": 1,
+      "explicit_run_reused": true,
+      "lineage": {
+        "artifact_sha256": "194435091c80967c3e806422fa0cf4a5075626ac45429dd8f5ff351d0e4d0f02",
+        "estimate": 100,
+        "mission_id": "3b43bdfce1000d34c897cf05fde2075c"
+      }
+    }
+  ],
+  "probe_account_erased": true,
+  "credential_revoked": true,
+  "verified_at": 1792032299,
+  "prospective_validation": "PENDING",
+  "water_savings": "UNMEASURED",
+  "wellbeing": "UNMEASURED",
+  "life_sustainment": "UNMEASURED"
+}
