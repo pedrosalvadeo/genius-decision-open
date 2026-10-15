@@ -1,11 +1,12 @@
-# Genius adaptativo — aprendizaje activado y comprobado
+# Genius adaptativo — comprobación prospectiva activada y verificada
 
-Estado comprobado el 15 de octubre de 2026 UTC (14 por la noche en Argentina).
-El usuario aplicó el cambio en Railway. La calibración de recursos está activa y
-la prueba de continuidad por API pasó. No volver a solicitar aquella activación,
-reimplementar este incremento ni repetir sus pruebas sin una razón concreta.
+Estado comprobado el 15 de octubre de 2026 a las 03:37 UTC (00:37 en Argentina).
+El usuario aplicó el cambio del PR 31 en Railway. La comprobación prospectiva está
+activa y pasó el ensayo sintético completo por API. La cuenta de prueba fue borrada
+y su credencial revocada. No volver a solicitar esta activación, reimplementar el
+incremento ni repetir sus pruebas sin una razón concreta.
 
-## Incremento de comprobación preparado en esta edición
+## Incremento de comprobación activo
 
 `resource_forecast_v1` congela una estimación, su base, contexto, tolerancia y
 cantidad prevista (3..30) antes de aceptar observaciones en peticiones posteriores.
@@ -21,37 +22,37 @@ Migración aditiva 009, recuperación cifrada y borrado por cascada comprobados.
 El hash del código de puntuación queda congelado; un cambio bloquea nuevas
 observaciones hasta revisión, conservando lectura, exportación y borrado.
 
-El estado de producción debajo corresponde a la calibración del PR 28, **antes de
-activar este nuevo incremento**. Consultar el PR de la rama
-`work/prospective-validation-20261015` para CI, commit y resultado de despliegue.
-No darlo por activo sólo por estar mergeado. Si `accept_deploy` vuelve a cancelarse,
-dejar el cambio concreto preparado en el panel, sin intentar otra vía de escritura.
+`beta/deploy/prospective_probe.py` comprobó por API la secuencia congelar -> recibir
+tres registros -> cerrar informe -> aprender en otra misión. La estimación 100
+quedó fija antes de recibir 110, 115 y 120. El error absoluto total bajó de 195
+(base 50) a 45; el informe correctamente devolvió `NO_CONFIRMED_IMPROVEMENT` porque
+la máxima subestimación 20 superó la tolerancia 10. La misión hija reutilizó esos
+registros ya puntuados como aprendizaje y otros posteriores para comprobar una
+nueva estimación 115, conservando los hashes de procedencia y el informe anterior.
 
-Una vez desplegado, `beta/deploy/prospective_probe.py` permite comprobar por API
-la secuencia congelar -> recibir tres registros -> cerrar informe -> aprender en
-otra misión. Argumentos: ruta privada nueva para estado temporal, ruta pública de
-recibo y `adaptive/examples/resource-calibration.json`. Crea y borra una cuenta
-sintética. Compara hashes del código servido, recibos y entregas; nunca publica su
-credencial. Este ensayo no certifica sensores ni un beneficio real para la vida.
+Coinciden los hashes del código servido y local; se comprobaron entrega, congelación,
+recibos, cadena temporal e informe. La cuenta sintética fue borrada, su credencial
+devolvió HTTP 401 y el estado privado fue reemplazado por un recibo sin secretos.
+El ensayo usa datos sintéticos; no certifica sensores ni un beneficio real para la vida.
 
 ## Servicio y versiones
 
 - URL: https://geniusdecision.app
 - Implementación de aprendizaje: https://github.com/pedrosalvadeo/genius-decision-open/pull/28
-- Pin configurado: `c2aa351b05a5e6857435df86a50bf63682b0f3f6`.
-- Railway: despliegue `7a88246f-ca8c-4de4-85b8-6c5676e9360b`, `SUCCESS`.
-- Creado `2026-10-15T02:40:47.291Z`, exitoso `02:41:32.700Z`.
-- Metadatos de despliegue: `93f5be90080db58e821a88581473f8b6a89c6dc8`.
-  El pin configurado y los metadatos del proveedor difieren. Se conservaron ambos:
-  todos los archivos copiados en la imagen tienen los mismos objetos Git; entre
-  esos commits sólo cambiaron metadatos de publicación y registros de revisión.
-  No afirmar una identidad única del repositorio completo sin resolver esa diferencia.
+- Comprobación prospectiva: https://github.com/pedrosalvadeo/genius-decision-open/pull/31
+- Pin configurado y metadatos del despliegue coinciden:
+  `2de2b7b0a1a885b62d7eb6597ea3b2d74741e90f`.
+- Railway: despliegue `1d736e8d-65a0-4abf-9d96-f1f0b23b2e99`, `SUCCESS`.
+- Creado `2026-10-15T03:32:07.033Z`, exitoso `03:32:37.058Z`.
+- CI del PR 31 aprobado en `d9454ba0ab8db1e35bcb2d142b58f98ce2488aef`:
+  Club 38675859990, recuperación 38675859984 y cápsula 38675860002.
+  El merge conserva el árbol probado `448b73f291d653f44b2cc97f1f7f7b9c4bbc2d51`.
 - Proyecto `a93aa08c-f3b6-4a5b-accc-9812d6314f00`, entorno
   `1addd5b8-5a47-4301-aeca-d9596bceb4e0`, servicio
   `dafd0be5-61aa-4843-a3a3-3c1f487d9640`.
 - Sin cambios pendientes; volumen existente de 500 MB en `/data`, una réplica.
 - Salud y respaldo `ok`, servicio no suspendido. Capacidades de aprendizaje
-  confirmadas por la API autenticada y ejecución real.
+  y comprobación confirmadas por la API autenticada y ejecución real.
 
 El conector había cancelado `accept_deploy` indicando falta de aprobación; Pedro
 lo resolvió aplicando el cambio en el panel. Es un bloqueo histórico resuelto,
@@ -73,6 +74,9 @@ idempotencia, cancelación, retención, borrado y revisión ante cambios del run
    de comprobación con el núcleo nativo. Adopta sólo si el error total baja,
    la máxima subestimación no empeora y cumple la tolerancia declarada.
    Si no, conserva la base; conservarla no certifica que sea adecuada.
+3. `resource_forecast_v1`: congela una entrega completada y puntúa observaciones
+   recibidas después, sin modificar la predicción ni el informe cerrado. Usa
+   puntuación aritmética fija; la calibración posterior sigue usando el núcleo nativo.
 
 La entrega privada `resource-estimate.json` conserva la estimación y su evidencia.
 Otro ciclo puede heredar la estimación de una misión propia completada por
@@ -87,6 +91,12 @@ Guía: https://geniusdecision.app/static/missions.html.
 Ejemplo: [resource-calibration.json](examples/resource-calibration.json).
 
 ## Evidencia recibida
+
+[2026-10-15-prospective](evidence/2026-10-15-prospective) conserva las 129 pruebas
+locales, identidades de CI/despliegue, salud y recibo completo del ensayo en vivo.
+Incluye fechas del servidor, cadena de hashes, resultado negativo de la guarda,
+nueva estimación 115 y confirmación de borrado/revocación. No hubo reinicio adicional
+durante el ensayo. Las pruebas anteriores permanecen como evidencia histórica.
 
 [2026-10-15-learning](evidence/2026-10-15-learning) contiene código de la prueba,
 recibos públicos sin credenciales, comparación de fuentes y resultados:
@@ -110,14 +120,14 @@ La captura original de 460 archivos permanece en [2026-10-14](evidence/2026-10-1
 
 ## Pendiente real
 
-La validación actual es retrospectiva: las dos particiones se envían juntas.
-La procedencia y fechas son declaraciones, sin certificación de sensores.
-Los casos de esta prueba son sintéticos; no demuestran generalización futura,
-ahorro de agua, bienestar ni probabilidad de vida sostenida. No se necesita un
-proveedor LLM para el siguiente avance.
+El siguiente avance requiere una fuente real autorizada con contexto, unidad,
+procedencia y criterios de evaluación explícitos. Ninguna fuente real se eligió o
+conectó en este ensayo. La procedencia y las fechas de evento siguen siendo
+declaraciones; el servidor comprueba el orden de recepción. Los casos son sintéticos;
+no demuestran generalización futura, ahorro de agua, bienestar ni probabilidad de
+vida sostenida. No se necesita un proveedor LLM para el siguiente avance.
 
-El incremento preparado implementa la separación temporal de recepción y puntuación.
-Aún queda comprobarlo en producción tras activarlo. No identifica observaciones
+El incremento activo separa temporalmente recepción y puntuación. No identifica observaciones
 copiadas manualmente a otras solicitudes, no certifica relojes externos ni evita
 que un remitente seleccione u omita datos. La ruta de reutilización del informe
 sólo se habilita tras completarlo. La calibración hija conserva sus propias
@@ -130,13 +140,12 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 
 ## Siguiente prompt
 
-> Continuá desde `adaptive/HANDOFF.md` y el PR de `work/prospective-validation-20261015`.
-> El aprendizaje del PR 28 ya está activo y verificado; la nueva comprobación
-> `resource_forecast_v1` está implementada y probada. Primero confirmá si se aplicó
-> el despliegue preparado. Cuando esté activo, ejecutá el ensayo sintético de
-> `beta/deploy/prospective_probe.py`, comprobá hashes y secuencia temporal, informe
-> inmutable, aprendizaje posterior y borrado de la cuenta. No repitas el desarrollo.
-> Después, avanzá hacia la entrada de observaciones de una fuente real autorizada
+> Continuá desde `adaptive/HANDOFF.md` y `adaptive/evidence/2026-10-15-prospective`.
+> El aprendizaje del PR 28 y la comprobación `resource_forecast_v1` del PR 31 están
+> activos y verificados en producción. El ensayo sintético pasó: predicción fija,
+> recepción posterior, guarda de tolerancia, informe inmutable, nuevo aprendizaje
+> y borrado/revocación. No repitas ese desarrollo, despliegue ni ensayo cerrado.
+> Avanzá hacia la entrada de observaciones de una fuente real autorizada
 > con contexto, unidad y procedencia explícitos. Diferenciá el orden de recepción
 > comprobado de la veracidad independiente del evento y de efectos de bienestar/PVS.
 > Conservá permisos, recuperación y evidencia en Git y entregá el siguiente prompt.

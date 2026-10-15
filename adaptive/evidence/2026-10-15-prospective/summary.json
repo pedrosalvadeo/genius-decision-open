@@ -1,5 +1,5 @@
 {
-  "status": "LOCAL_PASS",
+  "status": "LOCAL_AND_LIVE_PASS",
   "base_commit": "69426455e354c1b2b1e4766630a888215d6e3f93",
   "service_tests": 129,
   "new_tests": 9,
@@ -7,9 +7,27 @@
   "migration": "009_mission_forecasts.sql",
   "prospective_evidence": "SERVER_RECEIPT_ORDER_ONLY",
   "test_events": "SYNTHETIC_SIMULATED_CLOCK",
-  "live_deployment": "PENDING",
+  "live_deployment": "SUCCESS",
   "independent_source_verification": false,
   "wellbeing": "UNMEASURED",
   "life_sustainment": "UNMEASURED",
-  "new_dependencies": 0
+  "new_dependencies": 0,
+  "deployed_commit": "2de2b7b0a1a885b62d7eb6597ea3b2d74741e90f",
+  "deployment_id": "1d736e8d-65a0-4abf-9d96-f1f0b23b2e99",
+  "live_probe": "PASS",
+  "live_scope": "LIVE_SYNTHETIC_POST_FREEZE_SUBMISSIONS",
+  "live_verified_at": "2026-10-15T03:37:47+00:00",
+  "live_forecast_outcome": "NO_CONFIRMED_IMPROVEMENT",
+  "live_learned_estimate": 115,
+  "probe_account_erased": true,
+  "credential_revoked": true,
+  "private_state_secret_removed": true,
+  "receipt_chain_verified": true,
+  "tested_head": "d9454ba0ab8db1e35bcb2d142b58f98ce2488aef",
+  "tested_tree": "448b73f291d653f44b2cc97f1f7f7b9c4bbc2d51",
+  "ci_runs": {
+    "club": 38675859990,
+    "adaptive": 38675859984,
+    "capsule": 38675860002
+  }
 }

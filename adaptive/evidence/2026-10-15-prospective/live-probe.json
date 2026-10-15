@@ -1,0 +1,172 @@
+{
+  "status": "PASS",
+  "scope": "LIVE_SYNTHETIC_POST_FREEZE_SUBMISSIONS",
+  "origin": "https://geniusdecision.app",
+  "parent_mission_id": "7ee6fb76cdb4960df13551dfe28ccbf3",
+  "child_mission_id": "c83ebb25f34df4d61ccc3fec82200c8f",
+  "forecast": {
+    "frozen": {
+      "artifact_sha256": "a3c30018482b65f3f87307667ffda0166cfe4d4344dd464125b2d7d4d6e2310b",
+      "baseline": 50,
+      "context": "Una misma operaci\u00f3n de riego de demostraci\u00f3n, condiciones constantes declaradas",
+      "data_kind": "synthetic",
+      "estimate": 100,
+      "event_times": "DECLARED_NOT_ATTESTED",
+      "expected_count": 3,
+      "format": "resource_forecast_v1",
+      "frozen_at": "2026-10-15T03:36:41.648772Z",
+      "frozen_at_us": 1792035401648772,
+      "max_underprediction": 10,
+      "mission_id": "7ee6fb76cdb4960df13551dfe28ccbf3",
+      "resource": "agua",
+      "rule": "FIXED_ESTIMATES_ABSOLUTE_ERROR_V1",
+      "scorer_identity": {
+        "calibration_sha256": "129c10d4533081a7e8d978441437c059d53157e5ef642468a74298217e647469",
+        "rule": "FIXED_ESTIMATES_ABSOLUTE_ERROR_V1",
+        "scorer_sha256": "bc184469b90c3c2ac7cb0ae8000ddc23cf49b74cad3fb6a34002e7dc0d1f945a"
+      },
+      "unit": "millilitre"
+    },
+    "observations": [
+      {
+        "receipt": {
+          "errors": {
+            "baseline": {
+              "absolute": 60,
+              "underprediction": 60
+            },
+            "estimate": {
+              "absolute": 10,
+              "underprediction": 10
+            }
+          },
+          "forecast_sha256": "1095abb25f20b26ceb5512724a5c3876db679fc3494d4010061ed12ce5c72c3b",
+          "observation": {
+            "id": "after-freeze-1",
+            "observed_at": "2026-10-15T03:36:41.709710+00:00",
+            "source": "Synthetic operator probe generated after frozen prediction",
+            "value": 110
+          },
+          "previous_sha256": "1095abb25f20b26ceb5512724a5c3876db679fc3494d4010061ed12ce5c72c3b",
+          "received_at": "2026-10-15T03:36:47.657808Z",
+          "received_at_us": 1792035407657808,
+          "sequence": 1
+        },
+        "sha256": "e787bf7c94956af20c9f970d3f95399ffe0b918adcbc2c0affe7246d358549cd"
+      },
+      {
+        "receipt": {
+          "errors": {
+            "baseline": {
+              "absolute": 65,
+              "underprediction": 65
+            },
+            "estimate": {
+              "absolute": 15,
+              "underprediction": 15
+            }
+          },
+          "forecast_sha256": "1095abb25f20b26ceb5512724a5c3876db679fc3494d4010061ed12ce5c72c3b",
+          "observation": {
+            "id": "after-freeze-2",
+            "observed_at": "2026-10-15T03:36:47.717111+00:00",
+            "source": "Synthetic operator probe generated after frozen prediction",
+            "value": 115
+          },
+          "previous_sha256": "e787bf7c94956af20c9f970d3f95399ffe0b918adcbc2c0affe7246d358549cd",
+          "received_at": "2026-10-15T03:36:53.621150Z",
+          "received_at_us": 1792035413621150,
+          "sequence": 2
+        },
+        "sha256": "cf69d572c40ba4a7266f37d5308f7124ec9e0bd081c9f1c79cce57c66b38bb01"
+      },
+      {
+        "receipt": {
+          "errors": {
+            "baseline": {
+              "absolute": 70,
+              "underprediction": 70
+            },
+            "estimate": {
+              "absolute": 20,
+              "underprediction": 20
+            }
+          },
+          "forecast_sha256": "1095abb25f20b26ceb5512724a5c3876db679fc3494d4010061ed12ce5c72c3b",
+          "observation": {
+            "id": "after-freeze-3",
+            "observed_at": "2026-10-15T03:36:53.680787+00:00",
+            "source": "Synthetic operator probe generated after frozen prediction",
+            "value": 120
+          },
+          "previous_sha256": "cf69d572c40ba4a7266f37d5308f7124ec9e0bd081c9f1c79cce57c66b38bb01",
+          "received_at": "2026-10-15T03:36:59.640090Z",
+          "received_at_us": 1792035419640090,
+          "sequence": 3
+        },
+        "sha256": "d7fb1f75fe12a3e9ccd6f3e40f8453d848fb11a8f746cd1893cdad18ab891aa2"
+      }
+    ],
+    "received_count": 3,
+    "report": {
+      "baseline": 50,
+      "checks": {
+        "lower_error": true,
+        "no_worse_underprediction": true,
+        "within_declared_limit": false
+      },
+      "closed_at": "2026-10-15T03:36:59.640090Z",
+      "closed_at_us": 1792035419640090,
+      "comparison": {
+        "baseline": {
+          "absolute_error_sum": 195,
+          "count": 3,
+          "max_underprediction": 70
+        },
+        "estimate": {
+          "absolute_error_sum": 45,
+          "count": 3,
+          "max_underprediction": 20
+        }
+      },
+      "data_kind": "synthetic",
+      "estimate": 100,
+      "event_times": "DECLARED_NOT_ATTESTED",
+      "evidence_status": "POST_FREEZE_SUBMISSIONS",
+      "expected_count": 3,
+      "forecast_sha256": "1095abb25f20b26ceb5512724a5c3876db679fc3494d4010061ed12ce5c72c3b",
+      "format": "resource_forecast_v1",
+      "life_sustainment_effect": "UNMEASURED",
+      "model_changed": false,
+      "outcome": "NO_CONFIRMED_IMPROVEMENT",
+      "receipt_sha256s": [
+        "e787bf7c94956af20c9f970d3f95399ffe0b918adcbc2c0affe7246d358549cd",
+        "cf69d572c40ba4a7266f37d5308f7124ec9e0bd081c9f1c79cce57c66b38bb01",
+        "d7fb1f75fe12a3e9ccd6f3e40f8453d848fb11a8f746cd1893cdad18ab891aa2"
+      ],
+      "source_verification": "NOT_INDEPENDENTLY_VERIFIED",
+      "unit": "millilitre",
+      "wellbeing_effect": "UNMEASURED"
+    },
+    "report_sha256": "0eeac8317f56412bc80b9eec9c755ae98468e6c8bd7f0732de5e5d3fb2e940ee",
+    "sha256": "1095abb25f20b26ceb5512724a5c3876db679fc3494d4010061ed12ce5c72c3b",
+    "status": "complete"
+  },
+  "learned_estimate": 115,
+  "child_artifact_sha256": "bfb6a4d90358be7847aa29b76d54a2edc3e110091e5395d88fdb41ac55442bce",
+  "child_lineage": {
+    "artifact_sha256": "a3c30018482b65f3f87307667ffda0166cfe4d4344dd464125b2d7d4d6e2310b",
+    "estimate": 100,
+    "forecast_sha256": "1095abb25f20b26ceb5512724a5c3876db679fc3494d4010061ed12ce5c72c3b",
+    "mission_id": "7ee6fb76cdb4960df13551dfe28ccbf3",
+    "report_sha256": "0eeac8317f56412bc80b9eec9c755ae98468e6c8bd7f0732de5e5d3fb2e940ee"
+  },
+  "old_report_unchanged": true,
+  "receipt_times": "SERVER_RECORDED",
+  "source_truth": "NOT_INDEPENDENTLY_VERIFIED",
+  "wellbeing": "UNMEASURED",
+  "life_sustainment": "UNMEASURED",
+  "probe_account_erased": true,
+  "credential_revoked": true,
+  "verified_at": 1792035467
+}
