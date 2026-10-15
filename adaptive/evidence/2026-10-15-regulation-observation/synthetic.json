@@ -1,0 +1,103 @@
+{
+  "classification": "PRIVATE_OPERATOR_REPORT",
+  "coverage": {
+    "complete_window_proven": false,
+    "deleted_prefix_detected": false,
+    "event_limit": 512,
+    "events_in_window": 10,
+    "first_retained_at": 1000000000,
+    "internal_missing_sequences": 0,
+    "last_retained_at": 1000000019,
+    "record_limit_reached": false,
+    "requested_start_older_than_retention": false,
+    "retained_events": 10,
+    "retention_seconds": 604800
+  },
+  "current_snapshot": {
+    "pending_missions": 2,
+    "regulator": {
+      "active_age_seconds": null,
+      "active_attempt": false,
+      "consecutive_operational_failures": 3,
+      "enabled_in_runtime": null,
+      "freshness": "fresh",
+      "mode": "COOLDOWN",
+      "observed_at": 1000000019,
+      "record_present": true
+    },
+    "stored_missions_by_status": {
+      "cancelled": 0,
+      "completed": 1,
+      "draft": 0,
+      "failed": 0,
+      "interrupted": 0,
+      "needs_review": 0,
+      "queued": 1,
+      "running": 1
+    }
+  },
+  "eligible_for_policy_promotion": false,
+  "format": "genius-regulation-observation/1",
+  "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+  "recorded_elapsed_seconds": {
+    "all_finished": {
+      "count": 3,
+      "max": 9,
+      "min": 1,
+      "p50": 2,
+      "p95": 9
+    },
+    "by_outcome": {
+      "completed": {
+        "count": 1,
+        "max": 2,
+        "min": 2,
+        "p50": 2,
+        "p95": 2
+      },
+      "neutral": {
+        "count": 1,
+        "max": 1,
+        "min": 1,
+        "p50": 1,
+        "p95": 1
+      },
+      "operational_failure": {
+        "count": 1,
+        "max": 9,
+        "min": 9,
+        "p50": 9,
+        "p95": 9
+      }
+    },
+    "method": "nearest_rank"
+  },
+  "requested_window": {
+    "since_inclusive": 999999999,
+    "until_exclusive": 1000000020
+  },
+  "retained_window_events": {
+    "finished": {
+      "completed": 1,
+      "neutral": 1,
+      "operational_failure": 1
+    },
+    "interrupted_unknown": 1,
+    "started": 4,
+    "transitions": 2
+  },
+  "snapshot_captured_at": 1000000020,
+  "source": {
+    "declared": "synthetic",
+    "independently_verified": false
+  },
+  "unavailable_metrics": [
+    "queue_wait_seconds",
+    "rejected_admissions",
+    "total_arrival_demand",
+    "pending_time_integral",
+    "downtime_seconds",
+    "counterfactual_policy_gain",
+    "wellbeing_or_life_sustainability"
+  ]
+}

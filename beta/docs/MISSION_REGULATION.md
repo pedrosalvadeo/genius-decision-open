@@ -87,6 +87,11 @@ suspensión del operador; nunca relaja hashes de migraciones anteriores.
 Inspección local del operador: `PYTHONPATH=beta python -m genius_beta.regulation`.
 Esa orden sólo lee; su salida no debe confundirse con el estado público resumido.
 
+Para un resumen privado acotado, con intervalos, resultados separados y límites
+de cobertura explícitos, usar el [informe de observación](MISSION_OBSERVATION.md).
+No publica el diario ni modifica el controlador; su ejecución en la base real debe
+constatarse por separado de la validación sintética.
+
 ## Validación y continuación
 
 `beta/tests/test_regulation.py` prueba umbrales/márgenes, falta de sensores, reloj,

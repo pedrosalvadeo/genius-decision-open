@@ -1,3 +1,45 @@
+# Genius — informe privado de observación preparado; prueba pública bloqueada
+
+15 de octubre de 2026. [Contrato del informe](../beta/docs/MISSION_OBSERVATION.md).
+`beta/tools/regulation_observation.py` lee la base existente en una transacción
+SQLite de sólo lectura. Resume finales completados/fallos operativos/neutros,
+interrupciones desconocidas, duraciones registradas y una fotografía actual de
+misiones pendientes. Explicita retención, huecos y observaciones ausentes. No
+infiere espera en cola, tráfico total, causalidad ni bienestar/PVS. No cambia
+runtime, política, migraciones, recursos, cuotas o permisos.
+
+Archivo privado 0600 sin sobrescritura, sin IDs, entradas, resultados, artefactos,
+credenciales ni diario crudo. Fuente declarada no equivale a fuente verificada.
+Código, pruebas y [ejemplo enteramente sintético](evidence/2026-10-15-regulation-observation/synthetic.json)
+son publicables; los registros/analíticas privados de producción no se adjuntan.
+Trece pruebas nuevas más las 42 del controlador y ensayos previos pasan: **55**.
+Los dos estudios congelados siguen reproduciéndose y ambos conservan su rechazo.
+El workflow Club incorpora la nueva suite. La evidencia de CI del head publicado
+se registra en el PR de esta entrega.
+
+**Situación real:** Railway confirma el mismo despliegue SUCCESS
+`bb6b9074-d964-4c4a-909b-982c59fa499b`, pin
+`3f366854bb4d266070f309646518106abb13096a`, sin cambios pendientes. No hace falta
+Apply. El nuevo intento público, 19:41 UTC (16:41 Argentina), volvió a recibir
+`POST /api/agents/register → 429 rate_limit`, antes de crear cuenta, credencial
+o misión. No hay cuenta de esta prueba que borrar. No se insistió ni alteraron
+cuotas. El reinicio de la cuota diaria por código es 00:00 UTC (21:00 Argentina);
+también sigue vigente el límite por IP/hora y el 429 no identifica el contador.
+
+Las métricas de plataforma pudieron consultarse en privado, pero no demuestran
+completitud de misiones. **El nuevo informe aún no se ejecutó sobre la base de
+producción:** la conexión disponible permite métricas/logs/configuración de
+Railway, no una sesión de ejecución/lectura SQL del volumen. No inventar resultados
+de esa base ni afirmar un observador automático instalado. Es una herramienta
+lista y probada, no una nueva función pública desplegada.
+
+Próximo paso: cerrar la misión sintética autenticada cuando la cuota lo permita,
+verificar REST/MCP y borrar la cuenta al finalizar; no reiniciar el servicio sólo
+para esta comprobación. Obtener después el informe mediante acceso autorizado a
+la base privada o respaldo consistente. Con esos datos, decidir instrumentación
+de espera/admisión antes de otro ensayo. No promover PR 40 ni ninguna política
+rechazada. Este incremento no necesita otro despliegue.
+
 # Genius — regla según fallos evaluada y rechazada; producción conservada
 
 15 de octubre de 2026. [Contrato y reproducción del nuevo ensayo](../beta/experiments/regulation-history/README.md).
