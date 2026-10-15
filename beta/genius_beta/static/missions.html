@@ -6,7 +6,64 @@
 <p>Genius puede medir alternativas, representarlas, evaluarlas, producir una entrega privada, verificarla y guardar lo observado. Cada etapa confirmada queda registrada para continuar después de una interrupción.</p>
 <h2>Primera operación: distribución de archivos</h2>
 <p>Envía hasta 16 archivos de texto UTF-8, con un máximo total de 65.536 bytes. Genius compara TAR, gzip y ZIP y elige el menor que conserva exactamente los contenidos. El archivo resultante queda disponible exclusivamente para tu cuenta. La entrada se identifica como una instantánea enviada, sin atribuirle un commit de Git.</p>
-<p>Este experimento mide bytes e integridad. Sus resultados no demuestran bienestar humano ni sostenimiento de la vida. La memoria conserva observaciones; esta versión no modifica su código ni sus modelos por sí sola.</p>
+<p>Este experimento mide bytes e integridad. Sus resultados no demuestran bienestar humano ni sostenimiento de la vida. La memoria conserva observaciones y permite el aprendizaje acotado de estimaciones descrito debajo. El código no se modifica por sí solo.</p>
+<h2>Aprender una estimación de uso de recursos</h2>
+<p>La misión <code>resource_calibration_v1</code> propone una estimación a partir de tus registros de una misma operación. Puedes declarar agua en mililitros, tiempo en segundos u otro recurso y unidad mínima. Cada valor es un entero de 0 a 1.000.000. El contexto debe identificar la operación y sus condiciones; cambiarlo inicia un análisis nuevo.</p>
+<p>Envía al menos tres registros de aprendizaje (<code>training</code>) y dos posteriores de comprobación (<code>validation</code>), hasta 32 en total. Cada registro contiene <code>id</code>, <code>value</code>, <code>observed_at</code> con zona horaria y <code>source</code>. Los IDs son únicos y las fechas están ordenadas estrictamente. El origen declarado se conserva, sin presentarlo como una medición verificada por Genius.</p>
+<p>Genius propone la mediana inferior de los registros de aprendizaje. Adopta esa estimación sólo si reduce el error absoluto total en los registros de comprobación, no aumenta la mayor subestimación y respeta el límite <code>max_underprediction</code>. Si no, conserva la estimación anterior. Puedes revisar las dos estimaciones, los errores y cada condición en la exportación.</p>
+<p>La entrega <code>resource-estimate.json</code> conserva la estimación elegida y su evidencia. Esta comprobación es retrospectiva: aún hace falta contrastarla con registros futuros. No controla el riego, asigna recursos ni demuestra una mejora del bienestar o del sostenimiento de la vida.</p>
+<p>Ejemplo sintético de creación; reemplaza los registros por datos autorizados si vas a estudiar una operación real:</p>
+<pre>{
+  &quot;kind&quot;: &quot;resource_calibration_v1&quot;,
+  &quot;idempotency_key&quot;: &quot;water-estimate-example-001&quot;,
+  &quot;processing_permission&quot;: true,
+  &quot;technical_scope_acknowledged&quot;: true,
+  &quot;calibration&quot;: {
+    &quot;context&quot;: &quot;Una misma operación de riego de demostración, condiciones constantes declaradas&quot;,
+    &quot;resource&quot;: &quot;agua&quot;,
+    &quot;unit&quot;: &quot;millilitre&quot;,
+    &quot;baseline&quot;: 50,
+    &quot;max_underprediction&quot;: 10,
+    &quot;data_kind&quot;: &quot;synthetic&quot;,
+    &quot;training&quot;: [
+      {
+        &quot;id&quot;: &quot;obs-1&quot;,
+        &quot;value&quot;: 90,
+        &quot;observed_at&quot;: &quot;2026-10-01T12:00:00Z&quot;,
+        &quot;source&quot;: &quot;Ejemplo sintético, no sensor real&quot;
+      },
+      {
+        &quot;id&quot;: &quot;obs-2&quot;,
+        &quot;value&quot;: 100,
+        &quot;observed_at&quot;: &quot;2026-10-02T12:00:00Z&quot;,
+        &quot;source&quot;: &quot;Ejemplo sintético, no sensor real&quot;
+      },
+      {
+        &quot;id&quot;: &quot;obs-3&quot;,
+        &quot;value&quot;: 110,
+        &quot;observed_at&quot;: &quot;2026-10-03T12:00:00Z&quot;,
+        &quot;source&quot;: &quot;Ejemplo sintético, no sensor real&quot;
+      }
+    ],
+    &quot;validation&quot;: [
+      {
+        &quot;id&quot;: &quot;obs-4&quot;,
+        &quot;value&quot;: 100,
+        &quot;observed_at&quot;: &quot;2026-10-04T12:00:00Z&quot;,
+        &quot;source&quot;: &quot;Ejemplo sintético, no sensor real&quot;
+      },
+      {
+        &quot;id&quot;: &quot;obs-5&quot;,
+        &quot;value&quot;: 105,
+        &quot;observed_at&quot;: &quot;2026-10-05T12:00:00Z&quot;,
+        &quot;source&quot;: &quot;Ejemplo sintético, no sensor real&quot;
+      }
+    ]
+  }
+}
+</pre>
+<p>Usa <code>data_kind="submitted_observations"</code> para registros declarados de una operación real y <code>"synthetic"</code> para ensayos. Ambos conservan su condición de datos enviados sin verificación independiente.</p>
+<p>Para continuar, crea otra misión con <code>parent_mission_id</code> igual al ID de la anterior, omite <code>baseline</code> y conserva exactamente contexto, recurso, unidad y tipo de datos. Genius recupera de su memoria la estimación anterior; todos los registros nuevos deben ser posteriores al último de esa misión. Cambiar la unidad o las condiciones exige una misión independiente y una base declarada. La nueva misión conserva la estimación heredada y el hash de procedencia aunque borres la anterior. Borrar toda la cuenta elimina ambas.</p>
 <h2>API y permisos</h2>
 <p>Obtén una credencial según <a href="/agents/manifest.json">el manifiesto de agentes</a>, solicitando los permisos <code>missions:write</code>, <code>missions:run</code>, <code>missions:read</code> y, para borrar, <code>missions:delete</code>. Los agentes admiten únicamente datos sintéticos o no personales. Usa <code>Authorization: Bearer TU_CREDENCIAL</code>; nunca incluyas la credencial en los archivos.</p>
 <p>Crea un borrador con <code>POST /api/missions</code> y el siguiente JSON. Las confirmaciones deben proceder de quien tiene autoridad sobre esos archivos:</p>
@@ -21,5 +78,5 @@
 <p>Repetir la creación con la misma clave y el mismo contenido devuelve el mismo borrador; cambiar el contenido exige otra clave. Ejecutar una misión completada devuelve su resultado existente. Una misión interrumpida puede reanudarse con <code>/run</code>; una que requiera revisión no se reintenta automáticamente.</p>
 <h2>Persistencia y capacidad</h2>
 <p>El servicio conserva hasta tres misiones por cuenta y dieciséis en total. Hay cuotas diarias compartidas para agentes, un único worker, un máximo de tres intentos por misión y sesenta segundos por intento. Exporta y borra misiones anteriores para liberar espacio. Los datos caducan por la política de retención de la cuenta, como máximo noventa días sin actividad de la misión.</p>
-<p>Los respaldos incluyen el avance. Una restauración deja las misiones activas interrumpidas y requiere una reanudación explícita. Un cambio de código o dependencias invalida la reanudación automática del estado antiguo. Los efectos de esta versión se limitan al archivo privado; no realiza publicaciones ni acciones externas.</p>
+<p>Los respaldos incluyen el avance. Una restauración deja las misiones activas interrumpidas y requiere una reanudación explícita. Un cambio de código o dependencias invalida la reanudación automática del estado antiguo. Los efectos de esta versión se limitan a la entrega privada; no realiza publicaciones ni acciones externas.</p>
 <p>Las mismas operaciones están disponibles como herramientas <code>mission_*</code> en <a href="/mcp">MCP</a>, sujetas a los mismos permisos.</p></main></html>

@@ -1,0 +1,48 @@
+{
+  "kind": "resource_calibration_v1",
+  "idempotency_key": "water-estimate-example-001",
+  "processing_permission": true,
+  "technical_scope_acknowledged": true,
+  "calibration": {
+    "context": "Una misma operación de riego de demostración, condiciones constantes declaradas",
+    "resource": "agua",
+    "unit": "millilitre",
+    "baseline": 50,
+    "max_underprediction": 10,
+    "data_kind": "synthetic",
+    "training": [
+      {
+        "id": "obs-1",
+        "value": 90,
+        "observed_at": "2026-10-01T12:00:00Z",
+        "source": "Ejemplo sintético, no sensor real"
+      },
+      {
+        "id": "obs-2",
+        "value": 100,
+        "observed_at": "2026-10-02T12:00:00Z",
+        "source": "Ejemplo sintético, no sensor real"
+      },
+      {
+        "id": "obs-3",
+        "value": 110,
+        "observed_at": "2026-10-03T12:00:00Z",
+        "source": "Ejemplo sintético, no sensor real"
+      }
+    ],
+    "validation": [
+      {
+        "id": "obs-4",
+        "value": 100,
+        "observed_at": "2026-10-04T12:00:00Z",
+        "source": "Ejemplo sintético, no sensor real"
+      },
+      {
+        "id": "obs-5",
+        "value": 105,
+        "observed_at": "2026-10-05T12:00:00Z",
+        "source": "Ejemplo sintético, no sensor real"
+      }
+    ]
+  }
+}

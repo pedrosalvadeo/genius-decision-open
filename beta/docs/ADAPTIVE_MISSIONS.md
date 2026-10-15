@@ -1,6 +1,6 @@
 # Persistent service missions — protocol 1
 
-This integration adds the existing LangGraph distribution adapter to the authenticated
+This integration runs registered LangGraph distribution and resource-calibration adapters in the authenticated
 service. Discovery and exact client workflow: `/static/missions.html`,
 `/api/missions/capabilities`, `/agents/manifest.json`, scoped `mission_*` MCP tools.
 Creation only saves a `draft`; `missions:run` is separately required to queue it.
@@ -49,6 +49,10 @@ the additive table, but old code does not know its individual-erasure tombstones
 keep the current privacy-aware backup tooling for restoration. Preferred rollback
 is the feature flag, not running obsolete recovery tooling.
 
-The memory is a measured snapshot and exact-context reuse, not self-modification,
-new hypotheses or demonstrated wellbeing/PVS impact. The next increment can add
-new registered adapters and explicit feedback-driven proposals against these receipts.
+File-distribution memory remains a measured snapshot. The new registered
+`resource_calibration_v1` adapter adds bounded parameter proposals, retrospective
+holdout comparison and context-bound continuation; see [RESOURCE_CALIBRATION.md](RESOURCE_CALIBRATION.md).
+It uses the same table, privacy boundary, child protocol and artifact delivery,
+without a new migration or external action. This does not demonstrate wellbeing/PVS
+impact or code self-modification. Runtime updates require review of unfinished
+missions pinned to a previous runtime; completed rows remain readable and reusable.

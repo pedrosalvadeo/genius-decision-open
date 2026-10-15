@@ -1,4 +1,4 @@
-"""Private persistent missions: fixed adapter, scoped authority and bounded inputs."""
+"""Private persistent missions: registered adapters, scoped authority and bounded inputs."""
 import base64
 import io
 import zipfile
@@ -29,6 +29,7 @@ def required_scope(method, path):
 def view(row, include_input=False):
     value = {k: row[k] for k in ('id', 'status', 'last_stage', 'state_sha256', 'artifact_name',
         'artifact_sha256', 'attempts', 'error', 'created_at', 'updated_at')}
+    value['kind'] = json.loads(row['input_json']).get('kind', 'source_distribution_v1')
     value['result'] = json.loads(row['result_json']) if row['result_json'] else None
     if include_input:
         value['input'] = json.loads(row['input_json'])
@@ -60,10 +61,12 @@ def install(app, db, body, error, capacity):
     @app.get('/api/missions/capabilities')
     def mission_capabilities():
         return jsonify(protocol='genius-service-missions/1', enabled=app.config['ADAPTIVE_ENABLED'],
-            kinds=['source_distribution_v1'], stages=['measure','represent','evaluate','act','observe','remember'],
-            source='explicit_utf8_snapshot', effects='private_downloadable_archive',
+            kinds=['source_distribution_v1','resource_calibration_v1'], stages=['measure','represent','evaluate','act','observe','remember'],
+            source='explicit_utf8_snapshot_or_submitted_resource_records', effects='private_artifact',
             limits=dict(files=16,input_bytes=65536,missions_per_user=3,global_missions=16,timeout_seconds=60),
-            memory='empirical_snapshot_receipts', self_modification=False,
+            memory='snapshot_receipts_and_context_bound_estimates', self_modification=False,
+            learning=dict(rule='LOWER_MEDIAN_HOLDOUT_MAE_V1', parameter_updates=True,
+                records=32, validation='RETROSPECTIVE_ONLY', external_actions=False),
             wellbeing='UNMEASURED', sustained_life_probability='UNMEASURED')
 
     @app.get('/api/missions')
@@ -74,24 +77,27 @@ def install(app, db, body, error, capacity):
     def mission_create():
         enabled()
         data = body()
-        if set(data) != {'idempotency_key','files','processing_permission','technical_scope_acknowledged'} or data['processing_permission'] is not True or data['technical_scope_acknowledged'] is not True:
-            raise error('mission_input', 'Se requieren archivos y permisos explícitos para el experimento técnico.')
-        key, files = data['idempotency_key'], data['files']
-        if not isinstance(key, str) or not re.fullmatch(r'[A-Za-z0-9_-]{16,64}', key) or not isinstance(files, dict) or not 1 <= len(files) <= 16:
-            raise error('mission_input', 'Clave de idempotencia o archivos inválidos.')
-        total = 0
-        for name, content in files.items():
-            if (not isinstance(name, str) or not re.fullmatch(r'[A-Za-z0-9_-][A-Za-z0-9_./-]{0,119}', name)
-                    or any(not p or p.startswith('.') for p in name.split('/')) or not isinstance(content, str)):
-                raise error('mission_input', 'Se requieren nombres relativos y contenido UTF-8.')
+        if data.get('processing_permission') is not True or data.get('technical_scope_acknowledged') is not True:
+            raise error('mission_input', 'Se requieren permisos y reconocimiento del alcance técnico.')
+        key = data.get('idempotency_key')
+        if not isinstance(key, str) or not re.fullmatch(r'[A-Za-z0-9_-]{16,64}', key):
+            raise error('mission_input', 'Clave de idempotencia inválida.')
+        try:
+            if len(dump(data).encode('utf-8')) > 131072:
+                raise error('mission_input_limit', 'Entrada de misión demasiado grande.', 413)
+        except UnicodeEncodeError:
+            raise error('mission_input', 'Contenido UTF-8 inválido.')
+        from .mission_inputs import resolve
+        def resolved_input():
             try:
-                total += len(content.encode('utf-8'))
-            except UnicodeEncodeError:
-                raise error('mission_input', 'Contenido UTF-8 inválido.')
-        if any(a != b and b.startswith(a + '/') for a in files for b in files):
-            raise error('mission_input', 'Los nombres de archivos se superponen.')
-        if total > 65536:
-            raise error('mission_input_limit', 'Máximo de entrada: 65536 bytes.', 413)
+                return resolve(data, own)
+            except OverflowError:
+                raise error('mission_input_limit', 'Máximo de archivos: 65536 bytes.', 413) from None
+            except (ValueError, TypeError, KeyError):
+                raise error('mission_input', 'Entrada inválida: revisá el contrato de archivos o calibración y la continuidad del contexto.') from None
+        # Validate standalone requests before idempotence, preserving protocol 1.
+        # Parent lookup is deferred until after a retry can reuse its frozen child.
+        resolved = None if 'parent_mission_id' in data else resolved_input()
         encoded = json.dumps(data, sort_keys=True, ensure_ascii=False, separators=(',', ':'))
         request_sha = digest(encoded.encode())
         mid, now = secrets.token_hex(16), int(time.time())
@@ -101,6 +107,9 @@ def install(app, db, body, error, capacity):
                 if prior['request_sha256'] != request_sha:
                     raise error('idempotency_conflict', 'La clave ya identifica otra entrada.', 409)
                 return jsonify(mission=view(prior)), 200
+            if resolved is None:
+                resolved = resolved_input()
+            encoded = dump(resolved)
             total_count = db().execute('SELECT count(*) FROM adaptive_missions').fetchone()[0]
             own_count = db().execute('SELECT count(*) FROM adaptive_missions WHERE user_id=?', (g.user['id'],)).fetchone()[0]
             if total_count >= 16 or own_count >= 3:
