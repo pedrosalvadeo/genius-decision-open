@@ -1,3 +1,37 @@
+# Genius — portada pública, fundamentos y mapa del proyecto
+
+15 de octubre de 2026. Pedro priorizó actualizar geniusdecision.app antes de
+construir la integración administrativa del informe privado. Nueva portada
+explicativa en `/`: Homo Genius, ocho módulos de Matemática Genius, objetivo
+actual, ocho grupos de componentes y desafíos abiertos. Enlaces directos a
+fuentes, enmiendas, kernel, cápsula, diplomático y evolución del código.
+La [introducción filosófica](../capsule/HOMO_GENIUS.md) acompaña esa presentación.
+La visión se distingue de la implementación y de la validación empírica.
+
+La aplicación anterior conserva su interfaz en `/app`. Los enlaces de acceso
+humano apuntan allí; `/?access=api` redirige a `/app?access=api` para conservar
+marcadores previos. La portada usa HTML, CSS propio y un SVG conceptual; no añade
+scripts, proveedores, fuentes remotas, seguimiento, credenciales o cuentas.
+El núcleo, políticas, migraciones, datos y cuotas conservan su comportamiento.
+
+Validación local: 26 pruebas de publicación pública, acceso por API y MCP pasan,
+incluidas tres nuevas sobre rutas, acceso anterior y registro cerrado. Enlaces
+internos y destinos del repositorio comprobados. La comprobación visual local
+en navegador no se ejecutó: el entorno de previsualización administrado no
+dispone del controlador requerido. No presentar ese control ni una vista móvil
+como verificados sólo por tener estilos adaptables. Los resultados de CI y la
+comprobación del despliegue público se adjuntan al PR de esta entrega.
+
+Los pines de Railway escritos en entradas anteriores son antecedentes de sus
+entregas; consultar el recibo de esta publicación y el servicio vivo para el pin
+vigente. Una integración en main no demuestra por sí misma un despliegue.
+
+Próximo encargo: mantener la nueva portada fiel al estado real y retomar la
+integración del informe privado. El informe de observación todavía necesita
+un canal administrativo autenticado para ejecutarse dentro del servicio; esta
+actualización de contenido no lo implementa. La misión pública sigue pendiente
+de la cuota de registro. No activar ninguna propuesta de código/política rechazada.
+
 # Genius — informe privado de observación preparado; prueba pública bloqueada
 
 15 de octubre de 2026. [Contrato del informe](../beta/docs/MISSION_OBSERVATION.md).
