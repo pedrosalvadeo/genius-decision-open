@@ -1,0 +1,430 @@
+{
+  "format": "genius-regulation-evaluation/1",
+  "lock_sha256": "57e4213955ab5d78c1850eb8ba2a0f01c74ee2b81af0417f987e3d48e99307ca",
+  "candidate_sha256": "9b84a2e4972225dbdcaf6a2187082d5543aed49a174a0a4b853d06346c895b6e",
+  "status": "REJECTED_BY_EVALUATION",
+  "production_promotion": false,
+  "evidence_origin": "synthetic",
+  "selected_cooldown_seconds": 60,
+  "training_loss": {
+    "baseline": 5435,
+    "candidate": 5435
+  },
+  "evaluation_loss": {
+    "baseline": 15970,
+    "candidate": 15970
+  },
+  "gates": {
+    "training_improved": false,
+    "evaluation_improved": false,
+    "every_case_passed": true
+  },
+  "cases": [
+    {
+      "id": "eval-steady",
+      "baseline": {
+        "id": "eval-steady",
+        "offered": 9,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 9,
+          "operational_failures": 0,
+          "exposure_seconds": 90,
+          "admission_deferrals": 0,
+          "max_pending": 1,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 10,
+          "unfinished": 0,
+          "loss": 90
+        },
+        "mode_seconds": {
+          "NORMAL": 450
+        },
+        "trace_sha256": "690b56e53f06a396db76a03bb4274b18110952d33a2446dbc71dc432c6215e96"
+      },
+      "candidate": {
+        "id": "eval-steady",
+        "offered": 9,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 9,
+          "operational_failures": 0,
+          "exposure_seconds": 90,
+          "admission_deferrals": 0,
+          "max_pending": 1,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 10,
+          "unfinished": 0,
+          "loss": 90
+        },
+        "mode_seconds": {
+          "NORMAL": 450
+        },
+        "trace_sha256": "690b56e53f06a396db76a03bb4274b18110952d33a2446dbc71dc432c6215e96"
+      },
+      "gates": {
+        "loss_not_worse": true,
+        "completed_not_fewer": true,
+        "failures_not_more": true,
+        "unfinished_not_more": true,
+        "latency_within_margin": true,
+        "zero_safety_violations": true
+      }
+    },
+    {
+      "id": "eval-short-outage",
+      "baseline": {
+        "id": "eval-short-outage",
+        "offered": 25,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 22,
+          "operational_failures": 3,
+          "exposure_seconds": 455,
+          "admission_deferrals": 50,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 60,
+          "unfinished": 0,
+          "loss": 755
+        },
+        "mode_seconds": {
+          "COOLDOWN": 60,
+          "DRAINING": 30,
+          "NORMAL": 505,
+          "PROBING": 5
+        },
+        "trace_sha256": "e4fb045d05a5aac583fc2548df07e6c3ec387c32a78393f7158ea97563fdbb94"
+      },
+      "candidate": {
+        "id": "eval-short-outage",
+        "offered": 25,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 22,
+          "operational_failures": 3,
+          "exposure_seconds": 455,
+          "admission_deferrals": 50,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 60,
+          "unfinished": 0,
+          "loss": 755
+        },
+        "mode_seconds": {
+          "COOLDOWN": 60,
+          "DRAINING": 30,
+          "NORMAL": 505,
+          "PROBING": 5
+        },
+        "trace_sha256": "e4fb045d05a5aac583fc2548df07e6c3ec387c32a78393f7158ea97563fdbb94"
+      },
+      "gates": {
+        "loss_not_worse": true,
+        "completed_not_fewer": true,
+        "failures_not_more": true,
+        "unfinished_not_more": true,
+        "latency_within_margin": true,
+        "zero_safety_violations": true
+      }
+    },
+    {
+      "id": "eval-long-outage",
+      "baseline": {
+        "id": "eval-long-outage",
+        "offered": 49,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 44,
+          "operational_failures": 5,
+          "exposure_seconds": 8590,
+          "admission_deferrals": 1452,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 190,
+          "unfinished": 0,
+          "loss": 9090
+        },
+        "mode_seconds": {
+          "COOLDOWN": 180,
+          "DRAINING": 420,
+          "NORMAL": 270,
+          "PROBING": 30
+        },
+        "trace_sha256": "f5bd9cb689e3441ec2566426c51fb154ddbd99dd44327df3740cd1119838fbac"
+      },
+      "candidate": {
+        "id": "eval-long-outage",
+        "offered": 49,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 44,
+          "operational_failures": 5,
+          "exposure_seconds": 8590,
+          "admission_deferrals": 1452,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 190,
+          "unfinished": 0,
+          "loss": 9090
+        },
+        "mode_seconds": {
+          "COOLDOWN": 180,
+          "DRAINING": 420,
+          "NORMAL": 270,
+          "PROBING": 30
+        },
+        "trace_sha256": "f5bd9cb689e3441ec2566426c51fb154ddbd99dd44327df3740cd1119838fbac"
+      },
+      "gates": {
+        "loss_not_worse": true,
+        "completed_not_fewer": true,
+        "failures_not_more": true,
+        "unfinished_not_more": true,
+        "latency_within_margin": true,
+        "zero_safety_violations": true
+      }
+    },
+    {
+      "id": "eval-regime-change",
+      "baseline": {
+        "id": "eval-regime-change",
+        "offered": 41,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 33,
+          "operational_failures": 8,
+          "exposure_seconds": 505,
+          "admission_deferrals": 50,
+          "max_pending": 3,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 55,
+          "unfinished": 0,
+          "loss": 1305
+        },
+        "mode_seconds": {
+          "COOLDOWN": 120,
+          "NORMAL": 830,
+          "PROBING": 10
+        },
+        "trace_sha256": "6cce4fe612ff9d0bec43b144a20c7771e338915a74b17fc7c69263279f7f5cd0"
+      },
+      "candidate": {
+        "id": "eval-regime-change",
+        "offered": 41,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 33,
+          "operational_failures": 8,
+          "exposure_seconds": 505,
+          "admission_deferrals": 50,
+          "max_pending": 3,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 55,
+          "unfinished": 0,
+          "loss": 1305
+        },
+        "mode_seconds": {
+          "COOLDOWN": 120,
+          "NORMAL": 830,
+          "PROBING": 10
+        },
+        "trace_sha256": "6cce4fe612ff9d0bec43b144a20c7771e338915a74b17fc7c69263279f7f5cd0"
+      },
+      "gates": {
+        "loss_not_worse": true,
+        "completed_not_fewer": true,
+        "failures_not_more": true,
+        "unfinished_not_more": true,
+        "latency_within_margin": true,
+        "zero_safety_violations": true
+      }
+    },
+    {
+      "id": "eval-storage",
+      "baseline": {
+        "id": "eval-storage",
+        "offered": 17,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 17,
+          "operational_failures": 0,
+          "exposure_seconds": 1340,
+          "admission_deferrals": 186,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 130,
+          "unfinished": 0,
+          "loss": 1340
+        },
+        "mode_seconds": {
+          "DRAINING": 120,
+          "NORMAL": 360,
+          "RESOURCE_PAUSED": 120
+        },
+        "trace_sha256": "713dd1043b72339b85e91e19ca0ac57f8ac1ca4e6d4431e359012f225f22c65a"
+      },
+      "candidate": {
+        "id": "eval-storage",
+        "offered": 17,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 17,
+          "operational_failures": 0,
+          "exposure_seconds": 1340,
+          "admission_deferrals": 186,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 130,
+          "unfinished": 0,
+          "loss": 1340
+        },
+        "mode_seconds": {
+          "DRAINING": 120,
+          "NORMAL": 360,
+          "RESOURCE_PAUSED": 120
+        },
+        "trace_sha256": "713dd1043b72339b85e91e19ca0ac57f8ac1ca4e6d4431e359012f225f22c65a"
+      },
+      "gates": {
+        "loss_not_worse": true,
+        "completed_not_fewer": true,
+        "failures_not_more": true,
+        "unfinished_not_more": true,
+        "latency_within_margin": true,
+        "zero_safety_violations": true
+      }
+    },
+    {
+      "id": "eval-sensors",
+      "baseline": {
+        "id": "eval-sensors",
+        "offered": 17,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 17,
+          "operational_failures": 0,
+          "exposure_seconds": 870,
+          "admission_deferrals": 76,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 75,
+          "unfinished": 0,
+          "loss": 870
+        },
+        "mode_seconds": {
+          "DRAINING": 115,
+          "NORMAL": 390,
+          "SENSOR_PAUSED": 95
+        },
+        "trace_sha256": "8ff2bf452a01d8ecdbf0450f9e106f8832444217022343280e4c2faa7ec74f3e"
+      },
+      "candidate": {
+        "id": "eval-sensors",
+        "offered": 17,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 17,
+          "operational_failures": 0,
+          "exposure_seconds": 870,
+          "admission_deferrals": 76,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 75,
+          "unfinished": 0,
+          "loss": 870
+        },
+        "mode_seconds": {
+          "DRAINING": 115,
+          "NORMAL": 390,
+          "SENSOR_PAUSED": 95
+        },
+        "trace_sha256": "8ff2bf452a01d8ecdbf0450f9e106f8832444217022343280e4c2faa7ec74f3e"
+      },
+      "gates": {
+        "loss_not_worse": true,
+        "completed_not_fewer": true,
+        "failures_not_more": true,
+        "unfinished_not_more": true,
+        "latency_within_margin": true,
+        "zero_safety_violations": true
+      }
+    },
+    {
+      "id": "eval-burst",
+      "baseline": {
+        "id": "eval-burst",
+        "offered": 18,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 18,
+          "operational_failures": 0,
+          "exposure_seconds": 2520,
+          "admission_deferrals": 300,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 240,
+          "unfinished": 0,
+          "loss": 2520
+        },
+        "mode_seconds": {
+          "DRAINING": 300,
+          "NORMAL": 300
+        },
+        "trace_sha256": "1f19a43c2ca4f04dd82c1da43ead6a710eac6dfd89ce668809337cfe46b16628"
+      },
+      "candidate": {
+        "id": "eval-burst",
+        "offered": 18,
+        "cooldown_seconds": 60,
+        "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+        "metrics": {
+          "completed": 18,
+          "operational_failures": 0,
+          "exposure_seconds": 2520,
+          "admission_deferrals": 300,
+          "max_pending": 4,
+          "safety_violations": 0,
+          "max_success_latency_seconds": 240,
+          "unfinished": 0,
+          "loss": 2520
+        },
+        "mode_seconds": {
+          "DRAINING": 300,
+          "NORMAL": 300
+        },
+        "trace_sha256": "1f19a43c2ca4f04dd82c1da43ead6a710eac6dfd89ce668809337cfe46b16628"
+      },
+      "gates": {
+        "loss_not_worse": true,
+        "completed_not_fewer": true,
+        "failures_not_more": true,
+        "unfinished_not_more": true,
+        "latency_within_margin": true,
+        "zero_safety_violations": true
+      }
+    }
+  ],
+  "limits": [
+    "Public fixtures are predeclared, not blinded or empirical.",
+    "The clock, arrivals, storage sensors, process durations and failures are simulated.",
+    "The existing controller and SQLite transitions execute locally; no mission subprocess runs.",
+    "Only the cooldown parameter is selected from training. No online threshold learning is installed.",
+    "The simulator excludes authentication, registration and daily quotas, backup health, CPU and network.",
+    "The loss is an explicit synthetic proxy, not money, wellbeing or probability of sustained life.",
+    "Even eligibility only permits review; deployment and real-traffic validation remain separate."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "format": "genius-regulation-study-summary/1",
+  "recorded_at": "2026-10-15T16:31:12.098342+00:00",
+  "runtime_baseline_commit": "3f366854bb4d266070f309646518106abb13096a",
+  "baseline_source_matches": {
+    "beta/genius_beta/regulation.py": true,
+    "beta/genius_beta/db.py": true,
+    "beta/migrations/011_mission_regulation.sql": true
+  },
+  "local_tests": {
+    "status": "PASS",
+    "count": 29,
+    "new_tests": 15,
+    "existing_regulation_tests": 14
+  },
+  "result": "RETAIN_CURRENT_POLICY_NO_IMPROVEMENT",
+  "source_code_changed_in_runtime": false,
+  "runtime_deployment_requested": false,
+  "production_learning_installed": false,
+  "public_mission_probe": {
+    "status": "PENDING_EXISTING_RATE_LIMIT",
+    "previous_http_status": 429,
+    "previous_error_code": "rate_limit",
+    "registration_retried_this_cycle": false,
+    "account_or_credential_created": false,
+    "per_day_limit_observed": 5,
+    "per_ip_hour_limit_in_code": 2,
+    "exhausted_counter": "NOT_IDENTIFIED_BY_RESPONSE"
+  },
+  "public_health_readback": {
+    "at": "2026-10-15T16:22:22Z",
+    "http_status": 200,
+    "status": "ok",
+    "backup": "ok",
+    "suspended": false,
+    "mission_regulation": {
+      "enabled": true,
+      "mode": "NORMAL",
+      "observed_at": 1792081342,
+      "policy_sha256": "77107811cd9f341dc95995687cadb0525de7d8004f30c8a6476838bcf9abb924",
+      "protocol": "genius-mission-regulation/1",
+      "scope": "QUEUED_ADAPTIVE_MISSIONS"
+    }
+  },
+  "receipt_hashes": {
+    "candidate.json": "283e5828fbaf636c3def4067deed08206264f3b9f9d933a57c155b1c0115c4f7",
+    "evaluation.json": "2930e1cdd0b1c6fe4407b4e5661fe46a49846a252266fb0548c6207fe78cd63f",
+    "lock.json": "b704ed46ea0bb64eeea85764e810a7b5587f736f4f46c7dddf7216aced03fbc8",
+    "tests.txt": "20225104d63bc8f5cc9b0c795f0a7277afeb29d7dfca8b133b63a553d3560890"
+  }
+}

@@ -95,7 +95,10 @@ admisiones concurrentes, fallos inyectados y un proceso realmente terminado con
 SIGKILL que luego reanuda sus checkpoints y completa una misión. Se verifica la
 compatibilidad con misiones, pronósticos, club y recuperación cifrada existentes.
 
-Esto es regulación con reglas fijas y registro de efectos observados. El siguiente
-incremento puede evaluar otras políticas contra un objetivo y un ensayo definidos
-antes de medir. No se permite que el controlador cambie sus umbrales a partir de
+Esto es regulación con reglas fijas y registro de efectos observados. El
+[laboratorio de políticas](../experiments/regulation/README.md) ya compara otras
+esperas de recuperación contra un objetivo y ensayo fijados antes de medir.
+El primer ensayo retuvo los 60 s actuales: ninguna alternativa mejoró su objetivo
+de entrenamiento. No instala aprendizaje ni cambios de política en producción.
+No se permite que el controlador cambie sus umbrales a partir de
 una única ejecución, se financie, amplíe cuotas, modifique permisos o promueva código.

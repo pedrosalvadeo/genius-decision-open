@@ -1,3 +1,30 @@
+# Genius — laboratorio de regulación ejecutado; política actual conservada
+
+15 de octubre de 2026. [Contrato y reproducción](../beta/experiments/regulation/README.md).
+Nuevo evaluador `beta/tools/regulation_study.py`: ejecuta el controlador existente
+con SQLite en memoria y sensores/reloj/procesos simulados. Selecciona una espera
+de recuperación usando cuatro escenarios de entrenamiento, congela su identidad
+y la compara con la base en siete escenarios separados. No usa datos privados,
+red, LLM ni infraestructura nueva. El runtime público no importa este evaluador.
+
+Plan, escenarios y criterios fueron fijados antes de la primera ejecución, con
+hashes y fecha internos; no se presenta como estudio ciego o registro independiente.
+Pérdidas de entrenamiento para 60/90/120/180 s: **5435/6355/8605/10475**. Seleccionó
+60 s, la base actual. Evaluación: **15970 → 15970**. Resultado
+`REJECTED_BY_EVALUATION`, por ausencia de mejora estricta; conserva la política.
+No prueba que 60 s sea óptimo fuera de estos casos y ponderaciones sintéticas.
+Evidencia reproducible: [2026-10-15-regulation-study](evidence/2026-10-15-regulation-study).
+Quince pruebas nuevas y las catorce del regulador pasaron localmente (29 total).
+Se verifican exposición/cola con oráculos pequeños, truncamiento sin ocultar
+tareas pendientes, aislamiento, no selección por evaluación y recibos inmutables.
+
+La lectura pública de las 16:22 UTC confirmó servicio/respaldo `ok` y regulador
+habilitado NORMAL. La misión pública sigue pendiente del 429 observado antes:
+el manifiesto anuncia cinco registros diarios; el código también limita a dos
+por IP y hora. Ese error genérico no identifica qué contador se agotó. No se
+repitió el registro durante la misma hora ni se eludieron cuotas. No quedó cuenta
+ni credencial de esa prueba que borrar. Este incremento no requiere Apply.
+
 # Genius — regulación operativa activa en producción
 
 15 de octubre de 2026. Nuevo controlador `genius-mission-regulation/1`, probado
@@ -433,9 +460,13 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 > sintética con lectura, idempotencia y limpieza. No eludas ni aumentes cuotas.
 > No se realizó reinicio: los recibos seed/verify solos no prueban recuperación.
 > Conservá por separado las pruebas locales y la verificación efectiva del despliegue.
-> Los umbrales son fijos; el siguiente paso es definir objetivo y evaluación previa
-> para comparar políticas adaptativas, sin convertir autorregulación en autoaumento
-> de cuotas o permisos. Bienestar/PVS siguen sin medirse.
+> Ya existe beta/experiments/regulation/README.md y el primer estudio reproducible.
+> Seleccionó 60 s y no justificó cambiar producción: conservá el resultado negativo.
+> La espera más larga ayudó en un contexto y perjudicó en otro. El siguiente ensayo
+> puede proponer una regla dependiente sólo de historia observada, fijando primero
+> señales, objetivo y casos nuevos. Los casos ya examinados no son evaluación inédita.
+> No conviertas autorregulación en autoaumento de cuotas o permisos. No se instaló
+> aprendizaje de umbrales en producción; bienestar/PVS siguen sin medirse.
 > El PR 40 permanece borrador rechazado: no lo fusiones, regeneres ni despliegues.
 > La actividad diplomática es independiente; preservá sus revisiones y cambios nuevos.
 > Entregá evidencia, límites y siguiente prompt actualizado.
