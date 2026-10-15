@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "id": "public-context-memory",
+      "values": [
+        10,
+        100,
+        10,
+        100,
+        10,
+        100,
+        10,
+        100,
+        10,
+        100,
+        10,
+        100,
+        10,
+        100,
+        10
+      ]
+    }
+  ],
+  "data_kind": "synthetic",
+  "format": "genius-evolution-data/1",
+  "provenance": {
+    "kind": "public_context_probe",
+    "path": "adaptive/evidence/2026-10-15-context-api/live-probe.json",
+    "sha256": "0bb5eb2a30b39b3a0e6555dcbacead31506025676eb864637a3f3bacb6cdfcfc"
+  },
+  "split": "training"
+}

@@ -1,3 +1,37 @@
+# Genius — propuestas de evolución de código implementadas
+
+15 de octubre de 2026. Se incorporó `evolution/`: generación aritmética de una
+estrategia desde memoria pública, evaluación separada y publicador de una rama/PR
+borrador. La rama `work/code-evolution-20261015` registra el incremento; su PR
+conservará el commit probado y CI. **La ejecución automática en GitHub aún debe
+verificarse después de integrar el workflow.** No confundir pruebas locales con
+publicación realizada por Genius.
+
+Contrato y uso: [evolution/README.md](../evolution/README.md). Veintiuna pruebas
+locales pasan, incluyendo aislamiento de ejecución, separación de datos, rechazo
+de regresiones, modificación de recibos, escritura fuera de alcance, recuperación
+de respuestas perdidas, main adelantado, ramas alteradas y bloqueo de permisos.
+Evidencia: [evolution/evidence/2026-10-15](../evolution/evidence/2026-10-15).
+
+La primera solicitud usa sólo el recibo sintético público del PR 37 como memoria.
+Aprende y escribe `110 - valor_anterior`, con error de entrenamiento 420 → 0.
+La evaluación fija de seis casos lo rechaza: empeora estabilidad, deriva y shocks.
+El candidato conserva el estado `REJECTED_BY_EVALUATION` y no puede promoverse
+bajo ese contrato. No se altera la suite para convertir este rechazo en aprobación.
+Los costos de sobre/subestimación ya se declaran por separado (1/1, unidades de
+prueba), sin inventar una equivalencia monetaria ni de bienestar.
+
+El workflow evalúa PRs con permisos de lectura. Al cambiar el generador o el
+paquete público activo en main, evalúa sin red ni credenciales y otro job publica
+una rama inmutable `genius/evolution/ID`. No hace merge, aprobación propia ni deploy.
+Si GitHub impide el PR, conserva rama/enlace/estado explícito; no elude la restricción.
+No está conectado automáticamente a las bases privadas ni es un editor de código
+general: v1 genera programas afines con uno, dos o tres retardos. Una elegibilidad
+sintética permitiría revisión, no demostraría generalización o beneficio real.
+
+El runtime público sigue en `7fdb633` (PR 36) con prueba pública PASS del PR 37.
+Este incremento vive en GitHub Actions, fuera del runtime; no requiere otro Apply.
+
 # Genius adaptativo — integración contextual activa y verificada
 
 15 de octubre de 2026. `resource_context_forecast_v1` está integrado por el
@@ -312,15 +346,15 @@ gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendient
 
 ## Siguiente prompt
 
-> Continuá desde `adaptive/HANDOFF.md` y `beta/docs/CONTEXT_FORECASTS.md`.
-> El contrato contextual está desplegado: PR 36, pin 7fdb633, Railway SUCCESS,
-> prueba REST pública PASS con 15 pares de recibos, informe/exportación verificados
-> y cuenta temporal borrada. No repitas ese despliegue ni la prueba completada.
-> Conservá la regla v1, sus recibos y el ensayo HTTP negativo previo.
-> El siguiente incremento es definir un objetivo v2 explícito para los costes de
-> sobreestimación y subestimación, con unidades, parámetros y límites revisables.
-> Prepará contrato, implementación y pruebas sintéticas antes de nuevos datos;
-> no modifiques la regla antigua ni ajustes el criterio para aprobar lo observado.
-> Si falta un coste o preferencia del caso real, dejalo explícito y configurable;
-> no inventes valores que pretendan representar bienestar o sostenimiento de vida.
-> Actualizá evidencia y este handoff al terminar. Bienestar/PVS siguen sin medirse.
+> Continuá desde `adaptive/HANDOFF.md` y `evolution/README.md`.
+> El siguiente ciclo vigente es evolución de código, no repetir el despliegue REST.
+> Verificá el PR de `work/code-evolution-20261015` y su ejecución de GitHub Actions.
+> Confirmá la rama/propuesta realmente publicada por el workflow y el estado de
+> permisos/CI; si la publicación quedó incierta, reconciliá por ID sin sobrescribir.
+> Conservá el primer rechazo (fórmula 110 - valor previo) y la suite congelada.
+> No ajustes datos o guardas para aprobar ese candidato. No lo actives en producción.
+> El próximo incremento requiere definir un problema y objetivo nuevos para
+> estrategias condicionadas al régimen, con nueva evaluación antes de generar.
+> La conexión de memoria privada a publicaciones necesita un contrato explícito
+> de consentimiento y minimización; no publiques observaciones de cuentas.
+> Entregá evidencia, límites y siguiente prompt. Bienestar/PVS siguen sin medirse.

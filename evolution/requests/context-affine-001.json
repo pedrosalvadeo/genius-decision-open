@@ -1,0 +1,21 @@
+{
+  "baseline": 50,
+  "data_kind": "synthetic",
+  "evaluation": {
+    "path": "evolution/data/context-regression-evaluation.json",
+    "sha256": "576972ff493d0ced7f2a8606cc8af537c850d4e57e20c53337aac9ed3e135c26"
+  },
+  "format": "genius-code-evolution-request/1",
+  "id": "context-affine-001",
+  "max_overprediction": 90,
+  "max_underprediction": 50,
+  "over_cost": 1,
+  "publication": "PUBLIC_REPOSITORY_ONLY",
+  "training": {
+    "path": "evolution/data/context-memory-training.json",
+    "sha256": "211064d6381ef443c109085fc1d44a44f27b071179cca21ef2737e892e6ef70a"
+  },
+  "under_cost": 1,
+  "unit": "test_unit",
+  "warmup_count": 3
+}
