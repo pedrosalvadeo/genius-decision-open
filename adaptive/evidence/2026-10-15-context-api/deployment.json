@@ -1,0 +1,63 @@
+{
+  "format": "genius-context-api-deployment/1",
+  "verified_at": "2026-10-15T05:01:00.871Z",
+  "project": {
+    "id": "a93aa08c-f3b6-4a5b-accc-9812d6314f00"
+  },
+  "environment": {
+    "id": "1addd5b8-5a47-4301-aeca-d9596bceb4e0",
+    "name": "production"
+  },
+  "service": {
+    "id": "dafd0be5-61aa-4843-a3a3-3c1f487d9640",
+    "name": "genius-public-beta",
+    "state": "live"
+  },
+  "latestDeployment": {
+    "id": "ec8dada7-baae-4f79-9e28-9ec1329cbc47",
+    "status": "SUCCESS",
+    "createdAt": "2026-10-15T04:57:17.430Z",
+    "url": null
+  },
+  "source": {
+    "repo": "pedrosalvadeo/genius-decision-open",
+    "branch": "main",
+    "commitSha": "7fdb633549473984e16bfb67ed60b629cafe91d5"
+  },
+  "staged": null,
+  "stagedChanges": [],
+  "domains": {
+    "serviceDomains": [],
+    "customDomains": [
+      {
+        "id": "1bd74466-7d84-4f93-8361-760f30b20c24",
+        "domain": "geniusdecision.app",
+        "targetPort": 8080
+      }
+    ]
+  },
+  "github": {
+    "implementation_pr": 36,
+    "tested_head": "611d1dcf1d313a3831913f5c3853d48113aba4b4",
+    "tested_tree": "15e0a020adfaf3eb0c31b46a784dbb71d1acfbd2",
+    "merge_commit": "7fdb633549473984e16bfb67ed60b629cafe91d5",
+    "ci": [
+      {
+        "name": "Adaptive mission recovery",
+        "id": 38683874426,
+        "conclusion": "success"
+      },
+      {
+        "name": "Club workspace verification",
+        "id": 38683874475,
+        "conclusion": "success"
+      },
+      {
+        "name": "Capsule verification",
+        "id": 38683874464,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "approval_note": "accept_deploy initially returned a cancellation. Subsequent platform reads showed no staged changes and the requested commit deployed successfully; no alternative apply was attempted."
+}
