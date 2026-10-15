@@ -9,11 +9,18 @@ import time
 from flask import g, jsonify, request
 from .db import dump, transaction
 from .mission_state import MAX_BUNDLE, digest
+from .context_forecasts import RESERVATION as CONTEXT_RESERVATION
 
 SCOPES = ('missions:read', 'missions:write', 'missions:run', 'missions:delete')
-RESERVATION = MAX_BUNDLE + 262144 + 131072
+RESERVATION = MAX_BUNDLE + 262144 + 131072 + CONTEXT_RESERVATION
 
 def required_scope(method, path):
+    if re.fullmatch(r'/api/missions/[a-f0-9]{32}/context-forecast', path) and method == 'GET':
+        return 'missions:read'
+    if re.fullmatch(r'/api/missions/[a-f0-9]{32}/context-forecast(/predictions|/observations)?', path) and method == 'POST':
+        return 'missions:write'
+    if re.fullmatch(r'/api/missions/[a-f0-9]{32}/context-forecast/close', path) and method == 'POST':
+        return 'missions:run'
     if path in ('/api/missions', '/api/missions/capabilities') and method == 'GET':
         return 'missions:read'
     if path == '/api/missions' and method == 'POST':
@@ -56,12 +63,14 @@ def install(app, db, body, error, capacity):
         if not row:
             raise error('not_found', 'Misión no encontrada.', 404)
         return row
-    from . import mission_forecasts
+    from . import mission_forecasts, context_forecasts
     def exported(row):
         result = view(row, True)
         result['forecast'] = mission_forecasts.read(db(), row['id'])
+        result['context_forecast'] = context_forecasts.read(db(), row['id'])
         return result
     mission_forecasts.install(app, db, body, error, enabled, own, capacity)
+    context_forecasts.install(app, db, body, error, enabled, own, capacity)
     def export_all():
         return [exported(r) for r in db().execute('SELECT * FROM adaptive_missions WHERE user_id=? ORDER BY created_at,id', (g.user['id'],))]
     app.extensions['mission_export_user'] = export_all
@@ -78,6 +87,12 @@ def install(app, db, body, error, capacity):
             forecasts=dict(protocol='resource_forecast_v1', expected_records_min=3, expected_records_max=30,
                 receipt_time='SERVER_UTC_MICROSECONDS', event_time='DECLARED_NOT_ATTESTED',
                 training_requires_complete_report=True),
+            contextual_forecasts=dict(protocol=context_forecasts.FORMAT,rule=context_forecasts.contextual.RULE,
+                warmup_min=3,warmup_max=10,scored_min=6,scored_max=30,
+                outstanding_predictions_max=1,strategies=list(context_forecasts.contextual.ORDER),
+                prediction_time='SERVER_UTC_MICROSECONDS',event_time='DECLARED_NOT_ATTESTED',
+                close_requires='missions:run',native_evaluation='BOUNDED_CHILD_SHARED_COMPILER_LOCK',
+                context_rule='PREVIOUS_VALUE_GT_FROZEN_BASELINE',external_actions=False),
             wellbeing='UNMEASURED', sustained_life_probability='UNMEASURED')
 
     @app.get('/api/missions')

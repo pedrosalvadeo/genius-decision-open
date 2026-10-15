@@ -1,0 +1,21 @@
+{
+  "format": "genius-context-api-validation/1",
+  "protocol": "resource_context_forecast_v1",
+  "local_validation": "PASS",
+  "service_tests": 139,
+  "adaptive_tests": 46,
+  "new_tests": {
+    "service_contract": 14,
+    "probe_recovery": 2,
+    "backup_v9_upgrade": 1,
+    "rule_parity": 1
+  },
+  "probe_recheck_overlaps_service_tests": 2,
+  "legacy_fixed_scorer_unchanged": true,
+  "operator_v1_unchanged": true,
+  "migration": "010_context_forecasts.sql",
+  "deployment": "PENDING_VERIFICATION",
+  "live_probe": "NOT_YET_RUN",
+  "wellbeing_effect": "UNMEASURED",
+  "life_sustainment_effect": "UNMEASURED"
+}

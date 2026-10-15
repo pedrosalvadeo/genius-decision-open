@@ -1,0 +1,7 @@
+test_lost_target_reply_resumes_then_closes_exports_and_erases (test_context_probe.ContextProbe.test_lost_target_reply_resumes_then_closes_exports_and_erases) ... ok
+test_missing_deployment_preflight_does_not_create_an_account (test_context_probe.ContextProbe.test_missing_deployment_preflight_does_not_create_an_account) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.512s
+
+OK

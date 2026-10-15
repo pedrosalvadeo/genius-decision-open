@@ -1,6 +1,76 @@
-# Genius adaptativo — selector contextual implementado y ensayo cerrado
+# Genius adaptativo — integración contextual REST/MCP preparada
 
-Último incremento: 15 de octubre de 2026, ensayo terminado a las 04:30:14 UTC
+15 de octubre de 2026. Implementado `resource_context_forecast_v1` como contrato
+aditivo del servicio. Código en la rama `work/context-api-20261015`; el PR registra
+commit probado, CI y pin solicitado para Railway. **No asumir que ya esté desplegado:**
+la última lectura previa a esta publicación mostró activo el PR 31, commit
+`2de2b7b0a1a885b62d7eb6597ea3b2d74741e90f`, sin cambios pendientes. Verificar el
+resultado del despliegue y la prueba por API antes de declarar activación.
+
+## Implementación disponible
+
+- Plan propio desde una calibración completada: hereda la estimación aceptada,
+  recurso/unidad/tolerancia/tipo de datos; congela recuentos y código.
+- Predicción persistida por el servidor antes de la observación, con una sola
+  pendiente y cadena de recibos. Reintentos exactos recuperan el mismo resultado.
+- Cuatro estrategias; elección usando únicamente puntuaciones anteriores del
+  mismo contexto. Se conserva la regla v1 del observador, sin ajustar las guardas.
+- Cierre explícito con permiso `missions:run`, proceso nativo de 20 s / 384 MiB /
+  2 MiB de salida y bloqueo compartido de compilador. Consume cuotas existentes;
+  un cierre ya completado se recupera sin nuevo cálculo. Un fallo conserva datos.
+- Migración aditiva 010, exportación por cuenta, retención/borrado en cascada y
+  restauración cifrada desde versiones históricas exactas; ningún hash antiguo
+  fue relajado. No necesita nueva infraestructura, secretos ni proveedor LLM.
+- Cinco herramientas MCP `mission_context_*`, descubrimiento de capacidades,
+  OpenAPI contextual y guía pública. El contrato de predicción constante y los
+  archivos del observador del PR 35 permanecen intactos.
+
+Contrato: [CONTEXT_FORECASTS.md](../beta/docs/CONTEXT_FORECASTS.md).
+Pruebas/evidencia local: [2026-10-15-context-api](evidence/2026-10-15-context-api).
+139 pruebas de servicio/privacidad/recuperación y 46 adaptativas aprobadas.
+Las dos pruebas del cliente de despliegue se volvieron a comprobar tras reforzar
+la correspondencia entre recibos individuales, exportación e informe cerrado;
+son parte de las 139, no dos pruebas adicionales independientes.
+
+Se comprobó elección contextual en datos sintéticos, fallo del núcleo, cuotas,
+concurrencia, reinicio entre predicción y observación, borrado durante cálculo,
+recuperación cifrada y compatibilidad con el pronóstico constante. El simulador
+local de API pierde una respuesta aceptada, reanuda el mismo objetivo, completa
+el informe, verifica exportación y borra cuenta/credencial. No atribuir esos
+resultados locales a la API pública hasta ejecutar la prueba desplegada.
+
+## Despliegue y comprobación pendientes
+
+El incremento cambia archivos del runtime y agrega una migración. Hay que fijar
+Railway al merge probado, revisar que el único cambio sea el pin, aplicar y observar
+`SUCCESS`. El servicio existente conserva proyecto/entorno/volumen y los límites
+actuales. Las misiones antiguas incompletas pueden requerir revisión al cambiar
+la identidad del runtime; las completadas conservan entregas. Los pronósticos
+constantes conservan su propio evaluador sin cambios.
+
+Cliente preparado, reanudable y probado localmente:
+
+```bash
+PYTHONPATH=adaptive:beta:twin:kernel python3.12 -B -m deploy.context_probe \
+  --state /ruta/privada/context-api.json --out /ruta/evidencia/context-api.json
+```
+
+Usar rutas distintas; el estado privado contiene una credencial hasta la limpieza
+final. El modo `--cleanup-only` elimina la cuenta sin continuar el protocolo.
+No publicar ese estado. La salida pública omite el token. El cliente comprueba
+primero el manifiesto y no crea cuenta si el contrato aún no está servido. Respetar
+las cuotas; no eludirlas creando identidades o fuentes de acceso alternativas.
+
+La secuencia sintética está definida de antemano para probar selección y contratos;
+los objetivos se envían después de recibir sus predicciones. **No es un nuevo
+ensayo empírico de mejora** ni sustituye el resultado HTTP negativo del PR 35.
+Revisa fuentes servidas, hashes, cadena temporal, decisión efectivamente aplicada,
+verificación nativa, informe inmutable, exportación y eliminación de la cuenta.
+Si un alta o borrado queda incierto, conservar ese límite y no afirmar éxito.
+
+# Antecedente: selector contextual del observador y ensayo cerrado
+
+Incremento anterior: 15 de octubre de 2026, ensayo terminado a las 04:30:14 UTC
 (01:30 en Argentina). Código y plan publicados antes de medir en
 `20503abac466166d8938a1ac36e71f4a0c50144b`, PR 35. Hay un selector ejecutable
 entre cuatro estrategias usando sólo observaciones previas del mismo contexto.
@@ -233,19 +303,20 @@ No se inventaron esas fuentes ni se relajaron sus hashes; las misiones usan el
 gemelo y núcleo públicos presentes. Recuperar versiones exactas sigue pendiente.
 
 
+
 ## Siguiente prompt
 
-> Continuá desde `adaptive/HANDOFF.md` y `adaptive/observers/CONTEXT_STRATEGIES.md`.
-> El PR 35 añade selección entre cuatro estrategias con contexto previo y recibos
-> persistidos antes de cada medición. Es un módulo del observador, aún no REST/MCP.
-> El ensayo de 18 solicitudes terminó: mediana reciente/contextual error 2521 y
-> subestimación máxima 760; base y política ejecutada error 29316, subestimación 0.
-> El selector conservó la base y el informe es NO_CONFIRMED_IMPROVEMENT. Hubo un
-> solo contexto real; no afirmar mejora contextual ni beneficio de bienestar/PVS.
-> No repitas el ensayo ni ajustes sus guardas después de ver resultados.
-> Integrá esta capacidad en un nuevo contrato de servicio con predicciones
-> persistidas antes de recibir objetivos, aislamiento por cuenta, recuperación,
-> exportación/borrado y validación del núcleo. Conservá los contratos existentes.
-> Separá la integración de cualquier revisión versionada de costes de error y
-> subestimación, que debe fijarse antes de otro ensayo. Publicá con CI aprobado,
-> verificá el despliegue si cambia el runtime y entregá evidencia y siguiente prompt.
+> Continuá desde `adaptive/HANDOFF.md` y `beta/docs/CONTEXT_FORECASTS.md`.
+> El contrato contextual REST/MCP está implementado; 139 pruebas de servicio y
+> 46 adaptativas pasan. Consultá el PR de `work/context-api-20261015` para obtener
+> el merge probado, CI y estado del despliegue. Verificá Railway y el manifiesto:
+> no confundas código integrado con servicio activo. Si el pin aún está pendiente,
+> completá su aplicación autorizada y esperá SUCCESS. Luego ejecutá la prueba
+> `beta/deploy/context_probe.py`, respetando cuotas, conservando estado privado
+> fuera de Git, sin reemplazar objetivos y borrando la cuenta temporal al terminar.
+> Publicá el recibo público, la identidad del despliegue, límites y siguiente prompt.
+> Conservá el resultado HTTP negativo previo y la regla v1. Después de verificar
+> el servicio, abordá los costes de sobre/subestimación como un objetivo nuevo y
+> versionado antes de nuevos datos; no ajustes el criterio para aprobar lo ya visto.
+> Bienestar/PVS siguen sin medirse: no convertir pruebas sintéticas de integración
+> en evidencia de beneficios reales. No repitas la implementación ni ensayos cerrados.
