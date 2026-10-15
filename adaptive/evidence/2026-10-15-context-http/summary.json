@@ -1,0 +1,92 @@
+{
+  "format": "genius-context-study-summary/1",
+  "premeasurement_code_commit": "20503abac466166d8938a1ac36e71f4a0c50144b",
+  "pull_request": 35,
+  "plan_sha256": "6b001a3f297d9326059dccb526888dd4f335f7a56e14d682f58f9f2550e89038",
+  "evidence_sha256": "d1c3b3d358524ff6f41f3ee0df0d5c79f55eb31b09e9f630a71bc31971959a52",
+  "started_at": "2026-10-15T04:28:36.360964+00:00",
+  "completed_at": "2026-10-15T04:30:14.524613+00:00",
+  "samples": 18,
+  "warmup_count": 6,
+  "scored_count": 12,
+  "values_ms": [
+    5490,
+    5386,
+    6091,
+    5473,
+    5487,
+    5344,
+    5356,
+    5367,
+    5425,
+    6127,
+    5452,
+    5341,
+    4392,
+    5418,
+    5477,
+    5439,
+    5389,
+    5521
+  ],
+  "outcome": "NO_CONFIRMED_IMPROVEMENT",
+  "comparison": {
+    "adaptive": {
+      "absolute_error_sum": 29316,
+      "count": 12,
+      "max_underprediction": 0
+    },
+    "baseline": {
+      "absolute_error_sum": 29316,
+      "count": 12,
+      "max_underprediction": 0
+    },
+    "context_median": {
+      "absolute_error_sum": 2521,
+      "count": 12,
+      "max_underprediction": 760
+    },
+    "last_value": {
+      "absolute_error_sum": 3823,
+      "count": 12,
+      "max_underprediction": 1026
+    },
+    "rolling_median": {
+      "absolute_error_sum": 2521,
+      "count": 12,
+      "max_underprediction": 760
+    }
+  },
+  "checks": {
+    "lower_error": false,
+    "no_worse_underprediction": true,
+    "within_declared_limit": true
+  },
+  "selected_counts": {
+    "baseline": 12,
+    "context_median": 0,
+    "last_value": 0,
+    "rolling_median": 0
+  },
+  "context_counts": {
+    "previous_at_or_below_baseline": 12
+  },
+  "native_verified": true,
+  "completed_replay_without_network": true,
+  "evidence_unchanged_on_replay": true,
+  "source": "CLIENT_OBSERVED_HTTP_WITH_NETWORK_AND_PROXY",
+  "measurement_failures": 0,
+  "credentials_created": 0,
+  "service_runtime_changed": false,
+  "api_integration": "PENDING",
+  "wellbeing_effect": "UNMEASURED",
+  "life_sustainment_effect": "UNMEASURED",
+  "generalization": "UNKNOWN",
+  "independent_attestation": false,
+  "local_tests": {
+    "total": 45,
+    "new": 12
+  },
+  "report_event_sha256": "0ccf0d9590f783b45ab8e7ec116cc8d41c57727c1daed09392d5e1a4cad83103",
+  "report_body_sha256": "ab363be49d5d5b64445369ff11f78f6c7e769e44f1213dc2d79bfb9e15985572"
+}
