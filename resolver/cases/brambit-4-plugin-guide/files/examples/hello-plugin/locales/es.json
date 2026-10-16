@@ -1,0 +1,8 @@
+{
+  "hello_plugin": {
+    "page": {
+      "title": "Plugin de ejemplo",
+      "description": "Esta página la proporciona un plugin."
+    }
+  }
+}

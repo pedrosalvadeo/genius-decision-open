@@ -49,6 +49,14 @@ class LedgerTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'STALE_SOURCE'):
             L.transition(self.state, self.pid, 'BLOCKED', 'resolver', self.receipt())
 
+    def test_older_snapshot_cannot_revert_a_newer_source(self):
+        self.prepare()
+        older = issue(body='An older version of the request.')
+        older['updated_at'] = '2026-10-15T20:00:00Z'
+        receipt = L.ingest(self.state, [older], 'stale cached capture')
+        self.assertEqual(receipt['stale_skipped'], 1)
+        self.assertEqual(self.state['problems'][self.pid]['status'], 'SOLUTION_PREPARED')
+
     def test_local_checks_cannot_skip_application(self):
         self.prepare()
         with self.assertRaisesRegex(ValueError, 'INVALID_TRANSITION'):
@@ -107,6 +115,19 @@ class LedgerTests(unittest.TestCase):
         rendered = L.report(self.state)
         self.assertNotIn('<script>', rendered)
         self.assertNotIn('[x](https://evil.test)', rendered)
+
+    def test_direct_status_edit_cannot_create_a_verified_result(self):
+        self.prepare()
+        L.validate(self.state)
+        self.state['problems'][self.pid]['status'] = 'VERIFIED'
+        with self.assertRaisesRegex(ValueError, 'EVENT_STATE_MISMATCH'):
+            L.validate(self.state)
+
+    def test_saved_success_receipts_are_validated_on_load(self):
+        self.prepare()
+        self.state['problems'][self.pid]['events'][-1]['receipt']['checks_passed'] = False
+        with self.assertRaisesRegex(ValueError, 'SOLUTION_CHECKS_REQUIRED'):
+            L.validate(self.state)
 
     def test_transaction_conflict_and_crash_leave_previous_state_intact(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -2,7 +2,7 @@
 
 Estado generado desde `ledger.json`. El buscador inspecciona muestras; no cubre toda Internet.
 
-Problemas registrados: **20** · Soluciones preparadas: **0** · Aplicadas pendientes de verificación: **0** · Resultados verificados: **0**
+Problemas registrados: **20** · Soluciones preparadas: **1** · Aplicadas pendientes de verificación: **0** · Resultados verificados: **0**
 
 | Problema público | Estado | Última evidencia |
 |---|---|---|
@@ -12,7 +12,7 @@ Problemas registrados: **20** · Soluciones preparadas: **0** · Aplicadas pendi
 | [docs(integrations): explain possible and confirmed fixes in each agent guide](https://github.com/wuisabel-gif/MemWhale/issues/423) | DETECTED | Detectado; pendiente de investigación. |
 | [docs: document the authorization model](https://github.com/sorotrail/SoroBeacon/issues/472) | DETECTED | Detectado; pendiente de investigación. |
 | [test(gemini-cli): verify capture and proactive recall in a live Gemini CLI session](https://github.com/wuisabel-gif/MemWhale/issues/422) | DETECTED | Detectado; pendiente de investigación. |
-| [Docs: guide for writing a plugin](https://github.com/morethanrealio/brambit/issues/4) | INVESTIGATING | Detectado; pendiente de investigación. |
+| [Docs: guide for writing a plugin](https://github.com/morethanrealio/brambit/issues/4) | SOLUTION_PREPARED | Guía y plugin preparados; cuatro pruebas de integración y controles de catálogos y estilo de pruebas aprobados. Pendiente de asignación, CLA y envío externo. |
 | [Document TESTNET_CHECKLIST failure triage for RPC timeouts](https://github.com/Stellar-TrustBridge/trustbridge-contract/issues/642) | DETECTED | Detectado; pendiente de investigación. |
 | [Docs: user guide for people who are not developers](https://github.com/morethanrealio/brambit/issues/1) | DETECTED | Detectado; pendiente de investigación. |
 | [docs: document the escalation policy model](https://github.com/sorotrail/SoroBeacon/issues/471) | DETECTED | Detectado; pendiente de investigación. |

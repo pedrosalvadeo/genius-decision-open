@@ -65,6 +65,30 @@ def new():
     return dict(schema=SCHEMA, revision=0, problems={}, discoveries=[])
 
 
+def check_receipt(status, receipt, revision, criteria):
+    require(isinstance(receipt, dict), 'RECEIPT_REQUIRED')
+    require(type(receipt.get('source_revision')) is int and receipt['source_revision'] == revision, 'STALE_SOURCE')
+    text(receipt.get('summary'))
+    refs = receipt.get('evidence')
+    require(isinstance(refs, list) and 1 <= len(refs) <= 20, 'EVIDENCE_REQUIRED')
+    for ref in refs:
+        text(ref, 1000)
+    if status == 'SOLUTION_PREPARED':
+        require(criteria, 'SUCCESS_CRITERIA_REQUIRED')
+        require(receipt.get('criteria') == criteria, 'CRITERIA_MISMATCH')
+        require(receipt.get('checks_passed') is True, 'SOLUTION_CHECKS_REQUIRED')
+        text(receipt.get('artifact'), 1000)
+    if status == 'APPLIED':
+        text(receipt.get('application_ref'), 1000)
+        text(receipt.get('authority'), 1000)
+        require(receipt.get('target') == 'INTENDED_DESTINATION', 'LOCAL_COPY_IS_NOT_APPLICATION')
+    if status == 'VERIFIED':
+        require(receipt.get('criteria') == criteria, 'CRITERIA_MISMATCH')
+        require(receipt.get('checks_passed') is True, 'VERIFICATION_REQUIRED')
+        require(receipt.get('observed_after_application') is True, 'POST_APPLICATION_EVIDENCE_REQUIRED')
+        text(receipt.get('observation_ref'), 1000)
+
+
 def validate(state):
     require(isinstance(state, dict) and state.get('schema') == SCHEMA, 'LEDGER_SCHEMA')
     require(type(state.get('revision')) is int and state['revision'] >= 0, 'REVISION')
@@ -73,7 +97,37 @@ def validate(state):
     for pid, row in state['problems'].items():
         require(pid == digest(issue_url(row['source']['url']))[:24], 'PROBLEM_ID')
         require(row['status'] in STATES, 'STATE')
-        require(isinstance(row.get('events'), list) and len(row['events']) <= 128, 'EVENTS')
+        require(isinstance(row.get('events'), list) and 1 <= len(row['events']) <= 128, 'EVENTS')
+        current, revision, criteria, fingerprint = None, 0, [], None
+        for e in row['events']:
+            timestamp(e['at'])
+            kind = e['kind']
+            if kind == 'discovered':
+                require(current is None, 'DUPLICATE_DISCOVERY_EVENT')
+                current, revision, fingerprint = e['status'], 1, e['fingerprint']
+                require(current in ('DETECTED', 'CLOSED_AT_SOURCE'), 'INITIAL_STATE')
+            elif kind == 'claimed':
+                require(current in ('DETECTED', 'INVESTIGATING', 'BLOCKED', 'NEEDS_INFORMATION'), 'CLAIM_HISTORY')
+                require(e['source_revision'] == revision, 'STALE_SOURCE')
+                current, criteria = 'INVESTIGATING', e['criteria']
+                require(isinstance(criteria, list) and 1 <= len(criteria) <= 12, 'SUCCESS_CRITERIA_REQUIRED')
+                for criterion in criteria:
+                    text(criterion, 500)
+            elif kind == 'source_changed':
+                require(e['previous_status'] == current and e['previous_fingerprint'] == fingerprint, 'SOURCE_HISTORY')
+                current, fingerprint = e['status'], e['fingerprint']
+                require(current in ('NEEDS_INFORMATION', 'CLOSED_AT_SOURCE'), 'CHANGED_SOURCE_STATE')
+                revision, criteria = revision + 1, []
+            elif kind == 'transition':
+                require(e['previous_status'] == current and e['status'] in TRANSITIONS[current], 'TRANSITION_HISTORY')
+                current = e['status']
+                check_receipt(current, e['receipt'], revision, criteria)
+                if current == 'INVESTIGATING':
+                    criteria = []
+            else:
+                raise ValueError('EVENT_KIND')
+        require(row['status'] == current and row['revision'] == revision and row['criteria'] == criteria, 'EVENT_STATE_MISMATCH')
+        require(row['source']['fingerprint'] == fingerprint, 'SOURCE_FINGERPRINT_MISMATCH')
     require(len(canonical(state).encode()) <= MAX_BYTES, 'LEDGER_SIZE')
     return state
 
@@ -150,7 +204,7 @@ def ingest(state, items, query, observed_at=None, total_count=None, incomplete=F
     text(query, 500)
     at = timestamp(observed_at)
     sources = [source_from_issue(i) for i in items]
-    counts = dict(new=0, changed=0, unchanged=0, capacity_skipped=0)
+    counts = dict(new=0, changed=0, unchanged=0, capacity_skipped=0, stale_skipped=0)
     for source in sources:
         pid = digest(source['url'])[:24]
         row = state['problems'].get(pid)
@@ -163,13 +217,17 @@ def ingest(state, items, query, observed_at=None, total_count=None, incomplete=F
                        last_seen=at, revision=1, criteria=[], events=[],
                        priority=None, reasoning=None, kernel_evaluation=None,
                        wellbeing=None, sustained_life_probability=None)
-            event(row, 'discovered', at, fingerprint=source['fingerprint'])
+            event(row, 'discovered', at, fingerprint=source['fingerprint'], status=status)
             state['problems'][pid] = row
             counts['new'] += 1
         else:
+            if source['updated_at'] < row['source']['updated_at']:
+                counts['stale_skipped'] += 1
+                continue
             if source['fingerprint'] != row['source']['fingerprint']:
                 event(row, 'source_changed', at, previous_status=row['status'],
-                      previous_fingerprint=row['source']['fingerprint'], fingerprint=source['fingerprint'])
+                      previous_fingerprint=row['source']['fingerprint'], fingerprint=source['fingerprint'],
+                      status='NEEDS_INFORMATION' if source['state'] == 'open' else 'CLOSED_AT_SOURCE')
                 row['revision'] += 1
                 row['status'] = 'NEEDS_INFORMATION' if source['state'] == 'open' else 'CLOSED_AT_SOURCE'
                 row['criteria'] = []
@@ -213,30 +271,10 @@ def transition(state, pid, status, operator, receipt, now=None):
     at = timestamp(now)
     row = state['problems'][pid]
     require(status in TRANSITIONS[row['status']], 'INVALID_TRANSITION')
-    require(isinstance(receipt, dict), 'RECEIPT_REQUIRED')
-    require(receipt.get('source_revision') == row['revision'], 'STALE_SOURCE')
-    text(receipt.get('summary'))
-    refs = receipt.get('evidence')
-    require(isinstance(refs, list) and 1 <= len(refs) <= 20, 'EVIDENCE_REQUIRED')
-    for ref in refs:
-        text(ref, 1000)
+    check_receipt(status, receipt, row['revision'], row['criteria'])
     lease = row.get('lease')
     if lease and lease['expires_at'] > at:
         require(lease['owner'] == operator, 'PROBLEM_LEASED')
-    if status == 'SOLUTION_PREPARED':
-        require(row['criteria'], 'SUCCESS_CRITERIA_REQUIRED')
-        require(receipt.get('criteria') == row['criteria'], 'CRITERIA_MISMATCH')
-        require(receipt.get('checks_passed') is True, 'SOLUTION_CHECKS_REQUIRED')
-        text(receipt.get('artifact'), 1000)
-    if status == 'APPLIED':
-        text(receipt.get('application_ref'), 1000)
-        text(receipt.get('authority'), 1000)
-        require(receipt.get('target') == 'INTENDED_DESTINATION', 'LOCAL_COPY_IS_NOT_APPLICATION')
-    if status == 'VERIFIED':
-        require(receipt.get('criteria') == row['criteria'], 'CRITERIA_MISMATCH')
-        require(receipt.get('checks_passed') is True, 'VERIFICATION_REQUIRED')
-        require(receipt.get('observed_after_application') is True, 'POST_APPLICATION_EVIDENCE_REQUIRED')
-        text(receipt.get('observation_ref'), 1000)
     event(row, 'transition', at, previous_status=row['status'], status=status,
           operator=text(operator, 100), receipt=deepcopy(receipt))
     row['status'] = status

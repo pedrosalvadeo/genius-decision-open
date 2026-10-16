@@ -1,0 +1,1 @@
+[i18n-guard] ok: 2 folder(s)
