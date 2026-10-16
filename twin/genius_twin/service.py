@@ -94,7 +94,12 @@ class TwinService:
                 "transport": "HTTP JSON; access boundary belongs to the embedding", "mcp": self.execution_context.get('mcp', False), "external_acquisition": False,
                 "physical_actions": False, "rc01_receipt": False, "default_case_versions": "start at 1 after material confirmation",
                 "execution_limits": deepcopy(self.execution_context),
-                "edit_operations": ["declared_model", "intervention_design", "draft", "apply_relay_policy", "preference", "law_correction", "restore"],
+                "edit_operations": ["declared_model", "intervention_design", "system_scope", "draft", "apply_relay_policy", "preference", "law_correction", "restore"],
+                "systems": {"observation_format": "genius-system-observation/1", "scope_format": "genius-system-scope/1",
+                    "schema_path": "/systems/schema", "scope_schema_path": "/systems/scope-schema", "example_path": "/systems/example",
+                    "recognition": "Declared graph components; hypotheses only, no causal discovery",
+                    "max_observations": min(64, self.execution_context.get("system_observation_limit", 64)),
+                    "empirical_validation": "NOT_ASSESSED"},
                 "interventions": {"format": "genius-intervention-design/1", "profile": registry.STOCKFLOW,
                     "schema_path": "/interventions/schema", "example_path": "/interventions/example",
                     "operations": ["transfer", "connect", "disconnect", "use_action"],
@@ -150,12 +155,82 @@ class TwinService:
 
     def read_case(self, cid):
         case = Store.case(self._case(cid))
+        observations = [json.loads(r["record_json"]) for r in self.store.read("SELECT * FROM observations WHERE case_id=? ORDER BY created_at,id", (cid,))]
+        systems = [o for o in observations if o.get("kind") == "system_observation"]
         return {"case": case,
                 "draft": Store.draft(self.store.one("SELECT * FROM drafts WHERE case_id=?", (cid,))),
                 "versions": [Store.version(r) for r in self.store.read("SELECT * FROM versions WHERE case_id=? ORDER BY version", (cid,))],
                 "proposals": [Store.proposal(r) for r in self.store.read("SELECT * FROM proposals WHERE case_id=? ORDER BY created_at,id", (cid,))],
                 "jobs": [Store.job(r) for r in self.store.read("SELECT * FROM jobs WHERE case_id=? ORDER BY created_at,id", (cid,))],
-                "observations": [json.loads(r["record_json"]) for r in self.store.read("SELECT * FROM observations WHERE case_id=? ORDER BY created_at,id", (cid,))]}
+                "observations": [o for o in observations if o.get("kind") != "system_observation"],
+                "system_observations": systems, "system_context": self.system_context(cid)}
+
+    def _system_records(self, cid, conn=None):
+        sql = "SELECT record_json FROM observations WHERE case_id=? ORDER BY created_at,id"
+        rows = conn.execute(sql, (cid,)).fetchall() if conn else self.store.read(sql, (cid,))
+        records = [json.loads(r["record_json"]) for r in rows]
+        return sorted((r for r in records if r.get("kind") == "system_observation"), key=lambda r: r["revision"])
+
+    def system_context(self, cid, version=None):
+        case = self._case(cid)
+        records = self._system_records(cid)
+        latest = records[-1] if records else None
+        if version is None and case["current_version"]:
+            version = self._version(cid, case["current_version"])
+        receipt = version["metadata"].get("system_scope") if version else None
+        state = "NO_OBSERVATIONS"
+        if latest:
+            state = "REVIEW_REQUIRED"
+            if receipt and receipt["observation_revision"] == latest["revision"] and receipt["model_sha256"] == version["model_sha256"]:
+                state = "SCOPE_INCOMPLETE" if receipt["review_required"] else "CURRENT_DECLARED_SCOPE"
+        return {"status": state, "observation_revision": latest["revision"] if latest else 0,
+                "scope": receipt, "latest": latest,
+                "meaning": "Current evidence context; frozen model versions and results are not rewritten"}
+
+    def observe_system(self, cid, payload):
+        fields(payload, {"base_version", "observation_revision", "idempotency_key", "observation"},
+               {"base_version", "observation_revision", "idempotency_key", "observation"})
+        base = integer(payload["base_version"], "base_version")
+        revision = integer(payload["observation_revision"], "observation_revision")
+        key = text(payload["idempotency_key"], "idempotency_key", 128, 8)
+        from .systems import recognize
+        try:
+            recognition = recognize(payload["observation"])
+        except (ValueError, KeyError, TypeError) as exc:
+            raise ServiceError("invalid_system_observation", "Revisa las entidades, relaciones, fuentes y fechas.", 422, str(exc)) from exc
+        fingerprint = sha({"operation": "system_observation", "request": payload})
+        with self.store.transaction() as conn:
+            case = self._case(cid, conn)
+            previous = conn.execute("SELECT * FROM idempotency WHERE case_id=? AND key=?", (cid, key)).fetchone()
+            if previous:
+                require(previous["request_sha256"] == fingerprint, "idempotency_conflict", "La clave ya identifica otra solicitud.", 409)
+                return json.loads(previous["response_json"])
+            require(case["profile"] == registry.STOCKFLOW, "observation_profile_not_supported", "Este registro pertenece al gemelo general.", 422)
+            require(case["current_version"] == base, "version_conflict", "La versión del modelo cambió.", 409)
+            records = self._system_records(cid, conn)
+            require(len(records) == revision, "observation_conflict", "Existe una observación de sistemas más reciente.", 409)
+            require(revision < min(64, self.execution_context.get("system_observation_limit", 64)),
+                    "system_observation_limit", "Límite de observaciones alcanzado. Exporta el expediente para conservarlo.", 429)
+            identities = {e["id"]: e["kind"] for r in records for e in r["observation"]["entities"]}
+            require(all(e["id"] not in identities or identities[e["id"]] == e["kind"] for e in payload["observation"]["entities"]),
+                    "identity_conflict", "Una identidad existente no puede cambiar de tipo. Revisa la correspondencia.", 422)
+            current_entities = {e["id"] for e in payload["observation"]["entities"]}
+            current_relations = {r["id"]: (r["source"], r["target"], r["kind"]) for r in payload["observation"]["relations"]}
+            old_relations = [(r["id"], (r["source"], r["target"], r["kind"])) for record in records for r in record["observation"]["relations"]]
+            # Non-observation is not evidence of disappearance. Preserve gaps
+            # across ALL prior views, not only the immediately preceding view.
+            historical_gaps = {"unobserved_entities": sorted(set(identities) - current_entities),
+                               "unobserved_relations": sorted({rid for rid, _ in old_relations if rid not in current_relations}),
+                               "conflicting_relations": sorted({rid for rid, edge in old_relations if rid in current_relations and current_relations[rid] != edge})}
+            record = {"kind": "system_observation", "id": identifier(), "revision": revision + 1,
+                      "base_version": base, "received_at": now(), "observation": deepcopy(payload["observation"]),
+                      "recognition": recognition, "historical_gaps": historical_gaps, "empirical_validation": "NOT_ASSESSED"}
+            conn.execute("INSERT INTO observations VALUES(?,?,?,?,?,?)",
+                         (record["id"], cid, base, base, dumps(record), record["received_at"]))
+            conn.execute("UPDATE cases SET updated_at=? WHERE id=?", (record["received_at"], cid))
+            response = {"system_observation": record, "model_changed": False, "scope_review_required": True}
+            conn.execute("INSERT INTO idempotency VALUES(?,?,?,?)", (cid, key, fingerprint, dumps(response)))
+        return response
 
     def save_draft(self, cid, payload):
         fields(payload, {"base_version", "draft_revision", "text", "model"}, {"base_version", "draft_revision", "text", "model"})
@@ -193,7 +268,7 @@ class TwinService:
         base = integer(payload["base_version"], "base_version")
         message = text(payload["text"])
         kind = payload["kind"]
-        require(type(kind) is str and kind in {"declared_model", "intervention_design", "hypothetical_intervention", "preference", "fact_correction", "restore"},
+        require(type(kind) is str and kind in {"declared_model", "intervention_design", "system_scope", "hypothetical_intervention", "preference", "fact_correction", "restore"},
                 "unsupported_change_kind", "Tipo de cambio no admitido; usa observaciones para incorporar evidencia.")
         structured = payload.get("structured", {})
         require(type(structured) is dict, "invalid_object", "structured debe ser objeto.")
@@ -207,7 +282,8 @@ class TwinService:
             metadata = deepcopy(prior["metadata"]) if prior else {"review_required": False}
             # A generation receipt belongs to one exact model. Keep old receipts
             # in immutable history, never attach them to an unrelated edit.
-            metadata.pop("intervention_design", None)
+            if kind != "system_scope":
+                metadata.pop("intervention_design", None)
             metadata.update({"change_kind": kind, "source_text": message, "material_changes": []})
             if kind == "declared_model":
                 fields(structured, {"model"}, {"model"})
@@ -222,6 +298,27 @@ class TwinService:
                                  "material_changes": ["Modelo completo declarado; revisar parámetros, reglas, unidades y premisas.",
                                                       "Campos modificados: " + ", ".join(changed),
                                                       "Confirmar el modelo no autentica sus fuentes ni valida empíricamente sus predicciones."]})
+            elif kind == "system_scope":
+                fields(structured, {"scope"}, {"scope"})
+                require(model["profile"] == registry.STOCKFLOW, "change_outside_profile", "Los límites requieren un modelo general.", 422)
+                records = self._system_records(cid, conn)
+                require(bool(records), "system_observation_required", "Registra primero las observaciones de sistemas.", 422)
+                latest = records[-1]
+                from .systems import review_scope
+                try:
+                    receipt = review_scope(model, latest["observation"], structured["scope"])
+                except (ValueError, KeyError, TypeError) as exc:
+                    raise ServiceError("invalid_system_scope", "Revisa los límites y las correspondencias del sistema.", 422, str(exc)) from exc
+                require(structured["scope"]["observation_revision"] == latest["revision"], "observation_conflict", "Los límites no usan la última observación.", 409)
+                receipt.update({"observation_id": latest["id"], "observation_revision": latest["revision"]})
+                receipt["historical_gaps"] = deepcopy(latest["historical_gaps"])
+                receipt["review_required"] = receipt["review_required"] or any(latest["historical_gaps"].values())
+                metadata.update({"system_scope": receipt, "review_required": receipt["review_required"],
+                    "material_changes": ["Fronteras del sistema, de intervención y de evaluación conservadas con evidencia y correspondencias.",
+                        "El cálculo numérico no cambia; las relaciones observadas aún no calibran su dinámica.",
+                        "Entidades de evaluación sin representar: " + (", ".join(receipt["unmapped_entities"]) or "ninguna según las correspondencias declaradas"),
+                        "Omisiones o contradicciones respecto de vistas anteriores: " + ("requieren revisión" if any(receipt["historical_gaps"].values()) else "no detectadas"),
+                        "Confirmar esta hipótesis no verifica sus fuentes ni autoriza actuar sobre el mundo."]})
             elif kind == "intervention_design":
                 fields(structured, {"design"}, {"design"})
                 require(model["profile"] == registry.STOCKFLOW, "change_outside_profile",
@@ -275,9 +372,15 @@ class TwinService:
                 metadata["restored_from"] = restored["version"]
                 if "intervention_design" in restored["metadata"]:
                     metadata["intervention_design"] = deepcopy(restored["metadata"]["intervention_design"])
+                if "system_scope" in restored["metadata"]:
+                    metadata["system_scope"] = deepcopy(restored["metadata"]["system_scope"])
+                    metadata["review_required"] = restored["metadata"].get("review_required", False)
+                else:
+                    metadata.pop("system_scope", None)
                 metadata["material_changes"] = ["Restaurar contenido del modelo en una nueva versión, conservando todas las observaciones y la historia."]
             self._validate_model(model)
-            require(prior is None or model != prior["model"], "no_material_change", "La propuesta no cambia el modelo.")
+            require(prior is None or model != prior["model"] or (kind == "system_scope" and metadata.get("system_scope") != prior["metadata"].get("system_scope")),
+                    "no_material_change", "La propuesta no cambia el modelo ni sus límites.")
             proposal = self._insert_proposal(conn, cid, base, kind, message, model, metadata)
         return {"proposal": proposal}
 
@@ -302,6 +405,10 @@ class TwinService:
             require(row["status"] == "proposed", "proposal_already_accepted", "La propuesta ya se aceptó.", 409)
             require(row["model_json"] is not None, "model_required", "No existe un modelo admitido para aceptar.", 422)
             model, metadata = json.loads(row["model_json"]), json.loads(row["metadata_json"])
+            if row["kind"] == "system_scope":
+                records = self._system_records(cid, conn)
+                require(records and metadata["system_scope"]["observation_revision"] == records[-1]["revision"],
+                        "observation_conflict", "Hay nueva evidencia; revisa los límites antes de confirmar.", 409)
             self._validate_model(model)
             acknowledgement = "acknowledge_synthetic" if model["profile"] == registry.D1 else "acknowledge_declared"
             require(payload.get(acknowledgement) is True, "confirmation_required",
@@ -320,6 +427,9 @@ class TwinService:
         fields(payload, {"version"}, {"version"})
         self._case(cid)
         version = self._version(cid, payload["version"])
+        system_context = self.system_context(cid, version)
+        require(system_context["status"] != "REVIEW_REQUIRED", "system_scope_review_required",
+                "Revisa los límites frente a la última observación y al modelo actual antes de recalcular.", 409)
         identity = registry.execution_identity(version["model"]["profile"], self.execution_context)
         execution_key = sha({"model_sha256": version["model_sha256"], "identity": identity})
         jid = identifier()
@@ -355,6 +465,8 @@ class TwinService:
                         "compilation_manifest": result.get("compilation_manifest")}
             if "intervention_design" in version["metadata"]:
                 envelope["intervention_design"] = deepcopy(version["metadata"]["intervention_design"])
+            if "system_scope" in version["metadata"]:
+                envelope["system_scope"] = deepcopy(version["metadata"]["system_scope"])
             with self.store.transaction() as conn:
                 conn.execute("UPDATE jobs SET status='completed',finished_at=?,result_json=? WHERE id=? AND status='running'", (now(), dumps(envelope), jid))
         except Exception as exc:
@@ -461,6 +573,9 @@ class TwinService:
             results[name] = json.loads(row["result_json"])["canonical_results"] if row else None
         return {"case_id": cid, "before": old, "after": new, "model_changes": changes,
                 "results": results, "result_versions": {"before": before, "after": after},
+                "system_scope_comparison": {"before": old["metadata"].get("system_scope"), "after": new["metadata"].get("system_scope"),
+                    "same_scope": old["metadata"].get("system_scope", {}).get("scope_sha256") == new["metadata"].get("system_scope", {}).get("scope_sha256"),
+                    "meaning": "Different boundaries/evidence do not establish improvement on a common scope"},
                 "claim": "Comparison of frozen versions; unchanged values do not transport an old FP1 certificate"}
 
     def export(self, cid):

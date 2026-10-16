@@ -55,6 +55,29 @@ def make_blueprint(service_factory, name="twin_api"):
     def profiles():
         return jsonify(profiles=registry.profiles())
 
+    @bp.get("/systems/schema")
+    def system_schema():
+        from .systems import schema
+        return jsonify(schema())
+
+    @bp.get("/systems/scope-schema")
+    def system_scope_schema():
+        from .systems import scope_schema
+        return jsonify(scope_schema())
+
+    @bp.get("/systems/example")
+    def system_example():
+        from .systems import example
+        return jsonify(example())
+
+    @bp.get("/cases/<cid>/systems")
+    def system_context(cid):
+        return jsonify(service_factory().system_context(cid))
+
+    @bp.post("/cases/<cid>/systems")
+    def observe_system(cid):
+        return jsonify(service_factory().observe_system(cid, json_body())), 201
+
     @bp.get("/interventions/schema")
     def intervention_schema():
         from .interventions import schema

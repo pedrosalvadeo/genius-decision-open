@@ -1,3 +1,13 @@
+# Genius — sistemas y límites revisables
+
+16 de octubre de 2026. Incremento sobre PR53, cuya revisión 53d7c051b6d69608fba9dc8f58767376092282c2 estaba desplegada y verificada. [Contrato de sistemas](../twin/docs/SYSTEM_RECOGNITION.md).
+
+Se incorporan observaciones estructuradas con fuentes/fechas/incertidumbre, reconocimiento de agrupaciones en un grafo declarado, límites de sistema/intervención/evaluación y correspondencias con el modelo. Incluye Sistemas en la interfaz y seis herramientas MCP, historial, exportación y controles de impactos omitidos. No cambia el cálculo matemático ni habilita percepción libre, calibración o acción física.
+
+Validación local: 80 pruebas del gemelo y 16 de acceso/integración. El workflow de navegador verifica además el recorrido de sistemas y las regresiones de D3/intervenciones. Consultar el PR para el head probado, resultados definitivos de CI y despliegue; no inferir publicación de esta nota.
+
+Próximo encargo: contrastar hipótesis con observaciones numéricas contra predicciones congeladas, definir resolución con evidencia de relaciones contradictorias y sus períodos de vigencia. Mantener la distinción entre vista declarada, hipótesis, alcance numérico y validación empírica. No cambiar la regla de decisión a máximo PVS sin una revisión explícita de la formulación. No activar PR40 ni políticas rechazadas.
+
 # Genius — diseño de intervenciones sobre recursos y relaciones
 
 16 de octubre de 2026. [Contrato](../twin/docs/INTERVENTION_DESIGN.md). Nueva capa del gemelo: genera alternativas por transferencias, apertura/cierre de relaciones y secuencias de acciones, conservando un modelo común y evaluación nativa. Incluye interfaz Intervenir, REST/MCP, propuestas, confirmación, versiones y exportación. No cambia el kernel, política de regulación, cuotas ni concede efectos externos.

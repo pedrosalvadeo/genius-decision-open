@@ -17,7 +17,8 @@ def profiles():
         {"id": D1, "label": "Semillero D1", "scope": "SYNTHETIC_FIXED_TEMPLATE",
          "confirmation": "acknowledge_synthetic", "observations": True},
         {"id": STOCKFLOW, "label": "Existencias y flujos finitos", "scope": "DECLARED_FINITE_MODEL",
-         "confirmation": "acknowledge_declared", "observations": False},
+         "confirmation": "acknowledge_declared", "observations": False, "system_observations": True,
+         "observation_scope": "Source-attributed system graphs; numerical prediction contrast/calibration not implemented"},
     ]
 
 

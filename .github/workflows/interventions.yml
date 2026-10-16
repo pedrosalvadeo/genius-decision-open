@@ -37,6 +37,12 @@ jobs:
           PLAYWRIGHT_MODULE: ${{ runner.temp }}/genius-browser/node_modules/playwright
           BROWSER_QA_DIR: ${{ runner.temp }}/genius-d3-browser
         run: node twin/tests/browser_d3.cjs
+      - name: Verify source observations, system hypotheses and impact boundaries
+        env:
+          PYTHONPATH: twin:kernel
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/genius-browser/node_modules/playwright
+          BROWSER_QA_DIR: ${{ runner.temp }}/genius-system-browser
+        run: node twin/tests/browser_systems.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -46,4 +52,6 @@ jobs:
             ${{ runner.temp }}/genius-intervention-browser/*.png
             ${{ runner.temp }}/genius-d3-browser/browser-d3-evidence.json
             ${{ runner.temp }}/genius-d3-browser/failure.png
+            ${{ runner.temp }}/genius-system-browser/*.json
+            ${{ runner.temp }}/genius-system-browser/*.png
           retention-days: 7

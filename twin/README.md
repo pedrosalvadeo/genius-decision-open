@@ -1,3 +1,7 @@
+## Sistemas, observaciones y límites — 16/10/2026
+
+La pestaña **Sistemas** registra vistas con fuentes y propone agrupaciones a partir de relaciones declaradas. Permite revisar los límites del sistema, intervención y evaluación, conservar impactos externos y vincular identidades al modelo. Son hipótesis acotadas, no descubrimiento causal ni percepción libre. El cálculo numérico conserva sus reglas; nueva evidencia exige revisar el alcance. [Contrato y pruebas](docs/SYSTEM_RECOGNITION.md).
+
 # Diseño de intervenciones
 
 El gemelo incorpora generación de alternativas mediante transferencias de recursos, apertura/cierre de relaciones y programación de acciones. Acceso humano en **Intervenir**, API y MCP; revisión, confirmación y evaluación con el kernel existente. Ver [contrato, ejemplo y continuidad](docs/INTERVENTION_DESIGN.md). El estado de despliegue y CI se informa en el PR del incremento.
