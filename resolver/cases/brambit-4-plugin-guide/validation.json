@@ -1,0 +1,95 @@
+{
+  "schema": "genius-resolver-solution/1",
+  "source_issue": "https://github.com/morethanrealio/brambit/issues/4",
+  "source_repository": "https://github.com/morethanrealio/brambit",
+  "source_commit": "fb684453d95fb0d5ebb762ff9fc5fb9af766fbd4",
+  "prepared_at": "2026-10-16T21:25:12.481174+00:00",
+  "state": "SOLUTION_PREPARED",
+  "license": "AGPL-3.0-only",
+  "changed_files": [
+    "CHANGELOG.md",
+    "README.md",
+    "docs/plugins.md",
+    "examples/hello-plugin/active.mjs",
+    "examples/hello-plugin/index.mjs",
+    "examples/hello-plugin/locales/en.json",
+    "examples/hello-plugin/locales/es.json",
+    "examples/hello-plugin/locales/pt-BR.json",
+    "examples/hello-plugin/public/hello-plugin.html",
+    "tests/hello-plugin.test.mjs"
+  ],
+  "new_file_sha256": {
+    "docs/plugins.md": "9d88ab2c809c3426e5f91ea9a8e21499952c11884132cb49c6a122a84df3e274",
+    "examples/hello-plugin/active.mjs": "fc528383abd707bc467d404b64b2b5ce9f0556cb27f5522c8af557b53cec3b44",
+    "examples/hello-plugin/index.mjs": "f16b366602219380fa2c23954d497557cb7a8d0e6f58611fd04aa31b5bd68be6",
+    "examples/hello-plugin/locales/en.json": "b675e79119337fd89938d9a289bdb697c1825e86f267197fb2e2eeecb6b153e8",
+    "examples/hello-plugin/locales/es.json": "862f0677beacfe5c2227729e2047c98794c6dfedb34b294445c453c4b0b57de1",
+    "examples/hello-plugin/locales/pt-BR.json": "faec55b0184dcec119cca6c731942e1fb4d4efca2fc79c28bbcc7bbe7628b97a",
+    "examples/hello-plugin/public/hello-plugin.html": "b50c906e4438e205a33ede630194f7269fe458fd28ce47b974f029d2e434aeba",
+    "tests/hello-plugin.test.mjs": "5d9defe324ea36a86e01214f57f1e3ceb785c5a1fa86be6d54493548fdefa31d"
+  },
+  "patch_sha256": "c211a360e63d4d49cda5c8cbed40b249506d8fe95ce5a501193f4993891c70b8",
+  "checks": [
+    {
+      "check": "plugin-integration",
+      "exit_code": 0,
+      "command": [
+        "node",
+        "--test",
+        "tests/hello-plugin.test.mjs"
+      ],
+      "output_sha256": "5dfe234c2751461440203bef4e6b09ab989207d6a2cf21e8a98e2b8e4ffe20aa",
+      "output_lines": 12,
+      "fallback_notices": 0
+    },
+    {
+      "check": "fragile-guard",
+      "exit_code": 0,
+      "command": [
+        "node",
+        "test-support/fragile-guard.mjs"
+      ],
+      "output_sha256": "9351b3f03341b5d0f7ba323fa077e6a978fc32ea715508bff245ac7a09854c33",
+      "output_lines": 1,
+      "fallback_notices": 0
+    },
+    {
+      "check": "translation-catalogs",
+      "exit_code": 0,
+      "command": [
+        "node",
+        "test-support/i18n-guard.mjs",
+        "examples/hello-plugin/locales"
+      ],
+      "output_sha256": "261dae118df19f327d26972da4fbba4051478ac341b74f7ffac4f9957ef1d250",
+      "output_lines": 3465,
+      "fallback_notices": 3464
+    }
+  ],
+  "plugin_tests_passed": 4,
+  "environment": {
+    "node": "v24.19.0",
+    "i18next": "26.4.2",
+    "dependencies_install_scripts": false,
+    "test_environment": "minimal environment without account or provider credentials"
+  },
+  "kernel_evaluation": null,
+  "kernel_not_run_reason": "Documentation and interface checks; no valid quantitative decision model was asserted.",
+  "application": null,
+  "external_submission": false,
+  "external_acceptance": false,
+  "cla_accepted": false,
+  "upstream_assigned": false,
+  "wellbeing": null,
+  "sustained_life_probability": null,
+  "limits": [
+    "Focused interface tests only; no database or full server boot.",
+    "Upstream assignment and CLA are required before submission.",
+    "No network request or physical intervention was executed by the example.",
+    "Prepared solution is not an externally verified resolution."
+  ],
+  "patch_apply_check": {
+    "clean_base": "fb684453d95fb0d5ebb762ff9fc5fb9af766fbd4",
+    "exit_code": 0
+  }
+}

@@ -1,0 +1,12 @@
+✔ the documented explicit list loads through the real plugin loader (3.086571ms)
+✔ the route answers GET and leaves unrelated paths and writes unhandled (0.73815ms)
+✔ the tool satisfies the actual port contract and returns read-only data (0.31853ms)
+✔ the page renders all three catalogs through the actual translation engine (34.502257ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 125.645598

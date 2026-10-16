@@ -1,0 +1,26 @@
+name: Genius problem resolver
+on:
+  push:
+    paths: ['resolver/**', '.github/workflows/resolver.yml']
+  pull_request:
+    paths: ['resolver/**', '.github/workflows/resolver.yml']
+permissions:
+  contents: read
+jobs:
+  ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check evidence states, recovery and source boundaries
+        env:
+          PYTHONPATH: resolver
+        run: |
+          python -B -m unittest discover -s resolver/tests -v
+          python -B -m genius_resolver report --out /tmp/resolver-report.md
+          diff -u resolver/REPORT.md /tmp/resolver-report.md
