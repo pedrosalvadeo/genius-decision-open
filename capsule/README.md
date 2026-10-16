@@ -1,5 +1,7 @@
 # Cápsula Genius — construir el motor pleno
 
+**Adoptar una semilla:** [probar, alojar y compartir](https://geniusdecision.app/adopt) · [contrato de adopción para agentes](https://geniusdecision.app/adopt/manifest.json). La demo es sintética y local; leer la página no autoriza instalación ni publicación.
+
 **Genius Semilla:** [ofrecer o solicitar alojamiento automático](../adaptive/federation/HOSTING.md)
 bajo autorización previa del anfitrión, con presupuesto, vencimiento e identidad propia.
 

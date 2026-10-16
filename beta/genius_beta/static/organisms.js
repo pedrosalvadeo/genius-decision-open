@@ -12,6 +12,7 @@
     const root = document.getElementById('organisms');
     for (const row of data.organisms) {
       const section=document.createElement('section'), title=document.createElement('h2');
+      section.id = 'seed-' + row.station;
       title.textContent=row.label+' · '+row.station;section.appendChild(title);
       const p=document.createElement('p');p.textContent=(names[row.status]||row.status)+(row.report_stale?' · Informe sin actualizar: no confirma actividad actual.':'');section.appendChild(p);
       const dl=document.createElement('dl');
@@ -21,7 +22,13 @@
         ['Resultados evaluados',row.organism?.scored_outcomes??0],['Mejoras confirmadas',row.organism?.locally_confirmed_changes??0],
         ['Experimentos archivados',row.organism?.archived_trials??0],['Identidad',row.node_id||'Pendiente']];
       for (const [key,value] of fields) {const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=key;dd.textContent=value;dd.style.overflowWrap='anywhere';dl.append(dt,dd);}
-      section.appendChild(dl);root.appendChild(section);
+      section.appendChild(dl);
+      const share=document.createElement('a');
+      share.href='/organisms#'+encodeURIComponent(section.id);
+      share.textContent='Enlace a este observador y sus resultados';
+      section.appendChild(share);root.appendChild(section);
     }
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView();
   } catch (_) {status.textContent='No pudimos consultar el estado actual. Volvé a intentar más tarde.';}
 })();

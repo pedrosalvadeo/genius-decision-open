@@ -1,0 +1,20 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+const nodes={},listeners={};
+const node=id=>nodes[id]||=( {value:'',checked:false,hidden:true,disabled:false,textContent:'', handlers:{},addEventListener(k,f){this.handlers[k]=f},focus(){},select(){},scrollIntoView(){},click(){return this.handlers.click?.({preventDefault(){}})}});
+node('estimator').value='last'; node('hosting-mode').value='trial';
+let blob;const TestURL=class extends URL {static createObjectURL(v){blob=v;return 'blob:local'}static revokeObjectURL(){}};
+const ctx={document:{getElementById:node,createElement:()=>node('download')},location:{origin:'https://example.test',hash:''},window:{addEventListener:(k,f)=>listeners[k]=f},navigator:{clipboard:{writeText:async()=>{throw Error('denied')}}},URL:TestURL,Blob,Date,Math,setTimeout:f=>f()};
+vm.runInNewContext(fs.readFileSync('beta/genius_beta/static/adopt.js','utf8'),ctx);
+(async()=>{
+ await node('predict').click(); assert(node('estimator').disabled); await node('reveal').click();assert.match(node('demo-result').textContent,/predicción 22 °C.*error absoluto 1 °C/);assert.equal(node('demo-link').value,'https://example.test/adopt#demo-last');
+ ctx.location.hash='#participar';listeners.hashchange();assert.match(node('demo-result').textContent,/predicción 22/);
+ await node('share-demo').click();assert.match(node('demo-share-status').textContent,/No se pudo copiar/);
+ await node('reset').click();assert.equal(node('demo-link').value,'');assert.equal(node('estimator').disabled,false);
+ ctx.location.hash='#demo-mean';listeners.hashchange();assert.equal(node('estimator').value,'mean');await node('predict').click();await node('reveal').click();assert.match(node('demo-result').textContent,/predicción 20/);
+ const submit=()=>node('policy-form').handlers.submit({preventDefault(){}});
+ submit();assert.equal(node('policy-json').textContent,'');node('policy-consent').checked=true;submit();const trial=JSON.parse(node('policy-json').textContent);assert.equal(trial.max_births,1);assert.equal(trial.lease_seconds,86400);assert(Math.abs(Date.parse(trial.valid_until)-Date.now()-86400000)<1000);
+ node('hosting-mode').value='persistent';node('hosting-mode').handlers.change();assert.equal(node('policy-consent').checked,false);assert(node('policy-output').hidden);
+ node('policy-consent').checked=true;submit();const policy=JSON.parse(node('policy-json').textContent);assert.equal(policy.persistent,true);assert.equal(policy.valid_until,null);await node('download-policy').click();assert.deepEqual(JSON.parse(await blob.text()),policy);
+ node('policy-consent').checked=false;node('policy-consent').handlers.change();assert(node('policy-output').hidden);assert.equal(node('policy-json').textContent,'');
+ console.log('PASS: DOM-unit demo, replay, navigation, clipboard fallback, trial/persistent policy, download, revocation of preparation');
+})().catch(e=>{console.error(e);process.exit(1)});
