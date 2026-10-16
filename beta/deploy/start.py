@@ -95,6 +95,8 @@ def service_commands(port):
     from genius_beta.r2_backup import enabled
     if enabled():
         commands.append([sys.executable, '-m', 'genius_beta.backup_agent'])
+    if os.environ.get('GENIUS_NETWORK_NODE_ENABLED','false')=='true':
+        commands.append([sys.executable, '-m', 'genius_beta.network_seed'])
     return commands
 
 

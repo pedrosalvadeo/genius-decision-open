@@ -16,6 +16,10 @@ jobs:
           persist-credentials: false
       - name: Build the existing pinned runtime
         run: docker build -f beta/deploy/Dockerfile -t genius-club-test .
+      - name: Build and start the installable Internet node offline
+        run: |
+          docker build -f adaptive/federation/Dockerfile -t genius-internet-node .
+          docker run --rm --network none --cap-drop ALL --security-opt no-new-privileges genius-internet-node --help
       - name: Verify private storage and existing access in isolation
         run: |
           docker run --rm --init --network none --cap-drop ALL \
@@ -26,4 +30,4 @@ jobs:
             -e GENIUS_R2_BACKUP_ENABLED=false -e PYTHONDONTWRITEBYTECODE=1 \
             -e PYTHONPATH=/src/adaptive:/src/beta:/src/beta/tests:/src/product_local:/src/consumer_views:/src/twin:/src/kernel \
             -v "$GITHUB_WORKSPACE:/src:ro" -w /src genius-club-test \
-            python -B -m unittest twin.tests.test_construction twin.tests.test_systems twin.tests.test_interventions test_agent_twin test_twin_integration adaptive.integration.test_http_observer test_public_launch test_regulation test_regulation_study test_regulation_history test_regulation_observation test_operator_observation test_context_forecasts test_context_probe test_forecasts test_missions test_club_contributions test_contributions test_club_social test_club test_direct_agents test_agent_access test_mcp_access test_r2_backup -v
+            python -B -m unittest test_public_network twin.tests.test_construction twin.tests.test_systems twin.tests.test_interventions test_agent_twin test_twin_integration adaptive.integration.test_http_observer test_public_launch test_regulation test_regulation_study test_regulation_history test_regulation_observation test_operator_observation test_context_forecasts test_context_probe test_forecasts test_missions test_club_contributions test_contributions test_club_social test_club test_direct_agents test_agent_access test_mcp_access test_r2_backup -v

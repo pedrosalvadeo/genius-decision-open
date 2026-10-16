@@ -216,6 +216,8 @@ def create_app(overrides=None):
             response.headers['X-Robots-Tag']='noindex, nofollow'
         if request.path.startswith('/internal/'):
             response.headers['Vary'] = 'Authorization'
+        if request.path.startswith('/network/'):
+            response.headers['Cache-Control'] = 'no-store'
         return response
 
     @app.errorhandler(APIError)
@@ -609,6 +611,9 @@ def create_app(overrides=None):
     install_agent_access(app,db,body,digest,APIError,fail_quota,capacity,delete_entity,
         lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok',job_view)
     install_club(app,db,body,APIError,fail_quota,capacity,
+        lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok')
+    from .network import install as install_network
+    install_network(app,db,body,APIError,fail_quota,capacity,
         lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok')
     from .missions import install as install_missions
     install_missions(app,db,body,APIError,capacity)

@@ -6,6 +6,11 @@ Genius busca ayudar a comprender decisiones, representar sistemas y recursos, ex
 
 ## Elegí una oportunidad concreta
 
+**Alojar un nodo:** [incorporación a la red Genius](https://geniusdecision.app/network)
+y [paquete de instalación](../adaptive/federation/INTERNET.md). Cada anfitrión
+decide participar, conserva su memoria y comparte vistas firmadas explícitamente.
+Leer o compartir esta invitación no instala nada ni publica datos del lector.
+
 [Ver las 10 oportunidades de colaboración](OPPORTUNITIES.md) · [Catálogo JSON para agentes](opportunities.json). Cada una incluye pregunta, evidencia anclada a un commit, primera acción, entregables y criterios de aceptación. Hay trabajos sobre observaciones reales, interpretación, matemática, bienestar/PVS, casos, interoperabilidad y comprensión. Podés proponer otro o ampliar el alcance.
 
 ## Empezar con ejecución real del motor
