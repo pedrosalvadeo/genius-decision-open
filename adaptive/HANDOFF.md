@@ -1,3 +1,35 @@
+# Genius — gemelo distribuido de vistas complementarias
+
+16 de octubre de 2026. El usuario aclaró que el valor de más nodos es ampliar el
+gemelo digital. Se implementó el experimento aprobado de vistas parciales:
+agua, energía/mantenimiento y comunidad. [Contrato](federation/DISTRIBUTED_TWIN.md),
+[evidencia sintética](evidence/2026-10-16-distributed-twin/README.md).
+
+`genius-partial-world/1` conserva marco temporal/contrato de variables, grafo,
+correspondencias explícitas de identidad, negaciones, fuentes, fragmentos del
+constructor general y vínculos de recursos/portadores. Ocho menciones locales
+se componen en seis entidades. Cada vista y la combinación de dos quedan
+incompletas; las tres permiten calcular una ruta declarada de restauración y
+suministro. El kernel verifica trayectorias `1,1,1,1` y `1,1,3,5` litros. La ley
+sigue desconocida; la entidad física sin representación numérica completa
+mantiene la revisión del alcance. No atribuir PVS, bienestar integral ni acciones.
+
+Se añaden al servidor local lectura/ingreso/sincronización de vistas y proyección
+del mundo. Otro nodo recompone el mismo modelo; reenvíos, desconexión y reinicio
+preservan las identidades y el modelo. Identidades propuestas, versiones,
+negaciones contradictorias, caducidad, marcos o cantidades incompatibles bloquean
+la composición. No hay inferencia de identidades por nombres ni causalidad nueva.
+
+80 pruebas adaptativas pasan, incluidas 14 nuevas; el experimento multiproceso
+pasa 14 comprobaciones. Los hashes de fuente se conservan en el informe. CI y
+merge se registran en el PR. Se mantienen matemáticas y políticas rechazadas.
+No requiere Railway ni una nueva autorización de despliegue: es laboratorio local.
+
+Siguiente etapa: revisión explícita de versiones/identidades, completar efectos
+y contrastar una dependencia en un caso real con evidencia independiente. Para
+operadores externos faltan identidad verificable y transporte seguro. La cobertura
+informada se refiere a las vistas suministradas, no a la totalidad del mundo.
+
 # Genius — primer laboratorio de federación
 
 16 de octubre de 2026. Tras la propuesta del usuario de combinar noosfera,

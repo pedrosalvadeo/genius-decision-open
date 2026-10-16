@@ -124,6 +124,11 @@ class Node:
                     hash TEXT NOT NULL, via TEXT NOT NULL, PRIMARY KEY(hash,via));
                 CREATE TABLE IF NOT EXISTS forecasts (
                     id TEXT PRIMARY KEY, body TEXT NOT NULL, result TEXT);
+                CREATE TABLE IF NOT EXISTS world_views (
+                    hash TEXT PRIMARY KEY, body TEXT NOT NULL, local INTEGER NOT NULL,
+                    received_at TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS view_receipts (
+                    hash TEXT NOT NULL, via TEXT NOT NULL, PRIMARY KEY(hash,via));
             ''')
             rows = db.execute('SELECT id FROM identity').fetchall()
             if rows and rows != [(self.node_id,)]:
@@ -183,11 +188,25 @@ class Node:
     def hello(self):
         with self.db() as db:
             count = db.execute('SELECT count(*) FROM records').fetchone()[0]
+            view_count = db.execute('SELECT count(*) FROM world_views').fetchone()[0]
         return dict(format='genius-node-hello/1', node_id=self.node_id,
-                    capabilities=['observation_exchange_v1', RULE],
+                    capabilities=['observation_exchange_v1', 'partial_world_exchange_v1', RULE],
                     remaining_records=MAX_RECORDS-count, max_records=MAX_RECORDS,
+                    remaining_views=8-view_count,
                     physical_actions=False, deployment='LOOPBACK_LAB',
                     source_attestation='NONE', code_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
+
+    def ingest_views(self, records, via=None):
+        from .views import ingest
+        return ingest(self,records,via)
+
+    def export_views(self):
+        from .views import export
+        return export(self)
+
+    def project_world(self, world_id, focus, mode):
+        from .views import project
+        return project(self,world_id,focus,mode)
 
     def predict(self, forecast_id, ctx, mode, target_after, target_before):
         identifier(forecast_id)

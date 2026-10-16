@@ -67,20 +67,21 @@ class LabServer(HTTPServer):
         self.peers = checked
         return dict(enrolled=sorted(checked))
 
-    def sync(self, name):
+    def sync(self, name, world=False):
         peer = self.peers.get(identifier(name))
         if not peer:
             raise ValueError('UNENROLLED_PEER')
         try:
             hello = request(peer['port'], peer['read_token'], 'GET', '/hello')
             if (hello.get('format') != 'genius-node-hello/1' or hello.get('node_id') != name or
-                'observation_exchange_v1' not in hello.get('capabilities', [])):
+                ('partial_world_exchange_v1' if world else 'observation_exchange_v1') not in hello.get('capabilities', [])):
                 raise ValueError('PEER_IDENTITY_OR_PROTOCOL')
-            packet = request(peer['port'], peer['read_token'], 'GET', '/experiences')
+            packet = request(peer['port'], peer['read_token'], 'GET', '/views' if world else '/experiences')
             fields(packet, 'node_id records')
             if packet['node_id'] != name or type(packet['records']) is not list:
                 raise ValueError('PEER_IDENTITY_OR_PROTOCOL')
-            outcome = self.node.ingest(packet['records'], via=name) if packet['records'] else dict(inserted=0, duplicates=0)
+            importer = self.node.ingest_views if world else self.node.ingest
+            outcome = importer(packet['records'], via=name) if packet['records'] else dict(inserted=0, duplicates=0)
             return dict(status='EXCHANGED', peer=name, hello=hello, **outcome)
         except (OSError, ValueError, KeyError, TypeError, RecursionError):
             # Failed discovery/import leaves prior memory intact. Never interpret
@@ -99,6 +100,8 @@ class Handler(BaseHTTPRequestHandler):
 
     def reply(self, status, value):
         raw = canonical(value)
+        if len(raw) > MAX_BYTES:
+            status,raw=413,canonical(dict(error='RESPONSE_LIMIT'))
         self.send_response(status)
         self.send_header('Content-Type', 'application/json')
         self.send_header('Content-Length', str(len(raw)))
@@ -113,6 +116,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply(200, self.server.node.hello())
         if self.path == '/experiences':
             return self.reply(200, dict(node_id=self.server.node.node_id, records=self.server.node.export()))
+        if self.path == '/views':
+            return self.reply(200, dict(node_id=self.server.node.node_id, records=self.server.node.export_views()))
         self.reply(404, dict(error='UNKNOWN_ROUTE'))
 
     def do_POST(self):
@@ -132,12 +137,21 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == '/observe':
                 fields(body, 'records')
                 result = node.ingest(body['records'])
+            elif self.path == '/observe-views':
+                fields(body, 'records')
+                result = node.ingest_views(body['records'])
+            elif self.path == '/project-world':
+                fields(body, 'world_id focus mode')
+                result = node.project_world(body['world_id'],body['focus'],body['mode'])
             elif self.path == '/peers':
                 fields(body, 'peers')
                 result = self.server.enroll(body['peers'])
             elif self.path == '/sync':
                 fields(body, 'node_id')
                 result = self.server.sync(body['node_id'])
+            elif self.path == '/sync-world':
+                fields(body, 'node_id')
+                result = self.server.sync(body['node_id'],world=True)
             elif self.path == '/predict':
                 fields(body, 'id context mode target_after target_before')
                 result = node.predict(body['id'], body['context'], body['mode'], body['target_after'], body['target_before'])

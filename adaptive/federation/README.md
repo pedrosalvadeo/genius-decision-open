@@ -1,5 +1,10 @@
 # Genius: laboratorio de nodos con memoria independiente
 
+La extensión [Gemelo distribuido](DISTRIBUTED_TWIN.md) integra vistas parciales
+de sistemas y fragmentos numéricos con identidades explícitas. Complementa este
+primer experimento de observaciones escalares con cobertura de entidades,
+relaciones y afectados. Sigue siendo un laboratorio local.
+
 Primera implementación experimental de la propuesta noosfera / Network Tierra /
 TPing. Tres procesos ejecutan el mismo programa, cada uno con identidad estable,
 SQLite propio y credenciales distintas. Se descubren entre pares previamente
@@ -127,8 +132,9 @@ bienestar, probabilidad de vida, evolución de código ni consumo energético.
 Se reutilizan el modelo de comparación y el kernel actuales. Este módulo está
 separado del servicio web y no añade rutas MCP, tablas de producción, servicios
 Railway o costos de API. El constructor general de modelos sigue disponible;
-este experimento sólo comparte observaciones escalares y conserva resultados
-localmente. Compartir modelos y experiencias completas es una etapa posterior.
+este experimento original sólo comparte observaciones escalares y conserva
+resultados localmente. La extensión de gemelo distribuido añade fragmentos de
+modelos y grafos; compartir experiencias completas sigue siendo posterior.
 
 Próximo paso: acordar contextos verificables y reglas de admisión de evidencia,
 resolver contradicciones con trazabilidad, compartir recibos de modelos y
