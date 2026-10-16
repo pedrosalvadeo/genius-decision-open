@@ -24,7 +24,7 @@ def required_scope(method, path):
         return club.required_scope(method, path)
     if path.startswith('/api/twin/'):
         suffix = path[len('/api/twin/'):]
-        if method == 'GET' and (suffix in ('capabilities', 'profiles', 'examples', 'cases', 'runtime')
+        if method == 'GET' and (suffix in ('capabilities', 'profiles', 'examples', 'cases', 'runtime', 'interventions/schema', 'interventions/example')
                 or re.fullmatch(r'(profiles/[A-Za-z0-9_-]+/schema|examples/[A-Za-z0-9_-]+|cases/[a-f0-9]{32}(/compare|/export)?|jobs/[a-f0-9]{32})', suffix)):
             return 'twins:read'
         if method == 'POST' and (suffix == 'cases' or re.fullmatch(r'(cases/[a-f0-9]{32}/(proposals|observations)|proposals/[a-f0-9]{32}/accept)', suffix)):

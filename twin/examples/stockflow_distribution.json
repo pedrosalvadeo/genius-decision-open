@@ -1,0 +1,141 @@
+{
+  "profile": "STOCK_FLOW_FINITE_V1",
+  "name": "Depósitos de agua — ejemplo sintético de intervención",
+  "horizon": 3,
+  "step_unit": "day",
+  "stocks": [
+    {
+      "id": "source",
+      "label": "Depósito de origen",
+      "unit": "L",
+      "kind": "persistent",
+      "initial": "4/1",
+      "capacity": "4/1"
+    },
+    {
+      "id": "target",
+      "label": "Depósito de destino",
+      "unit": "L",
+      "kind": "persistent",
+      "initial": "2/1",
+      "capacity": "4/1"
+    },
+    {
+      "id": "time",
+      "label": "Tiempo disponible",
+      "unit": "min",
+      "kind": "persistent",
+      "initial": "3/1",
+      "capacity": "3/1"
+    }
+  ],
+  "carriers": [
+    {
+      "id": "team",
+      "label": "Equipo operador",
+      "kind": "organization"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "operate",
+      "label": "Operar los depósitos"
+    }
+  ],
+  "initial_capabilities": [
+    "operate"
+  ],
+  "actions": [
+    {
+      "id": "wait",
+      "label": "Mantener la situación",
+      "requires": [],
+      "withdrawals": {},
+      "deposits": {},
+      "add_capabilities": [],
+      "remove_capabilities": []
+    }
+  ],
+  "policies": [
+    {
+      "id": "baseline",
+      "label": "Situación de referencia",
+      "default_action": "wait",
+      "rules": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "demand",
+      "label": "Demanda declarada de un litro por día",
+      "events": [
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {
+            "target": "1/1"
+          },
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {
+            "target": "1/1"
+          },
+          "remove_capabilities": []
+        },
+        {
+          "inflows": {},
+          "renewables": {},
+          "drains": {
+            "target": "1/1"
+          },
+          "remove_capabilities": []
+        }
+      ]
+    }
+  ],
+  "law": {
+    "demand": "1/1"
+  },
+  "welfare": [
+    {
+      "carrier": "team",
+      "dimension": "reserve",
+      "label": "Agua disponible en destino",
+      "stock": "target",
+      "direction": "higher"
+    },
+    {
+      "carrier": "team",
+      "dimension": "time",
+      "label": "Tiempo disponible",
+      "stock": "time",
+      "direction": "higher"
+    }
+  ],
+  "task": {
+    "kind": "operational",
+    "label": "Mantener al menos un litro en destino en cada estado observado",
+    "living_carriers": [],
+    "conditions": [
+      {
+        "stock": "target",
+        "op": "ge",
+        "threshold": "1/1"
+      }
+    ],
+    "require_action_success": true
+  },
+  "require_all_scenarios": true,
+  "selection": "unique",
+  "assumptions": [
+    {
+      "id": "Synthetic",
+      "kind": "SYNTHETIC",
+      "statement": "Inventario, demanda, tiempos y ley son supuestos de un ejemplo técnico. No hay observaciones de campo ni inferencia de bienestar humano.",
+      "provenance": "Ejemplo reproducible de diseño de intervenciones"
+    }
+  ]
+}

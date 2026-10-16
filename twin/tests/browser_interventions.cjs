@@ -1,0 +1,64 @@
+/* Synthetic end-to-end UI test against its own loopback service and database. */
+const fs=require('fs'),path=require('path'),os=require('os'),assert=require('assert/strict');
+const {spawn}=require('child_process');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const out=process.env.BROWSER_QA_DIR||fs.mkdtempSync(path.join(os.tmpdir(),'genius-interventions-'));
+fs.mkdirSync(out,{recursive:true});
+const port=process.env.INTERVENTION_BROWSER_PORT||'8768',base=`http://127.0.0.1:${port}`;
+const evidence={scope:'SYNTHETIC_LOCAL_UI_WITH_NATIVE_ENGINE',checks:[],errors:[],external_requests:[]};
+const check=(value,name)=>{assert.ok(value,name);evidence.checks.push(name);};
+const server=spawn(process.env.PYTHON||'python',['-m','genius_twin','--port',port,'--database',path.join(out,'browser.sqlite3')],{env:process.env});
+let logs='',browser,page;server.stderr.on('data',x=>logs+=x.toString());
+(async()=>{
+ await new Promise((resolve,reject)=>{const timeout=setTimeout(()=>reject(Error(logs)),15000);server.stderr.on('data',x=>{if(x.toString().includes('Running on')){clearTimeout(timeout);resolve();}});server.once('exit',()=>reject(Error(logs)));});
+ browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH,args:['--no-sandbox']});
+ page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true});page.setDefaultTimeout(30000);
+ page.on('pageerror',e=>evidence.errors.push(e.message));
+ page.on('request',r=>{if(!r.url().startsWith(base)&&!r.url().startsWith('blob:'))evidence.external_requests.push(r.url());});
+ const idle=()=>page.waitForFunction(()=>!document.querySelector('#main').hasAttribute('aria-busy'));
+ const nav=async view=>{await page.locator(`#step-nav [data-view="${view}"]`).click();await idle();};
+ const shot=async name=>{await page.screenshot({path:path.join(out,name+'.png'),fullPage:true});check(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),name+' no page overflow');};
+ await page.goto(base);await idle();
+ await page.locator('#intake-mode').selectOption('general');
+ await page.locator('#narrative').fill('Exploración sintética de recursos y relaciones');
+ await page.getByRole('button',{name:'Construir propuesta',exact:true}).click();await idle();
+ await nav('interventions');await page.getByRole('button',{name:'Abrir ejemplo de depósitos',exact:true}).click();await idle();
+ await page.locator('#d3-confirm').check();await page.getByRole('button',{name:'Confirmar y explorar',exact:true}).click();await idle();
+ check(!await page.locator('#error').isVisible(),'base confirmed and evaluated');
+ await nav('interventions');
+ check((await page.getByLabel('Cantidades alternativas').inputValue())==='1, 2','example declares two quantities');
+ for(const width of [1440,390,320]){await page.setViewportSize({width,height:1000});await shot('design-'+width);}
+ await page.setViewportSize({width:1440,height:1000});
+ // Exercise actual edits/normalization, relation controls, costs and sequences.
+ await page.getByLabel('Qué quieres explorar',{exact:true}).fill('Dos cantidades con costos declarados');
+ await page.getByLabel('Cantidades alternativas').fill('1.0, 2');
+ await page.getByLabel('La relación ya está abierta al inicio').check();
+ await page.getByLabel('La relación ya está abierta al inicio').uncheck();
+ await page.locator('summary').filter({hasText:'Costos de abrir'}).click();
+ await page.locator('details').filter({has:page.locator('summary').filter({hasText:'Costos de abrir'})}).getByLabel('Tiempo disponible (min)',{exact:true}).fill('1');
+ await page.locator('#intervention-generate').click();await idle();
+ check(!await page.locator('#error').isVisible(),'design proposal generated');
+ check((await page.locator('body').innerText()).includes('2 variantes'),'both alternatives are reviewable');
+ const cid=await page.evaluate(()=>localStorage.getItem('genius_d1_case'));
+ let state=await (await page.request.get(base+`/api/cases/${cid}`)).json();
+ check(state.case.current_version===1,'generating does not silently accept version');
+ const proposal=state.proposals.find(x=>x.kind==='intervention_design');
+ check(proposal.metadata.intervention_design.design.interventions[0].operations[1].amounts[0]==='1/1','decimal normalized exactly');
+ await page.reload();await idle();await nav('twin');
+ check(await page.locator('#d3-confirm').isVisible(),'stored intervention proposal remains reviewable after reload');
+ await page.locator('#d3-confirm').check();await page.getByRole('button',{name:'Confirmar y explorar',exact:true}).click();await idle();
+ check(!await page.locator('#error').isVisible(),'generated alternatives evaluated by native engine');
+ state=await (await page.request.get(base+`/api/cases/${cid}`)).json();
+ const result=state.jobs.find(x=>x.version===2&&x.canonical_results).canonical_results;
+ check(result.decision.selected==='intervention.redistribute.2','native selection rendered from actual result');
+ await page.locator('#d3-policy').selectOption('intervention.redistribute.2');await idle();
+ check((await page.locator('body').innerText()).includes('Intercambio habilitado'),'relation availability visible along the trajectory');
+ for(const width of [1440,390,320]){await page.setViewportSize({width,height:1000});await shot('result-'+width);}
+ await nav('change');
+ const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Descargar expediente JSON',exact:true}).click();
+ const downloaded=await pending;const file=path.join(out,'intervention-export.json');await downloaded.saveAs(file);
+ const dossier=JSON.parse(fs.readFileSync(file));
+ check(dossier.dossier.evaluations.find(x=>x.job.version===2).evaluation.intervention_design.generated_count===2,'export preserves generation receipt');
+ check(evidence.errors.length===0,'no browser errors');check(evidence.external_requests.length===0,'no external browser requests');
+ evidence.status='PASS';fs.writeFileSync(path.join(out,'browser-interventions.json'),JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));
+})().catch(async e=>{evidence.status='FAIL';evidence.error=String(e);if(page)await page.screenshot({path:path.join(out,'failure.png'),fullPage:true}).catch(()=>{});fs.writeFileSync(path.join(out,'browser-interventions.json'),JSON.stringify(evidence,null,2));console.error(e);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();server.kill();});

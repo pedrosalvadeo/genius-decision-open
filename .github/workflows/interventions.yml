@@ -1,0 +1,49 @@
+name: Intervention design browser
+on:
+  push:
+    paths: ['twin/**', '.github/workflows/interventions.yml']
+  pull_request:
+    paths: ['twin/**', '.github/workflows/interventions.yml']
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install declared test dependencies
+        run: |
+          python -m pip install --require-hashes -r beta/requirements.lock
+          npm install --prefix "$RUNNER_TEMP/genius-browser" --ignore-scripts --no-audit --no-fund playwright@1.62.1
+          node "$RUNNER_TEMP/genius-browser/node_modules/playwright/cli.js" install --with-deps chromium --only-shell
+      - name: Verify generation, review, native evaluation and export
+        env:
+          PYTHONPATH: twin:kernel
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/genius-browser/node_modules/playwright
+          BROWSER_QA_DIR: ${{ runner.temp }}/genius-intervention-browser
+        run: node twin/tests/browser_interventions.cjs
+      - name: Verify existing general twin workflow
+        env:
+          PYTHONPATH: twin:kernel
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/genius-browser/node_modules/playwright
+          BROWSER_QA_DIR: ${{ runner.temp }}/genius-d3-browser
+        run: node twin/tests/browser_d3.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: synthetic-intervention-browser-evidence
+          path: |
+            ${{ runner.temp }}/genius-intervention-browser/*.json
+            ${{ runner.temp }}/genius-intervention-browser/*.png
+            ${{ runner.temp }}/genius-d3-browser/browser-d3-evidence.json
+            ${{ runner.temp }}/genius-d3-browser/failure.png
+          retention-days: 7

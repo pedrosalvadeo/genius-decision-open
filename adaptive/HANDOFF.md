@@ -1,3 +1,13 @@
+# Genius — diseño de intervenciones sobre recursos y relaciones
+
+16 de octubre de 2026. [Contrato](../twin/docs/INTERVENTION_DESIGN.md). Nueva capa del gemelo: genera alternativas por transferencias, apertura/cierre de relaciones y secuencias de acciones, conservando un modelo común y evaluación nativa. Incluye interfaz Intervenir, REST/MCP, propuestas, confirmación, versiones y exportación. No cambia el kernel, política de regulación, cuotas ni concede efectos externos.
+
+Validación local: 72 pruebas del gemelo y 15 de integración/autorización pasan. La descarga del navegador local falló; el workflow Intervention design browser ejecuta el recorrido en CI y conserva evidencia sintética. Consultar el PR para el head efectivamente probado y el estado de despliegue; no asumir publicación por este texto.
+
+La misión sintética de producción del 16/10 ya se cerró: lectura REST/MCP, un intento completado, reutilización y borrado/revocación verificados. Su informe y el informe operativo real se conservaron en privado. No repetir el pendiente histórico de registro ni publicar datos de la base real.
+
+Siguiente encargo: verificar publicación de este incremento y diseñar el contrato de observaciones stockflow contra predicciones congeladas, con procedencia y límites explícitos. No activar PR 40 ni políticas previamente rechazadas.
+
 # Genius — acceso temporal al informe privado de producción
 
 16 de octubre de 2026. El informe privado puede ejecutarse desde el propio servicio

@@ -94,7 +94,12 @@ class TwinService:
                 "transport": "HTTP JSON; access boundary belongs to the embedding", "mcp": self.execution_context.get('mcp', False), "external_acquisition": False,
                 "physical_actions": False, "rc01_receipt": False, "default_case_versions": "start at 1 after material confirmation",
                 "execution_limits": deepcopy(self.execution_context),
-                "edit_operations": ["declared_model", "draft", "apply_relay_policy", "preference", "law_correction", "restore"],
+                "edit_operations": ["declared_model", "intervention_design", "draft", "apply_relay_policy", "preference", "law_correction", "restore"],
+                "interventions": {"format": "genius-intervention-design/1", "profile": registry.STOCKFLOW,
+                    "schema_path": "/interventions/schema", "example_path": "/interventions/example",
+                    "operations": ["transfer", "connect", "disconnect", "use_action"],
+                    "generation": "exhaustive declared combinations; shared base, scenarios and criteria",
+                    "acceptance_required": True, "physical_actions": False},
                 "observation_variables": {"water_in_tray_liters": "L", "minutes_a": "min", "minutes_b": "min"},
                 "states": {"job": ["running", "completed", "failed", "interrupted"],
                            "admission": ["DRAFT_NOT_ADMITTED", "SYNTHETIC_ONLY", "DECLARED_MODEL_ONLY", "MODEL_REVIEW_REQUIRED"]}}
@@ -188,7 +193,7 @@ class TwinService:
         base = integer(payload["base_version"], "base_version")
         message = text(payload["text"])
         kind = payload["kind"]
-        require(type(kind) is str and kind in {"declared_model", "hypothetical_intervention", "preference", "fact_correction", "restore"},
+        require(type(kind) is str and kind in {"declared_model", "intervention_design", "hypothetical_intervention", "preference", "fact_correction", "restore"},
                 "unsupported_change_kind", "Tipo de cambio no admitido; usa observaciones para incorporar evidencia.")
         structured = payload.get("structured", {})
         require(type(structured) is dict, "invalid_object", "structured debe ser objeto.")
@@ -200,6 +205,9 @@ class TwinService:
             prior = self._version(cid, base, conn) if base else None
             model = deepcopy(prior["model"]) if prior else None
             metadata = deepcopy(prior["metadata"]) if prior else {"review_required": False}
+            # A generation receipt belongs to one exact model. Keep old receipts
+            # in immutable history, never attach them to an unrelated edit.
+            metadata.pop("intervention_design", None)
             metadata.update({"change_kind": kind, "source_text": message, "material_changes": []})
             if kind == "declared_model":
                 fields(structured, {"model"}, {"model"})
@@ -214,6 +222,24 @@ class TwinService:
                                  "material_changes": ["Modelo completo declarado; revisar parámetros, reglas, unidades y premisas.",
                                                       "Campos modificados: " + ", ".join(changed),
                                                       "Confirmar el modelo no autentica sus fuentes ni valida empíricamente sus predicciones."]})
+            elif kind == "intervention_design":
+                fields(structured, {"design"}, {"design"})
+                require(model["profile"] == registry.STOCKFLOW, "change_outside_profile",
+                        "El diseño de intervenciones requiere un modelo de existencias y flujos confirmado.", 422)
+                from .interventions import generate
+                try:
+                    model, receipt = generate(model, structured["design"])
+                except (ValueError, KeyError, TypeError) as exc:
+                    raise ServiceError("intervention_outside_profile", "Revisa las intervenciones y los límites del modelo.", 422, str(exc)) from exc
+                receipt["base_version"] = base
+                metadata.update({"intervention_design": receipt, "synthetic": False,
+                    "evidence_origin": "USER_DECLARED_MODEL", "empirical_admission": "NOT_ASSESSED",
+                    "interpretation_method": "enumeration_of_declared_interventions",
+                    "material_changes": [
+                        f"Se conservan {len(receipt['baseline_policies'])} planes de referencia y se generan {receipt['generated_count']} alternativas.",
+                        "Las relaciones declaran origen, destino, disponibilidad, requisitos y costos de intercambio.",
+                        "Los saldos iniciales, escenarios, ley y criterios se conservan para todas las alternativas.",
+                        "Revisar todas las secuencias, cantidades y premisas antes de evaluar. No se ejecutan acciones físicas."]})
             elif kind == "hypothetical_intervention":
                 require(model["profile"] == registry.D1, "change_outside_profile", "Este cambio pertenece al perfil semillero; usa declared_model.", 422)
                 words = normalized(message)
@@ -247,6 +273,8 @@ class TwinService:
                 metadata["synthetic"] = model["profile"] == registry.D1
                 metadata["evidence_origin"] = "SYNTHETIC_STIPULATION" if metadata["synthetic"] else "USER_DECLARED_MODEL"
                 metadata["restored_from"] = restored["version"]
+                if "intervention_design" in restored["metadata"]:
+                    metadata["intervention_design"] = deepcopy(restored["metadata"]["intervention_design"])
                 metadata["material_changes"] = ["Restaurar contenido del modelo en una nueva versión, conservando todas las observaciones y la historia."]
             self._validate_model(model)
             require(prior is None or model != prior["model"], "no_material_change", "La propuesta no cambia el modelo.")
@@ -325,6 +353,8 @@ class TwinService:
                         "native_result": result["native_result"], "verification": result.get("verification"),
                         "native_input_json": result.get("native_input_json"), "native_runs": result.get("native_runs"),
                         "compilation_manifest": result.get("compilation_manifest")}
+            if "intervention_design" in version["metadata"]:
+                envelope["intervention_design"] = deepcopy(version["metadata"]["intervention_design"])
             with self.store.transaction() as conn:
                 conn.execute("UPDATE jobs SET status='completed',finished_at=?,result_json=? WHERE id=? AND status='running'", (now(), dumps(envelope), jid))
         except Exception as exc:
