@@ -118,17 +118,72 @@ class Organism:
 
     def status(self):
         state = self.load()
+        history=state.get('history',{})
         return dict(format='genius-organism-status/1', constitution_sha256=genes.CONSTITUTION_HASH,
             founder_sha256=digest(state['founder']), founder_generation=state['founder']['generation'],
             founder_genes=state['founder']['genes'], parent_node_id=state['parent_node_id'],
             birth_variant_sha256=digest(state['birth_variant']) if state['birth_variant'] else None, adapted_contexts=len(state['adaptations']),
-            locally_confirmed_changes=sum(t['status']=='ADOPTED' for t in state['trials'].values()),
-            scored_outcomes=sum(sum('score' in r for r in t['rounds']) for t in state['trials'].values()),
+            locally_confirmed_changes=history.get('adopted_changes',0)+sum(t['status']=='ADOPTED' for t in state['trials'].values()),
+            scored_outcomes=history.get('scored_outcomes',0)+sum(sum('score' in r for r in t['rounds']) for t in state['trials'].values()),
+            archived_trials=history.get('completed_trials',0),
             trials={k:t['status'] for k,t in state['trials'].items()},
             context_traits=[dict(context_sha256=key,genome_sha256=digest(row['genome']),
                 generation=row['genome']['generation'],genes=row['genome']['genes'],evidence=row['evidence'])
                 for key,row in sorted(state['adaptations'].items())],
             wellbeing_effect='UNMEASURED', life_sustainment_probability=None)
+
+    def miss_target(self,trial_id):
+        """A missing later measurement is a gap, never a fabricated zero/error."""
+        with self.lock():
+            state=self.load();trial=state['trials'][trial_id]
+            if trial['status'] not in ('DISCOVERY','CONFIRMATION'):return
+            if not trial['rounds'] or 'score' in trial['rounds'][-1]:raise ValueError('NO_PENDING_TARGET')
+            if instant(self.node.clock())<=instant(trial['rounds'][-1]['window'][1]):raise ValueError('TARGET_WINDOW_OPEN')
+            trial['status']='MISSED_TARGET';self.save(state)
+
+    def archive_finished(self,trial_id):
+        """Explicit stream maintenance: archive evidence before releasing a trial slot.
+
+        Keeps 64 complete archives locally plus cumulative counters and a hash chain.
+        Current genotypes, identity and active forecast evidence are never pruned.
+        """
+        from .internet import save
+        with self.lock():
+            state=self.load();trial=state['trials'][trial_id]
+            if trial['status'] in ('DISCOVERY','CONFIRMATION'):raise ValueError('ACTIVE_TRIAL_CANNOT_ARCHIVE')
+            ids={r['forecast_id'] for r in trial['rounds']}
+            with self.node.db() as db:
+                forecasts=[];evidence=set();conflicts=set()
+                for id_,body,result in db.execute('SELECT id,body,result FROM forecasts'):
+                    frozen=json.loads(body)
+                    if id_ in ids or frozen['sha256']==trial.get('blocked_forecast'):
+                        ids.add(id_);forecasts.append(dict(forecast=frozen,result=json.loads(result) if result else None))
+                        evidence.update(r['hash'] for r in frozen['evidence'])
+                        conflicts.update(frozen['conflicts'])
+                observations=[json.loads(body) for hash_,event,body in db.execute('SELECT hash,event,body FROM records ORDER BY hash') if hash_ in evidence or event in conflicts]
+            history=state.setdefault('history',dict(completed_trials=0,adopted_changes=0,scored_outcomes=0,last_archive_sha256=None))
+            archive=dict(format='genius-evolution-archive/1',node_id=self.node.node_id,trial=trial,
+                         previous_sha256=history['last_archive_sha256'],forecasts=sorted(forecasts,key=lambda f:f['forecast']['id']),observations=observations)
+            hash_=digest(archive);directory=self.node.directory/'evolution-history';directory.mkdir(mode=0o700,exist_ok=True)
+            path=directory/(f"{history['completed_trials']+1:09d}-"+hash_+'.json')
+            if len(canonical(archive))>1048576:raise ValueError('ARCHIVE_BUDGET')
+            save(path,archive)  # Durable copy precedes the atomic SQLite transition.
+            history['completed_trials']+=1;history['adopted_changes']+=int(trial['status']=='ADOPTED')
+            history['scored_outcomes']+=sum('score' in r for r in trial['rounds']);history['last_archive_sha256']=hash_
+            del state['trials'][trial_id];self.validate_state(state)
+            with self.node.db() as db:
+                db.execute('BEGIN IMMEDIATE')
+                db.execute('UPDATE organism SET body=? WHERE id=1',(canonical(state).decode(),))
+                db.executemany('DELETE FROM forecasts WHERE id=?',[(id_,) for id_ in ids])
+                protected={r['hash'] for (raw,) in db.execute('SELECT body FROM forecasts') for r in json.loads(raw)['evidence']}
+                rows=[(hash_,event,json.loads(raw)) for hash_,event,raw in db.execute('SELECT hash,event,body FROM records')]
+                # Keep every version of retained events, so pruning cannot hide a conflict.
+                recent={event for _,event,_ in sorted(rows,key=lambda r:instant(r[2]['observed_at']),reverse=True)[:48]}
+                removed=[(hash_,) for hash_,event,_ in rows if hash_ not in protected and event not in recent]
+                db.executemany('DELETE FROM receipts WHERE hash=?',removed)
+                db.executemany('DELETE FROM records WHERE hash=?',removed)
+            for old in sorted(directory.glob('*.json'))[:-64]:old.unlink()
+            return dict(sha256=hash_,status=trial['status'],completed_trials=history['completed_trials'])
 
     def heredity(self, config, birth_id):
         identifier(birth_id)

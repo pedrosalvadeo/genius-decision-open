@@ -1,3 +1,36 @@
+# Organismos observadores reales — 2026-10-16
+
+PR63 está desplegado: commit `16c08c4593e81454536aeeb15d28820a8164f5d9`, Railway
+SUCCESS `561ce10b-997a-43cb-a303-6c158ffbe5a5`. A las 18:50:27 UTC se comprobó
+PERSISTENT_REVOCABLE, una reserva y la misma semilla ACTIVE.
+
+El usuario pidió dejar organismos viviendo/evolucionando y explorar hábitats reales.
+Esta entrega añade dos observadores de temperatura METAR (SAME: Mendoza; SAMM:
+Malargüe) en el servicio existente, con identidades y memorias separadas. La API
+pública AWC respondió con datos reales; el arranque local produce predicciones
+futuras y cero resultados puntuados. No confundirlo con evolución real confirmada.
+
+Activación explícita: `GENIUS_LIVING_HABITATS=SAME,SAMM`. Supervisor con entorno
+mínimo, consultas horarias, registro y credenciales ordinarias, pausa/revocación,
+control de faltantes y conflictos. Un solo ensayo activo por organismo: cuatro
+objetivos para descubrir y cuatro para confirmar una variante, con kernel nativo.
+Ensayos terminados se archivan antes de liberar memoria; 64 archivos completos
+retenidos, counters acumulados y genoma continuo. Generación máxima 32 intacta.
+
+Página `/organisms`, JSON `/network/organisms.json`. Guía portable Linux/Docker en
+`federation/HABITATS.md`, que también evalúa otros anfitriones. Nada se instaló en
+aeropuertos ni en equipos de terceros. Los observadores de referencia comparten
+operador e infraestructura. Las claves y memorias requieren respaldo propio del
+volumen; no están incluidas en el backup R2 de la base transaccional.
+
+Evidencia: `beta/evidence/2026-10-16-living-habitats/`. 154 pruebas locales y captura
+real. El PR documenta CI y aplicación en Railway. La tarea diaria «Evolución de
+organismos Genius» quedó activa para seguimiento por lectura, cada mañana en
+horario de Argentina, desde el 17/10/2026. Nunca debe presentar el arranque local
+como producción ni la mejora de predicción como bienestar/PVS.
+
+---
+
 # Alojamiento persistente y revocable — 2026-10-16
 
 La base genética `1bf2c4dcdc95e38199e5fc3a0a0c62adabbf6988` está en Railway con

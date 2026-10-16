@@ -13,6 +13,12 @@ spec.loader.exec_module(start)
 
 
 class RuntimeGuardTests(unittest.TestCase):
+    def test_real_habitats_require_explicit_configuration(self):
+        with patch.dict(start.os.environ,{},clear=True):
+            self.assertFalse(any(c[-1]=='genius_beta.living_habitats' for c in start.service_commands(8080)))
+            start.os.environ['GENIUS_LIVING_HABITATS']='SAME,SAMM'
+            self.assertEqual(sum(c[-1]=='genius_beta.living_habitats' for c in start.service_commands(8080)),1)
+
     def test_production_refuses_baked_directory_without_real_mount(self):
         with patch.dict(start.os.environ, {'GENIUS_ENV':'production'}, clear=True), patch.object(start.os.path,'ismount',return_value=False), patch.object(start,'prepare_identity') as identity:
             with self.assertRaisesRegex(RuntimeError,'mounted at /data'):

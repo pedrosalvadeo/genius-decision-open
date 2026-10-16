@@ -97,6 +97,8 @@ def service_commands(port):
         commands.append([sys.executable, '-m', 'genius_beta.backup_agent'])
     if os.environ.get('GENIUS_NETWORK_NODE_ENABLED','false')=='true':
         commands.append([sys.executable, '-m', 'genius_beta.network_seed'])
+    if os.environ.get('GENIUS_LIVING_HABITATS'):
+        commands.append([sys.executable, '-m', 'genius_beta.living_habitats'])
     return commands
 
 
@@ -114,7 +116,11 @@ def supervise(commands):
     failed = False
     try:
         for index, command in enumerate(commands):
-            processes.append(subprocess.Popen(command, start_new_session=True))
+            options={}
+            if command[-1]=='genius_beta.living_habitats':
+                options['env']={k:os.environ[k] for k in ('PATH','PYTHONPATH','PYTHONDONTWRITEBYTECODE','PYTHONUNBUFFERED',
+                    'GENIUS_DATA_DIR','GENIUS_PUBLIC_URL','GENIUS_LIVING_HABITATS') if k in os.environ}
+            processes.append(subprocess.Popen(command, start_new_session=True,**options))
             print(f"service_child_started index={index} pid={processes[-1].pid}", flush=True)
         while not stopping:
             if any(process.poll() is not None for process in processes):
