@@ -1,5 +1,10 @@
 # Genius adaptativo — ejecución persistente
 
+El [gemelo distribuido](federation/DISTRIBUTED_TWIN.md) integra vistas
+complementarias de tres nodos: identidades, relaciones, fuentes y fragmentos
+del modelo. El ejemplo permite calcular una ruta que las vistas aisladas
+dejan incompleta. Es una composición sintética local, sin despliegue web.
+
 El [laboratorio de federación](federation/README.md) ejecuta tres nodos locales
 con memoria independiente, intercambio explícito de observaciones y predicciones
 congeladas. Compara un caso donde compartir mejora y otro donde empeora, con
