@@ -1,3 +1,37 @@
+# Genius Semilla — genes y evolución contextual
+
+16 de octubre de 2026. Continúa PR61, desplegado correctamente como
+`a6359dd72b37c1e70604409105f204d7acf6deca`. Su primera semilla estaba ACTIVE y
+había ejecutado el kernel; ambas identidades comparten un anfitrión y datos sintéticos.
+
+Esta entrega añade genomas de datos, constitución versionada, dos genes de
+predicción con nueve combinaciones, mutación de un locus, expresión contextual,
+linaje y paquetes hereditarios firmados. [Guía](federation/GENETICS.md).
+
+Cuatro objetivos posteriores nominan una variante y otros cuatro la confirman.
+El kernel verifica la comparación de error observado; se exige reducir la suma
+sin aumentar el máximo. Una mejora sólo modifica ese contexto exacto. El fallo
+en confirmación conserva el rasgo previo. El resultado no mide bienestar ni PVS.
+
+Nuevos nacimientos heredan características, sin claves, observaciones ni
+puntuaciones privadas. Nodos ya existentes inician un genoma fundador en su
+próximo ciclo, conservando identidad, concesión y presupuesto. No se inventa
+ascendencia ni se crean nodos adicionales para la actualización.
+
+El canal de evolución requiere observaciones y feedback local explícito. Las
+vistas del gemelo no se convierten automáticamente en objetivos observados.
+Sin resultados posteriores el nodo conserva sus genes y cero cambios confirmados.
+
+Hay 119 pruebas de integración y 108 adaptativas correctas; evidencia en
+[evidence/2026-10-16-genetics](evidence/2026-10-16-genetics). El experimento confirma
+una mejora e impide otra que empeora, verificando herencia sin confianza heredada.
+No se modifica la matemática del kernel, el permiso de intervención, los límites
+de recursos, las variables de producción ni la duración de alojamiento.
+CI y aprobación del despliegue se documentan en el PR. La actualización propuesta
+sólo cambia el commit del servicio Railway existente.
+
+---
+
 # Genius Semilla — alojamiento automático consentido
 
 16 de octubre de 2026. Sobre la red pública del PR60, se añade un controlador de

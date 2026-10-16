@@ -1,0 +1,1879 @@
+{
+  "format": "genius-evolution-experiment/1",
+  "status": "PASS",
+  "checks": {
+    "variant_confirmed": true,
+    "degraded_variant_rejected": true,
+    "native_selection_verified": true,
+    "child_inherits_selected_genes": true,
+    "child_records_parent": true,
+    "child_does_not_inherit_scores": true,
+    "no_life_probability_invented": true
+  },
+  "trials": {
+    "confirmed": {
+      "baseline": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+      "candidate": "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6",
+      "candidates": {
+        "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "71b493a72c8c12a731353cd0bd37058364601caeed4ae2c5338218928e3de9f1",
+          "format": "genius-genome/1",
+          "generation": 1,
+          "genes": {
+            "estimator": "mean_floor",
+            "window": 5
+          },
+          "origin": "MUTATION",
+          "parents": [
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54"
+          ]
+        },
+        "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "4f2795ea7144735374e09fa382f2771adf000eb87933960b82ed9f69c2b8b6f6",
+          "format": "genius-genome/1",
+          "generation": 1,
+          "genes": {
+            "estimator": "lower_median",
+            "window": 3
+          },
+          "origin": "MUTATION",
+          "parents": [
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54"
+          ]
+        },
+        "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "ba2d990c9082e4910391045ed54194eb6bda26f0570ec8139b464a0918db64b7",
+          "format": "genius-genome/1",
+          "generation": 1,
+          "genes": {
+            "estimator": "lower_median",
+            "window": 9
+          },
+          "origin": "MUTATION",
+          "parents": [
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54"
+          ]
+        },
+        "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "20ec426fb4fffc827bca3a6c936a70079f105066df1f17a81819dfb60cd81d3f",
+          "format": "genius-genome/1",
+          "generation": 1,
+          "genes": {
+            "estimator": "last_value",
+            "window": 5
+          },
+          "origin": "MUTATION",
+          "parents": [
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54"
+          ]
+        },
+        "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "5518100f0655665581de16f4b7cd74839dbd07820f9234761a2f92e143bf0c65",
+          "format": "genius-genome/1",
+          "generation": 0,
+          "genes": {
+            "estimator": "lower_median",
+            "window": 5
+          },
+          "origin": "FOUNDER",
+          "parents": []
+        }
+      },
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "rising-sequence-v1",
+        "system": "synthetic-sequence",
+        "unit": "declared_unit",
+        "variable": "requirement"
+      },
+      "discovery_metrics": {
+        "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321": {
+          "absolute_error_sum": 154,
+          "count": 4,
+          "max_error": 48
+        },
+        "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead": {
+          "absolute_error_sum": 40,
+          "count": 4,
+          "max_error": 10
+        },
+        "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760": {
+          "absolute_error_sum": 330,
+          "count": 4,
+          "max_error": 110
+        },
+        "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+          "absolute_error_sum": 0,
+          "count": 4,
+          "max_error": 0
+        },
+        "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+          "absolute_error_sum": 70,
+          "count": 4,
+          "max_error": 20
+        }
+      },
+      "discovery_native": {
+        "criterion": "OBSERVED_ABSOLUTE_ERROR_NOT_WELLBEING_OR_PVS",
+        "decision": {
+          "comparison_cag_mode": "robust",
+          "coverage": "EXHAUSTIVE",
+          "failed": [],
+          "feasible": [
+            "baseline",
+            "candidate"
+          ],
+          "frontier": [
+            "candidate"
+          ],
+          "functional_criterion": "NEUTRAL_EMPTY_PROFILE",
+          "native_cell": {
+            "checks": [
+              "Check.114"
+            ],
+            "state": "DEFINED",
+            "value": {
+              "B": [
+                "baseline",
+                "candidate"
+              ],
+              "C": [
+                "baseline",
+                "candidate"
+              ],
+              "coverage": "EXHAUSTIVE",
+              "dominators": [
+                {
+                  "by": [
+                    "candidate"
+                  ],
+                  "policy": "baseline"
+                }
+              ],
+              "failed": [],
+              "feasible": [
+                "baseline",
+                "candidate"
+              ],
+              "frontier": [
+                "candidate"
+              ],
+              "omitted": [],
+              "pairs": [
+                {
+                  "cag": "1",
+                  "functional": "1",
+                  "left": "baseline",
+                  "pvs": "1",
+                  "right": "baseline",
+                  "strict": "0",
+                  "weak": "1",
+                  "welfare": "1"
+                },
+                {
+                  "cag": "1",
+                  "functional": "1",
+                  "left": "baseline",
+                  "pvs": "1",
+                  "right": "candidate",
+                  "strict": "0",
+                  "weak": "0",
+                  "welfare": "0"
+                },
+                {
+                  "cag": "1",
+                  "functional": "1",
+                  "left": "candidate",
+                  "pvs": "1",
+                  "right": "baseline",
+                  "strict": "1",
+                  "weak": "1",
+                  "welfare": "1"
+                },
+                {
+                  "cag": "1",
+                  "functional": "1",
+                  "left": "candidate",
+                  "pvs": "1",
+                  "right": "candidate",
+                  "strict": "0",
+                  "weak": "1",
+                  "welfare": "1"
+                }
+              ],
+              "selection": {
+                "checks": [
+                  "Check.112"
+                ],
+                "state": "DEFINED",
+                "value": "candidate"
+              },
+              "target": [
+                "baseline",
+                "candidate"
+              ],
+              "unknown": []
+            }
+          },
+          "pairs": [
+            {
+              "cag": "1",
+              "functional": "1",
+              "left": "baseline",
+              "pvs": "1",
+              "right": "baseline",
+              "strict": "0",
+              "weak": "1",
+              "welfare": "1"
+            },
+            {
+              "cag": "1",
+              "functional": "1",
+              "left": "baseline",
+              "pvs": "1",
+              "right": "candidate",
+              "strict": "0",
+              "weak": "0",
+              "welfare": "0"
+            },
+            {
+              "cag": "1",
+              "functional": "1",
+              "left": "candidate",
+              "pvs": "1",
+              "right": "baseline",
+              "strict": "1",
+              "weak": "1",
+              "welfare": "1"
+            },
+            {
+              "cag": "1",
+              "functional": "1",
+              "left": "candidate",
+              "pvs": "1",
+              "right": "candidate",
+              "strict": "0",
+              "weak": "1",
+              "welfare": "1"
+            }
+          ],
+          "require_all_scenarios": true,
+          "selected": "candidate",
+          "selection_rule": "unique",
+          "selection_status": "DEFINED",
+          "unknown": []
+        },
+        "model_sha256": "b8ba8a8f8eef64227bd92b625f36b43487b46d64adc2f6f0455abfe17530c493",
+        "verification": {
+          "errors": [],
+          "status": "VALID",
+          "valid": true
+        }
+      },
+      "id": "generation-one",
+      "rounds": [
+        {
+          "estimates": {
+            "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321": {
+              "estimate": 20,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "mean_floor",
+                "window": 5
+              },
+              "genome_sha256": "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321",
+              "probability": null
+            },
+            "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead": {
+              "estimate": 20,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 3
+              },
+              "genome_sha256": "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead",
+              "probability": null
+            },
+            "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760": {
+              "estimate": 20,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 9
+              },
+              "genome_sha256": "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760",
+              "probability": null
+            },
+            "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+              "estimate": 30,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6",
+              "probability": null
+            },
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+              "estimate": 20,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+              "probability": null
+            }
+          },
+          "expressed_genome": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+          "forecast_id": "evo-4cb90da08240fe98750103f927d9c9f8927e9fad5650b68a",
+          "forecast_sha256": "ae69f4101cfb898210b43ecaba4aa7eaa7d244331cad4512a1ce1ae82fde7e47",
+          "frozen_at": "2026-10-16T12:00:00+00:00",
+          "phase": "DISCOVERY",
+          "score": {
+            "event": "8a7489317a110a5501e1a8034936a02c8da9db5168a59024b072e29e789d9192",
+            "observed_at": "2026-10-16T12:02:00+00:00",
+            "received_at": "2026-10-16T12:02:00+00:00",
+            "target_sha256": "adbfd82a4275115db3bab999833cec097e274cbdc5e963a482ac81d65fc876a9",
+            "value": 30
+          },
+          "window": [
+            "2026-10-16T12:01:00+00:00",
+            "2026-10-16T12:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321": {
+              "estimate": 82,
+              "evidence_count": 5,
+              "evidence_sha256": "2c6dccd167cf48675d3cf4dbb10bb6af8a48cd337b3e5220d81a55ad116d4734",
+              "genes": {
+                "estimator": "mean_floor",
+                "window": 5
+              },
+              "genome_sha256": "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321",
+              "probability": null
+            },
+            "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead": {
+              "estimate": 120,
+              "evidence_count": 3,
+              "evidence_sha256": "9e4dd37c025226520a194120f15808741204944eae10ce5bd44b7a387b1bad68",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 3
+              },
+              "genome_sha256": "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead",
+              "probability": null
+            },
+            "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760": {
+              "estimate": 30,
+              "evidence_count": 6,
+              "evidence_sha256": "2dec9af555240b683c499e5aaeb953a4b2027fb0ffb53bfbd26cd469e8b5db68",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 9
+              },
+              "genome_sha256": "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760",
+              "probability": null
+            },
+            "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+              "estimate": 130,
+              "evidence_count": 5,
+              "evidence_sha256": "2c6dccd167cf48675d3cf4dbb10bb6af8a48cd337b3e5220d81a55ad116d4734",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6",
+              "probability": null
+            },
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+              "estimate": 110,
+              "evidence_count": 5,
+              "evidence_sha256": "2c6dccd167cf48675d3cf4dbb10bb6af8a48cd337b3e5220d81a55ad116d4734",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+              "probability": null
+            }
+          },
+          "expressed_genome": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+          "forecast_id": "evo-1a2c1347f821d1f9914a2dd42151b3737063037fa084587e",
+          "forecast_sha256": "2b7ca16d04a2ccc490c61415e1376beaa1439ef37e9a48d2d2b485e5a8b103b8",
+          "frozen_at": "2026-10-16T13:00:00+00:00",
+          "phase": "DISCOVERY",
+          "score": {
+            "event": "9845e09e16cb883d4a300ae3f853740bdf048ac095a91e710c364bccb8e281f3",
+            "observed_at": "2026-10-16T13:02:00+00:00",
+            "received_at": "2026-10-16T13:02:00+00:00",
+            "target_sha256": "e675514170f8ff89d4173fd3153a6a69751b582ece8b99acc3d4e8c41cc1180f",
+            "value": 130
+          },
+          "window": [
+            "2026-10-16T13:01:00+00:00",
+            "2026-10-16T13:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321": {
+              "estimate": 182,
+              "evidence_count": 5,
+              "evidence_sha256": "67c669cca52699f08d4ec8642238d3968dc13a82ed0a808c31895c88ff7ea2d2",
+              "genes": {
+                "estimator": "mean_floor",
+                "window": 5
+              },
+              "genome_sha256": "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321",
+              "probability": null
+            },
+            "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead": {
+              "estimate": 220,
+              "evidence_count": 3,
+              "evidence_sha256": "8e336125c3fede357b69cbde51e4ce7f64684c695a0c87d4b3392400f14de020",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 3
+              },
+              "genome_sha256": "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead",
+              "probability": null
+            },
+            "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760": {
+              "estimate": 120,
+              "evidence_count": 9,
+              "evidence_sha256": "3538ca70f2a27d0f4bed78d69099430ecf3749218d7a41b89bbcad854a7b0b47",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 9
+              },
+              "genome_sha256": "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760",
+              "probability": null
+            },
+            "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+              "estimate": 230,
+              "evidence_count": 5,
+              "evidence_sha256": "67c669cca52699f08d4ec8642238d3968dc13a82ed0a808c31895c88ff7ea2d2",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6",
+              "probability": null
+            },
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+              "estimate": 210,
+              "evidence_count": 5,
+              "evidence_sha256": "67c669cca52699f08d4ec8642238d3968dc13a82ed0a808c31895c88ff7ea2d2",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+              "probability": null
+            }
+          },
+          "expressed_genome": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+          "forecast_id": "evo-502df81803be530a05ace4911d9de65a44b45105427e73b7",
+          "forecast_sha256": "f289284948689945ffd67b0c4c7f8549c3876d1f67ff17a401bea95c267d16ff",
+          "frozen_at": "2026-10-16T14:00:00+00:00",
+          "phase": "DISCOVERY",
+          "score": {
+            "event": "2d5c7f001f59fd0e3896a9fa2da1153e0db481f45bb272cdc6193bd93429054e",
+            "observed_at": "2026-10-16T14:02:00+00:00",
+            "received_at": "2026-10-16T14:02:00+00:00",
+            "target_sha256": "f59b5488f1c3b188ea80a68ab9838c15ce96469a6b5ed44e5ec11f624286955e",
+            "value": 230
+          },
+          "window": [
+            "2026-10-16T14:01:00+00:00",
+            "2026-10-16T14:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321": {
+              "estimate": 282,
+              "evidence_count": 5,
+              "evidence_sha256": "003ae5ebffb64939b1d63288d8697e6f284e195f1fb93c693246c96f10abdf37",
+              "genes": {
+                "estimator": "mean_floor",
+                "window": 5
+              },
+              "genome_sha256": "14b12d2924362595ea0021d70c338644398a5f5183671bccb6e17a98deacf321",
+              "probability": null
+            },
+            "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead": {
+              "estimate": 320,
+              "evidence_count": 3,
+              "evidence_sha256": "d7af72499d213e23af81aedf81bd0fb64b157eb7761894a903a59289f2488fab",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 3
+              },
+              "genome_sha256": "1e65c96c5de027d342e3f066e49441d16920e66ef4e0afc28def8ea173379ead",
+              "probability": null
+            },
+            "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760": {
+              "estimate": 220,
+              "evidence_count": 9,
+              "evidence_sha256": "c4c82e5d04dc9517c1c7eb9dfc79679cf869b45b7dbd2ffc853c3d88f6158cf5",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 9
+              },
+              "genome_sha256": "855c568c4e98650031e2e35af6240cc69576cd74fe7074b8eca324f014042760",
+              "probability": null
+            },
+            "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+              "estimate": 330,
+              "evidence_count": 5,
+              "evidence_sha256": "003ae5ebffb64939b1d63288d8697e6f284e195f1fb93c693246c96f10abdf37",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6",
+              "probability": null
+            },
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+              "estimate": 310,
+              "evidence_count": 5,
+              "evidence_sha256": "003ae5ebffb64939b1d63288d8697e6f284e195f1fb93c693246c96f10abdf37",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+              "probability": null
+            }
+          },
+          "expressed_genome": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+          "forecast_id": "evo-b239c3283cdbcd5b4c76e8d4cc641c4d5c90670315164ad7",
+          "forecast_sha256": "6a1da68a7792ccaaa984dfee6f971d592de69189fd32b1b24e31bce46dc5dcfa",
+          "frozen_at": "2026-10-16T15:00:00+00:00",
+          "phase": "DISCOVERY",
+          "score": {
+            "event": "7f3551b83f05099cdd24e3f02070732df54bc45a8d1e212f3026aef54dd4488d",
+            "observed_at": "2026-10-16T15:02:00+00:00",
+            "received_at": "2026-10-16T15:02:00+00:00",
+            "target_sha256": "99b2e827e6c5aeb5be9143b767a3a9fecc80c81ac55d913182ffbc7ec69bca31",
+            "value": 330
+          },
+          "window": [
+            "2026-10-16T15:01:00+00:00",
+            "2026-10-16T15:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+              "estimate": 430,
+              "evidence_count": 5,
+              "evidence_sha256": "f4a95d8effa402c7b1860a05dc6a5cdce114ca85872125be4953d99de4a7f723",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6",
+              "probability": null
+            },
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+              "estimate": 410,
+              "evidence_count": 5,
+              "evidence_sha256": "f4a95d8effa402c7b1860a05dc6a5cdce114ca85872125be4953d99de4a7f723",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+              "probability": null
+            }
+          },
+          "expressed_genome": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+          "forecast_id": "evo-4732426c3a4b922c88b0add3ae70f56d41b267928575209f",
+          "forecast_sha256": "8045a7a0e6b533f7fd3fe7e18344ac7b8d58fa30be0cc4e575df2d98b228f708",
+          "frozen_at": "2026-10-16T16:00:00+00:00",
+          "phase": "CONFIRMATION",
+          "score": {
+            "event": "1c30053d31f880b95e7c722aef32664796285856c8983df35cb1ebb51ef959a5",
+            "observed_at": "2026-10-16T16:02:00+00:00",
+            "received_at": "2026-10-16T16:02:00+00:00",
+            "target_sha256": "e5f6f8d0f5d47a0bd6291540c0ae552711a3db10c865c8411de5aca56f6bb1d8",
+            "value": 430
+          },
+          "window": [
+            "2026-10-16T16:01:00+00:00",
+            "2026-10-16T16:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+              "estimate": 530,
+              "evidence_count": 5,
+              "evidence_sha256": "bfcedadec3faef63637566a6cbf46267996d307423fa78b30b1321dc5b215bd1",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6",
+              "probability": null
+            },
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+              "estimate": 510,
+              "evidence_count": 5,
+              "evidence_sha256": "bfcedadec3faef63637566a6cbf46267996d307423fa78b30b1321dc5b215bd1",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+              "probability": null
+            }
+          },
+          "expressed_genome": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+          "forecast_id": "evo-d5d8cfe261f588767f28bd62775872afec06cbbfb6fe855c",
+          "forecast_sha256": "3fd1ffe29f73cab4035cdefebe93345f19b177430637bb10e0f9193135e8a49f",
+          "frozen_at": "2026-10-16T17:00:00+00:00",
+          "phase": "CONFIRMATION",
+          "score": {
+            "event": "a0ca01f46f64dd5bbcc0f61272baf1219962ba1b8d7c7b71d7ff656831098f77",
+            "observed_at": "2026-10-16T17:02:00+00:00",
+            "received_at": "2026-10-16T17:02:00+00:00",
+            "target_sha256": "754f9e05fb4cabdcf9dfd346775b5af18a2304ec74ee92fd345fe2e49ff3188a",
+            "value": 530
+          },
+          "window": [
+            "2026-10-16T17:01:00+00:00",
+            "2026-10-16T17:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+              "estimate": 630,
+              "evidence_count": 5,
+              "evidence_sha256": "52cc6ebd0dc0cec9e23ded16f4a14e690010b9b57e532da81b2668074463e229",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6",
+              "probability": null
+            },
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+              "estimate": 610,
+              "evidence_count": 5,
+              "evidence_sha256": "52cc6ebd0dc0cec9e23ded16f4a14e690010b9b57e532da81b2668074463e229",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+              "probability": null
+            }
+          },
+          "expressed_genome": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+          "forecast_id": "evo-4e510fa50f848f697b12d2fd3995c475e573f1d37f19a4f2",
+          "forecast_sha256": "0ecda35c06c4828ae953e013d3b07f359dcdaa87f1e3ea36d7d4ea4d4aac01b1",
+          "frozen_at": "2026-10-16T18:00:00+00:00",
+          "phase": "CONFIRMATION",
+          "score": {
+            "event": "f983fae746907865535f4f5f41ecec3d9af3511b3d0a6e94e831e8980b29c720",
+            "observed_at": "2026-10-16T18:02:00+00:00",
+            "received_at": "2026-10-16T18:02:00+00:00",
+            "target_sha256": "e8fc0b07f4d59098837c610d8397a0de41a063dd6741da2280d0b83524c3d73d",
+            "value": 630
+          },
+          "window": [
+            "2026-10-16T18:01:00+00:00",
+            "2026-10-16T18:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6": {
+              "estimate": 730,
+              "evidence_count": 5,
+              "evidence_sha256": "1507493a3ae7510a39a7f5cb67c673bee8c5f2eced29ae083fdc16bd8b9eb902",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6",
+              "probability": null
+            },
+            "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54": {
+              "estimate": 710,
+              "evidence_count": 5,
+              "evidence_sha256": "1507493a3ae7510a39a7f5cb67c673bee8c5f2eced29ae083fdc16bd8b9eb902",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+              "probability": null
+            }
+          },
+          "expressed_genome": "d2576234330070f5ee949bc38d192fbb578256c96b475c430aac6760b224ca54",
+          "forecast_id": "evo-334b76b12cd86fc8aac2670c26633a55a482c057fe5cbf7f",
+          "forecast_sha256": "f7e16d093e6b8187fb02af0294c7b13177905331dd4ce7db6a01869465c2eaa5",
+          "frozen_at": "2026-10-16T19:00:00+00:00",
+          "phase": "CONFIRMATION",
+          "window": [
+            "2026-10-16T19:01:00+00:00",
+            "2026-10-16T19:10:00+00:00"
+          ],
+          "score": {
+            "value": 730,
+            "event": "06ceb072fede4c4448e3702f82e4685987281ae85b84ef7c3d639c135889cde6",
+            "target_sha256": "0d1cb9e16de71141a5c956107088396449f1827d9f802951170fc3e689461e49",
+            "observed_at": "2026-10-16T19:02:00+00:00",
+            "received_at": "2026-10-16T19:02:00+00:00"
+          }
+        }
+      ],
+      "started_at": "2026-10-16T12:00:00+00:00",
+      "status": "ADOPTED",
+      "confirmation_metrics": {
+        "baseline": {
+          "count": 4,
+          "absolute_error_sum": 80,
+          "max_error": 20
+        },
+        "candidate": {
+          "count": 4,
+          "absolute_error_sum": 0,
+          "max_error": 0
+        }
+      },
+      "confirmation_native": {
+        "model_sha256": "cf6f2d8e8e6f0a8699694d3670a7c3329d9854cef41737c4f6daa22c35dc9985",
+        "verification": {
+          "valid": true,
+          "status": "VALID",
+          "errors": []
+        },
+        "decision": {
+          "coverage": "EXHAUSTIVE",
+          "feasible": [
+            "baseline",
+            "candidate"
+          ],
+          "failed": [],
+          "unknown": [],
+          "frontier": [
+            "candidate"
+          ],
+          "pairs": [
+            {
+              "left": "baseline",
+              "right": "baseline",
+              "functional": "1",
+              "cag": "1",
+              "welfare": "1",
+              "pvs": "1",
+              "weak": "1",
+              "strict": "0"
+            },
+            {
+              "left": "baseline",
+              "right": "candidate",
+              "functional": "1",
+              "cag": "1",
+              "welfare": "0",
+              "pvs": "1",
+              "weak": "0",
+              "strict": "0"
+            },
+            {
+              "left": "candidate",
+              "right": "baseline",
+              "functional": "1",
+              "cag": "1",
+              "welfare": "1",
+              "pvs": "1",
+              "weak": "1",
+              "strict": "1"
+            },
+            {
+              "left": "candidate",
+              "right": "candidate",
+              "functional": "1",
+              "cag": "1",
+              "welfare": "1",
+              "pvs": "1",
+              "weak": "1",
+              "strict": "0"
+            }
+          ],
+          "selected": "candidate",
+          "selection_status": "DEFINED",
+          "native_cell": {
+            "state": "DEFINED",
+            "value": {
+              "target": [
+                "baseline",
+                "candidate"
+              ],
+              "B": [
+                "baseline",
+                "candidate"
+              ],
+              "C": [
+                "baseline",
+                "candidate"
+              ],
+              "feasible": [
+                "baseline",
+                "candidate"
+              ],
+              "failed": [],
+              "unknown": [],
+              "omitted": [],
+              "pairs": [
+                {
+                  "left": "baseline",
+                  "right": "baseline",
+                  "functional": "1",
+                  "cag": "1",
+                  "welfare": "1",
+                  "pvs": "1",
+                  "weak": "1",
+                  "strict": "0"
+                },
+                {
+                  "left": "baseline",
+                  "right": "candidate",
+                  "functional": "1",
+                  "cag": "1",
+                  "welfare": "0",
+                  "pvs": "1",
+                  "weak": "0",
+                  "strict": "0"
+                },
+                {
+                  "left": "candidate",
+                  "right": "baseline",
+                  "functional": "1",
+                  "cag": "1",
+                  "welfare": "1",
+                  "pvs": "1",
+                  "weak": "1",
+                  "strict": "1"
+                },
+                {
+                  "left": "candidate",
+                  "right": "candidate",
+                  "functional": "1",
+                  "cag": "1",
+                  "welfare": "1",
+                  "pvs": "1",
+                  "weak": "1",
+                  "strict": "0"
+                }
+              ],
+              "frontier": [
+                "candidate"
+              ],
+              "dominators": [
+                {
+                  "policy": "baseline",
+                  "by": [
+                    "candidate"
+                  ]
+                }
+              ],
+              "coverage": "EXHAUSTIVE",
+              "selection": {
+                "state": "DEFINED",
+                "value": "candidate",
+                "checks": [
+                  "Check.112"
+                ]
+              }
+            },
+            "checks": [
+              "Check.114"
+            ]
+          },
+          "selection_rule": "unique",
+          "comparison_cag_mode": "robust",
+          "require_all_scenarios": true,
+          "functional_criterion": "NEUTRAL_EMPTY_PROFILE"
+        },
+        "criterion": "OBSERVED_ABSOLUTE_ERROR_NOT_WELLBEING_OR_PVS"
+      }
+    },
+    "rejected": {
+      "baseline": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+      "candidate": "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844",
+      "candidates": {
+        "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "38f4d6f4dc7ceb3f0b9c8e33c2453dd050a0c764d2bb46b8d2c40fb1aa4fe506",
+          "format": "genius-genome/1",
+          "generation": 1,
+          "genes": {
+            "estimator": "mean_floor",
+            "window": 5
+          },
+          "origin": "MUTATION",
+          "parents": [
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008"
+          ]
+        },
+        "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "30b86fef4e9cf1508c3036e004aae92eb7eb77d5b270cca8a0311e7a83887a2b",
+          "format": "genius-genome/1",
+          "generation": 1,
+          "genes": {
+            "estimator": "last_value",
+            "window": 5
+          },
+          "origin": "MUTATION",
+          "parents": [
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008"
+          ]
+        },
+        "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "cd7d7a11e20c102f59cf2c8de57e679c8693e69dd7d440af48fccb7573433502",
+          "format": "genius-genome/1",
+          "generation": 1,
+          "genes": {
+            "estimator": "lower_median",
+            "window": 3
+          },
+          "origin": "MUTATION",
+          "parents": [
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008"
+          ]
+        },
+        "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "81741978e7343abad2f1b98f42dfac53bf8e348f3ca1bc5d7d0a3dd105afbfd6",
+          "format": "genius-genome/1",
+          "generation": 0,
+          "genes": {
+            "estimator": "lower_median",
+            "window": 5
+          },
+          "origin": "FOUNDER",
+          "parents": []
+        },
+        "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d": {
+          "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+          "event": "0d59e05878eb9e4f91aec0555885dd4283f497ebdc330b654ae53e72fcdbe3f7",
+          "format": "genius-genome/1",
+          "generation": 1,
+          "genes": {
+            "estimator": "lower_median",
+            "window": 9
+          },
+          "origin": "MUTATION",
+          "parents": [
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008"
+          ]
+        }
+      },
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "rising-sequence-v1",
+        "system": "synthetic-sequence",
+        "unit": "declared_unit",
+        "variable": "requirement"
+      },
+      "discovery_metrics": {
+        "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a": {
+          "absolute_error_sum": 154,
+          "count": 4,
+          "max_error": 48
+        },
+        "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+          "absolute_error_sum": 0,
+          "count": 4,
+          "max_error": 0
+        },
+        "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307": {
+          "absolute_error_sum": 40,
+          "count": 4,
+          "max_error": 10
+        },
+        "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+          "absolute_error_sum": 70,
+          "count": 4,
+          "max_error": 20
+        },
+        "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d": {
+          "absolute_error_sum": 330,
+          "count": 4,
+          "max_error": 110
+        }
+      },
+      "discovery_native": {
+        "criterion": "OBSERVED_ABSOLUTE_ERROR_NOT_WELLBEING_OR_PVS",
+        "decision": {
+          "comparison_cag_mode": "robust",
+          "coverage": "EXHAUSTIVE",
+          "failed": [],
+          "feasible": [
+            "baseline",
+            "candidate"
+          ],
+          "frontier": [
+            "candidate"
+          ],
+          "functional_criterion": "NEUTRAL_EMPTY_PROFILE",
+          "native_cell": {
+            "checks": [
+              "Check.114"
+            ],
+            "state": "DEFINED",
+            "value": {
+              "B": [
+                "baseline",
+                "candidate"
+              ],
+              "C": [
+                "baseline",
+                "candidate"
+              ],
+              "coverage": "EXHAUSTIVE",
+              "dominators": [
+                {
+                  "by": [
+                    "candidate"
+                  ],
+                  "policy": "baseline"
+                }
+              ],
+              "failed": [],
+              "feasible": [
+                "baseline",
+                "candidate"
+              ],
+              "frontier": [
+                "candidate"
+              ],
+              "omitted": [],
+              "pairs": [
+                {
+                  "cag": "1",
+                  "functional": "1",
+                  "left": "baseline",
+                  "pvs": "1",
+                  "right": "baseline",
+                  "strict": "0",
+                  "weak": "1",
+                  "welfare": "1"
+                },
+                {
+                  "cag": "1",
+                  "functional": "1",
+                  "left": "baseline",
+                  "pvs": "1",
+                  "right": "candidate",
+                  "strict": "0",
+                  "weak": "0",
+                  "welfare": "0"
+                },
+                {
+                  "cag": "1",
+                  "functional": "1",
+                  "left": "candidate",
+                  "pvs": "1",
+                  "right": "baseline",
+                  "strict": "1",
+                  "weak": "1",
+                  "welfare": "1"
+                },
+                {
+                  "cag": "1",
+                  "functional": "1",
+                  "left": "candidate",
+                  "pvs": "1",
+                  "right": "candidate",
+                  "strict": "0",
+                  "weak": "1",
+                  "welfare": "1"
+                }
+              ],
+              "selection": {
+                "checks": [
+                  "Check.112"
+                ],
+                "state": "DEFINED",
+                "value": "candidate"
+              },
+              "target": [
+                "baseline",
+                "candidate"
+              ],
+              "unknown": []
+            }
+          },
+          "pairs": [
+            {
+              "cag": "1",
+              "functional": "1",
+              "left": "baseline",
+              "pvs": "1",
+              "right": "baseline",
+              "strict": "0",
+              "weak": "1",
+              "welfare": "1"
+            },
+            {
+              "cag": "1",
+              "functional": "1",
+              "left": "baseline",
+              "pvs": "1",
+              "right": "candidate",
+              "strict": "0",
+              "weak": "0",
+              "welfare": "0"
+            },
+            {
+              "cag": "1",
+              "functional": "1",
+              "left": "candidate",
+              "pvs": "1",
+              "right": "baseline",
+              "strict": "1",
+              "weak": "1",
+              "welfare": "1"
+            },
+            {
+              "cag": "1",
+              "functional": "1",
+              "left": "candidate",
+              "pvs": "1",
+              "right": "candidate",
+              "strict": "0",
+              "weak": "1",
+              "welfare": "1"
+            }
+          ],
+          "require_all_scenarios": true,
+          "selected": "candidate",
+          "selection_rule": "unique",
+          "selection_status": "DEFINED",
+          "unknown": []
+        },
+        "model_sha256": "b8ba8a8f8eef64227bd92b625f36b43487b46d64adc2f6f0455abfe17530c493",
+        "verification": {
+          "errors": [],
+          "status": "VALID",
+          "valid": true
+        }
+      },
+      "id": "generation-one",
+      "rounds": [
+        {
+          "estimates": {
+            "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a": {
+              "estimate": 20,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "mean_floor",
+                "window": 5
+              },
+              "genome_sha256": "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a",
+              "probability": null
+            },
+            "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+              "estimate": 30,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844",
+              "probability": null
+            },
+            "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307": {
+              "estimate": 20,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 3
+              },
+              "genome_sha256": "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307",
+              "probability": null
+            },
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+              "estimate": 20,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+              "probability": null
+            },
+            "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d": {
+              "estimate": 20,
+              "evidence_count": 3,
+              "evidence_sha256": "bdb15ddaae94a7390fc9abce6346709615ff4a169d9f3edb0a1f64c4d50c685c",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 9
+              },
+              "genome_sha256": "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d",
+              "probability": null
+            }
+          },
+          "expressed_genome": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+          "forecast_id": "evo-4cb90da08240fe98750103f927d9c9f8927e9fad5650b68a",
+          "forecast_sha256": "ca17b4f5bce08b242ae67c92601b0d5cc9409848486949bd2ad0d56e11d131cc",
+          "frozen_at": "2026-10-16T12:00:00+00:00",
+          "phase": "DISCOVERY",
+          "score": {
+            "event": "8a7489317a110a5501e1a8034936a02c8da9db5168a59024b072e29e789d9192",
+            "observed_at": "2026-10-16T12:02:00+00:00",
+            "received_at": "2026-10-16T12:02:00+00:00",
+            "target_sha256": "adbfd82a4275115db3bab999833cec097e274cbdc5e963a482ac81d65fc876a9",
+            "value": 30
+          },
+          "window": [
+            "2026-10-16T12:01:00+00:00",
+            "2026-10-16T12:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a": {
+              "estimate": 82,
+              "evidence_count": 5,
+              "evidence_sha256": "2c6dccd167cf48675d3cf4dbb10bb6af8a48cd337b3e5220d81a55ad116d4734",
+              "genes": {
+                "estimator": "mean_floor",
+                "window": 5
+              },
+              "genome_sha256": "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a",
+              "probability": null
+            },
+            "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+              "estimate": 130,
+              "evidence_count": 5,
+              "evidence_sha256": "2c6dccd167cf48675d3cf4dbb10bb6af8a48cd337b3e5220d81a55ad116d4734",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844",
+              "probability": null
+            },
+            "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307": {
+              "estimate": 120,
+              "evidence_count": 3,
+              "evidence_sha256": "9e4dd37c025226520a194120f15808741204944eae10ce5bd44b7a387b1bad68",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 3
+              },
+              "genome_sha256": "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307",
+              "probability": null
+            },
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+              "estimate": 110,
+              "evidence_count": 5,
+              "evidence_sha256": "2c6dccd167cf48675d3cf4dbb10bb6af8a48cd337b3e5220d81a55ad116d4734",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+              "probability": null
+            },
+            "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d": {
+              "estimate": 30,
+              "evidence_count": 6,
+              "evidence_sha256": "2dec9af555240b683c499e5aaeb953a4b2027fb0ffb53bfbd26cd469e8b5db68",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 9
+              },
+              "genome_sha256": "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d",
+              "probability": null
+            }
+          },
+          "expressed_genome": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+          "forecast_id": "evo-1a2c1347f821d1f9914a2dd42151b3737063037fa084587e",
+          "forecast_sha256": "5f3b54aae810b46abb670dcdb19cef84dbd755a00f3e1bda9c764675496b0dab",
+          "frozen_at": "2026-10-16T13:00:00+00:00",
+          "phase": "DISCOVERY",
+          "score": {
+            "event": "9845e09e16cb883d4a300ae3f853740bdf048ac095a91e710c364bccb8e281f3",
+            "observed_at": "2026-10-16T13:02:00+00:00",
+            "received_at": "2026-10-16T13:02:00+00:00",
+            "target_sha256": "e675514170f8ff89d4173fd3153a6a69751b582ece8b99acc3d4e8c41cc1180f",
+            "value": 130
+          },
+          "window": [
+            "2026-10-16T13:01:00+00:00",
+            "2026-10-16T13:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a": {
+              "estimate": 182,
+              "evidence_count": 5,
+              "evidence_sha256": "67c669cca52699f08d4ec8642238d3968dc13a82ed0a808c31895c88ff7ea2d2",
+              "genes": {
+                "estimator": "mean_floor",
+                "window": 5
+              },
+              "genome_sha256": "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a",
+              "probability": null
+            },
+            "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+              "estimate": 230,
+              "evidence_count": 5,
+              "evidence_sha256": "67c669cca52699f08d4ec8642238d3968dc13a82ed0a808c31895c88ff7ea2d2",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844",
+              "probability": null
+            },
+            "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307": {
+              "estimate": 220,
+              "evidence_count": 3,
+              "evidence_sha256": "8e336125c3fede357b69cbde51e4ce7f64684c695a0c87d4b3392400f14de020",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 3
+              },
+              "genome_sha256": "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307",
+              "probability": null
+            },
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+              "estimate": 210,
+              "evidence_count": 5,
+              "evidence_sha256": "67c669cca52699f08d4ec8642238d3968dc13a82ed0a808c31895c88ff7ea2d2",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+              "probability": null
+            },
+            "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d": {
+              "estimate": 120,
+              "evidence_count": 9,
+              "evidence_sha256": "3538ca70f2a27d0f4bed78d69099430ecf3749218d7a41b89bbcad854a7b0b47",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 9
+              },
+              "genome_sha256": "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d",
+              "probability": null
+            }
+          },
+          "expressed_genome": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+          "forecast_id": "evo-502df81803be530a05ace4911d9de65a44b45105427e73b7",
+          "forecast_sha256": "890a39b47cbd9a015ee60d0eb951f150a4b411f435f7250a45d48527ca15ad6d",
+          "frozen_at": "2026-10-16T14:00:00+00:00",
+          "phase": "DISCOVERY",
+          "score": {
+            "event": "2d5c7f001f59fd0e3896a9fa2da1153e0db481f45bb272cdc6193bd93429054e",
+            "observed_at": "2026-10-16T14:02:00+00:00",
+            "received_at": "2026-10-16T14:02:00+00:00",
+            "target_sha256": "f59b5488f1c3b188ea80a68ab9838c15ce96469a6b5ed44e5ec11f624286955e",
+            "value": 230
+          },
+          "window": [
+            "2026-10-16T14:01:00+00:00",
+            "2026-10-16T14:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a": {
+              "estimate": 282,
+              "evidence_count": 5,
+              "evidence_sha256": "003ae5ebffb64939b1d63288d8697e6f284e195f1fb93c693246c96f10abdf37",
+              "genes": {
+                "estimator": "mean_floor",
+                "window": 5
+              },
+              "genome_sha256": "4b3ba451cbf6c8f1913147f39cdbe14e7ec46ab31ebf70cc75854c855d57bd4a",
+              "probability": null
+            },
+            "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+              "estimate": 330,
+              "evidence_count": 5,
+              "evidence_sha256": "003ae5ebffb64939b1d63288d8697e6f284e195f1fb93c693246c96f10abdf37",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844",
+              "probability": null
+            },
+            "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307": {
+              "estimate": 320,
+              "evidence_count": 3,
+              "evidence_sha256": "d7af72499d213e23af81aedf81bd0fb64b157eb7761894a903a59289f2488fab",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 3
+              },
+              "genome_sha256": "9cf17d770c9cea1bfa9fcf3241259630e2d68a09b2e53aa99e34bdf48ce4d307",
+              "probability": null
+            },
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+              "estimate": 310,
+              "evidence_count": 5,
+              "evidence_sha256": "003ae5ebffb64939b1d63288d8697e6f284e195f1fb93c693246c96f10abdf37",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+              "probability": null
+            },
+            "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d": {
+              "estimate": 220,
+              "evidence_count": 9,
+              "evidence_sha256": "c4c82e5d04dc9517c1c7eb9dfc79679cf869b45b7dbd2ffc853c3d88f6158cf5",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 9
+              },
+              "genome_sha256": "be69ddf5043e9df98fba3e162e76dabacdefab30fc7a5e4ae64c4bd800eb034d",
+              "probability": null
+            }
+          },
+          "expressed_genome": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+          "forecast_id": "evo-b239c3283cdbcd5b4c76e8d4cc641c4d5c90670315164ad7",
+          "forecast_sha256": "3ca02ba31e0fece234d6cf71da802fecf8c57bf1cf23b6fc731833d0b8442523",
+          "frozen_at": "2026-10-16T15:00:00+00:00",
+          "phase": "DISCOVERY",
+          "score": {
+            "event": "7f3551b83f05099cdd24e3f02070732df54bc45a8d1e212f3026aef54dd4488d",
+            "observed_at": "2026-10-16T15:02:00+00:00",
+            "received_at": "2026-10-16T15:02:00+00:00",
+            "target_sha256": "99b2e827e6c5aeb5be9143b767a3a9fecc80c81ac55d913182ffbc7ec69bca31",
+            "value": 330
+          },
+          "window": [
+            "2026-10-16T15:01:00+00:00",
+            "2026-10-16T15:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+              "estimate": 430,
+              "evidence_count": 5,
+              "evidence_sha256": "f4a95d8effa402c7b1860a05dc6a5cdce114ca85872125be4953d99de4a7f723",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844",
+              "probability": null
+            },
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+              "estimate": 410,
+              "evidence_count": 5,
+              "evidence_sha256": "f4a95d8effa402c7b1860a05dc6a5cdce114ca85872125be4953d99de4a7f723",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+              "probability": null
+            }
+          },
+          "expressed_genome": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+          "forecast_id": "evo-4732426c3a4b922c88b0add3ae70f56d41b267928575209f",
+          "forecast_sha256": "01dea43fbb4af71783eea229a452d22f08ebca1c02261e16d15431df17e7284e",
+          "frozen_at": "2026-10-16T16:00:00+00:00",
+          "phase": "CONFIRMATION",
+          "score": {
+            "event": "1c30053d31f880b95e7c722aef32664796285856c8983df35cb1ebb51ef959a5",
+            "observed_at": "2026-10-16T16:02:00+00:00",
+            "received_at": "2026-10-16T16:02:00+00:00",
+            "target_sha256": "70dbbef4ecb3c5f14f147c3d52c0e95ab0a2503461952d271ba6137ca8e14ae9",
+            "value": 410
+          },
+          "window": [
+            "2026-10-16T16:01:00+00:00",
+            "2026-10-16T16:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+              "estimate": 530,
+              "evidence_count": 5,
+              "evidence_sha256": "bfcedadec3faef63637566a6cbf46267996d307423fa78b30b1321dc5b215bd1",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844",
+              "probability": null
+            },
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+              "estimate": 510,
+              "evidence_count": 5,
+              "evidence_sha256": "bfcedadec3faef63637566a6cbf46267996d307423fa78b30b1321dc5b215bd1",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+              "probability": null
+            }
+          },
+          "expressed_genome": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+          "forecast_id": "evo-d5d8cfe261f588767f28bd62775872afec06cbbfb6fe855c",
+          "forecast_sha256": "4c3854b45523ee80eb993bd4c4d62a85c34b83e3acd6dc7ca84a7fa52e3a1313",
+          "frozen_at": "2026-10-16T17:00:00+00:00",
+          "phase": "CONFIRMATION",
+          "score": {
+            "event": "a0ca01f46f64dd5bbcc0f61272baf1219962ba1b8d7c7b71d7ff656831098f77",
+            "observed_at": "2026-10-16T17:02:00+00:00",
+            "received_at": "2026-10-16T17:02:00+00:00",
+            "target_sha256": "b5ea1abf050e7f33c915871c3e502c64534169d300055cd4d44a6a64732f56c3",
+            "value": 510
+          },
+          "window": [
+            "2026-10-16T17:01:00+00:00",
+            "2026-10-16T17:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+              "estimate": 630,
+              "evidence_count": 5,
+              "evidence_sha256": "52cc6ebd0dc0cec9e23ded16f4a14e690010b9b57e532da81b2668074463e229",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844",
+              "probability": null
+            },
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+              "estimate": 610,
+              "evidence_count": 5,
+              "evidence_sha256": "52cc6ebd0dc0cec9e23ded16f4a14e690010b9b57e532da81b2668074463e229",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+              "probability": null
+            }
+          },
+          "expressed_genome": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+          "forecast_id": "evo-4e510fa50f848f697b12d2fd3995c475e573f1d37f19a4f2",
+          "forecast_sha256": "87d0391bfa57d922caa0258de167b1b31eb5a86ebf5368b2086dfd683ce7e1b4",
+          "frozen_at": "2026-10-16T18:00:00+00:00",
+          "phase": "CONFIRMATION",
+          "score": {
+            "event": "f983fae746907865535f4f5f41ecec3d9af3511b3d0a6e94e831e8980b29c720",
+            "observed_at": "2026-10-16T18:02:00+00:00",
+            "received_at": "2026-10-16T18:02:00+00:00",
+            "target_sha256": "aec7e0f449f5a2b69b3cc9ae1cbdad34f41ef3b5954587534b27486cce9733b3",
+            "value": 610
+          },
+          "window": [
+            "2026-10-16T18:01:00+00:00",
+            "2026-10-16T18:10:00+00:00"
+          ]
+        },
+        {
+          "estimates": {
+            "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844": {
+              "estimate": 730,
+              "evidence_count": 5,
+              "evidence_sha256": "1507493a3ae7510a39a7f5cb67c673bee8c5f2eced29ae083fdc16bd8b9eb902",
+              "genes": {
+                "estimator": "last_value",
+                "window": 5
+              },
+              "genome_sha256": "6ad8f82f20874803b82986a9331ee6f0bfb5cd0fdac0f3cf76f4bd815ce8c844",
+              "probability": null
+            },
+            "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008": {
+              "estimate": 710,
+              "evidence_count": 5,
+              "evidence_sha256": "1507493a3ae7510a39a7f5cb67c673bee8c5f2eced29ae083fdc16bd8b9eb902",
+              "genes": {
+                "estimator": "lower_median",
+                "window": 5
+              },
+              "genome_sha256": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+              "probability": null
+            }
+          },
+          "expressed_genome": "aced5966a04dfe2ccf431e45e6b5e8396d99eb22ffc3e2b9abb2aeb199968008",
+          "forecast_id": "evo-334b76b12cd86fc8aac2670c26633a55a482c057fe5cbf7f",
+          "forecast_sha256": "b47abd739e4ee47898aa80f9a01f3288738dce9cb1690691f04087a908e0ab97",
+          "frozen_at": "2026-10-16T19:00:00+00:00",
+          "phase": "CONFIRMATION",
+          "window": [
+            "2026-10-16T19:01:00+00:00",
+            "2026-10-16T19:10:00+00:00"
+          ],
+          "score": {
+            "value": 710,
+            "event": "06ceb072fede4c4448e3702f82e4685987281ae85b84ef7c3d639c135889cde6",
+            "target_sha256": "bd23a7385316930d8a4181bb4c7f7e41ce271f9d5b4e4cb9a79e3dd54a0eb4a0",
+            "observed_at": "2026-10-16T19:02:00+00:00",
+            "received_at": "2026-10-16T19:02:00+00:00"
+          }
+        }
+      ],
+      "started_at": "2026-10-16T12:00:00+00:00",
+      "status": "REJECTED",
+      "confirmation_metrics": {
+        "baseline": {
+          "count": 4,
+          "absolute_error_sum": 0,
+          "max_error": 0
+        },
+        "candidate": {
+          "count": 4,
+          "absolute_error_sum": 80,
+          "max_error": 20
+        }
+      },
+      "confirmation_native": {
+        "model_sha256": "a723ffea018ffce0387760c1440e811aada88213f2660e387f628bb634a0224a",
+        "verification": {
+          "valid": true,
+          "status": "VALID",
+          "errors": []
+        },
+        "decision": {
+          "coverage": "EXHAUSTIVE",
+          "feasible": [
+            "baseline",
+            "candidate"
+          ],
+          "failed": [],
+          "unknown": [],
+          "frontier": [
+            "baseline"
+          ],
+          "pairs": [
+            {
+              "left": "baseline",
+              "right": "baseline",
+              "functional": "1",
+              "cag": "1",
+              "welfare": "1",
+              "pvs": "1",
+              "weak": "1",
+              "strict": "0"
+            },
+            {
+              "left": "baseline",
+              "right": "candidate",
+              "functional": "1",
+              "cag": "1",
+              "welfare": "1",
+              "pvs": "1",
+              "weak": "1",
+              "strict": "1"
+            },
+            {
+              "left": "candidate",
+              "right": "baseline",
+              "functional": "1",
+              "cag": "1",
+              "welfare": "0",
+              "pvs": "1",
+              "weak": "0",
+              "strict": "0"
+            },
+            {
+              "left": "candidate",
+              "right": "candidate",
+              "functional": "1",
+              "cag": "1",
+              "welfare": "1",
+              "pvs": "1",
+              "weak": "1",
+              "strict": "0"
+            }
+          ],
+          "selected": "baseline",
+          "selection_status": "DEFINED",
+          "native_cell": {
+            "state": "DEFINED",
+            "value": {
+              "target": [
+                "baseline",
+                "candidate"
+              ],
+              "B": [
+                "baseline",
+                "candidate"
+              ],
+              "C": [
+                "baseline",
+                "candidate"
+              ],
+              "feasible": [
+                "baseline",
+                "candidate"
+              ],
+              "failed": [],
+              "unknown": [],
+              "omitted": [],
+              "pairs": [
+                {
+                  "left": "baseline",
+                  "right": "baseline",
+                  "functional": "1",
+                  "cag": "1",
+                  "welfare": "1",
+                  "pvs": "1",
+                  "weak": "1",
+                  "strict": "0"
+                },
+                {
+                  "left": "baseline",
+                  "right": "candidate",
+                  "functional": "1",
+                  "cag": "1",
+                  "welfare": "1",
+                  "pvs": "1",
+                  "weak": "1",
+                  "strict": "1"
+                },
+                {
+                  "left": "candidate",
+                  "right": "baseline",
+                  "functional": "1",
+                  "cag": "1",
+                  "welfare": "0",
+                  "pvs": "1",
+                  "weak": "0",
+                  "strict": "0"
+                },
+                {
+                  "left": "candidate",
+                  "right": "candidate",
+                  "functional": "1",
+                  "cag": "1",
+                  "welfare": "1",
+                  "pvs": "1",
+                  "weak": "1",
+                  "strict": "0"
+                }
+              ],
+              "frontier": [
+                "baseline"
+              ],
+              "dominators": [
+                {
+                  "policy": "candidate",
+                  "by": [
+                    "baseline"
+                  ]
+                }
+              ],
+              "coverage": "EXHAUSTIVE",
+              "selection": {
+                "state": "DEFINED",
+                "value": "baseline",
+                "checks": [
+                  "Check.112"
+                ]
+              }
+            },
+            "checks": [
+              "Check.114"
+            ]
+          },
+          "selection_rule": "unique",
+          "comparison_cag_mode": "robust",
+          "require_all_scenarios": true,
+          "functional_criterion": "NEUTRAL_EMPTY_PROFILE"
+        },
+        "criterion": "OBSERVED_ABSOLUTE_ERROR_NOT_WELLBEING_OR_PVS"
+      }
+    }
+  },
+  "inherited_genome": {
+    "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+    "event": "3e31744ebc8fb98db601c6b665078a03b5e0ad3c99655084ab0b3bed99c0db8f",
+    "format": "genius-genome/1",
+    "generation": 2,
+    "genes": {
+      "estimator": "last_value",
+      "window": 5
+    },
+    "origin": "INHERITANCE",
+    "parents": [
+      "a0cc1777af401ad944a6739f6c98df25421fd1774969b7fb9c04f55ee79119c6"
+    ]
+  },
+  "child_status": {
+    "format": "genius-organism-status/1",
+    "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+    "founder_sha256": "c0b289e9c08a7c9bd18bc69d98f82457d472e43156e4f3d4413ef944526a737d",
+    "founder_generation": 1,
+    "founder_genes": {
+      "estimator": "lower_median",
+      "window": 5
+    },
+    "parent_node_id": "5518100f0655665581de16f4b7cd74839dbd07820f9234761a2f92e143bf0c65",
+    "birth_variant_sha256": "3ba3044e4a8ec5d47998159a0212ad8f444f34512322767871b85d73c2a50cd6",
+    "adapted_contexts": 1,
+    "locally_confirmed_changes": 0,
+    "scored_outcomes": 0,
+    "trials": {
+      "inherited-baseline": "DISCOVERY"
+    },
+    "context_traits": [
+      {
+        "context_sha256": "6374dbf10c25e08e054a823012679cc45dfb3c76f7a7e941d83a5a9df8376949",
+        "genome_sha256": "4383c4d0b15627f82452f2b436cdfb05a5ad32079f4ca4ebb11bb18ddc06ca53",
+        "generation": 2,
+        "genes": {
+          "estimator": "last_value",
+          "window": 5
+        },
+        "evidence": "INHERITED_TRAIT_NOT_LOCAL_VALIDATION"
+      }
+    ],
+    "wellbeing_effect": "UNMEASURED",
+    "life_sustainment_probability": null
+  },
+  "scope": "LOCAL_SYNTHETIC_NON_BLIND_OPERATIONAL_PREDICTION",
+  "generalization": "NOT_ESTABLISHED",
+  "wellbeing_effect": "UNMEASURED",
+  "physical_actions": false
+}
