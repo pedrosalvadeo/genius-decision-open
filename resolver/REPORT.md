@@ -6,7 +6,7 @@ Problemas registrados: **20** · Soluciones preparadas: **2** · Aplicadas pendi
 
 | Problema público | Estado | Última evidencia |
 |---|---|---|
-| [README: explain removing secrets and synchronising removals](https://github.com/getsotto/sotto/issues/612) | DETECTED | Detectado; pendiente de investigación. |
+| [README: explain removing secrets and synchronising removals](https://github.com/getsotto/sotto/issues/612) | INVESTIGATING | Detectado; pendiente de investigación. |
 | [docs: add an end-to-end first-agent walkthrough](https://github.com/naninu123/4evergent/issues/28) | DETECTED | Detectado; pendiente de investigación. |
 | [Write a threat model for the engine, service and registry (docs/threat-model.md)](https://github.com/ezedike-evan/corridor-in-a-box/issues/301) | DETECTED | Detectado; pendiente de investigación. |
 | [docs(integrations): explain possible and confirmed fixes in each agent guide](https://github.com/wuisabel-gif/MemWhale/issues/423) | DETECTED | Detectado; pendiente de investigación. |
