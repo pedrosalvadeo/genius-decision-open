@@ -1,3 +1,35 @@
+# Genius — acceso temporal al informe privado de producción
+
+16 de octubre de 2026. El informe privado puede ejecutarse desde el propio servicio
+por `/internal/operator/observation`, sin descargar la base. Cerrado por defecto;
+capacidad administrativa separada, sólo hash configurado, caducidad absoluta de
+hasta 24 horas y consultas acotadas a siete días. No se admiten rutas, SQL ni IDs.
+El contrato está en [MISSION_OBSERVATION.md](../beta/docs/MISSION_OBSERVATION.md).
+
+La implementación del lector se trasladó sin cambiar sus cálculos a
+`genius_beta.observation`; la CLI anterior conserva su entrada. El endpoint no
+escribe datos, cuotas, actividad, política o memoria. Sus respuestas agregadas
+siguen siendo privadas y no se adjuntan al repositorio. No atribuir cobertura
+completa, éxito de misiones ausentes, aprendizaje ni bienestar/PVS a esos conteos.
+
+Nueve pruebas nuevas verifican separación de autoridad, caducidad, límites,
+errores, concurrencia, conservación de SQLite/WAL y ausencia de datos privados
+en la salida. Junto con observación y accesos públicos/API/MCP pasan **48 pruebas**.
+La evidencia de CI y de publicación de este incremento se registra en su PR;
+integración en GitHub no equivale a desplegado ni a informe real obtenido.
+
+La portada anterior de esta bitácora sí está desplegada: lectura de Railway
+confirmó SUCCESS `dea48fda-696c-4348-a148-9539cce582fd` con revisión
+`68750edf1eb44db53766b34a7cf9cd06aedd632d`; `/`, `/app` y `/api/health` respondieron
+200, con la nueva portada y servicio/respaldo `ok`. Esa revisión aún no incluye
+el nuevo endpoint. Verificar el recibo del PR para el estado posterior.
+
+Próximo paso: aplicar código y permiso temporal, obtener el informe por HTTPS,
+contrastar ID del despliegue con Railway y guardar el resultado sólo en privado.
+Si el permiso caducó, generar uno nuevo; no quitar su vencimiento ni ampliar
+autoridad. La misión pública autenticada pendiente es una comprobación separada.
+Conservar las políticas/propuestas rechazadas; este incremento no las promueve.
+
 # Genius — portada pública, fundamentos y mapa del proyecto
 
 15 de octubre de 2026. Pedro priorizó actualizar geniusdecision.app antes de

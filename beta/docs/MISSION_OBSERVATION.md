@@ -1,7 +1,8 @@
 # Observación privada de la regulación
 
 `beta/tools/regulation_observation.py` resume la memoria operativa ya persistida.
-Es una herramienta del operador, no un endpoint ni una tarea automática del worker.
+La implementación compartida está en `genius_beta.observation`; la CLI conserva
+su contrato. El acceso HTTP privado descrito abajo ejecuta el mismo informe.
 No modifica la política, ejecuta misiones, cambia cuotas ni propone/promueve código.
 Su objetivo es describir la evidencia disponible antes de diseñar otro ensayo.
 
@@ -36,10 +37,50 @@ PYTHONPATH=beta python -B beta/tools/regulation_observation.py \
 ```
 
 `source.declared=production` es una declaración del operador, no una verificación
-del origen. `--source synthetic` declara un ensayo. La herramienta no descarga
-bases, accede a Railway, busca credenciales ni envía archivos. Este incremento
-no se desplegó en el servicio: ejecutar el informe sobre la base real sigue
-pendiente de un entorno con acceso autorizado a esa base.
+del origen. `--source synthetic` declara un ensayo. La CLI no descarga bases,
+accede a Railway, busca credenciales ni envía archivos. La procedencia real debe
+comprobarse además contra el servicio y el despliegue que respondió.
+
+## Acceso administrativo temporal
+
+`GET /internal/operator/observation?since=INICIO&until=FIN` usa la base configurada
+del propio servicio. Sólo admite esos dos parámetros, una ventana de hasta siete
+días y un final no futuro. No recibe rutas, SQL, IDs ni filtros de usuarios.
+No forma parte de OpenAPI, MCP ni de las herramientas disponibles para agentes.
+
+Está cerrado por defecto. Para habilitarlo se configura una única variable
+`GENIUS_OPERATOR_OBSERVATION_GRANT`: JSON con `sha256` (64 caracteres hexadecimales),
+`not_before` y `expires_at` (segundos Unix). El intervalo debe ser positivo y como
+máximo de 24 horas. El secreto se genera con `go_` + `secrets.token_urlsafe(32)`;
+sólo su SHA-256 se configura en Railway. El secreto original permanece en un
+archivo privado 0600 fuera del repositorio y se envía en `Authorization: Bearer`.
+Nunca debe ir en una URL, un log, un comentario de GitHub o una captura.
+
+Configuración ausente, inválida o fuera de vigencia devuelve 404. La credencial
+incorrecta devuelve 401 antes de leer la base. Cookies y claves habituales de
+usuarios/agentes no sirven como autorización administrativa. Tampoco se puede
+usar esta capacidad de lectura como una clave de la API normal. La caducidad se
+comprueba en cada solicitud; no requiere otro despliegue. Para revocar antes,
+retirar o cambiar la variable y aplicar la nueva configuración del servicio.
+
+Sólo GET ejecuta el informe; HEAD/OPTIONS y métodos de escritura no lo ejecutan.
+Se rechazan solicitudes entre sitios, cuerpos y parámetros repetidos/desconocidos.
+Respuestas correctas y errores llevan `Cache-Control: no-store`, `Vary:
+Authorization` y `X-Robots-Tag: noindex, nofollow`; no se habilita CORS. El guardado
+privado posterior corresponde al operador que recibe el JSON.
+
+Hay como máximo un inicio de lectura por minuto y proceso, con exclusión entre
+threads. Este límite es volátil y se reinicia al reemplazar el proceso; no es una
+cuota persistente global. Se conservan los límites SQL/JSON del lector. Una base
+ausente, ocupada o incompatible devuelve 503, nunca un informe vacío de éxito.
+La solicitud no inicializa/migra, actualiza actividad ni escribe contadores.
+El arranque normal del servicio sigue inicializando su esquema como antes.
+
+El envoltorio `genius-operator-observation/1` incluye entorno, ID de despliegue
+de Railway y habilitación configurada del regulador. El informe interior conserva
+`independently_verified=false`: contrastar el ID y la revisión con Railway antes
+de atribuirlo a producción. Un ID informado por el servidor no es una atestación
+criptográfica. Los conteos tampoco prueban aprendizaje útil o mejora de bienestar.
 
 ## Qué significan los números
 

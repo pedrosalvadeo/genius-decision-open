@@ -19,6 +19,7 @@ from .mcp_access import install as install_mcp_access
 from .taxis import install as install_taxis
 from .contributions import install as install_contributions
 from .club import install as install_club
+from .operator_observation import install as install_operator_observation
 
 
 class APIError(Exception):
@@ -105,6 +106,7 @@ def create_app(overrides=None):
     app = Flask(__name__, static_folder='static', static_url_path='/static')
     app.config.update(settings(overrides))
     initialize(app.config['DATABASE'])
+    install_operator_observation(app)
     dummy_hash = password_hash('dummy-password-do-not-use')
 
     def db():
@@ -209,9 +211,11 @@ def create_app(overrides=None):
         response.headers['Permissions-Policy']='camera=(), microphone=(), geolocation=()'
         if app.config['COOKIE_SECURE']:
             response.headers['Strict-Transport-Security']='max-age=31536000'
-        if request.path.startswith('/api/') or request.path == '/mcp' or request.path.startswith('/contributions'):
+        if request.path.startswith(('/api/', '/internal/')) or request.path == '/mcp' or request.path.startswith('/contributions'):
             response.headers['Cache-Control']='no-store'
             response.headers['X-Robots-Tag']='noindex, nofollow'
+        if request.path.startswith('/internal/'):
+            response.headers['Vary'] = 'Authorization'
         return response
 
     @app.errorhandler(APIError)

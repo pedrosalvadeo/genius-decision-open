@@ -7,6 +7,8 @@ def settings(overrides=None):
     data = Path(os.environ.get('GENIUS_DATA_DIR', './var/genius-beta')).resolve()
     c = dict(DATA_DIR=data, DATABASE=data / 'genius.sqlite3', PUBLIC_URL=os.environ.get('GENIUS_PUBLIC_URL', 'http://127.0.0.1:8080').rstrip('/'), ENV=os.environ.get('GENIUS_ENV', 'development'), MAX_CONTENT_LENGTH=131072, MAX_CASES=20, MAX_REVISIONS=20, MAX_JOBS_DAILY=20, MAX_GLOBAL_JOBS_DAILY=200, MAX_GLOBAL_USERS=100, MAX_QUEUE=40, MAX_TOKENS=10, RETENTION_DAYS=90, ENGINE_TIMEOUT=30, ENGINE_MEMORY_MB=1024, ENGINE_OUTPUT_BYTES=2097152, MAX_DATABASE_BYTES=134217728, MIN_FREE_BYTES=67108864, SESSION_TTL=86400, PRIVACY_VERSION='beta-2026-10-05-v2', PRIVACY_CONTROLLER=os.environ.get('GENIUS_PRIVACY_CONTROLLER', ''), PRIVACY_CONTACT=os.environ.get('GENIUS_PRIVACY_CONTACT', ''), SUSPEND_FILE=data / 'SUSPENDED', TESTING=False)
     c.update(overrides or {})
+    c.setdefault('OPERATOR_OBSERVATION_GRANT', os.environ.get('GENIUS_OPERATOR_OBSERVATION_GRANT', ''))
+    c.setdefault('DEPLOYMENT_ID', os.environ.get('RAILWAY_DEPLOYMENT_ID'))
     c.setdefault('MISSION_REGULATION_ENABLED', os.environ.get('GENIUS_MISSION_REGULATION_ENABLED', 'false') == 'true')
     if os.environ.get('GENIUS_MISSION_REGULATION_ENABLED', 'false') not in ('true','false') or type(c['MISSION_REGULATION_ENABLED']) is not bool:
         raise ValueError('GENIUS_MISSION_REGULATION_ENABLED must be true or false')
