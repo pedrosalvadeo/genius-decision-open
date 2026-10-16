@@ -21,6 +21,7 @@ RUN python -m pip install --no-cache-dir --only-binary=:all: --require-hashes -r
 
 COPY beta /app/beta
 COPY adaptive/genius_adaptive /app/adaptive/genius_adaptive
+COPY adaptive/federation /app/adaptive/federation
 COPY product_local/genius_local /app/product_local/genius_local
 COPY consumer_views/genius_views /app/consumer_views/genius_views
 COPY twin/genius_twin /app/twin/genius_twin

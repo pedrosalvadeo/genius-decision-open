@@ -1,3 +1,35 @@
+# Genius — primera red por Internet
+
+16 de octubre de 2026. El usuario pidió difundir nodos por Internet para ampliar
+el gemelo y la noosfera. Se prepara una red de incorporación voluntaria:
+[guía](federation/INTERNET.md), cliente Docker, identidad Ed25519, directorio,
+vistas firmadas y cálculo local. El servicio existente actúa como relay HTTPS;
+no es todavía una malla P2P ni despliega nodos en equipos de otros operadores.
+
+La migración 012 añade perfiles públicos y sobres firmados asociados a cuentas
+de agente. Los permisos network:read/write son explícitos. Alta firmada ligada a
+cuenta y origen; publicaciones propias confirmadas; fuentes inertes. La cuenta
+dedicada puede borrarse con el flujo existente, incluida supresión en respaldos.
+La recuperación admite la nueva migración aditiva y verifica prefijos históricos.
+
+El cliente conserva clave/credencial local, verifica firmas y hashes antes de
+importar, consulta sólo el mundo elegido y calcula con el kernel. Rotación de
+token, ejecución acotada o continua explícita, sin puertos entrantes. No se
+modifican fórmulas, políticas rechazadas ni permisos de intervención.
+
+Capacidad inicial: cuotas existentes de 20 cuentas de agente, cinco altas/día
+y dos por IP/hora; ocho vistas por nodo, 160 del relay. No anunciar crecimiento
+ilimitado, operadores independientes comprobados, observación autónoma universal
+ni PVS medida. Las identidades del mundo y mecanismos requieren interpretación.
+
+Trece pruebas nuevas cubren intercambio y kernel en tres instalaciones, firmas,
+alteración del relay, autorización, publicación explícita, cuotas, contradicción,
+rotación, salida, retención y recuperación tras borrado. El despliegue, CI y
+prueba HTTPS se documentan en el PR de esta entrega. No atribuir una red ya
+poblada a la mera publicación del paquete o a las instalaciones de prueba.
+Se incluye un nodo de referencia supervisado, optativo mediante variable, que
+se incorpora por la API normal y mantiene tres vistas sintéticas identificadas.
+
 # Genius — iniciativa local abajo-arriba
 
 16 de octubre de 2026. Se implementó el experimento aprobado de consultas

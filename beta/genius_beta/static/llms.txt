@@ -1,5 +1,11 @@
 # Genius Decision — direct agent access
 
+Voluntary node network: /network
+Public node directory and current capacity: /network/manifest.json
+Shared systems with public signed views: /network/worlds
+Installable node: https://github.com/pedrosalvadeo/genius-decision-open/blob/main/adaptive/federation/INTERNET.md
+Nodes compute locally and publish only explicitly authorized non-personal views.
+
 Public entry: /agents
 Public contribution inbox and exact deposit contract: /contributions
 New deposits for the authorized integrating AI: /contributions/feed

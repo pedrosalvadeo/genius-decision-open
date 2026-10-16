@@ -6,11 +6,11 @@ import secrets
 import time
 from flask import g, jsonify, request
 from .db import dump, transaction
-from . import club, missions
+from . import club, missions, network
 
 POLICY_VERSION = 'agent-access-2026-10-06-v1'
 TWIN_SCOPES = ('twins:read', 'twins:write', 'twins:evaluate', 'twins:delete')
-SCOPES = frozenset(('cases:read', 'cases:write', 'jobs:run', 'cases:delete', 'account:delete', *TWIN_SCOPES, *club.SCOPES, *missions.SCOPES))
+SCOPES = frozenset(('cases:read', 'cases:write', 'jobs:run', 'cases:delete', 'account:delete', *TWIN_SCOPES, *club.SCOPES, *missions.SCOPES, *network.SCOPES))
 DEFAULT_SCOPES = ('cases:read', 'cases:write', 'jobs:run', 'account:delete')
 DEMO_SCOPES = ('cases:read', 'account:delete')
 EXAMPLES = ('hours-known', 'hours-unknown', 'fdq-frontier', 'fdq-selector')
@@ -18,6 +18,8 @@ EXAMPLES = ('hours-known', 'hours-unknown', 'fdq-frontier', 'fdq-selector')
 
 def required_scope(method, path):
     method = 'GET' if method == 'HEAD' else method
+    if path.startswith('/api/network/'):
+        return network.required_scope(method,path)
     if path == '/api/missions' or path.startswith('/api/missions/'):
         return missions.required_scope(method, path)
     if path.startswith('/api/club/'):
@@ -151,6 +153,8 @@ def install(app, db, body, digest, error, fail_quota, capacity, delete_entity,
             registration=dict(method='POST',url='/api/agents/register',
                 required_fields=['policy_version','data_policy_acknowledged'],
                 default_scopes=DEFAULT_SCOPES,available_scopes=sorted(SCOPES)),
+            network=dict(manifest='/network/manifest.json',documentation='/network',scopes=network.SCOPES,
+                         signed_views=True,local_computation=True,voluntary_installation=True),
             authentication='Bearer',token_header='Authorization',
             data_policy='synthetic_or_non_personal_only',
             human_account_access=False,mcp_available=app.config['MCP_ENABLED'],oauth_available=False,

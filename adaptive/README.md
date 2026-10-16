@@ -1,5 +1,9 @@
 # Genius adaptativo — ejecución persistente
 
+La [red por Internet](federation/INTERNET.md) incorpora un directorio y relay
+HTTPS público, nodos instalables, identidades Ed25519 y cálculo local. El alta
+y cada publicación son explícitas; se mantienen las cuotas de la beta.
+
 La [iniciativa local](federation/BOTTOM_UP.md) permite que cada nodo consulte
 pares inscritos por su cuenta, detecte nuevas vistas y ejecute el kernel al
 completar el modelo. El experimento verifica evidencia tardía, contradicciones,
