@@ -1,5 +1,9 @@
 # Gemelo distribuido: integrar vistas complementarias
 
+Extensión posterior: [Iniciativa local](BOTTOM_UP.md) permite iniciar consultas
+y cálculos sin órdenes individuales de sincronización, con pares y presupuesto
+declarados. Este documento conserva el contrato y experimento de composición.
+
 Los nodos aportan partes distintas de un sistema. La integración amplía la
 cobertura de entidades, relaciones, recursos y afectados, conservando quién
 aportó cada fragmento. El cálculo sólo queda disponible cuando la composición
