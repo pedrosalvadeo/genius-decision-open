@@ -1,0 +1,80 @@
+{
+  "status": "SOLUTION_PREPARED",
+  "date": "2026-10-16",
+  "problem_id": "07ee061d3f104667d7838076",
+  "source_revision": 1,
+  "upstream_commit": "0205ad85a5790351a43c3f523aff95f15da29d9c",
+  "criteria": [
+    "Document named removal and optional push/pull in the same staging environment, with login required for server synchronisation and no implied automatic sync.",
+    "Explain interactive picker, default-No confirmation, cancellation, --yes/-y limits and all terminal/CI gates; explain mandatory name and no confirmation in non-interactive use.",
+    "Explain tombstone visibility and retained history without promising secure erasure or provider revocation; do not duplicate the separate recovery walkthrough.",
+    "Keep all five READMEs structurally aligned with identical commands, pass the upstream README checker and its tests, cross-check claims against pinned Rust source, and provide an attributable portable patch with explicit execution and submission limits."
+  ],
+  "results": {
+    "baseline": {
+      "tests": 7,
+      "passed": 1,
+      "failed": 6,
+      "interpretation": "Expected missing-section failures, not runtime defects",
+      "log": "baseline.txt"
+    },
+    "acceptance": {
+      "tests": 7,
+      "passed": 7,
+      "log": "acceptance.txt"
+    },
+    "upstream_checker_tests": {
+      "tests": 13,
+      "passed": 13,
+      "log": "checker-tests.txt"
+    },
+    "readme_i18n": {
+      "passed": true,
+      "translations": 4,
+      "log": "i18n.txt"
+    },
+    "portability": {
+      "clean_base": "0205ad85a5790351a43c3f523aff95f15da29d9c",
+      "apply_check": true,
+      "apply": true,
+      "diff_check": true,
+      "repeated_tests": 7,
+      "passed": 7,
+      "log": "portability.txt"
+    },
+    "source_review": "source-review.md",
+    "distinct_documentation_tests_passed": 20
+  },
+  "isolation": {
+    "python": "3.12.3",
+    "harness": "../linux-vitals-149-locale/run_no_network.py",
+    "credentials": "environment replaced by six non-secret whitelist entries",
+    "network": "IPv4 and IPv6 sockets denied by inherited seccomp filter",
+    "smoke_log": "isolation.txt"
+  },
+  "artifact": "solution.patch",
+  "changed_upstream_files": [
+    "README.md",
+    "README.es.md",
+    "README.fr.md",
+    "README.de.md",
+    "README.pt-BR.md"
+  ],
+  "limitations": [
+    "No Rust build, CLI execution, generated --help output, Rust tests or full upstream suite.",
+    "No secret removal, login, account access or synchronisation performed.",
+    "Translation structure and commands tested; no independent linguistic review.",
+    "Operator-generated evidence is not independent certification."
+  ],
+  "authority": {
+    "external_submission_authorized": false,
+    "external_submission_made": false,
+    "dco_signed": false,
+    "adoption_observed": false,
+    "required_next_step": "Pedro authorization for external PR plus actual contributor decision on DCO certification; recheck current source and overlapping documentation PRs."
+  },
+  "genius": {
+    "calculation_performed": false,
+    "reason": "Documentation correction lacks a justified representation and data for the kernel; no scores, CAG, PVS or welfare measurements."
+  }
+}

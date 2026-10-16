@@ -1,0 +1,16 @@
+{
+  "source_revision": 1,
+  "summary": "Guía de eliminación y sincronización preparada en cinco idiomas; 20 pruebas documentales aprobadas y parche aplicado en copia limpia. Sin ejecutar el CLI, enviar cambios a Sotto ni firmar DCO. Kernel no ejecutado.",
+  "evidence": [
+    "resolver/cases/sotto-612-secret-removal/validation.json",
+    "resolver/cases/sotto-612-secret-removal/source-review.md"
+  ],
+  "criteria": [
+    "Document named removal and optional push/pull in the same staging environment, with login required for server synchronisation and no implied automatic sync.",
+    "Explain interactive picker, default-No confirmation, cancellation, --yes/-y limits and all terminal/CI gates; explain mandatory name and no confirmation in non-interactive use.",
+    "Explain tombstone visibility and retained history without promising secure erasure or provider revocation; do not duplicate the separate recovery walkthrough.",
+    "Keep all five READMEs structurally aligned with identical commands, pass the upstream README checker and its tests, cross-check claims against pinned Rust source, and provide an attributable portable patch with explicit execution and submission limits."
+  ],
+  "checks_passed": true,
+  "artifact": "resolver/cases/sotto-612-secret-removal/solution.patch"
+}

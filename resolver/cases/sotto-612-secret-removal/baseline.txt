@@ -1,0 +1,88 @@
+test_brazilian_portuguese (__main__.RemovalGuideTests.test_brazilian_portuguese) ... FAIL
+test_complete_readmes_remain_aligned (__main__.RemovalGuideTests.test_complete_readmes_remain_aligned) ... ok
+test_english (__main__.RemovalGuideTests.test_english) ... FAIL
+test_english_scope_and_warnings (__main__.RemovalGuideTests.test_english_scope_and_warnings) ... FAIL
+test_french (__main__.RemovalGuideTests.test_french) ... FAIL
+test_german (__main__.RemovalGuideTests.test_german) ... FAIL
+test_spanish (__main__.RemovalGuideTests.test_spanish) ... FAIL
+
+======================================================================
+FAIL: test_brazilian_portuguese (__main__.RemovalGuideTests.test_brazilian_portuguese)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 63, in test_brazilian_portuguese
+    self.check_language("README.pt-BR.md")
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 36, in check_language
+    text = section(name)
+           ^^^^^^^^^^^^^
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 30, in section
+    raise AssertionError(f"{name}: missing removal guide")
+AssertionError: README.pt-BR.md: missing removal guide
+
+======================================================================
+FAIL: test_english (__main__.RemovalGuideTests.test_english)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 51, in test_english
+    self.check_language("README.md")
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 36, in check_language
+    text = section(name)
+           ^^^^^^^^^^^^^
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 30, in section
+    raise AssertionError(f"{name}: missing removal guide")
+AssertionError: README.md: missing removal guide
+
+======================================================================
+FAIL: test_english_scope_and_warnings (__main__.RemovalGuideTests.test_english_scope_and_warnings)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 66, in test_english_scope_and_warnings
+    text = " ".join(section("README.md").split())
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 30, in section
+    raise AssertionError(f"{name}: missing removal guide")
+AssertionError: README.md: missing removal guide
+
+======================================================================
+FAIL: test_french (__main__.RemovalGuideTests.test_french)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 57, in test_french
+    self.check_language("README.fr.md")
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 36, in check_language
+    text = section(name)
+           ^^^^^^^^^^^^^
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 30, in section
+    raise AssertionError(f"{name}: missing removal guide")
+AssertionError: README.fr.md: missing removal guide
+
+======================================================================
+FAIL: test_german (__main__.RemovalGuideTests.test_german)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 60, in test_german
+    self.check_language("README.de.md")
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 36, in check_language
+    text = section(name)
+           ^^^^^^^^^^^^^
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 30, in section
+    raise AssertionError(f"{name}: missing removal guide")
+AssertionError: README.de.md: missing removal guide
+
+======================================================================
+FAIL: test_spanish (__main__.RemovalGuideTests.test_spanish)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 54, in test_spanish
+    self.check_language("README.es.md")
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 36, in check_language
+    text = section(name)
+           ^^^^^^^^^^^^^
+  File "/workspace/scratch/b3f449ba7f0f/sotto-source/../genius-decision-open/resolver/cases/sotto-612-secret-removal/verify_case.py", line 30, in section
+    raise AssertionError(f"{name}: missing removal guide")
+AssertionError: README.es.md: missing removal guide
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.009s
+
+FAILED (failures=6)

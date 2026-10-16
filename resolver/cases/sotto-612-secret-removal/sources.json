@@ -1,0 +1,169 @@
+{
+  "issue_rechecked_at": "2026-10-16T22:45:38Z",
+  "other_sources_checked_on": "2026-10-16",
+  "repository": "getsotto/sotto",
+  "commit": "0205ad85a5790351a43c3f523aff95f15da29d9c",
+  "issue": {
+    "url": "https://github.com/getsotto/sotto/issues/612",
+    "title": "README: explain removing secrets and synchronising removals",
+    "body": "## The problem\n\nThe README quick start shows how to set, import, read and share secrets, but does not show `sotto rm`. A reader has no removal walkthrough explaining which environment is affected, when confirmation happens, or how a local removal reaches other devices.\n\nAdd a short guide to the existing command so readers can remove an obsolete secret without guessing at those details.\n\n## Proposed approach\n\nAdd a concise secret-removal section near the CLI quick start. Use a clearly synthetic name such as `DEMO_OBSOLETE_KEY`, and explain local removal followed by optional server synchronisation. This is documentation of current behaviour, with no changes to deletion or confirmation policy.\n\n## Acceptance criteria\n\n- [ ] Show a named removal and a consistent environment-specific sequence, for example `sotto --env staging rm DEMO_OBSOLETE_KEY` followed by `sotto --env staging push`. Explain that removal affects the selected environment, remains local until pushed, and reaches another device when it pulls that environment. Server synchronisation requires login.\n- [ ] Explain interactive behaviour: omitting the name opens the secret picker; removal normally asks for confirmation, with No as the default; declining or cancelling leaves the secret unchanged. `--yes` / `-y` skips the confirmation, but does not skip an omitted-name picker or any required unlock prompt.\n- [ ] Explain non-interactive behaviour accurately: a name is required, and a named removal does not ask for confirmation even without `--yes`. The picker/confirmation require interactive stdin, stdout and stderr, a non-dumb terminal, and CI not being active.\n- [ ] State that removal hides the secret from ordinary reads/listings and retains version history; it is not secure erasure or revocation of the credential at its external provider. Keep recovery instructions with the history/rollback documentation rather than adding a second recovery walkthrough here.\n- [ ] Keep README translations aligned with `CONTRIBUTING.md`, use British English and plain hyphens, verify command examples against current source/help, and run `scripts/check-readme-i18n`.\n\n## Evidence and starting points\n\nSource-inspected on main `d4928a53c93a93df9d9d7c95c67795b4bd8875b2` in a clean checkout on macOS arm64:\n\n- [README](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/README.md): no `sotto rm` example.\n- [CLI](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/crates/cli/src/main.rs): `Command::Rm`, its dispatch arm and `effective_config`.\n- [Prompts](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/crates/cli/src/prompts.rs): `can_prompt`, `preflight_secret_name`, `select_secret_key` and `confirm_removal`.\n- [Vault removal](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/crates/cli/src/vault.rs): `delete` and the existing deletion tests.\n- [Sync](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/crates/cli/src/remote/sync.rs): `push`, `diff` and `push_provisions_and_round_trips_through_pull`, whose final scenario covers deletion reaching another device.\n\nThis is a documentation gap established by source inspection. The referenced tests were read, not executed for this issue; no local or remote secret was removed. Open/closed issues and open PRs were checked for overlap. #591 covers restoring earlier versions and #558 documents environment selection/copying; neither provides a secret-removal guide.\n\n## Where this lives\n\nDocs / copy. Suitable for a first contribution with source checking. Follow `CONTRIBUTING.md`, including DCO sign-off (`git commit -s`).\n",
+    "state": "open",
+    "updated_at": "2026-10-16T20:26:47Z",
+    "assignees": [],
+    "comments": []
+  },
+  "open_prs": [
+    {
+      "number": 614,
+      "url": "https://github.com/getsotto/sotto/pull/614",
+      "title": "docs: document Homebrew installation",
+      "head": "535f56026f5720879827bc8f878f75030fdcbc41",
+      "updated_at": "2026-10-16T22:19:37Z"
+    },
+    {
+      "number": 608,
+      "url": "https://github.com/getsotto/sotto/pull/608",
+      "title": "docs: explain local locking and CLI logout",
+      "head": "5079543a6faa3b42b92eb4d4c2fa8127ce2acaa0",
+      "updated_at": "2026-10-16T14:47:28Z"
+    },
+    {
+      "number": 607,
+      "url": "https://github.com/getsotto/sotto/pull/607",
+      "title": "docs(cli): explain set input modes and newline handling",
+      "head": "1b2e4efa5bdd930a9a8681b0fc7b7c2dab25ee5e",
+      "updated_at": "2026-10-16T14:23:46Z"
+    },
+    {
+      "number": 606,
+      "url": "https://github.com/getsotto/sotto/pull/606",
+      "title": "test(web): keep team controls usable when seat discovery fails",
+      "head": "94b90c88acaa37473f42a130a75eaa36d7750bcf",
+      "updated_at": "2026-10-15T19:05:41Z"
+    },
+    {
+      "number": 605,
+      "url": "https://github.com/getsotto/sotto/pull/605",
+      "title": "test(web): cover personal billing portal retries",
+      "head": "f594c0f93d22150f632cfb4e687ecfc7d35e3cfd",
+      "updated_at": "2026-10-15T18:47:30Z"
+    },
+    {
+      "number": 604,
+      "url": "https://github.com/getsotto/sotto/pull/604",
+      "title": "test(web): cover OAuth callback destinations and cleanup",
+      "head": "6c728537649bccda2df6c05b2225d10910794ca2",
+      "updated_at": "2026-10-15T18:47:29Z"
+    },
+    {
+      "number": 599,
+      "url": "https://github.com/getsotto/sotto/pull/599",
+      "title": "Web: add a Copy action for generated share links",
+      "head": "e27a13f02a6a0525b884b0ba6bb5537f425f9dd9",
+      "updated_at": "2026-10-14T21:06:33Z"
+    },
+    {
+      "number": 595,
+      "url": "https://github.com/getsotto/sotto/pull/595",
+      "title": "docs: explain restoring an earlier secret version",
+      "head": "13fefbbbb9a4c26317b01d80da56f7b7d6752f60",
+      "updated_at": "2026-10-14T17:43:34Z"
+    },
+    {
+      "number": 594,
+      "url": "https://github.com/getsotto/sotto/pull/594",
+      "title": "test(web): cover terminal sponsored checkout recovery",
+      "head": "1f5dbfbd54379dba4defd200263f5d0360c9557d",
+      "updated_at": "2026-10-14T17:43:32Z"
+    },
+    {
+      "number": 592,
+      "url": "https://github.com/getsotto/sotto/pull/592",
+      "title": "test(web): cover personal cancellation retry",
+      "head": "3f0b107585c1554210b863f7c6f06010fbe7e223",
+      "updated_at": "2026-10-14T16:09:58Z"
+    },
+    {
+      "number": 587,
+      "url": "https://github.com/getsotto/sotto/pull/587",
+      "title": "fix(web): prevent overlapping saved operation refreshes",
+      "head": "8faaa8b3f7fdc2ad36435630bec098bed238b1d4",
+      "updated_at": "2026-10-14T03:44:22Z"
+    },
+    {
+      "number": 582,
+      "url": "https://github.com/getsotto/sotto/pull/582",
+      "title": "fix(web): ignore stale sponsored errors",
+      "head": "6f5fa4ea73e7aa2dabde5a798ec1a444594c9f59",
+      "updated_at": "2026-10-13T16:12:01Z"
+    },
+    {
+      "number": 571,
+      "url": "https://github.com/getsotto/sotto/pull/571",
+      "title": "test(web): cover personal refund failure and retry",
+      "head": "218388fe6ed93b74e8a434651f00349c66e973d5",
+      "updated_at": "2026-10-16T20:30:25Z"
+    },
+    {
+      "number": 469,
+      "url": "https://github.com/getsotto/sotto/pull/469",
+      "title": "fix(tui): preserve secret identity when editing",
+      "head": "ce3b1f3cac151bdebc67ab1fe7e2c8c71c84f9d6",
+      "updated_at": "2026-10-07T09:25:49Z"
+    },
+    {
+      "number": 335,
+      "url": "https://github.com/getsotto/sotto/pull/335",
+      "title": "fix: resolve #332 CLI: malformed non-ASCII theme colours crash theme loading",
+      "head": "4a0675ea7e8e58ed9474d1141a981296be5631f0",
+      "updated_at": "2026-10-12T16:15:12Z"
+    },
+    {
+      "number": 321,
+      "url": "https://github.com/getsotto/sotto/pull/321",
+      "title": "docs: document clipboard requirements and failure modes (#317)",
+      "head": "0581c851b4a87160b5526117544c573b36d2eb99",
+      "updated_at": "2026-09-18T13:14:43Z"
+    },
+    {
+      "number": 301,
+      "url": "https://github.com/getsotto/sotto/pull/301",
+      "title": "test: cover web Base64 formats and large binary payloads",
+      "head": "a31c6a811658567050594738a9b34cb054266e37",
+      "updated_at": "2026-09-17T08:19:06Z"
+    },
+    {
+      "number": 263,
+      "url": "https://github.com/getsotto/sotto/pull/263",
+      "title": "feat(cli): add JSON output to org ls",
+      "head": "997302721b3f5cf781e03310e9195e1db050c073",
+      "updated_at": "2026-09-14T20:26:46Z"
+    },
+    {
+      "number": 177,
+      "url": "https://github.com/getsotto/sotto/pull/177",
+      "title": "fix: handle clipboard API failure in CopyButton (fixes #172)",
+      "head": "a8d7e839539b28de55b4e0493d8d8323e165f079",
+      "updated_at": "2026-09-15T16:35:11Z"
+    },
+    {
+      "number": 176,
+      "url": "https://github.com/getsotto/sotto/pull/176",
+      "title": "docs: document frontend toolchain checks",
+      "head": "5a861f44a72d65afd8e4d2504cc14c834b204d70",
+      "updated_at": "2026-09-12T23:06:18Z"
+    }
+  ],
+  "contribution": {
+    "url": "https://github.com/getsotto/sotto/blob/0205ad85a5790351a43c3f523aff95f15da29d9c/CONTRIBUTING.md",
+    "license": "Apache-2.0",
+    "dco_required": true,
+    "signed": false,
+    "upstream_notice_file_found": false
+  },
+  "reservation": {
+    "url": "https://github.com/pedrosalvadeo/genius-decision-open/commit/c5488cf723ecacc68df999a7c3b3095b67e683cd",
+    "branch": "genius/resolver-sotto-612"
+  },
+  "scope": "Existing ledger task; no additional discovery sample. Related documentation PRs inspected to avoid duplicate recovery walkthrough."
+}

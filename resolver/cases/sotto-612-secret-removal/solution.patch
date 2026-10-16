@@ -1,0 +1,257 @@
+diff --git a/README.de.md b/README.de.md
+index e74ed58..2411c2a 100644
+--- a/README.de.md
++++ b/README.de.md
+@@ -206,6 +206,47 @@ limits:    none (Team)
+ Diese Beispiele sind illustrativ; echte Organisationen können andere Stufen, Trials und Limits
+ zeigen.
+ 
++### Geheimnisse entfernen
++
++Entferne in einem initialisierten Projekt ein Geheimnis aus der ausgewählten Umgebung. Dieses
++Beispiel setzt voraus, dass `staging` bereits existiert; `DEMO_OBSOLETE_KEY` ist ein fiktiver Name,
++den du durch den zu entfernenden Schlüssel ersetzt:
++
++```sh
++sotto --env staging rm DEMO_OBSOLETE_KEY
++```
++
++Das Entfernen betrifft nur diese Umgebung und bleibt lokal, bis du die Änderungen hochlädst.
++Wenn du es mit dem Server synchronisieren möchtest, melde dich an und lade dieselbe Umgebung hoch:
++
++```sh
++sotto login
++sotto --env staging push
++```
++
++Melde dich auf einem anderen Gerät, auf dem dieses Projekt bereits vorhanden ist, an und lade
++diese Umgebung herunter, um die Entfernung zu übernehmen. Hoch- und Herunterladen synchronisieren
++die Umgebung, nicht nur dieses eine Geheimnis:
++
++```sh
++sotto login
++sotto --env staging pull
++```
++
++Bei interaktiver Nutzung öffnet sich ohne Namen eine Geheimnisauswahl. Das Entfernen verlangt
++normalerweise eine Bestätigung, wobei Nein voreingestellt ist; Ablehnen oder Abbrechen lässt das
++Geheimnis unverändert. `--yes` / `-y` überspringt nur diese Bestätigung, nicht die Auswahl bei
++fehlendem Namen oder eine erforderliche Entsperrabfrage. Auswahl und Bestätigung setzen
++interaktive stdin, stdout und stderr, ein Terminal ungleich `TERM=dumb` und inaktives CI voraus.
++
++Bei nicht interaktiver Nutzung ist ein Name erforderlich. Eine Entfernung mit Namen fragt
++nicht nach Bestätigung, auch ohne `--yes`; verlasse dich in Skripten oder Pipelines nicht darauf.
++
++Das Entfernen verbirgt das Geheimnis bei üblichen Lese- und Listenabfragen (`sotto get` und
++`sotto ls`), erhält aber den Versionsverlauf. Es ist kein sicheres Löschen und widerruft die
++Zugangsdaten nicht beim externen Anbieter. Hinweise zur Wiederherstellung findest du unter
++`sotto history --help` und `sotto rollback --help`.
++
+ ### Organisations-Auditprotokoll
+ 
+ Organisationsinhaber und Administratoren können die aktuelle Teamaktivität anzeigen:
+diff --git a/README.es.md b/README.es.md
+index 031ae24..eb461fb 100644
+--- a/README.es.md
++++ b/README.es.md
+@@ -206,6 +206,46 @@ limits:    none (Team)
+ Estos ejemplos son ilustrativos; las organizaciones reales pueden mostrar niveles, pruebas y
+ límites distintos.
+ 
++### Eliminar secretos
++
++En un proyecto inicializado, elimina un secreto del entorno seleccionado. Este ejemplo supone
++que `staging` ya existe; `DEMO_OBSOLETE_KEY` es un nombre ficticio que debes sustituir por la clave
++que quieras eliminar:
++
++```sh
++sotto --env staging rm DEMO_OBSOLETE_KEY
++```
++
++La eliminación afecta solo a ese entorno y permanece local hasta que envíes los cambios. Si
++quieres sincronizarla con el servidor, inicia sesión y envía el mismo entorno:
++
++```sh
++sotto login
++sotto --env staging push
++```
++
++En otro dispositivo que ya tenga este proyecto, inicia sesión y descarga ese entorno para
++recibir la eliminación. El envío y la descarga sincronizan el entorno, no solo este secreto:
++
++```sh
++sotto login
++sotto --env staging pull
++```
++
++En uso interactivo, omitir el nombre abre un selector de secretos. Normalmente se pide
++confirmación para eliminar, con No como opción predeterminada; rechazar o cancelar deja el
++secreto sin cambios. `--yes` / `-y` omite solo esa confirmación, no el selector cuando falta el
++nombre ni una solicitud de desbloqueo necesaria. El selector y la confirmación requieren
++stdin, stdout y stderr interactivos, un terminal distinto de `TERM=dumb` y que CI no esté activo.
++
++En uso no interactivo, el nombre es obligatorio. Una eliminación con nombre no pide
++confirmación, incluso sin `--yes`; no dependas de una confirmación en scripts o pipelines.
++
++La eliminación oculta el secreto de las lecturas y listas habituales (`sotto get` y `sotto ls`),
++pero conserva su historial de versiones. No es un borrado seguro ni revoca la credencial en
++su proveedor externo. Para las opciones de recuperación, consulta `sotto history --help` y
++`sotto rollback --help`.
++
+ ### Registro de auditoría de la organización
+ 
+ Los propietarios y administradores de una organización pueden consultar la actividad reciente del
+diff --git a/README.fr.md b/README.fr.md
+index 54c783a..b3e8e47 100644
+--- a/README.fr.md
++++ b/README.fr.md
+@@ -206,6 +206,47 @@ limits:    none (Team)
+ Ces exemples sont illustratifs ; les organisations réelles peuvent afficher des niveaux, essais et
+ limites différents.
+ 
++### Supprimer des secrets
++
++Dans un projet initialisé, supprimez un secret de l'environnement sélectionné. Cet exemple
++suppose que `staging` existe déjà ; `DEMO_OBSOLETE_KEY` est un nom fictif à remplacer par la clé
++que vous souhaitez supprimer :
++
++```sh
++sotto --env staging rm DEMO_OBSOLETE_KEY
++```
++
++La suppression ne concerne que cet environnement et reste locale jusqu'à l'envoi des changements.
++Pour la synchroniser avec le serveur, connectez-vous et envoyez le même environnement :
++
++```sh
++sotto login
++sotto --env staging push
++```
++
++Sur un autre appareil possédant déjà ce projet, connectez-vous et récupérez cet environnement
++pour recevoir la suppression. L'envoi et la récupération synchronisent l'environnement entier,
++pas seulement ce secret :
++
++```sh
++sotto login
++sotto --env staging pull
++```
++
++En mode interactif, omettre le nom ouvre un sélecteur de secrets. La suppression demande
++normalement une confirmation, avec Non par défaut ; refuser ou annuler laisse le secret intact.
++`--yes` / `-y` ignore uniquement cette confirmation, pas le sélecteur en l'absence de nom ni une
++demande de déverrouillage nécessaire. Le sélecteur et la confirmation exigent que stdin, stdout
++et stderr soient interactifs, un terminal autre que `TERM=dumb` et que CI ne soit pas actif.
++
++En mode non interactif, le nom est obligatoire. Une suppression avec un nom ne demande pas de
++confirmation, même sans `--yes` ; ne comptez pas sur une confirmation dans les scripts ou pipelines.
++
++La suppression masque le secret dans les lectures et listes habituelles (`sotto get` et
++`sotto ls`), mais conserve son historique de versions. Ce n'est pas un effacement sécurisé et
++cela ne révoque pas l'identifiant secret auprès de son fournisseur externe. Pour les options de
++récupération, consultez `sotto history --help` et `sotto rollback --help`.
++
+ ### Journal d’audit de l’organisation
+ 
+ Les propriétaires et administrateurs d’une organisation peuvent consulter l’activité récente de
+diff --git a/README.md b/README.md
+index d04e35f..af409ad 100644
+--- a/README.md
++++ b/README.md
+@@ -199,6 +199,46 @@ limits:    none (Team)
+ 
+ These examples are illustrative; real organisations may show different tiers, trials, and limits.
+ 
++### Removing secrets
++
++In an initialised project, remove a secret from the selected environment. This example assumes
++that `staging` already exists; `DEMO_OBSOLETE_KEY` is a synthetic name to replace with the key
++you intend to remove:
++
++```sh
++sotto --env staging rm DEMO_OBSOLETE_KEY
++```
++
++The removal affects only that environment and remains local until you push. If you want to
++synchronise it with the server, log in and push the same environment:
++
++```sh
++sotto login
++sotto --env staging push
++```
++
++On another device that already has this project, log in and pull that environment to receive
++the removal. Push and pull synchronise the environment, not just this one secret:
++
++```sh
++sotto login
++sotto --env staging pull
++```
++
++In interactive use, omitting the name opens a secret picker. Removal normally asks for
++confirmation, with No as the default; declining or cancelling leaves the secret unchanged.
++`--yes` / `-y` skips only that confirmation, not an omitted-name picker or any required unlock
++prompt. The picker and confirmation require interactive stdin, stdout and stderr, a terminal
++other than `TERM=dumb`, and CI not being active.
++
++In non-interactive use, a name is required. A named removal does not ask for confirmation,
++even without `--yes`; do not rely on a confirmation prompt in scripts or pipelines.
++
++Removal hides the secret from ordinary reads and listings (`sotto get` and `sotto ls`) but
++retains its version history. It is not secure erasure and does not revoke the credential at
++its external provider. For recovery options, see `sotto history --help` and
++`sotto rollback --help`.
++
+ ### Organisation audit log
+ 
+ Organisation owners and admins can inspect recent team activity with:
+diff --git a/README.pt-BR.md b/README.pt-BR.md
+index 1e5babe..82fda26 100644
+--- a/README.pt-BR.md
++++ b/README.pt-BR.md
+@@ -206,6 +206,46 @@ limits:    none (Team)
+ Esses exemplos são ilustrativos; organizações reais podem mostrar níveis, trials e limites
+ diferentes.
+ 
++### Remover segredos
++
++Em um projeto inicializado, remova um segredo do ambiente selecionado. Este exemplo pressupõe
++que `staging` já existe; `DEMO_OBSOLETE_KEY` é um nome fictício para substituir pela chave que
++você pretende remover:
++
++```sh
++sotto --env staging rm DEMO_OBSOLETE_KEY
++```
++
++A remoção afeta apenas esse ambiente e permanece local até você enviar as alterações. Se
++quiser sincronizá-la com o servidor, entre na sua conta e envie o mesmo ambiente:
++
++```sh
++sotto login
++sotto --env staging push
++```
++
++Em outro dispositivo que já tenha este projeto, entre na sua conta e baixe esse ambiente para
++receber a remoção. O envio e a atualização sincronizam o ambiente, não apenas esse segredo:
++
++```sh
++sotto login
++sotto --env staging pull
++```
++
++No uso interativo, omitir o nome abre um seletor de segredos. A remoção normalmente pede
++confirmação, com Não como padrão; recusar ou cancelar mantém o segredo inalterado.
++`--yes` / `-y` ignora apenas essa confirmação, não o seletor quando o nome é omitido nem uma
++solicitação de desbloqueio necessária. O seletor e a confirmação exigem stdin, stdout e stderr
++interativos, um terminal diferente de `TERM=dumb` e que CI não esteja ativo.
++
++No uso não interativo, o nome é obrigatório. Uma remoção com nome não pede confirmação,
++mesmo sem `--yes`; não dependa de uma confirmação em scripts ou pipelines.
++
++A remoção oculta o segredo das leituras e listagens comuns (`sotto get` e `sotto ls`), mas
++mantém seu histórico de versões. Não é uma exclusão segura nem revoga a credencial no
++provedor externo. Para as opções de recuperação, consulte `sotto history --help` e
++`sotto rollback --help`.
++
+ ### Log de auditoria da organização
+ 
+ Proprietários e administradores da organização podem consultar a atividade recente da equipe com:

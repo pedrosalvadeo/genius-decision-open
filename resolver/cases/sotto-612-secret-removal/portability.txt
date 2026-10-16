@@ -1,0 +1,12 @@
+test_brazilian_portuguese (__main__.RemovalGuideTests.test_brazilian_portuguese) ... ok
+test_complete_readmes_remain_aligned (__main__.RemovalGuideTests.test_complete_readmes_remain_aligned) ... ok
+test_english (__main__.RemovalGuideTests.test_english) ... ok
+test_english_scope_and_warnings (__main__.RemovalGuideTests.test_english_scope_and_warnings) ... ok
+test_french (__main__.RemovalGuideTests.test_french) ... ok
+test_german (__main__.RemovalGuideTests.test_german) ... ok
+test_spanish (__main__.RemovalGuideTests.test_spanish) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.008s
+
+OK
