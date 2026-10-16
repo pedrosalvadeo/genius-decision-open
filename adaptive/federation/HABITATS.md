@@ -127,6 +127,10 @@ global de la beta impide el heartbeat previo a cada consulta y pausa observació
 
 ## Otros espacios evaluados
 
+La búsqueda mundial actualizada, con regiones, costos, condiciones y una propuesta
+para BOINC Central, está en [GLOBAL_HABITATS.md](GLOBAL_HABITATS.md). La experiencia
+inicial en Mendoza/Malargüe no restringe la ubicación de futuros anfitriones.
+
 | Espacio | Encaje de esta versión |
 |---|---|
 | Railway ya contratado | Primer hábitat continuo; mismo servicio y volumen. |
