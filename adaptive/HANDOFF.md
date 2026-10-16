@@ -1,3 +1,36 @@
+# Genius — primer laboratorio de federación
+
+16 de octubre de 2026. Tras la propuesta del usuario de combinar noosfera,
+Network Tierra y TPing, se implementó el experimento de tres nodos aprobado:
+procesos reales, SQLite separado, identidad persistente y descubrimiento HTTP
+de pares inscritos, sólo en loopback. [Contrato](federation/README.md) y
+[ejecución sintética](evidence/2026-10-16-federation/README.md).
+
+La evidencia conserva origen/evento y hashes; retransmitir no agrega muestras.
+Los conflictos suspenden estimaciones, los datos privados no se exportan, la
+desconexión no borra memoria y un reinicio conserva los recibos congelados.
+La regla fija de mediana compatible es una primera capacidad de aprendizaje de
+parámetros, no evolución de código ni comprensión general. El coordinador
+solicita intercambios; no hay descubrimiento libre ni acciones físicas.
+
+La prueba compara dos objetivos sintéticos posteriores a la congelación en cada
+proceso (valores visibles en el programa, ensayo no ciego): error total aislado
+100 frente a conectado 0 en un caso; 200 frente a 300 en el caso adverso. El
+kernel verifica ambas comparaciones; no se adopta una política por conectarse.
+66 pruebas adaptativas pasan, incluidas 13 nuevas. CI/merge se registran en el PR.
+
+No requiere despliegue Railway. No iniciar servicios pagos o procesos públicos.
+Siguiente etapa: admisión y revisión de evidencia, experiencias con modelos y
+resultados, evaluación de una tarea con mediciones independientes, y transporte
+con identidades verificables antes de incorporar operadores externos. Mantener
+la matemática y las políticas rechazadas.
+
+Estado anterior confirmado: PR56 está desplegado en production, commit
+d43d4500d1bc6ccb34b386f6e3e8feaefccb9fd4, despliegue
+4a8e0036-90a4-4968-9259-52fb2fe1aca0 SUCCESS, sin pendientes. Su prueba autenticada
+de construcción, cálculo, exportación y borrado pasó. No volver a pedir Apply
+para ese cambio.
+
 # Genius — construcción de modelos sin reglas de sector
 
 16 de octubre de 2026. Tras la consulta del usuario sobre generalización, se
