@@ -1,0 +1,528 @@
+{
+  "format": "genius-public-exploration/1",
+  "created_at": "2026-10-16T06:05:42.923862+00:00",
+  "source_contract": {
+    "format": "genius-public-source-contract/1",
+    "adapter": "mendoza_water_v1",
+    "urls": {
+      "forecast": "https://www.irrigacion.gov.ar/web/2026/10/02/informe-de-la-situacion-hidrica-a-partir-del-pronostico-de-escurrimientos-temporada-2026-2027/",
+      "context": "https://www.irrigacion.gov.ar/web/2026/10/02/pronostico/"
+    },
+    "publication_date": "2026-10-02",
+    "season": "2026-2027",
+    "geography": "Río Mendoza, sección Guido; broader boundaries are hypotheses",
+    "method": "GET",
+    "redirects": "REJECT",
+    "retries": 0,
+    "requests_per_run": 2,
+    "body_limit_bytes": 524288,
+    "socket_timeout_seconds": 15,
+    "read_budget_seconds": 30,
+    "review_after_publication_days": 45,
+    "extraction": "VERSIONED_RULES_REJECT_AMBIGUOUS_OR_UNSUPPORTED_CONTENT",
+    "credentials": "NONE",
+    "external_effects": "NONE",
+    "schedule": "ON_DEMAND"
+  },
+  "receipts": [
+    {
+      "source_id": "forecast",
+      "url": "https://www.irrigacion.gov.ar/web/2026/10/02/informe-de-la-situacion-hidrica-a-partir-del-pronostico-de-escurrimientos-temporada-2026-2027/",
+      "started_at": "2026-10-16T06:05:32.002760+00:00",
+      "source_contract_sha256": "d981fe92500fc8852cddb3b28ce1fbbf377265cc4a0c79b23c2e31eaf73d39a9",
+      "http_status": 200,
+      "response_sha256": "0fd815515ae81afbe055a5030d50cb101748fd69b33be3990dcd39837995167e",
+      "response_bytes": 66718,
+      "facts": {
+        "basin": "Mendoza",
+        "station": "Guido",
+        "unit": "hm3",
+        "previous_season": "2025-2026",
+        "previous_reported_runoff": 797,
+        "forecast_season": "2026-2027",
+        "forecast_runoff": 1780,
+        "forecast_percent_of_historical_mean": 129,
+        "classification": "wet",
+        "basis": "REPORTED_NOT_INDEPENDENTLY_MEASURED"
+      },
+      "failure": null,
+      "completed_at": "2026-10-16T06:05:37.261756+00:00",
+      "outcome": "OBSERVED"
+    },
+    {
+      "source_id": "context",
+      "url": "https://www.irrigacion.gov.ar/web/2026/10/02/pronostico/",
+      "started_at": "2026-10-16T06:05:37.261833+00:00",
+      "source_contract_sha256": "d981fe92500fc8852cddb3b28ce1fbbf377265cc4a0c79b23c2e31eaf73d39a9",
+      "http_status": 200,
+      "response_sha256": "f04f38611e74deb85c0904d2dc695543f30bc20dd7c880703d593300f2ddb4de",
+      "response_bytes": 193747,
+      "facts": {
+        "starting_reserves": "reported_low",
+        "daily_availability": "NOT_ESTABLISHED_BY_ANNUAL_FORECAST",
+        "basis": "REPORTED_NOT_INDEPENDENTLY_MEASURED"
+      },
+      "failure": null,
+      "completed_at": "2026-10-16T06:05:42.923690+00:00",
+      "outcome": "OBSERVED"
+    }
+  ],
+  "adapter_sha256": "eb05e0e16fa55b52589de45fc76e14c0b1aa2e90cab2d743f72c3dcf24693a6b",
+  "calculation_status": "NOT_READY",
+  "life_sustaining_probability": null,
+  "selected_intervention": null,
+  "external_actions_executed": [],
+  "schedule": "ON_DEMAND",
+  "status": "INVESTIGATION_PREPARED",
+  "source_age_days": 14,
+  "observation": {
+    "format": "genius-system-observation/1",
+    "label": "Exploración hídrica Mendoza 2026–2027",
+    "window": {
+      "start": "2026-10-16T06:05:32.002760+00:00",
+      "end": "2026-10-16T06:05:42.923690+00:00"
+    },
+    "evidence": [
+      {
+        "id": "forecast",
+        "observed_at": "2026-10-16T06:05:37.261756+00:00",
+        "source": "https://www.irrigacion.gov.ar/web/2026/10/02/informe-de-la-situacion-hidrica-a-partir-del-pronostico-de-escurrimientos-temporada-2026-2027/",
+        "basis": "reported",
+        "statement": "Guido: 797 hm³ informados para 2025–2026; 1780 hm³ pronosticados para 2026–2027 (129% de la media).",
+        "uncertainty": "Informe de tercero, publicado 2026-10-02; el pronóstico no es volumen disponible hoy ni probabilidad."
+      },
+      {
+        "id": "context",
+        "observed_at": "2026-10-16T06:05:42.923690+00:00",
+        "source": "https://www.irrigacion.gov.ar/web/2026/10/02/pronostico/",
+        "basis": "reported",
+        "statement": "La temporada inicia con reservas bajas; el volumen anual previsto no determina el suministro diario.",
+        "uncertainty": "Declaración regional fechada, sin serie diaria ni medición actual de un embalse concreto."
+      },
+      {
+        "id": "scope_hypothesis",
+        "observed_at": "2026-10-16T06:05:42.923690+00:00",
+        "source": "Genius mendoza_water_v1: hipótesis explícita del adaptador",
+        "basis": "inference",
+        "statement": "Se propone estudiar almacenamiento y distribución junto a comunidades, agroecosistemas y vida aguas abajo.",
+        "uncertainty": "Topología y agrupaciones por verificar; no representan un inventario de personas o especies ni acreditan jurisdicción."
+      }
+    ],
+    "entities": [
+      {
+        "id": "river",
+        "label": "Agua del río Mendoza en Guido",
+        "kind": "resource",
+        "evidence_ids": [
+          "forecast"
+        ]
+      },
+      {
+        "id": "storage",
+        "label": "Agua almacenada: inventario por relevar",
+        "kind": "resource",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      },
+      {
+        "id": "distribution",
+        "label": "Red de distribución: límites por relevar",
+        "kind": "physical",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      },
+      {
+        "id": "dgi",
+        "label": "Departamento General de Irrigación: fuente del informe",
+        "kind": "organization",
+        "evidence_ids": [
+          "context"
+        ]
+      },
+      {
+        "id": "communities",
+        "label": "Personas dependientes: identidades por relevar",
+        "kind": "living",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      },
+      {
+        "id": "agroecosystem",
+        "label": "Vida en agroecosistemas: inventario por relevar",
+        "kind": "living",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      },
+      {
+        "id": "downstream",
+        "label": "Vida aguas abajo: inventario por relevar",
+        "kind": "living",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "id": "link.0",
+        "source": "river",
+        "target": "storage",
+        "kind": "supplies",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      },
+      {
+        "id": "link.1",
+        "source": "storage",
+        "target": "distribution",
+        "kind": "supplies",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      },
+      {
+        "id": "link.2",
+        "source": "distribution",
+        "target": "communities",
+        "kind": "supplies",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      },
+      {
+        "id": "link.3",
+        "source": "distribution",
+        "target": "agroecosystem",
+        "kind": "supplies",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      },
+      {
+        "id": "link.4",
+        "source": "distribution",
+        "target": "downstream",
+        "kind": "affects",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      },
+      {
+        "id": "link.5",
+        "source": "dgi",
+        "target": "distribution",
+        "kind": "organizes",
+        "evidence_ids": [
+          "scope_hypothesis"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Reservas actuales, capacidad útil, caudales y demandas por intervalo; fecha y unidad de cada medición.",
+      "Pérdidas, retornos, calidad del agua y demoras; relaciones causales contrastadas para cada alternativa.",
+      "Identidad y límites de los sistemas; personas y seres vivos afectados, sin duplicarlos entre grupos.",
+      "Condiciones de vida, bienestar y restricciones de cada portador, incluidos efectos aguas abajo.",
+      "Escenarios, probabilidades justificadas, horizonte y criterios del cálculo Genius.",
+      "Responsable operativo, permisos, costos, capacidad de ejecución y reversión de cada intervención."
+    ]
+  },
+  "recognition": {
+    "format": "genius-system-recognition/1",
+    "observation_sha256": "09627614b59e8b8d9d3f5ed59c61e107e40aa0be42d77de89ae65b6ec6912867",
+    "recognizer_sha256": "f3fbb6bcdcc6ff38baecfc6353c6e5baca227dc76232cf7733402cff26f03db8",
+    "candidates": [
+      {
+        "id": "system.bd7c735b8f56bf93",
+        "rule": "organization_components",
+        "status": "HYPOTHESIS_NOT_VERIFIED",
+        "members": [
+          "agroecosystem"
+        ],
+        "dependencies": [
+          "dgi",
+          "distribution",
+          "river",
+          "storage"
+        ],
+        "potential_impacts": [],
+        "crossing_relations": [
+          "link.3"
+        ],
+        "required_evaluation_entities": [
+          "agroecosystem",
+          "dgi",
+          "distribution",
+          "river",
+          "storage"
+        ],
+        "coverage": "DECLARED_GRAPH_ONLY"
+      },
+      {
+        "id": "system.1712337925715717",
+        "rule": "organization_components",
+        "status": "HYPOTHESIS_NOT_VERIFIED",
+        "members": [
+          "communities"
+        ],
+        "dependencies": [
+          "dgi",
+          "distribution",
+          "river",
+          "storage"
+        ],
+        "potential_impacts": [],
+        "crossing_relations": [
+          "link.2"
+        ],
+        "required_evaluation_entities": [
+          "communities",
+          "dgi",
+          "distribution",
+          "river",
+          "storage"
+        ],
+        "coverage": "DECLARED_GRAPH_ONLY"
+      },
+      {
+        "id": "system.ae102a512cf1b3f8",
+        "rule": "organization_components",
+        "status": "HYPOTHESIS_NOT_VERIFIED",
+        "members": [
+          "dgi",
+          "distribution"
+        ],
+        "dependencies": [
+          "river",
+          "storage"
+        ],
+        "potential_impacts": [
+          "agroecosystem",
+          "communities",
+          "downstream"
+        ],
+        "crossing_relations": [
+          "link.1",
+          "link.2",
+          "link.3",
+          "link.4"
+        ],
+        "required_evaluation_entities": [
+          "agroecosystem",
+          "communities",
+          "dgi",
+          "distribution",
+          "downstream",
+          "river",
+          "storage"
+        ],
+        "coverage": "DECLARED_GRAPH_ONLY"
+      },
+      {
+        "id": "system.c3dd1468252ff4e3",
+        "rule": "organization_components",
+        "status": "HYPOTHESIS_NOT_VERIFIED",
+        "members": [
+          "downstream"
+        ],
+        "dependencies": [],
+        "potential_impacts": [],
+        "crossing_relations": [
+          "link.4"
+        ],
+        "required_evaluation_entities": [
+          "downstream"
+        ],
+        "coverage": "DECLARED_GRAPH_ONLY"
+      },
+      {
+        "id": "system.76e3552d76be9517",
+        "rule": "organization_components",
+        "status": "HYPOTHESIS_NOT_VERIFIED",
+        "members": [
+          "river"
+        ],
+        "dependencies": [],
+        "potential_impacts": [
+          "agroecosystem",
+          "communities",
+          "dgi",
+          "distribution",
+          "downstream",
+          "storage"
+        ],
+        "crossing_relations": [
+          "link.0"
+        ],
+        "required_evaluation_entities": [
+          "agroecosystem",
+          "communities",
+          "dgi",
+          "distribution",
+          "downstream",
+          "river",
+          "storage"
+        ],
+        "coverage": "DECLARED_GRAPH_ONLY"
+      },
+      {
+        "id": "system.f6f742dd26da3fba",
+        "rule": "organization_components",
+        "status": "HYPOTHESIS_NOT_VERIFIED",
+        "members": [
+          "storage"
+        ],
+        "dependencies": [
+          "river"
+        ],
+        "potential_impacts": [
+          "agroecosystem",
+          "communities",
+          "dgi",
+          "distribution",
+          "downstream"
+        ],
+        "crossing_relations": [
+          "link.0",
+          "link.1"
+        ],
+        "required_evaluation_entities": [
+          "agroecosystem",
+          "communities",
+          "dgi",
+          "distribution",
+          "downstream",
+          "river",
+          "storage"
+        ],
+        "coverage": "DECLARED_GRAPH_ONLY"
+      },
+      {
+        "id": "system.1c269d950700a57e",
+        "rule": "interaction_components",
+        "status": "HYPOTHESIS_NOT_VERIFIED",
+        "members": [
+          "agroecosystem",
+          "communities",
+          "dgi",
+          "distribution",
+          "downstream",
+          "river",
+          "storage"
+        ],
+        "dependencies": [],
+        "potential_impacts": [],
+        "crossing_relations": [],
+        "required_evaluation_entities": [
+          "agroecosystem",
+          "communities",
+          "dgi",
+          "distribution",
+          "downstream",
+          "river",
+          "storage"
+        ],
+        "coverage": "DECLARED_GRAPH_ONLY"
+      }
+    ],
+    "unknowns": [
+      "Reservas actuales, capacidad útil, caudales y demandas por intervalo; fecha y unidad de cada medición.",
+      "Pérdidas, retornos, calidad del agua y demoras; relaciones causales contrastadas para cada alternativa.",
+      "Identidad y límites de los sistemas; personas y seres vivos afectados, sin duplicarlos entre grupos.",
+      "Condiciones de vida, bienestar y restricciones de cada portador, incluidos efectos aguas abajo.",
+      "Escenarios, probabilidades justificadas, horizonte y criterios del cálculo Genius.",
+      "Responsable operativo, permisos, costos, capacidad de ejecución y reversión de cada intervención."
+    ],
+    "empirical_validation": "NOT_ASSESSED",
+    "probabilities_inferred": false,
+    "meaning": "Graph candidates from supplied entity/relationship assertions; no unstructured perception or causal discovery"
+  },
+  "boundary_hypothesis": {
+    "members": [
+      "dgi",
+      "distribution",
+      "river",
+      "storage"
+    ],
+    "dependencies": [],
+    "potential_impacts": [
+      "agroecosystem",
+      "communities",
+      "downstream"
+    ],
+    "crossing_relations": [
+      "link.2",
+      "link.3",
+      "link.4"
+    ],
+    "required_evaluation_entities": [
+      "agroecosystem",
+      "communities",
+      "dgi",
+      "distribution",
+      "downstream",
+      "river",
+      "storage"
+    ],
+    "coverage": "DECLARED_GRAPH_ONLY"
+  },
+  "authorized_intervention_entities": [],
+  "arithmetic": {
+    "kind": "DESCRIPTIVE_ONLY",
+    "forecast_minus_prior_reported_hm3": 983,
+    "forecast_over_prior_reported": "1780/797",
+    "meaning": "Compara una previsión anual con un volumen anual informado; no mide mejora, agua libre ni PVS."
+  },
+  "mission": {
+    "id": "mendoza.water.2026-2027",
+    "objective": "Investigar cómo sostener abastecimiento y condiciones de vida durante la transición entre reservas bajas y un año previsto húmedo.",
+    "trigger": "LOW_STARTING_RESERVES_AND_WET_ANNUAL_FORECAST",
+    "trigger_basis": "DECLARED_DOMAIN_RULE_NOT_AN_OPTIMAL_PRIORITY_RANKING",
+    "candidate_routes": [
+      {
+        "id": "baseline",
+        "description": "Reconstruir la operación vigente como referencia.",
+        "requires": [
+          "Series actuales y reglas de operación verificadas."
+        ]
+      },
+      {
+        "id": "loss_reduction",
+        "description": "Evaluar reparación localizada de pérdidas, si se confirma su existencia.",
+        "requires": [
+          "Pérdida medida, retornos afectados, costo, plazo y responsable."
+        ]
+      },
+      {
+        "id": "timing",
+        "description": "Comparar secuencias de almacenamiento y distribución con las condiciones de todos los afectados.",
+        "requires": [
+          "Caudales por intervalo, capacidades, demandas, restricciones y efectos aguas abajo."
+        ]
+      }
+    ],
+    "missing_data": [
+      "Reservas actuales, capacidad útil, caudales y demandas por intervalo; fecha y unidad de cada medición.",
+      "Pérdidas, retornos, calidad del agua y demoras; relaciones causales contrastadas para cada alternativa.",
+      "Identidad y límites de los sistemas; personas y seres vivos afectados, sin duplicarlos entre grupos.",
+      "Condiciones de vida, bienestar y restricciones de cada portador, incluidos efectos aguas abajo.",
+      "Escenarios, probabilidades justificadas, horizonte y criterios del cálculo Genius.",
+      "Responsable operativo, permisos, costos, capacidad de ejecución y reversión de cada intervención."
+    ],
+    "next_action": "Delimitar con un responsable un tramo o instalación y obtener series observadas; construir y revisar el modelo antes de ordenar rutas.",
+    "measurement_plan": {
+      "baseline": "Mismos puntos, unidades e intervalos antes y después; registrar clima y demanda.",
+      "outcomes": [
+        "Disponibilidad y calidad del agua.",
+        "Cumplimiento de condiciones por portador, incluidos los de aguas abajo.",
+        "Pérdidas y retornos medidos, costos y efectos no deseados."
+      ],
+      "attribution": "Contrastar predicciones y alternativas; una variación temporal aislada no prueba causalidad.",
+      "stop": "Detener y revisar ante datos inválidos, incumplimiento de condiciones acordadas o pérdida de autorización."
+    }
+  }
+}

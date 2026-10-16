@@ -1,3 +1,24 @@
+# Genius — explorador público y primera investigación hídrica
+
+16 de octubre de 2026. El usuario eligió explorar problemas públicos y preparar
+intervenciones para sus responsables. Se incorporó el adaptador bajo demanda
+`explorers.mendoza_water`: dos fuentes oficiales, extracción acotada, recibos,
+hipótesis de sistema, límites, rutas candidatas y faltantes. Su
+[contrato](explorers/README.md) y [primera ejecución real](evidence/2026-10-16-public-explorer/README.md)
+se conservan en el repositorio. Siete pruebas específicas pasan sin red.
+
+No hay cálculo de PVS, modelo causal validado, contacto, acción hidráulica,
+programación periódica ni integración nueva en el worker web. Siguiente paso:
+delimitar con un responsable una instalación y obtener series de recursos,
+demanda, pérdidas/retornos y condiciones de los afectados para construir y
+contrastar el modelo. No tratar el pronóstico anual como caudal diario.
+
+La versión anterior de Sistemas (PR54) ya fue aplicada por el usuario: Railway
+informó SUCCESS `f9c87af9-62cd-4d2d-bee2-82b61bb694a9`, creado
+2026-10-16T05:47:46.552Z, fuente main `dc5b66a55ec04347fcede09ed5c37715f0400906`,
+servicio live y sin cambios staged. No volver a pedir Apply para esa versión.
+El explorador se ejecuta desde el repositorio; no requiere un despliegue Railway.
+
 # Genius — sistemas y límites revisables
 
 16 de octubre de 2026. Incremento sobre PR53, cuya revisión 53d7c051b6d69608fba9dc8f58767376092282c2 estaba desplegada y verificada. [Contrato de sistemas](../twin/docs/SYSTEM_RECOGNITION.md).

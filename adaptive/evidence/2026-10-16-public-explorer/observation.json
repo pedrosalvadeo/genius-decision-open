@@ -1,0 +1,156 @@
+{
+  "format": "genius-system-observation/1",
+  "label": "Exploración hídrica Mendoza 2026–2027",
+  "window": {
+    "start": "2026-10-16T06:05:32.002760+00:00",
+    "end": "2026-10-16T06:05:42.923690+00:00"
+  },
+  "evidence": [
+    {
+      "id": "forecast",
+      "observed_at": "2026-10-16T06:05:37.261756+00:00",
+      "source": "https://www.irrigacion.gov.ar/web/2026/10/02/informe-de-la-situacion-hidrica-a-partir-del-pronostico-de-escurrimientos-temporada-2026-2027/",
+      "basis": "reported",
+      "statement": "Guido: 797 hm³ informados para 2025–2026; 1780 hm³ pronosticados para 2026–2027 (129% de la media).",
+      "uncertainty": "Informe de tercero, publicado 2026-10-02; el pronóstico no es volumen disponible hoy ni probabilidad."
+    },
+    {
+      "id": "context",
+      "observed_at": "2026-10-16T06:05:42.923690+00:00",
+      "source": "https://www.irrigacion.gov.ar/web/2026/10/02/pronostico/",
+      "basis": "reported",
+      "statement": "La temporada inicia con reservas bajas; el volumen anual previsto no determina el suministro diario.",
+      "uncertainty": "Declaración regional fechada, sin serie diaria ni medición actual de un embalse concreto."
+    },
+    {
+      "id": "scope_hypothesis",
+      "observed_at": "2026-10-16T06:05:42.923690+00:00",
+      "source": "Genius mendoza_water_v1: hipótesis explícita del adaptador",
+      "basis": "inference",
+      "statement": "Se propone estudiar almacenamiento y distribución junto a comunidades, agroecosistemas y vida aguas abajo.",
+      "uncertainty": "Topología y agrupaciones por verificar; no representan un inventario de personas o especies ni acreditan jurisdicción."
+    }
+  ],
+  "entities": [
+    {
+      "id": "river",
+      "label": "Agua del río Mendoza en Guido",
+      "kind": "resource",
+      "evidence_ids": [
+        "forecast"
+      ]
+    },
+    {
+      "id": "storage",
+      "label": "Agua almacenada: inventario por relevar",
+      "kind": "resource",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    },
+    {
+      "id": "distribution",
+      "label": "Red de distribución: límites por relevar",
+      "kind": "physical",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    },
+    {
+      "id": "dgi",
+      "label": "Departamento General de Irrigación: fuente del informe",
+      "kind": "organization",
+      "evidence_ids": [
+        "context"
+      ]
+    },
+    {
+      "id": "communities",
+      "label": "Personas dependientes: identidades por relevar",
+      "kind": "living",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    },
+    {
+      "id": "agroecosystem",
+      "label": "Vida en agroecosistemas: inventario por relevar",
+      "kind": "living",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    },
+    {
+      "id": "downstream",
+      "label": "Vida aguas abajo: inventario por relevar",
+      "kind": "living",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "link.0",
+      "source": "river",
+      "target": "storage",
+      "kind": "supplies",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    },
+    {
+      "id": "link.1",
+      "source": "storage",
+      "target": "distribution",
+      "kind": "supplies",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    },
+    {
+      "id": "link.2",
+      "source": "distribution",
+      "target": "communities",
+      "kind": "supplies",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    },
+    {
+      "id": "link.3",
+      "source": "distribution",
+      "target": "agroecosystem",
+      "kind": "supplies",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    },
+    {
+      "id": "link.4",
+      "source": "distribution",
+      "target": "downstream",
+      "kind": "affects",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    },
+    {
+      "id": "link.5",
+      "source": "dgi",
+      "target": "distribution",
+      "kind": "organizes",
+      "evidence_ids": [
+        "scope_hypothesis"
+      ]
+    }
+  ],
+  "unknowns": [
+    "Reservas actuales, capacidad útil, caudales y demandas por intervalo; fecha y unidad de cada medición.",
+    "Pérdidas, retornos, calidad del agua y demoras; relaciones causales contrastadas para cada alternativa.",
+    "Identidad y límites de los sistemas; personas y seres vivos afectados, sin duplicarlos entre grupos.",
+    "Condiciones de vida, bienestar y restricciones de cada portador, incluidos efectos aguas abajo.",
+    "Escenarios, probabilidades justificadas, horizonte y criterios del cálculo Genius.",
+    "Responsable operativo, permisos, costos, capacidad de ejecución y reversión de cada intervención."
+  ]
+}
