@@ -19,7 +19,7 @@ Problemas registrados: **20** · Soluciones preparadas: **1** · Aplicadas pendi
 | [prm, moe_lora_routing, unlearn and ppo drop the optimizer and schedule: the default config's cosine/warmup/weight-decay never reach them, and batch_size: auto becomes 1](https://github.com/MakazhanAlpamys/Soup/issues/805) | DETECTED | Detectado; pendiente de investigación. |
 | [rex environment lookups do not respect platform case-sensitivity rules](https://github.com/AcademySoftwareFoundation/rez/issues/2089) | DETECTED | Detectado; pendiente de investigación. |
 | [&#91;Bug&#93;: MiniCPM-o 4.5 early stop without answers during 2nd round in 1q1a_math of Omniinteract](https://github.com/vllm-project/vllm-omni/issues/8879) | DETECTED | Detectado; pendiente de investigación. |
-| [Probes parse localized output: non-English hosts get a false `failed_logins`, and certificate dates go unparsed](https://github.com/sameeralam3127/linux-vitals/issues/149) | DETECTED | Detectado; pendiente de investigación. |
+| [Probes parse localized output: non-English hosts get a false `failed_logins`, and certificate dates go unparsed](https://github.com/sameeralam3127/linux-vitals/issues/149) | INVESTIGATING | Detectado; pendiente de investigación. |
 | [google: files.list with orderBy=name_natural is a 500 on a name like 10² or ², where real orders it](https://github.com/brekkylab/backlot/issues/593) | DETECTED | Detectado; pendiente de investigación. |
 | [backend: unsloth is accepted and silently ignored for task: distill](https://github.com/MakazhanAlpamys/Soup/issues/1186) | DETECTED | Detectado; pendiente de investigación. |
 | [Bug: clipboard 500 (deadlock)](https://github.com/openedx/openedx-platform/issues/39118) | DETECTED | Detectado; pendiente de investigación. |
