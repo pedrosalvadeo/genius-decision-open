@@ -9,6 +9,7 @@ WORKDIR /app
 COPY adaptive/requirements.lock /app/adaptive/requirements.lock
 RUN python -m pip install --no-cache-dir --only-binary=:all: --require-hashes -r /app/adaptive/requirements.lock
 COPY adaptive/genius_adaptive /app/adaptive/genius_adaptive
+COPY adaptive/explorers /app/adaptive/explorers
 COPY twin/genius_twin /app/twin/genius_twin
 COPY kernel/genius_kernel /app/kernel/genius_kernel
 USER 65534:65534

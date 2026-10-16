@@ -1,5 +1,11 @@
 # Genius adaptativo — ejecución persistente
 
+El [explorador de condiciones públicas](explorers/README.md) consulta informes
+oficiales y prepara una investigación conectada al reconocedor de sistemas.
+La [primera ejecución real sobre agua en Mendoza](evidence/2026-10-16-public-explorer/README.md)
+conserva fuentes y límites; las intervenciones quedan pendientes de datos y
+responsables. Es un comando bajo demanda, separado del servicio de misiones.
+
 El observador incorpora [selección entre estrategias según contexto previo](observers/CONTEXT_STRATEGIES.md).
 Cada predicción se guarda antes de recibir su objetivo; la elección usa sólo
 puntuaciones anteriores. El [contrato de servicio contextual](../beta/docs/CONTEXT_FORECASTS.md)
