@@ -54,6 +54,35 @@ def install(app,db,body,error,quota,capacity,backup_ready):
     @bp.get('/network')
     def page():return send_from_directory(app.static_folder,'network.html')
 
+    @bp.get('/organisms')
+    def organisms_page():return send_from_directory(app.static_folder,'organisms.html')
+
+    @bp.get('/network/organisms.json')
+    def organisms_status():
+        from federation.habitat import STATIONS
+        from pathlib import Path
+        reports=[];stamp=int(time.time())
+        for station,label in STATIONS.items():
+            path=Path(app.config['DATA_DIR'])/'living-habitats'/station/'public-report.json'
+            if not path.exists():
+                reports.append(dict(station=station,label=label,status='NOT_STARTED'));continue
+            try:
+                if path.stat().st_size>65536:raise ValueError()
+                report=json.loads(path.read_bytes())
+                if report['format']!='genius-living-report/1' or report['station']!=station:raise ValueError()
+                # Explicit public projection; never expose credentials or local file paths.
+                keys=('station','label','status','checked_at','next_check_at','node_id','source','source_kind',
+                      'latest_observation','last_scored','last_prediction','last_archive','organism',
+                      'physical_actions','wellbeing_effect','life_sustainment_probability','reason')
+                report={k:report[k] for k in keys if k in report}
+                report['report_stale']=stamp-int(instant(report['checked_at']).timestamp())>3*3600
+                reports.append(report)
+            except (OSError,ValueError,KeyError,TypeError):reports.append(dict(station=station,label=label,status='REPORT_UNAVAILABLE'))
+        response=jsonify(format='genius-living-observatory/1',checked_at=stamp,organisms=reports,
+            locations='SAME_OPERATOR_AND_HOST_DISTINCT_WEATHER_STATIONS',physical_actions=False,life_sustainment_probability=None)
+        response.headers['Cache-Control']='no-store'
+        return response
+
     @bp.get('/network/manifest.json')
     def manifest():
         counts=db().execute('SELECT count(*),sum(last_seen>=?) FROM network_nodes',(int(time.time())-900,)).fetchone()
@@ -75,6 +104,8 @@ def install(app,db,body,error,quota,capacity,backup_ready):
                          automatic_only_with_local_authorization=True,max_births_per_grant=4,
                          lifecycle_modes=['TRIAL','PERSISTENT_REVOCABLE'],
                          remote_code_execution=False,recursive_reproduction=False),
+            living_observers=dict(status='/network/organisms.json',page='/organisms',
+                data='PUBLIC_REPORTED_METAR',stations=['SAME','SAMM'],physical_actions=False),
             genetics=dict(format='genius-genome/1',execution='LOCAL_NODE',
                 documentation='https://github.com/pedrosalvadeo/genius-decision-open/blob/main/adaptive/federation/GENETICS.md',
                 traits=['estimator','window'],selection='PROSPECTIVE_CONTEXTUAL_ERROR_COMPARISON',

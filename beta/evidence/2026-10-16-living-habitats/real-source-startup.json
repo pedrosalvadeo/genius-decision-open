@@ -1,0 +1,122 @@
+{
+  "format": "genius-real-source-startup/1",
+  "checked_at": "2026-10-16T19:06:55.564464+00:00",
+  "scope": "LOCAL_ISOLATED_STARTUP_WITH_CAPTURED_REAL_PUBLIC_OBSERVATIONS",
+  "server": "FLASK_TEST_SERVER",
+  "production_deployment": false,
+  "live_source_url": "https://aviationweather.gov/api/data/metar?ids=SAME,SAMM&format=json&hours=18",
+  "source_sha256": "f4756f62063ef3383cd77c6f6e96510bf4d208ae79a9bd322669d9895c6fd56b",
+  "organisms": [
+    {
+      "format": "genius-living-report/1",
+      "station": "SAME",
+      "label": "Mendoza · El Plumerillo",
+      "status": "WAITING_FOR_OUTCOME",
+      "checked_at": "2026-10-16T19:06:55.553015+00:00",
+      "next_check_at": 1792181215,
+      "node_id": "98357b606bfb7c591c434d157550586c1b9c857094f03746b3f95193e6a2bf22",
+      "source": "https://aviationweather.gov/api/data/metar?ids=SAME&format=json",
+      "source_kind": "REAL_REPORTED_OBSERVATIONS",
+      "host_kind": "OPERATOR_AUTHORIZED",
+      "physical_actions": false,
+      "wellbeing_effect": "UNMEASURED",
+      "life_sustainment_probability": null,
+      "latest_observation": {
+        "observed_at": "2026-10-16T18:00:00+00:00",
+        "centikelvin": 28915,
+        "sha256": "3a57af256380b5666dbdfdfa5dde404fcf4e4947baa723749afcf87a2509aca1"
+      },
+      "last_scored": null,
+      "last_prediction": {
+        "frozen_at": "2026-10-16T19:06:55.551988+00:00",
+        "target_window": [
+          "2026-10-16T19:06:55.551988+00:00",
+          "2026-10-16T21:06:55.551590+00:00"
+        ],
+        "predicted_centikelvin": 28815,
+        "genome_sha256": "85178c6497a2b04fe3cbc130562ebc5b09f05e9c73fe16316e8e85e43c27850e",
+        "forecast_sha256": "3ba6746f2c48b8d2e3fc7615b044f69bdf1c1df82ae1978bbd2ea05dbdf6b455",
+        "trial_id": "metar-1"
+      },
+      "last_archive": null,
+      "organism": {
+        "format": "genius-organism-status/1",
+        "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+        "founder_sha256": "85178c6497a2b04fe3cbc130562ebc5b09f05e9c73fe16316e8e85e43c27850e",
+        "founder_generation": 0,
+        "founder_genes": {
+          "estimator": "lower_median",
+          "window": 5
+        },
+        "parent_node_id": null,
+        "birth_variant_sha256": "fbce058b4f3f1e724862187dc2da78755e1f5bcf0491716daea3c07db0c82f55",
+        "adapted_contexts": 0,
+        "locally_confirmed_changes": 0,
+        "scored_outcomes": 0,
+        "archived_trials": 0,
+        "trials": {
+          "metar-1": "DISCOVERY"
+        },
+        "context_traits": [],
+        "wellbeing_effect": "UNMEASURED",
+        "life_sustainment_probability": null
+      }
+    },
+    {
+      "format": "genius-living-report/1",
+      "station": "SAMM",
+      "label": "Malargüe",
+      "status": "WAITING_FOR_OUTCOME",
+      "checked_at": "2026-10-16T19:06:55.563997+00:00",
+      "next_check_at": 1792181215,
+      "node_id": "a9d0d69f295d3a17da0d454ca003b217b6e72978bae1d6ff643c2dce8f7d8019",
+      "source": "https://aviationweather.gov/api/data/metar?ids=SAMM&format=json",
+      "source_kind": "REAL_REPORTED_OBSERVATIONS",
+      "host_kind": "OPERATOR_AUTHORIZED",
+      "physical_actions": false,
+      "wellbeing_effect": "UNMEASURED",
+      "life_sustainment_probability": null,
+      "latest_observation": {
+        "observed_at": "2026-10-16T18:00:00+00:00",
+        "centikelvin": 28215,
+        "sha256": "2e847fc2bd2be640979a70dcb05e6d7e770458e18b94a62fc4383f14b3b0287b"
+      },
+      "last_scored": null,
+      "last_prediction": {
+        "frozen_at": "2026-10-16T19:06:55.563179+00:00",
+        "target_window": [
+          "2026-10-16T19:06:55.563179+00:00",
+          "2026-10-16T21:06:55.562728+00:00"
+        ],
+        "predicted_centikelvin": 28115,
+        "genome_sha256": "a8d7b8fc5f6169e0f49c1dad2efd5cb0dbe8aa78bacfd783aacd1dbfea3fc0bf",
+        "forecast_sha256": "dd85459bb0073cc0206f2d43eba3f1970b366cfb59b07dee906ad1cbf60f21fd",
+        "trial_id": "metar-1"
+      },
+      "last_archive": null,
+      "organism": {
+        "format": "genius-organism-status/1",
+        "constitution_sha256": "6e8b0f9b6ed63b612d6ff8b79eedc769d96079163438058c0d37ba4f79c81d61",
+        "founder_sha256": "a8d7b8fc5f6169e0f49c1dad2efd5cb0dbe8aa78bacfd783aacd1dbfea3fc0bf",
+        "founder_generation": 0,
+        "founder_genes": {
+          "estimator": "lower_median",
+          "window": 5
+        },
+        "parent_node_id": null,
+        "birth_variant_sha256": "568943decb847c6129c8e63de982721c41f1a87909b0492b3a127d6985af1887",
+        "adapted_contexts": 0,
+        "locally_confirmed_changes": 0,
+        "scored_outcomes": 0,
+        "archived_trials": 0,
+        "trials": {
+          "metar-1": "DISCOVERY"
+        },
+        "context_traits": [],
+        "wellbeing_effect": "UNMEASURED",
+        "life_sustainment_probability": null
+      }
+    }
+  ],
+  "interpretation": "No later outcomes collected; no real improvement claimed"
+}

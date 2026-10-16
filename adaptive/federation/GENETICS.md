@@ -102,10 +102,11 @@ rondas con observaciones y ventanas nuevas hasta `ADOPTED`, `REJECTED` o
 El ejemplo usa fechas de posición: reemplazalas por instantes posteriores al
 reloj del nodo. No se deben introducir resultados ficticios como `reported`.
 
-Hay un ensayo activo por nodo, cuatro ensayos históricos y hasta ocho objetivos
+Hay un ensayo activo por nodo, cuatro ensayos guardados y hasta ocho objetivos
 por ensayo; comparten el límite de 32 predicciones y 128 observaciones del nodo.
-Agotar esos límites detiene el proceso y requiere revisión. No hay renovación
-automática de capacidad, eliminación de historia ni extensión de concesiones.
+En el uso manual, agotarlos requiere revisión. El hábitat continuo expresamente
+autorizado puede archivar ensayos terminados y liberar memoria de trabajo según
+la política descrita al final. Esto no extiende permisos de alojamiento.
 
 ## Integración con el alojamiento
 
@@ -138,3 +139,19 @@ mantiene su mejora y es heredada; otra empeora en confirmación y es rechazada.
 El descendiente conserva los rasgos seleccionados y empieza sin resultados
 propios. No contacta Internet, crea infraestructura ni interviene en sistemas
 físicos. Los datos y el informe permiten reproducir la comparación.
+
+
+## Experiencia continua con observaciones reales
+
+El [hábitat METAR](HABITATS.md) conecta el genoma con temperatura reportada por
+estaciones reales. Congela predicciones antes de observar su resultado y separa
+la historia de inicio de los resultados prospectivos. Los cuatro ensayos máximos
+siguen siendo el límite simultáneo guardado en memoria de trabajo. El hábitat
+puede archivar un ensayo terminado y liberar su espacio antes de comenzar otro;
+el uso manual anterior no archiva ni aumenta su presupuesto automáticamente.
+
+Cada archivo contiene ensayo, comparación nativa, pronósticos, resultados y
+observaciones referenciadas. Se conservan 64 archivos completos, una cadena de
+hashes y contadores acumulados. Archivar no reinicia genoma, generación, identidad
+ni total de resultados. El genoma conserva el límite de generación 32 y las
+mismas reglas de selección. El modo continuo no modifica código ni crea hijos.
