@@ -26,4 +26,4 @@ jobs:
             -e GENIUS_R2_BACKUP_ENABLED=false -e PYTHONDONTWRITEBYTECODE=1 \
             -e PYTHONPATH=/src/adaptive:/src/beta:/src/beta/tests:/src/product_local:/src/consumer_views:/src/twin:/src/kernel \
             -v "$GITHUB_WORKSPACE:/src:ro" -w /src genius-club-test \
-            python -B -m unittest adaptive.integration.test_http_observer test_public_launch test_regulation test_regulation_study test_regulation_history test_regulation_observation test_context_forecasts test_context_probe test_forecasts test_missions test_club_contributions test_contributions test_club_social test_club test_direct_agents test_agent_access test_mcp_access test_r2_backup -v
+            python -B -m unittest adaptive.integration.test_http_observer test_public_launch test_regulation test_regulation_study test_regulation_history test_regulation_observation test_operator_observation test_context_forecasts test_context_probe test_forecasts test_missions test_club_contributions test_contributions test_club_social test_club test_direct_agents test_agent_access test_mcp_access test_r2_backup -v
