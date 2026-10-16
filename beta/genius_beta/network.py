@@ -74,6 +74,10 @@ def install(app,db,body,error,quota,capacity,backup_ready):
             hosting=dict(directory='/network/hosts',worker='genius-signed-world-reader/1',
                          automatic_only_with_local_authorization=True,max_births_per_grant=4,
                          remote_code_execution=False,recursive_reproduction=False),
+            genetics=dict(format='genius-genome/1',execution='LOCAL_NODE',
+                documentation='https://github.com/pedrosalvadeo/genius-decision-open/blob/main/adaptive/federation/GENETICS.md',
+                traits=['estimator','window'],selection='PROSPECTIVE_CONTEXTUAL_ERROR_COMPARISON',
+                feedback='EXPLICIT_LOCAL_OBSERVATIONS_AND_LATER_OUTCOMES',code_mutation=False),
             empirical_validation=False,physical_actions=False)
 
     @bp.get('/network/nodes')

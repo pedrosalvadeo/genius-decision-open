@@ -6,7 +6,8 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
-from federation.core import digest
+from federation.core import Node,digest
+from federation.organism import Organism
 from federation.hosting import Host,make_offer,run_worker
 from federation.host_worker import execute
 from federation.internet import InternetNode,RemoteError,save
@@ -48,6 +49,10 @@ class HostingTests(unittest.TestCase):
         self.assertNotEqual(child['child_id'],host.node.load()['node_id'])
         childnode=InternetNode(host.state/'children'/req['id'],self.transport)
         self.assertNotEqual(childnode.load()['keys']['private_key'],host.node.load()['keys']['private_key'])
+        organism=Organism(Node(childnode.state/'memory',child['child_id']))
+        self.assertEqual(organism.status()['parent_node_id'],host.node.load()['node_id'])
+        self.assertEqual(organism.status()['founder_generation'],1)
+        self.assertEqual(child['last_result']['organism'],organism.status())
         self.assertEqual(self.client.get('/network/manifest.json').json['nodes'],2)
         self.assertEqual(host.step()['births_reserved'],1);self.assertEqual(len(calls),1)
         restarted=Host(host.state,host.node,host.worker);restarted.authorize(p,True)
@@ -67,6 +72,27 @@ class HostingTests(unittest.TestCase):
         changed=deepcopy(p);changed['offer']['max_births']=4
         self.assertEqual(self.post(node,'/api/network/hosts',dict(signed_offer=changed,operator_authorized=True)).status_code,400)
         self.assertEqual(self.client.get('/network/hosts').json['hosts'],[])
+
+    def test_existing_child_gets_founder_without_rebirth_or_invented_parentage(self):
+        host,p,calls=self.host();req=self.ask(host,p);first=host.step()['children'][0]
+        node=Node(host.state/'children'/req['id']/'memory',first['child_id'])
+        with node.db() as db:db.execute('DELETE FROM organism')
+        state,_=host.load();state['records'][req['id']].pop('heredity')
+        state['records'][req['id']]['next_at']=0;save(host.path,state)
+        result=host.step();child=result['children'][0]
+        self.assertEqual(child['child_id'],first['child_id']);self.assertEqual(result['births_reserved'],1)
+        self.assertEqual(child['last_result']['organism']['founder_generation'],0)
+        self.assertIsNone(child['last_result']['organism']['parent_node_id'])
+        self.assertEqual(host.load()[0]['records'][req['id']]['request']['expires_at'],req['expires_at'])
+
+    def test_invalid_heredity_is_rejected_before_registering_child(self):
+        host,p,calls=self.host();self.ask(host,p)
+        def corrupt(job):
+            job=deepcopy(job);job['heredity']['payload']['founder']['genes']['window']=9
+            return execute(job,self.transport)
+        host.worker=corrupt
+        self.assertEqual(host.step()['children'][0]['status'],'RESERVED')
+        self.assertEqual(self.client.get('/network/manifest.json').json['nodes'],1)
 
     def test_scope_code_and_unsigned_permissions_rejected(self):
         host,p,calls=self.host()

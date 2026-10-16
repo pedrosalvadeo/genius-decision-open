@@ -7,6 +7,7 @@ RUN python -m pip install --no-cache-dir --only-binary=:all: --require-hashes -r
     && groupadd --gid 10001 genius && useradd --uid 10001 --gid 10001 --no-create-home genius \
     && mkdir /state && chown 10001:10001 /state && chmod 700 /state
 COPY adaptive/federation /app/adaptive/federation
+COPY adaptive/genius_adaptive /app/adaptive/genius_adaptive
 COPY twin/genius_twin /app/twin/genius_twin
 COPY kernel/genius_kernel /app/kernel/genius_kernel
 USER 10001:10001

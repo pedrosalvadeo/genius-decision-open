@@ -152,6 +152,8 @@ class InternetNode:
         receipt=dict(format='genius-internet-cycle/1',node_id=cfg['node_id'],hub=cfg['hub'],
                      world_id=world_id,imported=imported,public_reads=reads,current=summarize(projection),
                      verified_envelopes=len(known),physical_actions=False,empirical_validation='NOT_ASSESSED')
+        from .organism import Organism
+        receipt['organism']=Organism(node).status()
         if projection['model'] is not None:
             from genius_twin import registry,stockflow
             result=registry.evaluate(projection['model'])

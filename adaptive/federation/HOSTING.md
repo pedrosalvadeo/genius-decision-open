@@ -1,5 +1,9 @@
 # Genius Semilla: alojamiento automático consentido
 
+Las semillas incorporan [genes, herencia y evolución contextual](GENETICS.md).
+La herencia respeta la autorización, el número de nacimientos y el vencimiento
+descritos aquí; no crea una generación adicional por sí sola.
+
 Un operador puede ofrecer capacidad una vez y dejar que el controlador atienda
 solicitudes compatibles sin confirmar cada nacimiento. Cada instancia obtiene
 su propia clave, cuenta, memoria y cálculo. La oferta firmada declara sistemas,

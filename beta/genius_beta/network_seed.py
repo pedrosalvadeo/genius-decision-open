@@ -67,7 +67,7 @@ def main():
             if client is None:client=bootstrap(state,hub)
             result=client.cycle(WORLD,['pump'])
             print(json.dumps(dict(component='network-reference',status=result['current']['status'],
-                                  node_id=result['node_id'],synthetic=True)),flush=True)
+                                  node_id=result['node_id'],synthetic=True,organism=result['organism'])),flush=True)
             if os.environ.get('GENIUS_NETWORK_HOST_ENABLED','false')=='true':
                 if host is None:host=reference_host(client)
                 print(json.dumps(dict(component='network-host',**host.step())),flush=True)

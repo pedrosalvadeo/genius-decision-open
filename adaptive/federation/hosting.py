@@ -13,7 +13,7 @@ import sys
 from threading import Event
 import time
 
-from .core import canonical,decode,digest,instant
+from .core import Node,canonical,decode,digest,instant
 from .hosting_protocol import FORMAT,WORKER,LIMITS,validate_offer,admitted
 from .internet import InternetNode,RemoteError,save
 from .network_protocol import sign
@@ -109,8 +109,10 @@ class Host:
         return dict(status='NO_AUTHORIZED_CAPACITY')
 
     def job(self,state,record,operation):
-        return dict(state=str(self.state/'children'/record['request']['id']),signed_offer=state['signed_offer'],
+        job=dict(state=str(self.state/'children'/record['request']['id']),signed_offer=state['signed_offer'],
                     request=record['request'],operation=operation)
+        if operation=='cycle' and record.get('heredity') is not None:job['heredity']=record['heredity']
+        return job
 
     def retire(self,state,record):
         # Mark locally first; no future cycle can run even if remote deletion fails.
@@ -166,6 +168,9 @@ class Host:
                         self.call('POST','/api/network/host/result',dict(request_id=id_,status='REJECTED',child_proof=None));continue
                     if shutil.disk_usage(self.state).free<64*1024**2:raise ValueError('HOST_DISK_RESERVE')
                     record=dict(request=r,status='RESERVED',next_at=0,attempts=0)
+                    from .organism import Organism
+                    cfg=self.node.load()
+                    record['heredity']=Organism(Node(self.node.state/'memory',cfg['node_id'])).heredity(cfg,id_)
                     state['records'][id_]=record;save(self.path,state)
                 elif any(record['request'][k]!=r[k] for k in ('id','host_id','offer_hash','world_id','focus','created_at','expires_at','requester_id')):
                     self.retire(state,record);raise ValueError('LEASE_CHANGED')
@@ -181,6 +186,7 @@ class Host:
                     elif record['child_id']!=result['child_proof']['claim']['child_id']:
                         raise ValueError('CHILD_IDENTITY_CHANGED')
                     record.update(status='ACTIVE',child_id=result['child_proof']['claim']['child_id'],last_result={k:result[k] for k in ('status','model_sha256','native_verified')})
+                    if result.get('organism') is not None:record['last_result']['organism']=result['organism']
                     save(self.path,state)
                 except (OSError,ValueError,subprocess.TimeoutExpired):
                     record['last_error']='PAUSED_OR_REVIEW_REQUIRED';save(self.path,state)

@@ -1,5 +1,9 @@
 # Nodos Genius por Internet
 
+Cada nodo incorpora un [genoma y memoria de evolución](GENETICS.md). El aprendizaje
+requiere predicciones previas y resultados posteriores; el intercambio de vistas
+por sí solo no constituye una mejora genética comprobada.
+
 Para ofrecer capacidad y aceptar nuevas instancias automáticamente bajo una
 autorización local, consultá [Genius Semilla — alojamiento](HOSTING.md).
 
