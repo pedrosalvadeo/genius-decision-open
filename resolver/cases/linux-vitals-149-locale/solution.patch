@@ -1,0 +1,479 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index fc9baef..953e2c7 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -32,6 +32,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+ 
+ ### Fixed
+ 
++- Run scan and service-state command probes with `LC_ALL=C`, preventing
++  translated `lastb` trailers from becoming failed-login findings and keeping
++  the reboot label stable. Parse OpenSSL's English dates independently of the
++  host locale. Missing or malformed dates now raise an `unknown`
++  `cert_scan_unavailable` finding with the raw date, while a known expired
++  end date remains visible ([#149](https://github.com/sameeralam3127/linux-vitals/issues/149)).
++
+ - **Self-healing no longer reports a service `Fixed` before the restart has
+   held** ([#24](https://github.com/sameeralam3127/linux-vitals/issues/24)).
+   `vitals_heal` read each unit's state once, straight after restarting it. A
+diff --git a/docs/report-guide.md b/docs/report-guide.md
+index a1f62e3..9a832d5 100644
+--- a/docs/report-guide.md
++++ b/docs/report-guide.md
+@@ -306,7 +306,7 @@ than on the finding type:
+ | `cert_weak_tls_version` | warning | An endpoint negotiated below `linux_vitals_cert_minimum_tls_version` |
+ | `cert_served_not_on_disk` | warning | The served certificate's fingerprint matches nothing on disk -- typically a service that was never reloaded after renewal |
+ | `cert_endpoint_unreachable` | warning | An endpoint could not be reached or did not complete a handshake |
+-| `cert_scan_unavailable` | info | No `openssl` binary on the host, so nothing could be parsed |
++| `cert_scan_unavailable` | info / warning | No `openssl` binary (info), or an individual certificate's dates could not be parsed (warning, `status: unknown`, raw date or `missing` in `reason`) |
+ 
+ A host that ran `vitals_certs` also carries a `certificates` object
+ (`certificates_found`, `endpoints_checked`, `expired`, `soonest_expiry_days`,
+diff --git a/docs/runbook.md b/docs/runbook.md
+index fe10b2a..392f2a5 100644
+--- a/docs/runbook.md
++++ b/docs/runbook.md
+@@ -355,7 +355,7 @@ From the opt-in `vitals_certs` role. All name the certificate path or the
+ | `cert_self_signed` | A *served* self-signed certificate. Intentional for internal endpoints; a misconfiguration when public. |
+ | `cert_weak_tls_version` | The endpoint negotiated below `linux_vitals_cert_minimum_tls_version`. Fix the server config. |
+ | `cert_endpoint_unreachable` | The endpoint could not be reached. Confirm the service is up before assuming a certificate problem. |
+-| `cert_scan_unavailable` | No `openssl` on the host, so nothing was parsed. Certificate findings are absent, not clean. |
++| `cert_scan_unavailable` | Check for `openssl`. For a certificate with `status: unknown`, inspect `subject` and the raw date in `reason`, then compare `openssl x509 -noout -dates` with that certificate. An unreadable date is not evidence of valid dates; a separately known expired end date is still reported. |
+ 
+ Confirm any of these independently:
+ ```bash
+diff --git a/plugins/modules/linux_vitals_cert_facts.py b/plugins/modules/linux_vitals_cert_facts.py
+index cc2e156..a19014f 100644
+--- a/plugins/modules/linux_vitals_cert_facts.py
++++ b/plugins/modules/linux_vitals_cert_facts.py
+@@ -128,29 +128,35 @@ openssl_available:
+ import datetime
+ import fnmatch
+ import os
++import re
+ import socket
+ import ssl
+ 
+ from ansible.module_utils.basic import AnsibleModule
+ 
+ 
+-# openssl prints "notAfter=Jan  1 00:00:00 2027 GMT". %e is not portable, and
+-# the day is space-padded, so the string is normalised before parsing.
+-_OPENSSL_TIME_FORMAT = "%b %d %H:%M:%S %Y %Z"
++# OpenSSL's month names are English regardless of the managed host's locale.
++# Avoid strptime's locale-sensitive %b and avoid changing process-wide LC_TIME.
++_OPENSSL_MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
++_OPENSSL_TIME = re.compile(
++    r"([A-Z][a-z]{2})\s+([0-9]{1,2})\s+([0-9]{2}):([0-9]{2}):([0-9]{2})"
++    r"\s+([0-9]{4})\s+(?:GMT|UTC)"
++)
+ 
+ 
+ def _parse_openssl_time(value):
+     """Return an aware UTC datetime for an openssl date string, or None."""
+-    cleaned = " ".join(value.strip().split())
+-    for suffix in ("GMT", "UTC"):
+-        if cleaned.endswith(suffix):
+-            cleaned = cleaned[: -len(suffix)].strip()
+-            try:
+-                parsed = datetime.datetime.strptime(cleaned, "%b %d %H:%M:%S %Y")
+-            except ValueError:
+-                return None
+-            return parsed.replace(tzinfo=datetime.timezone.utc)
+-    return None
++    match = _OPENSSL_TIME.fullmatch(value.strip())
++    if not match:
++        return None
++    month, day, hour, minute, second, year = match.groups()
++    try:
++        return datetime.datetime(
++            int(year), _OPENSSL_MONTHS.index(month) + 1, int(day),
++            int(hour), int(minute), int(second), tzinfo=datetime.timezone.utc,
++        )
++    except ValueError:
++        return None
+ 
+ 
+ def _now():
+@@ -228,8 +234,18 @@ class CertificateReader(object):
+                     fields["signature_algorithm"] = stripped.split(":", 1)[1].strip()
+                     break
+ 
+-        not_after = _parse_openssl_time(fields.pop("not_after_raw", ""))
+-        not_before = _parse_openssl_time(fields.pop("not_before_raw", ""))
++        not_after = _parse_openssl_time(fields.get("not_after_raw", ""))
++        not_before = _parse_openssl_time(fields.get("not_before_raw", ""))
++        date_errors = []
++        for name, raw_key, parsed in (
++            ("notBefore", "not_before_raw", not_before),
++            ("notAfter", "not_after_raw", not_after),
++        ):
++            if parsed is None:
++                raw = fields.get(raw_key, "")
++                date_errors.append("%s could not be parsed: %s" % (name, repr(raw) if raw else "missing"))
++        if date_errors:
++            fields["date_parse_error"] = "; ".join(date_errors)
+ 
+         fields["not_after"] = not_after.isoformat() if not_after else None
+         fields["not_before"] = not_before.isoformat() if not_before else None
+diff --git a/roles/vitals_certs/tasks/main.yml b/roles/vitals_certs/tasks/main.yml
+index 151e41d..888735e 100644
+--- a/roles/vitals_certs/tasks/main.yml
++++ b/roles/vitals_certs/tasks/main.yml
+@@ -76,6 +76,16 @@
+           {%- set in_trust_store = (not is_endpoint) and (
+                 trust_paths | select('in', cert.path | default('')) | list | length > 0
+               ) -%}
++          {%- if cert.date_parse_error | default('') -%}
++          {%- set _ = findings.append({
++                'id': 'cert_scan_unavailable',
++                'message': 'Certificate dates at ' ~ label ~ ' could not be interpreted',
++                'severity': 'warning',
++                'status': 'unknown',
++                'reason': cert.date_parse_error,
++                'subject': label
++              }) -%}
++          {%- endif -%}
+           {%- if cert.error is defined -%}
+           {%- if is_endpoint -%}
+           {%- set _ = findings.append({
+diff --git a/roles/vitals_heal/tasks/main.yml b/roles/vitals_heal/tasks/main.yml
+index b2fa7c5..39eeb44 100644
+--- a/roles/vitals_heal/tasks/main.yml
++++ b/roles/vitals_heal/tasks/main.yml
+@@ -38,6 +38,7 @@
+       # Asked per unit because service_facts no longer carries the unit-file
+       # state for failed units. `is-enabled` also answers static/indirect/masked
+       # with rc 0, so the answer is read from stdout rather than the exit code.
++      environment: {LC_ALL: C}
+       ansible.builtin.command:
+         argv:
+           - systemctl
+@@ -106,6 +107,7 @@
+     # `systemctl show` that cannot run ends the poll at once for the same
+     # reason. The outcome is derived in "Summarize self-healing outcomes".
+     - name: Wait for each restarted unit to settle
++      environment: {LC_ALL: C}
+       ansible.builtin.command:
+         argv:
+           - systemctl
+@@ -155,6 +157,7 @@
+       when: linux_vitals_heal_came_up | length > 0
+ 
+     - name: Check the units that came up are still up on the same run
++      environment: {LC_ALL: C}
+       ansible.builtin.command:
+         argv:
+           - systemctl
+diff --git a/roles/vitals_scan/tasks/bootloader.yml b/roles/vitals_scan/tasks/bootloader.yml
+index f934dae..c466d75 100644
+--- a/roles/vitals_scan/tasks/bootloader.yml
++++ b/roles/vitals_scan/tasks/bootloader.yml
+@@ -1,7 +1,7 @@
+ ---
+-# Probe: the bootloader's default entry and the kernel it boots. Parsed in
+-# extended_facts.yml, compared with the latest kernel in bootloader_facts.yml.
++# Bootloader probe: parsed in extended_facts.yml, compared in bootloader_facts.yml.
+ - name: Collect bootloader default kernel information
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - sh
+diff --git a/roles/vitals_scan/tasks/kernel.yml b/roles/vitals_scan/tasks/kernel.yml
+index 55b5b74..0765c9e 100644
+--- a/roles/vitals_scan/tasks/kernel.yml
++++ b/roles/vitals_scan/tasks/kernel.yml
+@@ -2,6 +2,7 @@
+ # Probe: the latest installed kernel. extended_facts.yml parses it and
+ # compares it with the running kernel.
+ - name: Collect latest installed kernel version
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - sh
+diff --git a/roles/vitals_scan/tasks/login_records.yml b/roles/vitals_scan/tasks/login_records.yml
+index 3fc905c..182a608 100644
+--- a/roles/vitals_scan/tasks/login_records.yml
++++ b/roles/vitals_scan/tasks/login_records.yml
+@@ -2,6 +2,7 @@
+ # Probes: failed logins (lastb, from btmp) and the last boot (who -b, from
+ # utmp). extended_facts.yml parses what they register.
+ - name: Collect recent failed login attempts
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - sh
+@@ -15,6 +16,7 @@
+     - security
+ 
+ - name: Collect last reboot information
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - who
+diff --git a/roles/vitals_scan/tasks/reboot_probes.yml b/roles/vitals_scan/tasks/reboot_probes.yml
+index 6eef1d0..74d6061 100644
+--- a/roles/vitals_scan/tasks/reboot_probes.yml
++++ b/roles/vitals_scan/tasks/reboot_probes.yml
+@@ -3,6 +3,7 @@
+ # runs, chosen by os_family. extended_facts.yml picks its output and
+ # reboot_facts.yml parses it.
+ - name: Check if reboot is required on Debian family
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - sh
+@@ -53,6 +54,7 @@
+     - kernel
+ 
+ - name: Check if reboot is recommended on RedHat family
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - sh
+@@ -118,6 +120,7 @@
+     - kernel
+ 
+ - name: Check if reboot is recommended on SUSE family
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - sh
+diff --git a/roles/vitals_scan/tasks/rescue_image.yml b/roles/vitals_scan/tasks/rescue_image.yml
+index 14166ac..7f3bd44 100644
+--- a/roles/vitals_scan/tasks/rescue_image.yml
++++ b/roles/vitals_scan/tasks/rescue_image.yml
+@@ -1,6 +1,7 @@
+ ---
+ # Probe: rescue images in /boot. extended_facts.yml parses it.
+ - name: Collect rescue image presence
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - sh
+diff --git a/roles/vitals_scan/tasks/security.yml b/roles/vitals_scan/tasks/security.yml
+index 1346376..68d1321 100644
+--- a/roles/vitals_scan/tasks/security.yml
++++ b/roles/vitals_scan/tasks/security.yml
+@@ -1,6 +1,7 @@
+ ---
+ # Probes: SELinux mode and AppArmor status. extended_facts.yml parses them.
+ - name: Collect SELinux mode
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - getenforce
+@@ -12,6 +13,7 @@
+     - security
+ 
+ - name: Collect AppArmor status
++  environment: {LC_ALL: C}
+   ansible.builtin.command:
+     argv:
+       - aa-status
+diff --git a/tests/fixtures/locale_probe_outputs.json b/tests/fixtures/locale_probe_outputs.json
+new file mode 100644
+index 0000000..9324298
+--- /dev/null
++++ b/tests/fixtures/locale_probe_outputs.json
+@@ -0,0 +1,14 @@
++{
++  "C": {
++    "lastb": "\nbtmp begins Tue Sep  1 00:00:02 2026",
++    "who": "         system boot  2026-09-24 10:55"
++  },
++  "de_DE.UTF-8": {
++    "lastb": "\nbtmp beginnt Di Sep  1 00:00:02 2026",
++    "who": "         Systemstart  2026-09-24 10:55"
++  },
++  "fr_FR.UTF-8": {
++    "lastb": "\nbtmp commence mar. sept. 1 00:00:02 2026",
++    "who": "         démarrage système  2026-09-24 10:55"
++  }
++}
+diff --git a/tests/test_locale.py b/tests/test_locale.py
+new file mode 100644
+index 0000000..c043d34
+--- /dev/null
++++ b/tests/test_locale.py
+@@ -0,0 +1,180 @@
++"""Locale regressions for #149; no SSH targets or external services."""
++from __future__ import annotations
++
++import copy
++import datetime
++import importlib.util
++import json
++import locale
++import os
++import subprocess
++
++import pytest
++import yaml
++
++from scan_tasks import scan_task
++from test_golden_findings import (
++    GOLDEN_DIR, SCAN_DEFAULTS, STATE_DIR, _dump_task, _host_vars,
++    _load_fixture, _normalise, _scan_tasks,
++)
++from test_templates import REPO_ROOT, _ansible_playbook_bin, _base_env
++
++SPEC = importlib.util.spec_from_file_location(
++    "cert_facts_locale", REPO_ROOT / "plugins/modules/linux_vitals_cert_facts.py"
++)
++CERT = importlib.util.module_from_spec(SPEC)
++SPEC.loader.exec_module(CERT)
++MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
++LOCALES = ("C", "de_DE.UTF-8", "fr_FR.UTF-8")
++
++
++def _commands(tasks):
++    for task in tasks or []:
++        if "ansible.builtin.command" in task:
++            yield task
++        for key in ("block", "rescue", "always"):
++            yield from _commands(task.get(key))
++
++
++def test_all_scan_and_heal_commands_pin_locale():
++    commands = []
++    for role in ("vitals_scan", "vitals_heal"):
++        for path in sorted((REPO_ROOT / "roles" / role / "tasks").glob("*.yml")):
++            commands.extend(_commands(yaml.safe_load(path.read_text())))
++    assert commands
++    assert [t["name"] for t in commands if t.get("environment", {}).get("LC_ALL") != "C"] == []
++
++
++@pytest.mark.parametrize("locale_name", LOCALES)
++@pytest.mark.parametrize("month", range(1, 13))
++def test_openssl_months_ignore_locale(locale_name, month):
++    previous = locale.setlocale(locale.LC_TIME)
++    try:
++        try:
++            locale.setlocale(locale.LC_TIME, locale_name)
++        except locale.Error:
++            pytest.skip(f"locale {locale_name} is not installed")
++        active = locale.setlocale(locale.LC_TIME)
++        for zone in ("GMT", "UTC"):
++            assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
++                datetime.datetime(2024, month, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
++            )
++        assert locale.setlocale(locale.LC_TIME) == active
++    finally:
++        locale.setlocale(locale.LC_TIME, previous)
++
++
++@pytest.mark.parametrize("value", [
++    "", "not a date", "Dec 32 00:00:00 2024 GMT", "Feb 30 00:00:00 2024 GMT",
++    "Dez 31 23:59:59 2024 GMT", "Dec 31 24:00:00 2024 GMT",
++    "Dec 31 23:59:59 2024 EST", "Dec 31 23:59:59 2024 GMT trailing",
++])
++def test_invalid_openssl_dates_stay_unknown(value):
++    assert CERT._parse_openssl_time(value) is None
++
++
++def _read_dates(before, after):
++    class Module:
++        def run_command(self, command, **kwargs):
++            if "-text" in command:
++                return 0, "Signature Algorithm: sha256WithRSAEncryption", ""
++            lines = ["subject=CN=example.test", "issuer=CN=Example CA"]
++            if before is not None:
++                lines.append("notBefore=" + before)
++            if after is not None:
++                lines.append("notAfter=" + after)
++            return 0, "\n".join(lines), ""
++    return CERT.CertificateReader(Module(), "openssl").parse("synthetic test input")
++
++
++@pytest.mark.parametrize("before,after", [
++    ("Jan 1 00:00:00 2020 GMT", "bad end date"),
++    ("bad start date", "Jan 1 00:00:00 2024 GMT"),
++    (None, None),
++])
++@pytest.mark.parametrize("source", ["file", "endpoint"])
++def test_unparseable_dates_produce_unknown_with_raw_evidence(tmp_path, before, after, source):
++    cert = _read_dates(before, after)
++    cert.update(source=source, path="/etc/ssl/certs/example.crt", host="example.test", port=443)
++    document = yaml.safe_load((REPO_ROOT / "roles/vitals_certs/tasks/main.yml").read_text())
++    finding_task = next(t for t in document[0]["block"] if t["name"] == "Build the certificate findings")
++    defaults = yaml.safe_load((REPO_ROOT / "roles/vitals_certs/defaults/main.yml").read_text())
++    scan_defaults = yaml.safe_load(SCAN_DEFAULTS.read_text())
++    play = [{
++        "hosts": "localhost", "connection": "local", "gather_facts": False,
++        "vars": {**scan_defaults, **defaults,
++                 "ansible_python_interpreter": "{{ ansible_playbook_python }}",
++                 "linux_vitals_cert_files": [cert] if source == "file" else [],
++                 "linux_vitals_cert_endpoint_results": [cert] if source == "endpoint" else [],
++                 "linux_vitals_cert_mismatches": [], "linux_vitals_cert_openssl_available": True},
++        "tasks": [finding_task,
++                  {"ansible.builtin.set_fact": {"linux_vitals_raw_findings": "{{ linux_vitals_cert_findings }}"}},
++                  {"ansible.builtin.include_tasks": str(REPO_ROOT / "roles/vitals_scan/tasks/severity.yml")},
++                  {"ansible.builtin.copy": {"content": "{{ {'findings': linux_vitals_findings, 'unknown': linux_vitals_unknown_count} | to_json }}",
++                                            "dest": str(tmp_path / "findings.json"), "mode": "0600"}}],
++    }]
++    path = tmp_path / "dates.yml"
++    path.write_text(yaml.safe_dump(play, sort_keys=False))
++    subprocess.run([_ansible_playbook_bin(), str(path)], cwd=REPO_ROOT,
++                   env=_base_env(tmp_path), check=True, capture_output=True)
++    result = json.loads((tmp_path / "findings.json").read_text())
++    unknown = [f for f in result["findings"] if f.get("status") == "unknown"]
++    assert int(result["unknown"]) == 1
++    assert len(unknown) == 1
++    reason = unknown[0]["reason"]
++    assert reason
++    for name, raw in (("notBefore", before), ("notAfter", after)):
++        if raw is None or raw.startswith("bad"):
++            assert name in reason
++            assert (raw or "missing") in reason
++    # A bad start date must not hide a separately known expired end date.
++    if after == "Jan 1 00:00:00 2024 GMT":
++        assert any(f["id"] == "cert_expired" for f in result["findings"])
++    assert not any(f["id"] == "cert_endpoint_unreachable" for f in result["findings"])
++
++
++@pytest.mark.parametrize("locale_name", ["de_DE.UTF-8", "fr_FR.UTF-8"])
++def test_localized_probe_fixture_reaches_the_healthy_golden(tmp_path, locale_name):
++    """Run the real probe tasks, replacing only lastb/who with local fixtures.
++
++    Unlike the ordinary golden adapter, this exercises Ansible's command
++    environment. Without LC_ALL=C the fixture emits the localized trailer
++    and boot label, reproducing the false failed_logins finding.
++    """
++    outputs = json.loads((REPO_ROOT / "tests/fixtures/locale_probe_outputs.json").read_text())
++    bin_dir = tmp_path / "bin"
++    bin_dir.mkdir()
++    for command in ("lastb", "who"):
++        script = bin_dir / command
++        script.write_text(
++            "#!/bin/sh\ncase \"$LC_ALL\" in\n"
++            + "\n".join(f"  {loc}) printf '%s\\n' '{values[command]}' ;;"
++                        for loc, values in outputs.items())
++            + "\n  *) exit 92 ;;\nesac\n"
++        )
++        script.chmod(0o700)
++        observed = subprocess.check_output([str(script)], env={"LC_ALL": locale_name}, text=True).strip()
++        assert observed == outputs[locale_name][command].strip()
++    fixture = _load_fixture(STATE_DIR / "ubuntu_healthy.yml")
++    variables = _host_vars(fixture)
++    names = ("Collect recent failed login attempts", "Collect last reboot information")
++    tasks = []
++    for task in _scan_tasks():
++        name = task.get("name", "").removesuffix(" (golden: seeded)")
++        tasks.append(copy.deepcopy(scan_task(name)) if name in names else task)
++    play = [{
++        "hosts": "localhost", "connection": "local", "gather_facts": False,
++        "environment": {"LC_ALL": locale_name, "PATH": str(bin_dir) + os.pathsep + os.environ["PATH"]},
++        "vars": {**yaml.safe_load(SCAN_DEFAULTS.read_text()), **variables,
++                 "output_dir": str(tmp_path)},
++        "tasks": tasks + [_dump_task()],
++    }]
++    path = tmp_path / "scan.yml"
++    path.write_text(yaml.safe_dump(play, sort_keys=False))
++    subprocess.run([_ansible_playbook_bin(), str(path)], cwd=REPO_ROOT,
++                   env=_base_env(tmp_path), check=True, capture_output=True)
++    result = _normalise(json.loads((tmp_path / "localhost.json").read_text())["result"])
++    expected = json.loads((GOLDEN_DIR / "ubuntu_healthy.json").read_text())
++    assert not any(f["id"] == "failed_logins" for f in result["findings"])
++    assert result["last_reboot"] == "2026-09-24 10:55"
++    assert result == expected

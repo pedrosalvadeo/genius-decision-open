@@ -1,0 +1,74 @@
+{
+  "observed_date": "2026-10-16",
+  "issue": {
+    "html_url": "https://github.com/sameeralam3127/linux-vitals/issues/149",
+    "title": "Probes parse localized output: non-English hosts get a false `failed_logins`, and certificate dates go unparsed",
+    "state": "open",
+    "updated_at": "2026-10-16T19:10:43Z",
+    "assignees": [],
+    "labels": [
+      {
+        "id": 10157801261,
+        "node_id": "LA_kwDORK9lFM8AAAACXXO_LQ",
+        "url": "https://api.github.com/repos/sameeralam3127/linux-vitals/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10157801295,
+        "node_id": "LA_kwDORK9lFM8AAAACXXO_Tw",
+        "url": "https://api.github.com/repos/sameeralam3127/linux-vitals/labels/help%20wanted",
+        "name": "help wanted",
+        "color": "008672",
+        "default": true,
+        "description": "Extra attention is needed",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10652683902,
+        "node_id": "LA_kwDORK9lFM8AAAACevMOfg",
+        "url": "https://api.github.com/repos/sameeralam3127/linux-vitals/labels/priority:medium",
+        "name": "priority:medium",
+        "color": "fbca04",
+        "default": false,
+        "description": "Medium priority roadmap work",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11851220258,
+        "node_id": "LA_kwDORK9lFM8AAAACwmNFIg",
+        "url": "https://api.github.com/repos/sameeralam3127/linux-vitals/labels/size/medium",
+        "name": "size/medium",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11912526427,
+        "node_id": "LA_kwDORK9lFM8AAAACxgq6Ww",
+        "url": "https://api.github.com/repos/sameeralam3127/linux-vitals/labels/reliability",
+        "name": "reliability",
+        "color": "bfd4f2",
+        "default": false,
+        "description": "Correctness under concurrency, retries, and timing",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "body": "## Problem\n\nOnly the two journal probes pin the locale, with `environment: LC_ALL: C` (`roles/vitals_scan/tasks/log_errors.yml:24-25` and `kernel_install_failures.yml:31-32`). Every other probe runs in whatever locale the SSH session has, and Ansible doesn't reset it. At start-up `AnsibleModule` calls `locale.setlocale(locale.LC_ALL, '')`, which adopts the session's `LANG`/`LC_*`. Managed hosts routinely run in a non-English locale. Debian and Ubuntu apply `/etc/default/locale` to SSH sessions through `pam_env`, and common `ssh_config`/`sshd_config` defaults forward `LANG` and `LC_*` from the operator's machine.\n\nThree parsers assume English output:\n\n1. **`failed_logins` fires on hosts with no failed logins.** `lastb` ends its output with `btmp begins <date>`, and `extended_facts.yml:143` and `:152` drop that line with `reject('match', '^btmp begins ')`. The trailer is translated: util-linux `login-utils/last.c`, msgid `\"\\n%s begins %s\\n\"`, is `beginnt` in de, `commence` in fr and `empieza` in es. On a host with an empty `btmp` running under `de_DE.UTF-8`, the probe prints `btmp beginnt …`, which gets past the filter. The result:\n   - `failed_login_count` is 1, and `last_failed_login` is the trailer;\n   - `result.yml:53` raises `failed_logins`, which fails the host under the default `linux_vitals_fail_on_severity: info`;\n   - on a host with real entries, the count is one too high.\n2. **Certificate dates are not parsed, and an expired certificate is reported clean.** `plugins/modules/linux_vitals_cert_facts.py:149` parses openssl's `notAfter` with `strptime(\"%b %d %H:%M:%S %Y\")`. openssl always prints English month abbreviations, but `%b` matches the module process's `LC_TIME`.\n   - Under glibc's `de_DE` the abbreviations include `Mär`, `Mai`, `Okt` and `Dez`, so a certificate dated in March, May, October or December doesn't parse. Under `fr_FR` and `es_ES` most months fail.\n   - `_parse_openssl_time` then returns `None`, and the module sets `not_after`, `days_remaining` and `expired` to `None` (`:241-243`).\n   - `roles/vitals_certs/tasks/main.yml:88-110` raises nothing for such a certificate: no `cert_expired`, no `cert_expiring`, and it isn't counted in the summary's `expired`.\n\n   Reproduced by calling `_parse_openssl_time` after `locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')`, which returns `None` for `Dec 31 23:59:59 2024 GMT`. Rendering the findings template for the resulting certificate on ansible-core 2.20.4 gives `[]`. The default scan paths include the CA bundle (`/etc/ssl/certs`), so every such host has affected certificates.\n3. **`last_reboot` keeps the localized label.** coreutils translates `who -b`'s `system boot`, and `extended_facts.yml:160` strips only the English one. This one is display-only.\n\n## Proposed fix\n\n- Add `environment: {LC_ALL: C}` to every `ansible.builtin.command` probe in `roles/vitals_scan/tasks/`, and to the `systemctl` calls in `vitals_heal` for consistency. Add a test that fails when a probe task has no `LC_ALL`, in the same ratchet style as `REVIEWED_PROBES_THAT_IGNORE_FAILURE`.\n- In the cert module, parse dates without depending on the locale. Either use a fixed English month table instead of `%b`, or force a C `LC_TIME` around the parse. Add a unit test that parses all twelve months under a non-C locale.\n- A certificate whose dates can't be parsed must not read as clean. Raise an `unknown` finding with the raw date in its `reason` (#62; pairs with #119).\n- `who -b` under `LC_ALL=C` prints `Mon DD HH:MM` with no year. Consider deriving `last_reboot` from `ansible_facts.uptime_seconds` instead.\n\n## Acceptance criteria\n\n- [ ] Every scan probe runs with `LC_ALL=C`, and a test enforces it\n- [ ] An empty `btmp` under a non-English locale raises no `failed_logins` (golden fixture with a localized trailer)\n- [ ] `_parse_openssl_time` parses all twelve months under `de_DE.UTF-8` and `fr_FR.UTF-8`\n- [ ] A certificate with unparseable dates produces an `unknown` finding, not silence\n- [ ] `last_reboot` isn't localized\n\nRelated: #39 rewrites the same `lastb` probe for its unknown paths, and #119 covers unknowns in `vitals_certs`.\n"
+  },
+  "source_commit": "086d99a7877f9d70bcae06dd2bcb2ade1816ecb5",
+  "contributing": "https://github.com/sameeralam3127/linux-vitals/blob/086d99a7877f9d70bcae06dd2bcb2ade1816ecb5/.github/CONTRIBUTING.md",
+  "license": "MIT",
+  "open_pull_requests_observed": [],
+  "assignment": "unassigned; contribution guide requests a claim comment, not sent",
+  "kernel_evaluation": null
+}

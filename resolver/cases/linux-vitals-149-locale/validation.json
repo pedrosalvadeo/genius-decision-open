@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "status": "SOLUTION_PREPARED",
+  "date": "2026-10-16",
+  "source_commit": "086d99a7877f9d70bcae06dd2bcb2ade1816ecb5",
+  "reservation_commit": "2d319b11daf0e31b21c452b485af018bf04ec0c6",
+  "criteria": [
+    "All command probes in vitals_scan and systemctl probes in vitals_heal explicitly set LC_ALL=C, enforced by a regression test.",
+    "Under German and French locales, an empty lastb fixture produces no failed_logins finding and the reboot label is not localized; actual probe environment is exercised.",
+    "Parse OpenSSL dates for all twelve months under de_DE.UTF-8 and fr_FR.UTF-8 without changing the process locale; malformed or missing certificate dates produce an unknown finding with raw input in its reason.",
+    "Keep valid expiry and existing findings working, provide a portable MIT-attributed patch against a pinned source, and disclose local-test limits and outstanding upstream contribution steps."
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "ansible_core": "2.20.4",
+    "pytest": "8.4.2",
+    "openssl": "3.0.13",
+    "locales": [
+      "C",
+      "de_DE.UTF-8",
+      "fr_FR.UTF-8"
+    ],
+    "credentials": "env cleared; explicit six-key allowlist",
+    "network": "seccomp denies AF_INET and AF_INET6 sockets, inherited by child processes"
+  },
+  "checks": [
+    {
+      "name": "regression_before_fix",
+      "passed": false,
+      "expected_failure": true,
+      "passed_tests": 28,
+      "failed_tests": 25,
+      "skipped_tests": 0,
+      "evidence": "baseline.txt"
+    },
+    {
+      "name": "focused_after_fix",
+      "passed": true,
+      "passed_tests": 89,
+      "failed_tests": 0,
+      "skipped_tests": 0,
+      "evidence": "focused.txt"
+    },
+    {
+      "name": "existing_scan_and_service_regression",
+      "passed": true,
+      "passed_tests": 177,
+      "failed_tests": 0,
+      "skipped_tests": 0,
+      "evidence": "regression.txt"
+    },
+    {
+      "name": "clean_pinned_copy_patch_apply",
+      "passed": true,
+      "method": "git apply --check, git apply, git diff --check"
+    },
+    {
+      "name": "new_tests_after_clean_apply",
+      "passed": true,
+      "passed_tests": 53,
+      "failed_tests": 0,
+      "skipped_tests": 0,
+      "evidence": "portability.txt"
+    },
+    {
+      "name": "seccomp_socket_denial",
+      "passed": true,
+      "evidence": "isolation.txt"
+    }
+  ],
+  "unique_tests_passed": 266,
+  "native_lastb_observation": {
+    "reproduced_localized_output": false,
+    "reason": "util-linux German/French message catalogs are absent; native lastb printed English under all three locales",
+    "evidence": "native-lastb.txt"
+  },
+  "limits": [
+    "Probe localization uses explicit fixtures with real Ansible task environments, not a production foreign-language host.",
+    "Full upstream pytest, pre-commit, ansible-lint, syntax check, supported-core matrix and Molecule/systemd distribution checks are not completed.",
+    "No upstream comment, PR, assignment or deployment; no external adoption or post-application observation."
+  ],
+  "kernel_evaluation": null,
+  "wellbeing": null,
+  "cag": null,
+  "pvs": null,
+  "applied": false,
+  "verified_external_result": false,
+  "artifact_sha256": "fa5b173c9ee25de9609cd71e797124f8a5cdf6f7e6833eabcaa6e6f8da1be432"
+}

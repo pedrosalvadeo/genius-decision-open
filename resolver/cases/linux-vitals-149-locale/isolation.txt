@@ -1,0 +1,3 @@
+AF_INET: blocked
+AF_INET6: blocked
+environment keys: ['ANSIBLE_HOME', 'ANSIBLE_NOCOLOR', 'LANG', 'LOCPATH', 'PATH', 'PYTEST_DISABLE_PLUGIN_AUTOLOAD']

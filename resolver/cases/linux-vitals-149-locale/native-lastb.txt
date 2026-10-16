@@ -1,0 +1,5 @@
+{"locale": "de_DE.UTF-8", "lastb_output": "\nbtmp begins Fri Oct 16 18:42:11 2026\n"}
+{"locale": "fr_FR.UTF-8", "lastb_output": "\nbtmp begins Fri Oct 16 18:42:11 2026\n"}
+{"locale": "C", "lastb_output": "\nbtmp begins Fri Oct 16 18:42:11 2026\n"}
+translation_catalogs_present False False
+LIMITATION: native localized lastb reproduction is unavailable without translation catalogs; golden probe tests use explicit fixtures.
