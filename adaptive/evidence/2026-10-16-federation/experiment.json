@@ -1,0 +1,2506 @@
+{
+  "format": "genius-federation-experiment/1",
+  "status": "PASS",
+  "started_at": "2026-10-16T15:41:23.224158+00:00",
+  "completed_at": "2026-10-16T15:41:23.655684+00:00",
+  "nodes": [
+    "alpha",
+    "beta",
+    "gamma"
+  ],
+  "checks": {
+    "three_distinct_processes": true,
+    "separate_databases": true,
+    "duplicate_does_not_add_evidence": true,
+    "private_observation_not_exported": true,
+    "conflicts_suspend_forecast": true,
+    "disconnection_preserves_memory": true,
+    "continues_without_peer": true,
+    "restart_preserves_frozen_receipt": true,
+    "helpful_fixture_improves": true,
+    "harmful_fixture_does_not_improve": true
+  },
+  "comparisons": {
+    "helpful": {
+      "metrics": {
+        "isolated": {
+          "count": 3,
+          "absolute_error_sum": 100,
+          "max_underprediction": 80,
+          "mean_absolute_error": "100/3"
+        },
+        "connected": {
+          "count": 3,
+          "absolute_error_sum": 0,
+          "max_underprediction": 0,
+          "mean_absolute_error": "0"
+        }
+      },
+      "native_verification": {
+        "valid": true,
+        "status": "VALID",
+        "errors": []
+      },
+      "native_decision": {
+        "coverage": "EXHAUSTIVE",
+        "feasible": [
+          "connected",
+          "isolated"
+        ],
+        "failed": [],
+        "unknown": [],
+        "frontier": [
+          "connected"
+        ],
+        "pairs": [
+          {
+            "left": "connected",
+            "right": "connected",
+            "functional": "1",
+            "cag": "1",
+            "welfare": "1",
+            "pvs": "1",
+            "weak": "1",
+            "strict": "0"
+          },
+          {
+            "left": "connected",
+            "right": "isolated",
+            "functional": "1",
+            "cag": "1",
+            "welfare": "1",
+            "pvs": "1",
+            "weak": "1",
+            "strict": "1"
+          },
+          {
+            "left": "isolated",
+            "right": "connected",
+            "functional": "1",
+            "cag": "1",
+            "welfare": "0",
+            "pvs": "1",
+            "weak": "0",
+            "strict": "0"
+          },
+          {
+            "left": "isolated",
+            "right": "isolated",
+            "functional": "1",
+            "cag": "1",
+            "welfare": "1",
+            "pvs": "1",
+            "weak": "1",
+            "strict": "0"
+          }
+        ],
+        "selected": "connected",
+        "selection_status": "DEFINED",
+        "native_cell": {
+          "state": "DEFINED",
+          "value": {
+            "target": [
+              "connected",
+              "isolated"
+            ],
+            "B": [
+              "connected",
+              "isolated"
+            ],
+            "C": [
+              "connected",
+              "isolated"
+            ],
+            "feasible": [
+              "connected",
+              "isolated"
+            ],
+            "failed": [],
+            "unknown": [],
+            "omitted": [],
+            "pairs": [
+              {
+                "left": "connected",
+                "right": "connected",
+                "functional": "1",
+                "cag": "1",
+                "welfare": "1",
+                "pvs": "1",
+                "weak": "1",
+                "strict": "0"
+              },
+              {
+                "left": "connected",
+                "right": "isolated",
+                "functional": "1",
+                "cag": "1",
+                "welfare": "1",
+                "pvs": "1",
+                "weak": "1",
+                "strict": "1"
+              },
+              {
+                "left": "isolated",
+                "right": "connected",
+                "functional": "1",
+                "cag": "1",
+                "welfare": "0",
+                "pvs": "1",
+                "weak": "0",
+                "strict": "0"
+              },
+              {
+                "left": "isolated",
+                "right": "isolated",
+                "functional": "1",
+                "cag": "1",
+                "welfare": "1",
+                "pvs": "1",
+                "weak": "1",
+                "strict": "0"
+              }
+            ],
+            "frontier": [
+              "connected"
+            ],
+            "dominators": [
+              {
+                "policy": "isolated",
+                "by": [
+                  "connected"
+                ]
+              }
+            ],
+            "coverage": "EXHAUSTIVE",
+            "selection": {
+              "state": "DEFINED",
+              "value": "connected",
+              "checks": [
+                "Check.112"
+              ]
+            }
+          },
+          "checks": [
+            "Check.114"
+          ]
+        },
+        "selection_rule": "unique",
+        "comparison_cag_mode": "robust",
+        "require_all_scenarios": true,
+        "functional_criterion": "NEUTRAL_EMPTY_PROFILE"
+      },
+      "model": {
+        "profile": "STOCK_FLOW_FINITE_V1",
+        "name": "Federación local: comparación operacional de errores congelados",
+        "horizon": 1,
+        "step_unit": "step",
+        "stocks": [
+          {
+            "id": "remaining",
+            "label": "Margen de error observado",
+            "unit": "declared_error_unit",
+            "kind": "persistent",
+            "initial": "100/1",
+            "capacity": "100/1"
+          }
+        ],
+        "carriers": [
+          {
+            "id": "project",
+            "label": "Proyecto Genius (condición operacional, no bienestar humano)",
+            "kind": "organization"
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "deliver",
+            "label": "Conservar predicciones auditables"
+          }
+        ],
+        "initial_capabilities": [
+          "deliver"
+        ],
+        "actions": [
+          {
+            "id": "use_isolated",
+            "label": "isolated",
+            "requires": [
+              "deliver"
+            ],
+            "withdrawals": {
+              "remaining": "100/1"
+            },
+            "deposits": {},
+            "add_capabilities": [],
+            "remove_capabilities": []
+          },
+          {
+            "id": "use_connected",
+            "label": "connected",
+            "requires": [
+              "deliver"
+            ],
+            "withdrawals": {
+              "remaining": "0/1"
+            },
+            "deposits": {},
+            "add_capabilities": [],
+            "remove_capabilities": []
+          }
+        ],
+        "policies": [
+          {
+            "id": "isolated",
+            "label": "isolated",
+            "default_action": "use_isolated",
+            "rules": []
+          },
+          {
+            "id": "connected",
+            "label": "connected",
+            "default_action": "use_connected",
+            "rules": []
+          }
+        ],
+        "scenarios": [
+          {
+            "id": "measured_snapshot",
+            "label": "Mismas observaciones recibidas después de las predicciones",
+            "events": [
+              {
+                "inflows": {},
+                "renewables": {},
+                "drains": {},
+                "remove_capabilities": []
+              }
+            ]
+          }
+        ],
+        "law": {
+          "measured_snapshot": "1/1"
+        },
+        "welfare": [
+          {
+            "carrier": "project",
+            "dimension": "error_margin",
+            "label": "Menor error; criterio operacional",
+            "stock": "remaining",
+            "direction": "higher"
+          }
+        ],
+        "task": {
+          "kind": "operational",
+          "label": "Comparar errores medidos, sin inferir beneficio futuro",
+          "living_carriers": [],
+          "conditions": [
+            {
+              "stock": "remaining",
+              "op": "ge",
+              "threshold": "0/1"
+            }
+          ],
+          "require_action_success": true
+        },
+        "require_all_scenarios": true,
+        "selection": "unique",
+        "assumptions": [
+          {
+            "id": "Scope",
+            "kind": "MODEL",
+            "statement": "El margen representa error observado, no bienestar ni PVS. La masa unitaria describe esta comparación ya observada; no estima el futuro.",
+            "provenance": "GENIUS_FEDERATION_LAB_V1"
+          },
+          {
+            "id": "Criterion",
+            "kind": "NORMATIVE",
+            "statement": "Menor error absoluto sobre los mismos objetivos. Las guardas adicionales y la selección histórica se comprueban fuera del modelo.",
+            "provenance": "GENIUS_FEDERATION_LAB_V1"
+          }
+        ]
+      },
+      "model_sha256": "2b6df7c7f4fa9e0f80e4187722a59fdff3176a6040ab1a38965447d43d05b90a",
+      "improvement_observed": true
+    },
+    "harmful": {
+      "metrics": {
+        "isolated": {
+          "count": 3,
+          "absolute_error_sum": 200,
+          "max_underprediction": 0,
+          "mean_absolute_error": "200/3"
+        },
+        "connected": {
+          "count": 3,
+          "absolute_error_sum": 300,
+          "max_underprediction": 0,
+          "mean_absolute_error": "100"
+        }
+      },
+      "native_verification": {
+        "valid": true,
+        "status": "VALID",
+        "errors": []
+      },
+      "native_decision": {
+        "coverage": "EXHAUSTIVE",
+        "feasible": [
+          "connected",
+          "isolated"
+        ],
+        "failed": [],
+        "unknown": [],
+        "frontier": [
+          "isolated"
+        ],
+        "pairs": [
+          {
+            "left": "connected",
+            "right": "connected",
+            "functional": "1",
+            "cag": "1",
+            "welfare": "1",
+            "pvs": "1",
+            "weak": "1",
+            "strict": "0"
+          },
+          {
+            "left": "connected",
+            "right": "isolated",
+            "functional": "1",
+            "cag": "1",
+            "welfare": "0",
+            "pvs": "1",
+            "weak": "0",
+            "strict": "0"
+          },
+          {
+            "left": "isolated",
+            "right": "connected",
+            "functional": "1",
+            "cag": "1",
+            "welfare": "1",
+            "pvs": "1",
+            "weak": "1",
+            "strict": "1"
+          },
+          {
+            "left": "isolated",
+            "right": "isolated",
+            "functional": "1",
+            "cag": "1",
+            "welfare": "1",
+            "pvs": "1",
+            "weak": "1",
+            "strict": "0"
+          }
+        ],
+        "selected": "isolated",
+        "selection_status": "DEFINED",
+        "native_cell": {
+          "state": "DEFINED",
+          "value": {
+            "target": [
+              "connected",
+              "isolated"
+            ],
+            "B": [
+              "connected",
+              "isolated"
+            ],
+            "C": [
+              "connected",
+              "isolated"
+            ],
+            "feasible": [
+              "connected",
+              "isolated"
+            ],
+            "failed": [],
+            "unknown": [],
+            "omitted": [],
+            "pairs": [
+              {
+                "left": "connected",
+                "right": "connected",
+                "functional": "1",
+                "cag": "1",
+                "welfare": "1",
+                "pvs": "1",
+                "weak": "1",
+                "strict": "0"
+              },
+              {
+                "left": "connected",
+                "right": "isolated",
+                "functional": "1",
+                "cag": "1",
+                "welfare": "0",
+                "pvs": "1",
+                "weak": "0",
+                "strict": "0"
+              },
+              {
+                "left": "isolated",
+                "right": "connected",
+                "functional": "1",
+                "cag": "1",
+                "welfare": "1",
+                "pvs": "1",
+                "weak": "1",
+                "strict": "1"
+              },
+              {
+                "left": "isolated",
+                "right": "isolated",
+                "functional": "1",
+                "cag": "1",
+                "welfare": "1",
+                "pvs": "1",
+                "weak": "1",
+                "strict": "0"
+              }
+            ],
+            "frontier": [
+              "isolated"
+            ],
+            "dominators": [
+              {
+                "policy": "connected",
+                "by": [
+                  "isolated"
+                ]
+              }
+            ],
+            "coverage": "EXHAUSTIVE",
+            "selection": {
+              "state": "DEFINED",
+              "value": "isolated",
+              "checks": [
+                "Check.112"
+              ]
+            }
+          },
+          "checks": [
+            "Check.114"
+          ]
+        },
+        "selection_rule": "unique",
+        "comparison_cag_mode": "robust",
+        "require_all_scenarios": true,
+        "functional_criterion": "NEUTRAL_EMPTY_PROFILE"
+      },
+      "model": {
+        "profile": "STOCK_FLOW_FINITE_V1",
+        "name": "Federación local: comparación operacional de errores congelados",
+        "horizon": 1,
+        "step_unit": "step",
+        "stocks": [
+          {
+            "id": "remaining",
+            "label": "Margen de error observado",
+            "unit": "declared_error_unit",
+            "kind": "persistent",
+            "initial": "300/1",
+            "capacity": "300/1"
+          }
+        ],
+        "carriers": [
+          {
+            "id": "project",
+            "label": "Proyecto Genius (condición operacional, no bienestar humano)",
+            "kind": "organization"
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "deliver",
+            "label": "Conservar predicciones auditables"
+          }
+        ],
+        "initial_capabilities": [
+          "deliver"
+        ],
+        "actions": [
+          {
+            "id": "use_isolated",
+            "label": "isolated",
+            "requires": [
+              "deliver"
+            ],
+            "withdrawals": {
+              "remaining": "200/1"
+            },
+            "deposits": {},
+            "add_capabilities": [],
+            "remove_capabilities": []
+          },
+          {
+            "id": "use_connected",
+            "label": "connected",
+            "requires": [
+              "deliver"
+            ],
+            "withdrawals": {
+              "remaining": "300/1"
+            },
+            "deposits": {},
+            "add_capabilities": [],
+            "remove_capabilities": []
+          }
+        ],
+        "policies": [
+          {
+            "id": "isolated",
+            "label": "isolated",
+            "default_action": "use_isolated",
+            "rules": []
+          },
+          {
+            "id": "connected",
+            "label": "connected",
+            "default_action": "use_connected",
+            "rules": []
+          }
+        ],
+        "scenarios": [
+          {
+            "id": "measured_snapshot",
+            "label": "Mismas observaciones recibidas después de las predicciones",
+            "events": [
+              {
+                "inflows": {},
+                "renewables": {},
+                "drains": {},
+                "remove_capabilities": []
+              }
+            ]
+          }
+        ],
+        "law": {
+          "measured_snapshot": "1/1"
+        },
+        "welfare": [
+          {
+            "carrier": "project",
+            "dimension": "error_margin",
+            "label": "Menor error; criterio operacional",
+            "stock": "remaining",
+            "direction": "higher"
+          }
+        ],
+        "task": {
+          "kind": "operational",
+          "label": "Comparar errores medidos, sin inferir beneficio futuro",
+          "living_carriers": [],
+          "conditions": [
+            {
+              "stock": "remaining",
+              "op": "ge",
+              "threshold": "0/1"
+            }
+          ],
+          "require_action_success": true
+        },
+        "require_all_scenarios": true,
+        "selection": "unique",
+        "assumptions": [
+          {
+            "id": "Scope",
+            "kind": "MODEL",
+            "statement": "El margen representa error observado, no bienestar ni PVS. La masa unitaria describe esta comparación ya observada; no estima el futuro.",
+            "provenance": "GENIUS_FEDERATION_LAB_V1"
+          },
+          {
+            "id": "Criterion",
+            "kind": "NORMATIVE",
+            "statement": "Menor error absoluto sobre los mismos objetivos. Las guardas adicionales y la selección histórica se comprueban fuera del modelo.",
+            "provenance": "GENIUS_FEDERATION_LAB_V1"
+          }
+        ]
+      },
+      "model_sha256": "2d0eb3e79c61e84195b70fa2c7ffe0054ef7a53b872f0e22063440641eb95765",
+      "improvement_observed": false
+    }
+  },
+  "forecasts": [
+    {
+      "conflicts": [],
+      "estimate": 20,
+      "evidence": [
+        {
+          "event": "6ff018d0d82e36fdd7379459e3dcf56a1f9ba30c45e861500d0407a13d5fc8e4",
+          "hash": "f72e13353fc4c9823bd30b44a9d8e3cf95fdd905c92e64d7a85de7324e0fbe1d",
+          "value": 20
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 2,
+        "remote": 0,
+        "stale": 1
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.398423+00:00",
+      "id": "helpful-isolated",
+      "node_id": "alpha",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-helpful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "isolated",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "5f7063e075a828acf71cf5e3e52ae59b3e7f5b3bc21084272fb6f6b2dbabf58f",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 0,
+      "evidence": [
+        {
+          "event": "c6a67d97e6bedcb47849f9fe378192071d06c0eea8c9c34f2e17892b4a637e0c",
+          "hash": "45cf308db615fb4b081e385688f6a51d1b19026c4b64f66c7880c583921d448d",
+          "value": 0
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 3,
+        "remote": 0,
+        "stale": 0
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.399434+00:00",
+      "id": "harmful-isolated",
+      "node_id": "alpha",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-harmful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "isolated",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "ea60881d8880c81e670f988a16e24f87db8f283505d536eaaa637666032bfc42",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 80,
+      "evidence": [
+        {
+          "event": "9aa934381e17bed7ceafdd80d1fe5d40fd24a37574fa797be9e5c6e9f0ff238d",
+          "hash": "0f7d009c0dca75d99d9c06f5876d64283bbe1e8488fbca5534362f87e7964de3",
+          "value": 100
+        },
+        {
+          "event": "ed053e617d35c9e5ab6bf218b3c82466fb1af3cca8a9b349df62f44406b7c1b9",
+          "hash": "7628bb5e6deaa09c3a274d0278991c7eecb72a548c5c405d0ce8a5a0ebeb923f",
+          "value": 80
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 1,
+        "remote": 0,
+        "stale": 0
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.400439+00:00",
+      "id": "helpful-isolated",
+      "node_id": "beta",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-helpful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "isolated",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "81dd7fef2ac1a8bf347a8dae5045e2265c4fc375548c940e54965f35b55a1a5d",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 100,
+      "evidence": [
+        {
+          "event": "dbbb69590b2d85f956ca90c16fbefb9ae8e4e6d612c5d3e04937216aee171514",
+          "hash": "1ff5d0a4055864776bad77be60d3e38480ea31e6f250cf975e8df39a206c2f70",
+          "value": 100
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 2,
+        "remote": 0,
+        "stale": 0
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.401266+00:00",
+      "id": "harmful-isolated",
+      "node_id": "beta",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-harmful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "isolated",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "d692b006f1488182dad457fd626756f30b0b5530c9e3ebc3336947f6794be5c6",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 100,
+      "evidence": [
+        {
+          "event": "1200c88efe351677f51312805aab774494ce795c131edfdd196ea903fc94f92e",
+          "hash": "1ca63fc94221becd0982f2c837a0bfb155696d3435dc3d1fb0e6ccb6bc238d36",
+          "value": 100
+        },
+        {
+          "event": "8ea28acadfa83ab78311c92e409bffce89c0e669ef2f40e8165677141437ff7f",
+          "hash": "d2086ab75a8d7f0c1e49d887e18aef31705a868bb50e1a890865c3a65a64f96b",
+          "value": 120
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 1,
+        "remote": 0,
+        "stale": 0
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.402065+00:00",
+      "id": "helpful-isolated",
+      "node_id": "gamma",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-helpful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "isolated",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "7cf08b79fad47ab22ca5fe4d36a3ff15dfef9945e599260d9006d22622d7bdf3",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 100,
+      "evidence": [
+        {
+          "event": "5048cfd4dae1a693aa092e246f9e47385218a55461cd55a690796589cd64e1a1",
+          "hash": "ebea79d2b0193aa99646a426cda0a5d56bd06851d930022af76d8145bf577469",
+          "value": 100
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 2,
+        "remote": 0,
+        "stale": 0
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.402939+00:00",
+      "id": "harmful-isolated",
+      "node_id": "gamma",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-harmful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "isolated",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "eb566db2d91779fa950bb5d4c3b2fbc537a2c496b18175bbf6c5eee445f3ef80",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 100,
+      "evidence": [
+        {
+          "event": "1200c88efe351677f51312805aab774494ce795c131edfdd196ea903fc94f92e",
+          "hash": "1ca63fc94221becd0982f2c837a0bfb155696d3435dc3d1fb0e6ccb6bc238d36",
+          "value": 100
+        },
+        {
+          "event": "6ff018d0d82e36fdd7379459e3dcf56a1f9ba30c45e861500d0407a13d5fc8e4",
+          "hash": "f72e13353fc4c9823bd30b44a9d8e3cf95fdd905c92e64d7a85de7324e0fbe1d",
+          "value": 20
+        },
+        {
+          "event": "8ea28acadfa83ab78311c92e409bffce89c0e669ef2f40e8165677141437ff7f",
+          "hash": "d2086ab75a8d7f0c1e49d887e18aef31705a868bb50e1a890865c3a65a64f96b",
+          "value": 120
+        },
+        {
+          "event": "9aa934381e17bed7ceafdd80d1fe5d40fd24a37574fa797be9e5c6e9f0ff238d",
+          "hash": "0f7d009c0dca75d99d9c06f5876d64283bbe1e8488fbca5534362f87e7964de3",
+          "value": 100
+        },
+        {
+          "event": "ed053e617d35c9e5ab6bf218b3c82466fb1af3cca8a9b349df62f44406b7c1b9",
+          "hash": "7628bb5e6deaa09c3a274d0278991c7eecb72a548c5c405d0ce8a5a0ebeb923f",
+          "value": 80
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 4,
+        "remote": 0,
+        "stale": 1
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.418419+00:00",
+      "id": "helpful-connected",
+      "node_id": "alpha",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-helpful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "connected",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "2b5ade7ada0058562d71f8c00396f3ecc288dc256c7a13d30033464ebbc32a09",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 100,
+      "evidence": [
+        {
+          "event": "5048cfd4dae1a693aa092e246f9e47385218a55461cd55a690796589cd64e1a1",
+          "hash": "ebea79d2b0193aa99646a426cda0a5d56bd06851d930022af76d8145bf577469",
+          "value": 100
+        },
+        {
+          "event": "c6a67d97e6bedcb47849f9fe378192071d06c0eea8c9c34f2e17892b4a637e0c",
+          "hash": "45cf308db615fb4b081e385688f6a51d1b19026c4b64f66c7880c583921d448d",
+          "value": 0
+        },
+        {
+          "event": "dbbb69590b2d85f956ca90c16fbefb9ae8e4e6d612c5d3e04937216aee171514",
+          "hash": "1ff5d0a4055864776bad77be60d3e38480ea31e6f250cf975e8df39a206c2f70",
+          "value": 100
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 7,
+        "remote": 0,
+        "stale": 0
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.419550+00:00",
+      "id": "harmful-connected",
+      "node_id": "alpha",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-harmful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "connected",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "bf109eb025048ec0175bb829c6328a6b31d77829b89b45f3dcd7bb59d790b145",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 100,
+      "evidence": [
+        {
+          "event": "1200c88efe351677f51312805aab774494ce795c131edfdd196ea903fc94f92e",
+          "hash": "1ca63fc94221becd0982f2c837a0bfb155696d3435dc3d1fb0e6ccb6bc238d36",
+          "value": 100
+        },
+        {
+          "event": "6ff018d0d82e36fdd7379459e3dcf56a1f9ba30c45e861500d0407a13d5fc8e4",
+          "hash": "f72e13353fc4c9823bd30b44a9d8e3cf95fdd905c92e64d7a85de7324e0fbe1d",
+          "value": 20
+        },
+        {
+          "event": "8ea28acadfa83ab78311c92e409bffce89c0e669ef2f40e8165677141437ff7f",
+          "hash": "d2086ab75a8d7f0c1e49d887e18aef31705a868bb50e1a890865c3a65a64f96b",
+          "value": 120
+        },
+        {
+          "event": "9aa934381e17bed7ceafdd80d1fe5d40fd24a37574fa797be9e5c6e9f0ff238d",
+          "hash": "0f7d009c0dca75d99d9c06f5876d64283bbe1e8488fbca5534362f87e7964de3",
+          "value": 100
+        },
+        {
+          "event": "ed053e617d35c9e5ab6bf218b3c82466fb1af3cca8a9b349df62f44406b7c1b9",
+          "hash": "7628bb5e6deaa09c3a274d0278991c7eecb72a548c5c405d0ce8a5a0ebeb923f",
+          "value": 80
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 3,
+        "remote": 0,
+        "stale": 1
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.420640+00:00",
+      "id": "helpful-connected",
+      "node_id": "beta",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-helpful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "connected",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "16bb190f2ffde1d7a5b69589a16986044b23243aa4bad68c93676d9ee1d0dc75",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 100,
+      "evidence": [
+        {
+          "event": "5048cfd4dae1a693aa092e246f9e47385218a55461cd55a690796589cd64e1a1",
+          "hash": "ebea79d2b0193aa99646a426cda0a5d56bd06851d930022af76d8145bf577469",
+          "value": 100
+        },
+        {
+          "event": "c6a67d97e6bedcb47849f9fe378192071d06c0eea8c9c34f2e17892b4a637e0c",
+          "hash": "45cf308db615fb4b081e385688f6a51d1b19026c4b64f66c7880c583921d448d",
+          "value": 0
+        },
+        {
+          "event": "dbbb69590b2d85f956ca90c16fbefb9ae8e4e6d612c5d3e04937216aee171514",
+          "hash": "1ff5d0a4055864776bad77be60d3e38480ea31e6f250cf975e8df39a206c2f70",
+          "value": 100
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 6,
+        "remote": 0,
+        "stale": 0
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.421605+00:00",
+      "id": "harmful-connected",
+      "node_id": "beta",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-harmful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "connected",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "e7605bc3301bf80895e31d498b75cc327f9b25712809b495750dd4860bf25e45",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 100,
+      "evidence": [
+        {
+          "event": "1200c88efe351677f51312805aab774494ce795c131edfdd196ea903fc94f92e",
+          "hash": "1ca63fc94221becd0982f2c837a0bfb155696d3435dc3d1fb0e6ccb6bc238d36",
+          "value": 100
+        },
+        {
+          "event": "6ff018d0d82e36fdd7379459e3dcf56a1f9ba30c45e861500d0407a13d5fc8e4",
+          "hash": "f72e13353fc4c9823bd30b44a9d8e3cf95fdd905c92e64d7a85de7324e0fbe1d",
+          "value": 20
+        },
+        {
+          "event": "8ea28acadfa83ab78311c92e409bffce89c0e669ef2f40e8165677141437ff7f",
+          "hash": "d2086ab75a8d7f0c1e49d887e18aef31705a868bb50e1a890865c3a65a64f96b",
+          "value": 120
+        },
+        {
+          "event": "9aa934381e17bed7ceafdd80d1fe5d40fd24a37574fa797be9e5c6e9f0ff238d",
+          "hash": "0f7d009c0dca75d99d9c06f5876d64283bbe1e8488fbca5534362f87e7964de3",
+          "value": 100
+        },
+        {
+          "event": "ed053e617d35c9e5ab6bf218b3c82466fb1af3cca8a9b349df62f44406b7c1b9",
+          "hash": "7628bb5e6deaa09c3a274d0278991c7eecb72a548c5c405d0ce8a5a0ebeb923f",
+          "value": 80
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 3,
+        "remote": 0,
+        "stale": 1
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.422460+00:00",
+      "id": "helpful-connected",
+      "node_id": "gamma",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-helpful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "connected",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "e558bcdb9707624e18ca99d05d96042559dfae6df2afd26c379e4c9302af16f8",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    },
+    {
+      "conflicts": [],
+      "estimate": 100,
+      "evidence": [
+        {
+          "event": "5048cfd4dae1a693aa092e246f9e47385218a55461cd55a690796589cd64e1a1",
+          "hash": "ebea79d2b0193aa99646a426cda0a5d56bd06851d930022af76d8145bf577469",
+          "value": 100
+        },
+        {
+          "event": "c6a67d97e6bedcb47849f9fe378192071d06c0eea8c9c34f2e17892b4a637e0c",
+          "hash": "45cf308db615fb4b081e385688f6a51d1b19026c4b64f66c7880c583921d448d",
+          "value": 0
+        },
+        {
+          "event": "dbbb69590b2d85f956ca90c16fbefb9ae8e4e6d612c5d3e04937216aee171514",
+          "hash": "1ff5d0a4055864776bad77be60d3e38480ea31e6f250cf975e8df39a206c2f70",
+          "value": 100
+        }
+      ],
+      "excluded": {
+        "context_mismatch": 6,
+        "remote": 0,
+        "stale": 0
+      },
+      "format": "genius-node-forecast/1",
+      "frozen_at": "2026-10-16T15:41:23.423454+00:00",
+      "id": "harmful-connected",
+      "node_id": "gamma",
+      "physical_actions": false,
+      "prediction_probability": null,
+      "request": {
+        "context": {
+          "data_kind": "synthetic",
+          "regime": "declared-stable-v1",
+          "system": "synthetic-system-harmful",
+          "unit": "resource_unit",
+          "variable": "resource_requirement"
+        },
+        "mode": "connected",
+        "target_after": null,
+        "target_before": "2026-10-16T15:51:23.224158+00:00"
+      },
+      "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+      "sha256": "774356a210eed05096799b15b0905e4be5edea390a53fc12f2ac3ba59e9d910a",
+      "source_attestation": "NONE",
+      "statistical_independence": "NOT_ESTABLISHED",
+      "status": "FROZEN"
+    }
+  ],
+  "scores": {
+    "helpful": [
+      {
+        "absolute_error": 80,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 20,
+          "evidence": [
+            {
+              "event": "6ff018d0d82e36fdd7379459e3dcf56a1f9ba30c45e861500d0407a13d5fc8e4",
+              "hash": "f72e13353fc4c9823bd30b44a9d8e3cf95fdd905c92e64d7a85de7324e0fbe1d",
+              "value": 20
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 2,
+            "remote": 0,
+            "stale": 1
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.398423+00:00",
+          "id": "helpful-isolated",
+          "node_id": "alpha",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-helpful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "isolated",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "5f7063e075a828acf71cf5e3e52ae59b3e7f5b3bc21084272fb6f6b2dbabf58f",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.424444+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-helpful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.423890+00:00",
+          "shareable": true,
+          "source": {
+            "event": "helpful",
+            "excerpt": "Synthetic event helpful: value=100",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 100
+        },
+        "target_sha256": "21564202d65c2ac8ab19b0d87a20bda1f47621d4688a9b87d1e25348859298f2",
+        "underprediction": 80
+      },
+      {
+        "absolute_error": 0,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 100,
+          "evidence": [
+            {
+              "event": "1200c88efe351677f51312805aab774494ce795c131edfdd196ea903fc94f92e",
+              "hash": "1ca63fc94221becd0982f2c837a0bfb155696d3435dc3d1fb0e6ccb6bc238d36",
+              "value": 100
+            },
+            {
+              "event": "6ff018d0d82e36fdd7379459e3dcf56a1f9ba30c45e861500d0407a13d5fc8e4",
+              "hash": "f72e13353fc4c9823bd30b44a9d8e3cf95fdd905c92e64d7a85de7324e0fbe1d",
+              "value": 20
+            },
+            {
+              "event": "8ea28acadfa83ab78311c92e409bffce89c0e669ef2f40e8165677141437ff7f",
+              "hash": "d2086ab75a8d7f0c1e49d887e18aef31705a868bb50e1a890865c3a65a64f96b",
+              "value": 120
+            },
+            {
+              "event": "9aa934381e17bed7ceafdd80d1fe5d40fd24a37574fa797be9e5c6e9f0ff238d",
+              "hash": "0f7d009c0dca75d99d9c06f5876d64283bbe1e8488fbca5534362f87e7964de3",
+              "value": 100
+            },
+            {
+              "event": "ed053e617d35c9e5ab6bf218b3c82466fb1af3cca8a9b349df62f44406b7c1b9",
+              "hash": "7628bb5e6deaa09c3a274d0278991c7eecb72a548c5c405d0ce8a5a0ebeb923f",
+              "value": 80
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 4,
+            "remote": 0,
+            "stale": 1
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.418419+00:00",
+          "id": "helpful-connected",
+          "node_id": "alpha",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-helpful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "connected",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "2b5ade7ada0058562d71f8c00396f3ecc288dc256c7a13d30033464ebbc32a09",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.425695+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-helpful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.423890+00:00",
+          "shareable": true,
+          "source": {
+            "event": "helpful",
+            "excerpt": "Synthetic event helpful: value=100",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 100
+        },
+        "target_sha256": "21564202d65c2ac8ab19b0d87a20bda1f47621d4688a9b87d1e25348859298f2",
+        "underprediction": 0
+      },
+      {
+        "absolute_error": 20,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 80,
+          "evidence": [
+            {
+              "event": "9aa934381e17bed7ceafdd80d1fe5d40fd24a37574fa797be9e5c6e9f0ff238d",
+              "hash": "0f7d009c0dca75d99d9c06f5876d64283bbe1e8488fbca5534362f87e7964de3",
+              "value": 100
+            },
+            {
+              "event": "ed053e617d35c9e5ab6bf218b3c82466fb1af3cca8a9b349df62f44406b7c1b9",
+              "hash": "7628bb5e6deaa09c3a274d0278991c7eecb72a548c5c405d0ce8a5a0ebeb923f",
+              "value": 80
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 1,
+            "remote": 0,
+            "stale": 0
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.400439+00:00",
+          "id": "helpful-isolated",
+          "node_id": "beta",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-helpful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "isolated",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "81dd7fef2ac1a8bf347a8dae5045e2265c4fc375548c940e54965f35b55a1a5d",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.426643+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-helpful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.423890+00:00",
+          "shareable": true,
+          "source": {
+            "event": "helpful",
+            "excerpt": "Synthetic event helpful: value=100",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 100
+        },
+        "target_sha256": "21564202d65c2ac8ab19b0d87a20bda1f47621d4688a9b87d1e25348859298f2",
+        "underprediction": 20
+      },
+      {
+        "absolute_error": 0,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 100,
+          "evidence": [
+            {
+              "event": "1200c88efe351677f51312805aab774494ce795c131edfdd196ea903fc94f92e",
+              "hash": "1ca63fc94221becd0982f2c837a0bfb155696d3435dc3d1fb0e6ccb6bc238d36",
+              "value": 100
+            },
+            {
+              "event": "6ff018d0d82e36fdd7379459e3dcf56a1f9ba30c45e861500d0407a13d5fc8e4",
+              "hash": "f72e13353fc4c9823bd30b44a9d8e3cf95fdd905c92e64d7a85de7324e0fbe1d",
+              "value": 20
+            },
+            {
+              "event": "8ea28acadfa83ab78311c92e409bffce89c0e669ef2f40e8165677141437ff7f",
+              "hash": "d2086ab75a8d7f0c1e49d887e18aef31705a868bb50e1a890865c3a65a64f96b",
+              "value": 120
+            },
+            {
+              "event": "9aa934381e17bed7ceafdd80d1fe5d40fd24a37574fa797be9e5c6e9f0ff238d",
+              "hash": "0f7d009c0dca75d99d9c06f5876d64283bbe1e8488fbca5534362f87e7964de3",
+              "value": 100
+            },
+            {
+              "event": "ed053e617d35c9e5ab6bf218b3c82466fb1af3cca8a9b349df62f44406b7c1b9",
+              "hash": "7628bb5e6deaa09c3a274d0278991c7eecb72a548c5c405d0ce8a5a0ebeb923f",
+              "value": 80
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 3,
+            "remote": 0,
+            "stale": 1
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.420640+00:00",
+          "id": "helpful-connected",
+          "node_id": "beta",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-helpful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "connected",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "16bb190f2ffde1d7a5b69589a16986044b23243aa4bad68c93676d9ee1d0dc75",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.427485+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-helpful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.423890+00:00",
+          "shareable": true,
+          "source": {
+            "event": "helpful",
+            "excerpt": "Synthetic event helpful: value=100",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 100
+        },
+        "target_sha256": "21564202d65c2ac8ab19b0d87a20bda1f47621d4688a9b87d1e25348859298f2",
+        "underprediction": 0
+      },
+      {
+        "absolute_error": 0,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 100,
+          "evidence": [
+            {
+              "event": "1200c88efe351677f51312805aab774494ce795c131edfdd196ea903fc94f92e",
+              "hash": "1ca63fc94221becd0982f2c837a0bfb155696d3435dc3d1fb0e6ccb6bc238d36",
+              "value": 100
+            },
+            {
+              "event": "8ea28acadfa83ab78311c92e409bffce89c0e669ef2f40e8165677141437ff7f",
+              "hash": "d2086ab75a8d7f0c1e49d887e18aef31705a868bb50e1a890865c3a65a64f96b",
+              "value": 120
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 1,
+            "remote": 0,
+            "stale": 0
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.402065+00:00",
+          "id": "helpful-isolated",
+          "node_id": "gamma",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-helpful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "isolated",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "7cf08b79fad47ab22ca5fe4d36a3ff15dfef9945e599260d9006d22622d7bdf3",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.428281+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-helpful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.423890+00:00",
+          "shareable": true,
+          "source": {
+            "event": "helpful",
+            "excerpt": "Synthetic event helpful: value=100",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 100
+        },
+        "target_sha256": "21564202d65c2ac8ab19b0d87a20bda1f47621d4688a9b87d1e25348859298f2",
+        "underprediction": 0
+      },
+      {
+        "absolute_error": 0,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 100,
+          "evidence": [
+            {
+              "event": "1200c88efe351677f51312805aab774494ce795c131edfdd196ea903fc94f92e",
+              "hash": "1ca63fc94221becd0982f2c837a0bfb155696d3435dc3d1fb0e6ccb6bc238d36",
+              "value": 100
+            },
+            {
+              "event": "6ff018d0d82e36fdd7379459e3dcf56a1f9ba30c45e861500d0407a13d5fc8e4",
+              "hash": "f72e13353fc4c9823bd30b44a9d8e3cf95fdd905c92e64d7a85de7324e0fbe1d",
+              "value": 20
+            },
+            {
+              "event": "8ea28acadfa83ab78311c92e409bffce89c0e669ef2f40e8165677141437ff7f",
+              "hash": "d2086ab75a8d7f0c1e49d887e18aef31705a868bb50e1a890865c3a65a64f96b",
+              "value": 120
+            },
+            {
+              "event": "9aa934381e17bed7ceafdd80d1fe5d40fd24a37574fa797be9e5c6e9f0ff238d",
+              "hash": "0f7d009c0dca75d99d9c06f5876d64283bbe1e8488fbca5534362f87e7964de3",
+              "value": 100
+            },
+            {
+              "event": "ed053e617d35c9e5ab6bf218b3c82466fb1af3cca8a9b349df62f44406b7c1b9",
+              "hash": "7628bb5e6deaa09c3a274d0278991c7eecb72a548c5c405d0ce8a5a0ebeb923f",
+              "value": 80
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 3,
+            "remote": 0,
+            "stale": 1
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.422460+00:00",
+          "id": "helpful-connected",
+          "node_id": "gamma",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-helpful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "connected",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "e558bcdb9707624e18ca99d05d96042559dfae6df2afd26c379e4c9302af16f8",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.429151+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-helpful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.423890+00:00",
+          "shareable": true,
+          "source": {
+            "event": "helpful",
+            "excerpt": "Synthetic event helpful: value=100",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 100
+        },
+        "target_sha256": "21564202d65c2ac8ab19b0d87a20bda1f47621d4688a9b87d1e25348859298f2",
+        "underprediction": 0
+      }
+    ],
+    "harmful": [
+      {
+        "absolute_error": 0,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 0,
+          "evidence": [
+            {
+              "event": "c6a67d97e6bedcb47849f9fe378192071d06c0eea8c9c34f2e17892b4a637e0c",
+              "hash": "45cf308db615fb4b081e385688f6a51d1b19026c4b64f66c7880c583921d448d",
+              "value": 0
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 3,
+            "remote": 0,
+            "stale": 0
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.399434+00:00",
+          "id": "harmful-isolated",
+          "node_id": "alpha",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-harmful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "isolated",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "ea60881d8880c81e670f988a16e24f87db8f283505d536eaaa637666032bfc42",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.429974+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-harmful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.429492+00:00",
+          "shareable": true,
+          "source": {
+            "event": "harmful",
+            "excerpt": "Synthetic event harmful: value=0",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 0
+        },
+        "target_sha256": "86e628b6964403b4c365f8c411f7ae6849ee729d09d17817cfe9abe5ef7b4def",
+        "underprediction": 0
+      },
+      {
+        "absolute_error": 100,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 100,
+          "evidence": [
+            {
+              "event": "5048cfd4dae1a693aa092e246f9e47385218a55461cd55a690796589cd64e1a1",
+              "hash": "ebea79d2b0193aa99646a426cda0a5d56bd06851d930022af76d8145bf577469",
+              "value": 100
+            },
+            {
+              "event": "c6a67d97e6bedcb47849f9fe378192071d06c0eea8c9c34f2e17892b4a637e0c",
+              "hash": "45cf308db615fb4b081e385688f6a51d1b19026c4b64f66c7880c583921d448d",
+              "value": 0
+            },
+            {
+              "event": "dbbb69590b2d85f956ca90c16fbefb9ae8e4e6d612c5d3e04937216aee171514",
+              "hash": "1ff5d0a4055864776bad77be60d3e38480ea31e6f250cf975e8df39a206c2f70",
+              "value": 100
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 7,
+            "remote": 0,
+            "stale": 0
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.419550+00:00",
+          "id": "harmful-connected",
+          "node_id": "alpha",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-harmful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "connected",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "bf109eb025048ec0175bb829c6328a6b31d77829b89b45f3dcd7bb59d790b145",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.430942+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-harmful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.429492+00:00",
+          "shareable": true,
+          "source": {
+            "event": "harmful",
+            "excerpt": "Synthetic event harmful: value=0",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 0
+        },
+        "target_sha256": "86e628b6964403b4c365f8c411f7ae6849ee729d09d17817cfe9abe5ef7b4def",
+        "underprediction": 0
+      },
+      {
+        "absolute_error": 100,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 100,
+          "evidence": [
+            {
+              "event": "dbbb69590b2d85f956ca90c16fbefb9ae8e4e6d612c5d3e04937216aee171514",
+              "hash": "1ff5d0a4055864776bad77be60d3e38480ea31e6f250cf975e8df39a206c2f70",
+              "value": 100
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 2,
+            "remote": 0,
+            "stale": 0
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.401266+00:00",
+          "id": "harmful-isolated",
+          "node_id": "beta",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-harmful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "isolated",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "d692b006f1488182dad457fd626756f30b0b5530c9e3ebc3336947f6794be5c6",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.431794+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-harmful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.429492+00:00",
+          "shareable": true,
+          "source": {
+            "event": "harmful",
+            "excerpt": "Synthetic event harmful: value=0",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 0
+        },
+        "target_sha256": "86e628b6964403b4c365f8c411f7ae6849ee729d09d17817cfe9abe5ef7b4def",
+        "underprediction": 0
+      },
+      {
+        "absolute_error": 100,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 100,
+          "evidence": [
+            {
+              "event": "5048cfd4dae1a693aa092e246f9e47385218a55461cd55a690796589cd64e1a1",
+              "hash": "ebea79d2b0193aa99646a426cda0a5d56bd06851d930022af76d8145bf577469",
+              "value": 100
+            },
+            {
+              "event": "c6a67d97e6bedcb47849f9fe378192071d06c0eea8c9c34f2e17892b4a637e0c",
+              "hash": "45cf308db615fb4b081e385688f6a51d1b19026c4b64f66c7880c583921d448d",
+              "value": 0
+            },
+            {
+              "event": "dbbb69590b2d85f956ca90c16fbefb9ae8e4e6d612c5d3e04937216aee171514",
+              "hash": "1ff5d0a4055864776bad77be60d3e38480ea31e6f250cf975e8df39a206c2f70",
+              "value": 100
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 6,
+            "remote": 0,
+            "stale": 0
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.421605+00:00",
+          "id": "harmful-connected",
+          "node_id": "beta",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-harmful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "connected",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "e7605bc3301bf80895e31d498b75cc327f9b25712809b495750dd4860bf25e45",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.432562+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-harmful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.429492+00:00",
+          "shareable": true,
+          "source": {
+            "event": "harmful",
+            "excerpt": "Synthetic event harmful: value=0",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 0
+        },
+        "target_sha256": "86e628b6964403b4c365f8c411f7ae6849ee729d09d17817cfe9abe5ef7b4def",
+        "underprediction": 0
+      },
+      {
+        "absolute_error": 100,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 100,
+          "evidence": [
+            {
+              "event": "5048cfd4dae1a693aa092e246f9e47385218a55461cd55a690796589cd64e1a1",
+              "hash": "ebea79d2b0193aa99646a426cda0a5d56bd06851d930022af76d8145bf577469",
+              "value": 100
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 2,
+            "remote": 0,
+            "stale": 0
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.402939+00:00",
+          "id": "harmful-isolated",
+          "node_id": "gamma",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-harmful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "isolated",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "eb566db2d91779fa950bb5d4c3b2fbc537a2c496b18175bbf6c5eee445f3ef80",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.433314+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-harmful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.429492+00:00",
+          "shareable": true,
+          "source": {
+            "event": "harmful",
+            "excerpt": "Synthetic event harmful: value=0",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 0
+        },
+        "target_sha256": "86e628b6964403b4c365f8c411f7ae6849ee729d09d17817cfe9abe5ef7b4def",
+        "underprediction": 0
+      },
+      {
+        "absolute_error": 100,
+        "effect_on_life": "UNMEASURED",
+        "forecast": {
+          "conflicts": [],
+          "estimate": 100,
+          "evidence": [
+            {
+              "event": "5048cfd4dae1a693aa092e246f9e47385218a55461cd55a690796589cd64e1a1",
+              "hash": "ebea79d2b0193aa99646a426cda0a5d56bd06851d930022af76d8145bf577469",
+              "value": 100
+            },
+            {
+              "event": "c6a67d97e6bedcb47849f9fe378192071d06c0eea8c9c34f2e17892b4a637e0c",
+              "hash": "45cf308db615fb4b081e385688f6a51d1b19026c4b64f66c7880c583921d448d",
+              "value": 0
+            },
+            {
+              "event": "dbbb69590b2d85f956ca90c16fbefb9ae8e4e6d612c5d3e04937216aee171514",
+              "hash": "1ff5d0a4055864776bad77be60d3e38480ea31e6f250cf975e8df39a206c2f70",
+              "value": 100
+            }
+          ],
+          "excluded": {
+            "context_mismatch": 6,
+            "remote": 0,
+            "stale": 0
+          },
+          "format": "genius-node-forecast/1",
+          "frozen_at": "2026-10-16T15:41:23.423454+00:00",
+          "id": "harmful-connected",
+          "node_id": "gamma",
+          "physical_actions": false,
+          "prediction_probability": null,
+          "request": {
+            "context": {
+              "data_kind": "synthetic",
+              "regime": "declared-stable-v1",
+              "system": "synthetic-system-harmful",
+              "unit": "resource_unit",
+              "variable": "resource_requirement"
+            },
+            "mode": "connected",
+            "target_after": null,
+            "target_before": "2026-10-16T15:51:23.224158+00:00"
+          },
+          "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+          "sha256": "774356a210eed05096799b15b0905e4be5edea390a53fc12f2ac3ba59e9d910a",
+          "source_attestation": "NONE",
+          "statistical_independence": "NOT_ESTABLISHED",
+          "status": "FROZEN"
+        },
+        "format": "genius-node-score/1",
+        "received_at": "2026-10-16T15:41:23.434066+00:00",
+        "target": {
+          "context": {
+            "data_kind": "synthetic",
+            "regime": "declared-stable-v1",
+            "system": "synthetic-system-harmful",
+            "unit": "resource_unit",
+            "variable": "resource_requirement"
+          },
+          "format": "genius-node-observation/1",
+          "observed_at": "2026-10-16T15:41:23.429492+00:00",
+          "shareable": true,
+          "source": {
+            "event": "harmful",
+            "excerpt": "Synthetic event harmful: value=0",
+            "origin": "fixture:held-out"
+          },
+          "valid_until": "2026-10-16T17:41:23.224158+00:00",
+          "value": 0
+        },
+        "target_sha256": "86e628b6964403b4c365f8c411f7ae6849ee729d09d17817cfe9abe5ef7b4def",
+        "underprediction": 0
+      }
+    ]
+  },
+  "exchanges": [
+    {
+      "receiver": "alpha",
+      "duplicates": 0,
+      "hello": {
+        "capabilities": [
+          "observation_exchange_v1",
+          "MATCHED_CONTEXT_LOWER_MEDIAN_V1"
+        ],
+        "code_sha256": "7a92d866f5161fbf9df9cce042087719c289c00965b72306e854ee5a8cbec74f",
+        "deployment": "LOOPBACK_LAB",
+        "format": "genius-node-hello/1",
+        "max_records": 128,
+        "node_id": "beta",
+        "physical_actions": false,
+        "remaining_records": 125,
+        "source_attestation": "NONE"
+      },
+      "inserted": 3,
+      "peer": "beta",
+      "status": "EXCHANGED"
+    },
+    {
+      "receiver": "alpha",
+      "duplicates": 0,
+      "hello": {
+        "capabilities": [
+          "observation_exchange_v1",
+          "MATCHED_CONTEXT_LOWER_MEDIAN_V1"
+        ],
+        "code_sha256": "7a92d866f5161fbf9df9cce042087719c289c00965b72306e854ee5a8cbec74f",
+        "deployment": "LOOPBACK_LAB",
+        "format": "genius-node-hello/1",
+        "max_records": 128,
+        "node_id": "gamma",
+        "physical_actions": false,
+        "remaining_records": 125,
+        "source_attestation": "NONE"
+      },
+      "inserted": 3,
+      "peer": "gamma",
+      "status": "EXCHANGED"
+    },
+    {
+      "receiver": "beta",
+      "duplicates": 3,
+      "hello": {
+        "capabilities": [
+          "observation_exchange_v1",
+          "MATCHED_CONTEXT_LOWER_MEDIAN_V1"
+        ],
+        "code_sha256": "7a92d866f5161fbf9df9cce042087719c289c00965b72306e854ee5a8cbec74f",
+        "deployment": "LOOPBACK_LAB",
+        "format": "genius-node-hello/1",
+        "max_records": 128,
+        "node_id": "alpha",
+        "physical_actions": false,
+        "remaining_records": 118,
+        "source_attestation": "NONE"
+      },
+      "inserted": 6,
+      "peer": "alpha",
+      "status": "EXCHANGED"
+    },
+    {
+      "receiver": "beta",
+      "duplicates": 3,
+      "hello": {
+        "capabilities": [
+          "observation_exchange_v1",
+          "MATCHED_CONTEXT_LOWER_MEDIAN_V1"
+        ],
+        "code_sha256": "7a92d866f5161fbf9df9cce042087719c289c00965b72306e854ee5a8cbec74f",
+        "deployment": "LOOPBACK_LAB",
+        "format": "genius-node-hello/1",
+        "max_records": 128,
+        "node_id": "gamma",
+        "physical_actions": false,
+        "remaining_records": 125,
+        "source_attestation": "NONE"
+      },
+      "inserted": 0,
+      "peer": "gamma",
+      "status": "EXCHANGED"
+    },
+    {
+      "receiver": "gamma",
+      "duplicates": 3,
+      "hello": {
+        "capabilities": [
+          "observation_exchange_v1",
+          "MATCHED_CONTEXT_LOWER_MEDIAN_V1"
+        ],
+        "code_sha256": "7a92d866f5161fbf9df9cce042087719c289c00965b72306e854ee5a8cbec74f",
+        "deployment": "LOOPBACK_LAB",
+        "format": "genius-node-hello/1",
+        "max_records": 128,
+        "node_id": "alpha",
+        "physical_actions": false,
+        "remaining_records": 118,
+        "source_attestation": "NONE"
+      },
+      "inserted": 6,
+      "peer": "alpha",
+      "status": "EXCHANGED"
+    },
+    {
+      "receiver": "gamma",
+      "duplicates": 9,
+      "hello": {
+        "capabilities": [
+          "observation_exchange_v1",
+          "MATCHED_CONTEXT_LOWER_MEDIAN_V1"
+        ],
+        "code_sha256": "7a92d866f5161fbf9df9cce042087719c289c00965b72306e854ee5a8cbec74f",
+        "deployment": "LOOPBACK_LAB",
+        "format": "genius-node-hello/1",
+        "max_records": 128,
+        "node_id": "beta",
+        "physical_actions": false,
+        "remaining_records": 119,
+        "source_attestation": "NONE"
+      },
+      "inserted": 0,
+      "peer": "beta",
+      "status": "EXCHANGED"
+    }
+  ],
+  "shared_evidence": [
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-helpful",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "help-1",
+        "excerpt": "Synthetic event help-1: value=100",
+        "origin": "fixture:beta"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 100
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-helpful",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "help-0",
+        "excerpt": "Synthetic event help-0: value=100",
+        "origin": "fixture:gamma"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 100
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-harmful",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "harm",
+        "excerpt": "Synthetic event harm: value=100",
+        "origin": "fixture:beta"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 100
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-conflict",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "same-event",
+        "excerpt": "Synthetic event same-event: value=90",
+        "origin": "fixture:shared-source"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 90
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-harmful",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "harm",
+        "excerpt": "Synthetic event harm: value=0",
+        "origin": "fixture:alpha"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 0
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-conflict",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "same-event",
+        "excerpt": "Synthetic event same-event: value=40",
+        "origin": "fixture:shared-source"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 40
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-helpful",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "help-0",
+        "excerpt": "Synthetic event help-0: value=80",
+        "origin": "fixture:beta"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 80
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-helpful",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "stale",
+        "excerpt": "Synthetic event stale: value=999",
+        "origin": "fixture:stale"
+      },
+      "valid_until": "2026-10-16T15:40:23.224158+00:00",
+      "value": 999
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-helpful",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "help-1",
+        "excerpt": "Synthetic event help-1: value=120",
+        "origin": "fixture:gamma"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 120
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-harmful",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "harm",
+        "excerpt": "Synthetic event harm: value=100",
+        "origin": "fixture:gamma"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 100
+    },
+    {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-helpful",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "format": "genius-node-observation/1",
+      "observed_at": "2026-10-16T14:41:23.224158+00:00",
+      "shareable": true,
+      "source": {
+        "event": "help-0",
+        "excerpt": "Synthetic event help-0: value=20",
+        "origin": "fixture:alpha"
+      },
+      "valid_until": "2026-10-16T17:41:23.224158+00:00",
+      "value": 20
+    }
+  ],
+  "conflict": {
+    "conflicts": [
+      "2a05cbc1d11a7b6ae309d16f7c9496b879d86cfc393ffc1240b4405e401d5d1a"
+    ],
+    "estimate": null,
+    "evidence": [],
+    "excluded": {
+      "context_mismatch": 10,
+      "remote": 0,
+      "stale": 0
+    },
+    "format": "genius-node-forecast/1",
+    "frozen_at": "2026-10-16T15:41:23.595120+00:00",
+    "id": "conflict-connected",
+    "node_id": "alpha",
+    "physical_actions": false,
+    "prediction_probability": null,
+    "request": {
+      "context": {
+        "data_kind": "synthetic",
+        "regime": "declared-stable-v1",
+        "system": "synthetic-system-conflict",
+        "unit": "resource_unit",
+        "variable": "resource_requirement"
+      },
+      "mode": "connected",
+      "target_after": null,
+      "target_before": "2026-10-16T15:51:23.224158+00:00"
+    },
+    "rule": "MATCHED_CONTEXT_LOWER_MEDIAN_V1",
+    "sha256": "9d93d215c2ee1ab8530f37fa3f9f535de5780bbfa853ad270ee8ff5e47ed5697",
+    "source_attestation": "NONE",
+    "statistical_independence": "NOT_ESTABLISHED",
+    "status": "CONFLICT_REVIEW"
+  },
+  "offline": {
+    "memory_preserved": true,
+    "peer": "gamma",
+    "status": "UNAVAILABLE_OR_REJECTED"
+  },
+  "duplicate": {
+    "duplicates": 9,
+    "hello": {
+      "capabilities": [
+        "observation_exchange_v1",
+        "MATCHED_CONTEXT_LOWER_MEDIAN_V1"
+      ],
+      "code_sha256": "7a92d866f5161fbf9df9cce042087719c289c00965b72306e854ee5a8cbec74f",
+      "deployment": "LOOPBACK_LAB",
+      "format": "genius-node-hello/1",
+      "max_records": 128,
+      "node_id": "gamma",
+      "physical_actions": false,
+      "remaining_records": 119,
+      "source_attestation": "NONE"
+    },
+    "inserted": 0,
+    "peer": "gamma",
+    "status": "EXCHANGED"
+  },
+  "source_sha256": {
+    "__init__.py": "5adf6af8ba6a5595782610f1a32b9d10b903121117f960d7da869cca44ca9b11",
+    "core.py": "7a92d866f5161fbf9df9cce042087719c289c00965b72306e854ee5a8cbec74f",
+    "experiment.py": "dd5226a184624a0dbabf369e293750dd186c9409c6156c86beac8cb93427a1ff",
+    "transport.py": "a52607928986a58628a7ab6e947a923ebbba31e9e9d8220ab519cc94ddc06ac7"
+  },
+  "scope": "THREE_LOCAL_PROCESSES_SAME_OPERATOR_SYNTHETIC_NON_BLIND",
+  "discovery": "EXPLICITLY_ENROLLED_PEERS",
+  "autonomous_learning": "FIXED_ESTIMATOR_ONLY",
+  "statistical_generalization": "NOT_ESTABLISHED",
+  "life_sustainment_effect": "UNMEASURED",
+  "physical_actions": false,
+  "credentials_in_report": false,
+  "state_cleanup": "TEMPORARY_LAB_ONLY"
+}

@@ -1,5 +1,11 @@
 # Genius adaptativo — ejecución persistente
 
+El [laboratorio de federación](federation/README.md) ejecuta tres nodos locales
+con memoria independiente, intercambio explícito de observaciones y predicciones
+congeladas. Compara un caso donde compartir mejora y otro donde empeora, con
+verificación del kernel. [Ejecución sintética registrada](evidence/2026-10-16-federation/README.md).
+No es una red pública ni requiere cambios en Railway.
+
 El [explorador de condiciones públicas](explorers/README.md) consulta informes
 oficiales y prepara una investigación conectada al reconocedor de sistemas.
 La [primera ejecución real sobre agua en Mendoza](evidence/2026-10-16-public-explorer/README.md)
