@@ -161,6 +161,41 @@ class AgentTwinTests(unittest.TestCase):
         self.assertEqual(self.rpc('twin_design_interventions',dict(payload,base_version=2)).json['result']['structuredContent']['error']['code'],'proposal_limit')
         self.assertEqual(self.client.delete('/api/agents/me',headers=self.headers).status_code,204)
 
+    def test_world_construction_mcp_rest_scopes_quota_and_native_export(self):
+        f=json.loads((Path(__file__).parents[2]/'twin/examples/world/workshop.json').read_text())
+        contract=self.call('twin_world_contract')
+        self.assertEqual(contract['construction_schema']['title'],'genius-world-construction/1')
+        self.assertEqual(self.client.get('/api/twin/world/contract',headers=self.headers).json,contract)
+        cid=self.call('twin_create_case',{'payload':dict(text=f['narrative'],profile=STOCKFLOW)})['case']['id']
+        self.call('twin_observe_system',dict(case_id=cid,payload=dict(base_version=0,observation_revision=0,
+            idempotency_key='world-observation',observation=f['observation'])))
+        args=dict(case_id=cid,payload=dict(base_version=0,construction=f['construction']))
+        another=self.register(list(TWIN_SCOPES))
+        self.assertEqual(self.rpc('twin_prepare_world',args,another).json['result']['structuredContent']['error']['http_status'],404)
+        rotated=self.client.post('/api/agents/token',headers=another,json={'scopes':['twins:read']})
+        self.assertEqual(rotated.status_code,200,rotated.json)
+        read_only={'Authorization':'Bearer '+rotated.json['credential']['token']}
+        self.assertNotIn('twin_prepare_world',[t['name'] for t in self.rpc(headers=read_only).json['result']['tools']])
+        self.assertEqual(self.rpc('twin_prepare_world',args,read_only).json['result']['structuredContent']['error']['http_status'],403)
+        preview=self.call('twin_prepare_world',args)
+        self.assertEqual(preview['status'],'READY_FOR_REVIEW')
+        self.assertEqual(self.client.post('/api/twin/cases/'+cid+'/world/prepare',headers=self.headers,json=args['payload']).json,preview)
+        p_args=dict(case_id=cid,base_version=0,text='Synthetic cross-domain construction',construction=f['construction'])
+        proposal=self.call('twin_propose_world',p_args)['proposal']
+        self.assertEqual(self.call('twin_get_case',dict(case_id=cid))['case']['current_version'],0)
+        self.app.config['MAX_AGENT_REVISIONS']=0
+        self.assertEqual(self.rpc('twin_propose_world',p_args).json['result']['structuredContent']['error']['code'],'proposal_limit')
+        self.app.config['MAX_AGENT_REVISIONS']=10
+        self.call('twin_accept',dict(proposal_id=proposal['id'],payload=dict(base_version=0,confirmed=True,
+            acknowledge_declared=True,idempotency_key='world-confirm')))
+        result=self.call('twin_evaluate',dict(case_id=cid,version=1))
+        self.assertTrue(result['evaluation']['verification']['valid'])
+        self.assertEqual(result['evaluation']['world_construction'],preview['receipt'])
+        exported=self.call('twin_export',dict(case_id=cid))
+        self.assertEqual(exported['dossier']['versions'][0]['metadata']['world_construction']['construction'],f['construction'])
+        self.assertEqual(self.client.delete('/api/agents/me',headers=self.headers).status_code,204)
+        self.assertEqual(self.client.get('/api/twin/world/contract',headers=self.headers).status_code,401)
+
     def test_system_observations_scopes_limits_identity_and_native_receipt(self):
         fixture=self.call('twin_system_example')
         self.assertEqual(self.call('twin_system_schema')['title'],'genius-system-observation/1')

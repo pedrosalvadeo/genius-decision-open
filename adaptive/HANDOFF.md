@@ -1,3 +1,32 @@
+# Genius — construcción de modelos sin reglas de sector
+
+16 de octubre de 2026. Tras la consulta del usuario sobre generalización, se
+incorporó `genius-world-construction/1`: fuentes, afirmaciones, citas exactas,
+premisas, fragmentos del modelo y límites. El ensamblador es común a todos los
+casos admitidos por el perfil stockflow. La interpretación la aporta una IA
+conectada o un humano; no hay llamadas LLM desde el servidor ni percepción
+general automática. [Contrato](../twin/docs/WORLD_CONSTRUCTION.md).
+
+Tres herramientas MCP: `twin_world_contract`, `twin_prepare_world` y
+`twin_propose_world`. Modelo y alcance se proponen juntos contra la última
+observación; se conservan confirmación, versiones, cuotas y cálculo nativo.
+Faltantes y mecanismos no representados impiden la propuesta; la ley `null`
+conserva incertidumbre. Una cita literal no acredita implicación semántica,
+causalidad o verdad. Los recibos explicitan esos límites.
+
+Validación local: 90 pruebas del gemelo y 17 de acceso/integración; cierre
+focalizado de 12 pruebas del constructor, incluyendo dos controles finales de
+afectados externos y actualización de justificación sin cambiar el modelo. Tres casos
+sintéticos con dinámicas distintas (agua, taller, energía) pasan por el mismo
+código y el kernel. No son un ensayo de comprensión automática de prosa ni de
+transferencia empírica. Consultar el PR para head probado, CI y despliegue real;
+el código publicado no demuestra por sí solo que Railway lo esté sirviendo.
+
+Próximo encargo: adquisición de evidencia y revisión semántica por el agente
+intérprete, contraste predictivo de hipótesis con datos posteriores y ampliación
+justificada de mecanismos. Mantener la formulación matemática y las políticas
+rechazadas; no confundir completar un modelo con validar un dominio real.
+
 # Genius — explorador público y primera investigación hídrica
 
 16 de octubre de 2026. El usuario eligió explorar problemas públicos y preparar

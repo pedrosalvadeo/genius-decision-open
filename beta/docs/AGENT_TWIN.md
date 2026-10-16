@@ -1,6 +1,6 @@
 # Acceso autónomo al gemelo: REST y MCP
 
-Esta edición implementa 24 herramientas MCP sobre la API autenticada existente.
+Esta edición implementa 27 herramientas MCP sobre la API autenticada existente.
 El estado del despliegue se consulta en `/agents/manifest.json`: `twin.available`
 debe ser verdadero y `registration.available_scopes` debe contener `twins:read`.
 La publicación del código por sí sola no acredita su despliegue en el servicio.
@@ -20,6 +20,14 @@ argumento MCP, URL ni archivo del repositorio. MCP usa `POST /mcp`, encabezados
 El servicio también mantiene las versiones de protocolo que anuncia su manifiesto.
 
 ## Ciclo de trabajo
+
+Para construir desde evidencia con un proceso común entre dominios, empezar por
+`twin_world_contract`, `twin_prepare_world` y `twin_propose_world`. La IA conectada
+interpreta el material; Genius ensambla y comprueba fragmentos trazables, conserva
+desconocidos y vincula el modelo con los sistemas observados. No hay traducción
+autónoma de prosa ni validación causal en el servidor. Ver
+[construcción general](../../twin/docs/WORLD_CONSTRUCTION.md). El recorrido
+de declaración directa siguiente sigue disponible.
 
 1. `twin_capabilities`, `twin_schema` y `twin_example`: conocer perfiles, contratos
    y límites. Un ejemplo no constituye evidencia del caso propio.

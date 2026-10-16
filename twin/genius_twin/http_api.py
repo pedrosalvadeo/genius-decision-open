@@ -55,6 +55,15 @@ def make_blueprint(service_factory, name="twin_api"):
     def profiles():
         return jsonify(profiles=registry.profiles())
 
+    @bp.get("/world/contract")
+    def world_contract():
+        from .construction import contract
+        return jsonify(contract())
+
+    @bp.post("/cases/<cid>/world/prepare")
+    def prepare_world(cid):
+        return jsonify(service_factory().prepare_world(cid, json_body()))
+
     @bp.get("/systems/schema")
     def system_schema():
         from .systems import schema

@@ -6,6 +6,15 @@ PAYLOAD = dict(type='object', description='Exact REST payload documented in beta
 
 # (method, fixed path, scope, properties, required, description)
 ROUTES = {
+    'twin_world_contract': ('GET', '/world/contract', 'twins:read', {}, (),
+        'Read the domain-neutral construction protocol and schemas. You interpret source material and propose evidence-linked fragments; the server assembles and checks them. No domain template, server LLM call, authenticated truth or causal discovery. Read before constructing a model.'),
+    'twin_prepare_world': ('POST', '/cases/{case_id}/world/prepare', 'twins:write',
+        {'case_id': ID, 'payload': PAYLOAD}, ('case_id', 'payload'),
+        'Preview a construction without saving or accepting it. Payload: base_version, construction following twin_world_contract. Returns draft/model, missing-data questions, formal diagnostics, source-span checks and boundary receipt. Missing quantities are never defaulted; null law/thresholds remain unknown. READY_FOR_REVIEW is not empirical validation.'),
+    'twin_propose_world': ('POST', '/cases/{case_id}/proposals', 'twins:write',
+        {'case_id': ID, 'base_version': VERSION, 'text': dict(type='string', minLength=1, maxLength=10000), 'construction': PAYLOAD},
+        ('case_id', 'base_version', 'text', 'construction'),
+        'Assemble a complete source-linked model and scope against the latest system observation, then save a proposal. Requires the same construction reviewed with twin_prepare_world. Uses existing confirmation, versions, quotas and native evaluation. Never invent facts, probabilities or confirmation. No physical action.'),
     'twin_system_schema': ('GET', '/systems/schema', 'twins:read', {}, (),
         'Read the schema for source-attributed observations of entities and relations. Recognition proposes bounded graph hypotheses, not empirically established systems.'),
     'twin_system_scope_schema': ('GET', '/systems/scope-schema', 'twins:read', {}, (),
@@ -78,6 +87,9 @@ def execute(name, args, authorization, rest):
     elif name == 'twin_propose_system_scope':
         payload = {'base_version': args['base_version'], 'kind': 'system_scope',
                    'text': args['text'], 'structured': {'scope': args['scope']}}
+    elif name == 'twin_propose_world':
+        payload = {'base_version': args['base_version'], 'kind': 'world_model',
+                   'text': args['text'], 'structured': {'construction': args['construction']}}
     elif name == 'twin_delete_case':
         payload = {'base_version': args['base_version']}
     return rest(method, path, payload, authorization)
