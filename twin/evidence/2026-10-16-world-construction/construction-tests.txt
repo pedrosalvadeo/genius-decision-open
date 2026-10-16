@@ -1,0 +1,17 @@
+test_new_evidence_blocks_pending_acceptance_and_wrong_base_preview (test_construction.ConstructionLifecycleTests.test_new_evidence_blocks_pending_acceptance_and_wrong_base_preview) ... ok
+test_new_evidence_justification_versions_without_changing_numeric_model (test_construction.ConstructionLifecycleTests.test_new_evidence_justification_versions_without_changing_numeric_model) ... ok
+test_partial_proposals_are_rejected_and_metadata_does_not_leak_to_edits (test_construction.ConstructionLifecycleTests.test_partial_proposals_are_rejected_and_metadata_does_not_leak_to_edits) ... ok
+test_prepare_is_read_only_proposal_acceptance_native_export_and_erase (test_construction.ConstructionLifecycleTests.test_prepare_is_read_only_proposal_acceptance_native_export_and_erase) ... ok
+test_exact_quotes_claim_cycles_refs_and_conflicting_fragments (test_construction.ConstructionTests.test_exact_quotes_claim_cycles_refs_and_conflicting_fragments) ... ok
+test_external_affected_entity_keeps_review_required (test_construction.ConstructionTests.test_external_affected_entity_keeps_review_required) ... ok
+test_external_instructions_are_inert_data_and_limits_apply (test_construction.ConstructionTests.test_external_instructions_are_inert_data_and_limits_apply) ... ok
+test_mechanical_quote_match_does_not_assert_semantic_truth (test_construction.ConstructionTests.test_mechanical_quote_match_does_not_assert_semantic_truth) ... ok
+test_missing_fields_and_sparse_arrays_never_get_numeric_defaults (test_construction.ConstructionTests.test_missing_fields_and_sparse_arrays_never_get_numeric_defaults) ... ok
+test_same_builder_distinct_dynamics_and_native_engine (test_construction.ConstructionTests.test_same_builder_distinct_dynamics_and_native_engine) ... ok
+test_unit_constraints_and_boundary_omissions_block_model (test_construction.ConstructionTests.test_unit_constraints_and_boundary_omissions_block_model) ... ok
+test_unknown_law_threshold_and_unrepresented_mechanisms_remain_distinct (test_construction.ConstructionTests.test_unknown_law_threshold_and_unrepresented_mechanisms_remain_distinct) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.266s
+
+OK

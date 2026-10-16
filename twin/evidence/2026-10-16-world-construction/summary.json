@@ -1,0 +1,19 @@
+{
+  "format": "genius-world-construction-verification/1",
+  "kind": "SYNTHETIC_LOCAL_TESTS",
+  "base_revision": "22fb0d3c4e21b0511d12baae34571cc6e80db954",
+  "twin_tests_passed": 90,
+  "access_tests_passed": 17,
+  "domain_fixtures": {
+    "energy": "f8dd7767596fa3ab11ac0a74091f0b04e923c406bb13caac2054640573773d02",
+    "water": "bd4e426cb0195ff7e1f86f614cac9bbc52f76d6383ab547f7dbc9714e3788e7d",
+    "workshop": "51c22b5bb529913a0396064ca89b793a90dd90e7fecdfe2dee4dd6c445c6547f"
+  },
+  "builder_sha256": "4220de60ee6f24e2e66860c7c2e47162b3833f9dcf88cba6320da8a832206cd6",
+  "empirical_validation": "NOT_ASSESSED",
+  "interpretation": "Explicit agent/human structured interpretation; not an autonomous natural-language benchmark",
+  "deployment": "SEE_PULL_REQUEST",
+  "focused_final_tests_passed": 12,
+  "focused_final_overlap": 10,
+  "unique_local_tests_passed": 109
+}

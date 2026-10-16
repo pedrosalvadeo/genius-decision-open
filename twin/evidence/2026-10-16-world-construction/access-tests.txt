@@ -1,0 +1,22 @@
+test_delete_requires_explicit_confirmation_and_current_version (test_agent_twin.AgentTwinTests.test_delete_requires_explicit_confirmation_and_current_version) ... ok
+test_disabled_feature_and_scoped_read_only (test_agent_twin.AgentTwinTests.test_disabled_feature_and_scoped_read_only) ... ok
+test_intervention_design_mcp_rest_native_result_and_scopes (test_agent_twin.AgentTwinTests.test_intervention_design_mcp_rest_native_result_and_scopes) ... ok
+test_real_engine_lifecycle_and_cross_tenant_isolation (test_agent_twin.AgentTwinTests.test_real_engine_lifecycle_and_cross_tenant_isolation) ... ok
+test_scope_opt_in_export_and_revocation (test_agent_twin.AgentTwinTests.test_scope_opt_in_export_and_revocation) ... ok
+test_shared_compute_quota_and_agent_capacity (test_agent_twin.AgentTwinTests.test_shared_compute_quota_and_agent_capacity) ... ok
+test_system_observations_scopes_limits_identity_and_native_receipt (test_agent_twin.AgentTwinTests.test_system_observations_scopes_limits_identity_and_native_receipt) ... ok
+test_world_construction_mcp_rest_scopes_quota_and_native_export (test_agent_twin.AgentTwinTests.test_world_construction_mcp_rest_scopes_quota_and_native_export) ... ok
+test_account_busy_delete_then_erasure_and_disabled_feature (test_twin_integration.TwinMountTests.test_account_busy_delete_then_erasure_and_disabled_feature) ... ok
+test_advertised_capacity_limits_leave_history_unchanged (test_twin_integration.TwinMountTests.test_advertised_capacity_limits_leave_history_unchanged) ... ok
+test_auth_csrf_suspend_and_bounded_output (test_twin_integration.TwinMountTests.test_auth_csrf_suspend_and_bounded_output) ... ok
+test_backup_restore_keeps_current_privacy_and_interrupts_jobs (test_twin_integration.TwinMountTests.test_backup_restore_keeps_current_privacy_and_interrupts_jobs) ... ok
+test_case_delete_tombstone_only_after_validation (test_twin_integration.TwinMountTests.test_case_delete_tombstone_only_after_validation) ... ok
+test_r2_volume_loss_restores_twins_and_honors_remote_deletion_intents (test_twin_integration.TwinMountTests.test_r2_volume_loss_restores_twins_and_honors_remote_deletion_intents) ... ok
+test_real_process_and_human_agent_private_parity (test_twin_integration.TwinMountTests.test_real_process_and_human_agent_private_parity) ... ok
+test_remote_privacy_failure_blocks_twin_erasure_and_retention (test_twin_integration.TwinMountTests.test_remote_privacy_failure_blocks_twin_erasure_and_retention) ... ok
+test_retention_and_orphan_sweep (test_twin_integration.TwinMountTests.test_retention_and_orphan_sweep) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 5.494s
+
+OK

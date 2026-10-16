@@ -1,0 +1,415 @@
+{
+  "narrative": "Caso sintético: dos depósitos con 6 y 2 litros, capacidad 8 cada uno. Durante dos días puede mantenerse la situación o transferirse 2 litros diarios. Al final de cada día se retira 1 litro del segundo depósito. Se compara su disponibilidad sin asignar probabilidades.",
+  "observation": {
+    "format": "genius-system-observation/1",
+    "label": "Distribución de agua: caso sintético",
+    "window": {
+      "start": "2026-10-16T12:00:00Z",
+      "end": "2026-10-16T12:00:00Z"
+    },
+    "entities": [
+      {
+        "id": "source",
+        "label": "source",
+        "kind": "resource",
+        "evidence_ids": [
+          "scenario"
+        ]
+      },
+      {
+        "id": "target",
+        "label": "target",
+        "kind": "resource",
+        "evidence_ids": [
+          "scenario"
+        ]
+      },
+      {
+        "id": "beneficiary",
+        "label": "Destinatario sintético",
+        "kind": "organization",
+        "evidence_ids": [
+          "scenario"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "scenario",
+        "observed_at": "2026-10-16T12:00:00Z",
+        "source": "Escenario de prueba water",
+        "basis": "synthetic",
+        "statement": "Caso sintético: dos depósitos con 6 y 2 litros, capacidad 8 cada uno. Durante dos días puede mantenerse la situación o transferirse 2 litros diarios. Al final de cada día se retira 1 litro del segundo depósito. Se compara su disponibilidad sin asignar probabilidades.",
+        "uncertainty": "Todo el escenario es hipotético; no se valida causalidad ni bienestar real."
+      }
+    ],
+    "relations": [
+      {
+        "id": "rel0",
+        "source": "source",
+        "target": "beneficiary",
+        "kind": "affects",
+        "evidence_ids": [
+          "scenario"
+        ]
+      },
+      {
+        "id": "rel1",
+        "source": "target",
+        "target": "beneficiary",
+        "kind": "affects",
+        "evidence_ids": [
+          "scenario"
+        ]
+      }
+    ],
+    "unknowns": [
+      "La transferencia del modelo a un caso real no está validada."
+    ]
+  },
+  "construction": {
+    "format": "genius-world-construction/1",
+    "sources": [
+      {
+        "id": "brief",
+        "origin": "Caso sintético water",
+        "observed_at": "2026-10-16T12:00:00Z",
+        "content": "Caso sintético: dos depósitos con 6 y 2 litros, capacidad 8 cada uno. Durante dos días puede mantenerse la situación o transferirse 2 litros diarios. Al final de cada día se retira 1 litro del segundo depósito. Se compara su disponibilidad sin asignar probabilidades."
+      }
+    ],
+    "claims": [
+      {
+        "id": "scenario",
+        "basis": "synthetic",
+        "statement": "Interpretación de los datos y efectos expresados en el escenario sintético.",
+        "uncertainty": "No son mediciones ni condiciones de una instalación real.",
+        "spans": [
+          {
+            "source_id": "brief",
+            "start": 0,
+            "end": 267,
+            "quote": "Caso sintético: dos depósitos con 6 y 2 litros, capacidad 8 cada uno. Durante dos días puede mantenerse la situación o transferirse 2 litros diarios. Al final de cada día se retira 1 litro del segundo depósito. Se compara su disponibilidad sin asignar probabilidades."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "modelling",
+        "basis": "definition",
+        "statement": "Identificadores, orden de eventos, criterio operacional y perfil finito elegidos explícitamente para esta representación.",
+        "uncertainty": "Estas decisiones de modelización requieren revisión y no se derivan todas del relato.",
+        "spans": [],
+        "premises": [
+          "scenario"
+        ]
+      }
+    ],
+    "fragments": [
+      {
+        "path": "/profile",
+        "value": "STOCK_FLOW_FINITE_V1",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/name",
+        "value": "Distribución de agua: caso sintético",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/horizon",
+        "value": 2,
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/step_unit",
+        "value": "day",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/0",
+        "value": {
+          "id": "source",
+          "label": "source",
+          "unit": "liter",
+          "kind": "persistent",
+          "initial": "6/1",
+          "capacity": "8/1"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/1",
+        "value": {
+          "id": "target",
+          "label": "target",
+          "unit": "liter",
+          "kind": "persistent",
+          "initial": "2/1",
+          "capacity": "8/1"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/carriers/0",
+        "value": {
+          "id": "beneficiary",
+          "label": "Destinatario sintético",
+          "kind": "organization"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/capabilities/0",
+        "value": {
+          "id": "access",
+          "label": "Acceso declarado"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/initial_capabilities/0",
+        "value": "access",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/actions/0",
+        "value": {
+          "id": "keep",
+          "label": "keep",
+          "requires": [
+            "access"
+          ],
+          "withdrawals": {},
+          "deposits": {},
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/actions/1",
+        "value": {
+          "id": "transfer",
+          "label": "transfer",
+          "requires": [
+            "access"
+          ],
+          "withdrawals": {
+            "source": "2/1"
+          },
+          "deposits": {
+            "target": "2/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/policies/0",
+        "value": {
+          "id": "keep",
+          "label": "keep",
+          "default_action": "keep",
+          "rules": []
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/policies/1",
+        "value": {
+          "id": "transfer",
+          "label": "transfer",
+          "default_action": "transfer",
+          "rules": []
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/scenarios/0",
+        "value": {
+          "id": "demand",
+          "label": "Demanda declarada",
+          "events": [
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "target": "1/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "target": "1/1"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/law",
+        "value": null,
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/welfare/0",
+        "value": {
+          "carrier": "beneficiary",
+          "dimension": "availability",
+          "label": "Disponibilidad operativa declarada, no bienestar integral",
+          "stock": "target",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/task",
+        "value": {
+          "kind": "operational",
+          "label": "Ejecutar las acciones sin insuficiencia del recurso",
+          "living_carriers": [],
+          "conditions": [
+            {
+              "stock": "source",
+              "op": "ge",
+              "threshold": "0/1"
+            }
+          ],
+          "require_action_success": true
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/require_all_scenarios",
+        "value": false,
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/selection",
+        "value": "none",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/assumptions/0",
+        "value": {
+          "id": "Synthetic",
+          "kind": "SYNTHETIC",
+          "statement": "Caso sintético para verificar construcción; no describe condiciones reales ni prueba efectos sobre la vida.",
+          "provenance": "Fixture independiente de integración"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      }
+    ],
+    "scope": {
+      "format": "genius-system-scope/1",
+      "observation_revision": 1,
+      "label": "Alcance completo del caso sintético",
+      "members": [
+        "source",
+        "target",
+        "beneficiary"
+      ],
+      "intervention_entities": [],
+      "evaluation_entities": [
+        "source",
+        "target",
+        "beneficiary"
+      ],
+      "bindings": [
+        {
+          "collection": "stocks",
+          "model_id": "source",
+          "entity_id": "source"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "target",
+          "entity_id": "target"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "beneficiary",
+          "entity_id": "beneficiary"
+        }
+      ],
+      "rationale": "Las entidades son identidades únicas del escenario; no hay autorización de efectos externos."
+    },
+    "unresolved": []
+  },
+  "expected_trace": {
+    "policy": "transfer",
+    "scenario": "demand",
+    "stock": "target",
+    "values": [
+      "2/1",
+      "3/1",
+      "4/1"
+    ]
+  },
+  "provenance": "Manually interpreted synthetic brief; shared assembler, no domain-specific code or automatic-prose-understanding claim"
+}

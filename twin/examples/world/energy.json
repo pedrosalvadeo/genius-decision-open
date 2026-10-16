@@ -1,0 +1,444 @@
+{
+  "narrative": "Caso sintético: batería con 4 kWh, capacidad 6; energía entregada inicial 0, capacidad 8. Se comparan entregas de 2 o 1 kWh diarios durante dos días. Dos escenarios: entrada de 1 kWh por día o ninguna. Sin ley probabilística. Se evalúa energía entregada.",
+  "observation": {
+    "format": "genius-system-observation/1",
+    "label": "Reserva de energía: caso sintético",
+    "window": {
+      "start": "2026-10-16T12:00:00Z",
+      "end": "2026-10-16T12:00:00Z"
+    },
+    "entities": [
+      {
+        "id": "battery",
+        "label": "battery",
+        "kind": "resource",
+        "evidence_ids": [
+          "scenario"
+        ]
+      },
+      {
+        "id": "delivered",
+        "label": "delivered",
+        "kind": "resource",
+        "evidence_ids": [
+          "scenario"
+        ]
+      },
+      {
+        "id": "beneficiary",
+        "label": "Destinatario sintético",
+        "kind": "organization",
+        "evidence_ids": [
+          "scenario"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "scenario",
+        "observed_at": "2026-10-16T12:00:00Z",
+        "source": "Escenario de prueba energy",
+        "basis": "synthetic",
+        "statement": "Caso sintético: batería con 4 kWh, capacidad 6; energía entregada inicial 0, capacidad 8. Se comparan entregas de 2 o 1 kWh diarios durante dos días. Dos escenarios: entrada de 1 kWh por día o ninguna. Sin ley probabilística. Se evalúa energía entregada.",
+        "uncertainty": "Todo el escenario es hipotético; no se valida causalidad ni bienestar real."
+      }
+    ],
+    "relations": [
+      {
+        "id": "rel0",
+        "source": "battery",
+        "target": "beneficiary",
+        "kind": "affects",
+        "evidence_ids": [
+          "scenario"
+        ]
+      },
+      {
+        "id": "rel1",
+        "source": "delivered",
+        "target": "beneficiary",
+        "kind": "affects",
+        "evidence_ids": [
+          "scenario"
+        ]
+      }
+    ],
+    "unknowns": [
+      "La transferencia del modelo a un caso real no está validada."
+    ]
+  },
+  "construction": {
+    "format": "genius-world-construction/1",
+    "sources": [
+      {
+        "id": "brief",
+        "origin": "Caso sintético energy",
+        "observed_at": "2026-10-16T12:00:00Z",
+        "content": "Caso sintético: batería con 4 kWh, capacidad 6; energía entregada inicial 0, capacidad 8. Se comparan entregas de 2 o 1 kWh diarios durante dos días. Dos escenarios: entrada de 1 kWh por día o ninguna. Sin ley probabilística. Se evalúa energía entregada."
+      }
+    ],
+    "claims": [
+      {
+        "id": "scenario",
+        "basis": "synthetic",
+        "statement": "Interpretación de los datos y efectos expresados en el escenario sintético.",
+        "uncertainty": "No son mediciones ni condiciones de una instalación real.",
+        "spans": [
+          {
+            "source_id": "brief",
+            "start": 0,
+            "end": 254,
+            "quote": "Caso sintético: batería con 4 kWh, capacidad 6; energía entregada inicial 0, capacidad 8. Se comparan entregas de 2 o 1 kWh diarios durante dos días. Dos escenarios: entrada de 1 kWh por día o ninguna. Sin ley probabilística. Se evalúa energía entregada."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "modelling",
+        "basis": "definition",
+        "statement": "Identificadores, orden de eventos, criterio operacional y perfil finito elegidos explícitamente para esta representación.",
+        "uncertainty": "Estas decisiones de modelización requieren revisión y no se derivan todas del relato.",
+        "spans": [],
+        "premises": [
+          "scenario"
+        ]
+      }
+    ],
+    "fragments": [
+      {
+        "path": "/profile",
+        "value": "STOCK_FLOW_FINITE_V1",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/name",
+        "value": "Reserva de energía: caso sintético",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/horizon",
+        "value": 2,
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/step_unit",
+        "value": "day",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/0",
+        "value": {
+          "id": "battery",
+          "label": "battery",
+          "unit": "kWh",
+          "kind": "persistent",
+          "initial": "4/1",
+          "capacity": "6/1"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/1",
+        "value": {
+          "id": "delivered",
+          "label": "delivered",
+          "unit": "kWh",
+          "kind": "persistent",
+          "initial": "0/1",
+          "capacity": "8/1"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/carriers/0",
+        "value": {
+          "id": "beneficiary",
+          "label": "Destinatario sintético",
+          "kind": "organization"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/capabilities/0",
+        "value": {
+          "id": "access",
+          "label": "Acceso declarado"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/initial_capabilities/0",
+        "value": "access",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/actions/0",
+        "value": {
+          "id": "full",
+          "label": "full",
+          "requires": [
+            "access"
+          ],
+          "withdrawals": {
+            "battery": "2/1"
+          },
+          "deposits": {
+            "delivered": "2/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/actions/1",
+        "value": {
+          "id": "reserve",
+          "label": "reserve",
+          "requires": [
+            "access"
+          ],
+          "withdrawals": {
+            "battery": "1/1"
+          },
+          "deposits": {
+            "delivered": "1/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/policies/0",
+        "value": {
+          "id": "full",
+          "label": "full",
+          "default_action": "full",
+          "rules": []
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/policies/1",
+        "value": {
+          "id": "reserve",
+          "label": "reserve",
+          "default_action": "reserve",
+          "rules": []
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/scenarios/0",
+        "value": {
+          "id": "sun",
+          "label": "Entrada declarada",
+          "events": [
+            {
+              "inflows": {
+                "battery": "1/1"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "battery": "1/1"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/scenarios/1",
+        "value": {
+          "id": "cloud",
+          "label": "Sin entrada declarada",
+          "events": [
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/law",
+        "value": null,
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/welfare/0",
+        "value": {
+          "carrier": "beneficiary",
+          "dimension": "availability",
+          "label": "Disponibilidad operativa declarada, no bienestar integral",
+          "stock": "delivered",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/task",
+        "value": {
+          "kind": "operational",
+          "label": "Ejecutar las acciones sin insuficiencia del recurso",
+          "living_carriers": [],
+          "conditions": [
+            {
+              "stock": "battery",
+              "op": "ge",
+              "threshold": "0/1"
+            }
+          ],
+          "require_action_success": true
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/require_all_scenarios",
+        "value": false,
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/selection",
+        "value": "none",
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/assumptions/0",
+        "value": {
+          "id": "Synthetic",
+          "kind": "SYNTHETIC",
+          "statement": "Caso sintético para verificar construcción; no describe condiciones reales ni prueba efectos sobre la vida.",
+          "provenance": "Fixture independiente de integración"
+        },
+        "claim_ids": [
+          "scenario",
+          "modelling"
+        ]
+      }
+    ],
+    "scope": {
+      "format": "genius-system-scope/1",
+      "observation_revision": 1,
+      "label": "Alcance completo del caso sintético",
+      "members": [
+        "battery",
+        "delivered",
+        "beneficiary"
+      ],
+      "intervention_entities": [],
+      "evaluation_entities": [
+        "battery",
+        "delivered",
+        "beneficiary"
+      ],
+      "bindings": [
+        {
+          "collection": "stocks",
+          "model_id": "battery",
+          "entity_id": "battery"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "delivered",
+          "entity_id": "delivered"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "beneficiary",
+          "entity_id": "beneficiary"
+        }
+      ],
+      "rationale": "Las entidades son identidades únicas del escenario; no hay autorización de efectos externos."
+    },
+    "unresolved": []
+  },
+  "expected_trace": {
+    "policy": "full",
+    "scenario": "cloud",
+    "stock": "battery",
+    "values": [
+      "4/1",
+      "2/1",
+      "0/1"
+    ]
+  },
+  "provenance": "Manually interpreted synthetic brief; shared assembler, no domain-specific code or automatic-prose-understanding claim"
+}

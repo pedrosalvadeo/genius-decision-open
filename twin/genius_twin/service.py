@@ -94,7 +94,11 @@ class TwinService:
                 "transport": "HTTP JSON; access boundary belongs to the embedding", "mcp": self.execution_context.get('mcp', False), "external_acquisition": False,
                 "physical_actions": False, "rc01_receipt": False, "default_case_versions": "start at 1 after material confirmation",
                 "execution_limits": deepcopy(self.execution_context),
-                "edit_operations": ["declared_model", "intervention_design", "system_scope", "draft", "apply_relay_policy", "preference", "law_correction", "restore"],
+                "edit_operations": ["declared_model", "world_model", "intervention_design", "system_scope", "draft", "apply_relay_policy", "preference", "law_correction", "restore"],
+                "world_construction": {"format": "genius-world-construction/1", "contract_path": "/world/contract",
+                    "prepare_path": "/cases/{case_id}/world/prepare", "profile": registry.STOCKFLOW,
+                    "interpretation_owner": "CONNECTED_AGENT_OR_HUMAN", "server_llm_calls": False,
+                    "empirical_validation": "NOT_ASSESSED", "acceptance_required": True},
                 "systems": {"observation_format": "genius-system-observation/1", "scope_format": "genius-system-scope/1",
                     "schema_path": "/systems/schema", "scope_schema_path": "/systems/scope-schema", "example_path": "/systems/example",
                     "recognition": "Declared graph components; hypotheses only, no causal discovery",
@@ -232,6 +236,24 @@ class TwinService:
             conn.execute("INSERT INTO idempotency VALUES(?,?,?,?)", (cid, key, fingerprint, dumps(response)))
         return response
 
+    def prepare_world(self, cid, payload):
+        fields(payload, {"base_version", "construction"}, {"base_version", "construction"})
+        base = integer(payload["base_version"], "base_version")
+        with self.store.transaction() as conn:
+            case = self._case(cid, conn)
+            require(case["profile"] == registry.STOCKFLOW, "change_outside_profile", "La construcción requiere un expediente general.", 422)
+            require(case["current_version"] == base, "version_conflict", "La versión del expediente cambió.", 409)
+            records = self._system_records(cid, conn)
+            return self._prepare_world(payload["construction"], records[-1] if records else None)
+
+    @staticmethod
+    def _prepare_world(construction, observation):
+        from .construction import prepare
+        try:
+            return prepare(construction, observation)
+        except (ValueError, KeyError, TypeError, RecursionError) as exc:
+            raise ServiceError("invalid_world_construction", "Revisa fuentes, citas, afirmaciones y fragmentos del modelo.", 422, str(exc)) from exc
+
     def save_draft(self, cid, payload):
         fields(payload, {"base_version", "draft_revision", "text", "model"}, {"base_version", "draft_revision", "text", "model"})
         base = integer(payload["base_version"], "base_version")
@@ -268,7 +290,7 @@ class TwinService:
         base = integer(payload["base_version"], "base_version")
         message = text(payload["text"])
         kind = payload["kind"]
-        require(type(kind) is str and kind in {"declared_model", "intervention_design", "system_scope", "hypothetical_intervention", "preference", "fact_correction", "restore"},
+        require(type(kind) is str and kind in {"declared_model", "world_model", "intervention_design", "system_scope", "hypothetical_intervention", "preference", "fact_correction", "restore"},
                 "unsupported_change_kind", "Tipo de cambio no admitido; usa observaciones para incorporar evidencia.")
         structured = payload.get("structured", {})
         require(type(structured) is dict, "invalid_object", "structured debe ser objeto.")
@@ -276,7 +298,7 @@ class TwinService:
             case = self._case(cid, conn)
             require(case["current_version"] == base, "version_conflict", "El expediente cambió. Revisa la propuesta sobre su versión actual.", 409,
                     {"current_version": case["current_version"], "base_version": base})
-            require(base > 0 or kind == "declared_model", "model_required", "Primero declara un modelo completo.", 422)
+            require(base > 0 or kind in ("declared_model", "world_model"), "model_required", "Primero declara un modelo completo.", 422)
             prior = self._version(cid, base, conn) if base else None
             model = deepcopy(prior["model"]) if prior else None
             metadata = deepcopy(prior["metadata"]) if prior else {"review_required": False}
@@ -284,6 +306,7 @@ class TwinService:
             # in immutable history, never attach them to an unrelated edit.
             if kind != "system_scope":
                 metadata.pop("intervention_design", None)
+                metadata.pop("world_construction", None)
             metadata.update({"change_kind": kind, "source_text": message, "material_changes": []})
             if kind == "declared_model":
                 fields(structured, {"model"}, {"model"})
@@ -298,6 +321,24 @@ class TwinService:
                                  "material_changes": ["Modelo completo declarado; revisar parámetros, reglas, unidades y premisas.",
                                                       "Campos modificados: " + ", ".join(changed),
                                                       "Confirmar el modelo no autentica sus fuentes ni valida empíricamente sus predicciones."]})
+            elif kind == "world_model":
+                fields(structured, {"construction"}, {"construction"})
+                require(case["profile"] == registry.STOCKFLOW, "change_outside_profile", "La construcción requiere un expediente general.", 422)
+                records = self._system_records(cid, conn)
+                prepared = self._prepare_world(structured["construction"], records[-1] if records else None)
+                require(prepared["status"] == "READY_FOR_REVIEW", "world_construction_incomplete",
+                        "Resuelve los faltantes antes de proponer este modelo.", 422, prepared["questions"])
+                model = deepcopy(prepared["model"])
+                receipt = prepared["receipt"]
+                metadata.update({"world_construction": receipt, "system_scope": prepared["scope_receipt"],
+                    "review_required": prepared["scope_receipt"]["review_required"], "synthetic": False,
+                    "evidence_origin": "SOURCE_LINKED_DECLARED_MODEL", "empirical_admission": "NOT_ASSESSED",
+                    "interpretation_method": "domain_neutral_assembly_of_agent_or_human_interpretation",
+                    "material_changes": ["Modelo ensamblado a partir de fragmentos con afirmaciones, fuentes y supuestos trazables.",
+                        "Se comprueban citas literales, estructura, unidades y restricciones del perfil; no verdad, causalidad ni implicación semántica.",
+                        "Los límites y correspondencias se conservan con la última observación de sistemas.",
+                        "Faltantes probabilísticos y umbrales desconocidos se conservan; no se completan con valores por defecto.",
+                        "Revisar las hipótesis antes de confirmar. La propuesta no concede autoridad para actuar."]})
             elif kind == "system_scope":
                 fields(structured, {"scope"}, {"scope"})
                 require(model["profile"] == registry.STOCKFLOW, "change_outside_profile", "Los límites requieren un modelo general.", 422)
@@ -372,6 +413,8 @@ class TwinService:
                 metadata["restored_from"] = restored["version"]
                 if "intervention_design" in restored["metadata"]:
                     metadata["intervention_design"] = deepcopy(restored["metadata"]["intervention_design"])
+                if "world_construction" in restored["metadata"]:
+                    metadata["world_construction"] = deepcopy(restored["metadata"]["world_construction"])
                 if "system_scope" in restored["metadata"]:
                     metadata["system_scope"] = deepcopy(restored["metadata"]["system_scope"])
                     metadata["review_required"] = restored["metadata"].get("review_required", False)
@@ -379,7 +422,8 @@ class TwinService:
                     metadata.pop("system_scope", None)
                 metadata["material_changes"] = ["Restaurar contenido del modelo en una nueva versión, conservando todas las observaciones y la historia."]
             self._validate_model(model)
-            require(prior is None or model != prior["model"] or (kind == "system_scope" and metadata.get("system_scope") != prior["metadata"].get("system_scope")),
+            require(prior is None or model != prior["model"] or (kind == "system_scope" and metadata.get("system_scope") != prior["metadata"].get("system_scope"))
+                    or (kind == "world_model" and metadata.get("world_construction") != prior["metadata"].get("world_construction")),
                     "no_material_change", "La propuesta no cambia el modelo ni sus límites.")
             proposal = self._insert_proposal(conn, cid, base, kind, message, model, metadata)
         return {"proposal": proposal}
@@ -405,7 +449,7 @@ class TwinService:
             require(row["status"] == "proposed", "proposal_already_accepted", "La propuesta ya se aceptó.", 409)
             require(row["model_json"] is not None, "model_required", "No existe un modelo admitido para aceptar.", 422)
             model, metadata = json.loads(row["model_json"]), json.loads(row["metadata_json"])
-            if row["kind"] == "system_scope":
+            if row["kind"] in ("system_scope", "world_model"):
                 records = self._system_records(cid, conn)
                 require(records and metadata["system_scope"]["observation_revision"] == records[-1]["revision"],
                         "observation_conflict", "Hay nueva evidencia; revisa los límites antes de confirmar.", 409)
@@ -467,6 +511,8 @@ class TwinService:
                 envelope["intervention_design"] = deepcopy(version["metadata"]["intervention_design"])
             if "system_scope" in version["metadata"]:
                 envelope["system_scope"] = deepcopy(version["metadata"]["system_scope"])
+            if "world_construction" in version["metadata"]:
+                envelope["world_construction"] = deepcopy(version["metadata"]["world_construction"])
             with self.store.transaction() as conn:
                 conn.execute("UPDATE jobs SET status='completed',finished_at=?,result_json=? WHERE id=? AND status='running'", (now(), dumps(envelope), jid))
         except Exception as exc:
