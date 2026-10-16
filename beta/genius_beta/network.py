@@ -15,7 +15,7 @@ def required_scope(method,path):
     if path in ('/api/network/me','/api/network/host') and method in ('GET','HEAD'):return 'network:read'
     if path=='/api/network/host' and method=='DELETE':return 'network:write'
     if path in ('/api/network/join','/api/network/heartbeat','/api/network/views','/api/network/hosts',
-                '/api/network/host/request','/api/network/host/cancel','/api/network/host/result') and method=='POST':return 'network:write'
+                '/api/network/host/persist','/api/network/host/request','/api/network/host/cancel','/api/network/host/result') and method=='POST':return 'network:write'
     return None
 
 
@@ -73,6 +73,7 @@ def install(app,db,body,error,quota,capacity,backup_ready):
             sharing='EXPLICIT_PUBLIC_NON_PERSONAL_WITH_OPERATOR_RIGHTS',
             hosting=dict(directory='/network/hosts',worker='genius-signed-world-reader/1',
                          automatic_only_with_local_authorization=True,max_births_per_grant=4,
+                         lifecycle_modes=['TRIAL','PERSISTENT_REVOCABLE'],
                          remote_code_execution=False,recursive_reproduction=False),
             genetics=dict(format='genius-genome/1',execution='LOCAL_NODE',
                 documentation='https://github.com/pedrosalvadeo/genius-decision-open/blob/main/adaptive/federation/GENETICS.md',

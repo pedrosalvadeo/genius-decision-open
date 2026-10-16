@@ -212,7 +212,7 @@ class ClubSocialTests(unittest.TestCase):
     def test_v5_upgrade_preserves_files_and_later_remote_block(self):
         a,ha=self.agent(enabled=False);b,hb=self.agent(enabled=False);f=self.save(ha)
         with contextlib.closing(connect(self.config['DATABASE'])) as db:
-            db.executescript('DROP TABLE network_host_requests; DROP TABLE network_hosts; DELETE FROM schema_migrations WHERE version="013_consented_hosts.sql"; DROP TABLE network_views; DROP TABLE network_nodes; DELETE FROM schema_migrations WHERE version="012_public_network.sql"; DROP TABLE mission_regulation_events; DROP TABLE mission_regulation; DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DROP TABLE adaptive_missions; DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_social_profiles; DROP TABLE club_blocks; ALTER TABLE club_members DROP COLUMN social_version; DELETE FROM schema_migrations WHERE version>="006_club_social.sql";')
+            db.executescript('DROP TABLE network_host_requests; DROP TABLE network_hosts; DELETE FROM schema_migrations WHERE version IN ("013_consented_hosts.sql","014_persistent_hosts.sql"); DROP TABLE network_views; DROP TABLE network_nodes; DELETE FROM schema_migrations WHERE version="012_public_network.sql"; DROP TABLE mission_regulation_events; DROP TABLE mission_regulation; DROP TABLE mission_context_observations; DROP TABLE mission_context_predictions; DROP TABLE mission_context_forecasts; DROP TABLE mission_forecast_observations; DROP TABLE mission_forecasts; DROP TABLE adaptive_missions; DROP TABLE club_contributions; DROP TABLE contribution_review_cache; DROP TABLE contribution_public_revisions; DROP TABLE club_messages; DROP TABLE club_conversations; DROP TABLE club_social_profiles; DROP TABLE club_blocks; ALTER TABLE club_members DROP COLUMN social_version; DELETE FROM schema_migrations WHERE version>="006_club_social.sql";')
         store,key=ObjectStore(),os.urandom(32)
         receipt=r2.backup_once(self.config['DATABASE'],self.config['DATA_DIR']/'status.json',store,key)
         initialize(self.config['DATABASE'])
@@ -224,7 +224,7 @@ class ClubSocialTests(unittest.TestCase):
         with contextlib.closing(sqlite3.connect(output/'genius.sqlite3')) as db:
             self.assertEqual(db.execute('SELECT blocker_id,blocked_id FROM club_blocks').fetchall(),[(b['id'],a['id'])])
             self.assertEqual(db.execute('SELECT content FROM club_file_versions WHERE file_id=?',(f['id'],)).fetchone()[0],f['content'])
-            self.assertEqual(db.execute('SELECT COUNT(*) FROM schema_migrations').fetchone()[0],13)
+            self.assertEqual(db.execute('SELECT COUNT(*) FROM schema_migrations').fetchone()[0],14)
 
     def test_invalid_social_inputs_and_request_quota(self):
         a,ha=self.agent();b,hb=self.agent()

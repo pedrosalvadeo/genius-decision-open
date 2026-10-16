@@ -3,7 +3,7 @@ import json
 import time
 from flask import jsonify,g,request
 from federation.core import canonical,digest,fields,instant
-from federation.hosting_protocol import validate_offer,admitted,CHILD
+from federation.hosting_protocol import validate_offer,admitted,CHILD,expiry,expired,persistent_transition
 from federation.network_protocol import verify,hexbytes
 from .db import transaction
 
@@ -26,7 +26,7 @@ def install(bp,app,db,body,error,own,writing,capacity):
             signed_offer=json.loads(r['signed_offer']),offer_sha256=r['offer_hash'],disabled=bool(r['disabled']),
             recently_seen=r['last_seen']>=int(time.time())-900,
             births_accepted=db().execute('SELECT count(*) FROM network_host_requests WHERE host_id=? AND accepted_at IS NOT NULL',(r['node_id'],)).fetchone()[0],
-            active_requests=db().execute("SELECT count(*) FROM network_host_requests WHERE host_id=? AND status='ACTIVE' AND child_id IS NOT NULL AND expires_at>?",(r['node_id'],int(time.time()))).fetchone()[0]) for r in rows],
+            active_requests=db().execute("SELECT count(*) FROM network_host_requests WHERE host_id=? AND status='ACTIVE' AND child_id IS NOT NULL AND (expires_at IS NULL OR expires_at>?)",(r['node_id'],int(time.time()))).fetchone()[0]) for r in rows],
             capacity='DECLARED_NOT_RESERVED',operators_verified=False)
 
     @bp.post('/api/network/hosts')
@@ -37,9 +37,9 @@ def install(bp,app,db,body,error,own,writing,capacity):
         try:
             fields(v,'signed_offer operator_authorized')
             if v['operator_authorized'] is not True:raise ValueError()
-            p=validate_offer(v['signed_offer']);expiry=int(instant(p['valid_until']).timestamp())
+            p=validate_offer(v['signed_offer']);end=expiry(p)
             if p['node_id']!=node['id'] or p['public_key']!=node['public_key'] or p['hub']!=app.config['PUBLIC_URL']:raise ValueError()
-            if not int(time.time())<expiry<=int(time.time())+31*86400:raise ValueError()
+            if end is not None and not int(time.time())<end<=int(time.time())+31*86400:raise ValueError()
         except (ValueError,TypeError,KeyError,UnicodeError):raise error('host_offer_invalid','Oferta, autorización, vigencia o firma inválida.') from None
         hash_=digest(v['signed_offer'])
         with transaction(db()):
@@ -48,8 +48,37 @@ def install(bp,app,db,body,error,own,writing,capacity):
                 if old['offer_hash']!=hash_ or old['disabled']:raise error('host_policy_locked','La política es inmutable; una revocación no se reactiva.',409)
                 return jsonify(offer_sha256=hash_,duplicate=True)
             capacity(16384)
-            db().execute('INSERT INTO network_hosts VALUES(?,?,?,?,0)',(node['id'],hash_,canonical(v['signed_offer']).decode(),expiry))
+            db().execute('INSERT INTO network_hosts(node_id,offer_hash,signed_offer,expires_at,disabled) VALUES(?,?,?,?,0)',(node['id'],hash_,canonical(v['signed_offer']).decode(),end))
         return jsonify(offer_sha256=hash_,duplicate=False),201
+
+    @bp.post('/api/network/host/persist')
+    def persist():
+        writing();node=own();v=body()
+        try:
+            fields(v,'signed_offer previous_sha256 operator_authorized')
+            if v['operator_authorized'] is not True:raise ValueError()
+            p=validate_offer(v['signed_offer']);hexbytes(v['previous_sha256'],32)
+            if p['node_id']!=node['id'] or p['hub']!=app.config['PUBLIC_URL']:raise ValueError()
+        except (ValueError,TypeError,KeyError):raise error('host_transition_invalid','Conversión firmada y autorización explícita requeridas.') from None
+        hash_=digest(v['signed_offer']);stamp=int(time.time())
+        with transaction(db()):
+            h=host()
+            if h['disabled']:raise error('host_policy_locked','Una autorización revocada no se reactiva.',409)
+            if h['offer_hash']==hash_:
+                if not h['previous_signed_offer'] or digest(json.loads(h['previous_signed_offer']))!=v['previous_sha256']:
+                    raise error('host_transition_invalid','La transición no coincide.',409)
+            else:
+                old=validate_offer(json.loads(h['signed_offer']))
+                if (h['offer_hash']!=v['previous_sha256'] or expired(h['expires_at'],stamp) or
+                    not persistent_transition(old,p)):
+                    raise error('host_policy_locked','Sólo puede convertirse una oferta vigente sin ampliar alcance ni nacimientos.',409)
+                capacity(16384)
+                db().execute('UPDATE network_hosts SET previous_signed_offer=signed_offer,signed_offer=?,offer_hash=?,expires_at=NULL WHERE node_id=?',
+                             (canonical(v['signed_offer']).decode(),hash_,node['id']))
+                db().execute("UPDATE network_host_requests SET expires_at=NULL,offer_hash=? WHERE host_id=? AND status IN ('PENDING','ACTIVE') AND expires_at>?",
+                             (hash_,node['id'],stamp))
+            ids=[r[0] for r in db().execute('SELECT id FROM network_host_requests WHERE host_id=? AND offer_hash=?',(node['id'],hash_))]
+        return jsonify(offer_sha256=hash_,converted_request_ids=ids)
 
     @bp.get('/api/network/host')
     def queue():
@@ -72,19 +101,23 @@ def install(bp,app,db,body,error,own,writing,capacity):
             hexbytes(v['host_id'],32);hexbytes(v['offer_sha256'],32)
             if v['public_request_confirmed'] is not True:raise ValueError()
             h=db().execute('SELECT * FROM network_hosts WHERE node_id=?',(v['host_id'],)).fetchone()
-            if not h or h['disabled'] or h['expires_at']<=int(time.time()) or h['offer_hash']!=v['offer_sha256']:raise ValueError()
+            if not h or h['disabled'] or expired(h['expires_at'],int(time.time())) or h['offer_hash']!=v['offer_sha256']:raise ValueError()
             p=validate_offer(json.loads(h['signed_offer']))
             if not admitted(p,v['world_id'],v['focus']):raise ValueError()
         except (ValueError,TypeError,KeyError):raise error('host_scope_denied','La oferta no admite esa solicitud.') from None
         id_=digest(dict(host=h['node_id'],requester=node['id'],offer=h['offer_hash'],world=v['world_id'],focus=v['focus']))
         with transaction(db()):
-            old=db().execute('SELECT * FROM network_host_requests WHERE id=?',(id_,)).fetchone()
+            # Serialize admission against conversion and revocation of this grant.
+            h=db().execute('SELECT * FROM network_hosts WHERE node_id=?',(v['host_id'],)).fetchone()
+            if not h or h['disabled'] or expired(h['expires_at'],int(time.time())) or h['offer_hash']!=v['offer_sha256']:
+                raise error('host_scope_denied','La autorización cambió; consultá la oferta vigente.',409)
+            old=db().execute('SELECT * FROM network_host_requests WHERE host_id=? AND requester_id=? AND world_id=? AND focus_json=? ORDER BY created_at,id LIMIT 1',(h['node_id'],node['id'],v['world_id'],canonical(v['focus']).decode())).fetchone()
             if old:return jsonify(request=job(old),duplicate=True)
             if (db().execute('SELECT count(*) FROM network_host_requests WHERE host_id=?',(h['node_id'],)).fetchone()[0]>=32 or
                 db().execute('SELECT count(*) FROM network_host_requests WHERE requester_id=?',(node['id'],)).fetchone()[0]>=4):
                 raise error('host_queue_capacity','Capacidad de solicitudes alcanzada.',429)
             capacity(8192);stamp=int(time.time())
-            db().execute('INSERT INTO network_host_requests VALUES(?,?,?,?,?,?,?,?,?,NULL,NULL)',(id_,h['node_id'],node['id'],h['offer_hash'],v['world_id'],canonical(v['focus']).decode(),stamp,min(stamp+p['lease_seconds'],h['expires_at']),'PENDING'))
+            db().execute('INSERT INTO network_host_requests VALUES(?,?,?,?,?,?,?,?,?,NULL,NULL)',(id_,h['node_id'],node['id'],h['offer_hash'],v['world_id'],canonical(v['focus']).decode(),stamp,None if expiry(p) is None else min(stamp+p['lease_seconds'],h['expires_at']),'PENDING'))
             result=job(db().execute('SELECT * FROM network_host_requests WHERE id=?',(id_,)).fetchone())
         return jsonify(request=result,duplicate=False),201
 
@@ -111,7 +144,7 @@ def install(bp,app,db,body,error,own,writing,capacity):
             if not row:raise error('not_found','Solicitud no encontrada.',404)
             child=None
             if v['status']=='ACTIVE':
-                if h['disabled'] or row['expires_at']<=int(time.time()) or row['status'] not in ('PENDING','ACTIVE'):
+                if h['disabled'] or expired(row['expires_at'],int(time.time())) or row['status'] not in ('PENDING','ACTIVE'):
                     raise error('host_request_closed','La solicitud ya no admite ejecución.',409)
                 p=json.loads(h['signed_offer'])['offer']
                 if row['accepted_at'] is None and db().execute('SELECT count(*) FROM network_host_requests WHERE host_id=? AND accepted_at IS NOT NULL',(h['node_id'],)).fetchone()[0]>=p['max_births']:
