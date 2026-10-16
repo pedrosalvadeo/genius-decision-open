@@ -38,6 +38,24 @@ de colación con Drive. Ambos triajes tienen evidencia en `cases/`. Brambit
 permanece preparado y pendiente de los mismos pasos externos. Priorizar las
 otras tareas detectadas; releer reservas y ramas antes de comenzar.
 
+## Tercer ciclo: Sotto #612
+
+Se atendió otra tarea existente sin ampliar la muestra. Reserva publicada en
+`genius/resolver-sotto-612` antes de editar; criterios conservados en el ledger.
+`cases/sotto-612-secret-removal/` incluye un parche Apache-2.0 para los cinco README,
+guía de aplicación, borrador externo no enviado y evidencia. Siete controles del
+caso y trece pruebas del verificador upstream aprobados; los siete se repitieron
+tras aplicar el parche en copia limpia. Antes faltaba la sección: seis controles
+fallaban y uno pasaba. Las afirmaciones se contrastaron con Rust fijado, no con
+ejecución del CLI. No se borraron secretos ni se ejecutó login o sincronización.
+
+Estado SOLUTION_PREPARED, no APPLIED ni VERIFIED. Faltan permiso para PR externo
+y decisión del contribuyente sobre el DCO exigido por Sotto; no se firmó nada.
+Releer la fuente y los PR documentales antes de presentar. No regenerar ni
+renotificar esta entrega como novedad. Kernel no ejecutado: no hay una
+representación justificada para esta corrección documental. No se midieron CAG,
+PVS ni bienestar. El historial previo y los otros agentes no se modificaron.
+
 ## Siguiente encargo
 
 > Continuá el agente explorador y resolutor desde resolver/AGENT.md, ledger.json,

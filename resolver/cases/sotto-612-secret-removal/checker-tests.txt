@@ -1,0 +1,18 @@
+test_changed_code_block_fails (test_readme_i18n.HelperTest.test_changed_code_block_fails) ... ok
+test_changed_destination_fails (test_readme_i18n.HelperTest.test_changed_destination_fails) ... ok
+test_changed_heading_structure_fails (test_readme_i18n.HelperTest.test_changed_heading_structure_fails) ... ok
+test_changed_url_fails (test_readme_i18n.HelperTest.test_changed_url_fails) ... ok
+test_dropped_table_row_fails (test_readme_i18n.HelperTest.test_dropped_table_row_fails) ... ok
+test_extra_code_span_fails (test_readme_i18n.HelperTest.test_extra_code_span_fails) ... ok
+test_fragment_and_nav_links_ignored (test_readme_i18n.HelperTest.test_fragment_and_nav_links_ignored) ... ok
+test_identical_translation_passes (test_readme_i18n.HelperTest.test_identical_translation_passes) ... ok
+test_missing_backlink_fails (test_readme_i18n.HelperTest.test_missing_backlink_fails) ... ok
+test_translated_command_fails (test_readme_i18n.HelperTest.test_translated_command_fails) ... ok
+test_unclosed_fence_raises (test_readme_i18n.HelperTest.test_unclosed_fence_raises) ... ok
+test_shipped_translations_in_sync (test_readme_i18n.RepoTest.test_shipped_translations_in_sync) ... ok
+test_source_links_every_translation (test_readme_i18n.RepoTest.test_source_links_every_translation) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.009s
+
+OK

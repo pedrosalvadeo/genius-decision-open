@@ -1,0 +1,1 @@
+README i18n OK: 4 translations in sync with README.md

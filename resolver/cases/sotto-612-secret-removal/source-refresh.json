@@ -1,0 +1,50 @@
+{
+  "items": [
+    {
+      "number": 612,
+      "html_url": "https://github.com/getsotto/sotto/issues/612",
+      "title": "README: explain removing secrets and synchronising removals",
+      "body": "## The problem\n\nThe README quick start shows how to set, import, read and share secrets, but does not show `sotto rm`. A reader has no removal walkthrough explaining which environment is affected, when confirmation happens, or how a local removal reaches other devices.\n\nAdd a short guide to the existing command so readers can remove an obsolete secret without guessing at those details.\n\n## Proposed approach\n\nAdd a concise secret-removal section near the CLI quick start. Use a clearly synthetic name such as `DEMO_OBSOLETE_KEY`, and explain local removal followed by optional server synchronisation. This is documentation of current behaviour, with no changes to deletion or confirmation policy.\n\n## Acceptance criteria\n\n- [ ] Show a named removal and a consistent environment-specific sequence, for example `sotto --env staging rm DEMO_OBSOLETE_KEY` followed by `sotto --env staging push`. Explain that removal affects the selected environment, remains local until pushed, and reaches another device when it pulls that environment. Server synchronisation requires login.\n- [ ] Explain interactive behaviour: omitting the name opens the secret picker; removal normally asks for confirmation, with No as the default; declining or cancelling leaves the secret unchanged. `--yes` / `-y` skips the confirmation, but does not skip an omitted-name picker or any required unlock prompt.\n- [ ] Explain non-interactive behaviour accurately: a name is required, and a named removal does not ask for confirmation even without `--yes`. The picker/confirmation require interactive stdin, stdout and stderr, a non-dumb terminal, and CI not being active.\n- [ ] State that removal hides the secret from ordinary reads/listings and retains version history; it is not secure erasure or revocation of the credential at its external provider. Keep recovery instructions with the history/rollback documentation rather than adding a second recovery walkthrough here.\n- [ ] Keep README translations aligned with `CONTRIBUTING.md`, use British English and plain hyphens, verify command examples against current source/help, and run `scripts/check-readme-i18n`.\n\n## Evidence and starting points\n\nSource-inspected on main `d4928a53c93a93df9d9d7c95c67795b4bd8875b2` in a clean checkout on macOS arm64:\n\n- [README](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/README.md): no `sotto rm` example.\n- [CLI](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/crates/cli/src/main.rs): `Command::Rm`, its dispatch arm and `effective_config`.\n- [Prompts](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/crates/cli/src/prompts.rs): `can_prompt`, `preflight_secret_name`, `select_secret_key` and `confirm_removal`.\n- [Vault removal](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/crates/cli/src/vault.rs): `delete` and the existing deletion tests.\n- [Sync](https://github.com/getsotto/sotto/blob/d4928a53c93a93df9d9d7c95c67795b4bd8875b2/crates/cli/src/remote/sync.rs): `push`, `diff` and `push_provisions_and_round_trips_through_pull`, whose final scenario covers deletion reaching another device.\n\nThis is a documentation gap established by source inspection. The referenced tests were read, not executed for this issue; no local or remote secret was removed. Open/closed issues and open PRs were checked for overlap. #591 covers restoring earlier versions and #558 documents environment selection/copying; neither provides a secret-removal guide.\n\n## Where this lives\n\nDocs / copy. Suitable for a first contribution with source checking. Follow `CONTRIBUTING.md`, including DCO sign-off (`git commit -s`).\n",
+      "labels": [
+        {
+          "id": 11312065126,
+          "node_id": "LA_kwDOTCoG988AAAACokBqZg",
+          "url": "https://api.github.com/repos/getsotto/sotto/labels/documentation",
+          "name": "documentation",
+          "color": "0075ca",
+          "default": true,
+          "description": "Improvements or additions to documentation",
+          "archived_at": null,
+          "archived_by": null
+        },
+        {
+          "id": 11312065144,
+          "node_id": "LA_kwDOTCoG988AAAACokBqeA",
+          "url": "https://api.github.com/repos/getsotto/sotto/labels/help%20wanted",
+          "name": "help wanted",
+          "color": "008672",
+          "default": true,
+          "description": "Extra attention is needed",
+          "archived_at": null,
+          "archived_by": null
+        },
+        {
+          "id": 11312065153,
+          "node_id": "LA_kwDOTCoG988AAAACokBqgQ",
+          "url": "https://api.github.com/repos/getsotto/sotto/labels/good%20first%20issue",
+          "name": "good first issue",
+          "color": "7057ff",
+          "default": true,
+          "description": "Good for newcomers",
+          "archived_at": null,
+          "archived_by": null
+        }
+      ],
+      "assignees": [],
+      "state": "open",
+      "updated_at": "2026-10-16T20:26:47Z"
+    }
+  ],
+  "total_count": 1,
+  "incomplete_results": false
+}
