@@ -18,6 +18,26 @@ rechazo de declaraciones de éxito sin la secuencia de evidencias requerida.
 Los recibos registran lo verificado por el operador; no certifican por sí mismos
 la verdad de la fuente o la independencia de un tercero.
 
+## Segundo ciclo: linux-vitals #149
+
+Se trabajó sobre el registro existente, sin ampliar la muestra. La reserva se
+publicó en `genius/resolver-linux-vitals-149` antes de preparar el parche.
+`cases/linux-vitals-149-locale/` conserva el parche MIT, criterios, reproducción,
+dependencias, arnés sin credenciales y con sockets IPv4/IPv6 bloqueados, y logs.
+Antes de corregir: 25 fallos y 28 aprobadas. Después: 266 pruebas locales aprobadas;
+las 53 nuevas se repitieron con éxito tras aplicar el parche en una copia limpia.
+Estado SOLUTION_PREPARED; no se envió al proyecto ni se aplicó a equipos reales.
+Faltan permiso para comentario/PR externos y los controles completos upstream
+(incluidos Molecule y la matriz de versiones). No regenerar ni renotificar esta
+entrega como nueva. Los fixtures de sondas no equivalen a un host traducido real;
+la limitación de los catálogos util-linux está documentada. Kernel no ejecutado.
+
+Rez #2089 queda BLOCKED para evitar duplicar sus PR abiertos #2098/#2222.
+Backlot #593 queda NEEDS_INFORMATION: evitar el error 500 no acredita fidelidad
+de colación con Drive. Ambos triajes tienen evidencia en `cases/`. Brambit
+permanece preparado y pendiente de los mismos pasos externos. Priorizar las
+otras tareas detectadas; releer reservas y ramas antes de comenzar.
+
 ## Siguiente encargo
 
 > Continuá el agente explorador y resolutor desde resolver/AGENT.md, ledger.json,

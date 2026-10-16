@@ -1,0 +1,236 @@
+F..F..F.FF..F.FF..F..F..F..F.FF..F.FF........FFFFFFFF                    [100%]
+=================================== FAILURES ===================================
+__________________ test_all_scan_and_heal_commands_pin_locale __________________
+tests/test_locale.py:46: in test_all_scan_and_heal_commands_pin_locale
+    assert [t["name"] for t in commands if t.get("environment", {}).get("LC_ALL") != "C"] == []
+E   AssertionError: assert ['Collect boo... family', ...] == []
+E     
+E     Left contains 13 more items, first extra item: 'Collect bootloader default kernel information'
+E     Use -v to get more diff
+_______________ test_openssl_months_ignore_locale[1-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 1, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Jan  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 1, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 1, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[2-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 2, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Feb  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 2, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 2, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[3-de_DE.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 3, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Mar  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 3, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 3, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[3-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 3, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Mar  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 3, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 3, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[4-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 4, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Apr  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 4, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 4, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[5-de_DE.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 5, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('May  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 5, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 5, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[5-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 5, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('May  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 5, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 5, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[6-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 6, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Jun  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 6, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 6, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[7-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 7, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Jul  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 7, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 7, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[8-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 8, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Aug  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 8, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 8, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_______________ test_openssl_months_ignore_locale[9-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 9, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Sep  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 9, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 9, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+______________ test_openssl_months_ignore_locale[10-de_DE.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 10, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Oct  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 10, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 10, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+______________ test_openssl_months_ignore_locale[10-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 10, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Oct  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 10, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 10, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+______________ test_openssl_months_ignore_locale[11-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 11, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Nov  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 11, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 11, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+______________ test_openssl_months_ignore_locale[12-de_DE.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 12, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Dec  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 12, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 12, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+______________ test_openssl_months_ignore_locale[12-fr_FR.UTF-8] _______________
+tests/test_locale.py:60: in test_openssl_months_ignore_locale
+    assert CERT._parse_openssl_time(f"{MONTHS[month - 1]}  1 12:34:56 2024 {zone}") == (
+E   AssertionError: assert None == datetime.datetime(2024, 12, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +  where None = <function _parse_openssl_time at 0x7ff0e62b5300>('Dec  1 12:34:56 2024 GMT')
+E    +    where <function _parse_openssl_time at 0x7ff0e62b5300> = CERT._parse_openssl_time
+E    +  and   datetime.datetime(2024, 12, 1, 12, 34, 56, tzinfo=datetime.timezone.utc) = <class 'datetime.datetime'>(2024, 12, 1, 12, 34, 56, tzinfo=datetime.timezone.utc)
+E    +    where <class 'datetime.datetime'> = datetime.datetime
+E    +    and   datetime.timezone.utc = <class 'datetime.timezone'>.utc
+E    +      where <class 'datetime.timezone'> = datetime.timezone
+_ test_unparseable_dates_produce_unknown_with_raw_evidence[file-Jan 1 00:00:00 2020 GMT-bad end date] _
+tests/test_locale.py:123: in test_unparseable_dates_produce_unknown_with_raw_evidence
+    assert int(result["unknown"]) == 1
+E   assert 0 == 1
+E    +  where 0 = int(0)
+_ test_unparseable_dates_produce_unknown_with_raw_evidence[file-bad start date-Jan 1 00:00:00 2024 GMT] _
+tests/test_locale.py:123: in test_unparseable_dates_produce_unknown_with_raw_evidence
+    assert int(result["unknown"]) == 1
+E   assert 0 == 1
+E    +  where 0 = int(0)
+___ test_unparseable_dates_produce_unknown_with_raw_evidence[file-None-None] ___
+tests/test_locale.py:123: in test_unparseable_dates_produce_unknown_with_raw_evidence
+    assert int(result["unknown"]) == 1
+E   assert 0 == 1
+E    +  where 0 = int(0)
+_ test_unparseable_dates_produce_unknown_with_raw_evidence[endpoint-Jan 1 00:00:00 2020 GMT-bad end date] _
+tests/test_locale.py:123: in test_unparseable_dates_produce_unknown_with_raw_evidence
+    assert int(result["unknown"]) == 1
+E   assert 0 == 1
+E    +  where 0 = int(0)
+_ test_unparseable_dates_produce_unknown_with_raw_evidence[endpoint-bad start date-Jan 1 00:00:00 2024 GMT] _
+tests/test_locale.py:123: in test_unparseable_dates_produce_unknown_with_raw_evidence
+    assert int(result["unknown"]) == 1
+E   assert 0 == 1
+E    +  where 0 = int(0)
+_ test_unparseable_dates_produce_unknown_with_raw_evidence[endpoint-None-None] _
+tests/test_locale.py:123: in test_unparseable_dates_produce_unknown_with_raw_evidence
+    assert int(result["unknown"]) == 1
+E   assert 0 == 1
+E    +  where 0 = int(0)
+_____ test_localized_probe_fixture_reaches_the_healthy_golden[de_DE.UTF-8] _____
+tests/test_locale.py:179: in test_localized_probe_fixture_reaches_the_healthy_golden
+    assert not any(f["id"] == "failed_logins" for f in result["findings"])
+E   assert not True
+E    +  where True = any(<generator object test_localized_probe_fixture_reaches_the_healthy_golden.<locals>.<genexpr> at 0x7ff0e6491a40>)
+_____ test_localized_probe_fixture_reaches_the_healthy_golden[fr_FR.UTF-8] _____
+tests/test_locale.py:179: in test_localized_probe_fixture_reaches_the_healthy_golden
+    assert not any(f["id"] == "failed_logins" for f in result["findings"])
+E   assert not True
+E    +  where True = any(<generator object test_localized_probe_fixture_reaches_the_healthy_golden.<locals>.<genexpr> at 0x7ff0e6470860>)
+=========================== short test summary info ============================
+FAILED tests/test_locale.py::test_all_scan_and_heal_commands_pin_locale - Ass...
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[1-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[2-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[3-de_DE.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[3-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[4-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[5-de_DE.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[5-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[6-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[7-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[8-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[9-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[10-de_DE.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[10-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[11-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[12-de_DE.UTF-8]
+FAILED tests/test_locale.py::test_openssl_months_ignore_locale[12-fr_FR.UTF-8]
+FAILED tests/test_locale.py::test_unparseable_dates_produce_unknown_with_raw_evidence[file-Jan 1 00:00:00 2020 GMT-bad end date]
+FAILED tests/test_locale.py::test_unparseable_dates_produce_unknown_with_raw_evidence[file-bad start date-Jan 1 00:00:00 2024 GMT]
+FAILED tests/test_locale.py::test_unparseable_dates_produce_unknown_with_raw_evidence[file-None-None]
+FAILED tests/test_locale.py::test_unparseable_dates_produce_unknown_with_raw_evidence[endpoint-Jan 1 00:00:00 2020 GMT-bad end date]
+FAILED tests/test_locale.py::test_unparseable_dates_produce_unknown_with_raw_evidence[endpoint-bad start date-Jan 1 00:00:00 2024 GMT]
+FAILED tests/test_locale.py::test_unparseable_dates_produce_unknown_with_raw_evidence[endpoint-None-None]
+FAILED tests/test_locale.py::test_localized_probe_fixture_reaches_the_healthy_golden[de_DE.UTF-8]
+FAILED tests/test_locale.py::test_localized_probe_fixture_reaches_the_healthy_golden[fr_FR.UTF-8]
+25 failed, 28 passed in 13.92s
