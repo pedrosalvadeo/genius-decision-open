@@ -1,5 +1,8 @@
 # Nodos Genius por Internet
 
+Para ofrecer capacidad y aceptar nuevas instancias automáticamente bajo una
+autorización local, consultá [Genius Semilla — alojamiento](HOSTING.md).
+
 Participación voluntaria: [geniusdecision.app/network](https://geniusdecision.app/network).
 El operador instala el programa, registra un perfil y decide qué vistas publica.
 El nodo conserva memoria propia y ejecuta el kernel en su equipo. La primera
