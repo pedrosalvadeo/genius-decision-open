@@ -35,8 +35,8 @@ def bootstrap(state,hub,transport=None):
     return client
 
 
-def reference_host(client):
-    """One pre-authorized logical child, finite lease, ordinary registration quotas."""
+def reference_host(client,persistent=False):
+    """One authorized child; persistence needs a separate operator opt-in."""
     host=Host(client.state/'hosting',client)
     if host.path.exists():
         state,_=host.load()
@@ -44,8 +44,11 @@ def reference_host(client):
         signed=state['signed_offer']
     else:
         views=decode((client.state/'reference-views.json').read_bytes())['views']
-        signed=make_offer(client,[dict(world_id=WORLD,focus=['pump'])],1,86400,views[0]['valid_until'])
+        signed=make_offer(client,[dict(world_id=WORLD,focus=['pump'])],1,
+                          None if persistent else 86400,None if persistent else views[0]['valid_until'],persistent)
     host.authorize(signed,True)
+    if persistent:host.persist(True)
+    signed=host.load()[0]['signed_offer']
     from federation.core import digest
     host.request(client.load()['node_id'],digest(signed),WORLD,['pump'],True)
     return host
@@ -69,7 +72,7 @@ def main():
             print(json.dumps(dict(component='network-reference',status=result['current']['status'],
                                   node_id=result['node_id'],synthetic=True,organism=result['organism'])),flush=True)
             if os.environ.get('GENIUS_NETWORK_HOST_ENABLED','false')=='true':
-                if host is None:host=reference_host(client)
+                if host is None:host=reference_host(client,os.environ.get('GENIUS_NETWORK_HOST_PERSISTENT','false')=='true')
                 print(json.dumps(dict(component='network-host',**host.step())),flush=True)
         except Exception as exc:
             # The web, worker and backup remain available. No secrets or HTTP bodies.

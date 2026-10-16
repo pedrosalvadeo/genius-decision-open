@@ -1,4 +1,4 @@
-"""Operator-authorized, finite hosting of fixed local reader processes."""
+"""Operator-authorized, revocable hosting of fixed local reader processes."""
 import argparse
 from contextlib import contextmanager
 import fcntl
@@ -14,14 +14,14 @@ from threading import Event
 import time
 
 from .core import Node,canonical,decode,digest,instant
-from .hosting_protocol import FORMAT,WORKER,LIMITS,validate_offer,admitted
+from .hosting_protocol import FORMAT,PERSISTENT,WORKER,LIMITS,validate_offer,admitted,expiry,expired
 from .internet import InternetNode,RemoteError,save
 from .network_protocol import sign
 
 
-def make_offer(node,worlds,max_births,lease_seconds,valid_until):
+def make_offer(node,worlds,max_births,lease_seconds=None,valid_until=None,persistent=False):
     cfg=node.load()
-    offer=dict(format=FORMAT,node_id=cfg['node_id'],public_key=cfg['keys']['public_key'],hub=cfg['hub'],
+    offer=dict(format=PERSISTENT if persistent else FORMAT,node_id=cfg['node_id'],public_key=cfg['keys']['public_key'],hub=cfg['hub'],
                worker=WORKER,worlds=worlds,max_births=max_births,lease_seconds=lease_seconds,
                valid_until=valid_until,limits=LIMITS,automatic_acceptance=True)
     signed=dict(offer=offer,signature=sign(offer,cfg['keys']['private_key']))
@@ -34,7 +34,7 @@ def run_worker(job):
     env={k:os.environ[k] for k in ('PATH','PYTHONPATH') if k in os.environ}
     env.update(PYTHONDONTWRITEBYTECODE='1',PYTHONUNBUFFERED='1')
     timeout=LIMITS['wall_seconds']
-    if job['operation']=='cycle':timeout=min(timeout,max(1,job['request']['expires_at']-int(time.time())))
+    if job['operation'] in ('cycle','maintain') and job['request']['expires_at'] is not None:timeout=min(timeout,max(1,job['request']['expires_at']-int(time.time())))
     proc=subprocess.Popen([sys.executable,'-m','federation.host_worker'],stdin=subprocess.PIPE,
                           stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,env=env,start_new_session=True)
     try:
@@ -94,6 +94,52 @@ class Host:
         return self.call('POST','/api/network/host/request',dict(host_id=host_id,offer_sha256=offer_hash,
             world_id=world,focus=focus,public_request_confirmed=True))
 
+    def finish_persistent(self,state):
+        """Retry the identical signed transition after a lost response or restart."""
+        signed=state['pending_persistent']
+        result=self.call('POST','/api/network/host/persist',dict(signed_offer=signed,
+            previous_sha256=digest(state['signed_offer']),operator_authorized=True))
+        if result['offer_sha256']!=digest(signed):raise ValueError('HOST_OFFER_HASH_MISMATCH')
+        for id_ in result['converted_request_ids']:
+            record=state['records'].get(id_)
+            if record:
+                record['request'].update(offer_hash=digest(signed),expires_at=None)
+        state['previous_signed_offer']=state['signed_offer'];state['signed_offer']=signed
+        del state['pending_persistent'];save(self.path,state)
+
+    def persist(self,confirmed=False):
+        if confirmed is not True:raise ValueError('LOCAL_PERSISTENT_AUTHORIZATION_REQUIRED')
+        with self.lock():
+            state,p=self.load()
+            if state['revoked']:raise ValueError('HOST_POLICY_LOCKED')
+            if expiry(p) is None:return dict(lifecycle='PERSISTENT_REVOCABLE',duplicate=True)
+            if not state.get('pending_persistent'):
+                if expired(expiry(p),time.time()):raise ValueError('HOST_AUTHORIZATION_EXPIRED')
+                state['pending_persistent']=make_offer(self.node,p['worlds'],p['max_births'],persistent=True)
+                save(self.path,state)
+            self.finish_persistent(state)
+        return dict(lifecycle='PERSISTENT_REVOCABLE',duplicate=False)
+
+    def pause(self,paused=True):
+        """Local control works without the hub; it never revives a retired child."""
+        with self.lock():
+            state,p=self.load()
+            if not paused and (state['revoked'] or expired(expiry(p),time.time())):raise ValueError('HOST_POLICY_LOCKED')
+            state['paused']=bool(paused)
+            if paused:
+                for record in state['records'].values():
+                    if record['status'] not in ('STOPPED','RETIRING'):
+                        record.update(activity='RESTING',rest_reason='OPERATOR_PAUSE')
+            save(self.path,state)
+        return dict(paused=bool(paused),local_identity_retained=True)
+
+    @staticmethod
+    def valid_duration(p,r,stamp):
+        if type(r['created_at']) is not int or r['created_at']>stamp:return False
+        if expiry(p) is None:return r['expires_at'] is None
+        return (type(r['expires_at']) is int and r['created_at']<r['expires_at']<=expiry(p) and
+                r['expires_at']-r['created_at']<=p['lease_seconds'])
+
     def discover(self,world,focus,confirmed=False):
         if confirmed is not True:raise ValueError('PUBLIC_REQUEST_CONFIRMATION_REQUIRED')
         cfg=self.node.load();result=self.node.call(cfg,'GET','/network/hosts')
@@ -103,7 +149,7 @@ class Host:
             p=validate_offer(row['signed_offer'])
             if row['node_id']!=p['node_id'] or digest(row['signed_offer'])!=row['offer_sha256'] or p['hub']!=cfg['hub']:
                 raise ValueError('HOST_OFFER_MISMATCH')
-            if row['disabled'] or not row['recently_seen'] or instant(p['valid_until']).timestamp()<=time.time():continue
+            if row['disabled'] or not row['recently_seen'] or expired(expiry(p),time.time()):continue
             if row['births_accepted']>=p['max_births'] or not admitted(p,world,focus):continue
             return self.request(p['node_id'],row['offer_sha256'],world,focus,True)
         return dict(status='NO_AUTHORIZED_CAPACITY')
@@ -116,30 +162,42 @@ class Host:
 
     def retire(self,state,record):
         # Mark locally first; no future cycle can run even if remote deletion fails.
-        record['status']='RETIRING';save(self.path,state)
+        record.update(status='RETIRING',activity='STOPPED',rest_reason='RETIREMENT_PENDING');save(self.path,state)
         try:
             result=self.worker(self.job(state,record,'retire'))
             if result.get('retired') is not True:raise ValueError('RETIREMENT_NOT_CONFIRMED')
-            record['status']='STOPPED';save(self.path,state)
+            record.update(status='STOPPED',activity='STOPPED',rest_reason=None);save(self.path,state)
             try:self.call('POST','/api/network/host/result',dict(request_id=record['request']['id'],status='STOPPED',child_proof=None))
             except (OSError,ValueError):pass
         except (OSError,ValueError,subprocess.TimeoutExpired):
-            record['status']='RETIRING';save(self.path,state)
+            record.update(status='RETIRING',activity='STOPPED',rest_reason='RETIREMENT_PENDING');save(self.path,state)
+
+    def maintain(self,state,record,stamp):
+        if not record.get('child_id') or record.get('maintenance_at',0)>stamp:return
+        record['maintenance_at']=stamp+86400;save(self.path,state)
+        try:
+            result=self.worker(self.job(state,record,'maintain'))
+            if result.get('child_id')!=record['child_id'] or not result.get('maintained'):raise ValueError('CHILD_MAINTENANCE_FAILED')
+            record.pop('maintenance_error',None)
+        except (OSError,ValueError,subprocess.TimeoutExpired):record['maintenance_error']='CREDENTIAL_REVIEW_REQUIRED'
+        save(self.path,state)
 
     def step(self):
         with self.lock():
             state,p=self.load();stamp=int(time.time());remote=None;remote_revoked=False
+            if state.get('pending_persistent') and not state['revoked']:
+                self.finish_persistent(state);state,p=self.load()
             if state['revoked'] and not state['revocation_published']:
                 try:
                     self.call('DELETE','/api/network/host',dict(confirmed=True))
                     state['revocation_published']=True;save(self.path,state)
                 except (OSError,ValueError):pass
-            if not state['revoked'] and instant(p['valid_until']).timestamp()>stamp:
+            if not state['revoked'] and not expired(expiry(p),stamp):
                 try:remote=self.call('GET','/api/network/host')
                 except (OSError,ValueError) as exc:
-                    remote_revoked=isinstance(exc,RemoteError) and str(exc) in ('REMOTE_HTTP_401','REMOTE_HTTP_403','REMOTE_HTTP_404')
-            accepted=(remote is not None and not remote['disabled'] and remote['offer_sha256']==digest(state['signed_offer']) and remote['expires_at']>stamp and not state['revoked'])
-            work_allowed=bool(accepted)
+                    remote_revoked=isinstance(exc,RemoteError) and str(exc) in ('REMOTE_HTTP_401','REMOTE_HTTP_404')
+            accepted=(remote is not None and not remote['disabled'] and remote['offer_sha256']==digest(state['signed_offer']) and not expired(remote['expires_at'],stamp) and not state['revoked'])
+            work_allowed=bool(accepted) and not state.get('paused',False)
             if accepted:
                 try:self.call('POST','/api/network/heartbeat',{})
                 except (OSError,ValueError):work_allowed=False
@@ -151,22 +209,26 @@ class Host:
                 r=by_id.get(id_)
                 if record['status']=='STOPPED':continue
                 if (record['status']=='RETIRING' or state['revoked'] or remote_revoked or
-                    record['request']['expires_at']<=stamp or instant(p['valid_until']).timestamp()<=stamp or
-                    (remote is not None and (not accepted or not r or r['status'] not in ('PENDING','ACTIVE') or r['expires_at']<=stamp))):
+                    expired(record['request']['expires_at'],stamp) or expired(expiry(p),stamp) or
+                    (remote is not None and (not accepted or not r or r['status'] not in ('PENDING','ACTIVE') or expired(r['expires_at'],stamp)))):
                     self.retire(state,record)
+            if not work_allowed:
+                for record in state['records'].values():
+                    if record['status'] not in ('STOPPED','RETIRING'):
+                        record.update(activity='RESTING',rest_reason='OPERATOR_PAUSE' if state.get('paused') else 'HUB_UNAVAILABLE')
+                        if accepted and state.get('paused'):self.maintain(state,record,stamp)
+                save(self.path,state)
             for r in queue if work_allowed else []:
+                if r['status'] not in ('PENDING','ACTIVE') or expired(r['expires_at'],stamp):continue
                 id_=r['id']
                 if (not isinstance(id_,str) or not re.fullmatch('[0-9a-f]{64}',id_) or
                     r['offer_hash']!=digest(state['signed_offer']) or r['host_id']!=p['node_id'] or
-                    type(r['expires_at']) is not int or r['expires_at']>instant(p['valid_until']).timestamp() or
-                    type(r['created_at']) is not int or r['created_at']>stamp or r['expires_at']-r['created_at']>p['lease_seconds'] or
+                    not self.valid_duration(p,r,stamp) or
                     not admitted(p,r['world_id'],r['focus'])):raise ValueError('UNAUTHORIZED_HOST_JOB')
-                if r['status'] not in ('PENDING','ACTIVE') or r['expires_at']<=stamp:continue
                 record=state['records'].get(id_)
                 if record is None:
                     if len(state['records'])>=p['max_births']:
                         self.call('POST','/api/network/host/result',dict(request_id=id_,status='REJECTED',child_proof=None));continue
-                    if shutil.disk_usage(self.state).free<64*1024**2:raise ValueError('HOST_DISK_RESERVE')
                     record=dict(request=r,status='RESERVED',next_at=0,attempts=0)
                     from .organism import Organism
                     cfg=self.node.load()
@@ -177,6 +239,8 @@ class Host:
                 if record['status'] in ('STOPPED','RETIRING') or record['next_at']>stamp:continue
                 if record['status']=='RESERVED' and record['attempts']>=3:
                     self.retire(state,record);continue
+                if shutil.disk_usage(self.state).free<64*1024**2:
+                    record.update(activity='RESTING',rest_reason='DISK_RESERVE');save(self.path,state);continue
                 if record['status']=='RESERVED':record['attempts']+=1
                 record['next_at']=stamp+LIMITS['interval_seconds'];save(self.path,state)
                 try:
@@ -185,14 +249,16 @@ class Host:
                         self.call('POST','/api/network/host/result',dict(request_id=id_,status='ACTIVE',child_proof=result['child_proof']))
                     elif record['child_id']!=result['child_proof']['claim']['child_id']:
                         raise ValueError('CHILD_IDENTITY_CHANGED')
-                    record.update(status='ACTIVE',child_id=result['child_proof']['claim']['child_id'],last_result={k:result[k] for k in ('status','model_sha256','native_verified')})
+                    record.update(status='ACTIVE',activity='ACTIVE' if result['native_verified'] else 'RESTING',
+                                  rest_reason=None if result['native_verified'] else 'CURRENT_EVIDENCE_UNAVAILABLE',child_id=result['child_proof']['claim']['child_id'],last_result={k:result[k] for k in ('status','model_sha256','native_verified')})
                     if result.get('organism') is not None:record['last_result']['organism']=result['organism']
                     save(self.path,state)
                 except (OSError,ValueError,subprocess.TimeoutExpired):
-                    record['last_error']='PAUSED_OR_REVIEW_REQUIRED';save(self.path,state)
+                    record.update(activity='RESTING',rest_reason='PAUSED_OR_REVIEW_REQUIRED',last_error='PAUSED_OR_REVIEW_REQUIRED');save(self.path,state)
             return dict(format='genius-host-cycle/1',host_id=p['node_id'],authorized=work_allowed,births_reserved=len(state['records']),
                         revocation_pending=state['revoked'] and not state['revocation_published'],
-                        children=[dict(request_id=k,status=v['status'],child_id=v.get('child_id'),last_result=v.get('last_result')) for k,v in state['records'].items()])
+                        lifecycle='PERSISTENT_REVOCABLE' if expiry(p) is None else 'TRIAL',paused=state.get('paused',False),
+                        children=[dict(request_id=k,status=v['status'],activity=v.get('activity'),rest_reason=v.get('rest_reason'),child_id=v.get('child_id'),last_result=v.get('last_result')) for k,v in state['records'].items()])
 
     def revoke(self):
         with self.lock():
@@ -212,6 +278,8 @@ def main():
     ask.add_argument('--confirm-public-request',action='store_true')
     run=commands.add_parser('run');run.add_argument('--continuous',action='store_true')
     commands.add_parser('revoke')
+    commands.add_parser('pause');commands.add_parser('resume')
+    persist=commands.add_parser('persist');persist.add_argument('--allow-persistent-hosting',action='store_true')
     args=parser.parse_args();host=Host(args.state,InternetNode(args.node_state));stopped=Event()
     for sig in (signal.SIGTERM,signal.SIGINT):signal.signal(sig,lambda *_:stopped.set())
     try:
@@ -223,6 +291,8 @@ def main():
             result=(host.request(args.host,args.offer,args.world,sorted(args.focus),args.confirm_public_request) if args.host
                     else host.discover(args.world,sorted(args.focus),args.confirm_public_request))
         elif args.command=='revoke':result=host.revoke()
+        elif args.command=='persist':result=host.persist(args.allow_persistent_hosting)
+        elif args.command in ('pause','resume'):result=host.pause(args.command=='pause')
         else:
             while not stopped.is_set():
                 print(json.dumps(host.step()),flush=True)

@@ -7,7 +7,7 @@ import sys
 import time
 
 from .core import Node,decode,fields
-from .hosting_protocol import CHILD,LIMITS,validate_offer,admitted
+from .hosting_protocol import CHILD,LIMITS,validate_offer,admitted,expired,expiry
 from .internet import InternetNode,RemoteError
 from .network_protocol import sign
 
@@ -24,8 +24,14 @@ def execute(job,transport=None):
             raise
         if 'credential' not in cfg:return dict(retired=True,remote_account_created=False)
         client.leave();return dict(retired=True)
-    if job['operation']!='cycle' or r['expires_at']<=int(time.time()):raise ValueError('LEASE_EXPIRED')
+    if job['operation'] not in ('cycle','maintain') or expired(r['expires_at'],int(time.time())) or expired(expiry(p),int(time.time())):raise ValueError('LEASE_EXPIRED')
     if not admitted(p,r['world_id'],r['focus']):raise ValueError('SCOPE_NOT_AUTHORIZED')
+    if job['operation']=='maintain':
+        # Keep an existing resting account reachable; never enroll or calculate.
+        cfg=client.load();client.renew(cfg)
+        result=client.call(cfg,'GET','/api/network/me',authenticated=True)
+        if result['node']['id']!=cfg['node_id']:raise ValueError('CHILD_IDENTITY_CHANGED')
+        return dict(maintained=True,child_id=cfg['node_id'])
     if job.get('heredity') is not None:
         from .organism import validate_heredity
         validate_heredity(job['heredity'],p['node_id'],r['id'])

@@ -23,8 +23,8 @@
     rows('world-list', catalog.worlds.map(w => `${w.world_id} · ${w.views} vistas · ${w.signing_nodes} claves aportantes`), 'Todavía no se publicaron vistas de sistemas.');
     rows('host-list', hosting.hosts.map(h => {
       const offer = h.signed_offer.offer;
-      const state = h.disabled ? 'revocada' : Date.parse(offer.valid_until) <= Date.now() ? 'vencida' : 'publicada';
-      return `${h.label} · oferta ${state} · hasta ${offer.max_births} nacimientos totales · ${h.active_requests} solicitudes activas · ${offer.worlds.map(w => w.world_id).join(', ')}`;
+      const state = h.disabled ? 'revocada' : offer.valid_until !== null && Date.parse(offer.valid_until) <= Date.now() ? 'vencida' : 'publicada';
+      return `${h.label} · oferta ${state} · ${offer.valid_until === null ? 'persistente y revocable' : 'ensayo con vencimiento'} · hasta ${offer.max_births} nacimientos totales · ${h.active_requests} solicitudes activas · ${offer.worlds.map(w => w.world_id).join(', ')}`;
     }), 'Todavía no hay ofertas de alojamiento publicadas.');
   } catch (_) {
     status.textContent = 'No pudimos consultar el estado actual. Probá nuevamente más tarde; los enlaces de instalación siguen disponibles.';

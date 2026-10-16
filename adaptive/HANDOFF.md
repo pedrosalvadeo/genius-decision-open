@@ -1,3 +1,34 @@
+# Alojamiento persistente y revocable — 2026-10-16
+
+La base genética `1bf2c4dcdc95e38199e5fc3a0a0c62adabbf6988` está en Railway con
+el despliegue SUCCESS `3cb1602b-34c6-44cc-a70c-9fa8fdcd0b73`.
+
+El usuario autorizó sustituir el ensayo de 24 horas por alojamiento persistente
+revocable, preservando el ensayo como opción. La oferta firmada v2 usa vencimiento
+y duración nulos. `Host.persist(True)` convierte únicamente ofertas vigentes;
+conserva identidad, genoma, memoria y presupuesto total, registra la autorización
+anterior y tolera reinicios/pérdida de respuesta. No revive solicitudes cerradas.
+
+`pause` / `resume` regulan actividad sin borrar el nodo. Durante reposo voluntario,
+el controlador mantiene la cuenta existente una vez al día y renueva la credencial
+por la API ordinaria. La falta de disco o de evidencia actual queda como RESTING.
+La revocación sigue retirando las cuentas; el retiro no borra memoria local.
+
+Migración 014 con conservación de filas y relaciones. La restauración R2 sigue
+revocando todas las ofertas restauradas. No volver al código anterior a 014 una
+vez emitidos permisos v2; la reversión requiere código compatible.
+
+Para el nodo de referencia: conservar las variables actuales y añadir
+`GENIUS_NETWORK_HOST_PERSISTENT=true`; esto autoriza la conversión existente sin
+crear servicios, subir cuotas ni añadir nacimientos. Si el ensayo ya caducó no
+se resucita: verificar el PR y el estado real antes de afirmar su conversión.
+
+Evidencia: `beta/evidence/2026-10-16-persistent-hosting/`. 116 pruebas locales,
+incluidas 14 de persistencia. La guía pública está en `federation/HOSTING.md`.
+El resultado de CI y el despliegue se registran en el PR correspondiente.
+
+---
+
 # Genius Semilla — genes y evolución contextual
 
 16 de octubre de 2026. Continúa PR61, desplegado correctamente como
