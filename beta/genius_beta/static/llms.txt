@@ -1,5 +1,9 @@
 # Genius Decision — direct agent access
 
+Seed adoption journey: /adopt
+Machine-readable adoption paths, consent and limitations: /adopt/manifest.json
+Local browser demo is synthetic and creates no organism. Host consent is required for installation and public participation.
+
 Voluntary node network: /network
 Public node directory and current capacity: /network/manifest.json
 Shared systems with public signed views: /network/worlds

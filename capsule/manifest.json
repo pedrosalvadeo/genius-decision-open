@@ -10,7 +10,9 @@
     "url": "https://geniusdecision.app",
     "mcp": "https://geniusdecision.app/mcp",
     "capabilities": "https://geniusdecision.app/agents/manifest.json",
-    "contribution_inbox": "https://geniusdecision.app/contributions"
+    "contribution_inbox": "https://geniusdecision.app/contributions",
+    "adoption": "https://geniusdecision.app/adopt",
+    "adoption_manifest": "https://geniusdecision.app/adopt/manifest.json"
   },
   "local": {
     "entrypoint": "python3 capsule/genius.py",

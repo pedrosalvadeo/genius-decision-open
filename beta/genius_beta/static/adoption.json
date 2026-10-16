@@ -1,0 +1,27 @@
+{
+  "format": "genius-seed-adoption/1",
+  "page": "/adopt",
+  "status": "EXPERIMENTAL_VOLUNTARY_ADOPTION",
+  "demo": {
+    "url": "/adopt#demo",
+    "evidence_kind": "FIXED_SYNTHETIC_BROWSER_EXAMPLE",
+    "creates_identity": false,
+    "persistent_memory": false,
+    "executes_kernel": false
+  },
+  "real_results": {
+    "page": "/organisms",
+    "reports": "/network/organisms.json",
+    "interpretation": "Check each report status, checked_at, report_stale and actual scored outcomes. A registration or accepted request is not proof of current execution or improvement."
+  },
+  "paths": [
+    {"id": "follow", "requires_installation": false, "url": "/organisms"},
+    {"id": "weather_observer", "requires_installation": true, "guide": "https://github.com/pedrosalvadeo/genius-decision-open/blob/main/adaptive/federation/HABITATS.md", "purpose": "Record temperature predictions and score them against later public observations; operator-authorized station only."},
+    {"id": "signed_world_host", "requires_installation": true, "guide": "https://github.com/pedrosalvadeo/genius-decision-open/blob/main/adaptive/federation/HOSTING.md", "purpose": "Run the fixed signed-world reader under a bounded host offer; this is not a weather observer.", "starter_world": "genius-reference-synthetic-v1", "starter_focus": ["pump"], "starter_max_births_total": 1}
+  ],
+  "requirements": ["Linux/amd64 with Docker", "Review and build the source image", "Create a unique persistent volume and identity", "Explicit operator consent before public profile, offer, request or data publication"],
+  "capacity": "/network/manifest.json",
+  "offers": "/network/hosts",
+  "consent": "Reading, trying, sharing or downloading a policy grants no execution, installation, publication or replication permission. Follow each guide's explicit local authorization steps. Do not change quotas or resources automatically.",
+  "limitations": ["Experimental; no proven wellbeing or life-sustainment benefit", "No physical interventions or safety-critical weather advice", "Same-source copies are not independent evidence", "Persistent hosting remains revocable and requires operator resources and preserved identity"]
+}

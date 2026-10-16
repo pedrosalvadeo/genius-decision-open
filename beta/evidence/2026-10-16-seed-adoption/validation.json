@@ -1,0 +1,30 @@
+{
+  "format": "genius-adoption-validation/1",
+  "date": "2026-10-16",
+  "baseline": "d32b869",
+  "focused_tests": {
+    "adoption": 4,
+    "public_network": 13,
+    "hosting": 37,
+    "status": "PASS"
+  },
+  "dom_unit": "PASS",
+  "javascript_syntax": "PASS",
+  "diff_check": "PASS",
+  "full_beta": {
+    "tests": 339,
+    "failures": 35,
+    "errors": 5,
+    "status": "FAIL"
+  },
+  "baseline_beta": {
+    "tests": 335,
+    "failures": 35,
+    "errors": 5,
+    "same_failing_tests": true
+  },
+  "runtime_verification": "BLOCKED: beta/vendor/MANIFEST.json absent from source edition",
+  "browser": "NOT_RUN: Chromium socket prohibited by sandbox; escalation failed at sandbox setup; cloud browser could not reach local HTTP server",
+  "review": "Independent code review completed; navigation issues corrected; no remaining code-review blockers",
+  "deployment": "NOT_DEPLOYED"
+}

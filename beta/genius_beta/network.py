@@ -54,6 +54,12 @@ def install(app,db,body,error,quota,capacity,backup_ready):
     @bp.get('/network')
     def page():return send_from_directory(app.static_folder,'network.html')
 
+    @bp.get('/adopt/manifest.json')
+    def adoption_manifest():return send_from_directory(app.static_folder,'adoption.json',mimetype='application/json')
+
+    @bp.get('/adopt')
+    def adopt_page():return send_from_directory(app.static_folder,'adopt.html')
+
     @bp.get('/organisms')
     def organisms_page():return send_from_directory(app.static_folder,'organisms.html')
 
