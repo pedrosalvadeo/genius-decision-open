@@ -1,3 +1,9 @@
+# Diseño de intervenciones
+
+El gemelo incorpora generación de alternativas mediante transferencias de recursos, apertura/cierre de relaciones y programación de acciones. Acceso humano en **Intervenir**, API y MCP; revisión, confirmación y evaluación con el kernel existente. Ver [contrato, ejemplo y continuidad](docs/INTERVENTION_DESIGN.md). El estado de despliegue y CI se informa en el PR del incremento.
+
+Los apartados siguientes conservan los antecedentes D3/D1.
+
 # Incremento vigente: D3
 
 Genius ahora incorpora un constructor configurable de recursos, acciones y escenarios, además del semillero. La validación con casos reales se pospone sin bloquear desarrollo. Ver [operación y arranque](docs/D3_OPERATION.md), [API](docs/D3_API.md), [contrato del modelo](docs/STOCKFLOW_CONTRACT.md) y [continuidad](docs/PRODUCT_ROADMAP.md). El montaje autenticado fue probado localmente; D3 todavía no está recibido como despliegue público.

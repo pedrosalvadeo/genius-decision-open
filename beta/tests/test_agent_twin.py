@@ -130,6 +130,37 @@ class AgentTwinTests(unittest.TestCase):
         self.call('twin_delete_case', dict(case_id=cid, base_version=1, confirm=True))
         self.assertEqual(self.call('twin_list_cases')['cases'], [])
 
+    def test_intervention_design_mcp_rest_native_result_and_scopes(self):
+        fixture = self.call('twin_intervention_example')
+        schema = self.call('twin_intervention_schema')
+        self.assertEqual(schema['title'], 'genius-intervention-design/1')
+        self.assertEqual(self.client.get('/api/twin/interventions/schema', headers=self.headers).json, schema)
+        cid = self.call('twin_create_case', {'payload': {'text': 'Synthetic transfers', 'profile': STOCKFLOW}})['case']['id']
+        pid = self.call('twin_propose', dict(case_id=cid,payload=dict(base_version=0,kind='declared_model',
+            text='Synthetic base assumptions',structured={'model':fixture['model']})))['proposal']['id']
+        self.call('twin_accept',dict(proposal_id=pid,payload=dict(base_version=0,confirmed=True,acknowledge_declared=True,idempotency_key='intervention-base')))
+        payload = dict(case_id=cid,base_version=1,text='Redistribute declared resources',design=fixture['design'])
+        read_only = self.register(['twins:read'])
+        denied = self.rpc('twin_design_interventions',payload,read_only).json['result']
+        self.assertTrue(denied['isError'])
+        self.assertEqual(denied['structuredContent']['error']['http_status'],403)
+        self.assertEqual(self.client.post(f'/api/twin/cases/{cid}/proposals',headers=read_only,
+            json=dict(base_version=1,kind='intervention_design',text='No write scope',structured={'design':fixture['design']})).status_code,403)
+        proposal = self.call('twin_design_interventions',payload)['proposal']
+        self.assertEqual(proposal['metadata']['intervention_design']['generated_count'],2)
+        self.assertEqual(self.call('twin_get_case',{'case_id':cid})['case']['current_version'],1)
+        self.call('twin_accept',dict(proposal_id=proposal['id'],payload=dict(base_version=1,confirmed=True,acknowledge_declared=True,idempotency_key='intervention-confirm')))
+        result = self.call('twin_evaluate',dict(case_id=cid,version=2))
+        self.assertEqual(result['job']['status'],'completed',result)
+        self.assertTrue(result['evaluation']['verification']['valid'])
+        self.assertEqual(result['evaluation']['canonical_results']['decision']['selected'],'intervention.redistribute.2')
+        self.assertEqual(self.client.get('/api/twin/jobs/'+result['job']['id'],headers=self.headers).json,result)
+        self.assertEqual(self.client.get('/api/twin/cases/'+cid,headers=read_only).status_code,404)
+        # The convenience tool uses /proposals and cannot bypass its limit.
+        self.app.config['MAX_AGENT_REVISIONS'] = 0
+        self.assertEqual(self.rpc('twin_design_interventions',dict(payload,base_version=2)).json['result']['structuredContent']['error']['code'],'proposal_limit')
+        self.assertEqual(self.client.delete('/api/agents/me',headers=self.headers).status_code,204)
+
 
 if __name__ == '__main__':
     unittest.main()

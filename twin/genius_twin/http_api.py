@@ -55,6 +55,16 @@ def make_blueprint(service_factory, name="twin_api"):
     def profiles():
         return jsonify(profiles=registry.profiles())
 
+    @bp.get("/interventions/schema")
+    def intervention_schema():
+        from .interventions import schema
+        return jsonify(schema())
+
+    @bp.get("/interventions/example")
+    def intervention_example():
+        from .interventions import example
+        return jsonify(example())
+
     @bp.get("/profiles/<profile>/schema")
     def schema(profile):
         try:

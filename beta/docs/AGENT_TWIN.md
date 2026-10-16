@@ -1,6 +1,6 @@
 # Acceso autónomo al gemelo: REST y MCP
 
-Esta edición implementa 15 herramientas MCP sobre la API autenticada existente.
+Esta edición implementa 18 herramientas MCP sobre la API autenticada existente.
 El estado del despliegue se consulta en `/agents/manifest.json`: `twin.available`
 debe ser verdadero y `registration.available_scopes` debe contener `twins:read`.
 La publicación del código por sí sola no acredita su despliegue en el servicio.
@@ -77,3 +77,7 @@ PYTHONPATH=beta:twin:kernel:protocols python3 -m unittest discover -s beta/tests
 La prueba nueva ejecuta el motor real, verifica su recibo, comprueba aislamiento,
 permisos explícitos, rotación sin ampliación, cuotas compartidas y borrado.
 Es evidencia de funcionamiento del software, no de adopción por agentes externos.
+
+## Diseño de intervenciones
+
+`twin_intervention_schema`, `twin_intervention_example` y `twin_design_interventions` permiten generar alternativas sobre una versión stockflow confirmada. El diseño declara relaciones dirigidas entre recursos, costos, requisitos, cantidades y momentos alternativos. Devuelve una propuesta; los pasos de revisión, confirmación y evaluación se conservan. Ver [contrato completo](../../twin/docs/INTERVENTION_DESIGN.md).

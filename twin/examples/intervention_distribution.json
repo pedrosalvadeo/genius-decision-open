@@ -1,0 +1,49 @@
+{
+  "format": "genius-intervention-design/1",
+  "name": "Conectar y redistribuir agua",
+  "relations": [
+    {
+      "id": "pipe",
+      "label": "Conexión entre depósitos",
+      "source": "source",
+      "target": "target",
+      "initially_open": false,
+      "requires": [
+        "operate"
+      ],
+      "open_costs": {
+        "time": "1/1"
+      },
+      "close_costs": {},
+      "transfer_costs": {},
+      "provenance": "Relación hipotética; apertura cuesta un minuto y la transferencia no añade costos dentro del modelo."
+    }
+  ],
+  "interventions": [
+    {
+      "id": "redistribute",
+      "label": "Abrir conexión y transferir",
+      "default_action": "wait",
+      "operations": [
+        {
+          "operation": "connect",
+          "relation": "pipe",
+          "at": [
+            1
+          ]
+        },
+        {
+          "operation": "transfer",
+          "relation": "pipe",
+          "at": [
+            2
+          ],
+          "amounts": [
+            "1/1",
+            "2/1"
+          ]
+        }
+      ]
+    }
+  ]
+}

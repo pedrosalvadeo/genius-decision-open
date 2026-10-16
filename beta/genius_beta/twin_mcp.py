@@ -12,6 +12,14 @@ ROUTES = {
         'Read the exact structured model schema for an admitted twin profile.'),
     'twin_example': ('GET', '/examples/{example}/', 'twins:read', {'example': NAME}, ('example',),
         'Read a declared example; its assumptions are not observations of your case.'),
+    'twin_intervention_schema': ('GET', '/interventions/schema', 'twins:read', {}, (),
+        'Read the exact intervention design schema and finite expansion limits. Relations are declared directed resource transfers.'),
+    'twin_intervention_example': ('GET', '/interventions/example', 'twins:read', {}, (),
+        'Read a synthetic base model and intervention design; these are not measured evidence.'),
+    'twin_design_interventions': ('POST', '/cases/{case_id}/proposals', 'twins:write',
+        {'case_id': ID, 'base_version': dict(type='integer', minimum=1), 'text': dict(type='string', minLength=1, maxLength=10000), 'design': PAYLOAD},
+        ('case_id', 'base_version', 'text', 'design'),
+        'Generate alternatives by declared resource transfers, opening/closing relations and scheduling existing actions. Read twin_intervention_schema first. All finite combinations are included or the request is rejected. Returns a proposal, not an evaluation or authorization to act. Review, accept and evaluate through the existing versioned flow.'),
     'twin_list_cases': ('GET', '/cases', 'twins:read', {}, (), 'List this machine principal’s private twin cases.'),
     'twin_get_case': ('GET', '/cases/{case_id}', 'twins:read', {'case_id': ID}, ('case_id',),
         'Read versions, proposals, frozen evaluations and observations of an own case.'),
@@ -50,6 +58,9 @@ def execute(name, args, authorization, rest):
     payload = args.get('payload')
     if name == 'twin_evaluate':
         payload = {'version': args['version']}
+    elif name == 'twin_design_interventions':
+        payload = {'base_version': args['base_version'], 'kind': 'intervention_design',
+                   'text': args['text'], 'structured': {'design': args['design']}}
     elif name == 'twin_delete_case':
         payload = {'base_version': args['base_version']}
     return rest(method, path, payload, authorization)
