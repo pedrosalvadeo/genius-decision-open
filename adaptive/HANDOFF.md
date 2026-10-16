@@ -1,3 +1,34 @@
+# Genius Semilla — alojamiento automático consentido
+
+16 de octubre de 2026. Sobre la red pública del PR60, se añade un controlador de
+alojamiento de lectores Genius con ofertas firmadas, descubrimiento, cola de
+solicitudes y prueba de identidad del hijo. [Contrato y operación](federation/HOSTING.md).
+
+La autorización local declara mundos/focos exactos, 1–4 nacimientos totales y
+concesiones de hasta 24 horas. El programa ejecutado es fijo; no hay comandos,
+imágenes ni código aportado por el solicitante. Cada hijo crea claves y memoria
+propias mediante las altas normales. El trabajador no ofrece alojamiento y el
+servidor rechaza ofertas de hijos vinculados. Se conserva el límite global de
+cuentas y las cuotas por día/IP.
+
+Hay límites por proceso, ejecución secuencial, presupuesto persistente y bloqueo
+contra dobles controladores. Cancelación, revocación o expiración retiran al hijo;
+fallas de conexión pausan el cálculo y fallas de borrado quedan pendientes. El
+respaldo recuperado desactiva todas las ofertas y cancela las concesiones: nunca
+reanuda un permiso antiguo automáticamente. La migración 013 es aditiva.
+
+Activación propuesta: `GENIUS_NETWORK_HOST_ENABLED=true` en el servicio existente,
+junto con el nodo de referencia ya habilitado. Esto autoriza una sola instancia
+adicional para el mundo sintético de referencia y una concesión de 24 horas.
+No demuestra otro operador ni nuevas observaciones del mundo. No crea servicios
+de nube, no abre puertos y no entrega credenciales de infraestructura al runtime.
+
+Publicación, CI y despliegue se documentan en el PR de esta entrega. El módulo
+actual no renueva automáticamente concesiones ni presupuestos, no busca equipos
+sin adhesión y no cambia el kernel ni convierte incertidumbre en probabilidad.
+
+---
+
 # Genius — primera red por Internet
 
 16 de octubre de 2026. El usuario pidió difundir nodos por Internet para ampliar

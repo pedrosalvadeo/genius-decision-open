@@ -432,9 +432,9 @@ def recover(store, key, object_key, output, services_stopped=False):
         expected = [(p.name, hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(MIGRATIONS.glob('*.sql'))]
         with contextlib.closing(helper.read_only(saved)) as db, contextlib.closing(sqlite3.connect(privacy)) as current:
             saved_versions = helper.versions(db)
-            # Reviewed additive migrations 003 through 012 may upgrade exact historical prefixes.
+            # Reviewed additive migrations 003 through 013 may upgrade exact historical prefixes.
             # Never accept reordered, skipped or modified historical migrations.
-            approved = ('003_agent_access.sql', '004_contribution_inbox.sql', '005_club.sql', '006_club_social.sql', '007_club_contributions.sql', '008_adaptive_missions.sql', '009_mission_forecasts.sql', '010_context_forecasts.sql', '011_mission_regulation.sql', '012_public_network.sql')
+            approved = ('003_agent_access.sql', '004_contribution_inbox.sql', '005_club.sql', '006_club_social.sql', '007_club_contributions.sql', '008_adaptive_missions.sql', '009_mission_forecasts.sql', '010_context_forecasts.sql', '011_mission_regulation.sql', '012_public_network.sql', '013_consented_hosts.sql')
             supported = [expected[:n] for n in range(2, len(expected) + 1)
                          if all(name in approved for name, _ in expected[n:])]
             if saved_versions not in supported:
@@ -464,6 +464,10 @@ def recover(store, key, object_key, output, services_stopped=False):
         with contextlib.closing(sqlite3.connect(restored)) as db:
             db.execute('PRAGMA foreign_keys=ON')
             db.execute('PRAGMA secure_delete=ON')
+            # Historical snapshots must never revive hosting or cancelled leases.
+            # All recovered host permissions require a new operator authorization.
+            db.execute('UPDATE network_hosts SET disabled=1')
+            db.execute("UPDATE network_host_requests SET status='CANCELLED' WHERE status IN ('PENDING','ACTIVE')")
             # A pre-social snapshot had no table in which to apply later blocks.
             # Reapply after additive migration, before the file can be published.
             for identifier, kind, when in ledger:

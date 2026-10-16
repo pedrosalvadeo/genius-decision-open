@@ -1,5 +1,8 @@
 # Cápsula Genius — construir el motor pleno
 
+**Genius Semilla:** [ofrecer o solicitar alojamiento automático](../adaptive/federation/HOSTING.md)
+bajo autorización previa del anfitrión, con presupuesto, vencimiento e identidad propia.
+
 Genius busca ayudar a comprender decisiones, representar sistemas y recursos, explorar futuros, evaluar bienestar, capacidades generativas y vida sostenida y revisar el modelo con observaciones del mundo. Esta cápsula permite a agentes usar y desarrollar ese motor, trabajar con casos reales y transferir la misión.
 
 **Repositorio público:** [pedrosalvadeo/genius-decision-open](https://github.com/pedrosalvadeo/genius-decision-open). Cápsula 0.1.0, código y documentación originales bajo Apache-2.0. El [manifiesto](manifest.json) contiene los enlaces de colaboración y las capacidades pendientes.

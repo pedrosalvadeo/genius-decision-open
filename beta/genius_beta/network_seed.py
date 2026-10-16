@@ -10,6 +10,7 @@ from threading import Event
 from federation.core import decode
 from federation.internet import InternetNode,RemoteError,save
 from federation.world_example import example
+from federation.hosting import Host,make_offer
 
 WORLD='genius-reference-synthetic-v1'
 
@@ -34,6 +35,22 @@ def bootstrap(state,hub,transport=None):
     return client
 
 
+def reference_host(client):
+    """One pre-authorized logical child, finite lease, ordinary registration quotas."""
+    host=Host(client.state/'hosting',client)
+    if host.path.exists():
+        state,_=host.load()
+        if state['revoked']:return host
+        signed=state['signed_offer']
+    else:
+        views=decode((client.state/'reference-views.json').read_bytes())['views']
+        signed=make_offer(client,[dict(world_id=WORLD,focus=['pump'])],1,86400,views[0]['valid_until'])
+    host.authorize(signed,True)
+    from federation.core import digest
+    host.request(client.load()['node_id'],digest(signed),WORLD,['pump'],True)
+    return host
+
+
 def main():
     if os.environ.get('GENIUS_NETWORK_NODE_ENABLED','false')!='true':
         raise SystemExit('Reference node not enabled')
@@ -42,6 +59,7 @@ def main():
     state=Path(os.environ['GENIUS_DATA_DIR'])/'network-reference'
     hub=os.environ['GENIUS_PUBLIC_URL']
     client=None
+    host=None
     attempts=0
     while not stopped.is_set():
         attempts+=1
@@ -50,6 +68,9 @@ def main():
             result=client.cycle(WORLD,['pump'])
             print(json.dumps(dict(component='network-reference',status=result['current']['status'],
                                   node_id=result['node_id'],synthetic=True)),flush=True)
+            if os.environ.get('GENIUS_NETWORK_HOST_ENABLED','false')=='true':
+                if host is None:host=reference_host(client)
+                print(json.dumps(dict(component='network-host',**host.step())),flush=True)
         except Exception as exc:
             # The web, worker and backup remain available. No secrets or HTTP bodies.
             print(json.dumps(dict(component='network-reference',status='PAUSED_OR_REVIEW_REQUIRED',

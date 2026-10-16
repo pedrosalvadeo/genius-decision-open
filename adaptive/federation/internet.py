@@ -89,6 +89,7 @@ class InternetNode:
                 data_policy_acknowledged=True,scopes=['network:read','network:write','account:delete']))
             cfg.update(account_id=response['agent']['id'],credential=response['credential'])
             save(self.credentials_path,cfg)
+        self.renew(cfg)
         doc=dict(format=ENROLL,policy_version=POLICY,account_id=cfg['account_id'],hub=hub,
                  node_id=cfg['node_id'],public_key=cfg['keys']['public_key'],label=cfg['label'],topics=cfg['topics'])
         result=self.call(cfg,'POST','/api/network/join',dict(enrollment=doc,

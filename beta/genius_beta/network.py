@@ -12,8 +12,10 @@ ID=re.compile('[0-9a-f]{64}')
 
 
 def required_scope(method,path):
-    if path=='/api/network/me' and method in ('GET','HEAD'):return 'network:read'
-    if path in ('/api/network/join','/api/network/heartbeat','/api/network/views') and method=='POST':return 'network:write'
+    if path in ('/api/network/me','/api/network/host') and method in ('GET','HEAD'):return 'network:read'
+    if path=='/api/network/host' and method=='DELETE':return 'network:write'
+    if path in ('/api/network/join','/api/network/heartbeat','/api/network/views','/api/network/hosts',
+                '/api/network/host/request','/api/network/host/cancel','/api/network/host/result') and method=='POST':return 'network:write'
     return None
 
 
@@ -69,6 +71,9 @@ def install(app,db,body,error,quota,capacity,backup_ready):
             limits=dict(agent_accounts=app.config['MAX_AGENT_ACCOUNTS'],registrations_daily=app.config['MAX_AGENT_REGISTRATIONS_DAILY'],
                         views_per_node=8,relay_views=160,page_size=20,view_bytes=24000),
             sharing='EXPLICIT_PUBLIC_NON_PERSONAL_WITH_OPERATOR_RIGHTS',
+            hosting=dict(directory='/network/hosts',worker='genius-signed-world-reader/1',
+                         automatic_only_with_local_authorization=True,max_births_per_grant=4,
+                         remote_code_execution=False,recursive_reproduction=False),
             empirical_validation=False,physical_actions=False)
 
     @bp.get('/network/nodes')
@@ -158,4 +163,6 @@ def install(app,db,body,error,quota,capacity,backup_ready):
             db().execute('INSERT INTO network_views VALUES(?,?,?,?,?,?,?)',(hash_,node['id'],view['world_id'],digest(view),raw.decode(),len(raw),int(time.time())))
         return jsonify(sha256=hash_,view_hash=digest(view),duplicate=False),201
 
+    from . import hosting
+    hosting.install(bp,app,db,body,error,own,writing,capacity)
     app.register_blueprint(bp)
