@@ -1,0 +1,50 @@
+{
+  "items": [
+    {
+      "number": 1186,
+      "html_url": "https://github.com/MakazhanAlpamys/Soup/issues/1186",
+      "title": "backend: unsloth is accepted and silently ignored for task: distill",
+      "body": "## Problem\n\n`backend: unsloth` with `task: distill` is accepted and then silently ignored: the run trains on plain transformers.\n\n- `utils/distill.py::validate_distill_compat` refuses only `backend: mlx` (`:225`).\n- Neither `trainer/distill.py` nor `utils/distill.py` reads the backend anywhere else.\n\nSo `DistillTrainerWrapper.setup()` runs to completion on the transformers path whatever the config asks for. Found while reviewing #1167, by executing `setup()` with that combination. Nothing in the output says the unsloth request was dropped.\n\nThis is the #748 class: a setting that validates, loads, and changes nothing.\n\n## Fix path\n\nEither:\n\n1. **Refuse it at load**, like `mlx`, with a message that names the supported backend. This is the honest option while there is no unsloth distillation path.\n2. **Or wire it**, if unsloth's `FastLanguageModel` can host both student and teacher, which needs a measurement first.\n\nOption 1 is the expected one. Check the recipes, templates and `examples/` for any shipped config that sets this combination before refusing (the warn-then-refuse staging applies if one exists).\n\n## Acceptance criteria\n\n- [ ] `task: distill` + `backend: unsloth` is refused at config load, with a message naming the reason, or it is genuinely wired.\n- [ ] A test pins it, and fails when the refusal (or the wiring) is removed.\n- [ ] `soup doctor --config` does not report it as honoured.\n- [ ] A `fixed` changelog fragment.\n",
+      "state": "open",
+      "labels": [
+        {
+          "id": 10250928431,
+          "node_id": "LA_kwDORUqZb88AAAACYwDBLw",
+          "url": "https://api.github.com/repos/MakazhanAlpamys/Soup/labels/bug",
+          "name": "bug",
+          "color": "d73a4a",
+          "default": true,
+          "description": "Something isn't working",
+          "archived_at": null,
+          "archived_by": null
+        },
+        {
+          "id": 10250928482,
+          "node_id": "LA_kwDORUqZb88AAAACYwDBYg",
+          "url": "https://api.github.com/repos/MakazhanAlpamys/Soup/labels/help%20wanted",
+          "name": "help wanted",
+          "color": "008672",
+          "default": true,
+          "description": "Extra attention is needed",
+          "archived_at": null,
+          "archived_by": null
+        },
+        {
+          "id": 12568061173,
+          "node_id": "LA_kwDORUqZb88AAAAC7R1k9Q",
+          "url": "https://api.github.com/repos/MakazhanAlpamys/Soup/labels/difficulty:2",
+          "name": "difficulty:2",
+          "color": "a1d99b",
+          "default": false,
+          "description": "Difficulty 2/10: one file, fix is clear.",
+          "archived_at": null,
+          "archived_by": null
+        }
+      ],
+      "assignees": [],
+      "updated_at": "2026-10-16T18:39:02Z"
+    }
+  ],
+  "total_count": 1,
+  "incomplete_results": false
+}
