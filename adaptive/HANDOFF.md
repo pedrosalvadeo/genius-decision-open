@@ -1,3 +1,24 @@
+# Expansión mundial — 2026-10-16
+
+El usuario aclaró que hay que buscar alojamientos mundiales, sin limitarse a
+Mendoza. Investigación oficial y borrador BOINC no enviado en
+`federation/GLOBAL_HABITATS.md`. Prioridad: otro anfitrión Linux/Docker con volumen
+e identidad propios, más una vía de experimentos por lotes en BOINC Central.
+No confundir lugares observados con lugares de ejecución ni prometer aceptación.
+
+PR64 integrado: `7fe52a43353b1c58ca64b21e708d0779006bb8d1`, seis checks aprobados.
+Railway production tiene dos cambios preparados: ese commit y
+`GENIUS_LIVING_HABITATS=SAME,SAMM`. `accept_deploy` devolvió cancelación por falta
+de aprobación. No se aplicó; verificar el estado antes de continuar y no eludir
+la aprobación. El despliegue verificado sigue siendo PR63, en Ámsterdam.
+
+Cloudflare listó la cuenta pero consultar Workers falló por autenticación 10000.
+No se creó ningún Worker ni otro servicio. BOINC admite investigación independiente
+sin fines de lucro y Docker, pero requiere solicitud y adaptación a trabajos
+finitos. El borrador no afirma que esa adaptación o nuevos nodos estén funcionando.
+
+---
+
 # Organismos observadores reales — 2026-10-16
 
 PR63 está desplegado: commit `16c08c4593e81454536aeeb15d28820a8164f5d9`, Railway
