@@ -180,6 +180,7 @@ def install(app, db, fail_quota, APIError):
             if g.agent_account:
                 case_limit = min(case_limit, app.config['MAX_AGENT_CASES'])
                 revision_limit = min(revision_limit, app.config['MAX_AGENT_REVISIONS'])
+            current.execution_context['system_observation_limit'] = revision_limit
             if request.method == 'POST' and request.path.rstrip('/') == '/api/twin/cases':
                 if len(current.list_cases()['cases']) >= case_limit:
                     raise APIError('case_limit', 'Límite de expedientes alcanzado.', 429)

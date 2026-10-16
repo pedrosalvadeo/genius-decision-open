@@ -127,7 +127,7 @@ async function createCase(){
   saveCase();await refresh();go("review");announce(response.proposal?"Propuesta construida. Revisa las decisiones materiales antes de aceptarla.":"Tu relato se conservó. Este dominio requiere un modelo todavía no admitido.");
 }
 function renderUnsupported(){return element("div",{},heading("Este relato necesita un modelo propio","La limitación está en el alcance del producto. Agregar más datos al relato no amplía automáticamente el modelo."),panel("Tu solicitud está conservada",[p(activeCase().narrative,"quote"),list((activeCase().obligations||[]).map(item=>item.message)),p("Puedes iniciar una nueva exploración con el relato didáctico del semillero. Este expediente se mantiene como pendiente de modelización.","note")],"amber"));}
-function reviewRequired(){return !!currentVersion()?.metadata?.review_required || resultJob()?.admission==="MODEL_REVIEW_REQUIRED";}
+function reviewRequired(){return !!currentVersion()?.metadata?.review_required || resultJob()?.admission==="MODEL_REVIEW_REQUIRED" || ["REVIEW_REQUIRED","SCOPE_INCOMPLETE"].includes(ui.dossier?.system_context?.status);}
 function checkRow(id,text){return element("div",{class:"check-row"},element("input",{id,type:"checkbox",checked:!!ui.reviewChecks[id],onchange:e=>{ui.reviewChecks[id]=e.target.checked;}}),element("label",{for:id,text}));}
 function renderReview(){
   const model=currentModel();const proposal=currentProposal();const accepted=activeCase().current_version>0;

@@ -1,6 +1,6 @@
 # Acceso autónomo al gemelo: REST y MCP
 
-Esta edición implementa 18 herramientas MCP sobre la API autenticada existente.
+Esta edición implementa 24 herramientas MCP sobre la API autenticada existente.
 El estado del despliegue se consulta en `/agents/manifest.json`: `twin.available`
 debe ser verdadero y `registration.available_scopes` debe contener `twins:read`.
 La publicación del código por sí sola no acredita su despliegue en el servicio.
@@ -38,7 +38,7 @@ El servicio también mantiene las versiones de protocolo que anuncia su manifies
    su verificación y sus límites. `twin_get_job` lo recupera por `job_id`.
 7. `twin_get_case`, `twin_compare` (`before`, `after`) y `twin_export` conservan
    el historial. `twin_observe` admite únicamente el contrato del semillero en
-   [D3_API](../../twin/docs/D3_API.md); las observaciones de stockflow siguen abiertas.
+   [D3_API](../../twin/docs/D3_API.md); el contraste numérico de observaciones stockflow sigue abierto; los grafos de sistemas tienen un registro independiente.
 8. `twin_delete_case`: `case_id`, `base_version`, `confirm: true`.
    `delete_agent_space` con `confirm: true` elimina también los expedientes
    del gemelo y revoca la cuenta. Exportar antes cuando se necesite conservarlos.
@@ -81,3 +81,9 @@ Es evidencia de funcionamiento del software, no de adopción por agentes externo
 ## Diseño de intervenciones
 
 `twin_intervention_schema`, `twin_intervention_example` y `twin_design_interventions` permiten generar alternativas sobre una versión stockflow confirmada. El diseño declara relaciones dirigidas entre recursos, costos, requisitos, cantidades y momentos alternativos. Devuelve una propuesta; los pasos de revisión, confirmación y evaluación se conservan. Ver [contrato completo](../../twin/docs/INTERVENTION_DESIGN.md).
+
+## Sistemas y límites revisables
+
+Las seis herramientas `twin_system_schema`, `twin_system_scope_schema`, `twin_system_example`, `twin_system_context`, `twin_observe_system` y `twin_propose_system_scope` registran vistas con procedencia, proponen agrupaciones sobre relaciones declaradas y vinculan límites de sistema, intervención y evaluación al modelo. Preservan identidades, impactos externos e historia. No realizan percepción libre, causalidad empírica ni calibración. Ver [contrato de sistemas](../../twin/docs/SYSTEM_RECOGNITION.md).
+
+Una nueva vista puede guardarse antes de construir el modelo (`base_version=0`). Tras confirmar el modelo, revisar `system_scope` contra la última vista y aceptar por el flujo existente. Si quedan afectados sin representación, se conserva el cálculo condicional pero se suspende la recomendación. Nueva evidencia o cambios del modelo exigen revisar el alcance antes de recalcular. Los resultados previos permanecen históricos.

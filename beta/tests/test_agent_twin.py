@@ -161,6 +161,44 @@ class AgentTwinTests(unittest.TestCase):
         self.assertEqual(self.rpc('twin_design_interventions',dict(payload,base_version=2)).json['result']['structuredContent']['error']['code'],'proposal_limit')
         self.assertEqual(self.client.delete('/api/agents/me',headers=self.headers).status_code,204)
 
+    def test_system_observations_scopes_limits_identity_and_native_receipt(self):
+        fixture=self.call('twin_system_example')
+        self.assertEqual(self.call('twin_system_schema')['title'],'genius-system-observation/1')
+        self.assertEqual(self.call('twin_system_scope_schema')['title'],'genius-system-scope/1')
+        cid=self.call('twin_create_case',{'payload':{'text':'Sistema sintético y su entorno','profile':STOCKFLOW}})['case']['id']
+        payload=dict(base_version=0,observation_revision=0,idempotency_key='system-observation',observation=fixture['observation'])
+        read_only=self.register(['twins:read'])
+        tools=self.rpc(headers=read_only).json['result']['tools']
+        self.assertIn('twin_system_context',[t['name'] for t in tools])
+        self.assertNotIn('twin_observe_system',[t['name'] for t in tools])
+        denied=self.rpc('twin_observe_system',dict(case_id=cid,payload=payload),read_only).json['result']
+        self.assertEqual(denied['structuredContent']['error']['http_status'],403)
+        self.app.config['MAX_AGENT_REVISIONS']=1
+        recorded=self.call('twin_observe_system',dict(case_id=cid,payload=payload))
+        self.assertEqual(recorded,self.call('twin_observe_system',dict(case_id=cid,payload=payload)))
+        denied=self.rpc('twin_observe_system',dict(case_id=cid,payload=dict(payload,observation_revision=1,idempotency_key='next-system-observation'))).json['result']
+        self.assertEqual(denied['structuredContent']['error']['code'],'system_observation_limit')
+        state=self.call('twin_system_context',dict(case_id=cid))
+        self.assertEqual(state['latest']['recognition']['observation_sha256'],recorded['system_observation']['recognition']['observation_sha256'])
+        self.assertEqual(self.client.get('/api/twin/cases/'+cid+'/systems',headers=read_only).status_code,404)
+        self.assertEqual(self.client.get('/api/twin/cases/'+cid+'/systems',headers=self.headers).json,state)
+        self.app.config['MAX_AGENT_REVISIONS']=10
+        pid=self.call('twin_propose',dict(case_id=cid,payload=dict(base_version=0,kind='declared_model',text='Modelo sintético',structured={'model':fixture['model']})))['proposal']['id']
+        self.call('twin_accept',dict(proposal_id=pid,payload=dict(base_version=0,confirmed=True,acknowledge_declared=True,idempotency_key='system-base-confirm')))
+        args=dict(case_id=cid,base_version=1,text='Incluir afectados externos',scope=fixture['scope'])
+        proposal=self.call('twin_propose_system_scope',args)['proposal']
+        self.assertEqual(proposal['metadata']['system_scope']['unmapped_entities'],['neighbors'])
+        self.call('twin_accept',dict(proposal_id=proposal['id'],payload=dict(base_version=1,confirmed=True,acknowledge_declared=True,idempotency_key='system-scope-confirm')))
+        result=self.call('twin_evaluate',dict(case_id=cid,version=2))
+        self.assertEqual(result['job']['status'],'completed',result)
+        self.assertTrue(result['evaluation']['verification']['valid'])
+        self.assertEqual(result['evaluation']['recommendation_status'],'SUSPENDED_PENDING_MODEL_REVIEW')
+        self.assertEqual(self.call('twin_export',{'case_id':cid})['dossier']['system_observations'][0],recorded['system_observation'])
+        self.app.config['MAX_AGENT_REVISIONS']=0
+        self.assertEqual(self.rpc('twin_propose_system_scope',dict(args,base_version=2)).json['result']['structuredContent']['error']['code'],'proposal_limit')
+        self.assertEqual(self.client.delete('/api/agents/me',headers=self.headers).status_code,204)
+        self.assertEqual(self.client.get('/api/twin/cases/'+cid+'/systems',headers=self.headers).status_code,401)
+
 
 if __name__ == '__main__':
     unittest.main()

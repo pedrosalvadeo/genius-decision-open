@@ -6,6 +6,20 @@ PAYLOAD = dict(type='object', description='Exact REST payload documented in beta
 
 # (method, fixed path, scope, properties, required, description)
 ROUTES = {
+    'twin_system_schema': ('GET', '/systems/schema', 'twins:read', {}, (),
+        'Read the schema for source-attributed observations of entities and relations. Recognition proposes bounded graph hypotheses, not empirically established systems.'),
+    'twin_system_scope_schema': ('GET', '/systems/scope-schema', 'twins:read', {}, (),
+        'Read the schema for system, intervention and evaluation boundaries and explicit model bindings.'),
+    'twin_system_example': ('GET', '/systems/example', 'twins:read', {}, (),
+        'Read a synthetic observation, model and scope example with an external affected entity missing from the numerical model.'),
+    'twin_system_context': ('GET', '/cases/{case_id}/systems', 'twins:read', {'case_id': ID}, ('case_id',),
+        'Read the latest system observation, candidate groupings and whether accepted boundaries require review.'),
+    'twin_observe_system': ('POST', '/cases/{case_id}/systems', 'twins:write', {'case_id': ID, 'payload': PAYLOAD}, ('case_id', 'payload'),
+        'Record a full source-attributed snapshot, even before a numerical model exists. Payload: base_version, observation_revision, idempotency_key, observation. Read twin_system_schema first. Never fabricate observations or measured evidence. Revisions preserve history; omissions are unknown, not absence. No model calibration or physical execution.'),
+    'twin_propose_system_scope': ('POST', '/cases/{case_id}/proposals', 'twins:write',
+        {'case_id': ID, 'base_version': dict(type='integer', minimum=1), 'text': dict(type='string', minLength=1, maxLength=10000), 'scope': PAYLOAD},
+        ('case_id', 'base_version', 'text', 'scope'),
+        'Propose reviewed system boundaries against the latest observation and current model. Read twin_system_scope_schema. Preserve known dependencies and affected entities; missing numerical bindings suspend recommendation. Uses the existing proposal/accept/evaluate flow, without changing numerical dynamics.'),
     'twin_capabilities': ('GET', '/capabilities', 'twins:read', {}, (),
         'Read admitted profiles, examples, execution bounds and evidence limitations.'),
     'twin_schema': ('GET', '/profiles/{profile}/schema', 'twins:read', {'profile': NAME}, ('profile',),
@@ -61,6 +75,9 @@ def execute(name, args, authorization, rest):
     elif name == 'twin_design_interventions':
         payload = {'base_version': args['base_version'], 'kind': 'intervention_design',
                    'text': args['text'], 'structured': {'design': args['design']}}
+    elif name == 'twin_propose_system_scope':
+        payload = {'base_version': args['base_version'], 'kind': 'system_scope',
+                   'text': args['text'], 'structured': {'scope': args['scope']}}
     elif name == 'twin_delete_case':
         payload = {'base_version': args['base_version']}
     return rest(method, path, payload, authorization)
