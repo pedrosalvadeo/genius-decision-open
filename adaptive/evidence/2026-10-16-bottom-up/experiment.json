@@ -1,0 +1,4211 @@
+{
+  "format": "genius-bottom-up-experiment/1",
+  "status": "PASS",
+  "started_at": "2026-10-16T16:24:47.581583+00:00",
+  "completed_at": "2026-10-16T16:24:58.650700+00:00",
+  "checks": {
+    "three_processes": true,
+    "missing_evidence_not_invented": true,
+    "local_inquiries_reconstruct_same_model": true,
+    "delayed_evidence_detected": true,
+    "no_domain_message_sequence": true,
+    "independent_oracle": true,
+    "all_nodes_execute_native_kernel": true,
+    "replay_matches": true,
+    "disconnection_retains_current_model": true,
+    "contradiction_suspends_current_calculation": true,
+    "previous_calculation_is_audit_only": true,
+    "no_relay_multiplication": true,
+    "finite_budget": true,
+    "no_probabilities_or_action": true
+  },
+  "views": [
+    {
+      "format": "genius-partial-world/1",
+      "world_id": "pumping-study",
+      "view_id": "snapshot",
+      "owner": "water",
+      "shareable": true,
+      "valid_until": "2026-10-16T17:24:47.581583+00:00",
+      "frame": {
+        "reference_time": "2026-10-16T16:23:47.581583+00:00",
+        "step_unit": "day",
+        "horizon": 3,
+        "layout": "synthetic-pumping-layout-v1"
+      },
+      "observation": {
+        "format": "genius-system-observation/1",
+        "label": "Vista water",
+        "window": {
+          "start": "2026-10-16T16:23:47.581583+00:00",
+          "end": "2026-10-16T16:23:47.581583+00:00"
+        },
+        "entities": [
+          {
+            "id": "tank",
+            "label": "tank",
+            "kind": "resource",
+            "evidence_ids": [
+              "e"
+            ]
+          },
+          {
+            "id": "supply",
+            "label": "supply",
+            "kind": "resource",
+            "evidence_ids": [
+              "e"
+            ]
+          },
+          {
+            "id": "pump_tag",
+            "label": "pump_tag",
+            "kind": "physical",
+            "evidence_ids": [
+              "e"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "e",
+            "observed_at": "2026-10-16T16:23:47.581583+00:00",
+            "source": "fixture:water",
+            "basis": "synthetic",
+            "statement": "Reserva inicial 8 litros; entrega inicial 1 litro. Bombear requiere equipo operativo, consume 2 litros y 1 kWh y entrega 2 litros. Se compara esperar con reparar el primer día y bombear los siguientes. No se conocen probabilidades.",
+            "uncertainty": "Relaciones e identidades declaradas; no observación de campo."
+          }
+        ],
+        "relations": [
+          {
+            "id": "r0",
+            "source": "tank",
+            "target": "pump_tag",
+            "kind": "supplies",
+            "evidence_ids": [
+              "e"
+            ]
+          },
+          {
+            "id": "r1",
+            "source": "pump_tag",
+            "target": "supply",
+            "kind": "supplies",
+            "evidence_ids": [
+              "e"
+            ]
+          }
+        ],
+        "unknowns": [
+          "Faltan observaciones de campo y efectos fuera de estas vistas."
+        ]
+      },
+      "identities": [
+        {
+          "local_id": "tank",
+          "global_id": "reserve",
+          "status": "confirmed",
+          "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "local_id": "supply",
+          "global_id": "delivered",
+          "status": "confirmed",
+          "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "local_id": "pump_tag",
+          "global_id": "pump",
+          "status": "confirmed",
+          "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+          "evidence_ids": [
+            "e"
+          ]
+        }
+      ],
+      "denials": [],
+      "construction": {
+        "format": "genius-world-construction/1",
+        "sources": [
+          {
+            "id": "source",
+            "origin": "fixture:water",
+            "observed_at": "2026-10-16T16:23:47.581583+00:00",
+            "content": "Reserva inicial 8 litros; entrega inicial 1 litro. Bombear requiere equipo operativo, consume 2 litros y 1 kWh y entrega 2 litros. Se compara esperar con reparar el primer día y bombear los siguientes. No se conocen probabilidades."
+          }
+        ],
+        "claims": [
+          {
+            "id": "interpretation",
+            "basis": "synthetic",
+            "statement": "Interpretación manual del escenario y decisiones de representación declaradas.",
+            "uncertainty": "Hipótesis sintética; exactitud semántica y causal no verificadas.",
+            "spans": [
+              {
+                "source_id": "source",
+                "start": 0,
+                "end": 231,
+                "quote": "Reserva inicial 8 litros; entrega inicial 1 litro. Bombear requiere equipo operativo, consume 2 litros y 1 kWh y entrega 2 litros. Se compara esperar con reparar el primer día y bombear los siguientes. No se conocen probabilidades."
+              }
+            ],
+            "premises": []
+          }
+        ],
+        "fragments": [
+          {
+            "path": "/name",
+            "value": "Abastecimiento sintético: tres vistas complementarias",
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/stocks/0",
+            "value": {
+              "id": "reserve",
+              "label": "Reserva",
+              "unit": "litre",
+              "kind": "persistent",
+              "initial": "8/1",
+              "capacity": "8/1"
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/stocks/1",
+            "value": {
+              "id": "delivered",
+              "label": "Agua entregada acumulada",
+              "unit": "litre",
+              "kind": "persistent",
+              "initial": "1/1",
+              "capacity": "9/1"
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/actions/0",
+            "value": {
+              "id": "idle",
+              "label": "Esperar",
+              "requires": [
+                "access"
+              ],
+              "withdrawals": {},
+              "deposits": {},
+              "add_capabilities": [],
+              "remove_capabilities": []
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/actions/2",
+            "value": {
+              "id": "pump",
+              "label": "Bombear",
+              "requires": [
+                "access",
+                "powered"
+              ],
+              "withdrawals": {
+                "reserve": "2/1",
+                "energy": "1/1"
+              },
+              "deposits": {
+                "delivered": "2/1"
+              },
+              "add_capabilities": [],
+              "remove_capabilities": []
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/policies/0",
+            "value": {
+              "id": "wait",
+              "label": "Esperar tres días",
+              "default_action": "idle",
+              "rules": []
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/policies/1",
+            "value": {
+              "id": "restore_supply",
+              "label": "Restaurar y después bombear",
+              "default_action": "pump",
+              "rules": [
+                {
+                  "steps": [
+                    1
+                  ],
+                  "when": [],
+                  "action": "repair"
+                }
+              ]
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/law",
+            "value": null,
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/require_all_scenarios",
+            "value": false,
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/selection",
+            "value": "none",
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/assumptions/0",
+            "value": {
+              "id": "Synthetic",
+              "kind": "SYNTHETIC",
+              "statement": "Escenario hipotético: sin mediciones reales, pérdidas, demanda o impactos de campo validados.",
+              "provenance": "Experimento distribuido declarado"
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/profile",
+            "value": "STOCK_FLOW_FINITE_V1",
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/horizon",
+            "value": 3,
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/step_unit",
+            "value": "day",
+            "claim_ids": [
+              "interpretation"
+            ]
+          }
+        ],
+        "scope": null,
+        "unresolved": []
+      },
+      "bindings": [
+        {
+          "collection": "stocks",
+          "model_id": "reserve",
+          "entity_id": "tank"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "delivered",
+          "entity_id": "supply"
+        }
+      ]
+    },
+    {
+      "format": "genius-partial-world/1",
+      "world_id": "pumping-study",
+      "view_id": "snapshot",
+      "owner": "energy",
+      "shareable": true,
+      "valid_until": "2026-10-16T17:24:47.581583+00:00",
+      "frame": {
+        "reference_time": "2026-10-16T16:23:47.581583+00:00",
+        "step_unit": "day",
+        "horizon": 3,
+        "layout": "synthetic-pumping-layout-v1"
+      },
+      "observation": {
+        "format": "genius-system-observation/1",
+        "label": "Vista energy",
+        "window": {
+          "start": "2026-10-16T16:23:47.581583+00:00",
+          "end": "2026-10-16T16:23:47.581583+00:00"
+        },
+        "entities": [
+          {
+            "id": "electricity",
+            "label": "electricity",
+            "kind": "resource",
+            "evidence_ids": [
+              "e"
+            ]
+          },
+          {
+            "id": "crew_time",
+            "label": "crew_time",
+            "kind": "resource",
+            "evidence_ids": [
+              "e"
+            ]
+          },
+          {
+            "id": "device_7",
+            "label": "device_7",
+            "kind": "physical",
+            "evidence_ids": [
+              "e"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "e",
+            "observed_at": "2026-10-16T16:23:47.581583+00:00",
+            "source": "fixture:energy",
+            "basis": "synthetic",
+            "statement": "Hipótesis sintética: capacidad de 1 kWh y 1 hora. Reparar consume 1 hora y habilita powered. Faltan las disponibilidades por día; no se supone que sean constantes.",
+            "uncertainty": "Relaciones e identidades declaradas; no observación de campo."
+          }
+        ],
+        "relations": [
+          {
+            "id": "r0",
+            "source": "electricity",
+            "target": "device_7",
+            "kind": "supplies",
+            "evidence_ids": [
+              "e"
+            ]
+          },
+          {
+            "id": "r1",
+            "source": "crew_time",
+            "target": "device_7",
+            "kind": "supplies",
+            "evidence_ids": [
+              "e"
+            ]
+          }
+        ],
+        "unknowns": [
+          "Faltan observaciones de campo y efectos fuera de estas vistas."
+        ]
+      },
+      "identities": [
+        {
+          "local_id": "electricity",
+          "global_id": "energy",
+          "status": "confirmed",
+          "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "local_id": "crew_time",
+          "global_id": "hours",
+          "status": "confirmed",
+          "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "local_id": "device_7",
+          "global_id": "pump",
+          "status": "confirmed",
+          "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+          "evidence_ids": [
+            "e"
+          ]
+        }
+      ],
+      "denials": [],
+      "construction": {
+        "format": "genius-world-construction/1",
+        "sources": [
+          {
+            "id": "source",
+            "origin": "fixture:energy",
+            "observed_at": "2026-10-16T16:23:47.581583+00:00",
+            "content": "Hipótesis sintética: capacidad de 1 kWh y 1 hora. Reparar consume 1 hora y habilita powered. Faltan las disponibilidades por día; no se supone que sean constantes."
+          }
+        ],
+        "claims": [
+          {
+            "id": "interpretation",
+            "basis": "synthetic",
+            "statement": "Interpretación manual del escenario y decisiones de representación declaradas.",
+            "uncertainty": "Hipótesis sintética; exactitud semántica y causal no verificadas.",
+            "spans": [
+              {
+                "source_id": "source",
+                "start": 0,
+                "end": 163,
+                "quote": "Hipótesis sintética: capacidad de 1 kWh y 1 hora. Reparar consume 1 hora y habilita powered. Faltan las disponibilidades por día; no se supone que sean constantes."
+              }
+            ],
+            "premises": []
+          }
+        ],
+        "fragments": [
+          {
+            "path": "/stocks/2",
+            "value": {
+              "id": "energy",
+              "label": "Energía disponible diaria",
+              "unit": "kWh",
+              "kind": "renewable",
+              "initial": "1/1",
+              "capacity": "1/1"
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/stocks/3",
+            "value": {
+              "id": "hours",
+              "label": "Mantenimiento disponible diario",
+              "unit": "hour",
+              "kind": "renewable",
+              "initial": "1/1",
+              "capacity": "1/1"
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/capabilities/0",
+            "value": {
+              "id": "access",
+              "label": "Acceso de simulación"
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/capabilities/1",
+            "value": {
+              "id": "powered",
+              "label": "Equipo operativo después de la reparación simulada"
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/initial_capabilities",
+            "value": [
+              "access"
+            ],
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/actions/1",
+            "value": {
+              "id": "repair",
+              "label": "Restaurar el equipo",
+              "requires": [
+                "access"
+              ],
+              "withdrawals": {
+                "hours": "1/1"
+              },
+              "deposits": {},
+              "add_capabilities": [
+                "powered"
+              ],
+              "remove_capabilities": []
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/profile",
+            "value": "STOCK_FLOW_FINITE_V1",
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/horizon",
+            "value": 3,
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/step_unit",
+            "value": "day",
+            "claim_ids": [
+              "interpretation"
+            ]
+          }
+        ],
+        "scope": null,
+        "unresolved": []
+      },
+      "bindings": [
+        {
+          "collection": "stocks",
+          "model_id": "energy",
+          "entity_id": "electricity"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "hours",
+          "entity_id": "crew_time"
+        }
+      ]
+    },
+    {
+      "format": "genius-partial-world/1",
+      "world_id": "pumping-study",
+      "view_id": "snapshot",
+      "owner": "community",
+      "shareable": true,
+      "valid_until": "2026-10-16T17:24:47.581583+00:00",
+      "frame": {
+        "reference_time": "2026-10-16T16:23:47.581583+00:00",
+        "step_unit": "day",
+        "horizon": 3,
+        "layout": "synthetic-pumping-layout-v1"
+      },
+      "observation": {
+        "format": "genius-system-observation/1",
+        "label": "Vista community",
+        "window": {
+          "start": "2026-10-16T16:23:47.581583+00:00",
+          "end": "2026-10-16T16:23:47.581583+00:00"
+        },
+        "entities": [
+          {
+            "id": "received_water",
+            "label": "received_water",
+            "kind": "resource",
+            "evidence_ids": [
+              "e"
+            ]
+          },
+          {
+            "id": "residents",
+            "label": "residents",
+            "kind": "organization",
+            "evidence_ids": [
+              "e"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "e",
+            "observed_at": "2026-10-16T16:23:47.581583+00:00",
+            "source": "fixture:community",
+            "basis": "synthetic",
+            "statement": "La entrega acumulada afecta a una comunidad sintética. Se usa más agua entregada como indicador operacional parcial. No se han medido salud, bienestar integral, distribución entre personas ni sostenimiento de vida.",
+            "uncertainty": "Relaciones e identidades declaradas; no observación de campo."
+          }
+        ],
+        "relations": [
+          {
+            "id": "r0",
+            "source": "received_water",
+            "target": "residents",
+            "kind": "affects",
+            "evidence_ids": [
+              "e"
+            ]
+          }
+        ],
+        "unknowns": [
+          "Faltan observaciones de campo y efectos fuera de estas vistas."
+        ]
+      },
+      "identities": [
+        {
+          "local_id": "received_water",
+          "global_id": "delivered",
+          "status": "confirmed",
+          "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "local_id": "residents",
+          "global_id": "community",
+          "status": "confirmed",
+          "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+          "evidence_ids": [
+            "e"
+          ]
+        }
+      ],
+      "denials": [],
+      "construction": {
+        "format": "genius-world-construction/1",
+        "sources": [
+          {
+            "id": "source",
+            "origin": "fixture:community",
+            "observed_at": "2026-10-16T16:23:47.581583+00:00",
+            "content": "La entrega acumulada afecta a una comunidad sintética. Se usa más agua entregada como indicador operacional parcial. No se han medido salud, bienestar integral, distribución entre personas ni sostenimiento de vida."
+          }
+        ],
+        "claims": [
+          {
+            "id": "interpretation",
+            "basis": "synthetic",
+            "statement": "Interpretación manual del escenario y decisiones de representación declaradas.",
+            "uncertainty": "Hipótesis sintética; exactitud semántica y causal no verificadas.",
+            "spans": [
+              {
+                "source_id": "source",
+                "start": 0,
+                "end": 214,
+                "quote": "La entrega acumulada afecta a una comunidad sintética. Se usa más agua entregada como indicador operacional parcial. No se han medido salud, bienestar integral, distribución entre personas ni sostenimiento de vida."
+              }
+            ],
+            "premises": []
+          }
+        ],
+        "fragments": [
+          {
+            "path": "/carriers/0",
+            "value": {
+              "id": "community",
+              "label": "Comunidad sintética",
+              "kind": "organization"
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/welfare/0",
+            "value": {
+              "carrier": "community",
+              "dimension": "access",
+              "label": "Agua entregada, indicador operacional parcial",
+              "stock": "delivered",
+              "direction": "higher"
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/task",
+            "value": {
+              "kind": "operational",
+              "label": "Comparar entrega acumulada y ejecución de la ruta",
+              "living_carriers": [],
+              "conditions": [
+                {
+                  "stock": "delivered",
+                  "op": "ge",
+                  "threshold": "0/1"
+                }
+              ],
+              "require_action_success": true
+            },
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/profile",
+            "value": "STOCK_FLOW_FINITE_V1",
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/horizon",
+            "value": 3,
+            "claim_ids": [
+              "interpretation"
+            ]
+          },
+          {
+            "path": "/step_unit",
+            "value": "day",
+            "claim_ids": [
+              "interpretation"
+            ]
+          }
+        ],
+        "scope": null,
+        "unresolved": []
+      },
+      "bindings": [
+        {
+          "collection": "carriers",
+          "model_id": "community",
+          "entity_id": "residents"
+        }
+      ]
+    }
+  ],
+  "delayed": {
+    "format": "genius-partial-world/1",
+    "world_id": "pumping-study",
+    "view_id": "availability",
+    "owner": "energy",
+    "shareable": true,
+    "valid_until": "2026-10-16T17:24:47.581583+00:00",
+    "frame": {
+      "reference_time": "2026-10-16T16:23:47.581583+00:00",
+      "step_unit": "day",
+      "horizon": 3,
+      "layout": "synthetic-pumping-layout-v1"
+    },
+    "observation": {
+      "format": "genius-system-observation/1",
+      "label": "Vista energy",
+      "window": {
+        "start": "2026-10-16T16:23:47.581583+00:00",
+        "end": "2026-10-16T16:23:47.581583+00:00"
+      },
+      "entities": [
+        {
+          "id": "electricity",
+          "label": "electricity",
+          "kind": "resource",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "id": "crew_time",
+          "label": "crew_time",
+          "kind": "resource",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "id": "device_7",
+          "label": "device_7",
+          "kind": "physical",
+          "evidence_ids": [
+            "e"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "observed_at": "2026-10-16T16:23:47.581583+00:00",
+          "source": "fixture:energy",
+          "basis": "synthetic",
+          "statement": "Escenario sintético declarado: energía disponible 1, 0, 1 kWh en los días 1, 2 y 3; mantenimiento 1 hora por día. Se comunica tarde la interrupción energética del segundo día. No es una medición real.",
+          "uncertainty": "Relaciones e identidades declaradas; no observación de campo."
+        }
+      ],
+      "relations": [
+        {
+          "id": "r0",
+          "source": "electricity",
+          "target": "device_7",
+          "kind": "supplies",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "id": "r1",
+          "source": "crew_time",
+          "target": "device_7",
+          "kind": "supplies",
+          "evidence_ids": [
+            "e"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Faltan observaciones de campo y efectos fuera de estas vistas."
+      ]
+    },
+    "identities": [
+      {
+        "local_id": "electricity",
+        "global_id": "energy",
+        "status": "confirmed",
+        "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+        "evidence_ids": [
+          "e"
+        ]
+      },
+      {
+        "local_id": "crew_time",
+        "global_id": "hours",
+        "status": "confirmed",
+        "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+        "evidence_ids": [
+          "e"
+        ]
+      },
+      {
+        "local_id": "device_7",
+        "global_id": "pump",
+        "status": "confirmed",
+        "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+        "evidence_ids": [
+          "e"
+        ]
+      }
+    ],
+    "denials": [],
+    "construction": {
+      "format": "genius-world-construction/1",
+      "sources": [
+        {
+          "id": "source",
+          "origin": "fixture:energy",
+          "observed_at": "2026-10-16T16:23:47.581583+00:00",
+          "content": "Escenario sintético declarado: energía disponible 1, 0, 1 kWh en los días 1, 2 y 3; mantenimiento 1 hora por día. Se comunica tarde la interrupción energética del segundo día. No es una medición real."
+        }
+      ],
+      "claims": [
+        {
+          "id": "interpretation",
+          "basis": "synthetic",
+          "statement": "Interpretación manual del escenario y decisiones de representación declaradas.",
+          "uncertainty": "Hipótesis sintética; exactitud semántica y causal no verificadas.",
+          "spans": [
+            {
+              "source_id": "source",
+              "start": 0,
+              "end": 200,
+              "quote": "Escenario sintético declarado: energía disponible 1, 0, 1 kWh en los días 1, 2 y 3; mantenimiento 1 hora por día. Se comunica tarde la interrupción energética del segundo día. No es una medición real."
+            }
+          ],
+          "premises": []
+        }
+      ],
+      "fragments": [
+        {
+          "path": "/scenarios/0",
+          "value": {
+            "id": "available",
+            "label": "Disponibilidad hipotética constante",
+            "events": [
+              {
+                "inflows": {},
+                "renewables": {
+                  "energy": "1/1",
+                  "hours": "1/1"
+                },
+                "drains": {},
+                "remove_capabilities": []
+              },
+              {
+                "inflows": {},
+                "renewables": {
+                  "energy": "0/1",
+                  "hours": "1/1"
+                },
+                "drains": {},
+                "remove_capabilities": []
+              },
+              {
+                "inflows": {},
+                "renewables": {
+                  "energy": "1/1",
+                  "hours": "1/1"
+                },
+                "drains": {},
+                "remove_capabilities": []
+              }
+            ]
+          },
+          "claim_ids": [
+            "interpretation"
+          ]
+        }
+      ],
+      "scope": null,
+      "unresolved": []
+    },
+    "bindings": []
+  },
+  "conflict": {
+    "format": "genius-partial-world/1",
+    "world_id": "pumping-study",
+    "view_id": "opposing-availability",
+    "owner": "water",
+    "shareable": true,
+    "valid_until": "2026-10-16T17:24:47.581583+00:00",
+    "frame": {
+      "reference_time": "2026-10-16T16:23:47.581583+00:00",
+      "step_unit": "day",
+      "horizon": 3,
+      "layout": "synthetic-pumping-layout-v1"
+    },
+    "observation": {
+      "format": "genius-system-observation/1",
+      "label": "Vista energy",
+      "window": {
+        "start": "2026-10-16T16:23:47.581583+00:00",
+        "end": "2026-10-16T16:23:47.581583+00:00"
+      },
+      "entities": [
+        {
+          "id": "electricity",
+          "label": "electricity",
+          "kind": "resource",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "id": "crew_time",
+          "label": "crew_time",
+          "kind": "resource",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "id": "device_7",
+          "label": "device_7",
+          "kind": "physical",
+          "evidence_ids": [
+            "e"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e",
+          "observed_at": "2026-10-16T16:23:47.581583+00:00",
+          "source": "fixture:energy",
+          "basis": "synthetic",
+          "statement": "Informe sintético incompatible: se declara energía 1, 1, 1 kWh. No se aporta criterio para resolver la discrepancia con el informe de interrupción.",
+          "uncertainty": "Relaciones e identidades declaradas; no observación de campo."
+        }
+      ],
+      "relations": [
+        {
+          "id": "r0",
+          "source": "electricity",
+          "target": "device_7",
+          "kind": "supplies",
+          "evidence_ids": [
+            "e"
+          ]
+        },
+        {
+          "id": "r1",
+          "source": "crew_time",
+          "target": "device_7",
+          "kind": "supplies",
+          "evidence_ids": [
+            "e"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Faltan observaciones de campo y efectos fuera de estas vistas."
+      ]
+    },
+    "identities": [
+      {
+        "local_id": "electricity",
+        "global_id": "energy",
+        "status": "confirmed",
+        "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+        "evidence_ids": [
+          "e"
+        ]
+      },
+      {
+        "local_id": "crew_time",
+        "global_id": "hours",
+        "status": "confirmed",
+        "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+        "evidence_ids": [
+          "e"
+        ]
+      },
+      {
+        "local_id": "device_7",
+        "global_id": "pump",
+        "status": "confirmed",
+        "rationale": "Correspondencia explícita del escenario; no deducida por parecido del nombre.",
+        "evidence_ids": [
+          "e"
+        ]
+      }
+    ],
+    "denials": [],
+    "construction": {
+      "format": "genius-world-construction/1",
+      "sources": [
+        {
+          "id": "source",
+          "origin": "fixture:opposing-report",
+          "observed_at": "2026-10-16T16:23:47.581583+00:00",
+          "content": "Informe sintético incompatible: se declara energía 1, 1, 1 kWh. No se aporta criterio para resolver la discrepancia con el informe de interrupción."
+        }
+      ],
+      "claims": [
+        {
+          "id": "interpretation",
+          "basis": "synthetic",
+          "statement": "Interpretación manual del escenario y decisiones de representación declaradas.",
+          "uncertainty": "Hipótesis sintética; exactitud semántica y causal no verificadas.",
+          "spans": [
+            {
+              "source_id": "source",
+              "start": 0,
+              "end": 147,
+              "quote": "Informe sintético incompatible: se declara energía 1, 1, 1 kWh. No se aporta criterio para resolver la discrepancia con el informe de interrupción."
+            }
+          ],
+          "premises": []
+        }
+      ],
+      "fragments": [
+        {
+          "path": "/scenarios/0",
+          "value": {
+            "id": "available",
+            "label": "Disponibilidad hipotética constante",
+            "events": [
+              {
+                "inflows": {},
+                "renewables": {
+                  "energy": "1/1",
+                  "hours": "1/1"
+                },
+                "drains": {},
+                "remove_capabilities": []
+              },
+              {
+                "inflows": {},
+                "renewables": {
+                  "energy": "1/1",
+                  "hours": "1/1"
+                },
+                "drains": {},
+                "remove_capabilities": []
+              },
+              {
+                "inflows": {},
+                "renewables": {
+                  "energy": "1/1",
+                  "hours": "1/1"
+                },
+                "drains": {},
+                "remove_capabilities": []
+              }
+            ]
+          },
+          "claim_ids": [
+            "interpretation"
+          ]
+        }
+      ],
+      "scope": null,
+      "unresolved": []
+    },
+    "bindings": []
+  },
+  "checkpoints": {
+    "incomplete": {
+      "water": {
+        "as_of": "2026-10-16T16:24:47.947892+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 8,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 3
+        },
+        "model_sha256": null,
+        "questions": [
+          {
+            "code": "INCOMPLETE_MODEL"
+          }
+        ],
+        "scope_review_required": true,
+        "status": "NEEDS_REVISION",
+        "view_hashes": [
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      },
+      "energy": {
+        "as_of": "2026-10-16T16:24:47.956709+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 8,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 3
+        },
+        "model_sha256": null,
+        "questions": [
+          {
+            "code": "INCOMPLETE_MODEL"
+          }
+        ],
+        "scope_review_required": true,
+        "status": "NEEDS_REVISION",
+        "view_hashes": [
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      },
+      "community": {
+        "as_of": "2026-10-16T16:24:47.956170+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 8,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 3
+        },
+        "model_sha256": null,
+        "questions": [
+          {
+            "code": "INCOMPLETE_MODEL"
+          }
+        ],
+        "scope_review_required": true,
+        "status": "NEEDS_REVISION",
+        "view_hashes": [
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      }
+    },
+    "complete": {
+      "water": {
+        "as_of": "2026-10-16T16:24:48.326324+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 11,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 4
+        },
+        "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+        "questions": [],
+        "scope_review_required": true,
+        "status": "READY_FOR_REVIEW",
+        "view_hashes": [
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      },
+      "energy": {
+        "as_of": "2026-10-16T16:24:48.526232+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 11,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 4
+        },
+        "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+        "questions": [],
+        "scope_review_required": true,
+        "status": "READY_FOR_REVIEW",
+        "view_hashes": [
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      },
+      "community": {
+        "as_of": "2026-10-16T16:24:48.525011+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 11,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 4
+        },
+        "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+        "questions": [],
+        "scope_review_required": true,
+        "status": "READY_FOR_REVIEW",
+        "view_hashes": [
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      }
+    },
+    "offline": {
+      "water": {
+        "as_of": "2026-10-16T16:24:48.865508+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 11,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 4
+        },
+        "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+        "questions": [],
+        "scope_review_required": true,
+        "status": "READY_FOR_REVIEW",
+        "view_hashes": [
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      },
+      "community": {
+        "as_of": "2026-10-16T16:24:48.876398+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 11,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 4
+        },
+        "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+        "questions": [],
+        "scope_review_required": true,
+        "status": "READY_FOR_REVIEW",
+        "view_hashes": [
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      }
+    },
+    "blocked": {
+      "water": {
+        "as_of": "2026-10-16T16:24:49.194623+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 14,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 5
+        },
+        "model_sha256": null,
+        "questions": [
+          {
+            "code": "FRAGMENT_CONFLICT"
+          }
+        ],
+        "scope_review_required": true,
+        "status": "NEEDS_REVISION",
+        "view_hashes": [
+          "0b48b422c5c09d366ade41aa8d7acfc69651668dd40d8877c5b960b030712343",
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      },
+      "community": {
+        "as_of": "2026-10-16T16:24:49.220510+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 14,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 5
+        },
+        "model_sha256": null,
+        "questions": [
+          {
+            "code": "FRAGMENT_CONFLICT"
+          }
+        ],
+        "scope_review_required": true,
+        "status": "NEEDS_REVISION",
+        "view_hashes": [
+          "0b48b422c5c09d366ade41aa8d7acfc69651668dd40d8877c5b960b030712343",
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      }
+    }
+  },
+  "receipts": {
+    "water": {
+      "calculations": [
+        {
+          "at": "2026-10-16T16:24:48.523411+00:00",
+          "final_stocks": {
+            "restore_supply": {
+              "available": {
+                "delivered": "3/1",
+                "energy": "0/1",
+                "hours": "1/1",
+                "reserve": "6/1"
+              }
+            },
+            "wait": {
+              "available": {
+                "delivered": "1/1",
+                "energy": "1/1",
+                "hours": "1/1",
+                "reserve": "8/1"
+              }
+            }
+          },
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "native_verification": {
+            "valid": true
+          },
+          "selected": null,
+          "trajectories_sha256": "c910d5f72a2d7560e434a1a5aa8225b438bded5f76ad9574c701b58ce2463779",
+          "view_hashes": [
+            "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+            "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+            "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+            "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+          ]
+        }
+      ],
+      "config": {
+        "cycles": 64,
+        "focus": [
+          "pump"
+        ],
+        "id": "trial",
+        "interval_ms": 150,
+        "world_id": "pumping-study"
+      },
+      "current": {
+        "as_of": "2026-10-16T16:24:58.445979+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 14,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 5
+        },
+        "model_sha256": null,
+        "questions": [
+          {
+            "code": "FRAGMENT_CONFLICT"
+          }
+        ],
+        "scope_review_required": true,
+        "status": "NEEDS_REVISION",
+        "view_hashes": [
+          "0b48b422c5c09d366ade41aa8d7acfc69651668dd40d8877c5b960b030712343",
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      },
+      "cycles": 64,
+      "discovery": "ENROLLED_LOOPBACK_PEERS",
+      "empirical_validation": "NOT_ASSESSED",
+      "format": "genius-local-initiative/1",
+      "http_requests": 67,
+      "id": "trial",
+      "imports": 3,
+      "last_calculated_model": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+      "learning": "FIXED_INQUIRY_POLICY",
+      "node_id": "water",
+      "physical_actions": false,
+      "rule": "LOCAL_EVIDENCE_INQUIRY_V1",
+      "started_at": "2026-10-16T16:24:47.768878+00:00",
+      "status": "BUDGET_EXHAUSTED",
+      "ticks": [
+        {
+          "at": "2026-10-16T16:24:47.772490+00:00",
+          "cycle": 1,
+          "http_requests": 2,
+          "inserted": 1,
+          "model_sha256": null,
+          "outcome": "IMPORTED",
+          "peer": "community",
+          "questions": [
+            "INCOMPLETE_MODEL"
+          ],
+          "reason": "MODEL_INCOMPLETE",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:47.937756+00:00",
+          "cycle": 2,
+          "http_requests": 2,
+          "inserted": 1,
+          "model_sha256": null,
+          "outcome": "IMPORTED",
+          "peer": "energy",
+          "questions": [
+            "INCOMPLETE_MODEL"
+          ],
+          "reason": "MODEL_INCOMPLETE",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:48.110005+00:00",
+          "cycle": 3,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "INCOMPLETE_MODEL"
+          ],
+          "reason": "MODEL_INCOMPLETE",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:48.283214+00:00",
+          "cycle": 4,
+          "http_requests": 2,
+          "inserted": 1,
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "outcome": "IMPORTED",
+          "peer": "energy",
+          "questions": [
+            "INCOMPLETE_MODEL"
+          ],
+          "reason": "MODEL_INCOMPLETE",
+          "result_status": "READY_FOR_REVIEW"
+        },
+        {
+          "at": "2026-10-16T16:24:48.684853+00:00",
+          "cycle": 5,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [],
+          "reason": "REFRESH",
+          "result_status": "READY_FOR_REVIEW"
+        },
+        {
+          "at": "2026-10-16T16:24:48.864584+00:00",
+          "cycle": 6,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [],
+          "reason": "REFRESH",
+          "result_status": "READY_FOR_REVIEW"
+        },
+        {
+          "at": "2026-10-16T16:24:49.030940+00:00",
+          "cycle": 7,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:49.193652+00:00",
+          "cycle": 8,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:49.355325+00:00",
+          "cycle": 9,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:49.518505+00:00",
+          "cycle": 10,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:49.680836+00:00",
+          "cycle": 11,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:49.844933+00:00",
+          "cycle": 12,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.008569+00:00",
+          "cycle": 13,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.172227+00:00",
+          "cycle": 14,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.334685+00:00",
+          "cycle": 15,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.498261+00:00",
+          "cycle": 16,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.660657+00:00",
+          "cycle": 17,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.823550+00:00",
+          "cycle": 18,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.985589+00:00",
+          "cycle": 19,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.147782+00:00",
+          "cycle": 20,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.311103+00:00",
+          "cycle": 21,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.474554+00:00",
+          "cycle": 22,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.639441+00:00",
+          "cycle": 23,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.808816+00:00",
+          "cycle": 24,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.977073+00:00",
+          "cycle": 25,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.151385+00:00",
+          "cycle": 26,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.321345+00:00",
+          "cycle": 27,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.494676+00:00",
+          "cycle": 28,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.668533+00:00",
+          "cycle": 29,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.838419+00:00",
+          "cycle": 30,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.007128+00:00",
+          "cycle": 31,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.177054+00:00",
+          "cycle": 32,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.341729+00:00",
+          "cycle": 33,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.504265+00:00",
+          "cycle": 34,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.665514+00:00",
+          "cycle": 35,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.827707+00:00",
+          "cycle": 36,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.988830+00:00",
+          "cycle": 37,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.151253+00:00",
+          "cycle": 38,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.313971+00:00",
+          "cycle": 39,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.477830+00:00",
+          "cycle": 40,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.640600+00:00",
+          "cycle": 41,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.805086+00:00",
+          "cycle": 42,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.967377+00:00",
+          "cycle": 43,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.130655+00:00",
+          "cycle": 44,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.293661+00:00",
+          "cycle": 45,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.456387+00:00",
+          "cycle": 46,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.618251+00:00",
+          "cycle": 47,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.780832+00:00",
+          "cycle": 48,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.942546+00:00",
+          "cycle": 49,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.105160+00:00",
+          "cycle": 50,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.267302+00:00",
+          "cycle": 51,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.433168+00:00",
+          "cycle": 52,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.603244+00:00",
+          "cycle": 53,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.775109+00:00",
+          "cycle": 54,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.944156+00:00",
+          "cycle": 55,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.115703+00:00",
+          "cycle": 56,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.285533+00:00",
+          "cycle": 57,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.459325+00:00",
+          "cycle": 58,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.628290+00:00",
+          "cycle": 59,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.793244+00:00",
+          "cycle": 60,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.955263+00:00",
+          "cycle": 61,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:58.119440+00:00",
+          "cycle": 62,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:58.281535+00:00",
+          "cycle": 63,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "community",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:58.444741+00:00",
+          "cycle": 64,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        }
+      ]
+    },
+    "community": {
+      "calculations": [
+        {
+          "at": "2026-10-16T16:24:48.327503+00:00",
+          "final_stocks": {
+            "restore_supply": {
+              "available": {
+                "delivered": "3/1",
+                "energy": "0/1",
+                "hours": "1/1",
+                "reserve": "6/1"
+              }
+            },
+            "wait": {
+              "available": {
+                "delivered": "1/1",
+                "energy": "1/1",
+                "hours": "1/1",
+                "reserve": "8/1"
+              }
+            }
+          },
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "native_verification": {
+            "valid": true
+          },
+          "selected": null,
+          "trajectories_sha256": "c910d5f72a2d7560e434a1a5aa8225b438bded5f76ad9574c701b58ce2463779",
+          "view_hashes": [
+            "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+            "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+            "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+            "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+          ]
+        }
+      ],
+      "config": {
+        "cycles": 64,
+        "focus": [
+          "pump"
+        ],
+        "id": "trial",
+        "interval_ms": 150,
+        "world_id": "pumping-study"
+      },
+      "current": {
+        "as_of": "2026-10-16T16:24:58.349188+00:00",
+        "coverage": {
+          "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+          "known_unknowns": [
+            "Faltan observaciones de campo y efectos fuera de estas vistas."
+          ],
+          "local_entity_mentions": 14,
+          "relations": 5,
+          "unique_entities": 6,
+          "unique_views": 5
+        },
+        "model_sha256": null,
+        "questions": [
+          {
+            "code": "FRAGMENT_CONFLICT"
+          }
+        ],
+        "scope_review_required": true,
+        "status": "NEEDS_REVISION",
+        "view_hashes": [
+          "0b48b422c5c09d366ade41aa8d7acfc69651668dd40d8877c5b960b030712343",
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      },
+      "cycles": 64,
+      "discovery": "ENROLLED_LOOPBACK_PEERS",
+      "empirical_validation": "NOT_ASSESSED",
+      "format": "genius-local-initiative/1",
+      "http_requests": 68,
+      "id": "trial",
+      "imports": 4,
+      "last_calculated_model": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+      "learning": "FIXED_INQUIRY_POLICY",
+      "node_id": "community",
+      "physical_actions": false,
+      "rule": "LOCAL_EVIDENCE_INQUIRY_V1",
+      "started_at": "2026-10-16T16:24:47.777027+00:00",
+      "status": "BUDGET_EXHAUSTED",
+      "ticks": [
+        {
+          "at": "2026-10-16T16:24:47.779543+00:00",
+          "cycle": 1,
+          "http_requests": 2,
+          "inserted": 1,
+          "model_sha256": null,
+          "outcome": "IMPORTED",
+          "peer": "energy",
+          "questions": [
+            "GRAPH_REVIEW"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:47.943906+00:00",
+          "cycle": 2,
+          "http_requests": 2,
+          "inserted": 1,
+          "model_sha256": null,
+          "outcome": "IMPORTED",
+          "peer": "water",
+          "questions": [
+            "INCOMPLETE_MODEL"
+          ],
+          "reason": "MODEL_INCOMPLETE",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:48.119811+00:00",
+          "cycle": 3,
+          "http_requests": 2,
+          "inserted": 1,
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "outcome": "IMPORTED",
+          "peer": "energy",
+          "questions": [
+            "INCOMPLETE_MODEL"
+          ],
+          "reason": "MODEL_INCOMPLETE",
+          "result_status": "READY_FOR_REVIEW"
+        },
+        {
+          "at": "2026-10-16T16:24:48.487495+00:00",
+          "cycle": 4,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [],
+          "reason": "REFRESH",
+          "result_status": "READY_FOR_REVIEW"
+        },
+        {
+          "at": "2026-10-16T16:24:48.694014+00:00",
+          "cycle": 5,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [],
+          "reason": "REFRESH",
+          "result_status": "READY_FOR_REVIEW"
+        },
+        {
+          "at": "2026-10-16T16:24:48.866071+00:00",
+          "cycle": 6,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [],
+          "reason": "REFRESH",
+          "result_status": "READY_FOR_REVIEW"
+        },
+        {
+          "at": "2026-10-16T16:24:49.045596+00:00",
+          "cycle": 7,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [],
+          "reason": "REFRESH",
+          "result_status": "READY_FOR_REVIEW"
+        },
+        {
+          "at": "2026-10-16T16:24:49.215901+00:00",
+          "cycle": 8,
+          "http_requests": 2,
+          "inserted": 1,
+          "model_sha256": null,
+          "outcome": "IMPORTED",
+          "peer": "water",
+          "questions": [],
+          "reason": "REFRESH",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:49.381331+00:00",
+          "cycle": 9,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:49.542295+00:00",
+          "cycle": 10,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:49.705504+00:00",
+          "cycle": 11,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:49.867551+00:00",
+          "cycle": 12,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.031034+00:00",
+          "cycle": 13,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.192166+00:00",
+          "cycle": 14,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.354996+00:00",
+          "cycle": 15,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.518759+00:00",
+          "cycle": 16,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.682232+00:00",
+          "cycle": 17,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:50.844965+00:00",
+          "cycle": 18,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.007832+00:00",
+          "cycle": 19,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.169153+00:00",
+          "cycle": 20,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.332587+00:00",
+          "cycle": 21,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.494703+00:00",
+          "cycle": 22,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.657277+00:00",
+          "cycle": 23,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.818804+00:00",
+          "cycle": 24,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:51.981485+00:00",
+          "cycle": 25,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.143490+00:00",
+          "cycle": 26,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.314009+00:00",
+          "cycle": 27,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.475243+00:00",
+          "cycle": 28,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.642656+00:00",
+          "cycle": 29,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.805021+00:00",
+          "cycle": 30,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:52.967791+00:00",
+          "cycle": 31,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.128959+00:00",
+          "cycle": 32,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.292288+00:00",
+          "cycle": 33,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.453807+00:00",
+          "cycle": 34,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.617085+00:00",
+          "cycle": 35,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.778244+00:00",
+          "cycle": 36,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:53.941432+00:00",
+          "cycle": 37,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.103630+00:00",
+          "cycle": 38,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.267055+00:00",
+          "cycle": 39,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.429751+00:00",
+          "cycle": 40,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.592809+00:00",
+          "cycle": 41,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.755599+00:00",
+          "cycle": 42,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:54.922478+00:00",
+          "cycle": 43,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.085458+00:00",
+          "cycle": 44,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.247678+00:00",
+          "cycle": 45,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.410168+00:00",
+          "cycle": 46,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.572958+00:00",
+          "cycle": 47,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.735796+00:00",
+          "cycle": 48,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:55.899903+00:00",
+          "cycle": 49,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.062258+00:00",
+          "cycle": 50,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.225240+00:00",
+          "cycle": 51,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.388128+00:00",
+          "cycle": 52,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.552173+00:00",
+          "cycle": 53,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.714057+00:00",
+          "cycle": 54,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:56.876981+00:00",
+          "cycle": 55,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.038535+00:00",
+          "cycle": 56,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.202186+00:00",
+          "cycle": 57,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.367096+00:00",
+          "cycle": 58,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.529965+00:00",
+          "cycle": 59,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.691497+00:00",
+          "cycle": 60,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:57.854570+00:00",
+          "cycle": 61,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:58.017240+00:00",
+          "cycle": 62,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:58.181875+00:00",
+          "cycle": 63,
+          "http_requests": 1,
+          "inserted": 0,
+          "memory_preserved": true,
+          "model_sha256": null,
+          "outcome": "UNAVAILABLE_OR_REJECTED",
+          "peer": "energy",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        },
+        {
+          "at": "2026-10-16T16:24:58.345438+00:00",
+          "cycle": 64,
+          "http_requests": 1,
+          "inserted": 0,
+          "model_sha256": null,
+          "outcome": "NO_NEW_RELEVANT_VIEWS",
+          "peer": "water",
+          "questions": [
+            "FRAGMENT_CONFLICT"
+          ],
+          "reason": "EVIDENCE_REVIEW",
+          "result_status": "NEEDS_REVISION"
+        }
+      ]
+    }
+  },
+  "stopped_energy": {
+    "calculations": [
+      {
+        "at": "2026-10-16T16:24:48.321960+00:00",
+        "final_stocks": {
+          "restore_supply": {
+            "available": {
+              "delivered": "3/1",
+              "energy": "0/1",
+              "hours": "1/1",
+              "reserve": "6/1"
+            }
+          },
+          "wait": {
+            "available": {
+              "delivered": "1/1",
+              "energy": "1/1",
+              "hours": "1/1",
+              "reserve": "8/1"
+            }
+          }
+        },
+        "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+        "native_verification": {
+          "valid": true
+        },
+        "selected": null,
+        "trajectories_sha256": "c910d5f72a2d7560e434a1a5aa8225b438bded5f76ad9574c701b58ce2463779",
+        "view_hashes": [
+          "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+          "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+          "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+          "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+        ]
+      }
+    ],
+    "config": {
+      "cycles": 64,
+      "focus": [
+        "pump"
+      ],
+      "id": "trial",
+      "interval_ms": 150,
+      "world_id": "pumping-study"
+    },
+    "current": {
+      "as_of": "2026-10-16T16:24:48.526232+00:00",
+      "coverage": {
+        "completeness": "ONLY_SUPPLIED_VIEWS_NOT_THE_WHOLE_WORLD",
+        "known_unknowns": [
+          "Faltan observaciones de campo y efectos fuera de estas vistas."
+        ],
+        "local_entity_mentions": 11,
+        "relations": 5,
+        "unique_entities": 6,
+        "unique_views": 4
+      },
+      "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+      "questions": [],
+      "scope_review_required": true,
+      "status": "READY_FOR_REVIEW",
+      "view_hashes": [
+        "50902e9ff06edb30b296744cfd57d86086efc32241a6542685a36fb56e9882eb",
+        "9d436a0bbcf1dbdd9d84ec3cbb4db3bda804b810f04758ba816ec5139241d04a",
+        "b79e0007ce599f602be3715d873a85ffa931a97aedda22b20ecaa8c84c0f4c76",
+        "f28a4146f6f3e670f77a8c421a61b52a1d00067a9715da8e682baee979b4aafd"
+      ]
+    },
+    "cycles": 4,
+    "discovery": "ENROLLED_LOOPBACK_PEERS",
+    "empirical_validation": "NOT_ASSESSED",
+    "format": "genius-local-initiative/1",
+    "http_requests": 6,
+    "id": "trial",
+    "imports": 2,
+    "last_calculated_model": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+    "learning": "FIXED_INQUIRY_POLICY",
+    "node_id": "energy",
+    "physical_actions": false,
+    "rule": "LOCAL_EVIDENCE_INQUIRY_V1",
+    "started_at": "2026-10-16T16:24:47.773337+00:00",
+    "status": "RUNNING",
+    "ticks": [
+      {
+        "at": "2026-10-16T16:24:47.777850+00:00",
+        "cycle": 1,
+        "http_requests": 2,
+        "inserted": 1,
+        "model_sha256": null,
+        "outcome": "IMPORTED",
+        "peer": "community",
+        "questions": [
+          "INCOMPLETE_MODEL"
+        ],
+        "reason": "MODEL_INCOMPLETE",
+        "result_status": "NEEDS_REVISION"
+      },
+      {
+        "at": "2026-10-16T16:24:47.943684+00:00",
+        "cycle": 2,
+        "http_requests": 2,
+        "inserted": 1,
+        "model_sha256": null,
+        "outcome": "IMPORTED",
+        "peer": "water",
+        "questions": [
+          "INCOMPLETE_MODEL"
+        ],
+        "reason": "MODEL_INCOMPLETE",
+        "result_status": "NEEDS_REVISION"
+      },
+      {
+        "at": "2026-10-16T16:24:48.126709+00:00",
+        "cycle": 3,
+        "http_requests": 1,
+        "inserted": 0,
+        "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+        "outcome": "NO_NEW_RELEVANT_VIEWS",
+        "peer": "community",
+        "questions": [],
+        "reason": "REFRESH",
+        "result_status": "READY_FOR_REVIEW"
+      },
+      {
+        "at": "2026-10-16T16:24:48.490156+00:00",
+        "cycle": 4,
+        "http_requests": 1,
+        "inserted": 0,
+        "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+        "outcome": "NO_NEW_RELEVANT_VIEWS",
+        "peer": "water",
+        "questions": [],
+        "reason": "REFRESH",
+        "result_status": "READY_FOR_REVIEW"
+      }
+    ]
+  },
+  "model_sha256": "9a460d9dc73c4ad5ceed9ac16eab501d7f0ba3b48214c2eed7db2188c6ae8295",
+  "trajectories": {
+    "wait": {
+      "available": {
+        "daily": [
+          {
+            "day": 0,
+            "step": 0,
+            "stocks": {
+              "reserve": "8/1",
+              "delivered": "1/1",
+              "energy": "1/1",
+              "hours": "1/1"
+            },
+            "capabilities": [
+              "access"
+            ],
+            "organization": "org_4d0dcfbb221209f51838",
+            "action_id": null,
+            "action_executed": null,
+            "action_failure_reasons": [],
+            "ledger": {},
+            "violation_seen": false,
+            "indeterminate_seen": false,
+            "endpoint_conditions": true,
+            "task_status": "success"
+          },
+          {
+            "day": 1,
+            "step": 1,
+            "stocks": {
+              "reserve": "8/1",
+              "delivered": "1/1",
+              "energy": "1/1",
+              "hours": "1/1"
+            },
+            "capabilities": [
+              "access"
+            ],
+            "organization": "org_4d0dcfbb221209f51838",
+            "action_id": "idle",
+            "action_executed": true,
+            "action_failure_reasons": [],
+            "ledger": {
+              "reserve": {
+                "before": "8/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "8/1",
+                "balance_valid": true
+              },
+              "delivered": {
+                "before": "1/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              },
+              "energy": {
+                "before": "1/1",
+                "renewal": "1/1",
+                "expiry": "1/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              },
+              "hours": {
+                "before": "1/1",
+                "renewal": "1/1",
+                "expiry": "1/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              }
+            },
+            "violation_seen": false,
+            "indeterminate_seen": false,
+            "endpoint_conditions": true,
+            "task_status": "success"
+          },
+          {
+            "day": 2,
+            "step": 2,
+            "stocks": {
+              "reserve": "8/1",
+              "delivered": "1/1",
+              "energy": "0/1",
+              "hours": "1/1"
+            },
+            "capabilities": [
+              "access"
+            ],
+            "organization": "org_4d0dcfbb221209f51838",
+            "action_id": "idle",
+            "action_executed": true,
+            "action_failure_reasons": [],
+            "ledger": {
+              "reserve": {
+                "before": "8/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "8/1",
+                "balance_valid": true
+              },
+              "delivered": {
+                "before": "1/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              },
+              "energy": {
+                "before": "1/1",
+                "renewal": "0/1",
+                "expiry": "1/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "0/1",
+                "balance_valid": true
+              },
+              "hours": {
+                "before": "1/1",
+                "renewal": "1/1",
+                "expiry": "1/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              }
+            },
+            "violation_seen": false,
+            "indeterminate_seen": false,
+            "endpoint_conditions": true,
+            "task_status": "success"
+          },
+          {
+            "day": 3,
+            "step": 3,
+            "stocks": {
+              "reserve": "8/1",
+              "delivered": "1/1",
+              "energy": "1/1",
+              "hours": "1/1"
+            },
+            "capabilities": [
+              "access"
+            ],
+            "organization": "org_4d0dcfbb221209f51838",
+            "action_id": "idle",
+            "action_executed": true,
+            "action_failure_reasons": [],
+            "ledger": {
+              "reserve": {
+                "before": "8/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "8/1",
+                "balance_valid": true
+              },
+              "delivered": {
+                "before": "1/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              },
+              "energy": {
+                "before": "0/1",
+                "renewal": "1/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              },
+              "hours": {
+                "before": "1/1",
+                "renewal": "1/1",
+                "expiry": "1/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              }
+            },
+            "violation_seen": false,
+            "indeterminate_seen": false,
+            "endpoint_conditions": true,
+            "task_status": "success"
+          }
+        ],
+        "totals": {
+          "withdrawn": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "deposited": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "drained": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "unmet": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "spilled": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "expired": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "2/1",
+            "hours": "3/1"
+          },
+          "inflows": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "renewed": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "2/1",
+            "hours": "3/1"
+          }
+        }
+      }
+    },
+    "restore_supply": {
+      "available": {
+        "daily": [
+          {
+            "day": 0,
+            "step": 0,
+            "stocks": {
+              "reserve": "8/1",
+              "delivered": "1/1",
+              "energy": "1/1",
+              "hours": "1/1"
+            },
+            "capabilities": [
+              "access"
+            ],
+            "organization": "org_4d0dcfbb221209f51838",
+            "action_id": null,
+            "action_executed": null,
+            "action_failure_reasons": [],
+            "ledger": {},
+            "violation_seen": false,
+            "indeterminate_seen": false,
+            "endpoint_conditions": true,
+            "task_status": "success"
+          },
+          {
+            "day": 1,
+            "step": 1,
+            "stocks": {
+              "reserve": "8/1",
+              "delivered": "1/1",
+              "energy": "1/1",
+              "hours": "0/1"
+            },
+            "capabilities": [
+              "access",
+              "powered"
+            ],
+            "organization": "org_bbd1288fa50545e9a708",
+            "action_id": "repair",
+            "action_executed": true,
+            "action_failure_reasons": [],
+            "ledger": {
+              "reserve": {
+                "before": "8/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "8/1",
+                "balance_valid": true
+              },
+              "delivered": {
+                "before": "1/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              },
+              "energy": {
+                "before": "1/1",
+                "renewal": "1/1",
+                "expiry": "1/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              },
+              "hours": {
+                "before": "1/1",
+                "renewal": "1/1",
+                "expiry": "1/1",
+                "inflow": "0/1",
+                "withdrawal": "1/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "0/1",
+                "balance_valid": true
+              }
+            },
+            "violation_seen": false,
+            "indeterminate_seen": false,
+            "endpoint_conditions": true,
+            "task_status": "success"
+          },
+          {
+            "day": 2,
+            "step": 2,
+            "stocks": {
+              "reserve": "8/1",
+              "delivered": "1/1",
+              "energy": "0/1",
+              "hours": "1/1"
+            },
+            "capabilities": [
+              "access",
+              "powered"
+            ],
+            "organization": "org_bbd1288fa50545e9a708",
+            "action_id": "pump",
+            "action_executed": false,
+            "action_failure_reasons": [
+              "stock:energy"
+            ],
+            "ledger": {
+              "reserve": {
+                "before": "8/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "8/1",
+                "balance_valid": true
+              },
+              "delivered": {
+                "before": "1/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              },
+              "energy": {
+                "before": "1/1",
+                "renewal": "0/1",
+                "expiry": "1/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "0/1",
+                "balance_valid": true
+              },
+              "hours": {
+                "before": "0/1",
+                "renewal": "1/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              }
+            },
+            "violation_seen": true,
+            "indeterminate_seen": false,
+            "endpoint_conditions": true,
+            "task_status": "failure"
+          },
+          {
+            "day": 3,
+            "step": 3,
+            "stocks": {
+              "reserve": "6/1",
+              "delivered": "3/1",
+              "energy": "0/1",
+              "hours": "1/1"
+            },
+            "capabilities": [
+              "access",
+              "powered"
+            ],
+            "organization": "org_bbd1288fa50545e9a708",
+            "action_id": "pump",
+            "action_executed": true,
+            "action_failure_reasons": [],
+            "ledger": {
+              "reserve": {
+                "before": "8/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "2/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "6/1",
+                "balance_valid": true
+              },
+              "delivered": {
+                "before": "1/1",
+                "renewal": "0/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "2/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "3/1",
+                "balance_valid": true
+              },
+              "energy": {
+                "before": "0/1",
+                "renewal": "1/1",
+                "expiry": "0/1",
+                "inflow": "0/1",
+                "withdrawal": "1/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "0/1",
+                "balance_valid": true
+              },
+              "hours": {
+                "before": "1/1",
+                "renewal": "1/1",
+                "expiry": "1/1",
+                "inflow": "0/1",
+                "withdrawal": "0/1",
+                "deposit": "0/1",
+                "spill": "0/1",
+                "drained": "0/1",
+                "unmet": "0/1",
+                "after": "1/1",
+                "balance_valid": true
+              }
+            },
+            "violation_seen": true,
+            "indeterminate_seen": false,
+            "endpoint_conditions": true,
+            "task_status": "failure"
+          }
+        ],
+        "totals": {
+          "withdrawn": {
+            "reserve": "2/1",
+            "delivered": "0/1",
+            "energy": "1/1",
+            "hours": "1/1"
+          },
+          "deposited": {
+            "reserve": "0/1",
+            "delivered": "2/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "drained": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "unmet": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "spilled": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "expired": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "2/1",
+            "hours": "2/1"
+          },
+          "inflows": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "0/1",
+            "hours": "0/1"
+          },
+          "renewed": {
+            "reserve": "0/1",
+            "delivered": "0/1",
+            "energy": "2/1",
+            "hours": "3/1"
+          }
+        }
+      }
+    }
+  },
+  "native_verification": {
+    "valid": true,
+    "status": "VALID",
+    "errors": []
+  },
+  "measurements": {
+    "baseline_prediction": null,
+    "declared_synthetic_target": "3/1",
+    "calculated_final_delivery": "3/1",
+    "prediction_improvement": "NOT_MEASURABLE_FROM_INCOMPLETE_BASELINE",
+    "peer_http_requests": {
+      "water": 67,
+      "community": 68
+    },
+    "metric_scope": "PEER_READS_ONLY_EXCLUDES_HARNESS_MONITORING"
+  },
+  "source_sha256": {
+    "__init__.py": "5adf6af8ba6a5595782610f1a32b9d10b903121117f960d7da869cca44ca9b11",
+    "bottom_up_experiment.py": "2d07cb256d5618d1d1efd2817d2b352088b250422b3f7693ebfe4a790907f589",
+    "core.py": "5262c1d1cd6456fbc3ef3d4a6c45dee090622051d7a9e51bb1d3a68c9321ae2e",
+    "experiment.py": "dd5226a184624a0dbabf369e293750dd186c9409c6156c86beac8cb93427a1ff",
+    "initiative.py": "d0af09b0a3bf078999fec8ce808026e6da738b911877a92bedf1bc346f4d28dd",
+    "transport.py": "2fd01cbb51f9cea27590b4cb012abfb6e4b6508ce549f45eabbdb9ccd2a925f9",
+    "views.py": "d0140486f7e2d7eec8747845f278533b5ce5f40efe935fd60962f8711df35ed9",
+    "world_example.py": "bf0daf287561e9e2941e9bc0daa58331cfa9b9a520cf52e2b5261868a01e4dd5",
+    "world_experiment.py": "002c3255e77c57abd7b38545f76c9175b434be4d95d0de9764483105a84e451c"
+  },
+  "scope": "SYNTHETIC_LATE_EVIDENCE_SAME_OPERATOR_LOOPBACK",
+  "physical_actions": false,
+  "empirical_validation": "NOT_ASSESSED",
+  "life_sustainment_effect": "UNMEASURED",
+  "interpretation": "MANUAL_IDENTITIES_MECHANISMS_AND_CANDIDATE_ROUTES",
+  "state_cleanup": "TEMPORARY_LAB_ONLY"
+}

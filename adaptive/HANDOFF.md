@@ -1,3 +1,32 @@
+# Genius — iniciativa local abajo-arriba
+
+16 de octubre de 2026. Se implementó el experimento aprobado de consultas
+iniciadas por cada nodo. [Contrato](federation/BOTTOM_UP.md),
+[evidencia sintética](evidence/2026-10-16-bottom-up/README.md).
+
+Cada nodo consulta índices de pares inscritos, importa sólo vistas nuevas del
+mundo observado, recompone su modelo y ejecuta el kernel cuando es calculable.
+La política es general y fija; no aprende causalidad ni modifica código. Hasta
+64 ciclos, dos lecturas por ciclo, una ejecución activa y cuatro por memoria.
+Los recibos quedan en SQLite; reiniciar interrumpe, no reactiva el trabajo.
+
+Tres procesos independientes reúnen información insuficiente y encuentran un
+informe tardío de interrupción energética. Los tres calculan el mismo modelo:
+esperar entrega 1,1,1,1; reparar y bombear, 1,1,1,3 litros. Una desconexión conserva
+la copia vigente. Un informe contradictorio suspende el cálculo actual y deja
+el anterior sólo como historia. Catorce comprobaciones del experimento pasan.
+La base incompleta no produce predicción; no afirmar reducción de error,
+validación empírica, PVS, descubrimiento de causalidad ni intervención real.
+
+Once pruebas nuevas cubren autonomía de consulta, kernel, privacidad, índices,
+caducidad, contradicción, reinicio, permisos, parada y presupuestos. CI y merge
+se registran en el PR. La matemática y las políticas rechazadas no se modifican.
+No se despliega en Railway ni se dejan nodos públicos o procesos permanentes.
+
+Siguiente encargo: diseñar revisión explícita de versiones y contrastes con
+resultados observados; preservar afectados, predicciones previas y evidencia.
+No atribuir autoaprendizaje al controlador fijo ni autonomía de intervención.
+
 # Genius — gemelo distribuido de vistas complementarias
 
 16 de octubre de 2026. El usuario aclaró que el valor de más nodos es ampliar el

@@ -1,5 +1,10 @@
 # Genius: laboratorio de nodos con memoria independiente
 
+La extensión [Iniciativa local](BOTTOM_UP.md) añade consultas iniciadas por cada
+nodo dentro de una ejecución acotada. El operador declara pares, foco y
+presupuesto; cada nodo detecta nuevas vistas, compone y calcula. El modo manual
+descrito abajo sigue disponible y es el comportamiento predeterminado.
+
 La extensión [Gemelo distribuido](DISTRIBUTED_TWIN.md) integra vistas parciales
 de sistemas y fragmentos numéricos con identidades explícitas. Complementa este
 primer experimento de observaciones escalares con cobertura de entidades,
@@ -51,7 +56,7 @@ atestación de origen, defensa Sybil ni operación entre administradores hostile
 
 La lectura de pares no permite mutaciones. No hay exploración de direcciones,
 redirecciones, ejecución de código recibido, replicación, migración automática,
-cron ni selección autónoma de misiones. El coordinador solicita los intercambios;
+cron ni selección autónoma de misiones. En el modo manual, el coordinador solicita los intercambios;
 los datos viajan directamente entre servidores. Las cadenas de fuentes son datos
 inertes, no destinos de red ni instrucciones.
 

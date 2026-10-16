@@ -190,7 +190,7 @@ class Node:
             count = db.execute('SELECT count(*) FROM records').fetchone()[0]
             view_count = db.execute('SELECT count(*) FROM world_views').fetchone()[0]
         return dict(format='genius-node-hello/1', node_id=self.node_id,
-                    capabilities=['observation_exchange_v1', 'partial_world_exchange_v1', RULE],
+                    capabilities=['observation_exchange_v1', 'partial_world_exchange_v1', 'local_evidence_inquiry_v1', RULE],
                     remaining_records=MAX_RECORDS-count, max_records=MAX_RECORDS,
                     remaining_views=8-view_count,
                     physical_actions=False, deployment='LOOPBACK_LAB',

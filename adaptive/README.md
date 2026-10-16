@@ -1,5 +1,10 @@
 # Genius adaptativo — ejecución persistente
 
+La [iniciativa local](federation/BOTTOM_UP.md) permite que cada nodo consulte
+pares inscritos por su cuenta, detecte nuevas vistas y ejecute el kernel al
+completar el modelo. El experimento verifica evidencia tardía, contradicciones,
+desconexión y un presupuesto finito. [Evidencia](evidence/2026-10-16-bottom-up/README.md).
+
 El [gemelo distribuido](federation/DISTRIBUTED_TWIN.md) integra vistas
 complementarias de tres nodos: identidades, relaciones, fuentes y fragmentos
 del modelo. El ejemplo permite calcular una ruta que las vistas aisladas

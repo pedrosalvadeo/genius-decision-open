@@ -46,6 +46,8 @@ class LabServer(HTTPServer):
             raise ValueError('SEPARATE_CREDENTIALS_REQUIRED')
         self.peers = {}
         super().__init__(('127.0.0.1', 0), Handler)
+        from .initiative import Initiative
+        self.initiative = Initiative(node, lambda: dict(self.peers), request)
 
     def get_request(self):
         conn, address = super().get_request()
@@ -118,6 +120,9 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply(200, dict(node_id=self.server.node.node_id, records=self.server.node.export()))
         if self.path == '/views':
             return self.reply(200, dict(node_id=self.server.node.node_id, records=self.server.node.export_views()))
+        if self.path == '/view-index':
+            from .initiative import catalog
+            return self.reply(200, catalog(self.server.node))
         self.reply(404, dict(error='UNKNOWN_ROUTE'))
 
     def do_POST(self):
@@ -152,6 +157,14 @@ class Handler(BaseHTTPRequestHandler):
             elif self.path == '/sync-world':
                 fields(body, 'node_id')
                 result = self.server.sync(body['node_id'],world=True)
+            elif self.path == '/initiative-start':
+                result = self.server.initiative.start(body)
+            elif self.path == '/initiative-status':
+                fields(body, 'id')
+                result = self.server.initiative.status(body['id'])
+            elif self.path == '/initiative-stop':
+                fields(body, 'id')
+                result = self.server.initiative.stop(body['id'])
             elif self.path == '/predict':
                 fields(body, 'id context mode target_after target_before')
                 result = node.predict(body['id'], body['context'], body['mode'], body['target_after'], body['target_before'])
@@ -178,6 +191,9 @@ def main():
     try:
         server.serve_forever(poll_interval=0.1)
     finally:
+        server.initiative.stop_event.set()
+        if server.initiative.thread:
+            server.initiative.thread.join(8)
         server.server_close()
 
 
