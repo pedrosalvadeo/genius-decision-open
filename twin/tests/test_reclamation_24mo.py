@@ -36,6 +36,44 @@ Oct 2025        480             52              48             545           8.9
 """
 
 
+# Older layouts: 2009 has a units block and no Date header; 2012-2025 carry margin letters and "EOM".
+FIXTURE_2009 = """
+                                Lake Powell
+
+                Unreg       Regulated        Evap PowerPlant      Bypass           Total    Reservoir      Bank          EOM    Lees
+               Inflow          Inflow      Losses    Release     Release         Release    Elevation   Storage      Storage   Ferry
+                 1000            1000        1000       1000        1000            1000          EOM      1000         1000    1000
+                Ac-Ft           Ac-Ft       Ac-Ft      Ac-Ft       Ac-Ft           Ac-Ft         Feet     Ac-Ft        Ac-Ft   Ac-Ft
+
+* Sep 2008            390          555         56        723            0             723     3626.90      17423       14509     738
+  WY 2008           12344        12417        396       8885           93            8978                                       9164
+                         Hoover Dam - Lake Mead
+
+                Power        Power           EOM       EOM    Change_In       Hoover       Hoover    Hoover      Percent   KWH/AF
+              Release      Release     Reservoir   Storage      Storage       Static    Generator     Gross           Of
+                 1000         1000     Elevation      1000         1000         Head     Capacity    Energy        Units
+                Ac-Ft          CFS          Feet     Ac-Ft        Ac-Ft         Feet           MW      MKWH    Available
+
+* Sep 2008           652        11.0     1105.76      12013           58         0.00      1677.0      252.9         100    387.9
+  WY 2008           9530                                                                              3790.6
+"""
+
+FIXTURE_2024 = """
+                                                                                                    Lake Powell
+                       Unreg        Regulated        Evap        PowerPlant       Bypass          Total     Reservoir Elev    Bank           EOM             Lees
+                       Inflow         Inflow        Losses         Release        Release        Release    End of Month     Storage        Storage       Ferry Gage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)      (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)
+   *    Jan 2023        361            424             4             500             0            501         3523.45          4490           5456             510
+   H    Feb 2023        270            337             4             480             0            480         3521.04          4479           5320             493
+                                                                                            Hoover Dam - Lake Mead
+                       Power          Power     Reservoir Elev    EOM          Change In        Hoover      Hoover Gen      Hoover       Percent of
+                      Release        Release    End of Month     Storage        Storage       Static Head    Capacity    Gross Energy      Units
+         Date       (1000 Ac-Ft)   (1000 CFS)        (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)         MW           MKWH         Available        KWH/AF
+   *    Jan 2023         412           6.7          1046.97        7466          152            403.66        866.6         143.8            64           348.8
+   H    Feb 2023         494           8.9          1047.02        7469            4            399.03        810.5         175.9            60           356.5
+"""
+
+
 class ParserTests(unittest.TestCase):
     def test_parses_both_lakes_and_ignores_other_tables(self):
         rows = harvester.parse(FIXTURE, '2025-10')
@@ -48,6 +86,14 @@ class ParserTests(unittest.TestCase):
         self.assertEqual([(r['elevation_ft'], r['storage_kaf']) for r in powell], [('3544.69', '6749'), ('3543.39', '6665')])
         self.assertTrue(harvester.issued(FIXTURE, 2025, 10))
         self.assertFalse(harvester.issued(FIXTURE, 2026, 7))
+
+    def test_older_layouts_take_end_of_month_storage(self):
+        for fixture, study, expected in [
+                (FIXTURE_2009, '2009-09', [('powell', '2008-09', '3626.90', '14509'), ('mead', '2008-09', '1105.76', '12013')]),
+                (FIXTURE_2024, '2024-01', [('powell', '2023-01', '3523.45', '5456'), ('powell', '2023-02', '3521.04', '5320'),
+                                           ('mead', '2023-01', '1046.97', '7466'), ('mead', '2023-02', '1047.02', '7469')])]:
+            rows = harvester.parse(fixture, study)
+            self.assertEqual([(r['lake'], r['row_month'], r['elevation_ft'], r['storage_kaf']) for r in rows], expected)
 
     def test_current_study_also_tries_the_root_files(self):
         listed = list(harvester.urls(2026, 10, current=(2026, 10)))

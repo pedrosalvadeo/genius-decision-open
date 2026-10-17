@@ -27,7 +27,8 @@ VARIANTS = {'': 'most_probable', '_MIN': 'min', '_MAX': 'max', '_6': 'most_proba
 CURRENT = {'': '24mo.pdf', '_MIN': '24mo_MIN.pdf', '_MAX': '24mo_MAX.pdf', '_6': '24mo_6.pdf', '_7': '24mo_7.pdf'}
 LAKES = {'mead': (re.compile(r'hoover\s+dam|lake\s+mead', re.I), (800, 1250)),
          'powell': (re.compile(r'glen\s+canyon|lake\s+powell', re.I), (3300, 3720))}
-ROW = re.compile(r'^\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[\s\-/]*\'?(\d{4}|\d{2})\b(.*)$', re.I)
+# Rows may carry a margin letter (the vertical "HISTORY" label) or a "*" before the month.
+ROW = re.compile(r'^\s*(?:[A-Z*]\s+)?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[\s\-/]*\'?(\d{4}|\d{2})\b(.*)$', re.I)
 NUMBER = re.compile(r'-?\d[\d,]*(?:\.\d+)?')
 FIELDS = ['study_date', 'scenario', 'source_url', 'pdf_sha256', 'row_month', 'lake', 'elevation_ft', 'storage_kaf', 'kind']
 
@@ -46,28 +47,40 @@ def urls(year, month, current=None):
 
 
 def _heading(lines, index):
-    """A table heading: a short line without digits followed within three lines by the Date header."""
+    """A table heading: a short line without digits followed within six lines by a units line."""
     text = lines[index].strip()
     if not text or len(text) > 60 or re.search(r'\d', text):
         return False
-    return any('Date' in lines[j] for j in range(index + 1, min(index + 4, len(lines))))
+    return any('Ac-Ft' in lines[j] for j in range(index + 1, min(index + 7, len(lines))))
 
 
-def _column(headers, phrase):
-    """Character centre of the first header phrase, or None."""
+def _positions(headers, phrases):
+    """Character centres of every occurrence of the header phrases."""
+    out = []
     for line in headers:
-        position = line.find(phrase)
-        if position >= 0:
-            return position + len(phrase) / 2
-    return None
+        for phrase in phrases:
+            out += [m.start() + len(phrase) / 2 for m in re.finditer(re.escape(phrase), line)]
+    return sorted(out)
+
+
+def _columns(headers):
+    """(elevation, storage) centres. Elevation sits under its unit, "(Ft)" or "Feet". End-of-month
+    storage is the first "EOM" or "End Of Month" header to the right of the elevation that is not
+    the elevation's own label, so bank storage and Lees Ferry columns are skipped in every layout."""
+    elevations = _positions(headers, ['(Ft)', 'Feet'])
+    if not elevations:
+        return None, None
+    elevation = elevations[0]
+    storage = next((p for p in _positions(headers, ['EOM', 'End Of Month']) if p > elevation + 6), None)
+    return elevation, storage
 
 
 def parse(text, study):
     """Rows (lake, row_month, elevation, storage) from pdftotext -layout output of one study.
 
-    Columns are located by their headers: elevation under "End of Month (Ft)" and storage
-    under "End Of Month" (the end-of-month storage column), so extra columns such as bank
-    storage or Lees Ferry do not shift the values.
+    Columns are located by their headers (see `_columns`), so extra columns such as bank
+    storage or Lees Ferry do not shift the values. Layouts from 2009 to 2026 differ in labels,
+    units lines and margin letters; tests cover one excerpt of each.
     """
     lines = text.splitlines()
     out, seen = [], set()
@@ -84,7 +97,7 @@ def parse(text, study):
         if lake is None:
             continue
         if columns is None:
-            columns = (_column(headers, 'End of Month (Ft)'), _column(headers, 'End Of Month'))
+            columns = _columns(headers)
         elevation_at, storage_at = columns
         if elevation_at is None or storage_at is None:
             continue
@@ -138,10 +151,11 @@ def to_text(data):
         return subprocess.run(['pdftotext', '-layout', pdf.name, '-'], check=True, capture_output=True, text=True).stdout
 
 
-def harvest(start, end, out, failures, pause=0.3, today=None):
+def harvest(start, end, out, failures, pause=0.3, today=None, samples=None):
+    """`samples`: a folder that receives the text of the first unparsed study per year and scenario."""
     today = today or date.today()
     current = (today.year, today.month)
-    rows, missing = [], []
+    rows, missing, sampled = [], [], set()
     year, month = start
     while (year, month) <= end:
         study = month_key(year, month)
@@ -161,6 +175,10 @@ def harvest(start, end, out, failures, pause=0.3, today=None):
             parsed = parse(text, study)
             if not any(r['lake'] == 'mead' for r in parsed):
                 missing.append(f'{url} no Lake Mead rows parsed')
+                if samples and (year, scenario) not in sampled:
+                    sampled.add((year, scenario))
+                    Path(samples).mkdir(parents=True, exist_ok=True)
+                    Path(samples, f'{study}_{scenario}.txt').write_text(text)
                 continue
             done.add(scenario)
             digest = hashlib.sha256(data).hexdigest()
@@ -180,10 +198,11 @@ def main(argv=None):
     parser.add_argument('--to', dest='end', required=True, help='YYYY-MM')
     parser.add_argument('--out', required=True)
     parser.add_argument('--failures', default=None)
+    parser.add_argument('--samples', default=None, help='folder for the text of unparsed studies')
     args = parser.parse_args(argv)
     start = tuple(int(x) for x in args.start.split('-'))
     end = tuple(int(x) for x in args.end.split('-'))
-    rows, missing = harvest(start, end, args.out, args.failures or args.out + '.failures.txt')
+    rows, missing = harvest(start, end, args.out, args.failures or args.out + '.failures.txt', samples=args.samples)
     studies = len({(r['study_date'], r['scenario']) for r in rows})
     print(f'{studies} study files, {len(rows)} rows, {len(missing)} missing or unparsed', file=sys.stderr)
 
