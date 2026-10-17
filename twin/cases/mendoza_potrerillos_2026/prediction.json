@@ -1,0 +1,179 @@
+{
+ "format": "genius-twin-frozen-prediction/1",
+ "case": "mendoza_potrerillos_2026",
+ "world_sha256": "519ea407375995d665ff203746729d545efb3d5740980af9844f844ad05e059a",
+ "model_sha256": "cd8a87ddd13c59e77c732a0d8a8b82c765613f1ab533ec9eaa4f199076266467",
+ "native_input_digest": "a13bd70736f8772e17a815882267c3a8e3f337ddadcabf8c67b584312e3756ee",
+ "decision": {
+  "feasible": [
+   "dry_allocation"
+  ],
+  "failed": [
+   "reinforced",
+   "reinforced_lagoons"
+  ],
+  "selected": null,
+  "selection_status": "OUTSIDE_DOMAIN"
+ },
+ "observable": {
+  "stock": "potrerillos",
+  "unit": "hm3",
+  "reading": "Volumen embalsado en Potrerillos que informa el Departamento General de Irrigación o la prensa que lo cita.",
+  "sources": [
+   "https://www.irrigacion.gov.ar"
+  ]
+ },
+ "calendar": [
+  "2026-10-15",
+  "2026-11-30",
+  "2026-12-31",
+  "2027-01-31",
+  "2027-02-28",
+  "2027-03-31",
+  "2027-04-30",
+  "2027-05-31",
+  "2027-06-30",
+  "2027-07-31",
+  "2027-08-31",
+  "2027-09-30"
+ ],
+ "calendar_basis": "Paso 0 = mediados de octubre de 2026 (171 hm³); paso k = fin de cada mes de noviembre a septiembre (convención del modelizador).",
+ "matching": "Una lectura se asigna al paso cuya fecha está a 7 días o menos; si no hay ninguno, no se contrasta.",
+ "predicted": {
+  "dry_allocation": {
+   "forecast": [
+    "171/1",
+    "407/2",
+    "615/2",
+    "615/2",
+    "615/2",
+    "615/2",
+    "615/2",
+    "305/1",
+    "355/1",
+    "370/1",
+    "370/1",
+    "370/1"
+   ],
+   "below": [
+    "171/1",
+    "66479/338",
+    "615/2",
+    "615/2",
+    "615/2",
+    "615/2",
+    "615/2",
+    "50729/169",
+    "58459/169",
+    "370/1",
+    "370/1",
+    "370/1"
+   ],
+   "like_2025": [
+    "171/1",
+    "24427/178",
+    "16381/89",
+    "42691/178",
+    "47041/178",
+    "92421/356",
+    "78805/356",
+    "15301/89",
+    "64259/356",
+    "33657/178",
+    "70369/356",
+    "37509/178"
+   ]
+  },
+  "reinforced": {
+   "forecast": [
+    "171/1",
+    "689/4",
+    "1105/4",
+    "1105/4",
+    "1105/4",
+    "1105/4",
+    "535/2",
+    "935/4",
+    "1135/4",
+    "1335/4",
+    "370/1",
+    "370/1"
+   ],
+   "below": [
+    "171/1",
+    "111833/676",
+    "1105/4",
+    "1105/4",
+    "1105/4",
+    "1105/4",
+    "88303/338",
+    "11579/52",
+    "181447/676",
+    "212367/676",
+    "243287/676",
+    "370/1"
+   ],
+   "like_2025": [
+    "171/1",
+    "37729/356",
+    "21637/178",
+    "52007/356",
+    "24791/178",
+    "9199/89",
+    "12055/356",
+    "4176/89",
+    "19759/356",
+    "11407/178",
+    "25869/356",
+    "15259/178"
+   ]
+  },
+  "reinforced_lagoons": {
+   "forecast": [
+    "171/1",
+    "689/4",
+    "1105/4",
+    "1105/4",
+    "1105/4",
+    "1105/4",
+    "535/2",
+    "935/4",
+    "1135/4",
+    "1335/4",
+    "370/1",
+    "350/1"
+   ],
+   "below": [
+    "171/1",
+    "111833/676",
+    "1105/4",
+    "1105/4",
+    "1105/4",
+    "1105/4",
+    "88303/338",
+    "11579/52",
+    "181447/676",
+    "212367/676",
+    "243287/676",
+    "350/1"
+   ],
+   "like_2025": [
+    "171/1",
+    "37729/356",
+    "21637/178",
+    "52007/356",
+    "24791/178",
+    "9199/89",
+    "12055/356",
+    "4176/89",
+    "19759/356",
+    "11407/178",
+    "25869/356",
+    "15259/178"
+   ]
+  }
+ },
+ "meaning": "Predicción condicional al modelo declarado. Sin ley de probabilidad no hay escenario más probable; contrastar no valida el modelo.",
+ "frozen_at": "2026-10-17T04:10:04+00:00",
+ "prediction_sha256": "af5e5839d8392c0f7df51a8ad43d43713d68524d47db2954cb09aef4b6d220af"
+}

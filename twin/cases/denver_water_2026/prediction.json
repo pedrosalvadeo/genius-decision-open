@@ -1,0 +1,189 @@
+{
+ "format": "genius-twin-frozen-prediction/1",
+ "case": "denver_water_2026",
+ "world_sha256": "899a0941b156dc10708085e1fff9c1b0160cc901aeb2289c26cdf3a23af54840",
+ "model_sha256": "cc880ac100aada078cb6c147b9f04a7c45fad848f2510cffa437941962e4adf6",
+ "native_input_digest": "adb8c2b59ee0c1c5198a044e9b217d7c2660c83c78e1cfe5e3d527307a5b855c",
+ "decision": {
+  "feasible": [
+   "keep_ban",
+   "resume_if_70"
+  ],
+  "failed": [
+   "resume_may"
+  ],
+  "selected": null,
+  "selection_status": "OUTSIDE_DOMAIN"
+ },
+ "observable": {
+  "stock": "storage",
+  "unit": "pct_capacity",
+  "reading": "Porcentaje de llenado de los embalses de suministro que publica Denver Water.",
+  "sources": [
+   "https://www.denverwater.org/tap/denver-water-snowpack-and-water-supply-update"
+  ]
+ },
+ "calendar": [
+  "2026-10-15",
+  "2026-11-15",
+  "2026-12-15",
+  "2027-01-15",
+  "2027-02-15",
+  "2027-03-15",
+  "2027-04-15",
+  "2027-05-15",
+  "2027-06-15",
+  "2027-07-15",
+  "2027-08-15",
+  "2027-09-15",
+  "2027-10-15"
+ ],
+ "calendar_basis": "Paso 0 = 15/10/2026; paso k = día 15 de cada mes (claim modelling de world.json).",
+ "matching": "Una lectura se asigna al paso cuya fecha está a 7 días o menos; si no hay ninguno, no se contrasta.",
+ "predicted": {
+  "keep_ban": {
+   "dry": [
+    "67/1",
+    "131/2",
+    "64/1",
+    "125/2",
+    "61/1",
+    "119/2",
+    "58/1",
+    "58/1",
+    "59/1",
+    "58/1",
+    "56/1",
+    "54/1",
+    "52/1"
+   ],
+   "normal": [
+    "67/1",
+    "131/2",
+    "64/1",
+    "125/2",
+    "61/1",
+    "119/2",
+    "58/1",
+    "64/1",
+    "76/1",
+    "80/1",
+    "78/1",
+    "76/1",
+    "74/1"
+   ],
+   "wet": [
+    "67/1",
+    "131/2",
+    "64/1",
+    "125/2",
+    "61/1",
+    "119/2",
+    "58/1",
+    "68/1",
+    "86/1",
+    "96/1",
+    "94/1",
+    "92/1",
+    "90/1"
+   ]
+  },
+  "resume_may": {
+   "dry": [
+    "67/1",
+    "131/2",
+    "64/1",
+    "125/2",
+    "61/1",
+    "119/2",
+    "58/1",
+    "56/1",
+    "55/1",
+    "52/1",
+    "48/1",
+    "44/1",
+    "42/1"
+   ],
+   "normal": [
+    "67/1",
+    "131/2",
+    "64/1",
+    "125/2",
+    "61/1",
+    "119/2",
+    "58/1",
+    "62/1",
+    "72/1",
+    "74/1",
+    "70/1",
+    "66/1",
+    "64/1"
+   ],
+   "wet": [
+    "67/1",
+    "131/2",
+    "64/1",
+    "125/2",
+    "61/1",
+    "119/2",
+    "58/1",
+    "66/1",
+    "82/1",
+    "90/1",
+    "86/1",
+    "82/1",
+    "80/1"
+   ]
+  },
+  "resume_if_70": {
+   "dry": [
+    "67/1",
+    "131/2",
+    "64/1",
+    "125/2",
+    "61/1",
+    "119/2",
+    "58/1",
+    "58/1",
+    "59/1",
+    "58/1",
+    "56/1",
+    "54/1",
+    "52/1"
+   ],
+   "normal": [
+    "67/1",
+    "131/2",
+    "64/1",
+    "125/2",
+    "61/1",
+    "119/2",
+    "58/1",
+    "64/1",
+    "76/1",
+    "78/1",
+    "74/1",
+    "70/1",
+    "68/1"
+   ],
+   "wet": [
+    "67/1",
+    "131/2",
+    "64/1",
+    "125/2",
+    "61/1",
+    "119/2",
+    "58/1",
+    "68/1",
+    "86/1",
+    "94/1",
+    "90/1",
+    "86/1",
+    "84/1"
+   ]
+  }
+ },
+ "meaning": "Predicción condicional al modelo declarado. Sin ley de probabilidad no hay escenario más probable; contrastar no valida el modelo.",
+ "frozen_at": "2026-10-17T04:10:01+00:00",
+ "prediction_sha256": "e6efd98d146934193a171de157488a863dece2a8a02fe834475e43b1505e48aa"
+}
