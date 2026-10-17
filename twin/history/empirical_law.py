@@ -14,9 +14,10 @@ procedure was written after that history existed; prospective contrasts must lat
 law is revoked. Masses are exact fractions; confidence bounds are floats used only for the check.
 
 Run from the repository root:
-  python twin/history/empirical_law.py twin/history/lake_mead/studies.csv --lake mead --horizon 11 --month 10
+  python twin/history/empirical_law.py twin/history/lake_mead/studies.csv --lake mead --horizon 11 --month 10 --driver inflow
 """
 import argparse
+import csv
 from collections import Counter
 from fractions import Fraction
 import hashlib
@@ -58,6 +59,41 @@ def outcomes(rows, lake, horizon, month=None):
         followed = min(SCENARIOS, key=lambda s: (distance[s], s != 'most_probable'))
         # The last month becomes an actual in the following study, so the outcome is known then.
         out.append(dict(study=study, followed=followed, known=study + horizon + 1))
+    return out
+
+
+def inflow_outcomes(path, horizon, month=None):
+    """Like `outcomes`, judged on cumulative unregulated inflow to Lake Powell over the horizon.
+
+    Unregulated inflow is the hydrology each scenario assumes and does not depend on how the dams are
+    operated, so the classification holds for every policy the twin compares.
+    """
+    paths, actual = {}, {}
+    with open(path, newline='') as handle:
+        for raw in csv.DictReader(handle):
+            if raw['lake'] != 'powell' or not raw.get('unregulated_inflow_kaf', '').strip():
+                continue
+            study, row_month = hindcast.month_index(raw['study_date']), hindcast.month_index(raw['row_month'])
+            value = Fraction(raw['unregulated_inflow_kaf'])
+            scenario = hindcast.SCENARIO_ALIASES.get(raw['scenario'].strip().lower())
+            if raw['kind'] == 'projected' and scenario in SCENARIOS and raw['scenario'] != 'most_probable_6':
+                paths.setdefault((study, scenario), {})[row_month] = value
+            elif raw['kind'] == 'historical' and raw['scenario'] == 'most_probable':
+                actual.setdefault(row_month, {})[study] = value
+    out = []
+    for study in sorted({s for s, _ in paths}):
+        if month is not None and study % 12 + 1 != month:
+            continue
+        months = range(study + 1, study + horizon + 1)
+        if not all((study, s) in paths and all(m in paths[(study, s)] for m in months) for s in SCENARIOS):
+            continue
+        if not all(m in actual for m in months):
+            continue
+        # The value as published by the first study that reports the month as historical.
+        observed = sum(actual[m][min(actual[m])] for m in months)
+        distance = {s: abs(observed - sum(paths[(study, s)][m] for m in months)) for s in SCENARIOS}
+        followed = min(SCENARIOS, key=lambda s: (distance[s], s != 'most_probable'))
+        out.append(dict(study=study, followed=followed, known=max(min(actual[m]) for m in months)))
     return out
 
 
@@ -118,9 +154,8 @@ def evaluate(history, procedure, confidence):
                 mean_log_score=None if score is None else round(score, 6))
 
 
-def certificate(path, lake, horizon, month, confidence=Fraction(95, 100)):
-    rows = hindcast.load(path)
-    history = outcomes(rows, lake, horizon, month)
+def certificate(path, lake, horizon, month, confidence=Fraction(95, 100), driver='storage'):
+    history = inflow_outcomes(path, horizon, month) if driver == 'inflow' else outcomes(hindcast.load(path), lake, horizon, month)
     results = {name: evaluate(history, procedure, confidence) for name, procedure in CANDIDATES.items()}
     eligible = sorted((r['mean_log_score'], name) for name, r in results.items() if r['calibrated'])
     chosen = eligible[-1][1] if eligible else None
@@ -133,12 +168,13 @@ def certificate(path, lake, horizon, month, confidence=Fraction(95, 100)):
         refusals.append('OVERLAPPING_OUTCOMES: fix an issue month and a horizon under 12 months')
     if len(history) < MIN_INDEPENDENT_OUTCOMES:
         refusals.append(f'INSUFFICIENT_EVIDENCE: {len(history)} independent outcomes, {MIN_INDEPENDENT_OUTCOMES} required')
-    # The scenario reality followed is judged on storage, which depends on the operations in force.
-    refusals.append('POLICY_DEPENDENT_CLASSIFICATION: judged on storage, not on an exogenous driver such as unregulated inflow')
+    if driver != 'inflow':
+        # Storage depends on the operations in force, so it cannot tell which hydrology happened.
+        refusals.append('POLICY_DEPENDENT_CLASSIFICATION: judged on storage, not on an exogenous driver such as unregulated inflow')
     return dict(
         procedure=PROCEDURE, amendment='AM-02', data=Path(path).name,
         data_sha256=hashlib.sha256(Path(path).read_bytes()).hexdigest(),
-        lake=lake, horizon=horizon, issue_month=month, realizations=list(SCENARIOS), outcomes=len(history),
+        lake=lake, driver=driver, horizon=horizon, issue_month=month, realizations=list(SCENARIOS), outcomes=len(history),
         followed={s: sum(o['followed'] == s for o in history) for s in SCENARIOS},
         evaluation=dict(kind='RETROSPECTIVE_PREQUENTIAL', confidence=str(confidence), candidates=results),
         chosen=chosen,
@@ -164,8 +200,10 @@ def main(argv=None):
     parser.add_argument('--lake', default='mead')
     parser.add_argument('--horizon', type=int, default=11)
     parser.add_argument('--month', type=int, default=None, help='issue month to match (1-12); all months if omitted')
+    parser.add_argument('--driver', choices=['storage', 'inflow'], default='storage',
+                        help='judge the scenario reality followed on storage or on unregulated inflow to Lake Powell')
     args = parser.parse_args(argv)
-    json.dump(certificate(args.csv, args.lake, args.horizon, args.month), sys.stdout, ensure_ascii=False, indent=1)
+    json.dump(certificate(args.csv, args.lake, args.horizon, args.month, driver=args.driver), sys.stdout, ensure_ascii=False, indent=1)
     print()
 
 

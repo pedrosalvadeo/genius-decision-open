@@ -95,6 +95,13 @@ class ParserTests(unittest.TestCase):
             rows = harvester.parse(fixture, study)
             self.assertEqual([(r['lake'], r['row_month'], r['elevation_ft'], r['storage_kaf']) for r in rows], expected)
 
+    def test_powell_rows_carry_unregulated_inflow(self):
+        for fixture, study, month, inflow in [(FIXTURE, '2025-10', '2025-09', '162'), (FIXTURE_2009, '2009-09', '2008-09', '390'),
+                                              (FIXTURE_2024, '2024-01', '2023-01', '361')]:
+            rows = {(r['lake'], r['row_month']): r for r in harvester.parse(fixture, study)}
+            self.assertEqual(rows[('powell', month)]['unregulated_inflow_kaf'], inflow)
+            self.assertEqual(rows[('mead', month)]['unregulated_inflow_kaf'], '')
+
     def test_current_study_also_tries_the_root_files(self):
         listed = list(harvester.urls(2026, 10, current=(2026, 10)))
         self.assertIn(('min', harvester.BASE + '24mo_MIN.pdf'), listed)

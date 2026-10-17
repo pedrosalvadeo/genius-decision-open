@@ -36,9 +36,9 @@ jobs:
           sudo apt-get install -y -qq poppler-utils >/dev/null
           python twin/history/reclamation_24mo.py --from 2025-10 --to 2025-10 --out oct25.csv
           cat oct25.csv.failures.txt
-          grep -q '^2025-10,min,.*,2026-09,mead,1047.93,7534,projected$' oct25.csv
-          grep -q '^2025-10,min,.*,2025-10,mead,1056.22,8139,projected$' oct25.csv
-          grep -q '^2025-10,min,.*,2025-09,powell,3544.69,6749,historical$' oct25.csv
+          grep -q '^2025-10,min,.*,2026-09,mead,1047.93,7534,projected,$' oct25.csv
+          grep -q '^2025-10,min,.*,2025-10,mead,1056.22,8139,projected,$' oct25.csv
+          grep -q '^2025-10,min,.*,2025-09,powell,3544.69,6749,historical,162$' oct25.csv
           python twin/history/hindcast.py summary oct25.csv > /dev/null
 
   harvest:

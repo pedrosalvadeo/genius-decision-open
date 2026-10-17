@@ -3,6 +3,7 @@ from fractions import Fraction
 import importlib.util
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 
 HISTORY = Path(__file__).parents[1] / 'history'
@@ -67,6 +68,20 @@ class EmpiricalLawTests(unittest.TestCase):
         # Lake Mead 2027: both releases fail only in the minimum year, so every law gives them equal PVS.
         both = {'release_6': {'most_probable', 'maximum'}, 'release_7': {'most_probable', 'maximum'}}
         self.assertEqual(empirical.law_free_order(both), [('release_6', 'release_7'), ('release_7', 'release_6')])
+
+
+    def test_inflow_outcomes_judge_hydrology_and_drop_the_policy_refusal(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / 'studies.csv'
+            lines = ['study_date,scenario,source_url,pdf_sha256,row_month,lake,elevation_ft,storage_kaf,kind,unregulated_inflow_kaf']
+            for name, inflow in (('most_probable', 300), ('min', 100), ('max', 500)):
+                lines += [f'2020-10,{name},u,h,2020-{m},powell,3600.00,9000,projected,{inflow}' for m in ('11', '12')]
+            lines += [f'2021-01,most_probable,u,h,2020-{m},powell,3600.00,9000,historical,120' for m in ('11', '12')]
+            path.write_text('\n'.join(lines) + '\n')
+            found = empirical.inflow_outcomes(path, 2, month=10)
+            self.assertEqual(found, [dict(study=2020 * 12 + 9, followed='minimum', known=2021 * 12)])
+            cert = empirical.certificate(path, 'mead', 2, 10, driver='inflow')
+            self.assertFalse(any(r.startswith('POLICY_DEPENDENT') for r in cert['refusals']))
 
 
 if __name__ == '__main__':
