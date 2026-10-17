@@ -15,7 +15,7 @@ Estado: `PROPUESTA`, redactada el 2026-10-17 a pedido de Pedro ("si encuentras e
 
 1. **La ley sólo puede declararse.** Casi ningún sistema real trae una ley legítima sobre sus escenarios. Sin ella la PVS queda indefinida, el bloque común no se forma y la selección queda `OUTSIDE_DOMAIN` (`kernel/genius_kernel/decision.py:34-39, 68-90`). Los tres casos reales del gemelo (Denver, Mendoza, Lake Mead) están en esa situación. Genius puede descartar opciones inviables, pero no puede recomendar entre las viables en el mundo real.
 2. **No hay operación de aprendizaje.** La teoría es finita y exacta. La actualización $U_t$ (Definición 7.5, AM-01) actualiza la información de una política dentro de un modelo fijo. No define cómo cambiar el modelo o la ley cuando la realidad los contradice. Por eso los contrastes con la realidad no pueden mejorar nada formalmente.
-3. **Las proyecciones oficiales no son leyes.** Ejemplo medido (`twin/history`, transcripción provisional de 2015 a 2026): a 12 meses, el almacenamiento real de Lake Mead cayó dentro del rango mínimo–máximo de Reclamation en 14 de 34 casos. Quedó por debajo del mínimo en 8 y por encima del máximo en 12. Tratar esos escenarios como equiprobables, o el rango como seguro, sería inventar una ley.
+3. **Las proyecciones oficiales no son leyes.** Ejemplo medido (`twin/history/lake_mead/studies.csv`, 383 estudios de 2009 a 2026): a 12 meses, el almacenamiento real de Lake Mead cayó dentro del rango mínimo–máximo de Reclamation en 32 de 67 casos. Quedó por debajo del mínimo en 19 y por encima del máximo en 16. A 3 meses, dentro en 22 de 71. Tratar esos escenarios como equiprobables, o el rango como seguro, sería inventar una ley.
 
 ## Propuesta
 
