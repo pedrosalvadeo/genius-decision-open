@@ -59,6 +59,15 @@ FP1 no admite transporte entre dos modelos (02 §2.4), así que `genius_twin/fed
 
 Primer caso, `cases/colorado_basin_2027/federation.json`: Denver y Lake Mead/Powell alineados por la nieve del alto Colorado (seco con mínimo, normal con más probable, húmedo con máximo). El riego exterior de Denver se repone en su mitad del alto Colorado (la fuente de la mitad de su suministro) y deja de llegar a Powell al paso siguiente. Reanudar el riego en mayo saca de Powell unos 28 mil acre-pies: mejor para los jardines de Denver, peor para Denver Water y para Glen Canyon. Las seis rutas conjuntas tienen PVS conjunta 1 y quedan en la frontera.
 
+## Módulo VII: recomendación por actor
+
+La frontera conjunta suele traer todas las opciones porque ninguna es mejor para todos. `decision.by_actor` responde a cada portador por separado: entre las rutas que mantienen la condición de vida (todas si ninguna la mantiene), cuáles no supera ninguna otra en sus propias coordenadas, que son sus condiciones de bienestar en cada escenario y paso y las funciones que le sirven. No se suman actores, escenarios ni pasos. La federación hace lo mismo con rutas conjuntas, y un portador común es un solo actor.
+
+- Lake Mead: la cuenca baja, liberar 7 millones; Glen Canyon, liberar 6.
+- Denver: la población, reanudar el riego (en mayo o con 70 %, no comparables entre sí); Denver Water, mantener la prohibición.
+- Mendoza: regantes, lagunas y población, dotación reforzada con entrega ecológica; Irrigación, dotación de año seco.
+- Cuenca del Colorado: para Glen Canyon, sólo que Denver mantenga la prohibición y Powell libere 6 millones.
+
 ## Siguiente
 
 Exponer la federación por API y MCP, sumar portadores comunes reales (por ejemplo, la población que depende de varios embalses) y reemplazar las hipótesis de alineación y desvío por datos (archivos de pronósticos y desvíos de Moffat y Roberts).
