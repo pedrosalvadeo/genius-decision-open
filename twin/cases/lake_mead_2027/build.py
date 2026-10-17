@@ -74,6 +74,9 @@ SOURCES = [
              'was measured at 1,037.58 feet at noon that day',
              'The 1,000-foot mark is a major concern for water planners',
              'Mead usually hits its low point in July.'])),
+    dict(id='nps_capacity', origin='National Park Service, Lake Mead National Recreation Area, "Storage Capacity of Lake Mead", https://www.nps.gov/lake/learn/nature/storage-capacity-of-lake-mead.htm',
+         observed_at='2026-10-17T12:00:00-07:00', content=' […] '.join([
+             "a 'dead pool' exists at 895 feet in elevation, which is the lowest water outlet at Hoover Dam."])),
 ]
 BY_ID = {s['id']: s for s in SOURCES}
 
@@ -134,14 +137,23 @@ CLAIMS = [
     claim('h_mead_storage_1000', 'hypothesis', 'A 1.000 pies, Lake Mead guarda unos 4.478 mil acre-pies (interpolación lineal entre feb 2028, 1.002,87 pies y 4.638, y mar 2028, 995,09 pies y 4.202, del estudio mínimo; da 4.477,2 y se redondea hacia arriba).',
           'La relación cota-volumen no es lineal; error esperado de pocos mil acre-pies.',
           [span('usbr_min', MIN_2028_MEAD)], ['mead_1000']),
-    claim('d_task', 'decision', 'Condición de la tarea: Lake Powell en 3.510 pies o más y Lake Mead en 1.000 pies o más todos los meses del año hidrológico 2027.',
-          'El objetivo de Powell es oficial; el de Mead es una referencia elegida por el modelizador. Ninguno es un umbral de vida.',
-          premises=['h_powell_storage_3510', 'h_mead_storage_1000']),
+    claim('mead_dead_pool', 'reported', 'El nivel muerto de Lake Mead está en 895 pies, la salida más baja de Hoover Dam: por debajo, el agua ya no puede salir hacia Arizona, California y México.',
+          'Cota física de la presa; el estado del sistema bajo ese nivel no se modela.',
+          [span('nps_capacity', "a 'dead pool' exists at 895 feet in elevation, which is the lowest water outlet at Hoover Dam.")]),
+    claim('h_mead_dead_storage', 'hypothesis', 'Se toma 2.547 mil acre-pies como almacenamiento de Lake Mead en el nivel muerto. Es la diferencia entre la capacidad total (30.167.000 acre-pies) y la viva (27.620.000) de la tabla de asignación de capacidad de Reclamation de 2022 (https://www.usbr.gov/lc/region/g4000/LakeMeadReservoirCapacityAllocations_2022.pdf).',
+          'Si la columna de los 24-Month Study es almacenamiento vivo, el nivel muerto corresponde a 0 y este umbral es prudente; si es total, corresponde a unos 2.547. Con cualquiera de las dos lecturas, superar 2.547 garantiza estar sobre los 895 pies.',
+          premises=['mead_dead_pool']),
+    claim('d_life_task', 'decision', 'Condición de vida: Lake Mead se mantiene sobre su nivel muerto todos los meses del año hidrológico 2027, de modo que el agua puede seguir llegando a la población de la cuenca baja.',
+          'Es la condición material mínima del suministro; no mide cuánta agua recibe cada persona, que se compara como bienestar. Los objetivos de 3.510 pies en Powell y 1.000 pies en Mead son operativos y quedan como contexto.',
+          premises=['h_mead_dead_storage', 'lower_basin_cut']),
+    claim('d_law', 'decision', 'Ley de probabilidad sobre las tres afluencias: un tercio cada una. Es el candidato que elige la enmienda AM-02 al contrastar contra la afluencia no regulada de Lake Powell los estudios de octubre de 2009 a 2025: está calibrado (mínima 5, más probable 6, máxima 2 de 13 octubres) y puntúa mejor que la frecuencia observada.',
+          'No está admitida empíricamente: AM-02 exige 30 resultados independientes y hay 13. La PVS que se calcula con ella es condicional a esta ley; el rango bajo toda ley se informa junto a ella.',
+          premises=['min_path', 'mp6_path', 'max_path']),
     claim('d_policies', 'decision', 'Opciones comparadas: liberar 6 o 7 millones de acre-pies desde Powell en el año operativo 2027, los dos volúmenes que Reclamation proyecta.',
           'Volúmenes intermedios o menores a 6 no tienen proyección publicada y quedan fuera.', premises=['release_range', 'mp6_path', 'mp7_path']),
     claim('d_welfare', 'decision', 'El bienestar de los usuarios de la cuenca baja se representa por el agua en Lake Mead; el de la operación de Glen Canyon Dam, por el agua en Lake Powell (más es mejor).',
           'Representación elegida por el modelizador; ninguna de las partes la declaró.', premises=['lower_basin_cut', 'powell_3510']),
-    claim('modelling', 'definition', 'Unidad: mil acre-pies de almacenamiento a fin de mes. Paso mensual: paso 0 = fin de septiembre de 2026, paso k = fin de cada mes de octubre de 2026 a septiembre de 2027. Los escenarios son las tres afluencias que publica Reclamation. Sin ley de probabilidad: no se asignan pesos a las afluencias. La capacidad de 30.000 es una cota de modelado, no la física.',
+    claim('modelling', 'definition', 'Unidad: mil acre-pies de almacenamiento a fin de mes. Paso mensual: paso 0 = fin de septiembre de 2026, paso k = fin de cada mes de octubre de 2026 a septiembre de 2027. Los escenarios son las tres afluencias que publica Reclamation. La ley sobre las afluencias se declara aparte (claim d_law). La capacidad de 30.000 es una cota de modelado, no la física.',
           'No se modelan otros embalses, la generación eléctrica ni el reparto entre estados.', premises=['storage_now']),
 ]
 
@@ -190,7 +202,7 @@ FRAGMENTS = [
     ('/step_unit', 'step', ['modelling']),
     ('/stocks/0', dict(id='mead', label='Almacenamiento de Lake Mead', unit='kaf', kind='persistent', initial='6827/1', capacity='30000/1'), ['storage_now', 'modelling']),
     ('/stocks/1', dict(id='powell', label='Almacenamiento de Lake Powell', unit='kaf', kind='persistent', initial='5155/1', capacity='30000/1'), ['storage_now', 'modelling']),
-    ('/carriers/0', dict(id='lower_basin', label='Usuarios de la cuenca baja (Arizona, California, Nevada)', kind='organization'), ['lower_basin_cut']),
+    ('/carriers/0', dict(id='lower_basin', label='Población y usuarios de la cuenca baja (Arizona, California, Nevada)', kind='person'), ['lower_basin_cut']),
     ('/carriers/1', dict(id='glen_canyon', label='Operación de Glen Canyon Dam', kind='organization'), ['powell_3510']),
     ('/capabilities/0', dict(id='glen_release', label='Glen Canyon Dam liberando agua hacia Lake Mead'), ['modelling']),
     ('/initial_capabilities/0', 'glen_release', ['modelling']),
@@ -207,24 +219,24 @@ FRAGMENTS += [
 for i, (scenario, series) in enumerate(base_series().items()):
     FRAGMENTS.append((f'/scenarios/{i}', dict(id=scenario, label=LABELS[scenario], events=events(series)), ['mp6_path', 'min_path', 'max_path', 'h_cross_scenarios']))
 FRAGMENTS += [
-    ('/law', None, ['modelling']),
+    ('/law', {'minimum': '1/3', 'most_probable': '1/3', 'maximum': '1/3'}, ['d_law']),
     ('/welfare/0', dict(carrier='lower_basin', dimension='mead_reserve', label='Agua almacenada en Lake Mead', stock='mead', direction='higher'), ['d_welfare']),
     ('/welfare/1', dict(carrier='glen_canyon', dimension='powell_reserve', label='Agua almacenada en Lake Powell', stock='powell', direction='higher'), ['d_welfare']),
-    ('/task', dict(kind='operational', label='Powell en 3.510 pies o más y Mead en 1.000 pies o más todos los meses', living_carriers=[],
-                   conditions=[dict(stock='powell', op='ge', threshold='4724/1'), dict(stock='mead', op='ge', threshold='4478/1')],
-                   require_action_success=True), ['d_task']),
+    ('/task', dict(kind='life_conditions', label='Lake Mead sobre su nivel muerto (895 pies) todos los meses: el agua sigue llegando a la cuenca baja', living_carriers=['lower_basin'],
+                   conditions=[dict(stock='mead', op='ge', threshold='2547/1')],
+                   require_action_success=False), ['d_life_task']),
     ('/require_all_scenarios', True, ['modelling']),
     ('/selection', 'none', ['modelling']),
     ('/assumptions/0', dict(id='ReleaseEffect', kind='CALIBRATION', statement='El efecto de liberar 7 en vez de 6 millones se toma de los estudios más probables y se supone igual con cualquier afluencia.', provenance='Claims h_release_effect, h_cross_scenarios'), ['h_release_effect', 'h_cross_scenarios']),
-    ('/assumptions/1', dict(id='StorageAtElevation', kind='CALIBRATION', statement='Los volúmenes a 3.510 pies en Powell y a 1.000 pies en Mead se interpolan linealmente entre filas publicadas.', provenance='Claims h_powell_storage_3510, h_mead_storage_1000'), ['h_powell_storage_3510', 'h_mead_storage_1000']),
-    ('/assumptions/2', dict(id='Thresholds', kind='NORMATIVE', statement='3.510 pies en Powell es el objetivo operativo oficial; 1.000 pies en Mead es una referencia elegida por el modelizador. Ninguno es un umbral de vida.', provenance='Claim d_task'), ['d_task']),
-    ('/assumptions/3', dict(id='NoLaw', kind='PROBABILITY', statement='No se asignan probabilidades a las afluencias; los resultados valen escenario por escenario.', provenance='Claim modelling'), ['modelling']),
+    ('/assumptions/1', dict(id='DeadPoolStorage', kind='CALIBRATION', statement='El nivel muerto de Lake Mead se representa con 2.547 mil acre-pies, prudente con cualquier lectura de la columna de almacenamiento.', provenance='Claims mead_dead_pool, h_mead_dead_storage'), ['h_mead_dead_storage']),
+    ('/assumptions/2', dict(id='LifeCondition', kind='NORMATIVE', statement='La condición de vida es que el agua pueda seguir saliendo de Lake Mead hacia la cuenca baja; cuánta agua recibe cada portador se compara como bienestar, sin sumarlo.', provenance='Claim d_life_task'), ['d_life_task']),
+    ('/assumptions/3', dict(id='InflowLaw', kind='PROBABILITY', statement='Un tercio para cada afluencia: candidato calibrado de AM-02 sobre 13 octubres, no admitido (se exigen 30). La PVS es condicional a esta ley.', provenance='Claim d_law; twin/history/empirical_law.py --driver inflow'), ['d_law']),
 ]
 
 ENTITIES = [
     dict(id='mead', label='Lake Mead', kind='resource', evidence_ids=['e_storage']),
     dict(id='powell', label='Lake Powell', kind='resource', evidence_ids=['e_storage']),
-    dict(id='lower_basin', label='Usuarios de la cuenca baja', kind='organization', evidence_ids=['e_cut']),
+    dict(id='lower_basin', label='Población y usuarios de la cuenca baja', kind='person', evidence_ids=['e_cut']),
     dict(id='glen_canyon', label='Operación de Glen Canyon Dam', kind='organization', evidence_ids=['e_release']),
 ]
 EVIDENCE = [
@@ -240,7 +252,7 @@ RELATIONS = [
 OBSERVATION = dict(format='genius-system-observation/1', label='Lake Mead y Lake Powell: año hidrológico 2027',
                    window=dict(start='2026-08-21T00:00:00-06:00', end='2026-10-16T23:59:00-07:00'),
                    entities=ENTITIES, evidence=EVIDENCE, relations=RELATIONS,
-                   unknowns=['Liberaciones de Powell distintas de 6 y 7 millones de acre-pies.', 'Probabilidad de cada afluencia.',
+                   unknowns=['Liberaciones de Powell distintas de 6 y 7 millones de acre-pies.', 'Probabilidad admitida de cada afluencia (la declarada no alcanza los 30 resultados que exige AM-02).',
                              'Efectos sobre la generación eléctrica, México y los ecosistemas del Gran Cañón.'])
 SCOPE = dict(format='genius-system-scope/1', observation_revision=1, label='Powell, Mead y quienes dependen de ellos',
              members=['mead', 'powell', 'lower_basin', 'glen_canyon'], intervention_entities=['glen_canyon'],

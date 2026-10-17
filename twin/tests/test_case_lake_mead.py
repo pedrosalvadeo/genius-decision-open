@@ -27,11 +27,26 @@ class LakeMeadCaseTests(unittest.TestCase):
         self.assertEqual(next(i for i, v in enumerate(path('release_6', 'minimum', 'powell')) if v < 4724), 11)
         self.assertEqual(next(i for i, v in enumerate(path('release_7', 'minimum', 'powell')) if v < 4724), 8)
         self.assertTrue(all(v >= 4478 for p in traces for s in traces[p] for v in path(p, s, 'mead')))
-        decision = registry.evaluate(model)['canonical_results']['decision']
-        self.assertEqual(decision['feasible'], [])
-        self.assertEqual(decision['failed'], ['release_6', 'release_7'])
+        results = registry.evaluate(model)['canonical_results']
+        decision = results['decision']
+        # Life condition (Mead above its dead pool) holds with both releases in every inflow, so PVS is 1 under
+        # the declared law and under every other law; welfare separates them without a winner.
+        self.assertEqual(decision['feasible'], ['release_6', 'release_7'])
+        self.assertEqual(decision['frontier'], ['release_6', 'release_7'])
         self.assertIsNone(decision['selected'])
-
+        self.assertEqual(results['native_integration']['state'], 'DEFINED')
+        for policy in ('release_6', 'release_7'):
+            self.assertEqual(results['policies'][policy]['pvs']['value'], '1/1')
+            self.assertEqual(results['policies'][policy]['pvs']['law_range'], {'min': '1/1', 'max': '1/1', 'law_invariant': True})
+            self.assertEqual({s: row['pvs_given_scenario'] for s, row in results['policies'][policy]['by_scenario'].items()},
+                             {'minimum': '1', 'most_probable': '1', 'maximum': '1'})
+        # In every inflow 7 maf is better for the lower basin (Mead) and worse for Glen Canyon (Powell).
+        for pairs in decision['wellbeing_comparison']['by_scenario'].values():
+            self.assertEqual(pairs, [{'left': 'release_6', 'right': 'release_7', 'relation': 'INCOMPARABLE',
+                                      'better_for': [{'carrier': 'glen_canyon', 'dimension': 'powell_reserve'}],
+                                      'worse_for': [{'carrier': 'lower_basin', 'dimension': 'mead_reserve'}]}])
+        minimum = results['policies']['release_7']['by_scenario']['minimum']['wellbeing']
+        self.assertEqual([(row['dimension'], row['worst']) for row in minimum], [('mead_reserve', '5207/1'), ('powell_reserve', '3141/1')])
 
 if __name__ == '__main__':
     unittest.main()

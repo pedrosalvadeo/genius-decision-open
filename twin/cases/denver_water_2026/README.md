@@ -33,15 +33,18 @@ Los pronósticos mensuales seco/normal/húmedo de Denver Water deberían reempla
 
 ## Resultado del kernel
 
-- `resume_may` falla: en invierno seco el almacenamiento llega a 42 %.
-- `keep_ban` y `resume_if_70` cumplen la tarea en los tres escenarios. `resume_if_70` entrega 6 puntos de riego en invierno normal o húmedo y nada en seco.
-- Sin ley de probabilidad la cobertura es relativa: el kernel no establece frontera ni selección entre las dos factibles (`selection_status: OUTSIDE_DOMAIN`). Una ley sobre los inviernos permitiría la comparación completa.
+Revisión del 17/10/2026: la tarea es una condición de vida (guardar siempre un año de agua de uso de invierno, 21,5 % de la capacidad, según el Water Watch Report del 12/10/2026) y la ley declarada es un tercio por invierno, sin respaldo empírico todavía.
+
+- PVS = 1 en las tres opciones y con cualquier ley: el mínimo es 42 % (`resume_may`, invierno seco), lejos de 21,5 %. El mínimo histórico de 50 % (2003) queda como referencia.
+- Bienestar: reanudar el riego da agua a jardines y árboles a cambio de reserva. En invierno seco `keep_ban` y `resume_if_70` son iguales; en el resto, ninguna opción es mejor para todos. La frontera tiene las tres y no hay selección.
 
 Reproducir: `PYTHONPATH=twin:kernel python -m unittest twin.tests.test_case_denver_water` desde la raíz, o `python twin/cases/denver_water_2026/build.py` para regenerar el caso.
 
 ## Predicción congelada y contraste
 
 `prediction.json` congela, el 17/10/2026, la trayectoria del embalse para cada opción y escenario, con su calendario y los hashes del mundo y del modelo. `observations.json` acumula las lecturas reales posteriores con su diferencia exacta frente a cada trayectoria, sin recalibrar el modelo. Registrar una lectura (desde la raíz, con `PYTHONPATH=twin:kernel`):
+
+La predicción se congeló con la revisión anterior del mundo (tarea operativa, sin ley), que se conserva byte a byte en `frozen_world.json`. La revisión actual cambia la tarea y la ley, no las trayectorias, así que el contraste sigue valiendo.
 
 ```bash
 python twin/cases/predictions.py contrast <caso> --date AAAA-MM-DD --value <valor> --observed-at <ISO8601> --source "<editor, URL y cita exacta>"

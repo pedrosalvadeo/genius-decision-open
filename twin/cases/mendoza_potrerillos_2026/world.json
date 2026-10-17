@@ -55,6 +55,14 @@
         "evidence_ids": [
           "e_storage"
         ]
+      },
+      {
+        "id": "residents",
+        "label": "Población con agua potable",
+        "kind": "person",
+        "evidence_ids": [
+          "e_uses"
+        ]
       }
     ],
     "evidence": [
@@ -128,11 +136,20 @@
         "evidence_ids": [
           "e_lagoons"
         ]
+      },
+      {
+        "id": "sup_potable",
+        "source": "potrerillos",
+        "target": "residents",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_uses"
+        ]
       }
     ],
     "unknowns": [
       "Pronóstico mensual completo y dotaciones 2026/27.",
-      "Población servida con agua potable como portador de bienestar.",
+      "Número de personas abastecidas y umbral ecológico de las lagunas.",
       "Acuífero, dique Cipolletti, generación eléctrica y riesgo de crecidas aguas abajo."
     ]
   },
@@ -348,13 +365,24 @@
         ]
       },
       {
-        "id": "d_threshold",
+        "id": "d_life_task",
         "basis": "decision",
-        "statement": "Condición de la tarea: el embalse no baja de 25 hm³ (un mes de agua potable) en ningún mes.",
-        "uncertainty": "Referencia operativa elegida por el modelizador, no regla de Irrigación ni umbral de vida.",
+        "statement": "Condición de vida: Potrerillos guarda en todo momento al menos 25 hm³, un mes de agua potable para la población abastecida por el río Mendoza.",
+        "uncertainty": "Elegida por el modelizador como condición material del agua de consumo humano; no es una regla de Irrigación. El ecosistema de las lagunas no tiene todavía un umbral citado y se compara como bienestar.",
         "spans": [],
         "premises": [
-          "h_potable"
+          "h_potable",
+          "uses"
+        ]
+      },
+      {
+        "id": "d_law",
+        "basis": "decision",
+        "statement": "Ley de probabilidad declarada sobre los tres escenarios: un tercio cada uno.",
+        "uncertainty": "Sin respaldo empírico todavía: no hay archivo de pronósticos del río Mendoza contrastado con AM-02. La PVS es condicional a esta ley; cuando el rango bajo toda ley es un único valor, el resultado no depende de ella.",
+        "spans": [],
+        "premises": [
+          "h_scenarios"
         ]
       },
       {
@@ -381,7 +409,7 @@
       {
         "id": "modelling",
         "basis": "definition",
-        "statement": "Unidad hm³. Paso mensual de noviembre de 2026 a septiembre de 2027 (11 pasos; el límite de salida del gemelo impide un paso más con tres escenarios y tres opciones). El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. Sin ley de probabilidad.",
+        "statement": "Unidad hm³. Paso mensual de noviembre de 2026 a septiembre de 2027 (11 pasos; el límite de salida del gemelo impide un paso más con tres escenarios y tres opciones). El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. La ley sobre los escenarios se declara aparte (claim d_law).",
         "uncertainty": "No se modelan diques aguas abajo (Cipolletti), acuíferos, generación eléctrica ni pérdidas de conducción.",
         "spans": [],
         "premises": [
@@ -494,6 +522,17 @@
         },
         "claim_ids": [
           "storage_now"
+        ]
+      },
+      {
+        "path": "/carriers/3",
+        "value": {
+          "id": "residents",
+          "label": "Población abastecida con agua potable del río Mendoza",
+          "kind": "person"
+        },
+        "claim_ids": [
+          "uses"
         ]
       },
       {
@@ -1104,9 +1143,13 @@
       },
       {
         "path": "/law",
-        "value": null,
+        "value": {
+          "forecast": "1/3",
+          "below": "1/3",
+          "like_2025": "1/3"
+        },
         "claim_ids": [
-          "modelling"
+          "d_law"
         ]
       },
       {
@@ -1153,9 +1196,11 @@
       {
         "path": "/task",
         "value": {
-          "kind": "operational",
-          "label": "Mantener al menos 25 hm³ en Potrerillos en todos los meses",
-          "living_carriers": [],
+          "kind": "life_conditions",
+          "label": "Guardar siempre al menos un mes de agua potable (25 hm³) en Potrerillos",
+          "living_carriers": [
+            "residents"
+          ],
           "conditions": [
             {
               "stock": "potrerillos",
@@ -1163,10 +1208,10 @@
               "threshold": "25/1"
             }
           ],
-          "require_action_success": true
+          "require_action_success": false
         },
         "claim_ids": [
-          "d_threshold"
+          "d_life_task"
         ]
       },
       {
@@ -1199,40 +1244,41 @@
       {
         "path": "/assumptions/1",
         "value": {
-          "id": "Threshold",
+          "id": "LifeReserve",
           "kind": "NORMATIVE",
-          "statement": "El mínimo de 25 hm³ y la regla de entrega ecológica son elecciones del modelizador.",
-          "provenance": "Claims d_threshold, d_ecology"
+          "statement": "La condición de vida es guardar un mes de agua potable (25 hm³); riego, lagunas y reserva se comparan como bienestar, sin sumarlos. La regla de entrega ecológica es elección del modelizador.",
+          "provenance": "Claims d_life_task, d_ecology"
         },
         "claim_ids": [
-          "d_threshold",
+          "d_life_task",
           "d_ecology"
         ]
       },
       {
         "path": "/assumptions/2",
         "value": {
-          "id": "NoLaw",
+          "id": "ScenarioLaw",
           "kind": "PROBABILITY",
-          "statement": "No se asignan probabilidades a los escenarios.",
-          "provenance": "Claim modelling"
+          "statement": "Un tercio para cada escenario, declarado sin respaldo empírico; la PVS es condicional a esta ley y se informa su rango bajo toda ley.",
+          "provenance": "Claim d_law"
         },
         "claim_ids": [
-          "modelling"
+          "d_law"
         ]
       }
     ],
     "scope": {
       "format": "genius-system-scope/1",
       "observation_revision": 1,
-      "label": "Embalse, riego y lagunas",
+      "label": "Embalse, agua potable, riego y lagunas",
       "members": [
         "potrerillos",
         "agro",
         "lagoons",
         "irrigators",
         "lagoon_ecosystem",
-        "dgi"
+        "dgi",
+        "residents"
       ],
       "intervention_entities": [
         "dgi"
@@ -1243,7 +1289,8 @@
         "lagoons",
         "irrigators",
         "lagoon_ecosystem",
-        "dgi"
+        "dgi",
+        "residents"
       ],
       "bindings": [
         {
@@ -1275,6 +1322,11 @@
           "collection": "carriers",
           "model_id": "dgi",
           "entity_id": "dgi"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "residents",
+          "entity_id": "residents"
         }
       ],
       "rationale": "Irrigación decide entregas; se evalúan embalse, riego y lagunas. Fuera de alcance: acuífero, energía y crecidas."

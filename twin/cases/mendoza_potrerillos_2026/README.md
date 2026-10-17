@@ -31,15 +31,19 @@ Escenarios: pronóstico oficial; por debajo del pronóstico como en 2025/26 (797
 
 ## Resultado del kernel
 
-- Sólo `dry_allocation` cumple en los tres escenarios. Las dos reforzadas fallan en el año como 2025/26: en mayo no queda agua para la entrega de riego.
-- Con el pronóstico, `dry_allocation` derrama 769 hm³ sin control y las reforzadas 550 hm³. El modelo no representa el daño de esos derrames, así que el kernel no los pesa; es la principal limitación del caso.
-- Sin ley de probabilidad no hay frontera ni selección (`selection_status: OUTSIDE_DOMAIN`).
+Revisión del 17/10/2026: la tarea es una condición de vida (guardar siempre 25 hm³, un mes de agua potable para la población abastecida, nuevo portador) y la ley declarada es un tercio por escenario, sin respaldo empírico todavía.
+
+- PVS = 1 en las tres opciones y con cualquier ley: el embalse nunca baja de 25 hm³. En el año como 2025/26 las reforzadas no pueden entregar toda la dotación de mayo; eso ya no es fallo de la condición de vida, se ve en el riego entregado.
+- Bienestar: más riego o agua para las lagunas a cambio de reserva. En el año como 2025/26 las dos reforzadas son iguales. La frontera tiene las tres y no hay selección.
+- Con el pronóstico, `dry_allocation` derrama 769 hm³ sin control y las reforzadas 550 hm³. El modelo no representa el daño de esos derrames ni tiene umbral ecológico citado para las lagunas; son las principales limitaciones del caso.
 
 Reproducir: `PYTHONPATH=twin:kernel python -m unittest twin.tests.test_case_mendoza_potrerillos` desde la raíz.
 
 ## Predicción congelada y contraste
 
 `prediction.json` congela, el 17/10/2026, la trayectoria del embalse para cada opción y escenario, con su calendario y los hashes del mundo y del modelo. `observations.json` acumula las lecturas reales posteriores con su diferencia exacta frente a cada trayectoria, sin recalibrar el modelo. Registrar una lectura (desde la raíz, con `PYTHONPATH=twin:kernel`):
+
+La predicción se congeló con la revisión anterior del mundo (tarea operativa, sin ley), que se conserva byte a byte en `frozen_world.json`. La revisión actual cambia la tarea y la ley, no las trayectorias, así que el contraste sigue valiendo.
 
 ```bash
 python twin/cases/predictions.py contrast <caso> --date AAAA-MM-DD --value <valor> --observed-at <ISO8601> --source "<editor, URL y cita exacta>"

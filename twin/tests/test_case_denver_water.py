@@ -18,9 +18,16 @@ class DenverWaterCaseTests(unittest.TestCase):
         self.assertEqual(traces['keep_ban']['dry']['daily'][6]['stocks']['storage'], '58/1')
         self.assertEqual(traces['resume_may']['dry']['daily'][-1]['stocks']['storage'], '42/1')
         decision = registry.evaluate(model)['canonical_results']['decision']
-        self.assertEqual(decision['feasible'], ['keep_ban', 'resume_if_70'])
-        self.assertEqual(decision['failed'], ['resume_may'])
+        self.assertEqual(decision['feasible'], ['keep_ban', 'resume_if_70', 'resume_may'])
+        self.assertEqual(decision['failed'], [])
         self.assertIsNone(decision['selected'])
+        results = registry.evaluate(model)['canonical_results']
+        # A year of winter use (21.5 %) is never broken, so PVS is 1 whatever the law; watering trades reserve for gardens.
+        self.assertTrue(all(results['policies'][p]['pvs']['law_range']['law_invariant'] for p in results['policies']))
+        dry = {(x['left'], x['right']): x['relation'] for x in decision['wellbeing_comparison']['by_scenario']['dry']}
+        self.assertEqual(dry[('keep_ban', 'resume_if_70')], 'EQUIVALENT')
+        self.assertEqual(dry[('keep_ban', 'resume_may')], 'INCOMPARABLE')
+        self.assertEqual(results['policies']['resume_may']['by_scenario']['dry']['wellbeing'][1]['worst'], '42/1')
 
 
 if __name__ == '__main__':

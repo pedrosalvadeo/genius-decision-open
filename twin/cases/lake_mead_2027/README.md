@@ -34,16 +34,20 @@ Cuatro de las seis combinaciones reproducen exactamente un estudio publicado (Me
 
 ## Resultado del kernel
 
-- Ninguna opción cumple en las tres afluencias. Con la afluencia mínima Powell cae por debajo de 3.510 pies en agosto de 2027 con 6 millones y en mayo con 7 millones.
-- Mead se mantiene sobre 1.000 pies en todas las combinaciones durante el año hidrológico 2027.
+Revisión del 17/10/2026: la tarea es una condición de vida (Lake Mead sobre su nivel muerto de 895 pies, representado con 2.547 mil acre-pies) y la ley es un tercio por afluencia, el candidato calibrado de AM-02 sobre 13 octubres (no admitido: se exigen 30).
+
+- PVS = 1 con ambas liberaciones, con la ley declarada y con cualquier otra: en 2027 ninguna combinación acerca Mead al nivel muerto. El mínimo es 4.696 mil acre-pies (6 millones, afluencia mínima, julio).
+- Bienestar: en cada afluencia, liberar 7 es mejor para la cuenca baja (más agua en Mead) y peor para Glen Canyon (menos en Powell). Las opciones no se pueden ordenar sin sumar portadores, así que la frontera tiene las dos y no hay selección.
+- Con 7 millones y afluencia mínima Powell termina en 3.141 mil acre-pies, por debajo de los 4.724 que corresponden al objetivo operativo de 3.510 pies (con 6 millones, 4.072). Ese objetivo ya no es la tarea; se ve en la dimensión de bienestar de Powell.
 - Las directrices permiten liberar menos de 6 millones tras consultas. No hay proyección publicada para eso, así que el modelo no lo representa.
-- Sin ley de probabilidad no hay frontera ni selección (`selection_status: OUTSIDE_DOMAIN`).
 
 Reproducir: `PYTHONPATH=twin:kernel python -m unittest twin.tests.test_case_lake_mead` desde la raíz.
 
 ## Predicción congelada y contraste
 
 `prediction.json` congela, el 17/10/2026, el almacenamiento de Mead para cada opción y afluencia. Cada 24-Month Study (hacia el día 15) publica como dato histórico el almacenamiento del mes anterior; esa es la lectura que se contrasta. `observations.json` acumula esas lecturas sin recalibrar el modelo:
+
+La predicción se congeló con la revisión anterior del mundo (tarea operativa, sin ley), que se conserva byte a byte en `frozen_world.json`. La revisión actual cambia la tarea y la ley, no las trayectorias, así que el contraste sigue valiendo.
 
 ```bash
 python twin/cases/predictions.py contrast lake_mead_2027 --date 2026-10-31 --value <miles de acre-pies> --observed-at <ISO8601> --source "<estudio, URL y fila exacta>"

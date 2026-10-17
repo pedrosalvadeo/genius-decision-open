@@ -26,8 +26,8 @@
       },
       {
         "id": "lower_basin",
-        "label": "Usuarios de la cuenca baja",
-        "kind": "organization",
+        "label": "Población y usuarios de la cuenca baja",
+        "kind": "person",
         "evidence_ids": [
           "e_cut"
         ]
@@ -98,7 +98,7 @@
     ],
     "unknowns": [
       "Liberaciones de Powell distintas de 6 y 7 millones de acre-pies.",
-      "Probabilidad de cada afluencia.",
+      "Probabilidad admitida de cada afluencia (la declarada no alcanza los 30 resultados que exige AM-02).",
       "Efectos sobre la generación eléctrica, México y los ecosistemas del Gran Cañón."
     ]
   },
@@ -140,6 +140,12 @@
         "origin": "Hoodline, 16/10/2026, https://hoodline.com/2026/10/lake-mead-s-outlook-brightens-but-vegas-s-lifeline-still-sits-near-record-lows",
         "observed_at": "2026-10-16T12:00:00-07:00",
         "content": "was measured at 1,037.58 feet at noon that day […] The 1,000-foot mark is a major concern for water planners […] Mead usually hits its low point in July."
+      },
+      {
+        "id": "nps_capacity",
+        "origin": "National Park Service, Lake Mead National Recreation Area, \"Storage Capacity of Lake Mead\", https://www.nps.gov/lake/learn/nature/storage-capacity-of-lake-mead.htm",
+        "observed_at": "2026-10-17T12:00:00-07:00",
+        "content": "a 'dead pool' exists at 895 feet in elevation, which is the lowest water outlet at Hoover Dam."
       }
     ],
     "claims": [
@@ -414,14 +420,51 @@
         ]
       },
       {
-        "id": "d_task",
-        "basis": "decision",
-        "statement": "Condición de la tarea: Lake Powell en 3.510 pies o más y Lake Mead en 1.000 pies o más todos los meses del año hidrológico 2027.",
-        "uncertainty": "El objetivo de Powell es oficial; el de Mead es una referencia elegida por el modelizador. Ninguno es un umbral de vida.",
+        "id": "mead_dead_pool",
+        "basis": "reported",
+        "statement": "El nivel muerto de Lake Mead está en 895 pies, la salida más baja de Hoover Dam: por debajo, el agua ya no puede salir hacia Arizona, California y México.",
+        "uncertainty": "Cota física de la presa; el estado del sistema bajo ese nivel no se modela.",
+        "spans": [
+          {
+            "source_id": "nps_capacity",
+            "start": 0,
+            "end": 94,
+            "quote": "a 'dead pool' exists at 895 feet in elevation, which is the lowest water outlet at Hoover Dam."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "h_mead_dead_storage",
+        "basis": "hypothesis",
+        "statement": "Se toma 2.547 mil acre-pies como almacenamiento de Lake Mead en el nivel muerto. Es la diferencia entre la capacidad total (30.167.000 acre-pies) y la viva (27.620.000) de la tabla de asignación de capacidad de Reclamation de 2022 (https://www.usbr.gov/lc/region/g4000/LakeMeadReservoirCapacityAllocations_2022.pdf).",
+        "uncertainty": "Si la columna de los 24-Month Study es almacenamiento vivo, el nivel muerto corresponde a 0 y este umbral es prudente; si es total, corresponde a unos 2.547. Con cualquiera de las dos lecturas, superar 2.547 garantiza estar sobre los 895 pies.",
         "spans": [],
         "premises": [
-          "h_powell_storage_3510",
-          "h_mead_storage_1000"
+          "mead_dead_pool"
+        ]
+      },
+      {
+        "id": "d_life_task",
+        "basis": "decision",
+        "statement": "Condición de vida: Lake Mead se mantiene sobre su nivel muerto todos los meses del año hidrológico 2027, de modo que el agua puede seguir llegando a la población de la cuenca baja.",
+        "uncertainty": "Es la condición material mínima del suministro; no mide cuánta agua recibe cada persona, que se compara como bienestar. Los objetivos de 3.510 pies en Powell y 1.000 pies en Mead son operativos y quedan como contexto.",
+        "spans": [],
+        "premises": [
+          "h_mead_dead_storage",
+          "lower_basin_cut"
+        ]
+      },
+      {
+        "id": "d_law",
+        "basis": "decision",
+        "statement": "Ley de probabilidad sobre las tres afluencias: un tercio cada una. Es el candidato que elige la enmienda AM-02 al contrastar contra la afluencia no regulada de Lake Powell los estudios de octubre de 2009 a 2025: está calibrado (mínima 5, más probable 6, máxima 2 de 13 octubres) y puntúa mejor que la frecuencia observada.",
+        "uncertainty": "No está admitida empíricamente: AM-02 exige 30 resultados independientes y hay 13. La PVS que se calcula con ella es condicional a esta ley; el rango bajo toda ley se informa junto a ella.",
+        "spans": [],
+        "premises": [
+          "min_path",
+          "mp6_path",
+          "max_path"
         ]
       },
       {
@@ -450,7 +493,7 @@
       {
         "id": "modelling",
         "basis": "definition",
-        "statement": "Unidad: mil acre-pies de almacenamiento a fin de mes. Paso mensual: paso 0 = fin de septiembre de 2026, paso k = fin de cada mes de octubre de 2026 a septiembre de 2027. Los escenarios son las tres afluencias que publica Reclamation. Sin ley de probabilidad: no se asignan pesos a las afluencias. La capacidad de 30.000 es una cota de modelado, no la física.",
+        "statement": "Unidad: mil acre-pies de almacenamiento a fin de mes. Paso mensual: paso 0 = fin de septiembre de 2026, paso k = fin de cada mes de octubre de 2026 a septiembre de 2027. Los escenarios son las tres afluencias que publica Reclamation. La ley sobre las afluencias se declara aparte (claim d_law). La capacidad de 30.000 es una cota de modelado, no la física.",
         "uncertainty": "No se modelan otros embalses, la generación eléctrica ni el reparto entre estados.",
         "spans": [],
         "premises": [
@@ -521,8 +564,8 @@
         "path": "/carriers/0",
         "value": {
           "id": "lower_basin",
-          "label": "Usuarios de la cuenca baja (Arizona, California, Nevada)",
-          "kind": "organization"
+          "label": "Población y usuarios de la cuenca baja (Arizona, California, Nevada)",
+          "kind": "person"
         },
         "claim_ids": [
           "lower_basin_cut"
@@ -1134,9 +1177,13 @@
       },
       {
         "path": "/law",
-        "value": null,
+        "value": {
+          "minimum": "1/3",
+          "most_probable": "1/3",
+          "maximum": "1/3"
+        },
         "claim_ids": [
-          "modelling"
+          "d_law"
         ]
       },
       {
@@ -1168,25 +1215,22 @@
       {
         "path": "/task",
         "value": {
-          "kind": "operational",
-          "label": "Powell en 3.510 pies o más y Mead en 1.000 pies o más todos los meses",
-          "living_carriers": [],
+          "kind": "life_conditions",
+          "label": "Lake Mead sobre su nivel muerto (895 pies) todos los meses: el agua sigue llegando a la cuenca baja",
+          "living_carriers": [
+            "lower_basin"
+          ],
           "conditions": [
-            {
-              "stock": "powell",
-              "op": "ge",
-              "threshold": "4724/1"
-            },
             {
               "stock": "mead",
               "op": "ge",
-              "threshold": "4478/1"
+              "threshold": "2547/1"
             }
           ],
-          "require_action_success": true
+          "require_action_success": false
         },
         "claim_ids": [
-          "d_task"
+          "d_life_task"
         ]
       },
       {
@@ -1219,38 +1263,37 @@
       {
         "path": "/assumptions/1",
         "value": {
-          "id": "StorageAtElevation",
+          "id": "DeadPoolStorage",
           "kind": "CALIBRATION",
-          "statement": "Los volúmenes a 3.510 pies en Powell y a 1.000 pies en Mead se interpolan linealmente entre filas publicadas.",
-          "provenance": "Claims h_powell_storage_3510, h_mead_storage_1000"
+          "statement": "El nivel muerto de Lake Mead se representa con 2.547 mil acre-pies, prudente con cualquier lectura de la columna de almacenamiento.",
+          "provenance": "Claims mead_dead_pool, h_mead_dead_storage"
         },
         "claim_ids": [
-          "h_powell_storage_3510",
-          "h_mead_storage_1000"
+          "h_mead_dead_storage"
         ]
       },
       {
         "path": "/assumptions/2",
         "value": {
-          "id": "Thresholds",
+          "id": "LifeCondition",
           "kind": "NORMATIVE",
-          "statement": "3.510 pies en Powell es el objetivo operativo oficial; 1.000 pies en Mead es una referencia elegida por el modelizador. Ninguno es un umbral de vida.",
-          "provenance": "Claim d_task"
+          "statement": "La condición de vida es que el agua pueda seguir saliendo de Lake Mead hacia la cuenca baja; cuánta agua recibe cada portador se compara como bienestar, sin sumarlo.",
+          "provenance": "Claim d_life_task"
         },
         "claim_ids": [
-          "d_task"
+          "d_life_task"
         ]
       },
       {
         "path": "/assumptions/3",
         "value": {
-          "id": "NoLaw",
+          "id": "InflowLaw",
           "kind": "PROBABILITY",
-          "statement": "No se asignan probabilidades a las afluencias; los resultados valen escenario por escenario.",
-          "provenance": "Claim modelling"
+          "statement": "Un tercio para cada afluencia: candidato calibrado de AM-02 sobre 13 octubres, no admitido (se exigen 30). La PVS es condicional a esta ley.",
+          "provenance": "Claim d_law; twin/history/empirical_law.py --driver inflow"
         },
         "claim_ids": [
-          "modelling"
+          "d_law"
         ]
       }
     ],

@@ -22,7 +22,9 @@ class FrozenPredictionTests(unittest.TestCase):
             with self.subTest(case=case):
                 frozen = predictions.load(case)
                 self.assertEqual(frozen['prediction_sha256'], sha({k: v for k, v in frozen.items() if k != 'prediction_sha256'}))
-                self.assertEqual(predictions.compute(case), {k: v for k, v in frozen.items() if k not in ('frozen_at', 'prediction_sha256')})
+                self.assertEqual(predictions.compute(case, predictions.FROZEN_WORLD), {k: v for k, v in frozen.items() if k not in ('frozen_at', 'prediction_sha256')})
+                # Later revisions of the world (life conditions, laws) keep the trajectories the prediction froze.
+                self.assertEqual(predictions.compute(case)['predicted'], frozen['predicted'])
 
     def test_contrast_records_exact_deltas_and_keeps_the_prediction(self):
         with tempfile.TemporaryDirectory() as temporary:
