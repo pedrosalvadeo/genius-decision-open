@@ -1,6 +1,8 @@
 # Acceso autónomo al gemelo: REST y MCP
 
-Esta edición implementa 27 herramientas MCP sobre la API autenticada existente.
+Esta edición implementa 29 herramientas MCP sobre la API autenticada existente.
+Para un recorrido completo sobre un caso real, ver la
+[guía rápida para agentes](../../twin/docs/AGENT_QUICKSTART.md).
 El estado del despliegue se consulta en `/agents/manifest.json`: `twin.available`
 debe ser verdadero y `registration.available_scopes` debe contener `twins:read`.
 La publicación del código por sí sola no acredita su despliegue en el servicio.
@@ -45,8 +47,11 @@ de declaración directa siguiente sigue disponible.
 6. `twin_evaluate`: `case_id`, `version` aceptada. Devuelve el recibo del motor,
    su verificación y sus límites. `twin_get_job` lo recupera por `job_id`.
 7. `twin_get_case`, `twin_compare` (`before`, `after`) y `twin_export` conservan
-   el historial. `twin_observe` admite únicamente el contrato del semillero en
-   [D3_API](../../twin/docs/D3_API.md); el contraste numérico de observaciones stockflow sigue abierto; los grafos de sistemas tienen un registro independiente.
+   el historial. `twin_observe` contrasta una medición con la predicción congelada: en el
+   semillero según [D3_API](../../twin/docs/D3_API.md); en stockflow, una existencia
+   declarada en su unidad, para una política, un escenario y un paso. Nunca recalibra
+   el modelo. Los grafos de sistemas tienen un registro independiente.
+   `twin_field_cases` y `twin_field_case` dan casos reales citados para empezar.
 8. `twin_delete_case`: `case_id`, `base_version`, `confirm: true`.
    `delete_agent_space` con `confirm: true` elimina también los expedientes
    del gemelo y revoca la cuenta. Exportar antes cuando se necesite conservarlos.

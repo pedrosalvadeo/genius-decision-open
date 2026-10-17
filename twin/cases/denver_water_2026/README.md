@@ -38,3 +38,13 @@ Los pronósticos mensuales seco/normal/húmedo de Denver Water deberían reempla
 - Sin ley de probabilidad la cobertura es relativa: el kernel no establece frontera ni selección entre las dos factibles (`selection_status: OUTSIDE_DOMAIN`). Una ley sobre los inviernos permitiría la comparación completa.
 
 Reproducir: `PYTHONPATH=twin:kernel python -m unittest twin.tests.test_case_denver_water` desde la raíz, o `python twin/cases/denver_water_2026/build.py` para regenerar el caso.
+
+## Predicción congelada y contraste
+
+`prediction.json` congela, el 17/10/2026, la trayectoria del embalse para cada opción y escenario, con su calendario y los hashes del mundo y del modelo. `observations.json` acumula las lecturas reales posteriores con su diferencia exacta frente a cada trayectoria, sin recalibrar el modelo. Registrar una lectura (desde la raíz, con `PYTHONPATH=twin:kernel`):
+
+```bash
+python twin/cases/predictions.py contrast <caso> --date AAAA-MM-DD --value <valor> --observed-at <ISO8601> --source "<editor, URL y cita exacta>"
+```
+
+`twin.tests.test_predictions` falla si `world.json` cambia sin volver a congelar la predicción.

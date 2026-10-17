@@ -36,3 +36,13 @@ Escenarios: pronóstico oficial; por debajo del pronóstico como en 2025/26 (797
 - Sin ley de probabilidad no hay frontera ni selección (`selection_status: OUTSIDE_DOMAIN`).
 
 Reproducir: `PYTHONPATH=twin:kernel python -m unittest twin.tests.test_case_mendoza_potrerillos` desde la raíz.
+
+## Predicción congelada y contraste
+
+`prediction.json` congela, el 17/10/2026, la trayectoria del embalse para cada opción y escenario, con su calendario y los hashes del mundo y del modelo. `observations.json` acumula las lecturas reales posteriores con su diferencia exacta frente a cada trayectoria, sin recalibrar el modelo. Registrar una lectura (desde la raíz, con `PYTHONPATH=twin:kernel`):
+
+```bash
+python twin/cases/predictions.py contrast <caso> --date AAAA-MM-DD --value <valor> --observed-at <ISO8601> --source "<editor, URL y cita exacta>"
+```
+
+`twin.tests.test_predictions` falla si `world.json` cambia sin volver a congelar la predicción.

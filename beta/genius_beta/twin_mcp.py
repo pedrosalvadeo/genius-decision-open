@@ -8,6 +8,10 @@ PAYLOAD = dict(type='object', description='Exact REST payload documented in beta
 ROUTES = {
     'twin_world_contract': ('GET', '/world/contract', 'twins:read', {}, (),
         'Read the domain-neutral construction protocol and schemas. You interpret source material and propose evidence-linked fragments; the server assembles and checks them. No domain template, server LLM call, authenticated truth or causal discovery. Read before constructing a model.'),
+    'twin_field_cases': ('GET', '/field-cases', 'twins:read', {}, (),
+        'List the cited real-world field cases (for example Denver Water drought, Mendoza River). Start here to learn the cycle on a real system.'),
+    'twin_field_case': ('GET', '/field-cases/{case_id}', 'twins:read', {'case_id': NAME}, ('case_id',),
+        'Read one field case: narrative, source-attributed system observation and world construction with exact quotes and declared hypotheses. Use observation with twin_observe_system and construction with twin_propose_world. Its hypotheses stay hypotheses.'),
     'twin_prepare_world': ('POST', '/cases/{case_id}/world/prepare', 'twins:write',
         {'case_id': ID, 'payload': PAYLOAD}, ('case_id', 'payload'),
         'Preview a construction without saving or accepting it. Payload: base_version, construction following twin_world_contract. Returns draft/model, missing-data questions, formal diagnostics, source-span checks and boundary receipt. Missing quantities are never defaulted; null law/thresholds remain unknown. READY_FOR_REVIEW is not empirical validation.'),
