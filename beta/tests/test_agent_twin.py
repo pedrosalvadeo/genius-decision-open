@@ -196,6 +196,29 @@ class AgentTwinTests(unittest.TestCase):
         self.assertEqual(self.client.delete('/api/agents/me',headers=self.headers).status_code,204)
         self.assertEqual(self.client.get('/api/twin/world/contract',headers=self.headers).status_code,401)
 
+    def test_field_case_cycle_through_mcp(self):
+        # The exact sequence documented in twin/docs/AGENT_QUICKSTART.md.
+        listed={row['id'] for row in self.call('twin_field_cases')['field_cases']}
+        self.assertIn('denver_water_2026',listed)
+        case=self.call('twin_field_case',dict(case_id='denver_water_2026'))
+        self.assertEqual(case['provenance'],'CITED_FIELD_CASE_WITH_DECLARED_HYPOTHESES')
+        self.assertEqual(self.rpc('twin_field_case',dict(case_id='missing')).json['result']['structuredContent']['error']['http_status'],404)
+        cid=self.call('twin_create_case',{'payload':dict(text=case['narrative'],title=case['title'],profile=STOCKFLOW)})['case']['id']
+        self.call('twin_observe_system',dict(case_id=cid,payload=dict(base_version=0,observation_revision=0,
+            idempotency_key='field-observation',observation=case['observation'])))
+        preview=self.call('twin_prepare_world',dict(case_id=cid,payload=dict(base_version=0,construction=case['construction'])))
+        self.assertEqual(preview['status'],'READY_FOR_REVIEW')
+        proposal=self.call('twin_propose_world',dict(case_id=cid,base_version=0,text=case['narrative'],construction=case['construction']))['proposal']
+        self.call('twin_accept',dict(proposal_id=proposal['id'],payload=dict(base_version=0,confirmed=True,
+            acknowledge_declared=True,idempotency_key='field-confirm')))
+        result=self.call('twin_evaluate',dict(case_id=cid,version=1))
+        decision=result['evaluation']['canonical_results']['decision']
+        self.assertEqual((decision['feasible'],decision['failed'],decision['selected']),(['keep_ban','resume_if_70'],['resume_may'],None))
+        observed=self.call('twin_observe',dict(case_id=cid,payload=dict(base_version=1,policy_id='keep_ban',scenario_id='dry',
+            day=1,variable='storage',unit='pct_capacity',value='65.5',observed_at='2026-11-15T12:00:00+00:00',
+            source='Synthetic test reading; no field data',idempotency_key='field-reading')))['observation']
+        self.assertEqual(observed['comparison']['status'],'MATCH_NOT_MODEL_VALIDATION')
+
     def test_system_observations_scopes_limits_identity_and_native_receipt(self):
         fixture=self.call('twin_system_example')
         self.assertEqual(self.call('twin_system_schema')['title'],'genius-system-observation/1')
