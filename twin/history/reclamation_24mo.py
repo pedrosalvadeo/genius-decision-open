@@ -30,7 +30,7 @@ LAKES = {'mead': (re.compile(r'hoover\s+dam|lake\s+mead', re.I), (800, 1250)),
 # Rows may carry a margin letter (the vertical "HISTORY" label) or a "*" before the month.
 ROW = re.compile(r'^\s*(?:[A-Z*]\s+)?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[\s\-/]*\'?(\d{4}|\d{2})\b(.*)$', re.I)
 NUMBER = re.compile(r'-?\d[\d,]*(?:\.\d+)?')
-FIELDS = ['study_date', 'scenario', 'source_url', 'pdf_sha256', 'row_month', 'lake', 'elevation_ft', 'storage_kaf', 'kind']
+FIELDS = ['study_date', 'scenario', 'source_url', 'pdf_sha256', 'row_month', 'lake', 'elevation_ft', 'storage_kaf', 'kind', 'unregulated_inflow_kaf']
 
 
 def month_key(year, month):
@@ -98,6 +98,8 @@ def parse(text, study):
             continue
         if columns is None:
             columns = _columns(headers)
+            # Unregulated inflow to Lake Powell: the hydrology a study assumes, independent of operations.
+            unregulated = _positions(headers, ['Unreg']) if lake == 'powell' else []
         elevation_at, storage_at = columns
         if elevation_at is None or storage_at is None:
             continue
@@ -116,7 +118,12 @@ def parse(text, study):
         if key in seen:
             continue
         seen.add(key)
-        out.append(dict(lake=lake, row_month=key[1], elevation_ft=elevation, storage_kaf=str(int(storage)),
+        inflow = ''
+        if unregulated:
+            nearest = min(tokens, key=lambda t: abs(t[1] - unregulated[0]))
+            if '.' not in nearest[0] and abs(nearest[1] - unregulated[0]) < 12:
+                inflow = str(int(nearest[0]))
+        out.append(dict(lake=lake, row_month=key[1], elevation_ft=elevation, storage_kaf=str(int(storage)), unregulated_inflow_kaf=inflow,
                         kind='historical' if key[1] < study else 'projected'))
     return out
 

@@ -76,6 +76,7 @@ Prevalecen sobre el texto de A y B donde difieran.
 - **Resultados disponibles:** 14 estudios de octubre de 2012 a 2025 con resultado publicado y sin superposición. La realidad siguió de cerca al mínimo en 6, al más probable en 4 y al máximo en 4.
 - **Candidatos:** las masas iguales y las frecuencias suavizadas pasan la calibración. Las masas iguales puntúan mejor.
 - **Resultado:** no se admite. Hay 14 resultados independientes y se exigen 30, y la clasificación se juzga con el almacenamiento, que depende de la operación, no con la afluencia.
+- **Juzgado por afluencia** (`--driver inflow`, afluencia no regulada acumulada a Powell, que no depende de la operación): la realidad siguió al mínimo en 5 de 13 octubres, al más probable en 6 y al máximo en 2. En los cuatro meses de emisión el máximo fue el menos frecuente. Ya no queda el rechazo por dependencia de la política; queda el de evidencia: el archivo da un resultado independiente por año y desde 2012 hay 13 o 14.
 - **Orden sin ley (reparación 8):** las dos políticas fallan sólo en el año mínimo, así que su PVS es igual bajo cualquier ley. Ninguna ley puede recomendar entre liberar 6 o 7 millones con esta tarea. Lo que las distingue es cuánto baja Powell (4.072 frente a 3.141 kaf), que la tarea binaria no mide.
 
 ## Invariantes que no cambian
@@ -92,7 +93,7 @@ Prevalecen sobre el texto de A y B donde difieran.
 
 ## Trabajo pendiente
 
-1. Cosechar un impulsor exógeno: la afluencia no regulada a Powell, que ya está en las mismas tablas. Juzgar con él qué escenario siguió la realidad.
+1. Hecho: la afluencia no regulada a Powell se cosecha y juzga la clasificación. Falta evidencia independiente: buscar archivos más largos de pronósticos de afluencia (por ejemplo, los del Colorado Basin River Forecast Center) o esperar los contrastes prospectivos.
 2. Registrar pronósticos prospectivos con hash y prueba secuencial (reparación 3).
 3. Demostrar, por cada LEA admitida, que sus filas son completas sobre las realizaciones del gemelo (Definición 8.9).
 4. Agregar el diagnóstico de fragilidad y el orden sin ley a la salida del gemelo.
