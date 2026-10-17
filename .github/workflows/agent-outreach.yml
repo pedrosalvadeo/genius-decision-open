@@ -1,7 +1,14 @@
 name: Agent outreach
+# Paused 2026-10-17 by Pedro's decision (focus on first real cases).
+# To reactivate, restore the schedule and push triggers below:
+#   schedule:
+#     - cron: '17,47 * * * *'
+#   push:
+#     branches: [main]
+#     paths:
+#       - '.github/workflows/agent-outreach.yml'
+#       - 'capsule/outreach/**'
 on:
-  schedule:
-    - cron: '17,47 * * * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -9,11 +16,6 @@ on:
         type: choice
         options: [observe, dialogue, contact]
         default: observe
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/agent-outreach.yml'
-      - 'capsule/outreach/**'
 permissions:
   contents: write
 concurrency:
