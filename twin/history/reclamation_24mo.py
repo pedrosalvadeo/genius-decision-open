@@ -27,8 +27,6 @@ VARIANTS = {'': 'most_probable', '_MIN': 'min', '_MAX': 'max', '_6': 'most_proba
 CURRENT = {'': '24mo.pdf', '_MIN': '24mo_MIN.pdf', '_MAX': '24mo_MAX.pdf', '_6': '24mo_6.pdf', '_7': '24mo_7.pdf'}
 LAKES = {'mead': (re.compile(r'hoover\s+dam|lake\s+mead', re.I), (800, 1250)),
          'powell': (re.compile(r'glen\s+canyon|lake\s+powell', re.I), (3300, 3720))}
-OTHER_SECTION = re.compile(r'\b(dam|reservoir|lake)\b\s*[-–—]|flaming gorge|navajo|blue mesa|morrow point|crystal|fontenelle|'
-                           r'mohave|havasu|davis|parker|imperial|senator wash|laguna', re.I)
 ROW = re.compile(r'^\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[\s\-/]*\'?(\d{4}|\d{2})\b(.*)$', re.I)
 NUMBER = re.compile(r'-?\d[\d,]*(?:\.\d+)?')
 FIELDS = ['study_date', 'scenario', 'source_url', 'pdf_sha256', 'row_month', 'lake', 'elevation_ft', 'storage_kaf', 'kind']
@@ -47,32 +45,60 @@ def urls(year, month, current=None):
         yield scenario, f'{BASE}24mo/{year}/{stem}{suffix}.pdf'
 
 
+def _heading(lines, index):
+    """A table heading: a short line without digits followed within three lines by the Date header."""
+    text = lines[index].strip()
+    if not text or len(text) > 60 or re.search(r'\d', text):
+        return False
+    return any('Date' in lines[j] for j in range(index + 1, min(index + 4, len(lines))))
+
+
+def _column(headers, phrase):
+    """Character centre of the first header phrase, or None."""
+    for line in headers:
+        position = line.find(phrase)
+        if position >= 0:
+            return position + len(phrase) / 2
+    return None
+
+
 def parse(text, study):
-    """Rows (lake, row_month, elevation, storage) from pdftotext -layout output of one study."""
-    out, lake, seen = [], None, set()
-    for line in text.splitlines():
+    """Rows (lake, row_month, elevation, storage) from pdftotext -layout output of one study.
+
+    Columns are located by their headers: elevation under "End of Month (Ft)" and storage
+    under "End Of Month" (the end-of-month storage column), so extra columns such as bank
+    storage or Lees Ferry do not shift the values.
+    """
+    lines = text.splitlines()
+    out, seen = [], set()
+    lake, headers, columns = None, [], None
+    for index, line in enumerate(lines):
         match = ROW.match(line)
         if not match:
-            heading = line.strip()
-            if heading:
-                found = next((name for name, (pattern, _) in LAKES.items() if pattern.search(heading)), None)
-                if found:
-                    lake = found
-                elif OTHER_SECTION.search(heading) and not NUMBER.search(heading):
-                    lake = None
+            if _heading(lines, index):
+                lake = next((name for name, (pattern, _) in LAKES.items() if pattern.search(line)), None)
+                headers, columns = [], None
+            elif lake is not None and columns is None and line.strip():
+                headers.append(line)
             continue
         if lake is None:
             continue
-        year = int(match.group(2))
-        year = year + 2000 if year < 100 else year
-        month = [m.lower() for m in MONTHS].index(match.group(1)[:3].lower()) + 1
-        numbers = NUMBER.findall(match.group(3))
-        if len(numbers) < 2:
+        if columns is None:
+            columns = (_column(headers, 'End of Month (Ft)'), _column(headers, 'End Of Month'))
+        elevation_at, storage_at = columns
+        if elevation_at is None or storage_at is None:
             continue
-        elevation, storage = numbers[-2].replace(',', ''), numbers[-1].replace(',', '')
+        tokens = [(m.group().replace(',', ''), (m.start() + m.end()) / 2) for m in NUMBER.finditer(line, match.start(3))]
+        if len(tokens) < 2:
+            continue
+        elevation = min(tokens, key=lambda t: abs(t[1] - elevation_at))[0]
+        storage = min(tokens, key=lambda t: abs(t[1] - storage_at))[0]
         low, high = LAKES[lake][1]
         if '.' not in elevation or '.' in storage or not low <= float(elevation) <= high:
             continue  # not an end-of-month row of this table
+        year = int(match.group(2))
+        year = year + 2000 if year < 100 else year
+        month = [m.lower() for m in MONTHS].index(match.group(1)[:3].lower()) + 1
         key = (lake, month_key(year, month))
         if key in seen:
             continue
@@ -141,7 +167,7 @@ def harvest(start, end, out, failures, pause=0.3, today=None):
             rows += [dict(study_date=study, scenario=scenario, source_url=url, pdf_sha256=digest, **r) for r in parsed]
         year, month = (year + 1, 1) if month == 12 else (year, month + 1)
     with open(out, 'w', newline='') as handle:
-        writer = csv.DictWriter(handle, fieldnames=FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=FIELDS, lineterminator='\n')
         writer.writeheader()
         writer.writerows(rows)
     Path(failures).write_text(''.join(line + '\n' for line in missing))
