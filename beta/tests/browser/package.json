@@ -1,8 +1,12 @@
 {
   "dependencies": {
-    "playwright": "1.55.1"
+    "playwright": "1.55.1",
+    "linkedom": "0.18.12"
   },
   "name": "genius-browser-verification",
   "private": true,
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "scripts": {
+    "test:observatory": "node observatory.cjs"
+  }
 }

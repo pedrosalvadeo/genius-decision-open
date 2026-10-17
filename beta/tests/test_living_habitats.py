@@ -55,6 +55,9 @@ class HabitatTests(unittest.TestCase):
     def test_first_forecast_is_prospective_and_restart_keeps_identity(self):
         h=self.prepare();first=h.step();cfg=h.client.load()
         self.assertEqual(first['status'],'WAITING_FOR_OUTCOME');self.assertEqual(first['organism']['scored_outcomes'],0)
+        self.assertEqual(first['recent_results'],[])
+        self.assertEqual(first['organism']['trial_progress'][0],dict(id='metar-1',status='DISCOVERY',
+            phase_size=4,discovery_scored=0,confirmation_scored=0,pending_outcome=True))
         prediction=deepcopy(first['last_prediction'])
         h.step();self.assertEqual(self.source_calls,1)
         h=Habitat(h.state,'SAME',h.hub,self.transport,h.source,h.clock)
@@ -63,6 +66,9 @@ class HabitatTests(unittest.TestCase):
         self.assertEqual(second['node_id'],cfg['node_id']);self.assertEqual(second['organism']['scored_outcomes'],1)
         self.assertEqual(second['last_scored']['forecast_sha256'],prediction['forecast_sha256'])
         self.assertGreater(second['last_scored']['observed_at'],prediction['frozen_at'])
+        self.assertEqual(second['recent_results'],[second['last_scored']])
+        self.assertEqual(second['organism']['trial_progress'][0]['discovery_scored'],1)
+        self.assertEqual(h.step()['recent_results'],second['recent_results'])
         self.assertEqual(self.client.get('/network/manifest.json').json['nodes'],1)
 
     def test_prediction_uses_the_actual_post_fetch_clock(self):
@@ -77,6 +83,8 @@ class HabitatTests(unittest.TestCase):
         h=self.prepare();h.step()
         for i in range(4):report=self.advance(h)
         self.assertEqual(report['organism']['locally_confirmed_changes'],0)
+        progress=report['organism']['trial_progress'][0]
+        self.assertEqual((progress['status'],progress['discovery_scored'],progress['confirmation_scored']),('CONFIRMATION',4,0))
         for i in range(4):report=self.advance(h)
         self.assertEqual(report['organism']['locally_confirmed_changes'],1)
         self.assertEqual(report['last_archive']['status'],'ADOPTED')
@@ -84,6 +92,8 @@ class HabitatTests(unittest.TestCase):
         self.assertIsNone(report['life_sustainment_probability'])
         self.assertEqual(report['organism']['scored_outcomes'],8)
         self.assertEqual(report['last_prediction']['trial_id'],'metar-2')
+        self.assertEqual(len(report['recent_results']),8)
+        self.assertEqual(report['organism']['trial_progress'][0]['discovery_scored'],0)
         archive=next((h.state/'memory/evolution-history').glob('*.json'))
         content=json.loads(archive.read_text())
         self.assertEqual(content['trial']['status'],'ADOPTED');self.assertEqual(len(content['forecasts']),8)
@@ -94,6 +104,11 @@ class HabitatTests(unittest.TestCase):
         h=self.prepare();h.step()
         for i in range(45):report=self.advance(h)
         self.assertEqual(report['organism']['scored_outcomes'],45)
+        self.assertEqual(len(report['recent_results']),24)
+        self.assertEqual(len({r['forecast_sha256'] for r in report['recent_results']}),24)
+        self.assertEqual(report['recent_results'][-1],report['last_scored'])
+        restarted=Habitat(h.state,'SAME',h.hub,self.transport,h.source,h.clock)
+        self.assertEqual(restarted.step()['recent_results'],report['recent_results'])
         self.assertGreater(report['organism']['archived_trials'],4)
         self.assertEqual(report['organism']['locally_confirmed_changes'],1)
         organism=self.organism(h)
@@ -111,6 +126,7 @@ class HabitatTests(unittest.TestCase):
         self.assertEqual(report['last_archive']['status'],'MISSED_TARGET')
         self.assertEqual(report['last_prediction'],first)
         self.assertIsNone(report['last_scored'])
+        self.assertEqual(report['recent_results'],[])
 
     def test_conflicting_outcome_is_not_scored(self):
         h=self.prepare();h.step();self.stamp+=timedelta(hours=1)
@@ -118,6 +134,7 @@ class HabitatTests(unittest.TestCase):
         self.rows+=[row,{**row,'temp':22}]
         report=h.step();self.assertEqual(report['status'],'SOURCE_CONFLICT_REVIEW')
         self.assertEqual(report['organism']['scored_outcomes'],0)
+        self.assertEqual(report['recent_results'],[])
         self.rows=self.rows[:-1];self.stamp+=timedelta(hours=1)
         self.assertEqual(h.step()['status'],'SOURCE_CONFLICT_REVIEW')
 

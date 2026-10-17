@@ -127,6 +127,9 @@ class Habitat:
             life_sustainment_probability=None,latest_observation=state.get('latest_observation'),
             last_scored=state.get('last_scored'),last_prediction=state.get('last_prediction'),
             last_archive=state.get('last_archive'),organism=organism.status() if organism else state.get('organism'),**details)
+        # Only scored, later outcomes enter this bounded public history. Missing
+        # observations and pending predictions never become zero-error samples.
+        report['recent_results']=state.get('recent_results',[])
         if organism:state['organism']=report['organism']
         save(self.path,state);save(self.report,report)
         return report
@@ -179,6 +182,10 @@ class Habitat:
                         state['last_scored']=dict(observed_at=first['observed_at'],predicted_centikelvin=pred,
                             actual_centikelvin=first['value'],absolute_error_centikelvin=abs(pred-first['value']),
                             forecast_sha256=pending['forecast_sha256'],target_sha256=digest(first))
+                        recent=state.setdefault('recent_results',[])
+                        if not any(r['forecast_sha256']==pending['forecast_sha256'] for r in recent):
+                            recent.append(dict(state['last_scored']))
+                        state['recent_results']=recent[-24:]
                     elif moment>instant(pending['window'][1]):
                         organism.miss_target(trial['id']);trial=organism.load()['trials'][trial['id']]
                 node.ingest(rows)
