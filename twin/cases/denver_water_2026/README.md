@@ -19,7 +19,7 @@ Unidad: puntos de capacidad de los embalses de suministro. Doce pasos mensuales 
 | `resume_may` | Riego de Etapa 1 de mayo a septiembre |
 | `resume_if_70` | Riego de Etapa 1 sólo en los meses que empiezan con 70 % o más |
 
-Escenarios: invierno seco (deshielo como 2026), normal y húmedo. Tarea operacional: almacenamiento ≥ 50 % en todos los meses. Bienestar: agua entregada a riego exterior para la población servida. Sin ley de probabilidad.
+Escenarios: invierno seco (deshielo como 2026), normal y húmedo. Tarea operacional: almacenamiento ≥ 50 % en todos los meses. Bienestar: agua entregada a riego exterior para la población servida, y reserva de los embalses para Denver Water como organización (representación elegida por el modelizador). Sin ley de probabilidad.
 
 ### Hipótesis para revisar
 

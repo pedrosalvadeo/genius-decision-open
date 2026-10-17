@@ -26,6 +26,7 @@ COPY product_local/genius_local /app/product_local/genius_local
 COPY consumer_views/genius_views /app/consumer_views/genius_views
 COPY twin/genius_twin /app/twin/genius_twin
 COPY twin/examples /app/twin/examples
+COPY twin/cases /app/twin/cases
 COPY kernel/genius_kernel /app/kernel/genius_kernel
 
 USER 10001:10001

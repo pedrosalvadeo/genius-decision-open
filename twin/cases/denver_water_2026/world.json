@@ -350,6 +350,17 @@
         ]
       },
       {
+        "id": "d_org_welfare",
+        "basis": "decision",
+        "statement": "El bienestar de Denver Water como organización se representa por la reserva que administra (almacenamiento, más es mejor).",
+        "uncertainty": "Representación elegida por el modelizador a partir de su objetivo público de preservar el suministro; no es una métrica declarada por la empresa.",
+        "spans": [],
+        "premises": [
+          "lawn_ban",
+          "storage_now"
+        ]
+      },
+      {
         "id": "modelling",
         "basis": "definition",
         "statement": "Unidad: puntos porcentuales de la capacidad de los embalses de suministro. Paso mensual, del 15/10/2026 al 15/10/2027 (paso 1 = mediados de noviembre). Riego exterior acumulado como existencia que registra el agua entregada a jardines. Sin ley de probabilidad: no se asignan pesos a los inviernos.",
@@ -429,6 +440,17 @@
         },
         "claim_ids": [
           "population"
+        ]
+      },
+      {
+        "path": "/carriers/1",
+        "value": {
+          "id": "denver_water",
+          "label": "Denver Water (directorio)",
+          "kind": "organization"
+        },
+        "claim_ids": [
+          "lawn_ban"
         ]
       },
       {
@@ -922,6 +944,19 @@
         ]
       },
       {
+        "path": "/welfare/1",
+        "value": {
+          "carrier": "denver_water",
+          "dimension": "reserve",
+          "label": "Reserva de los embalses que administra",
+          "stock": "storage",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_org_welfare"
+        ]
+      },
+      {
         "path": "/task",
         "value": {
           "kind": "operational",
@@ -1026,6 +1061,11 @@
           "collection": "carriers",
           "model_id": "residents",
           "entity_id": "residents"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "denver_water",
+          "entity_id": "denver_water"
         }
       ],
       "rationale": "El directorio de Denver Water decide el riego; se evalúan embalses, riego y población. Fuera de alcance: río aguas abajo y otros municipios."

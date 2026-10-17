@@ -1,0 +1,51 @@
+"""Cited field cases are listed by the API and open through the regular world-construction flow."""
+from pathlib import Path
+import tempfile
+import unittest
+
+from genius_twin import construction, registry
+from genius_twin.process_runner import ProcessEvaluator
+from genius_twin.app import create_app
+
+
+class FieldCaseTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.client = create_app(Path(self.temp.name) / 'db.sqlite3', testing=True, evaluator=registry.evaluate).test_client()
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def post(self, path, payload):
+        response = self.client.post('/api' + path, json=payload)
+        self.assertIn(response.status_code, (200, 201), response.json)
+        return response.json
+
+    def test_catalog_and_full_flow_for_each_case(self):
+        rows = self.client.get('/api/field-cases').json['field_cases']
+        self.assertEqual({row['id'] for row in rows}, {'denver_water_2026', 'mendoza_potrerillos_2026'})
+        self.assertEqual(self.client.get('/api/field-cases/missing').status_code, 404)
+        for row in rows:
+            with self.subTest(case=row['id']):
+                data = self.client.get('/api/field-cases/' + row['id']).json
+                self.assertEqual(data['provenance'], 'CITED_FIELD_CASE_WITH_DECLARED_HYPOTHESES')
+                cid = self.post('/cases', dict(text=data['narrative'], title=data['title'], profile=registry.STOCKFLOW))['case']['id']
+                self.post(f'/cases/{cid}/systems', dict(base_version=0, observation_revision=0, idempotency_key='observe-' + cid, observation=data['observation']))
+                proposal = self.post(f'/cases/{cid}/proposals', dict(base_version=0, kind='world_model', text=data['narrative'], structured=dict(construction=data['construction'])))['proposal']
+                self.post(f"/proposals/{proposal['id']}/accept", dict(base_version=0, confirmed=True, acknowledge_declared=True, idempotency_key='accept-' + cid))
+                result = self.post(f'/cases/{cid}/evaluate', dict(version=1))
+                self.assertEqual(result['job']['status'], 'completed')
+                self.assertTrue(result['evaluation']['verification']['valid'])
+
+    def test_each_case_fits_production_execution_limits(self):
+        # Mirrors beta/genius_beta/config.py TWIN_TIMEOUT/TWIN_MEMORY_MB/TWIN_OUTPUT_BYTES defaults.
+        evaluator = ProcessEvaluator(timeout=90, memory_mb=384, output_bytes=16777216)
+        for row in registry.field_cases():
+            with self.subTest(case=row['id']):
+                data = registry.field_case(row['id'])
+                model = construction.prepare(data['construction'], dict(id='o', revision=1, observation=data['observation'], historical_gaps={}))['model']
+                self.assertTrue(evaluator(model)['verification']['valid'])
+
+
+if __name__ == '__main__':
+    unittest.main()

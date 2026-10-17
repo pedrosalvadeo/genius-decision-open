@@ -49,6 +49,21 @@ function generalConflictNotice(){
 }
 function markGeneral(){d3.dirty=true;$("#case-meta").textContent=`${activeCase()?.current_version?`Versión ${activeCase().current_version}`:"Borrador"} · Cambios por guardar`;}
 async function generalExamples(){if(!d3.examples.length){const catalog=await api("/api/examples");d3.examples=catalog.examples||[];}return d3.examples;}
+async function openFieldCase(id){
+  const data=await api(`/api/field-cases/${encodeURIComponent(id)}`);
+  const created=await api("/api/cases",{text:data.narrative,title:data.title,profile:D3_PROFILE});
+  ui.initial=created;ui.dossier=null;ui.evaluation=null;ui.proposal=null;d3.cid=null;await refresh();
+  const cid=activeCase().id;
+  await api(`/api/cases/${encodeURIComponent(cid)}/systems`,{base_version:0,observation_revision:0,idempotency_key:crypto.randomUUID(),observation:data.observation});
+  const response=await api(`/api/cases/${encodeURIComponent(cid)}/proposals`,{base_version:0,kind:"world_model",text:data.narrative,structured:{construction:data.construction}});
+  await refresh();initializeGeneral();saveCase();d3.proposal=response.proposal;d3.reviewChecks=false;go("twin");
+  announce("Caso real abierto con sus fuentes. Revisa las hipótesis declaradas antes de confirmar y evaluar.");
+}
+async function showFieldCases(){
+  const catalog=await api("/api/field-cases"),rows=catalog.field_cases||[];if(!rows.length)return;
+  $("#field-case-list").replaceChildren(...rows.map(row=>button(row.title,()=>run(()=>openFieldCase(row.id)),"secondary small",{"data-field-case":row.id})));
+  $("#field-cases").hidden=false;
+}
 async function loadGeneralExample(id){const data=await api(`/api/examples/${encodeURIComponent(id)}`);d3.model=copy(data.model);d3.exampleId=id;d3.text=`Ejemplo sintético: ${data.title}.\n${d3.text}`;markGeneral();await saveGeneralDraft();d3.section="scope";render();}
 async function proposeGeneral(){
   await saveGeneralDraft();const response=await api(`/api/cases/${encodeURIComponent(activeCase().id)}/proposals`,{base_version:activeCase().current_version,kind:"declared_model",text:d3.text,structured:{model:d3.model}});
@@ -166,3 +181,5 @@ $("#fill-example").addEventListener("click",()=>{$("#intake-mode").value="d1";})
 $("#case-library").addEventListener("click",()=>run(showCaseLibrary));
 $("#intake-mode").addEventListener("change",()=>{$("#admission-note").textContent=$("#intake-mode").value==="d1"?"Ejemplo sintético original: dos plantas, dos cuidadores y 14 días. Otros relatos pueden construirse con el modo general.":"Completa planes, recursos y condiciones temporales con valores que puedas revisar. Las premisas se conservan como declaradas.";});
 window.addEventListener("beforeunload",event=>{if(isGeneral()&&d3.dirty){event.preventDefault();event.returnValue="";}});
+// Not through run(): startup requests hold the busy flag and the per-account lock (409); the list is optional.
+(async()=>{for(let attempt=0;attempt<4;attempt++){try{await showFieldCases();return;}catch(error){if(error.status!==409)return;await new Promise(resolve=>setTimeout(resolve,800*(attempt+1)));}}})();
