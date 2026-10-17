@@ -1,0 +1,9 @@
+{
+  "criteria": [
+    "Add identical recall-note wording in Claude Code, Cursor, Codex and Gemini capture guides in a section shorter than ten lines, linking to release 0.20.0.",
+    "Explain possible versus confirmed fixes, the two-episode threshold, who last ran the candidate, shared local-store scope, and MEMORYWHALE_HOOK_FEEDBACK=0 without treating history as causal proof.",
+    "State explicitly that Rho capture does not emit recall notes; remove the obsolete fix-that-worked wording without changing hook setup or runtime capabilities.",
+    "Check the claims against pinned Rust source and release notes, preserve the eight required guide headings and existing command blocks, validate links and portable patch with reproducible credential-free checks; do not claim live client verification."
+  ],
+  "reason": "Existing open unassigned documentation request with no comments or overlapping open PR. Agent users need to distinguish candidate evidence from confirmation and avoid trusting recalled commands blindly. Five concise guide edits are feasible by static source review and documentation checks. No external claim or PR authorized; no installation of MemoryWhale or access to a user's terminal memory."
+}

@@ -1,0 +1,50 @@
+{
+  "items": [
+    {
+      "number": 423,
+      "html_url": "https://github.com/wuisabel-gif/MemWhale/issues/423",
+      "title": "docs(integrations): explain possible and confirmed fixes in each agent guide",
+      "body": "## What\n\nSince 0.19 the recall note says `possible fix:`, and since 0.20 `confirmed fix:` with its record and who ran it:\n\n```text\nMemoryWhale: this error was seen 3 times; worked 2 of 2 times, last run by Codex 2 days ago, confirmed fix: xcode-select --install. Check whether it applies here.\n```\n\nThe agent guides either still describe the note as \"the fix that worked last time\" or do not explain it at all. Add one short section to each capture guide that says:\n\n- what the two forms mean: a possible fix is the next different command that passed after the failure; a confirmed fix is one after which the failing command passed in two or more episodes\n- that the note names who ran the fix last (another agent, or a terminal), so a fix found in one agent reaches the others\n- how to turn the notes off (`MEMORYWHALE_HOOK_FEEDBACK=0`)\n\n## Files\n\n- `integrations/claude-code/README.md`\n- `integrations/cursor/README.md`\n- `integrations/codex/README.md`\n- `integrations/gemini-cli/README.md`\n- `integrations/rho/README.md` (Rho gets no notes; one line saying so is enough if the guide implies otherwise)\n\nSource of truth: `format_hint` in `crates/mw-cli/src/lib.rs` and the \"What changed\" section of `docs/releases/0.20.0.md`. Keep each addition under ten lines and link to the release notes rather than repeating them.\n\n## Done when\n\nEach guide explains both forms with the same wording, and `grep -rn \"fix that worked\" integrations/` finds nothing.\n\n---\n\nNew here? See #317.\n",
+      "state": "open",
+      "labels": [
+        {
+          "id": 11263710974,
+          "node_id": "LA_kwDOS9oTSc8AAAACn16W_g",
+          "url": "https://api.github.com/repos/wuisabel-gif/MemWhale/labels/documentation",
+          "name": "documentation",
+          "color": "0075ca",
+          "default": true,
+          "description": "Improvements or additions to documentation",
+          "archived_at": null,
+          "archived_by": null
+        },
+        {
+          "id": 11263711002,
+          "node_id": "LA_kwDOS9oTSc8AAAACn16XGg",
+          "url": "https://api.github.com/repos/wuisabel-gif/MemWhale/labels/help%20wanted",
+          "name": "help wanted",
+          "color": "008672",
+          "default": true,
+          "description": "Extra attention is needed",
+          "archived_at": null,
+          "archived_by": null
+        },
+        {
+          "id": 11263711011,
+          "node_id": "LA_kwDOS9oTSc8AAAACn16XIw",
+          "url": "https://api.github.com/repos/wuisabel-gif/MemWhale/labels/good%20first%20issue",
+          "name": "good first issue",
+          "color": "7057ff",
+          "default": true,
+          "description": "Good for newcomers",
+          "archived_at": null,
+          "archived_by": null
+        }
+      ],
+      "assignees": [],
+      "updated_at": "2026-10-16T20:03:42Z"
+    }
+  ],
+  "total_count": 1,
+  "incomplete_results": false
+}
