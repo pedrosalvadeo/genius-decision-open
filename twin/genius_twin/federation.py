@@ -209,6 +209,22 @@ def evaluate(spec):
     dominated = {p["right"] for p in pairs if p["relation"] == "DOMINATES" and p["left"] in pool} | \
                 {p["left"] for p in pairs if p["relation"] == "DOMINATED" and p["right"] in pool}
     frontier = [i for i in pool if i not in dominated]
+    # Module VII per actor across the federation: a shared carrier is one actor.
+    serves = {(mid, f["id"]): [carrier_id(mid, c) for c in f["serves"]] for mid in members for f in renamed[mid].get("functions", [])}
+    actors = sorted({carrier_id(mid, c["id"]) for mid in members for c in renamed[mid]["carriers"]})
+    def actor_keys(actor, row):
+        return {k for k in row["_coords"] if (k[0] == "welfare" and k[1] == actor)
+                or (k[0] == "function" and actor in serves.get((k[1], k[2]), []))}
+    by_actor = {}
+    for actor in actors:
+        keys = actor_keys(actor, rows[pool[0]])
+        if not keys:
+            by_actor[actor] = {"best": None, "status": "NO_CRITERIA"}
+            continue
+        beaten = {b for a in pool for b in pool if a != b and all(rows[a]["_coords"][k] >= rows[b]["_coords"][k] for k in keys)
+                  and any(rows[a]["_coords"][k] > rows[b]["_coords"][k] for k in keys)}
+        best = [i for i in pool if i not in beaten]
+        by_actor[actor] = {"best": best, "status": "UNIQUE" if len(best) == 1 else "TIED_OR_INCOMPARABLE"}
     for row in rows.values():
         del row["_coords"]
     member_ledgers = {}
@@ -223,7 +239,7 @@ def evaluate(spec):
                               {"key": list(k), **v} for k, v in variants.get(mid, {}).items()]} for mid in members},
         "joint_scenarios": deepcopy(spec["scenarios"]), "law": deepcopy(law), "couplings": deepcopy(spec["couplings"]),
         "shared_carriers": deepcopy(spec["shared_carriers"]), "joint_routes": joint_routes, "by_joint_route": rows,
-        "decision": {"feasible": feasible, "frontier": frontier, "pairs": pairs, "selected": frontier[0] if len(frontier) == 1 else None,
+        "decision": {"feasible": feasible, "frontier": frontier, "pairs": pairs, "by_actor": by_actor, "selected": frontier[0] if len(frontier) == 1 else None,
                      "rule": "PRODUCT_ORDER_OVER_MEMBER_WELFARE_STEPS_FUNCTION_TERMINALS_AND_JOINT_PVS_NO_SUMS",
                      "feasibility": "JOINT_LIFE_CONDITION_IN_EVERY_JOINT_SCENARIO"},
         "assumptions": deepcopy(spec["assumptions"]),

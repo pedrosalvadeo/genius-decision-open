@@ -60,6 +60,9 @@ class LakeMeadCaseTests(unittest.TestCase):
         self.assertEqual(ledger, {'0': 'FILLED', 'V': 'FILLED', 'I': 'FILLED', 'II': 'FILLED', 'III': 'FILLED',
                                   'IV': 'FILLED', 'VI': 'FILLED', 'VII': 'FILLED'})
         self.assertTrue(results['modules']['complete'])
+        # Module VII per actor: the lower basin is best served by 7 maf, Glen Canyon by 6 maf.
+        self.assertEqual({c: row['best'] for c, row in decision['by_actor']['by_carrier'].items()},
+                         {'lower_basin': ['release_7'], 'glen_canyon': ['release_6']})
         # Module II: Powell and Mead are subsystems joined by the release; 7 maf carries 931 kaf more, May to September.
         for policy, total in (('release_6', '0/1'), ('release_7', '931/1')):
             composition = results['policies'][policy]['composition']

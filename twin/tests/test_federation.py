@@ -39,6 +39,9 @@ class ColoradoBasinFederationTests(unittest.TestCase):
         self.assertIn({'criterion': 'welfare', 'who': 'mead.glen_canyon'}, pair['better_for'])
         self.assertEqual(pair['worse_for'], [{'criterion': 'welfare', 'who': 'denver.residents'}])
         self.assertEqual(len(self.result['decision']['frontier']), 6)
+        # Per actor, Denver's choice reaches Glen Canyon: only keeping the ban with 6 maf is best for it.
+        self.assertEqual(self.result['decision']['by_actor']['mead.glen_canyon'],
+                         {'best': ['denver:keep_ban+mead:release_6'], 'status': 'UNIQUE'})
         self.assertIsNone(self.result['decision']['selected'])
 
     def test_invalid_alignment_and_cycles_are_rejected(self):

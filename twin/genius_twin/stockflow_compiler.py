@@ -328,6 +328,42 @@ def functional_comparison(model, raws):
             "rule": "FP1_PRODUCT_ON_TERMINAL_FUNCTION_VALUES_SAME_SCENARIO_NO_SUMS"}
 
 
+def by_actor(model, trajectories, raws, candidates):
+    """Module VII per actor: the routes no other candidate beats for that carrier.
+
+    A carrier's coordinates are its welfare conditions at every scenario and
+    step plus the terminal value of every function that serves it. Candidates
+    are the routes that keep the life condition (all routes if none does), so
+    no actor is recommended a route that sacrifices it. No sums across
+    carriers, scenarios, steps or criteria.
+    """
+    out = {}
+    for carrier in model["carriers"]:
+        cid = carrier["id"]
+        bindings = [w for w in model["welfare"] if w["carrier"] == cid]
+        functions = [f["id"] for f in model.get("functions", []) if cid in f["serves"]]
+        def coords(pid):
+            values = {}
+            for sid, tr in trajectories[pid].items():
+                for t, state in enumerate(tr["daily"]):
+                    for w in bindings:
+                        values[("welfare", w["dimension"], sid, t)] = _oriented(w, state["stocks"][w["stock"]])
+                for f in functions:
+                    values[("function", f, sid)] = raws[pid][sid][f][-1]
+            return values
+        if not bindings and not functions:
+            out[cid] = {"criteria": [], "best": None, "status": "NO_CRITERIA"}
+            continue
+        values = {pid: coords(pid) for pid in candidates}
+        beaten = {b for a in candidates for b in candidates if a != b
+                  and all(values[a][k] >= values[b][k] for k in values[b]) and values[a] != values[b]}
+        best = [pid for pid in candidates if pid not in beaten]
+        out[cid] = {"criteria": [{"kind": "welfare", "id": w["dimension"]} for w in bindings] + [{"kind": "function", "id": f} for f in functions],
+                    "best": best, "status": "UNIQUE" if len(best) == 1 else "TIED_OR_INCOMPARABLE"}
+    return {"by_carrier": out, "candidates": list(candidates),
+            "rule": "PER_CARRIER_PRODUCT_ORDER_AMONG_ROUTES_KEEPING_THE_LIFE_CONDITION"}
+
+
 def shortfall_order(shortfalls):
     """Pairs (a, b) where a misses no condition by more, nor for more steps, than b in any scenario.
 
@@ -417,6 +453,7 @@ def evaluate_model(model):
         decision = {"coverage": None, "feasible": [], "failed": [], "unknown": [], "frontier": [], "pairs": [], "selected": None, "selection_status": native["decision"]["state"]}
     decision["wellbeing_comparison"] = welfare_comparison(model, trajectories)
     decision["functional_comparison"] = functional_comparison(model, raws)
+    decision["by_actor"] = by_actor(model, trajectories, raws, decision["feasible"] or [p["id"] for p in model["policies"]])
     decision["shortfall_order"] = {"strictly_less_severe": shortfall_order({pid: policies[pid]["shortfall"]["by_scenario"] for pid in policies}),
         "interpretation": "HOLDS_UNDER_EVERY_LAW_DIAGNOSTIC_NOT_SELECTION"}
     decision.update({"native_cell": deepcopy(native["decision"]), "selection_rule": model["selection"],
