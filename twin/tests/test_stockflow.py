@@ -64,6 +64,31 @@ class StockFlowContracts(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_model(bad)
 
+    def test_module_two_subsystems_recompose_and_interfaces_carry_flows(self):
+        model = default_model()
+        stocks = [s["id"] for s in model["stocks"]]
+        model["subsystems"] = [{"id": "store", "label": "Almacén", "stocks": stocks[:1], "carriers": []},
+                               {"id": "rest", "label": "Resto", "stocks": stocks[1:], "carriers": ["A"]}]
+        model["interfaces"] = [{"id": "link", "label": "Del almacén al resto", "source": "store", "target": "rest"}]
+        result = evaluate_model(model)
+        self.assertTrue(result["verification"]["valid"])
+        results = result["canonical_results"]
+        for policy in results["policies"].values():
+            self.assertEqual(policy["composition"]["native_cell_state"], "DEFINED")
+        self.assertEqual({m["module"]: m["status"] for m in results["modules"]["modules"]}["II"], "FILLED")
+        bad = deepcopy(model)
+        bad["subsystems"][1]["stocks"] = stocks[2:]
+        with self.assertRaises(ValueError):
+            validate_model(bad)
+        bad = deepcopy(model)
+        bad["interfaces"][0]["target"] = "store"
+        with self.assertRaises(ValueError):
+            validate_model(bad)
+        bad = deepcopy(model)
+        del bad["subsystems"]
+        with self.assertRaises(ValueError):
+            validate_model(bad)
+
     def test_law_missing_preserves_native_partial_and_zero_branch_still_counts(self):
         model = default_model(); model["law"] = None
         result = evaluate_model(model)

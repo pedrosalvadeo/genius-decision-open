@@ -418,6 +418,19 @@
         ]
       },
       {
+        "id": "d_subsystems",
+        "basis": "decision",
+        "statement": "Subsistemas (módulo II): Potrerillos con Irrigación y la población abastecida; el riego con los regantes; las lagunas con su ecosistema. Los unen las entregas de riego y la entrega ecológica.",
+        "uncertainty": "Representación del modelizador; no se modelan canales, diques aguas abajo ni acuíferos.",
+        "spans": [],
+        "premises": [
+          "uses",
+          "surplus_uses",
+          "h_agro",
+          "d_ecology"
+        ]
+      },
+      {
         "id": "modelling",
         "basis": "definition",
         "statement": "Unidad hm³. Paso mensual de noviembre de 2026 a septiembre de 2027 (11 pasos; el límite de salida del gemelo impide un paso más con tres escenarios y tres opciones). El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. La ley sobre los escenarios se declara aparte (claim d_law).",
@@ -1246,6 +1259,79 @@
         },
         "claim_ids": [
           "d_functions"
+        ]
+      },
+      {
+        "path": "/subsystems/0",
+        "value": {
+          "id": "reservoir",
+          "label": "Embalse Potrerillos",
+          "stocks": [
+            "potrerillos"
+          ],
+          "carriers": [
+            "dgi",
+            "residents"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/subsystems/1",
+        "value": {
+          "id": "irrigation",
+          "label": "Riego del río Mendoza",
+          "stocks": [
+            "agro"
+          ],
+          "carriers": [
+            "irrigators"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/subsystems/2",
+        "value": {
+          "id": "lagoons_sub",
+          "label": "Lagunas de Rosario",
+          "stocks": [
+            "lagoons"
+          ],
+          "carriers": [
+            "lagoon_ecosystem"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/interfaces/0",
+        "value": {
+          "id": "irrigation_delivery",
+          "label": "Entregas de riego desde Potrerillos (hm³)",
+          "source": "reservoir",
+          "target": "irrigation"
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/interfaces/1",
+        "value": {
+          "id": "ecological_delivery",
+          "label": "Entrega ecológica desde Potrerillos a las lagunas (hm³)",
+          "source": "reservoir",
+          "target": "lagoons_sub"
+        },
+        "claim_ids": [
+          "d_subsystems"
         ]
       },
       {

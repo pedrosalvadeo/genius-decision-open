@@ -9,7 +9,7 @@ Cada evaluación de un gemelo entrega ahora `canonical_results.modules` (`genius
 | 0 Representación | El gemelo: existencias, capacidades, historia | Fuentes y afirmaciones citadas | Estado inicial, historias, información |
 | V Futuros | Rutas × escenarios: cada par es un **gemelo proyectado** | Estado inicial, rutas, escenarios | Trayectorias causales |
 | I Funcionalidad | Funciones del sistema medidas en cada gemelo proyectado | Gemelos proyectados, `functions` | Perfil funcional por estado y terminal por escenario |
-| II Multiescala | Existencias como puertos de un solo sistema | Gemelos proyectados | Balances conjuntos (falta: subsistemas e interfaces) |
+| II Multiescala | Subsistemas unidos por interfaces | Gemelos proyectados, `subsystems`, `interfaces` | Vista por subsistema, flujo por interfaz, recomposición exacta |
 | III Capacidad generativa | Organizaciones (firmas de capacidades) | Gemelos proyectados | CAG posible y robusta por ruta |
 | IV Bienestar | Portadores y dimensiones en el tiempo | Gemelos proyectados, vínculos | Perfil por escenario, paso, portador y dimensión |
 | VI Evidencia y PVS | Condición de vida y ley de escenarios con procedencia | Gemelos proyectados, ley | PVS por ruta y rango bajo toda ley |
@@ -17,7 +17,7 @@ Cada evaluación de un gemelo entrega ahora `canonical_results.modules` (`genius
 
 El orden de cálculo sigue el DAG de la especificación (05 §1), no la numeración: 0 → V → {I, II, III, IV, VI} → VII.
 
-Estados: `FILLED`, `NEUTRAL` (módulo I sin funciones declaradas), `SINGLE_SYSTEM` (módulo II sin subsistemas), `NO_LAW`, `NO_LIFE_CONDITION`, `MISSING`.
+Estados: `FILLED`, `NEUTRAL` (módulo I sin funciones declaradas), `SINGLE_SYSTEM` (módulo II sin subsistemas declarados), `NO_LAW`, `NO_LIFE_CONDITION`, `MISSING`.
 
 ## Módulo I: funciones
 
@@ -36,6 +36,18 @@ Funciones de los casos reales:
 
 En los tres casos la frontera no cambia: el bienestar sigue siendo incomparable entre portadores.
 
-## Siguiente: módulo II
+## Módulo II: subsistemas e interfaces
 
-Gemelo de gemelos: Powell y Mead como subsistemas unidos por la liberación, y la cuenca del Colorado como sistema mayor que une Mead y Denver, con portadores comunes que no se cuentan dos veces.
+Campos opcionales `subsystems` (cada uno con sus existencias y portadores; deben repartir todas las existencias) e `interfaces` (`source` y `target`, dos subsistemas). En cada paso, una acción ejecutada que retira de las existencias del origen lleva sus depósitos a las del destino; la interfaz acumula ese flujo.
+
+El compilador agrega un puerto FP1 por interfaz y una vista por subsistema (sus existencias, las interfaces que toca y la consulta, que es el testigo común κπ de 02 §4.2). El kernel comprueba que las vistas recomponen exactamente la relación de cada ruta (G07). Sin subsistemas queda la vista única de antes.
+
+- Lake Mead: Powell con Glen Canyon y Mead con la cuenca baja; la interfaz es la liberación adicional a 6 millones (931 mil acre-pies con 7 millones).
+- Denver: embalses y jardines, unidos por el riego exterior.
+- Mendoza: Potrerillos, riego y lagunas, unidos por las entregas de riego y la ecológica.
+
+Con esto los tres gemelos tienen los 8 módulos llenos.
+
+## Siguiente: gemelo de gemelos
+
+La cuenca del Colorado como sistema mayor que une Mead y Denver, con portadores comunes que no se cuentan dos veces. FP1 no admite transporte entre dos modelos (02 §2.4), así que esa composición necesita una capa propia por encima de cada gemelo.
