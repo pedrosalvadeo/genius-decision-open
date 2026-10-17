@@ -154,8 +154,13 @@ def targets(rows, lake, lead, scenario='most_probable'):
                       key=lambda c: c['study'])
     out = []
     for target in resolved:
-        # A past error is knowable at study s when its month's actual was published by s.
-        past = [c['error'] for c in resolved if c['month'] < target['study'] and actual_as_of(history, lake, c['month'], target['study']) is not None]
+        # A past error is knowable at study s when its month's actual was published by s, and it is
+        # measured against the actual as published then, not as later revised.
+        past = []
+        for c in resolved:
+            known = actual_as_of(history, lake, c['month'], target['study']) if c['month'] < target['study'] else None
+            if known is not None:
+                past.append(known - c['projected'])
         if past:  # targets with no knowable past cannot tell genomes apart
             out.append(dict(target, past=past))
     return out
