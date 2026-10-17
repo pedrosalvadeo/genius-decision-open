@@ -138,10 +138,11 @@ def to_text(data):
         return subprocess.run(['pdftotext', '-layout', pdf.name, '-'], check=True, capture_output=True, text=True).stdout
 
 
-def harvest(start, end, out, failures, pause=0.3, today=None):
+def harvest(start, end, out, failures, pause=0.3, today=None, samples=None):
+    """`samples`: a folder that receives the text of the first unparsed study per year and scenario."""
     today = today or date.today()
     current = (today.year, today.month)
-    rows, missing = [], []
+    rows, missing, sampled = [], [], set()
     year, month = start
     while (year, month) <= end:
         study = month_key(year, month)
@@ -161,6 +162,10 @@ def harvest(start, end, out, failures, pause=0.3, today=None):
             parsed = parse(text, study)
             if not any(r['lake'] == 'mead' for r in parsed):
                 missing.append(f'{url} no Lake Mead rows parsed')
+                if samples and (year, scenario) not in sampled:
+                    sampled.add((year, scenario))
+                    Path(samples).mkdir(parents=True, exist_ok=True)
+                    Path(samples, f'{study}_{scenario}.txt').write_text(text)
                 continue
             done.add(scenario)
             digest = hashlib.sha256(data).hexdigest()
@@ -180,10 +185,11 @@ def main(argv=None):
     parser.add_argument('--to', dest='end', required=True, help='YYYY-MM')
     parser.add_argument('--out', required=True)
     parser.add_argument('--failures', default=None)
+    parser.add_argument('--samples', default=None, help='folder for the text of unparsed studies')
     args = parser.parse_args(argv)
     start = tuple(int(x) for x in args.start.split('-'))
     end = tuple(int(x) for x in args.end.split('-'))
-    rows, missing = harvest(start, end, args.out, args.failures or args.out + '.failures.txt')
+    rows, missing = harvest(start, end, args.out, args.failures or args.out + '.failures.txt', samples=args.samples)
     studies = len({(r['study_date'], r['scenario']) for r in rows})
     print(f'{studies} study files, {len(rows)} rows, {len(missing)} missing or unparsed', file=sys.stderr)
 

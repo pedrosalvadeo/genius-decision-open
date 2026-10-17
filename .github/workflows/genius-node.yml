@@ -60,7 +60,7 @@ jobs:
         run: |
           sudo apt-get install -y -qq poppler-utils >/dev/null
           mkdir -p out
-          python twin/history/reclamation_24mo.py --from "$FROM" --to "$(date -u +%Y-%m)" --out out/studies.csv --failures out/failures.txt
+          python twin/history/reclamation_24mo.py --from "$FROM" --to "$(date -u +%Y-%m)" --out out/studies.csv --failures out/failures.txt --samples out/unparsed
       - name: Contrast and learn
         run: |
           python twin/history/hindcast.py summary out/studies.csv > out/summary.json
@@ -78,7 +78,7 @@ jobs:
           git config user.email 'genius-history-node@users.noreply.github.com'
           git remote add origin "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           if git fetch -q origin node-history; then git checkout -q -b node-history FETCH_HEAD; else git checkout -q --orphan node-history; fi
-          mkdir -p lake_mead && cp "$GITHUB_WORKSPACE"/out/* lake_mead/
+          rm -rf lake_mead && mkdir -p lake_mead && cp -r "$GITHUB_WORKSPACE"/out/* lake_mead/
           git add -A
           git commit -qm "History node run ${GITHUB_RUN_ID} from ${GITHUB_SHA}" || exit 0
           git push -q origin node-history
