@@ -195,7 +195,10 @@ def execute(payload, case_dir):
     model = reviewed['model']
     root = Path(__file__).resolve().parents[2]
     # Same immutable vendor package already verified by verify_runtime.py.
-    sys.path.insert(0,str(root/'beta/vendor/R0/sources/repo/kernel'))
+    # The public source edition and its Docker image omit beta/vendor and ship
+    # the kernel at /kernel; the worker child only inherits PYTHONPATH=beta.
+    vendored = root/'beta/vendor/R0/sources/repo/kernel'
+    sys.path.insert(0,str(vendored if vendored.is_dir() else root/'kernel'))
     from genius_kernel.engine import evaluate
     from genius_kernel.verifier import verify_result as verify
     case_dir = Path(case_dir)
