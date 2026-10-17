@@ -5,7 +5,7 @@
   - Control hecho: las filas históricas coinciden entre escenarios en cada estudio.
   - Los estudios que no se pudieron leer están en `transcribed_failures.txt`.
 - `studies.csv`: la cosecha determinista del nodo de historia (`.github/workflows/genius-node.yml`, corrida 39011458727 del 2026-10-17, rama `node-history`), con `pdftotext` y el SHA-256 de cada PDF.
-  - 383 estudios publicados de septiembre de 2009 a octubre de 2026: 200 más probables, 106 mínimos, 73 máximos y las variantes de 6 y 7 maf de octubre de 2026. Lake Mead y Lake Powell, 12 meses históricos y 24 proyectados por estudio.
+  - 383 estudios publicados de septiembre de 2009 a octubre de 2026: 200 más probables, 106 mínimos, 73 máximos y las variantes de 6 y 7 maf de octubre de 2026. Lake Mead y Lake Powell, 12 meses históricos y 24 proyectados por estudio. Las filas de Powell incluyen la afluencia no regulada (`unregulated_inflow_kaf`), la hidrología que supone cada escenario.
   - Reemplaza a la transcripción.
   - Control cruzado: los 4497 valores que aparecen en ambas fuentes coinciden exactamente. La transcripción tiene 3 filas más (máximo de abril de 2025), que la cosecha no encontró.
   - Revisiones: 4 meses de Lake Powell (2009 y 2011–2012) cambiaron entre estudios, como mucho 11 kaf. Ningún valor de Lake Mead cambió.
