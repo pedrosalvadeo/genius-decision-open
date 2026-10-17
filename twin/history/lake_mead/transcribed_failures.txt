@@ -1,0 +1,16 @@
+https://www.usbr.gov/lc/region/g4000/24mo/2015/JUL15_MIN.pdf fetch error (not published; min/max issued Jan/Apr/Aug/Oct; RISE alternative also failed)
+https://www.usbr.gov/lc/region/g4000/24mo/2015/JUL15_MAX.pdf fetch error (not published; min/max issued Jan/Apr/Aug/Oct)
+https://www.usbr.gov/lc/region/g4000/24mo/2016/JUL16_MIN.pdf fetch error (not published; web search found no July 2016 min study)
+https://www.usbr.gov/lc/region/g4000/24mo/2016/JUL16_MAX.pdf fetch error (not published; web search found no July 2016 max study)
+https://www.usbr.gov/lc/region/g4000/24mo/2017/JUL17_MIN.pdf fetch error (not published; web search shows Aug 2017 min/max instead)
+https://www.usbr.gov/lc/region/g4000/24mo/2017/JUL17_MAX.pdf fetch error (not published; web search shows Aug 2017 min/max instead)
+https://www.usbr.gov/lc/region/g4000/24mo/2018/JUL18_MIN.pdf fetch error (not published; RISE binary JUL18_MIN.pdf also failed; July min/max studies appear not to exist - Reclamation publishes August min/max instead)
+https://www.usbr.gov/lc/region/g4000/24mo/2018/JUL18_MAX.pdf fetch error (not published; July min/max studies appear not to exist)
+https://www.usbr.gov/lc/region/g4000/24mo/2019/JUL19_MIN.pdf fetch error (not published; RISE binary JUL19_MIN.pdf also failed)
+https://www.usbr.gov/lc/region/g4000/24mo/2019/JUL19_MAX.pdf fetch error (not published; RISE binary JUL19_MAX.pdf also failed)
+https://www.usbr.gov/lc/region/g4000/24mo/2020/JUL20_MIN.pdf fetch error (not published; RISE binary JUL20_MIN.pdf also failed)
+https://www.usbr.gov/lc/region/g4000/24mo/2020/JUL20_MAX.pdf fetch error (not published; WebSearch finds only July 2020 Most Probable and August 2020 Probable Maximum)
+https://www.usbr.gov/lc/region/g4000/24mo/2023/JUL23_MAX.pdf  WebFetch CLIENT_ERROR on 3 attempts; RISE alternative https://data.usbr.gov/rise/content-rise-public/rise/catalog-item/binary/JUL23_MAX_508.pdf also failed (CLIENT_ERROR); no other copy found via WebSearch
+https://www.usbr.gov/lc/region/g4000/24mo/2024/JUL24_MAX.pdf | WebFetch client error (no file); WebSearch found no July 2024 probable maximum study (only Aug24_MAX exists) - likely not published
+https://www.usbr.gov/lc/region/g4000/24mo/2025/JUL25_MAX.pdf | WebFetch client error (no file); WebSearch found no July 2025 probable maximum study (only AUG25_MAX exists) - likely not published
+https://www.usbr.gov/lc/region/g4000/24mo/2026/JUL26_MAX.pdf | WebFetch client error (no file); WebSearch found no July 2026 probable maximum study (only AUG26_MAX exists) - likely not published
