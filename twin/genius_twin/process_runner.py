@@ -30,6 +30,8 @@ class ProcessEvaluator:
         root = Path(__file__).resolve().parents[2]
         env = {k: v for k, v in os.environ.items() if k in ('PATH', 'LANG', 'LC_ALL', 'TMPDIR', 'PYTHONPATH')}
         env['PYTHONPATH'] = os.pathsep.join([str(root/'twin'), str(root/'kernel'), env.get('PYTHONPATH', '')])
+        # Imports run under RLIMIT_FSIZE; a cached .pyc written there can be truncated.
+        env['PYTHONDONTWRITEBYTECODE'] = '1'
         cmd = [sys.executable, '-m', 'genius_twin.process_runner', '--child',
                '--parent', str(os.getpid()), '--seconds', str(self.timeout),
                '--memory', str(self.memory_mb), '--output', str(self.output_bytes)]

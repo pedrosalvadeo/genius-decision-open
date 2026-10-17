@@ -25,7 +25,7 @@ class PublicLaunchTests(unittest.TestCase):
         with self.client.get('/') as response:
             self.assertEqual(response.status_code, 200)
             home = response.get_data(as_text=True)
-            self.assertIn('href="/app"', home)
+            self.assertIn('href="/app?next=/twin/"', home)
             self.assertNotIn('id="auth-form"', home)
             self.assertNotIn('/static/app.js', home)
             self.assertNotIn('Set-Cookie', response.headers)

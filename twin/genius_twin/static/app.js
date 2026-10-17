@@ -68,7 +68,7 @@ function clearError(){ $("#error").replaceChildren(); $("#error").hidden=true; }
 function showError(error, retry = null) {
   const box=$("#error"); box.hidden=false; box.replaceChildren(p(errorText(error)));
   const controls=[];
-  if(error.status===401)controls.push(element("a",{class:"button small",href:"/"},"Iniciar sesión"));
+  if(error.status===401)controls.push(element("a",{class:"button small",href:"/app?next=/twin/"},"Iniciar sesión"));
   if (error.status===409 || String(error.code).toUpperCase().includes("CONFLICT")) controls.push(button("Recargar versión vigente",()=>run(async()=>{await refresh();ui.proposal=null;ui.pendingKey=null;const conflictMessage=typeof refreshGeneralConflict==="function"?refreshGeneralConflict():null;render();announce(conflictMessage||"Expediente actualizado. Revisa tu texto antes de proponerlo nuevamente.");}),"small"));
   else if (retry && (!error.status || error.status>=500)) controls.push(button("Reintentar",()=>run(retry,retry),"small"));
   controls.push(button("Cerrar aviso",clearError,"ghost small")); box.append(actions(controls));

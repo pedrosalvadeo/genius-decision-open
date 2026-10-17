@@ -16,3 +16,4 @@
 #choice-fields [hidden] {display:none!important}
 #choice-fields .form-actions {margin-top:20px}
 #choice-priorities {margin:16px 0}
+.nav-button.primary-entry{color:var(--teal);font-weight:650;border:1px solid #b6cec3;text-decoration:none;margin-bottom:.4rem}
