@@ -108,6 +108,8 @@ CLAIMS = [
           'Opciones planteadas por el modelizador a partir de la discusión pública (Etapa 2 nunca aplicada, prohibición "hasta bien entrada la primavera"). El umbral de 70 % es elección propia.', premises=['lawn_ban']),
     claim('d_org_welfare', 'decision', 'El bienestar de Denver Water como organización se representa por la reserva que administra (almacenamiento, más es mejor).',
           'Representación elegida por el modelizador a partir de su objetivo público de preservar el suministro; no es una métrica declarada por la empresa.', premises=['lawn_ban', 'storage_now']),
+    claim('d_functions', 'decision', 'Función del sistema (módulo I), medida en cada gemelo proyectado como meses cumplidos hasta cada momento: el suministro opera con los embalses en 50 % o más, el mínimo histórico de 2003.',
+          'Más meses cumplidos es mejor. El 50 % es una referencia histórica, no una regla de Denver Water.', premises=['record_low', 'population']),
     claim('modelling', 'definition', 'Unidad: puntos porcentuales de la capacidad de los embalses de suministro. Paso mensual, del 15/10/2026 al 15/10/2027 (paso 1 = mediados de noviembre). Riego exterior acumulado como existencia que registra el agua entregada a jardines. La ley sobre los inviernos se declara aparte (claim d_law).',
           'Decisiones de representación; no se modelan embalses individuales, derechos ni el río aguas abajo.', premises=['storage_now', 'population']),
 ]
@@ -154,6 +156,8 @@ FRAGMENTS += [
     ('/welfare/1', dict(carrier='denver_water', dimension='reserve', label='Reserva de los embalses que administra', stock='storage', direction='higher'), ['d_org_welfare']),
     ('/task', dict(kind='life_conditions', label='Guardar siempre al menos un año de agua de invierno (21,5 % de la capacidad) para la población', living_carriers=['residents'],
                    conditions=[dict(stock='storage', op='ge', threshold='43/2')], require_action_success=False), ['d_life_task']),
+    ('/functions/0', dict(id='above_2003_low', label='Suministro con los embalses en 50 % o más, el mínimo de 2003 (meses cumplidos)', serves=['residents', 'denver_water'],
+                          measure='cumulative', when=[dict(kind='stock', stock='storage', op='ge', value='50/1')]), ['d_functions']),
     ('/require_all_scenarios', True, ['modelling']),
     ('/selection', 'none', ['modelling']),
     ('/assumptions/0', dict(id='Calibration', kind='CALIBRATION', statement='Caídas mensuales, costo del riego y aportes del deshielo son hipótesis propias calibradas sobre cifras publicadas; no son datos mensuales de Denver Water.', provenance='Claims h_winter_drawdown, h_summer_base, h_outdoor_stage1, h_runoff'), ['h_winter_drawdown', 'h_runoff']),

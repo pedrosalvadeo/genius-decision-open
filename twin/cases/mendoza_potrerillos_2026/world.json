@@ -407,6 +407,17 @@
         ]
       },
       {
+        "id": "d_functions",
+        "basis": "decision",
+        "statement": "Función del sistema (módulo I), medida en cada gemelo proyectado como meses cumplidos hasta cada momento: Potrerillos conserva margen para amortiguar crecidas, con 355 hm³ (90 %) o menos.",
+        "uncertainty": "Más meses cumplidos es mejor. El margen de 10 % es elección del modelizador, el mismo umbral de la entrega ecológica; Irrigación advierte riesgo de desbordes pero no publicó un margen.",
+        "spans": [],
+        "premises": [
+          "surplus_uses",
+          "storage_now"
+        ]
+      },
+      {
         "id": "modelling",
         "basis": "definition",
         "statement": "Unidad hm³. Paso mensual de noviembre de 2026 a septiembre de 2027 (11 pasos; el límite de salida del gemelo impide un paso más con tres escenarios y tres opciones). El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. La ley sobre los escenarios se declara aparte (claim d_law).",
@@ -1212,6 +1223,29 @@
         },
         "claim_ids": [
           "d_life_task"
+        ]
+      },
+      {
+        "path": "/functions/0",
+        "value": {
+          "id": "flood_margin",
+          "label": "Potrerillos con margen para amortiguar crecidas: 355 hm³ (90 %) o menos (meses cumplidos)",
+          "serves": [
+            "residents",
+            "irrigators"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "potrerillos",
+              "op": "le",
+              "value": "355/1"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
         ]
       },
       {

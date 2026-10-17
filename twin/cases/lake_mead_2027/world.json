@@ -448,7 +448,7 @@
         "id": "d_life_task",
         "basis": "decision",
         "statement": "Condición de vida: Lake Mead se mantiene sobre su nivel muerto todos los meses del año hidrológico 2027, de modo que el agua puede seguir llegando a la población de la cuenca baja.",
-        "uncertainty": "Es la condición material mínima del suministro; no mide cuánta agua recibe cada persona, que se compara como bienestar. Los objetivos de 3.510 pies en Powell y 1.000 pies en Mead son operativos y quedan como contexto.",
+        "uncertainty": "Es la condición material mínima del suministro; no mide cuánta agua recibe cada persona, que se compara como bienestar. Los objetivos de 3.510 pies en Powell y 1.000 pies en Mead son operativos y se miden como funciones del sistema (claim d_functions).",
         "spans": [],
         "premises": [
           "h_mead_dead_storage",
@@ -488,6 +488,19 @@
         "premises": [
           "lower_basin_cut",
           "powell_3510"
+        ]
+      },
+      {
+        "id": "d_functions",
+        "basis": "decision",
+        "statement": "Funciones del sistema (módulo I), medidas en cada gemelo proyectado como meses cumplidos hasta cada momento: Glen Canyon Dam opera con Powell en 3.510 pies o más (unos 4.724 mil acre-pies), y Hoover entrega a la cuenca baja con Mead en 1.000 pies o más (unos 4.478).",
+        "uncertainty": "Más meses cumplidos es mejor; no se suman entre funciones. Los volúmenes son interpolaciones; los 1.000 pies son una referencia periodística, no una regla operativa.",
+        "spans": [],
+        "premises": [
+          "powell_3510",
+          "h_powell_storage_3510",
+          "mead_1000",
+          "h_mead_storage_1000"
         ]
       },
       {
@@ -1231,6 +1244,50 @@
         },
         "claim_ids": [
           "d_life_task"
+        ]
+      },
+      {
+        "path": "/functions/0",
+        "value": {
+          "id": "glen_canyon_3510",
+          "label": "Glen Canyon Dam opera con Powell en 3.510 pies o más (meses cumplidos)",
+          "serves": [
+            "glen_canyon"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "powell",
+              "op": "ge",
+              "value": "4724/1"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
+        ]
+      },
+      {
+        "path": "/functions/1",
+        "value": {
+          "id": "mead_1000",
+          "label": "Lake Mead en 1.000 pies o más para la cuenca baja (meses cumplidos)",
+          "serves": [
+            "lower_basin"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "mead",
+              "op": "ge",
+              "value": "4478/1"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
         ]
       },
       {

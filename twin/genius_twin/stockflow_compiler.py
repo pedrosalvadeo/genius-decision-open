@@ -8,7 +8,8 @@ from fractions import Fraction
 import hashlib
 
 from genius_kernel import evaluate, verify_result
-from .stockflow import canonical_json, compute_trajectories, q, validate_model
+from .modules import module_ledger
+from .stockflow import canonical_json, compute_trajectories, function_values, q, validate_model
 
 COMPILER_VERSION = "GENIUS_STOCK_FLOW_FINITE_V1_COMPILER_1"
 
@@ -27,6 +28,8 @@ def compile_model(model, *, cag_mode="robust"):
     if cag_mode not in ("robust", "possible"):
         raise ValueError("unsupported CAG mode")
     trajectories = compute_trajectories(model)
+    functions = model.get("functions", [])
+    raws = {pid: {sid: function_values(model, tr["daily"]) for sid, tr in traces.items()} for pid, traces in trajectories.items()}
     H = model["horizon"]
     source = canonical_json(model)
     digest = hashlib.sha256(source.encode()).hexdigest()
@@ -56,9 +59,12 @@ def compile_model(model, *, cag_mode="robust"):
             "observations": sorted(events), "exogenous": sorted(events), "basis": basis, "information_basis": basis,
             "executable": [], "admissible": [], "transitions": [], "updates": []},
         "policies": [], "scenarios": [{"id": s["id"], "inputs": list(words[s["id"]])} for s in model["scenarios"]],
-        # No undeclared functional scoring. Empty vectors are equal for every
-        # policy; welfare conditions carry the declared quantitative order.
-        "functional": {"indices": [], "measurements": [], "reduction": {"ids": ["neutral"], "rows": []}},
+        # Module I: one index per declared function, measured at every reached
+        # state of every projected twin. Without declared functions the empty
+        # vector is equal for every policy and welfare carries the order.
+        "functional": {"indices": [{"id": "fn_" + f["id"], "basis": basis, "calibration": [{"raw": q(v), "value": q(v)}
+                for v in sorted({v for per in raws.values() for vals in per.values() for v in vals[f["id"]]})]} for f in functions],
+            "measurements": [], "reduction": {"ids": [] if functions else ["neutral"], "rows": []}},
         "composition": {"ports": [{"id": "stock_" + s["id"], "values": sorted(set(value_ids[s["id"]].values())), "basis": basis}
                                    for s in model["stocks"]], "rows": [],
             "views": [{"id": "StockBalances", "columns": ["query"] + ["stock_" + s["id"] for s in model["stocks"]]}], "basis": basis},
@@ -102,7 +108,7 @@ def compile_model(model, *, cag_mode="robust"):
                     history.append([row["action_id"], words[sid][t - 1]])
                 x = "x0" if t == 0 else _id("state_", history)
                 info = "i0" if t == 0 else _id("info_", history)
-                node = {"x": x, "i": info, "record": row}
+                node = {"x": x, "i": info, "record": row, "functions": {f: vals[t] for f, vals in raws[pid][sid].items()}}
                 if path in nodes and nodes[path] != node:
                     raise ValueError("Nonanticipation violated: identical event/action history has unequal state")
                 nodes[path] = node
@@ -118,7 +124,15 @@ def compile_model(model, *, cag_mode="robust"):
             query_records.append({"query": query, "state": x, "information": info, "step": t, "record": deepcopy(row)})
             if (t, x) not in points:
                 points.add((t, x))
-                d["functional"]["reduction"]["rows"].append({"t": str(t), "x": x, "reduced": "neutral"})
+                reduced = "neutral"
+                if functions:
+                    # States with the same function profile share one reduced id: a sufficient reduction for Module I.
+                    profile = [node["functions"][f["id"]] for f in functions]
+                    reduced = _id("profile_", profile)
+                    if reduced not in d["functional"]["reduction"]["ids"]:
+                        d["functional"]["reduction"]["ids"].append(reduced)
+                    d["functional"]["measurements"].extend({"t": str(t), "x": x, "index": "fn_" + f["id"], "raw": q(node["functions"][f["id"]])} for f in functions)
+                d["functional"]["reduction"]["rows"].append({"t": str(t), "x": x, "reduced": reduced})
                 d["generative"]["identity"].append({"t": str(t), "x": x, "native": row["organization"]})
             d["composition"]["rows"].append({"query": query, "values": [{"port": "stock_" + s["id"], "value": value_ids[s["id"]][row["stocks"][s["id"]]]} for s in model["stocks"]]})
             d["resources"]["values"].extend({"query": query, "demand": "occupancy_" + s["id"], "value": row["stocks"][s["id"]]} for s in model["stocks"])
@@ -157,6 +171,7 @@ def compile_model(model, *, cag_mode="robust"):
                     weights = [{"branch": eid, "mass": q(sum((Fraction(model["law"][s]) for s, word in words.items() if word[:t+1] == path + (eid,)), Fraction()) / parent_mass)} for eid in sorted(children)]
                     d["law"]["rows"].append({"query": query, "weights": weights})
         d["policies"].append({"id": pid, "decisions": list(decisions.values())})
+    d["functional"]["reduction"]["ids"].sort()
     d["model"]["states"], d["model"]["information"] = sorted(states), sorted(information)
     d["model"]["transitions"], d["model"]["updates"] = list(transition_rows.values()), list(updates.values())
     for (t, x), actions in sorted(availability.items()):
@@ -170,11 +185,13 @@ def compile_model(model, *, cag_mode="robust"):
         "event_payloads": events, "scenario_words": {k: list(v) for k, v in words.items()},
         "state_records": state_records, "query_records": query_records, "semantic_references": semantic_records,
         "composition_value_dictionary": value_ids,
-        "functional_semantics": "EMPTY_NEUTRAL_VECTOR_NO_ADDITIONAL_FUNCTIONAL_ORDER",
+        "functional_semantics": "DECLARED_FUNCTIONS_MEASURED_ON_EVERY_PROJECTED_TWIN" if functions else "EMPTY_NEUTRAL_VECTOR_NO_ADDITIONAL_FUNCTIONAL_ORDER",
+        "function_definitions": deepcopy(functions),
         "resource_semantics": "One stock occupancy per resource per occurrence; capacity bound. Transition balance and once-only atomic withdrawals are separately checked by the compiler domain and retained in ledgers.",
         "welfare_bindings": deepcopy(model["welfare"]),
         "field_mapping": {"stocks": "/resources/values and /composition/rows", "organization": "/generative/identity",
-            "task_status": "/semantics/references (persistent history)", "welfare": "/welfare/values", "law": "/law/rows (conditional prefix masses)"}}
+            "task_status": "/semantics/references (persistent history)", "welfare": "/welfare/values", "law": "/law/rows (conditional prefix masses)",
+            "functions": "/functional/indices, /functional/measurements and /functional/reduction"}}
     return d, manifest
 
 
@@ -263,6 +280,43 @@ def welfare_comparison(model, trajectories):
             "rule": "FP1_PRODUCT_SAME_SCENARIO_STEP_CARRIER_DIMENSION_NO_SUMS"}
 
 
+def _functions_by_scenario(model, raws):
+    """Module I on each projected twin (this route in each scenario): every declared function over the horizon."""
+    out = {}
+    for sid, values in raws.items():
+        rows = []
+        for f in model.get("functions", []):
+            series = values[f["id"]]
+            held = [series[0] > 0] + [b > a for a, b in zip(series, series[1:])] if f["measure"] == "cumulative" else [v > 0 for v in series]
+            rows.append({"function": f["id"], "serves": list(f["serves"]), "measure": f["measure"], "terminal": q(series[-1]),
+                         "steps_held": sum(held), "steps": len(series), "first_unmet_step": next((i for i, h in enumerate(held) if not h), None)})
+        out[sid] = rows
+    return out
+
+
+def functional_comparison(model, raws):
+    """Pairwise product order on terminal function values, per scenario and over all scenarios; no sums."""
+    ids = [p["id"] for p in model["policies"]]
+    scenario_ids = [s["id"] for s in model["scenarios"]]
+    functions = [f["id"] for f in model.get("functions", [])]
+    def relation(a, b, scope):
+        better, worse = set(), set()
+        for sid in scope:
+            for f in functions:
+                x, y = raws[a][sid][f][-1], raws[b][sid][f][-1]
+                if x > y:
+                    better.add(f)
+                elif x < y:
+                    worse.add(f)
+        kind = ("EQUIVALENT" if not better and not worse else "DOMINATES" if not worse else
+                "DOMINATED" if not better else "INCOMPARABLE")
+        return {"left": a, "right": b, "relation": kind, "better_on": sorted(better), "worse_on": sorted(worse)}
+    def pairs(scope):
+        return [relation(a, b, scope) for i, a in enumerate(ids) for b in ids[i + 1:]]
+    return {"by_scenario": {sid: pairs([sid]) for sid in scenario_ids}, "all_scenarios": pairs(scenario_ids),
+            "rule": "FP1_PRODUCT_ON_TERMINAL_FUNCTION_VALUES_SAME_SCENARIO_NO_SUMS"}
+
+
 def shortfall_order(shortfalls):
     """Pairs (a, b) where a misses no condition by more, nor for more steps, than b in any scenario.
 
@@ -307,6 +361,7 @@ def evaluate_model(model):
     robust = {p["policy"]: p for p in native["policies"]}
     possible = {p["policy"]: p for p in runs["possible"]["native_result"]["policies"]}
     trajectories = compute_trajectories(model)
+    raws = {pid: {sid: function_values(model, tr["daily"]) for sid, tr in traces.items()} for pid, traces in trajectories.items()}
     policies = {}
     for policy in model["policies"]:
         pid = policy["id"]
@@ -333,7 +388,9 @@ def evaluate_model(model):
             "viability": {"all_scenarios": all_scenarios, "partition": partition, "native_cell": deepcopy(r["probability"]["partition"])},
             "endpoint_probability": {"value": endpoint, "event": "declared_state_conditions_at_terminal_only", "origin": "EXACT_DOMAIN_DERIVATION_NOT_THE_TRAJECTORY_EVENT"},
             "shortfall": {"by_scenario": _shortfall(model, trajectories[pid]), "interpretation": "SEVERITY_DIAGNOSTIC_NOT_WELLBEING_OR_PVS"},
-            "by_scenario": _by_scenario(model, trajectories[pid])}
+            "by_scenario": _by_scenario(model, trajectories[pid]),
+            "functional": {"functions": [f["id"] for f in model.get("functions", [])], "terminal": _value(r["functional"]["terminal"]),
+                "native_cell": deepcopy(r["functional"]["terminal"]), "by_scenario": _functions_by_scenario(model, raws[pid])}}
         policies[pid]["pvs"]["law_range"] = law_range(policies[pid]["by_scenario"], "pvs_given_scenario")
         policies[pid]["task_probability"]["law_range"] = law_range(policies[pid]["by_scenario"], "task_value_given_scenario")
     decision_value = _value(native["decision"])
@@ -344,18 +401,21 @@ def evaluate_model(model):
     else:
         decision = {"coverage": None, "feasible": [], "failed": [], "unknown": [], "frontier": [], "pairs": [], "selected": None, "selection_status": native["decision"]["state"]}
     decision["wellbeing_comparison"] = welfare_comparison(model, trajectories)
+    decision["functional_comparison"] = functional_comparison(model, raws)
     decision["shortfall_order"] = {"strictly_less_severe": shortfall_order({pid: policies[pid]["shortfall"]["by_scenario"] for pid in policies}),
         "interpretation": "HOLDS_UNDER_EVERY_LAW_DIAGNOSTIC_NOT_SELECTION"}
     decision.update({"native_cell": deepcopy(native["decision"]), "selection_rule": model["selection"],
         "comparison_cag_mode": "robust", "require_all_scenarios": model["require_all_scenarios"],
-        "functional_criterion": "NEUTRAL_EMPTY_PROFILE"})
+        "functional_criterion": "DECLARED_FUNCTIONS_TERMINAL_PROFILE" if model.get("functions") else "NEUTRAL_EMPTY_PROFILE"})
     canonical = {"profile": model["profile"], "name": model["name"],
         "product_value_status": "CALCULATED_UNDER_DECLARED_ASSUMPTIONS" if native["integration"]["state"] == "DEFINED" else "PARTIAL_NATIVE_RESULTS_UNDER_DECLARED_ASSUMPTIONS",
         "empirical_admission": "DECLARED_ASSUMPTIONS_ONLY", "horizon": model["horizon"], "step_unit": model["step_unit"],
         "stocks": deepcopy(model["stocks"]), "carriers": deepcopy(model["carriers"]), "welfare": deepcopy(model["welfare"]),
         "task": deepcopy(model["task"]), "event": model["task"]["label"], "joint_law": deepcopy(model["law"]),
+        "functions": deepcopy(model.get("functions", [])),
         "signature_components": manifests["robust"]["signature_components"], "policies": policies, "decision": decision,
         "native_integration": deepcopy(native["integration"])}
+    canonical["modules"] = module_ledger(model, canonical, trajectories)
     return {"canonical_results": canonical, "native_input_json": runs["robust"]["native_input_json"],
         "native_result": native, "verification": runs["robust"]["verification"],
         "compilation_manifest": {**manifests["robust"], "native_runs": {mode: {"input_digest": runs[mode]["native_result"]["input_digest"], "cag_mode": mode} for mode in runs}},

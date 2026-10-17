@@ -90,6 +90,8 @@ CLAIMS = [
           'Opciones planteadas por el modelizador; no son propuestas oficiales.', premises=['uses', 'surplus_uses']),
     claim('d_org_welfare', 'decision', 'El bienestar de Irrigación como organización se representa por la reserva de Potrerillos (más es mejor).',
           'Representación elegida por el modelizador; Irrigación no publicó una métrica propia.', premises=['storage_now']),
+    claim('d_functions', 'decision', 'Función del sistema (módulo I), medida en cada gemelo proyectado como meses cumplidos hasta cada momento: Potrerillos conserva margen para amortiguar crecidas, con 355 hm³ (90 %) o menos.',
+          'Más meses cumplidos es mejor. El margen de 10 % es elección del modelizador, el mismo umbral de la entrega ecológica; Irrigación advierte riesgo de desbordes pero no publicó un margen.', premises=['surplus_uses', 'storage_now']),
     claim('modelling', 'definition', 'Unidad hm³. Paso mensual de noviembre de 2026 a septiembre de 2027 (11 pasos; el límite de salida del gemelo impide un paso más con tres escenarios y tres opciones). El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. La ley sobre los escenarios se declara aparte (claim d_law).',
           'No se modelan diques aguas abajo (Cipolletti), acuíferos, generación eléctrica ni pérdidas de conducción.', premises=['storage_now', 'forecast']),
 ]
@@ -150,6 +152,8 @@ FRAGMENTS += [
     ('/welfare/2', dict(carrier='dgi', dimension='reserve', label='Reserva de Potrerillos', stock='potrerillos', direction='higher'), ['d_org_welfare']),
     ('/task', dict(kind='life_conditions', label='Guardar siempre al menos un mes de agua potable (25 hm³) en Potrerillos', living_carriers=['residents'],
                    conditions=[dict(stock='potrerillos', op='ge', threshold='25/1')], require_action_success=False), ['d_life_task']),
+    ('/functions/0', dict(id='flood_margin', label='Potrerillos con margen para amortiguar crecidas: 355 hm³ (90 %) o menos (meses cumplidos)', serves=['residents', 'irrigators'],
+                          measure='cumulative', when=[dict(kind='stock', stock='potrerillos', op='le', value='355/1')]), ['d_functions']),
     ('/require_all_scenarios', True, ['modelling']),
     ('/selection', 'none', ['modelling']),
     ('/assumptions/0', dict(id='Calibration', kind='CALIBRATION', statement='Reparto mensual, escenarios, consumo potable mensual y dotaciones son hipótesis propias sobre cifras publicadas.', provenance='Claims h_monthly, h_scenarios, h_potable, h_agro'), ['h_monthly', 'h_agro']),

@@ -1,3 +1,7 @@
+## Los 8 módulos como componentes — 17/10/2026
+
+Cada evaluación entrega qué encarna cada módulo de la matemática Genius en el gemelo y su estado. El módulo I ya no es neutro: las funciones del sistema se miden en cada gemelo proyectado (ruta × escenario). [Mapa y contrato](docs/MODULES.md).
+
 ## Constructor común de modelos — 16/10/2026
 
 Una IA conectada o un modelizador puede proponer fragmentos con fuentes,
