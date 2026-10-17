@@ -48,6 +48,17 @@ El compilador agrega un puerto FP1 por interfaz y una vista por subsistema (sus 
 
 Con esto los tres gemelos tienen los 8 módulos llenos.
 
-## Siguiente: gemelo de gemelos
+## Gemelo de gemelos: la federación
 
-La cuenca del Colorado como sistema mayor que une Mead y Denver, con portadores comunes que no se cuentan dos veces. FP1 no admite transporte entre dos modelos (02 §2.4), así que esa composición necesita una capa propia por encima de cada gemelo.
+FP1 no admite transporte entre dos modelos (02 §2.4), así que `genius_twin/federation.py` (`genius-federation/1`) nunca fusiona modelos en una instancia. Cada gemelo miembro se evalúa y verifica con el kernel por separado, con los escenarios conjuntos renombrados dentro de él. La capa conjunta sólo lee resultados de los miembros.
+
+- **Escenarios conjuntos:** cada uno nombra un escenario de cada miembro (sin repetir), con una ley conjunta.
+- **Acoplamientos:** lo que mueve una interfaz de un miembro, paso a paso, escalado y con retardo, entra como drenaje (o entrada) en una existencia de otro. El destino se reevalúa una vez por combinación de rutas de sus fuentes. Un solo nivel: un destino no puede ser fuente.
+- **Portadores comunes:** `shared_carriers` les da una sola identidad entre miembros, para no contarlos dos veces.
+- **Resultado:** rutas conjuntas (producto de rutas), condición de vida conjunta por escenario (falla si falla en algún miembro), PVS conjunta y su rango bajo toda ley, y frontera por orden producto sobre bienestar paso a paso de cada portador, funciones terminales y PVS conjunta, sin sumas.
+
+Primer caso, `cases/colorado_basin_2027/federation.json`: Denver y Lake Mead/Powell alineados por la nieve del alto Colorado (seco con mínimo, normal con más probable, húmedo con máximo). El riego exterior de Denver se repone en su mitad del alto Colorado (la fuente de la mitad de su suministro) y deja de llegar a Powell al paso siguiente. Reanudar el riego en mayo saca de Powell unos 28 mil acre-pies: mejor para los jardines de Denver, peor para Denver Water y para Glen Canyon. Las seis rutas conjuntas tienen PVS conjunta 1 y quedan en la frontera.
+
+## Siguiente
+
+Exponer la federación por API y MCP, sumar portadores comunes reales (por ejemplo, la población que depende de varios embalses) y reemplazar las hipótesis de alineación y desvío por datos (archivos de pronósticos y desvíos de Moffat y Roberts).

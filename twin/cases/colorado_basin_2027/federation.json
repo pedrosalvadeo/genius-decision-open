@@ -1,0 +1,26 @@
+{
+  "format": "genius-federation/1",
+  "name": "Cuenca del Colorado 2027: Denver, Lake Powell y Lake Mead",
+  "members": [
+    {"id": "denver", "label": "Denver Water", "case": "denver_water_2026"},
+    {"id": "mead", "label": "Lake Mead y Lake Powell", "case": "lake_mead_2027"}
+  ],
+  "scenarios": [
+    {"id": "dry", "label": "Año seco en el alto Colorado", "members": {"denver": "dry", "mead": "minimum"}},
+    {"id": "normal", "label": "Año normal en el alto Colorado", "members": {"denver": "normal", "mead": "most_probable"}},
+    {"id": "wet", "label": "Año húmedo en el alto Colorado", "members": {"denver": "wet", "mead": "maximum"}}
+  ],
+  "law": {"dry": "1/3", "normal": "1/3", "wet": "1/3"},
+  "couplings": [
+    {"id": "west_slope_diversion", "label": "El riego exterior de Denver se repone con agua del alto Colorado que deja de llegar a Lake Powell",
+     "source": {"member": "denver", "interface": "outdoor_watering"}, "target": {"member": "mead", "stock": "powell"},
+     "factor": "283953/100000", "lag": 1,
+     "provenance": "1 punto de capacidad de Denver = 5,67906 mil acre-pies (567.906 acre-pies de capacidad total, caso denver_water_2026). La mitad se atribuye al alto Colorado: 'the West Slope, the source of half of Denver Water's supply' (Denver Water, TAP, septiembre de 2025, https://coyotegulch.blog/2025/09/04/dog-days-a-drag-for-dillon-reservoir-tough-combination-of-conditions-force-denver-water-to-lean-heavily-on-its-summit-county-workhorse-for-summer-water-supply-todd-hartman-denverwater-org/). Moffat y Roberts desvían en promedio unos 57.000 y 58.600 acre-pies por año (CWCB, https://dnrweblink.state.co.us/CWCB/0/doc/125202/Page7.aspx). Retardo de un paso: el paso k de Denver es mediados de mes y el de Mead fin del mes siguiente."}
+  ],
+  "shared_carriers": [],
+  "assumptions": [
+    {"id": "SharedHydrology", "statement": "La misma nieve del alto Colorado gobierna el deshielo de Denver y la afluencia a Powell, así que los escenarios se alinean: seco con mínimo, normal con más probable y húmedo con máximo.", "provenance": "Hipótesis del modelizador. En 2026 ambos tuvieron un año muy seco (caso denver_water_2026, claim dry_runoff_2026; caso lake_mead_2027). Sin estudio de correlación todavía."},
+    {"id": "DiversionReplacement", "statement": "Cada punto de almacenamiento que Denver usa en riego exterior se repone, en la mitad que proviene del alto Colorado, con un desvío adicional que reduce la afluencia a Powell al paso siguiente.", "provenance": "Hipótesis del modelizador; los derechos y el calendario reales de desvío pueden diferir. Ver acoplamiento west_slope_diversion."},
+    {"id": "JointLaw", "statement": "Un tercio para cada año alineado, la ley que ya declaran los dos gemelos.", "provenance": "Casos denver_water_2026 (claim d_law) y lake_mead_2027 (claim d_law)."}
+  ]
+}
