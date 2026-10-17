@@ -4,7 +4,7 @@
  "lake": "mead",
  "lead": 12,
  "phase_size": 12,
- "targets": 0,
+ "targets": 180,
  "founder": {
   "correction": "none",
   "window": 36
@@ -13,6 +13,166 @@
   "correction": "none",
   "window": 36
  },
- "trials": [],
+ "trials": [
+  {
+   "discovery": [
+    "2010-10",
+    "2011-09"
+   ],
+   "confirmation": [
+    "2011-10",
+    "2012-09"
+   ],
+   "baseline": {
+    "correction": "none",
+    "window": 36
+   },
+   "baseline_discovery": {
+    "count": "12",
+    "absolute_error_sum": "31763",
+    "max_error": "4647"
+   },
+   "outcome": "NO_ELIGIBLE_VARIANT"
+  },
+  {
+   "discovery": [
+    "2012-10",
+    "2013-09"
+   ],
+   "confirmation": [
+    "2013-10",
+    "2014-09"
+   ],
+   "baseline": {
+    "correction": "none",
+    "window": 36
+   },
+   "baseline_discovery": {
+    "count": "12",
+    "absolute_error_sum": "2922",
+    "max_error": "656"
+   },
+   "outcome": "NO_ELIGIBLE_VARIANT"
+  },
+  {
+   "discovery": [
+    "2014-10",
+    "2015-09"
+   ],
+   "confirmation": [
+    "2015-10",
+    "2016-09"
+   ],
+   "baseline": {
+    "correction": "none",
+    "window": 36
+   },
+   "baseline_discovery": {
+    "count": "12",
+    "absolute_error_sum": "3217",
+    "max_error": "1031"
+   },
+   "outcome": "NO_ELIGIBLE_VARIANT"
+  },
+  {
+   "discovery": [
+    "2016-10",
+    "2017-09"
+   ],
+   "confirmation": [
+    "2017-10",
+    "2018-09"
+   ],
+   "baseline": {
+    "correction": "none",
+    "window": 36
+   },
+   "baseline_discovery": {
+    "count": "12",
+    "absolute_error_sum": "6777",
+    "max_error": "1021"
+   },
+   "outcome": "NO_ELIGIBLE_VARIANT"
+  },
+  {
+   "discovery": [
+    "2018-10",
+    "2019-09"
+   ],
+   "confirmation": [
+    "2019-10",
+    "2020-09"
+   ],
+   "baseline": {
+    "correction": "none",
+    "window": 36
+   },
+   "baseline_discovery": {
+    "count": "12",
+    "absolute_error_sum": "13450",
+    "max_error": "2070"
+   },
+   "candidate": {
+    "correction": "mean",
+    "window": 36
+   },
+   "candidate_discovery": {
+    "count": "12",
+    "absolute_error_sum": "73754/9",
+    "max_error": "29003/18"
+   },
+   "baseline_confirmation": {
+    "count": "12",
+    "absolute_error_sum": "7821",
+    "max_error": "1231"
+   },
+   "candidate_confirmation": {
+    "count": "12",
+    "absolute_error_sum": "546467/36",
+    "max_error": "70405/36"
+   },
+   "outcome": "REJECTED_AT_CONFIRMATION"
+  },
+  {
+   "discovery": [
+    "2020-10",
+    "2021-09"
+   ],
+   "confirmation": [
+    "2021-10",
+    "2022-09"
+   ],
+   "baseline": {
+    "correction": "none",
+    "window": 36
+   },
+   "baseline_discovery": {
+    "count": "12",
+    "absolute_error_sum": "8307",
+    "max_error": "1227"
+   },
+   "outcome": "NO_ELIGIBLE_VARIANT"
+  },
+  {
+   "discovery": [
+    "2022-10",
+    "2023-09"
+   ],
+   "confirmation": [
+    "2023-10",
+    "2024-09"
+   ],
+   "baseline": {
+    "correction": "none",
+    "window": 36
+   },
+   "baseline_discovery": {
+    "count": "12",
+    "absolute_error_sum": "22442",
+    "max_error": "3314"
+   },
+   "outcome": "NO_ELIGIBLE_VARIANT"
+  }
+ ],
  "meaning": "Corrección operativa aprendida sólo con información publicada antes de cada estudio. No es bienestar ni PVS."
 }

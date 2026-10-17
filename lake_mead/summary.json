@@ -6,1033 +6,1672 @@
    "lake": "mead",
    "scenario": "maximum",
    "lead": 0,
-   "count": 6,
-   "mean_error": "-125/3",
-   "mean_absolute_error": "194/3",
-   "max_absolute_error": "107"
+   "count": 72,
+   "mean_error": "-287/9",
+   "mean_absolute_error": "2203/36",
+   "max_absolute_error": "400"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 1,
-   "count": 6,
-   "mean_error": "-25",
-   "mean_absolute_error": "97",
-   "max_absolute_error": "194"
+   "count": 72,
+   "mean_error": "-889/24",
+   "mean_absolute_error": "3121/24",
+   "max_absolute_error": "795"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 2,
-   "count": 5,
-   "mean_error": "-277/5",
-   "mean_absolute_error": "1023/5",
-   "max_absolute_error": "474"
+   "count": 71,
+   "mean_error": "-4732/71",
+   "mean_absolute_error": "13824/71",
+   "max_absolute_error": "827"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 3,
-   "count": 5,
-   "mean_error": "-683/5",
-   "mean_absolute_error": "1621/5",
-   "max_absolute_error": "850"
+   "count": 71,
+   "mean_error": "-7048/71",
+   "mean_absolute_error": "18438/71",
+   "max_absolute_error": "1459"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 4,
-   "count": 5,
-   "mean_error": "-1313/5",
-   "mean_absolute_error": "2159/5",
-   "max_absolute_error": "1290"
+   "count": 71,
+   "mean_error": "-10931/71",
+   "mean_absolute_error": "22441/71",
+   "max_absolute_error": "2176"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 5,
-   "count": 4,
-   "mean_error": "-1069/2",
-   "mean_absolute_error": "1421/2",
-   "max_absolute_error": "1493"
+   "count": 69,
+   "mean_error": "-5570/23",
+   "mean_absolute_error": "9502/23",
+   "max_absolute_error": "2821"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 6,
-   "count": 3,
-   "mean_error": "-1337/3",
-   "mean_absolute_error": "1823/3",
-   "max_absolute_error": "1027"
+   "count": 69,
+   "mean_error": "-22705/69",
+   "mean_absolute_error": "34183/69",
+   "max_absolute_error": "3246"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 7,
-   "count": 3,
-   "mean_error": "-2323/3",
-   "mean_absolute_error": "2323/3",
-   "max_absolute_error": "1452"
+   "count": 69,
+   "mean_error": "-9861/23",
+   "mean_absolute_error": "13425/23",
+   "max_absolute_error": "3334"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 8,
-   "count": 3,
-   "mean_error": "-2894/3",
-   "mean_absolute_error": "2894/3",
-   "max_absolute_error": "1637"
+   "count": 69,
+   "mean_error": "-35813/69",
+   "mean_absolute_error": "48427/69",
+   "max_absolute_error": "3550"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 9,
-   "count": 2,
-   "mean_error": "-806",
-   "mean_absolute_error": "806",
-   "max_absolute_error": "1070"
+   "count": 68,
+   "mean_error": "-43957/68",
+   "mean_absolute_error": "54361/68",
+   "max_absolute_error": "3764"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 10,
-   "count": 2,
-   "mean_error": "-1024",
-   "mean_absolute_error": "1024",
-   "max_absolute_error": "1329"
+   "count": 68,
+   "mean_error": "-13207/17",
+   "mean_absolute_error": "15996/17",
+   "max_absolute_error": "3929"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 11,
-   "count": 2,
-   "mean_error": "-2285/2",
-   "mean_absolute_error": "2285/2",
-   "max_absolute_error": "1376"
+   "count": 68,
+   "mean_error": "-14917/17",
+   "mean_absolute_error": "18736/17",
+   "max_absolute_error": "4310"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 12,
-   "count": 1,
-   "mean_error": "-1156",
-   "mean_absolute_error": "1156",
-   "max_absolute_error": "1156"
+   "count": 67,
+   "mean_error": "-67056/67",
+   "mean_absolute_error": "83238/67",
+   "max_absolute_error": "4436"
   },
   {
    "lake": "mead",
    "scenario": "maximum",
    "lead": 13,
-   "count": 1,
-   "mean_error": "-1184",
-   "mean_absolute_error": "1184",
-   "max_absolute_error": "1184"
+   "count": 67,
+   "mean_error": "-73932/67",
+   "mean_absolute_error": "92814/67",
+   "max_absolute_error": "4573"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 14,
+   "count": 66,
+   "mean_error": "-39965/33",
+   "mean_absolute_error": "16752/11",
+   "max_absolute_error": "4880"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 15,
+   "count": 66,
+   "mean_error": "-29021/22",
+   "mean_absolute_error": "36297/22",
+   "max_absolute_error": "5006"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 16,
+   "count": 66,
+   "mean_error": "-47824/33",
+   "mean_absolute_error": "19832/11",
+   "max_absolute_error": "5071"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 17,
+   "count": 65,
+   "mean_error": "-102941/65",
+   "mean_absolute_error": "127689/65",
+   "max_absolute_error": "5390"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 18,
+   "count": 65,
+   "mean_error": "-114671/65",
+   "mean_absolute_error": "27917/13",
+   "max_absolute_error": "5825"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 19,
+   "count": 65,
+   "mean_error": "-126378/65",
+   "mean_absolute_error": "151618/65",
+   "max_absolute_error": "6242"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 20,
+   "count": 65,
+   "mean_error": "-137374/65",
+   "mean_absolute_error": "162996/65",
+   "max_absolute_error": "6755"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 21,
+   "count": 64,
+   "mean_error": "-18335/8",
+   "mean_absolute_error": "42519/16",
+   "max_absolute_error": "7341"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 22,
+   "count": 64,
+   "mean_error": "-39521/16",
+   "mean_absolute_error": "45373/16",
+   "max_absolute_error": "7915"
+  },
+  {
+   "lake": "mead",
+   "scenario": "maximum",
+   "lead": 23,
+   "count": 64,
+   "mean_error": "-5213/2",
+   "mean_absolute_error": "47795/16",
+   "max_absolute_error": "8476"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 0,
-   "count": 17,
-   "mean_error": "95/17",
-   "mean_absolute_error": "695/17",
-   "max_absolute_error": "112"
+   "count": 105,
+   "mean_error": "65/7",
+   "mean_absolute_error": "4559/105",
+   "max_absolute_error": "254"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 1,
-   "count": 16,
-   "mean_error": "141/2",
-   "mean_absolute_error": "84",
-   "max_absolute_error": "210"
+   "count": 104,
+   "mean_error": "3253/52",
+   "mean_absolute_error": "1485/13",
+   "max_absolute_error": "1056"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 2,
-   "count": 15,
-   "mean_error": "1826/15",
-   "mean_absolute_error": "2428/15",
-   "max_absolute_error": "376"
+   "count": 103,
+   "mean_error": "12059/103",
+   "mean_absolute_error": "19903/103",
+   "max_absolute_error": "1800"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 3,
-   "count": 14,
-   "mean_error": "1665/14",
-   "mean_absolute_error": "3405/14",
-   "max_absolute_error": "562"
+   "count": 102,
+   "mean_error": "17777/102",
+   "mean_absolute_error": "28235/102",
+   "max_absolute_error": "2237"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 4,
-   "count": 13,
-   "mean_error": "856/13",
-   "mean_absolute_error": "4488/13",
-   "max_absolute_error": "961"
+   "count": 101,
+   "mean_error": "21551/101",
+   "mean_absolute_error": "35461/101",
+   "max_absolute_error": "2660"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 5,
-   "count": 12,
-   "mean_error": "-139/3",
-   "mean_absolute_error": "1357/3",
-   "max_absolute_error": "1138"
+   "count": 100,
+   "mean_error": "13233/50",
+   "mean_absolute_error": "21719/50",
+   "max_absolute_error": "2903"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 6,
-   "count": 11,
-   "mean_error": "-706/11",
-   "mean_absolute_error": "5440/11",
-   "max_absolute_error": "1154"
+   "count": 99,
+   "mean_error": "10432/33",
+   "mean_absolute_error": "49208/99",
+   "max_absolute_error": "3008"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 7,
-   "count": 10,
-   "mean_error": "-501/5",
-   "mean_absolute_error": "2463/5",
-   "max_absolute_error": "1105"
+   "count": 98,
+   "mean_error": "19063/49",
+   "mean_absolute_error": "27537/49",
+   "max_absolute_error": "3256"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 8,
-   "count": 9,
-   "mean_error": "-440/3",
-   "mean_absolute_error": "4256/9",
-   "max_absolute_error": "1021"
+   "count": 97,
+   "mean_error": "45390/97",
+   "mean_absolute_error": "61550/97",
+   "max_absolute_error": "3402"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 9,
-   "count": 8,
-   "mean_error": "-757/4",
-   "mean_absolute_error": "1709/4",
-   "max_absolute_error": "1105"
+   "count": 96,
+   "mean_error": "8509/16",
+   "mean_absolute_error": "8383/12",
+   "max_absolute_error": "3420"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 10,
-   "count": 7,
-   "mean_error": "-199",
-   "mean_absolute_error": "2411/7",
-   "max_absolute_error": "893"
+   "count": 95,
+   "mean_error": "11367/19",
+   "mean_absolute_error": "72189/95",
+   "max_absolute_error": "3433"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 11,
-   "count": 6,
-   "mean_error": "-550/3",
-   "mean_absolute_error": "901/3",
-   "max_absolute_error": "707"
+   "count": 94,
+   "mean_error": "32375/47",
+   "mean_absolute_error": "39701/47",
+   "max_absolute_error": "3658"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 12,
-   "count": 5,
-   "mean_error": "-896/5",
-   "mean_absolute_error": "1302/5",
-   "max_absolute_error": "397"
+   "count": 93,
+   "mean_error": "23666/31",
+   "mean_absolute_error": "85454/93",
+   "max_absolute_error": "3801"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 13,
-   "count": 4,
-   "mean_error": "-949/4",
-   "mean_absolute_error": "1079/4",
-   "max_absolute_error": "451"
+   "count": 92,
+   "mean_error": "38839/46",
+   "mean_absolute_error": "45943/46",
+   "max_absolute_error": "3988"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 14,
-   "count": 3,
-   "mean_error": "-298",
-   "mean_absolute_error": "298",
-   "max_absolute_error": "431"
+   "count": 91,
+   "mean_error": "84947/91",
+   "mean_absolute_error": "14119/13",
+   "max_absolute_error": "4043"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 15,
-   "count": 2,
-   "mean_error": "-319",
-   "mean_absolute_error": "319",
-   "max_absolute_error": "362"
+   "count": 90,
+   "mean_error": "18521/18",
+   "mean_absolute_error": "21269/18",
+   "max_absolute_error": "4172"
   },
   {
    "lake": "mead",
    "scenario": "minimum",
    "lead": 16,
-   "count": 1,
-   "mean_error": "-250",
-   "mean_absolute_error": "250",
-   "max_absolute_error": "250"
+   "count": 89,
+   "mean_error": "99245/89",
+   "mean_absolute_error": "112509/89",
+   "max_absolute_error": "4234"
+  },
+  {
+   "lake": "mead",
+   "scenario": "minimum",
+   "lead": 17,
+   "count": 88,
+   "mean_error": "107385/88",
+   "mean_absolute_error": "119751/88",
+   "max_absolute_error": "4231"
+  },
+  {
+   "lake": "mead",
+   "scenario": "minimum",
+   "lead": 18,
+   "count": 87,
+   "mean_error": "113902/87",
+   "mean_absolute_error": "125818/87",
+   "max_absolute_error": "4376"
+  },
+  {
+   "lake": "mead",
+   "scenario": "minimum",
+   "lead": 19,
+   "count": 86,
+   "mean_error": "120825/86",
+   "mean_absolute_error": "133789/86",
+   "max_absolute_error": "4525"
+  },
+  {
+   "lake": "mead",
+   "scenario": "minimum",
+   "lead": 20,
+   "count": 85,
+   "mean_error": "127808/85",
+   "mean_absolute_error": "141944/85",
+   "max_absolute_error": "4544"
+  },
+  {
+   "lake": "mead",
+   "scenario": "minimum",
+   "lead": 21,
+   "count": 84,
+   "mean_error": "6295/4",
+   "mean_absolute_error": "7059/4",
+   "max_absolute_error": "4649"
+  },
+  {
+   "lake": "mead",
+   "scenario": "minimum",
+   "lead": 22,
+   "count": 83,
+   "mean_error": "137673/83",
+   "mean_absolute_error": "154209/83",
+   "max_absolute_error": "4728"
+  },
+  {
+   "lake": "mead",
+   "scenario": "minimum",
+   "lead": 23,
+   "count": 82,
+   "mean_error": "71821/41",
+   "mean_absolute_error": "80201/41",
+   "max_absolute_error": "4586"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 0,
-   "count": 16,
-   "mean_error": "-41/16",
-   "mean_absolute_error": "605/16",
-   "max_absolute_error": "104"
+   "count": 201,
+   "mean_error": "671/201",
+   "mean_absolute_error": "9443/201",
+   "max_absolute_error": "307"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 1,
-   "count": 15,
-   "mean_error": "662/15",
-   "mean_absolute_error": "348/5",
-   "max_absolute_error": "201"
+   "count": 200,
+   "mean_error": "6723/200",
+   "mean_absolute_error": "20819/200",
+   "max_absolute_error": "936"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 2,
-   "count": 15,
-   "mean_error": "190/3",
-   "mean_absolute_error": "694/5",
-   "max_absolute_error": "335"
+   "count": 200,
+   "mean_error": "11293/200",
+   "mean_absolute_error": "6397/40",
+   "max_absolute_error": "1589"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 3,
-   "count": 14,
-   "mean_error": "227/7",
-   "mean_absolute_error": "1642/7",
-   "max_absolute_error": "696"
+   "count": 199,
+   "mean_error": "16591/199",
+   "mean_absolute_error": "44625/199",
+   "max_absolute_error": "1829"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 4,
-   "count": 13,
-   "mean_error": "-646/13",
-   "mean_absolute_error": "4632/13",
-   "max_absolute_error": "1106"
+   "count": 198,
+   "mean_error": "1925/18",
+   "mean_absolute_error": "58625/198",
+   "max_absolute_error": "2108"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 5,
-   "count": 12,
-   "mean_error": "-765/4",
-   "mean_absolute_error": "6139/12",
-   "max_absolute_error": "1295"
+   "count": 197,
+   "mean_error": "25202/197",
+   "mean_absolute_error": "72052/197",
+   "max_absolute_error": "2254"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 6,
-   "count": 11,
-   "mean_error": "-239",
-   "mean_absolute_error": "553",
-   "max_absolute_error": "1336"
+   "count": 196,
+   "mean_error": "7809/49",
+   "mean_absolute_error": "21130/49",
+   "max_absolute_error": "2454"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 7,
-   "count": 10,
-   "mean_error": "-305",
-   "mean_absolute_error": "2932/5",
-   "max_absolute_error": "1348"
+   "count": 195,
+   "mean_error": "38104/195",
+   "mean_absolute_error": "98192/195",
+   "max_absolute_error": "2732"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 8,
-   "count": 9,
-   "mean_error": "-378",
-   "mean_absolute_error": "5236/9",
-   "max_absolute_error": "1383"
+   "count": 194,
+   "mean_error": "22360/97",
+   "mean_absolute_error": "55321/97",
+   "max_absolute_error": "3044"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 9,
-   "count": 8,
-   "mean_error": "-436",
-   "mean_absolute_error": "2243/4",
-   "max_absolute_error": "1368"
+   "count": 193,
+   "mean_error": "50557/193",
+   "mean_absolute_error": "123147/193",
+   "max_absolute_error": "3472"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 10,
-   "count": 7,
-   "mean_error": "-3359/7",
-   "mean_absolute_error": "3503/7",
-   "max_absolute_error": "1209"
+   "count": 192,
+   "mean_error": "27491/96",
+   "mean_absolute_error": "67741/96",
+   "max_absolute_error": "3959"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 11,
-   "count": 6,
-   "mean_error": "-983/2",
-   "mean_absolute_error": "983/2",
-   "max_absolute_error": "1055"
+   "count": 191,
+   "mean_error": "59225/191",
+   "mean_absolute_error": "147441/191",
+   "max_absolute_error": "4275"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 12,
-   "count": 5,
-   "mean_error": "-501",
-   "mean_absolute_error": "501",
-   "max_absolute_error": "758"
+   "count": 190,
+   "mean_error": "1672/5",
+   "mean_absolute_error": "79166/95",
+   "max_absolute_error": "4647"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 13,
-   "count": 4,
-   "mean_error": "-565",
-   "mean_absolute_error": "565",
-   "max_absolute_error": "783"
+   "count": 189,
+   "mean_error": "22133/63",
+   "mean_absolute_error": "56425/63",
+   "max_absolute_error": "4695"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 14,
-   "count": 3,
-   "mean_error": "-1915/3",
-   "mean_absolute_error": "1915/3",
-   "max_absolute_error": "787"
+   "count": 188,
+   "mean_error": "34143/94",
+   "mean_absolute_error": "89683/94",
+   "max_absolute_error": "4609"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 15,
-   "count": 2,
-   "mean_error": "-664",
-   "mean_absolute_error": "664",
-   "max_absolute_error": "676"
+   "count": 187,
+   "mean_error": "70196/187",
+   "mean_absolute_error": "11172/11",
+   "max_absolute_error": "4611"
   },
   {
    "lake": "mead",
    "scenario": "most_probable",
    "lead": 16,
-   "count": 1,
-   "mean_error": "-665",
-   "mean_absolute_error": "665",
-   "max_absolute_error": "665"
+   "count": 186,
+   "mean_error": "71651/186",
+   "mean_absolute_error": "199709/186",
+   "max_absolute_error": "4195"
+  },
+  {
+   "lake": "mead",
+   "scenario": "most_probable",
+   "lead": 17,
+   "count": 185,
+   "mean_error": "72232/185",
+   "mean_absolute_error": "208432/185",
+   "max_absolute_error": "3882"
+  },
+  {
+   "lake": "mead",
+   "scenario": "most_probable",
+   "lead": 18,
+   "count": 184,
+   "mean_error": "72515/184",
+   "mean_absolute_error": "216077/184",
+   "max_absolute_error": "3866"
+  },
+  {
+   "lake": "mead",
+   "scenario": "most_probable",
+   "lead": 19,
+   "count": 183,
+   "mean_error": "72460/183",
+   "mean_absolute_error": "224372/183",
+   "max_absolute_error": "3943"
+  },
+  {
+   "lake": "mead",
+   "scenario": "most_probable",
+   "lead": 20,
+   "count": 182,
+   "mean_error": "5563/14",
+   "mean_absolute_error": "231997/182",
+   "max_absolute_error": "4257"
+  },
+  {
+   "lake": "mead",
+   "scenario": "most_probable",
+   "lead": 21,
+   "count": 181,
+   "mean_error": "72290/181",
+   "mean_absolute_error": "240556/181",
+   "max_absolute_error": "4447"
+  },
+  {
+   "lake": "mead",
+   "scenario": "most_probable",
+   "lead": 22,
+   "count": 180,
+   "mean_error": "7357/18",
+   "mean_absolute_error": "123637/90",
+   "max_absolute_error": "4564"
+  },
+  {
+   "lake": "mead",
+   "scenario": "most_probable",
+   "lead": 23,
+   "count": 179,
+   "mean_error": "73988/179",
+   "mean_absolute_error": "253034/179",
+   "max_absolute_error": "4650"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 0,
-   "count": 6,
-   "mean_error": "-65",
-   "mean_absolute_error": "146",
-   "max_absolute_error": "469"
+   "count": 72,
+   "mean_error": "-727/9",
+   "mean_absolute_error": "5065/36",
+   "max_absolute_error": "870"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 1,
-   "count": 6,
-   "mean_error": "-451/6",
-   "mean_absolute_error": "995/6",
-   "max_absolute_error": "542"
+   "count": 72,
+   "mean_error": "-6035/24",
+   "mean_absolute_error": "25655/72",
+   "max_absolute_error": "1605"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 2,
-   "count": 5,
-   "mean_error": "-276/5",
-   "mean_absolute_error": "892/5",
-   "max_absolute_error": "472"
+   "count": 71,
+   "mean_error": "-30840/71",
+   "mean_absolute_error": "41840/71",
+   "max_absolute_error": "2875"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 3,
-   "count": 5,
-   "mean_error": "-761/5",
-   "mean_absolute_error": "219",
-   "max_absolute_error": "601"
+   "count": 71,
+   "mean_error": "-48520/71",
+   "mean_absolute_error": "58138/71",
+   "max_absolute_error": "3504"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 4,
-   "count": 5,
-   "mean_error": "-1621/5",
-   "mean_absolute_error": "2211/5",
-   "max_absolute_error": "1552"
+   "count": 71,
+   "mean_error": "-71805/71",
+   "mean_absolute_error": "79547/71",
+   "max_absolute_error": "3884"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 5,
-   "count": 4,
-   "mean_error": "-3205/4",
-   "mean_absolute_error": "4259/4",
-   "max_absolute_error": "3005"
+   "count": 69,
+   "mean_error": "-30786/23",
+   "mean_absolute_error": "99560/69",
+   "max_absolute_error": "4929"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 6,
-   "count": 3,
-   "mean_error": "-4592/3",
-   "mean_absolute_error": "4592/3",
-   "max_absolute_error": "3247"
+   "count": 69,
+   "mean_error": "-1686",
+   "mean_absolute_error": "41804/23",
+   "max_absolute_error": "5900"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 7,
-   "count": 3,
-   "mean_error": "-6679/3",
-   "mean_absolute_error": "6679/3",
-   "max_absolute_error": "3221"
+   "count": 69,
+   "mean_error": "-149258/69",
+   "mean_absolute_error": "158342/69",
+   "max_absolute_error": "6300"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 8,
-   "count": 3,
-   "mean_error": "-10343/3",
-   "mean_absolute_error": "10343/3",
-   "max_absolute_error": "5936"
+   "count": 69,
+   "mean_error": "-190454/69",
+   "mean_absolute_error": "197504/69",
+   "max_absolute_error": "8372"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 9,
-   "count": 2,
-   "mean_error": "-10221/2",
-   "mean_absolute_error": "10221/2",
-   "max_absolute_error": "6732"
+   "count": 68,
+   "mean_error": "-112933/34",
+   "mean_absolute_error": "115989/34",
+   "max_absolute_error": "9270"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 10,
-   "count": 2,
-   "mean_error": "-13357/2",
-   "mean_absolute_error": "13357/2",
-   "max_absolute_error": "6834"
+   "count": 68,
+   "mean_error": "-64404/17",
+   "mean_absolute_error": "131779/34",
+   "max_absolute_error": "9552"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 11,
-   "count": 2,
-   "mean_error": "-14065/2",
-   "mean_absolute_error": "14065/2",
-   "max_absolute_error": "7215"
+   "count": 68,
+   "mean_error": "-69034/17",
+   "mean_absolute_error": "140767/34",
+   "max_absolute_error": "10172"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 12,
-   "count": 1,
-   "mean_error": "-7331",
-   "mean_absolute_error": "7331",
-   "max_absolute_error": "7331"
+   "count": 67,
+   "mean_error": "-284242/67",
+   "mean_absolute_error": "289298/67",
+   "max_absolute_error": "10492"
   },
   {
    "lake": "powell",
    "scenario": "maximum",
    "lead": 13,
-   "count": 1,
-   "mean_error": "-7433",
-   "mean_absolute_error": "7433",
-   "max_absolute_error": "7433"
+   "count": 67,
+   "mean_error": "-306892/67",
+   "mean_absolute_error": "311460/67",
+   "max_absolute_error": "10741"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 14,
+   "count": 66,
+   "mean_error": "-53618/11",
+   "mean_absolute_error": "54316/11",
+   "max_absolute_error": "10904"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 15,
+   "count": 66,
+   "mean_error": "-335603/66",
+   "mean_absolute_error": "112989/22",
+   "max_absolute_error": "11060"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 16,
+   "count": 66,
+   "mean_error": "-117767/22",
+   "mean_absolute_error": "354311/66",
+   "max_absolute_error": "11262"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 17,
+   "count": 65,
+   "mean_error": "-357447/65",
+   "mean_absolute_error": "358363/65",
+   "max_absolute_error": "11340"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 18,
+   "count": 65,
+   "mean_error": "-362459/65",
+   "mean_absolute_error": "363291/65",
+   "max_absolute_error": "11759"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 19,
+   "count": 65,
+   "mean_error": "-371759/65",
+   "mean_absolute_error": "5731",
+   "max_absolute_error": "11450"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 20,
+   "count": 65,
+   "mean_error": "-381512/65",
+   "mean_absolute_error": "382214/65",
+   "max_absolute_error": "12591"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 21,
+   "count": 64,
+   "mean_error": "-384481/64",
+   "mean_absolute_error": "385023/64",
+   "max_absolute_error": "13303"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 22,
+   "count": 64,
+   "mean_error": "-24431/4",
+   "mean_absolute_error": "97799/16",
+   "max_absolute_error": "12968"
+  },
+  {
+   "lake": "powell",
+   "scenario": "maximum",
+   "lead": 23,
+   "count": 64,
+   "mean_error": "-390789/64",
+   "mean_absolute_error": "390789/64",
+   "max_absolute_error": "13436"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 0,
-   "count": 17,
-   "mean_error": "547/17",
-   "mean_absolute_error": "1249/17",
-   "max_absolute_error": "253"
+   "count": 105,
+   "mean_error": "3169/105",
+   "mean_absolute_error": "8891/105",
+   "max_absolute_error": "625"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 1,
-   "count": 16,
-   "mean_error": "1025/16",
-   "mean_absolute_error": "2393/16",
-   "max_absolute_error": "570"
+   "count": 104,
+   "mean_error": "862/13",
+   "mean_absolute_error": "8995/52",
+   "max_absolute_error": "968"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 2,
-   "count": 15,
-   "mean_error": "1729/15",
-   "mean_absolute_error": "1097/5",
-   "max_absolute_error": "978"
+   "count": 103,
+   "mean_error": "15092/103",
+   "mean_absolute_error": "29014/103",
+   "max_absolute_error": "2288"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 3,
-   "count": 14,
-   "mean_error": "1790/7",
-   "mean_absolute_error": "2423/7",
-   "max_absolute_error": "1400"
+   "count": 102,
+   "mean_error": "11834/51",
+   "mean_absolute_error": "6744/17",
+   "max_absolute_error": "2791"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 4,
-   "count": 13,
-   "mean_error": "5741/13",
-   "mean_absolute_error": "6479/13",
-   "max_absolute_error": "1722"
+   "count": 101,
+   "mean_error": "35686/101",
+   "mean_absolute_error": "54142/101",
+   "max_absolute_error": "2875"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 5,
-   "count": 12,
-   "mean_error": "3877/6",
-   "mean_absolute_error": "2023/3",
-   "max_absolute_error": "2084"
+   "count": 100,
+   "mean_error": "1055/2",
+   "mean_absolute_error": "36563/50",
+   "max_absolute_error": "3926"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 6,
-   "count": 11,
-   "mean_error": "7517/11",
-   "mean_absolute_error": "7951/11",
-   "max_absolute_error": "1846"
+   "count": 99,
+   "mean_error": "64004/99",
+   "mean_absolute_error": "87508/99",
+   "max_absolute_error": "5246"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 7,
-   "count": 10,
-   "mean_error": "7231/10",
-   "mean_absolute_error": "7559/10",
-   "max_absolute_error": "1882"
+   "count": 98,
+   "mean_error": "73219/98",
+   "mean_absolute_error": "98733/98",
+   "max_absolute_error": "5328"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 8,
-   "count": 9,
-   "mean_error": "6466/9",
-   "mean_absolute_error": "6730/9",
-   "max_absolute_error": "1148"
+   "count": 97,
+   "mean_error": "86326/97",
+   "mean_absolute_error": "113424/97",
+   "max_absolute_error": "5285"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 9,
-   "count": 8,
-   "mean_error": "6285/8",
-   "mean_absolute_error": "6531/8",
-   "max_absolute_error": "1295"
+   "count": 96,
+   "mean_error": "32817/32",
+   "mean_absolute_error": "126343/96",
+   "max_absolute_error": "5167"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 10,
-   "count": 7,
-   "mean_error": "5274/7",
-   "mean_absolute_error": "5542/7",
-   "max_absolute_error": "1025"
+   "count": 95,
+   "mean_error": "110573/95",
+   "mean_absolute_error": "28151/19",
+   "max_absolute_error": "5273"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 11,
-   "count": 6,
-   "mean_error": "1429/2",
-   "mean_absolute_error": "4735/6",
-   "max_absolute_error": "1318"
+   "count": 94,
+   "mean_error": "118031/94",
+   "mean_absolute_error": "148785/94",
+   "max_absolute_error": "5250"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 12,
-   "count": 5,
-   "mean_error": "2441/5",
-   "mean_absolute_error": "4057/5",
-   "max_absolute_error": "1314"
+   "count": 93,
+   "mean_error": "121784/93",
+   "mean_absolute_error": "154756/93",
+   "max_absolute_error": "5182"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 13,
-   "count": 4,
-   "mean_error": "925/4",
-   "mean_absolute_error": "3909/4",
-   "max_absolute_error": "1492"
+   "count": 92,
+   "mean_error": "30626/23",
+   "mean_absolute_error": "40921/23",
+   "max_absolute_error": "5147"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 14,
-   "count": 3,
-   "mean_error": "99",
-   "mean_absolute_error": "3097/3",
-   "max_absolute_error": "1400"
+   "count": 91,
+   "mean_error": "127977/91",
+   "mean_absolute_error": "177623/91",
+   "max_absolute_error": "5148"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 15,
-   "count": 2,
-   "mean_error": "-159",
-   "mean_absolute_error": "1104",
-   "max_absolute_error": "1263"
+   "count": 90,
+   "mean_error": "65393/45",
+   "mean_absolute_error": "92984/45",
+   "max_absolute_error": "5150"
   },
   {
    "lake": "powell",
    "scenario": "minimum",
    "lead": 16,
-   "count": 1,
-   "mean_error": "-1040",
-   "mean_absolute_error": "1040",
-   "max_absolute_error": "1040"
+   "count": 89,
+   "mean_error": "132386/89",
+   "mean_absolute_error": "192934/89",
+   "max_absolute_error": "5228"
+  },
+  {
+   "lake": "powell",
+   "scenario": "minimum",
+   "lead": 17,
+   "count": 88,
+   "mean_error": "12709/8",
+   "mean_absolute_error": "202757/88",
+   "max_absolute_error": "5182"
+  },
+  {
+   "lake": "powell",
+   "scenario": "minimum",
+   "lead": 18,
+   "count": 87,
+   "mean_error": "145081/87",
+   "mean_absolute_error": "69147/29",
+   "max_absolute_error": "5420"
+  },
+  {
+   "lake": "powell",
+   "scenario": "minimum",
+   "lead": 19,
+   "count": 86,
+   "mean_error": "3449/2",
+   "mean_absolute_error": "209633/86",
+   "max_absolute_error": "5563"
+  },
+  {
+   "lake": "powell",
+   "scenario": "minimum",
+   "lead": 20,
+   "count": 85,
+   "mean_error": "156058/85",
+   "mean_absolute_error": "214652/85",
+   "max_absolute_error": "5609"
+  },
+  {
+   "lake": "powell",
+   "scenario": "minimum",
+   "lead": 21,
+   "count": 84,
+   "mean_error": "161635/84",
+   "mean_absolute_error": "73471/28",
+   "max_absolute_error": "5756"
+  },
+  {
+   "lake": "powell",
+   "scenario": "minimum",
+   "lead": 22,
+   "count": 83,
+   "mean_error": "167634/83",
+   "mean_absolute_error": "226166/83",
+   "max_absolute_error": "5814"
+  },
+  {
+   "lake": "powell",
+   "scenario": "minimum",
+   "lead": 23,
+   "count": 82,
+   "mean_error": "168527/82",
+   "mean_absolute_error": "228511/82",
+   "max_absolute_error": "5797"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 0,
-   "count": 16,
-   "mean_error": "163/16",
-   "mean_absolute_error": "1273/16",
-   "max_absolute_error": "251"
+   "count": 201,
+   "mean_error": "-4006/201",
+   "mean_absolute_error": "20654/201",
+   "max_absolute_error": "813"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 1,
-   "count": 15,
-   "mean_error": "10/3",
-   "mean_absolute_error": "1966/15",
-   "max_absolute_error": "317"
+   "count": 200,
+   "mean_error": "-8199/200",
+   "mean_absolute_error": "7181/40",
+   "max_absolute_error": "2050"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 2,
-   "count": 15,
-   "mean_error": "356/15",
-   "mean_absolute_error": "572/3",
-   "max_absolute_error": "571"
+   "count": 200,
+   "mean_error": "-12823/200",
+   "mean_absolute_error": "56761/200",
+   "max_absolute_error": "2506"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 3,
-   "count": 14,
-   "mean_error": "395/7",
-   "mean_absolute_error": "1901/7",
-   "max_absolute_error": "995"
+   "count": 199,
+   "mean_error": "-17617/199",
+   "mean_absolute_error": "80637/199",
+   "max_absolute_error": "2527"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 4,
-   "count": 13,
-   "mean_error": "1489/13",
-   "mean_absolute_error": "4899/13",
-   "max_absolute_error": "1325"
+   "count": 198,
+   "mean_error": "-2183/22",
+   "mean_absolute_error": "108169/198",
+   "max_absolute_error": "2846"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 5,
-   "count": 12,
-   "mean_error": "901/6",
-   "mean_absolute_error": "3149/6",
-   "max_absolute_error": "1718"
+   "count": 197,
+   "mean_error": "-19188/197",
+   "mean_absolute_error": "134298/197",
+   "max_absolute_error": "3660"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 6,
-   "count": 11,
-   "mean_error": "-153/11",
-   "mean_absolute_error": "6583/11",
-   "max_absolute_error": "1061"
+   "count": 196,
+   "mean_error": "-22035/196",
+   "mean_absolute_error": "162691/196",
+   "max_absolute_error": "4093"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 7,
-   "count": 10,
-   "mean_error": "-908/5",
-   "mean_absolute_error": "3099/5",
-   "max_absolute_error": "1756"
+   "count": 195,
+   "mean_error": "-719/5",
+   "mean_absolute_error": "37823/39",
+   "max_absolute_error": "4208"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 8,
-   "count": 9,
-   "mean_error": "-4151/9",
-   "mean_absolute_error": "5495/9",
-   "max_absolute_error": "1804"
+   "count": 194,
+   "mean_error": "-40175/194",
+   "mean_absolute_error": "216837/194",
+   "max_absolute_error": "4181"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 9,
-   "count": 8,
-   "mean_error": "-5573/8",
-   "mean_absolute_error": "6269/8",
-   "max_absolute_error": "1567"
+   "count": 193,
+   "mean_error": "-53055/193",
+   "mean_absolute_error": "247487/193",
+   "max_absolute_error": "4070"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 10,
-   "count": 7,
-   "mean_error": "-6964/7",
-   "mean_absolute_error": "7058/7",
-   "max_absolute_error": "1480"
+   "count": 192,
+   "mean_error": "-22139/64",
+   "mean_absolute_error": "93307/64",
+   "max_absolute_error": "4010"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 11,
-   "count": 6,
-   "mean_error": "-3934/3",
-   "mean_absolute_error": "3934/3",
-   "max_absolute_error": "1767"
+   "count": 191,
+   "mean_error": "-80081/191",
+   "mean_absolute_error": "312719/191",
+   "max_absolute_error": "4113"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 12,
-   "count": 5,
-   "mean_error": "-8844/5",
-   "mean_absolute_error": "8844/5",
-   "max_absolute_error": "2118"
+   "count": 190,
+   "mean_error": "-19445/38",
+   "mean_absolute_error": "347343/190",
+   "max_absolute_error": "4437"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 13,
-   "count": 4,
-   "mean_error": "-8965/4",
-   "mean_absolute_error": "8965/4",
-   "max_absolute_error": "3407"
+   "count": 189,
+   "mean_error": "-12830/21",
+   "mean_absolute_error": "13988/7",
+   "max_absolute_error": "5544"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 14,
-   "count": 3,
-   "mean_error": "-7520/3",
-   "mean_absolute_error": "7520/3",
-   "max_absolute_error": "3579"
+   "count": 188,
+   "mean_error": "-67489/94",
+   "mean_absolute_error": "201611/94",
+   "max_absolute_error": "6370"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 15,
-   "count": 2,
-   "mean_error": "-2817",
-   "mean_absolute_error": "2817",
-   "max_absolute_error": "3563"
+   "count": 187,
+   "mean_error": "-154641/187",
+   "mean_absolute_error": "25087/11",
+   "max_absolute_error": "6889"
   },
   {
    "lake": "powell",
    "scenario": "most_probable",
    "lead": 16,
-   "count": 1,
-   "mean_error": "-3429",
-   "mean_absolute_error": "3429",
-   "max_absolute_error": "3429"
+   "count": 186,
+   "mean_error": "-29151/31",
+   "mean_absolute_error": "73754/31",
+   "max_absolute_error": "6949"
+  },
+  {
+   "lake": "powell",
+   "scenario": "most_probable",
+   "lead": 17,
+   "count": 185,
+   "mean_error": "-194113/185",
+   "mean_absolute_error": "458353/185",
+   "max_absolute_error": "7143"
+  },
+  {
+   "lake": "powell",
+   "scenario": "most_probable",
+   "lead": 18,
+   "count": 184,
+   "mean_error": "-215769/184",
+   "mean_absolute_error": "463983/184",
+   "max_absolute_error": "7448"
+  },
+  {
+   "lake": "powell",
+   "scenario": "most_probable",
+   "lead": 19,
+   "count": 183,
+   "mean_error": "-79426/61",
+   "mean_absolute_error": "466298/183",
+   "max_absolute_error": "7458"
+  },
+  {
+   "lake": "powell",
+   "scenario": "most_probable",
+   "lead": 20,
+   "count": 182,
+   "mean_error": "-261649/182",
+   "mean_absolute_error": "67039/26",
+   "max_absolute_error": "7518"
+  },
+  {
+   "lake": "powell",
+   "scenario": "most_probable",
+   "lead": 21,
+   "count": 181,
+   "mean_error": "-283740/181",
+   "mean_absolute_error": "472828/181",
+   "max_absolute_error": "8639"
+  },
+  {
+   "lake": "powell",
+   "scenario": "most_probable",
+   "lead": 22,
+   "count": 180,
+   "mean_error": "-306481/180",
+   "mean_absolute_error": "481721/180",
+   "max_absolute_error": "9236"
+  },
+  {
+   "lake": "powell",
+   "scenario": "most_probable",
+   "lead": 23,
+   "count": 179,
+   "mean_error": "-330603/179",
+   "mean_absolute_error": "489825/179",
+   "max_absolute_error": "9761"
   }
  ],
  "envelope": [
   {
    "lake": "mead",
    "lead": 0,
-   "below_minimum": 3,
-   "above_maximum": 1,
-   "inside": 2
+   "inside": 20,
+   "above_maximum": 19,
+   "below_minimum": 33
   },
   {
    "lake": "mead",
    "lead": 1,
-   "above_maximum": 2,
-   "below_minimum": 2,
-   "inside": 2
+   "below_minimum": 29,
+   "inside": 15,
+   "above_maximum": 28
   },
   {
    "lake": "mead",
    "lead": 2,
-   "above_maximum": 2,
-   "inside": 2,
-   "below_minimum": 1
+   "below_minimum": 29,
+   "above_maximum": 27,
+   "inside": 15
   },
   {
    "lake": "mead",
    "lead": 3,
-   "above_maximum": 2,
-   "inside": 2,
-   "below_minimum": 1
+   "below_minimum": 24,
+   "inside": 22,
+   "above_maximum": 25
   },
   {
    "lake": "mead",
    "lead": 4,
-   "above_maximum": 2,
-   "inside": 2,
-   "below_minimum": 1
+   "below_minimum": 24,
+   "inside": 18,
+   "above_maximum": 29
   },
   {
    "lake": "mead",
    "lead": 5,
-   "above_maximum": 1,
-   "below_minimum": 3
+   "below_minimum": 20,
+   "inside": 24,
+   "above_maximum": 25
   },
   {
    "lake": "mead",
    "lead": 6,
-   "above_maximum": 1,
-   "below_minimum": 2
+   "below_minimum": 19,
+   "inside": 32,
+   "above_maximum": 18
   },
   {
    "lake": "mead",
    "lead": 7,
-   "inside": 1,
-   "below_minimum": 2
+   "below_minimum": 22,
+   "inside": 31,
+   "above_maximum": 16
   },
   {
    "lake": "mead",
    "lead": 8,
-   "inside": 1,
-   "below_minimum": 2
+   "inside": 31,
+   "below_minimum": 21,
+   "above_maximum": 17
   },
   {
    "lake": "mead",
    "lead": 9,
-   "inside": 1,
-   "below_minimum": 1
+   "inside": 34,
+   "below_minimum": 19,
+   "above_maximum": 15
   },
   {
    "lake": "mead",
    "lead": 10,
-   "below_minimum": 2
+   "inside": 35,
+   "above_maximum": 14,
+   "below_minimum": 19
   },
   {
    "lake": "mead",
    "lead": 11,
-   "below_minimum": 2
+   "inside": 35,
+   "above_maximum": 14,
+   "below_minimum": 19
   },
   {
    "lake": "mead",
    "lead": 12,
-   "below_minimum": 1
+   "inside": 32,
+   "above_maximum": 16,
+   "below_minimum": 19
   },
   {
    "lake": "mead",
    "lead": 13,
-   "below_minimum": 1
+   "inside": 33,
+   "above_maximum": 14,
+   "below_minimum": 20
+  },
+  {
+   "lake": "mead",
+   "lead": 14,
+   "inside": 34,
+   "above_maximum": 14,
+   "below_minimum": 18
+  },
+  {
+   "lake": "mead",
+   "lead": 15,
+   "inside": 37,
+   "above_maximum": 13,
+   "below_minimum": 16
+  },
+  {
+   "lake": "mead",
+   "lead": 16,
+   "inside": 37,
+   "above_maximum": 13,
+   "below_minimum": 16
+  },
+  {
+   "lake": "mead",
+   "lead": 17,
+   "inside": 38,
+   "below_minimum": 14,
+   "above_maximum": 13
+  },
+  {
+   "lake": "mead",
+   "lead": 18,
+   "inside": 36,
+   "below_minimum": 15,
+   "above_maximum": 14
+  },
+  {
+   "lake": "mead",
+   "lead": 19,
+   "inside": 35,
+   "below_minimum": 17,
+   "above_maximum": 13
+  },
+  {
+   "lake": "mead",
+   "lead": 20,
+   "inside": 36,
+   "below_minimum": 16,
+   "above_maximum": 13
+  },
+  {
+   "lake": "mead",
+   "lead": 21,
+   "inside": 37,
+   "below_minimum": 14,
+   "above_maximum": 13
+  },
+  {
+   "lake": "mead",
+   "lead": 22,
+   "inside": 36,
+   "below_minimum": 14,
+   "above_maximum": 14
+  },
+  {
+   "lake": "mead",
+   "lead": 23,
+   "inside": 36,
+   "below_minimum": 13,
+   "above_maximum": 15
   },
   {
    "lake": "powell",
    "lead": 0,
-   "below_minimum": 3,
-   "above_maximum": 2,
-   "inside": 1
+   "below_minimum": 31,
+   "inside": 18,
+   "above_maximum": 23
   },
   {
    "lake": "powell",
    "lead": 1,
-   "below_minimum": 2,
-   "above_maximum": 3,
-   "inside": 1
+   "below_minimum": 33,
+   "inside": 18,
+   "above_maximum": 21
   },
   {
    "lake": "powell",
    "lead": 2,
-   "below_minimum": 2,
-   "above_maximum": 2,
-   "inside": 1
+   "below_minimum": 34,
+   "inside": 17,
+   "above_maximum": 20
   },
   {
    "lake": "powell",
    "lead": 3,
-   "inside": 3,
-   "above_maximum": 1,
-   "below_minimum": 1
+   "above_maximum": 12,
+   "inside": 32,
+   "below_minimum": 27
   },
   {
    "lake": "powell",
    "lead": 4,
-   "inside": 2,
-   "above_maximum": 3
+   "inside": 36,
+   "below_minimum": 24,
+   "above_maximum": 11
   },
   {
    "lake": "powell",
    "lead": 5,
-   "inside": 3,
-   "above_maximum": 1
+   "below_minimum": 21,
+   "inside": 41,
+   "above_maximum": 7
   },
   {
    "lake": "powell",
    "lead": 6,
-   "inside": 3
+   "below_minimum": 22,
+   "inside": 40,
+   "above_maximum": 7
   },
   {
    "lake": "powell",
    "lead": 7,
-   "inside": 3
+   "below_minimum": 19,
+   "inside": 44,
+   "above_maximum": 6
   },
   {
    "lake": "powell",
    "lead": 8,
-   "inside": 3
+   "below_minimum": 17,
+   "inside": 47,
+   "above_maximum": 5
   },
   {
    "lake": "powell",
    "lead": 9,
-   "inside": 2
+   "below_minimum": 17,
+   "inside": 46,
+   "above_maximum": 5
   },
   {
    "lake": "powell",
    "lead": 10,
-   "inside": 2
+   "below_minimum": 18,
+   "inside": 47,
+   "above_maximum": 3
   },
   {
    "lake": "powell",
    "lead": 11,
-   "inside": 2
+   "below_minimum": 18,
+   "inside": 47,
+   "above_maximum": 3
   },
   {
    "lake": "powell",
    "lead": 12,
-   "inside": 1
+   "below_minimum": 19,
+   "inside": 46,
+   "above_maximum": 2
   },
   {
    "lake": "powell",
    "lead": 13,
-   "inside": 1
+   "below_minimum": 22,
+   "inside": 43,
+   "above_maximum": 2
+  },
+  {
+   "lake": "powell",
+   "lead": 14,
+   "below_minimum": 22,
+   "inside": 42,
+   "above_maximum": 2
+  },
+  {
+   "lake": "powell",
+   "lead": 15,
+   "below_minimum": 22,
+   "inside": 42,
+   "above_maximum": 2
+  },
+  {
+   "lake": "powell",
+   "lead": 16,
+   "below_minimum": 21,
+   "inside": 44,
+   "above_maximum": 1
+  },
+  {
+   "lake": "powell",
+   "lead": 17,
+   "below_minimum": 20,
+   "inside": 44,
+   "above_maximum": 1
+  },
+  {
+   "lake": "powell",
+   "lead": 18,
+   "below_minimum": 20,
+   "inside": 44,
+   "above_maximum": 1
+  },
+  {
+   "lake": "powell",
+   "lead": 19,
+   "below_minimum": 20,
+   "inside": 44,
+   "above_maximum": 1
+  },
+  {
+   "lake": "powell",
+   "lead": 20,
+   "below_minimum": 18,
+   "inside": 46,
+   "above_maximum": 1
+  },
+  {
+   "lake": "powell",
+   "lead": 21,
+   "below_minimum": 17,
+   "inside": 46,
+   "above_maximum": 1
+  },
+  {
+   "lake": "powell",
+   "lead": 22,
+   "below_minimum": 15,
+   "inside": 48,
+   "above_maximum": 1
+  },
+  {
+   "lake": "powell",
+   "lead": 23,
+   "below_minimum": 14,
+   "inside": 50
   }
  ],
- "revisions": []
+ "revisions": [
+  {
+   "lake": "powell",
+   "month": "2009-08",
+   "values": [
+    "15699",
+    "15710"
+   ],
+   "spread": "11"
+  },
+  {
+   "lake": "powell",
+   "month": "2011-11",
+   "values": [
+    "16683",
+    "16685"
+   ],
+   "spread": "2"
+  },
+  {
+   "lake": "powell",
+   "month": "2011-12",
+   "values": [
+    "15972",
+    "15974"
+   ],
+   "spread": "2"
+  },
+  {
+   "lake": "powell",
+   "month": "2012-01",
+   "values": [
+    "15640",
+    "15641"
+   ],
+   "spread": "1"
+  }
+ ]
 }

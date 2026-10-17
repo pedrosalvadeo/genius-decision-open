@@ -38,7 +38,6 @@ https://www.usbr.gov/lc/region/g4000/24mo/2009/AUG09_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2009/AUG09_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2009/AUG09_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2009/AUG09_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2009/SEP09.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2009/SEP09_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2009/SEP09_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2009/SEP09_6.pdf not found
@@ -58,924 +57,586 @@ https://www.usbr.gov/lc/region/g4000/24mo/2009/DEC09_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2009/DEC09_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2009/DEC09_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2009/DEC09_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/JAN10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JAN10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JAN10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JAN10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JAN10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/FEB10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/FEB10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/FEB10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/FEB10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/FEB10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/MAR10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/MAR10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/MAR10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/MAR10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/MAR10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/APR10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/APR10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/APR10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/APR10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/APR10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/MAY10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/MAY10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/MAY10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/MAY10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/MAY10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/JUN10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JUN10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JUN10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JUN10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JUN10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/JUL10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JUL10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JUL10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JUL10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/JUL10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/AUG10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/AUG10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/AUG10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/AUG10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/AUG10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/SEP10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/SEP10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/SEP10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/SEP10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/SEP10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/OCT10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/OCT10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/OCT10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/OCT10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/OCT10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/NOV10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/NOV10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/NOV10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/NOV10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/NOV10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2010/DEC10.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2010/DEC10_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/DEC10_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/DEC10_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2010/DEC10_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/JAN11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JAN11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JAN11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JAN11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JAN11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/FEB11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/FEB11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/FEB11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/FEB11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/FEB11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/MAR11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/MAR11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/MAR11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/MAR11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/MAR11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/APR11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/APR11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/APR11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/APR11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/APR11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/MAY11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/MAY11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/MAY11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/MAY11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/MAY11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/JUN11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JUN11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JUN11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JUN11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JUN11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/JUL11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JUL11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JUL11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JUL11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/JUL11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/AUG11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/AUG11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/AUG11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/AUG11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/AUG11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/SEP11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/SEP11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/SEP11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/SEP11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/SEP11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/OCT11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/OCT11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/OCT11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/OCT11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/OCT11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/NOV11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/NOV11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/NOV11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/NOV11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/NOV11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2011/DEC11.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2011/DEC11_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/DEC11_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/DEC11_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2011/DEC11_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/JAN12.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2012/JAN12_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2012/JAN12_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JAN12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JAN12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/FEB12.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/FEB12_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/FEB12_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/FEB12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/FEB12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/MAR12.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/MAR12_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/MAR12_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/MAR12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/MAR12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/APR12.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2012/APR12_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2012/APR12_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/APR12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/APR12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/MAY12.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/MAY12_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/MAY12_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/MAY12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/MAY12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/JUN12.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JUN12_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JUN12_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JUN12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JUN12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/JUL12.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JUL12_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JUL12_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JUL12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/JUL12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/AUG12.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2012/AUG12_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2012/AUG12_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/AUG12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/AUG12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/SEP12.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/SEP12_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/SEP12_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/SEP12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/SEP12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/OCT12.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2012/OCT12_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2012/OCT12_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/OCT12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/OCT12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/NOV12.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/NOV12_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/NOV12_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/NOV12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/NOV12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2012/DEC12.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2012/DEC12_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/DEC12_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/DEC12_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2012/DEC12_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/JAN13.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2013/JAN13_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2013/JAN13_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JAN13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JAN13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/FEB13.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/FEB13_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/FEB13_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/FEB13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/FEB13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/MAR13.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/MAR13_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/MAR13_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/MAR13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/MAR13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/APR13.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2013/APR13_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2013/APR13_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/APR13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/APR13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/MAY13.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/MAY13_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/MAY13_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/MAY13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/MAY13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/JUN13.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JUN13_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JUN13_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JUN13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JUN13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/JUL13.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JUL13_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JUL13_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JUL13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/JUL13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/AUG13.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2013/AUG13_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2013/AUG13_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/AUG13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/AUG13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/SEP13.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/SEP13_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/SEP13_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/SEP13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/SEP13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/OCT13.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2013/OCT13_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2013/OCT13_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/OCT13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/OCT13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/NOV13.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/NOV13_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/NOV13_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/NOV13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/NOV13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2013/DEC13.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2013/DEC13_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/DEC13_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/DEC13_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2013/DEC13_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/JAN14.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2014/JAN14_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2014/JAN14_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JAN14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JAN14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/FEB14.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/FEB14_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/FEB14_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/FEB14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/FEB14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/MAR14.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/MAR14_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/MAR14_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/MAR14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/MAR14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/APR14.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2014/APR14_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2014/APR14_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/APR14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/APR14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/MAY14.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/MAY14_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/MAY14_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/MAY14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/MAY14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/JUN14.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JUN14_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JUN14_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JUN14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JUN14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/JUL14.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JUL14_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JUL14_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JUL14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/JUL14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/AUG14.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2014/AUG14_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2014/AUG14_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/AUG14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/AUG14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/SEP14.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/SEP14_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/SEP14_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/SEP14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/SEP14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/OCT14.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2014/OCT14_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2014/OCT14_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/OCT14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/OCT14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/NOV14.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/NOV14_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/NOV14_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/NOV14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/NOV14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2014/DEC14.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2014/DEC14_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/DEC14_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/DEC14_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2014/DEC14_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/JAN15.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2015/JAN15_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2015/JAN15_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JAN15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JAN15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/FEB15.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/FEB15_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/FEB15_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/FEB15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/FEB15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/MAR15.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/MAR15_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/MAR15_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/MAR15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/MAR15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/APR15.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2015/APR15_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2015/APR15_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/APR15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/APR15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/MAY15.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/MAY15_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/MAY15_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/MAY15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/MAY15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/JUN15.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JUN15_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JUN15_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JUN15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JUN15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/JUL15.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JUL15_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JUL15_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JUL15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/JUL15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/AUG15.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2015/AUG15_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2015/AUG15_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/AUG15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/AUG15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/SEP15.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/SEP15_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/SEP15_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/SEP15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/SEP15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/OCT15.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2015/OCT15_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2015/OCT15_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/OCT15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/OCT15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/NOV15.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/NOV15_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/NOV15_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/NOV15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/NOV15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2015/DEC15.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2015/DEC15_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/DEC15_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/DEC15_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2015/DEC15_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/JAN16.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2016/JAN16_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2016/JAN16_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JAN16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JAN16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/FEB16.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/FEB16_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/FEB16_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/FEB16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/FEB16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/MAR16.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/MAR16_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/MAR16_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/MAR16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/MAR16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/APR16.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2016/APR16_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2016/APR16_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/APR16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/APR16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/MAY16.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/MAY16_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/MAY16_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/MAY16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/MAY16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/JUN16.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JUN16_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JUN16_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JUN16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JUN16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/JUL16.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JUL16_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JUL16_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JUL16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/JUL16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/AUG16.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2016/AUG16_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2016/AUG16_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/AUG16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/AUG16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/SEP16.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/SEP16_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/SEP16_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/SEP16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/SEP16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/OCT16.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2016/OCT16_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2016/OCT16_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/OCT16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/OCT16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/NOV16.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/NOV16_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/NOV16_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/NOV16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/NOV16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2016/DEC16.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2016/DEC16_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/DEC16_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/DEC16_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2016/DEC16_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/JAN17.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2017/JAN17_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2017/JAN17_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JAN17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JAN17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/FEB17.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/FEB17_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/FEB17_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/FEB17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/FEB17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/MAR17.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/MAR17_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/MAR17_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/MAR17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/MAR17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/APR17.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2017/APR17_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2017/APR17_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/APR17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/APR17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/MAY17.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/MAY17_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/MAY17_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/MAY17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/MAY17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/JUN17.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JUN17_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JUN17_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JUN17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JUN17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/JUL17.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JUL17_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JUL17_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JUL17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/JUL17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/AUG17.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2017/AUG17_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2017/AUG17_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/AUG17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/AUG17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/SEP17.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/SEP17_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/SEP17_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/SEP17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/SEP17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/OCT17.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2017/OCT17_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2017/OCT17_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/OCT17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/OCT17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/NOV17.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/NOV17_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/NOV17_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/NOV17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/NOV17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2017/DEC17.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2017/DEC17_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/DEC17_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/DEC17_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2017/DEC17_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/JAN18.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2018/JAN18_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2018/JAN18_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JAN18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JAN18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/FEB18.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/FEB18_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/FEB18_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/FEB18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/FEB18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/MAR18.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/MAR18_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/MAR18_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/MAR18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/MAR18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/APR18.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2018/APR18_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2018/APR18_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/APR18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/APR18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/MAY18.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/MAY18_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/MAY18_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/MAY18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/MAY18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/JUN18.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JUN18_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JUN18_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JUN18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JUN18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/JUL18.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JUL18_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JUL18_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JUL18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/JUL18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/AUG18.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2018/AUG18_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2018/AUG18_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/AUG18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/AUG18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/SEP18.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/SEP18_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/SEP18_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/SEP18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/SEP18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/OCT18.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2018/OCT18_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2018/OCT18_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/OCT18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/OCT18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/NOV18.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/NOV18_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/NOV18_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/NOV18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/NOV18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2018/DEC18.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2018/DEC18_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/DEC18_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/DEC18_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2018/DEC18_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/JAN19.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2019/JAN19_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2019/JAN19_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JAN19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JAN19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/FEB19.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/FEB19_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/FEB19_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/FEB19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/FEB19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/MAR19.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/MAR19_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/MAR19_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/MAR19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/MAR19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/APR19.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2019/APR19_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2019/APR19_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/APR19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/APR19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/MAY19.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/MAY19_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/MAY19_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/MAY19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/MAY19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/JUN19.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JUN19_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JUN19_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JUN19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JUN19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/JUL19.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JUL19_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JUL19_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JUL19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/JUL19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/AUG19.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2019/AUG19_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2019/AUG19_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/AUG19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/AUG19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/SEP19.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/SEP19_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/SEP19_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/SEP19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/SEP19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/OCT19.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2019/OCT19_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2019/OCT19_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/OCT19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/OCT19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/NOV19.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/NOV19_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/NOV19_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/NOV19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/NOV19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2019/DEC19.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2019/DEC19_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/DEC19_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/DEC19_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2019/DEC19_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/JAN20.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2020/JAN20_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2020/JAN20_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JAN20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JAN20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/FEB20.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/FEB20_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/FEB20_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/FEB20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/FEB20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/MAR20.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/MAR20_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/MAR20_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/MAR20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/MAR20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/APR20.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2020/APR20_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2020/APR20_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/APR20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/APR20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/MAY20.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/MAY20_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/MAY20_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/MAY20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/MAY20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/JUN20.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JUN20_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JUN20_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JUN20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JUN20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/JUL20.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JUL20_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JUL20_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JUL20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/JUL20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/AUG20.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2020/AUG20_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2020/AUG20_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/AUG20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/AUG20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/SEP20.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/SEP20_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/SEP20_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/SEP20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/SEP20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/OCT20.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2020/OCT20_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2020/OCT20_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/OCT20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/OCT20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/NOV20.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/NOV20_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/NOV20_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/NOV20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/NOV20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2020/DEC20.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2020/DEC20_MIN.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/DEC20_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/DEC20_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2020/DEC20_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/JAN21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/JAN21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/JAN21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/JAN21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/JAN21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/FEB21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/FEB21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/FEB21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/FEB21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/FEB21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/MAR21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/MAR21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/MAR21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/MAR21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/MAR21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/APR21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/APR21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/APR21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/APR21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/APR21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/MAY21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/MAY21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/MAY21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/MAY21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/MAY21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/JUN21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/JUN21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/JUN21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/JUN21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/JUN21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/JUL21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/JUL21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/JUL21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/JUL21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/JUL21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/AUG21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/AUG21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/AUG21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/AUG21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/AUG21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/SEP21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/SEP21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/SEP21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/SEP21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/SEP21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/OCT21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/OCT21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/OCT21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/OCT21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/OCT21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/NOV21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/NOV21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/NOV21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/NOV21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/NOV21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2021/DEC21.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/DEC21_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2021/DEC21_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2021/DEC21_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2021/DEC21_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/JAN22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/JAN22_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/JAN22_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/JAN22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/JAN22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/FEB22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/FEB22_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/FEB22_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/FEB22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/FEB22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/MAR22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/MAR22_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/MAR22_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/MAR22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/MAR22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/APR22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/APR22_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/APR22_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/APR22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/APR22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/MAY22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/MAY22_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/MAY22_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/MAY22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/MAY22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/JUN22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/JUN22_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/JUN22_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/JUN22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/JUN22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/JUL22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/JUL22_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/JUL22_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/JUL22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/JUL22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/AUG22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/AUG22_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/AUG22_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/AUG22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/AUG22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/SEP22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/SEP22_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/SEP22_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/SEP22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/SEP22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/OCT22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/OCT22_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/OCT22_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/OCT22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/OCT22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/NOV22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/NOV22_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/NOV22_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/NOV22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/NOV22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2022/DEC22.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2022/DEC22_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2022/DEC22_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/DEC22_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2022/DEC22_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/JAN23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/JAN23_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/JAN23_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/JAN23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/JAN23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/FEB23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/FEB23_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/FEB23_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/FEB23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/FEB23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/MAR23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/MAR23_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/MAR23_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/MAR23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/MAR23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/APR23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/APR23_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/APR23_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/APR23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/APR23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/MAY23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/MAY23_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/MAY23_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/MAY23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/MAY23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/JUN23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/JUN23_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/JUN23_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/JUN23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/JUN23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/JUL23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/JUL23_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/JUL23_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/JUL23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/JUL23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/AUG23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/AUG23_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/AUG23_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/AUG23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/AUG23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/SEP23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/SEP23_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/SEP23_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/SEP23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/SEP23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/OCT23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/OCT23_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/OCT23_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/OCT23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/OCT23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/NOV23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/NOV23_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/NOV23_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/NOV23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/NOV23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2023/DEC23.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2023/DEC23_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2023/DEC23_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/DEC23_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2023/DEC23_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/JAN24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/JAN24_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/JAN24_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/JAN24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/JAN24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/FEB24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/FEB24_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/FEB24_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/FEB24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/FEB24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/MAR24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/MAR24_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/MAR24_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/MAR24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/MAR24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/APR24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/APR24_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/APR24_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/APR24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/APR24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/MAY24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/MAY24_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/MAY24_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/MAY24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/MAY24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/JUN24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/JUN24_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/JUN24_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/JUN24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/JUN24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/JUL24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/JUL24_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/JUL24_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/JUL24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/JUL24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/AUG24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/AUG24_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/AUG24_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/AUG24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/AUG24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/SEP24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/SEP24_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/SEP24_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/SEP24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/SEP24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/OCT24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/OCT24_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/OCT24_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/OCT24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/OCT24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/NOV24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/NOV24_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/NOV24_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/NOV24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/NOV24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2024/DEC24.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2024/DEC24_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2024/DEC24_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/DEC24_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2024/DEC24_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2025/JAN25.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2025/JAN25_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2025/JAN25_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2025/JAN25_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2025/JAN25_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2025/FEB25.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2025/FEB25_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2025/FEB25_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2025/FEB25_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2025/FEB25_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2025/MAR25.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2025/MAR25_MIN.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2025/MAR25_MAX.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2025/MAR25_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2025/MAR25_7.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo/2025/APR25.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2025/APR25_MIN.pdf no Lake Mead rows parsed
-https://www.usbr.gov/lc/region/g4000/24mo/2025/APR25_MAX.pdf no Lake Mead rows parsed
 https://www.usbr.gov/lc/region/g4000/24mo/2025/APR25_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2025/APR25_7.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2025/MAY25_MAX.pdf not found
