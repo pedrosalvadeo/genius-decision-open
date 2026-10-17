@@ -1,0 +1,83 @@
+name: Genius history node
+
+# A node that runs on this repository's own GitHub runners: it downloads Reclamation's
+# published 24-Month Studies, contrasts every past projection with what happened and
+# runs the data-only learning trial. It contacts no one; results go to the node-history branch.
+on:
+  schedule:
+    - cron: '17 14 18 * *'  # after each month's studies (around the 15th)
+  workflow_dispatch:
+    inputs:
+      from:
+        description: First study month (YYYY-MM)
+        default: '2009-01'
+  pull_request:
+    paths:
+      - 'twin/history/**'
+      - '.github/workflows/genius-node.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Harvest one known study and check published values
+        run: |
+          sudo apt-get install -y -qq poppler-utils >/dev/null
+          python twin/history/reclamation_24mo.py --from 2025-10 --to 2025-10 --out oct25.csv
+          cat oct25.csv.failures.txt
+          grep -q '^2025-10,min,.*,2026-09,mead,1047.93,7534,projected$' oct25.csv
+          grep -q '^2025-10,min,.*,2025-10,mead,1056.22,8139,projected$' oct25.csv
+          grep -c ',powell,' oct25.csv
+
+  harvest:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Harvest every published study
+        env:
+          FROM: ${{ inputs.from || '2009-01' }}
+        run: |
+          sudo apt-get install -y -qq poppler-utils >/dev/null
+          mkdir -p out
+          python twin/history/reclamation_24mo.py --from "$FROM" --to "$(date -u +%Y-%m)" --out out/studies.csv --failures out/failures.txt
+      - name: Contrast and learn
+        run: |
+          python twin/history/hindcast.py summary out/studies.csv > out/summary.json
+          for lead in 3 6 12; do python twin/history/hindcast.py learn out/studies.csv --lake mead --lead $lead > out/learn_mead_$lead.json; done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: node-history
+          path: out/
+      - name: Publish to the node-history branch
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd "$RUNNER_TEMP" && git init -q state && cd state
+          git config user.name 'genius-history-node'
+          git config user.email 'genius-history-node@users.noreply.github.com'
+          git remote add origin "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git fetch -q origin node-history; then git checkout -q -b node-history FETCH_HEAD; else git checkout -q --orphan node-history; fi
+          mkdir -p lake_mead && cp "$GITHUB_WORKSPACE"/out/* lake_mead/
+          git add -A
+          git commit -qm "History node run ${GITHUB_RUN_ID} from ${GITHUB_SHA}" || exit 0
+          git push -q origin node-history
