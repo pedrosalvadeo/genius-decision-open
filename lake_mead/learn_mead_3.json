@@ -1,0 +1,18 @@
+{
+ "protocol": "genius-hindcast-learning/1",
+ "criterion": "OBSERVED_ABSOLUTE_ERROR_NOT_WELLBEING_OR_PVS",
+ "lake": "mead",
+ "lead": 3,
+ "phase_size": 12,
+ "targets": 10,
+ "founder": {
+  "correction": "none",
+  "window": 36
+ },
+ "genome": {
+  "correction": "none",
+  "window": 36
+ },
+ "trials": [],
+ "meaning": "Corrección operativa aprendida sólo con información publicada antes de cada estudio. No es bienestar ni PVS."
+}
