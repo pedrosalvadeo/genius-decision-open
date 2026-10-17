@@ -46,7 +46,11 @@ def strict_json(raw):
 
 
 def check_dependencies(r1, r0):
-    roots = (Path(r1) / "research", Path(r0) / "sources/repo/kernel")
+    kernel = Path(r0) / "sources/repo/kernel"
+    if not kernel.is_dir():
+        # The public edition omits beta/vendor; its kernel/ has the pinned bytes checked below.
+        kernel = Path(__file__).resolve().parents[2] / "kernel"
+    roots = (Path(r1) / "research", kernel)
     kernel_names = {"genius_kernel/" + p.name for p in (roots[1] / "genius_kernel").glob("*.py")}
     if kernel_names != {k for k in PINS if k.startswith("genius_kernel/")}:
         raise ValueError("DEPENDENCY_MODULE_SET_CHANGED")

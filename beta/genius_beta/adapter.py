@@ -32,6 +32,12 @@ class AdmissionError(ValueError):
     """Public input cannot be compiled into the supported profile."""
 
 
+def fdq_verifier_available():
+    """The received R1 FDQ verifier ships only in beta/vendor, which the public edition omits."""
+    research = ROOT / "beta/vendor/R1/research"
+    return (research / "verify_fdq.py").is_file() and (research / "fdq_oracle.py").is_file()
+
+
 def _require(condition, reason):
     if not condition:
         raise AdmissionError(reason)
@@ -208,6 +214,7 @@ def execute_profile(payload, case_dir):
             raise AdmissionError('CHOICE_PROFILE_REJECTED') from exc
     builder = {"hours": build_hours, "fdq": build_fdq}.get(payload.get("profile"))
     _require(builder is not None, "PROFILE_OUTSIDE_BETA")
+    _require(payload["profile"] != "fdq" or fdq_verifier_available(), "FDQ_VERIFIER_NOT_IN_PUBLIC_EDITION")
     case_dir = Path(case_dir)
     _require(not case_dir.exists(), "NEW_DOSSIER_PATH_REQUIRED")
     case_dir.mkdir(parents=True, exist_ok=False)

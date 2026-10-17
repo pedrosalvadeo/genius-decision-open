@@ -7,6 +7,7 @@ import time
 import unittest
 from unittest.mock import patch
 import zipfile
+from genius_beta.adapter import fdq_verifier_available
 from genius_beta.app import create_app
 from genius_beta.db import connect, initialize, purge
 from genius_beta.worker import Worker
@@ -60,6 +61,10 @@ class BackendTests(unittest.TestCase):
             with self.subTest(example=example):
                 cid=self.case(example=example)
                 job=self.run_job(cid)
+                if example.startswith('fdq') and not fdq_verifier_available():
+                    self.assertEqual(job['status'],'failed',job)
+                    self.assertEqual(job['admission'],{'reason':'FDQ_VERIFIER_NOT_IN_PUBLIC_EDITION','status':'rejected'})
+                    continue
                 self.assertEqual(job['status'],'completed',job)
                 self.assertIn('response',job['result'])
                 self.assertIn('presentation',job['result'])
