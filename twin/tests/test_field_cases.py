@@ -37,6 +37,26 @@ class FieldCaseTests(unittest.TestCase):
                 self.assertEqual(result['job']['status'], 'completed')
                 self.assertTrue(result['evaluation']['verification']['valid'])
 
+    def test_observation_contrasts_a_stock_with_the_frozen_prediction(self):
+        data = self.client.get('/api/field-cases/denver_water_2026').json
+        cid = self.post('/cases', dict(text=data['narrative'], title=data['title'], profile=registry.STOCKFLOW))['case']['id']
+        self.post(f'/cases/{cid}/systems', dict(base_version=0, observation_revision=0, idempotency_key='observe-system', observation=data['observation']))
+        proposal = self.post(f'/cases/{cid}/proposals', dict(base_version=0, kind='world_model', text=data['narrative'], structured=dict(construction=data['construction'])))['proposal']
+        self.post(f"/proposals/{proposal['id']}/accept", dict(base_version=0, confirmed=True, acknowledge_declared=True, idempotency_key='accept-world'))
+        observation = dict(base_version=1, policy_id='keep_ban', scenario_id='dry', day=1, variable='storage', unit='pct_capacity',
+                           value='65', observed_at='2026-11-16T12:00:00+00:00', source='Synthetic test observation; no field data',
+                           idempotency_key='storage-november')
+        self.assertEqual(self.client.post(f'/api/cases/{cid}/observations', json=observation).status_code, 422)
+        self.post(f'/cases/{cid}/evaluate', dict(version=1))
+        record = self.post(f'/cases/{cid}/observations', observation)['observation']
+        self.assertEqual(record['comparison']['predicted_exact'], '131/2')
+        self.assertEqual(record['comparison']['delta_exact'], '-1/2')
+        self.assertEqual(record['comparison']['status'], 'DISCREPANCY_REQUIRES_REVIEW')
+        for field, value in (('variable', 'outdoor_litres'), ('unit', 'hm3'), ('day', 13), ('policy_id', 'unknown')):
+            with self.subTest(field=field):
+                response = self.client.post(f'/api/cases/{cid}/observations', json={**observation, 'base_version': 2, field: value, 'idempotency_key': 'invalid-' + field})
+                self.assertIn(response.status_code, (400, 422), response.json)
+
     def test_each_case_fits_production_execution_limits(self):
         # Mirrors beta/genius_beta/config.py TWIN_TIMEOUT/TWIN_MEMORY_MB/TWIN_OUTPUT_BYTES defaults.
         evaluator = ProcessEvaluator(timeout=90, memory_mb=384, output_bytes=16777216)
