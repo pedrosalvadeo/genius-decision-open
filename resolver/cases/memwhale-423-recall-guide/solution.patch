@@ -1,0 +1,129 @@
+diff --git a/integrations/claude-code/README.md b/integrations/claude-code/README.md
+index ec9874c..38886ca 100644
+--- a/integrations/claude-code/README.md
++++ b/integrations/claude-code/README.md
+@@ -153,6 +153,16 @@ The hook is registered for both events so successful and failed Bash commands
+ are captured. Commands run in an ordinary terminal are captured only through
+ MemoryWhale's normal terminal capture paths.
+ 
++### Recall notes
++
++`possible fix:` is the next different command that passed after the failure;
++`confirmed fix:` means the failing command passed after that candidate in at least two episodes.
++The note names who last ran the candidate (an agent or a terminal), so evidence
++can cross agents sharing the same local store.
++This is observed history, not proof of cause; check whether it applies here.
++Set `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook's environment to silence notes, not capture.
++See the [0.20.0 release notes](../../docs/releases/0.20.0.md).
++
+ ### Limitations
+ 
+ - The bundled hook captures only the Bash tool.
+diff --git a/integrations/codex/README.md b/integrations/codex/README.md
+index c63027b..c35405e 100644
+--- a/integrations/codex/README.md
++++ b/integrations/codex/README.md
+@@ -53,8 +53,8 @@ This adds one `PostToolUse` hook for Codex's `Bash` tool
+ with its working directory and output. Your other hooks are kept; `--dry-run`
+ shows the change without writing, and `--hooks-file PATH` edits another file.
+ 
+-When the output contains an error that a later command fixed before, Codex
+-gets one line in its context naming that fix, the same note Claude Code and
++When the output contains a previously seen error with a recorded candidate, Codex
++can get one line in its context naming that candidate, the same note Claude Code and
+ Cursor get. Set `MEMORYWHALE_HOOK_FEEDBACK=0` to record without it.
+ 
+ Limits, checked against Codex's source on 2026-10-04:
+@@ -69,6 +69,16 @@ Limits, checked against Codex's source on 2026-10-04:
+ - Output is truncated by Codex before the hook sees it, then secret-scrubbed
+   by MemoryWhale before it is written.
+ 
++### Recall notes
++
++`possible fix:` is the next different command that passed after the failure;
++`confirmed fix:` means the failing command passed after that candidate in at least two episodes.
++The note names who last ran the candidate (an agent or a terminal), so evidence
++can cross agents sharing the same local store.
++This is observed history, not proof of cause; check whether it applies here.
++Set `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook's environment to silence notes, not capture.
++See the [0.20.0 release notes](../../docs/releases/0.20.0.md).
++
+ ## Verify
+ 
+ ```bash
+diff --git a/integrations/cursor/README.md b/integrations/cursor/README.md
+index 502bf6f..c0c1999 100644
+--- a/integrations/cursor/README.md
++++ b/integrations/cursor/README.md
+@@ -172,8 +172,8 @@ the capture hooks, commands are recorded only through normal terminal capture,
+   malformed input/storage failure, and uses a five-second configured timeout.
+ - Hook feedback: after a recorded Shell command, the hook may print one
+   `{"additional_context": "..."}` line, which Cursor adds to the conversation
+-  ([hooks reference](https://cursor.com/docs/agent/hooks)). It names the fix
+-  that worked last time when a command fails with an error seen before, and asks
++  ([hooks reference](https://cursor.com/docs/agent/hooks)). It can recall a
++  candidate when a command fails with an error seen before, and asks
+   for a one-sentence lesson when a command passes right after failing. Otherwise
+   stdout stays empty, and any lookup error is silent. Set
+   `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook's environment to record silently.
+@@ -185,6 +185,16 @@ Cursor can run `mw context --last-error` / `mw search "…"` / `mw remember "…
+ With no editor integration at all, `mw ask` packages the last failure onto
+ your clipboard for any chat.
+ 
++### Recall notes
++
++`possible fix:` is the next different command that passed after the failure;
++`confirmed fix:` means the failing command passed after that candidate in at least two episodes.
++The note names who last ran the candidate (an agent or a terminal), so evidence
++can cross agents sharing the same local store.
++This is observed history, not proof of cause; check whether it applies here.
++Set `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook's environment to silence notes, not capture.
++See the [0.20.0 release notes](../../docs/releases/0.20.0.md).
++
+ ## Example prompt
+ 
+ > Use MemoryWhale to check whether I encountered a similar failure before.
+diff --git a/integrations/gemini-cli/README.md b/integrations/gemini-cli/README.md
+index dcbf2c6..21c63ef 100644
+--- a/integrations/gemini-cli/README.md
++++ b/integrations/gemini-cli/README.md
+@@ -80,12 +80,22 @@ it is not zero), so Gemini rows count as failures in `recent_errors` and
+ `mw context --last-error` like terminal capture. Spawn errors, signals,
+ cancellations, and timeouts are stored with an unknown exit.
+ 
+-When a command fails with an error that a later command fixed before, Gemini
+-gets one line in its context naming that fix, and when a command passes right
++When a command fails with a previously seen error with a recorded candidate, Gemini
++can get one line in its context naming that candidate, and when a command passes right
+ after failing it is asked to save the lesson, the same notes Claude Code gets.
+ Set `MEMORYWHALE_HOOK_FEEDBACK=0` to record without them. Gemini may warn
+ before running a new or changed hook; approve it once.
+ 
++### Recall notes
++
++`possible fix:` is the next different command that passed after the failure;
++`confirmed fix:` means the failing command passed after that candidate in at least two episodes.
++The note names who last ran the candidate (an agent or a terminal), so evidence
++can cross agents sharing the same local store.
++This is observed history, not proof of cause; check whether it applies here.
++Set `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook's environment to silence notes, not capture.
++See the [0.20.0 release notes](../../docs/releases/0.20.0.md).
++
+ ## Verify
+ 
+ ```bash
+diff --git a/integrations/rho/README.md b/integrations/rho/README.md
+index 28baee5..a0eb9d3 100644
+--- a/integrations/rho/README.md
++++ b/integrations/rho/README.md
+@@ -239,6 +239,10 @@ code is unknown.
+ Commands run in an ordinary terminal are captured only through MemoryWhale's
+ normal terminal capture paths. MCP access alone is not automatic capture.
+ 
++### Recall notes
++
++Rho capture does not emit recall notes; see the [0.20.0 release notes](../../docs/releases/0.20.0.md).
++
+ ### How Rho sessions and MemoryWhale differ
+ 
+ Rho keeps its own saved session transcripts in `~/.rho/sessions/` and may

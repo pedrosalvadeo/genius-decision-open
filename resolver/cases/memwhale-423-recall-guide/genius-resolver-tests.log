@@ -1,0 +1,24 @@
+test_closed_issue_does_not_mean_genius_solved_it (test_resolver.LedgerTests.test_closed_issue_does_not_mean_genius_solved_it) ... ok
+test_direct_status_edit_cannot_create_a_verified_result (test_resolver.LedgerTests.test_direct_status_edit_cannot_create_a_verified_result) ... ok
+test_duplicate_does_not_reset_progress_or_duplicate_problem (test_resolver.LedgerTests.test_duplicate_does_not_reset_progress_or_duplicate_problem) ... ok
+test_lease_blocks_another_operator_until_expiry (test_resolver.LedgerTests.test_lease_blocks_another_operator_until_expiry) ... ok
+test_local_checks_cannot_skip_application (test_resolver.LedgerTests.test_local_checks_cannot_skip_application) ... ok
+test_missing_state_cannot_silently_restart_memory (test_resolver.LedgerTests.test_missing_state_cannot_silently_restart_memory) ... ok
+test_no_source_commands_are_stored_or_executed (test_resolver.LedgerTests.test_no_source_commands_are_stored_or_executed) ... ok
+test_older_snapshot_cannot_revert_a_newer_source (test_resolver.LedgerTests.test_older_snapshot_cannot_revert_a_newer_source) ... ok
+test_public_report_escapes_injected_links_and_html (test_resolver.LedgerTests.test_public_report_escapes_injected_links_and_html) ... ok
+test_rejects_fake_issue_domains_and_mismatched_ids (test_resolver.LedgerTests.test_rejects_fake_issue_domains_and_mismatched_ids) ... ok
+test_saved_success_receipts_are_validated_on_load (test_resolver.LedgerTests.test_saved_success_receipts_are_validated_on_load) ... ok
+test_source_change_preserves_history_but_invalidates_current_solution (test_resolver.LedgerTests.test_source_change_preserves_history_but_invalidates_current_solution) ... ok
+test_success_criteria_cannot_be_changed_to_make_a_test_pass (test_resolver.LedgerTests.test_success_criteria_cannot_be_changed_to_make_a_test_pass) ... ok
+test_timestamp_requires_timezone (test_resolver.LedgerTests.test_timestamp_requires_timezone) ... ok
+test_transaction_conflict_and_crash_leave_previous_state_intact (test_resolver.LedgerTests.test_transaction_conflict_and_crash_leave_previous_state_intact) ... ok
+test_verified_requires_criteria_and_post_application_observation (test_resolver.LedgerTests.test_verified_requires_criteria_and_post_application_observation) ... ok
+test_no_redirect_or_credential_forwarding (test_resolver.SourceTests.test_no_redirect_or_credential_forwarding) ... ok
+test_response_is_bounded_and_uses_only_fixed_github_endpoint (test_resolver.SourceTests.test_response_is_bounded_and_uses_only_fixed_github_endpoint) ... ok
+test_unknown_query_is_not_a_fetch_instruction (test_resolver.SourceTests.test_unknown_query_is_not_a_fetch_instruction) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.007s
+
+OK

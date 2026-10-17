@@ -1,0 +1,14 @@
+test_codex_unknown_exit_limit_kept (__main__.RecallGuideTests.test_codex_unknown_exit_limit_kept) ... ok
+test_command_blocks_unchanged (__main__.RecallGuideTests.test_command_blocks_unchanged) ... ok
+test_common_wording (__main__.RecallGuideTests.test_common_wording) ... ok
+test_eight_top_headings_unchanged (__main__.RecallGuideTests.test_eight_top_headings_unchanged) ... ok
+test_no_stale_certainty (__main__.RecallGuideTests.test_no_stale_certainty) ... ok
+test_release_links (__main__.RecallGuideTests.test_release_links) ... ok
+test_rho_exception (__main__.RecallGuideTests.test_rho_exception) ... ok
+test_short_sections (__main__.RecallGuideTests.test_short_sections) ... ok
+test_status_claims_unchanged (__main__.RecallGuideTests.test_status_claims_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.005s
+
+OK
