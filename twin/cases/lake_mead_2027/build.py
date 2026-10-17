@@ -156,6 +156,8 @@ CLAIMS = [
     claim('d_functions', 'decision', 'Funciones del sistema (módulo I), medidas en cada gemelo proyectado como meses cumplidos hasta cada momento: Glen Canyon Dam opera con Powell en 3.510 pies o más (unos 4.724 mil acre-pies), y Hoover entrega a la cuenca baja con Mead en 1.000 pies o más (unos 4.478).',
           'Más meses cumplidos es mejor; no se suman entre funciones. Los volúmenes son interpolaciones; los 1.000 pies son una referencia periodística, no una regla operativa.',
           premises=['powell_3510', 'h_powell_storage_3510', 'mead_1000', 'h_mead_storage_1000']),
+    claim('d_subsystems', 'decision', 'Subsistemas (módulo II): Lake Powell con la operación de Glen Canyon Dam, y Lake Mead con la cuenca baja. Los une la liberación de Glen Canyon hacia Mead; la interfaz registra la liberación adicional a los 6 millones de acre-pies.',
+          'La liberación base de 6 millones ya está dentro de las proyecciones de cada lago, así que la interfaz sólo mide lo que la decisión cambia.', premises=['release_range', 'powell_3510', 'lower_basin_cut', 'h_release_effect']),
     claim('modelling', 'definition', 'Unidad: mil acre-pies de almacenamiento a fin de mes. Paso mensual: paso 0 = fin de septiembre de 2026, paso k = fin de cada mes de octubre de 2026 a septiembre de 2027. Los escenarios son las tres afluencias que publica Reclamation. La ley sobre las afluencias se declara aparte (claim d_law). La capacidad de 30.000 es una cota de modelado, no la física.',
           'No se modelan otros embalses, la generación eléctrica ni el reparto entre estados.', premises=['storage_now']),
 ]
@@ -232,6 +234,9 @@ FRAGMENTS += [
                           measure='cumulative', when=[dict(kind='stock', stock='powell', op='ge', value='4724/1')]), ['d_functions']),
     ('/functions/1', dict(id='mead_1000', label='Lake Mead en 1.000 pies o más para la cuenca baja (meses cumplidos)', serves=['lower_basin'],
                           measure='cumulative', when=[dict(kind='stock', stock='mead', op='ge', value='4478/1')]), ['d_functions']),
+    ('/subsystems/0', dict(id='powell_sub', label='Lake Powell y Glen Canyon Dam', stocks=['powell'], carriers=['glen_canyon']), ['d_subsystems']),
+    ('/subsystems/1', dict(id='mead_sub', label='Lake Mead y la cuenca baja', stocks=['mead'], carriers=['lower_basin']), ['d_subsystems']),
+    ('/interfaces/0', dict(id='glen_release', label='Liberación de Glen Canyon a Lake Mead, adicional a 6 millones (mil acre-pies)', source='powell_sub', target='mead_sub'), ['d_subsystems']),
     ('/require_all_scenarios', True, ['modelling']),
     ('/selection', 'none', ['modelling']),
     ('/assumptions/0', dict(id='ReleaseEffect', kind='CALIBRATION', statement='El efecto de liberar 7 en vez de 6 millones se toma de los estudios más probables y se supone igual con cualquier afluencia.', provenance='Claims h_release_effect, h_cross_scenarios'), ['h_release_effect', 'h_cross_scenarios']),

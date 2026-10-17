@@ -17,6 +17,8 @@ def module_ledger(model, canonical, trajectories):
     life = model["task"]["kind"] == "life_conditions"
     decision = canonical["decision"]
     pvs = {pid: p["pvs"].get("value") for pid, p in canonical["policies"].items()}
+    subsystems = model.get("subsystems", [])
+    composed = all(p["composition"]["native_cell_state"] == "DEFINED" for p in canonical["policies"].values())
     organizations = sorted({row["organization"] for traces in trajectories.values() for tr in traces.values() for row in tr["daily"]})
     entries = [
         dict(module="0", name="Representación", embodied_by="El gemelo: existencias, capacidades e historia del sistema real",
@@ -32,9 +34,12 @@ def module_ledger(model, canonical, trajectories):
              status="FILLED" if functions else "NEUTRAL",
              detail=dict(functions=[f["id"] for f in functions], measured_twins=projected if functions else 0,
                          criterion=decision.get("functional_criterion"))),
-        dict(module="II", name="Multiescala", embodied_by="Existencias del gemelo como puertos de un solo sistema",
-             inputs=["gemelos proyectados (V)"], outputs=["balances conjuntos", "ocupación de recursos"],
-             status="SINGLE_SYSTEM", detail=dict(ports=[s["id"] for s in model["stocks"]], subsystems=[], interfaces=[])),
+        dict(module="II", name="Multiescala", embodied_by="Subsistemas del gemelo unidos por interfaces" if len(subsystems) > 1
+                 else "Existencias del gemelo como puertos de un solo sistema",
+             inputs=["gemelos proyectados (V)", "subsistemas e interfaces"], outputs=["vista por subsistema", "flujo por interfaz", "recomposición exacta del todo"],
+             status=("FILLED" if composed else "MISSING") if len(subsystems) > 1 else "SINGLE_SYSTEM",
+             detail=dict(ports=[s["id"] for s in model["stocks"]], subsystems=[x["id"] for x in subsystems],
+                         interfaces=[x["id"] for x in model.get("interfaces", [])], recomposition_certified=composed)),
         dict(module="III", name="Capacidad generativa", embodied_by="Organizaciones (firmas de capacidades) que cada ruta alcanza y conserva",
              inputs=["gemelos proyectados (V)", "capacidades"], outputs=["CAG posible y robusta por ruta"],
              status="FILLED", detail=dict(capabilities=[c["id"] for c in model["capabilities"]], organizations=len(organizations))),

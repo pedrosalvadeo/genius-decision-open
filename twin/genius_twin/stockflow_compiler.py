@@ -9,7 +9,7 @@ import hashlib
 
 from genius_kernel import evaluate, verify_result
 from .modules import module_ledger
-from .stockflow import canonical_json, compute_trajectories, function_values, q, validate_model
+from .stockflow import canonical_json, compute_trajectories, function_values, interface_flows, q, validate_model
 
 COMPILER_VERSION = "GENIUS_STOCK_FLOW_FINITE_V1_COMPILER_1"
 
@@ -30,6 +30,9 @@ def compile_model(model, *, cag_mode="robust"):
     trajectories = compute_trajectories(model)
     functions = model.get("functions", [])
     raws = {pid: {sid: function_values(model, tr["daily"]) for sid, tr in traces.items()} for pid, traces in trajectories.items()}
+    flows = {pid: {sid: interface_flows(model, tr["daily"]) for sid, tr in traces.items()} for pid, traces in trajectories.items()}
+    interfaces, subsystems = model.get("interfaces", []), model.get("subsystems", [])
+    flow_ids = {x["id"]: {v: _id("flow_", [x["id"], q(v)]) for per in flows.values() for vals in per.values() for v in vals[x["id"]]} for x in interfaces}
     H = model["horizon"]
     source = canonical_json(model)
     digest = hashlib.sha256(source.encode()).hexdigest()
@@ -65,9 +68,14 @@ def compile_model(model, *, cag_mode="robust"):
         "functional": {"indices": [{"id": "fn_" + f["id"], "basis": basis, "calibration": [{"raw": q(v), "value": q(v)}
                 for v in sorted({v for per in raws.values() for vals in per.values() for v in vals[f["id"]]})]} for f in functions],
             "measurements": [], "reduction": {"ids": [] if functions else ["neutral"], "rows": []}},
+        # Module II: with subsystems, one view per subsystem (its stocks and the
+        # interfaces it touches); the kernel checks they rejoin to the whole.
         "composition": {"ports": [{"id": "stock_" + s["id"], "values": sorted(set(value_ids[s["id"]].values())), "basis": basis}
-                                   for s in model["stocks"]], "rows": [],
-            "views": [{"id": "StockBalances", "columns": ["query"] + ["stock_" + s["id"] for s in model["stocks"]]}], "basis": basis},
+                                   for s in model["stocks"]] + [{"id": "iface_" + x["id"], "values": sorted(set(flow_ids[x["id"]].values())), "basis": basis}
+                                   for x in interfaces], "rows": [],
+            "views": [{"id": "Subsystem_" + sub["id"], "columns": ["query"] + ["stock_" + k for k in sub["stocks"]]
+                       + ["iface_" + x["id"] for x in interfaces if sub["id"] in (x["source"], x["target"])]} for sub in subsystems]
+                     or [{"id": "StockBalances", "columns": ["query"] + ["stock_" + s["id"] for s in model["stocks"]]}], "basis": basis},
         "resources": {"kinds": [{"id": s["id"], "unit": s["unit"]} for s in model["stocks"]],
             "demands": [{"id": "occupancy_" + s["id"], "resource": s["id"], "unit": s["unit"], "basis": basis} for s in model["stocks"]],
             "values": [], "basis": basis},
@@ -108,7 +116,8 @@ def compile_model(model, *, cag_mode="robust"):
                     history.append([row["action_id"], words[sid][t - 1]])
                 x = "x0" if t == 0 else _id("state_", history)
                 info = "i0" if t == 0 else _id("info_", history)
-                node = {"x": x, "i": info, "record": row, "functions": {f: vals[t] for f, vals in raws[pid][sid].items()}}
+                node = {"x": x, "i": info, "record": row, "functions": {f: vals[t] for f, vals in raws[pid][sid].items()},
+                        "flows": {f: vals[t] for f, vals in flows[pid][sid].items()}}
                 if path in nodes and nodes[path] != node:
                     raise ValueError("Nonanticipation violated: identical event/action history has unequal state")
                 nodes[path] = node
@@ -134,7 +143,8 @@ def compile_model(model, *, cag_mode="robust"):
                     d["functional"]["measurements"].extend({"t": str(t), "x": x, "index": "fn_" + f["id"], "raw": q(node["functions"][f["id"]])} for f in functions)
                 d["functional"]["reduction"]["rows"].append({"t": str(t), "x": x, "reduced": reduced})
                 d["generative"]["identity"].append({"t": str(t), "x": x, "native": row["organization"]})
-            d["composition"]["rows"].append({"query": query, "values": [{"port": "stock_" + s["id"], "value": value_ids[s["id"]][row["stocks"][s["id"]]]} for s in model["stocks"]]})
+            d["composition"]["rows"].append({"query": query, "values": [{"port": "stock_" + s["id"], "value": value_ids[s["id"]][row["stocks"][s["id"]]]} for s in model["stocks"]]
+                + [{"port": "iface_" + f, "value": flow_ids[f][v]} for f, v in node["flows"].items()]})
             d["resources"]["values"].extend({"query": query, "demand": "occupancy_" + s["id"], "value": row["stocks"][s["id"]]} for s in model["stocks"])
             d["welfare"]["values"].extend({"query": query, "carrier": w["carrier"], "dimension": w["dimension"],
                 "value": q(Fraction(row["stocks"][w["stock"]]) * (1 if w["direction"] == "higher" else -1))} for w in model["welfare"])
@@ -184,7 +194,8 @@ def compile_model(model, *, cag_mode="robust"):
         "event": deepcopy(model["task"]), "signature_components": signatures,
         "event_payloads": events, "scenario_words": {k: list(v) for k, v in words.items()},
         "state_records": state_records, "query_records": query_records, "semantic_references": semantic_records,
-        "composition_value_dictionary": value_ids,
+        "composition_value_dictionary": value_ids, "interface_value_dictionary": {f: {q(v): i for v, i in ids.items()} for f, ids in flow_ids.items()},
+        "subsystems": deepcopy(subsystems), "interfaces": deepcopy(interfaces),
         "functional_semantics": "DECLARED_FUNCTIONS_MEASURED_ON_EVERY_PROJECTED_TWIN" if functions else "EMPTY_NEUTRAL_VECTOR_NO_ADDITIONAL_FUNCTIONAL_ORDER",
         "function_definitions": deepcopy(functions),
         "resource_semantics": "One stock occupancy per resource per occurrence; capacity bound. Transition balance and once-only atomic withdrawals are separately checked by the compiler domain and retained in ledgers.",
@@ -362,6 +373,7 @@ def evaluate_model(model):
     possible = {p["policy"]: p for p in runs["possible"]["native_result"]["policies"]}
     trajectories = compute_trajectories(model)
     raws = {pid: {sid: function_values(model, tr["daily"]) for sid, tr in traces.items()} for pid, traces in trajectories.items()}
+    flows_by_policy = {pid: {sid: interface_flows(model, tr["daily"]) for sid, tr in traces.items()} for pid, traces in trajectories.items()}
     policies = {}
     for policy in model["policies"]:
         pid = policy["id"]
@@ -390,7 +402,10 @@ def evaluate_model(model):
             "shortfall": {"by_scenario": _shortfall(model, trajectories[pid]), "interpretation": "SEVERITY_DIAGNOSTIC_NOT_WELLBEING_OR_PVS"},
             "by_scenario": _by_scenario(model, trajectories[pid]),
             "functional": {"functions": [f["id"] for f in model.get("functions", [])], "terminal": _value(r["functional"]["terminal"]),
-                "native_cell": deepcopy(r["functional"]["terminal"]), "by_scenario": _functions_by_scenario(model, raws[pid])}}
+                "native_cell": deepcopy(r["functional"]["terminal"]), "by_scenario": _functions_by_scenario(model, raws[pid])},
+            "composition": {"subsystems": [x["id"] for x in model.get("subsystems", [])], "native_cell_state": r["composition"]["state"],
+                "interfaces_by_scenario": {sid: [{"interface": x["id"], "source": x["source"], "target": x["target"],
+                    "total": q(vals[x["id"]][-1])} for x in model.get("interfaces", [])] for sid, vals in flows_by_policy[pid].items()}}}
         policies[pid]["pvs"]["law_range"] = law_range(policies[pid]["by_scenario"], "pvs_given_scenario")
         policies[pid]["task_probability"]["law_range"] = law_range(policies[pid]["by_scenario"], "task_value_given_scenario")
     decision_value = _value(native["decision"])
@@ -413,6 +428,7 @@ def evaluate_model(model):
         "stocks": deepcopy(model["stocks"]), "carriers": deepcopy(model["carriers"]), "welfare": deepcopy(model["welfare"]),
         "task": deepcopy(model["task"]), "event": model["task"]["label"], "joint_law": deepcopy(model["law"]),
         "functions": deepcopy(model.get("functions", [])),
+        "subsystems": deepcopy(model.get("subsystems", [])), "interfaces": deepcopy(model.get("interfaces", [])),
         "signature_components": manifests["robust"]["signature_components"], "policies": policies, "decision": decision,
         "native_integration": deepcopy(native["integration"])}
     canonical["modules"] = module_ledger(model, canonical, trajectories)

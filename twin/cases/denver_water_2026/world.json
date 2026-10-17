@@ -427,6 +427,18 @@
         ]
       },
       {
+        "id": "d_subsystems",
+        "basis": "decision",
+        "statement": "Subsistemas (módulo II): los embalses que administra Denver Water, y los jardines de la población servida. Los une el agua de riego exterior.",
+        "uncertainty": "Representación del modelizador; no se modelan embalses individuales ni la red de distribución.",
+        "spans": [],
+        "premises": [
+          "lawn_ban",
+          "population",
+          "h_outdoor_stage1"
+        ]
+      },
+      {
         "id": "modelling",
         "basis": "definition",
         "statement": "Unidad: puntos porcentuales de la capacidad de los embalses de suministro. Paso mensual, del 15/10/2026 al 15/10/2027 (paso 1 = mediados de noviembre). Riego exterior acumulado como existencia que registra el agua entregada a jardines. La ley sobre los inviernos se declara aparte (claim d_law).",
@@ -1068,6 +1080,50 @@
         },
         "claim_ids": [
           "d_functions"
+        ]
+      },
+      {
+        "path": "/subsystems/0",
+        "value": {
+          "id": "reservoirs",
+          "label": "Embalses de Denver Water",
+          "stocks": [
+            "storage"
+          ],
+          "carriers": [
+            "denver_water"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/subsystems/1",
+        "value": {
+          "id": "gardens",
+          "label": "Jardines de la población servida",
+          "stocks": [
+            "outdoor"
+          ],
+          "carriers": [
+            "residents"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/interfaces/0",
+        "value": {
+          "id": "outdoor_watering",
+          "label": "Agua de riego exterior de los embalses a los jardines (puntos de capacidad)",
+          "source": "reservoirs",
+          "target": "gardens"
+        },
+        "claim_ids": [
+          "d_subsystems"
         ]
       },
       {

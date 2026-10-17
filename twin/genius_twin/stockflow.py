@@ -11,7 +11,7 @@ from pathlib import Path
 import re
 
 PROFILE = "STOCK_FLOW_FINITE_V1"
-ROOT_FIELDS = "profile name horizon step_unit stocks carriers capabilities initial_capabilities actions policies scenarios law welfare task require_all_scenarios selection assumptions functions".split()
+ROOT_FIELDS = "profile name horizon step_unit stocks carriers capabilities initial_capabilities actions policies scenarios law welfare task require_all_scenarios selection assumptions functions subsystems interfaces".split()
 ID_PATTERN = r"^[A-Za-z][A-Za-z0-9_.-]*$"
 Q_PATTERN = r"^(0|[1-9][0-9]*)/[1-9][0-9]*$"
 ASSUMPTION_KINDS = ["MODEL", "INITIALIZATION", "INFORMATION", "SEMANTIC", "CALIBRATION", "NORMATIVE", "PROBABILITY", "SYNTHETIC"]
@@ -83,6 +83,11 @@ def model_schema():
     schema["properties"]["functions"] = arr(obj({"id": ident, "label": txt,
         "serves": {**arr(ident, 0, 6), "uniqueItems": True}, "measure": enum("current", "cumulative"),
         "when": arr({"oneOf": [stock_pred, cap_pred]}, 1, 6)}), 0, 8)
+    # Module II: subsystems partition the stocks; an interface carries what
+    # actions move from one subsystem's stocks into another's. Optional.
+    schema["properties"]["subsystems"] = arr(obj({"id": ident, "label": txt,
+        "stocks": {**arr(ident, 1, 6), "uniqueItems": True}, "carriers": {**arr(ident, 0, 6), "uniqueItems": True}}), 0, 6)
+    schema["properties"]["interfaces"] = arr(obj({"id": ident, "label": txt, "source": ident, "target": ident}), 0, 8)
     schema.update({"$schema": "https://json-schema.org/draft/2020-12/schema", "title": PROFILE,
         "x-semantic-rules": ["Reduced nonnegative rationals, numerator/denominator at most 12 digits",
         "Unique IDs and valid references", "P*S*(H+1)<=128; generated signatures<=16",
@@ -238,6 +243,24 @@ def validate_model(model):
                 refs([predicate["stock"]], stocks, "function.stock")
             else:
                 refs([predicate["capability"]], caps, "function.capability")
+    subsystems = model.get("subsystems", [])
+    if len({x["id"] for x in subsystems}) != len(subsystems):
+        raise ValueError("subsystems: duplicate ID")
+    owned = [k for x in subsystems for k in x["stocks"]]
+    for x in subsystems:
+        refs(x["stocks"], stocks, "subsystem.stocks")
+        refs(x["carriers"], tables["carriers"], "subsystem.carriers")
+    if subsystems and sorted(owned) != sorted(stocks):
+        raise ValueError("subsystems must partition the stocks: each stock in exactly one subsystem")
+    interfaces = model.get("interfaces", [])
+    if interfaces and not subsystems:
+        raise ValueError("interfaces require subsystems")
+    if len({x["id"] for x in interfaces}) != len(interfaces):
+        raise ValueError("interfaces: duplicate ID")
+    for x in interfaces:
+        refs([x["source"], x["target"]], {s["id"] for s in subsystems}, "interface")
+        if x["source"] == x["target"]:
+            raise ValueError("interface must join two different subsystems")
     # Generate all reachable signatures here; never truncate excess signatures.
     traces = _compute(model)
     generated = {row["organization"] for policies in traces.values() for tr in policies.values() for row in tr["daily"]}
@@ -262,6 +285,26 @@ def _matches(pred, stocks, capabilities):
 def choose_action(policy, step, stocks, capabilities):
     return next((rule["action"] for rule in policy["rules"]
                  if step in rule["steps"] and all(_matches(p, stocks, capabilities) for p in rule["when"])), policy["default_action"])
+
+
+def interface_flows(model, daily):
+    """Module II: cumulative amount each interface carried up to each state of one projected twin.
+
+    At a step, an executed action that withdraws from the source subsystem's
+    stocks carries its declared deposits into the target subsystem's stocks.
+    """
+    actions = {a["id"]: a for a in model["actions"]}
+    members = {x["id"]: set(x["stocks"]) for x in model.get("subsystems", [])}
+    out = {}
+    for x in model.get("interfaces", []):
+        total, values = Fraction(), []
+        for row in daily:
+            action = actions.get(row["action_id"])
+            if action and row["action_executed"] and set(action["withdrawals"]) & members[x["source"]]:
+                total += sum((Fraction(v) for k, v in action["deposits"].items() if k in members[x["target"]]), Fraction())
+            values.append(total)
+        out[x["id"]] = values
+    return out
 
 
 def function_values(model, daily):

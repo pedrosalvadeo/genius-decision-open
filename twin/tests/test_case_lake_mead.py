@@ -57,8 +57,15 @@ class LakeMeadCaseTests(unittest.TestCase):
         self.assertEqual(decision['functional_comparison']['all_scenarios'],
                          [{'left': 'release_6', 'right': 'release_7', 'relation': 'DOMINATES', 'better_on': ['glen_canyon_3510'], 'worse_on': []}])
         ledger = {row['module']: row['status'] for row in results['modules']['modules']}
-        self.assertEqual(ledger, {'0': 'FILLED', 'V': 'FILLED', 'I': 'FILLED', 'II': 'SINGLE_SYSTEM', 'III': 'FILLED',
+        self.assertEqual(ledger, {'0': 'FILLED', 'V': 'FILLED', 'I': 'FILLED', 'II': 'FILLED', 'III': 'FILLED',
                                   'IV': 'FILLED', 'VI': 'FILLED', 'VII': 'FILLED'})
+        self.assertTrue(results['modules']['complete'])
+        # Module II: Powell and Mead are subsystems joined by the release; 7 maf carries 931 kaf more, May to September.
+        for policy, total in (('release_6', '0/1'), ('release_7', '931/1')):
+            composition = results['policies'][policy]['composition']
+            self.assertEqual(composition['native_cell_state'], 'DEFINED')
+            self.assertEqual({s: [row['total'] for row in rows] for s, rows in composition['interfaces_by_scenario'].items()},
+                             {'minimum': [total], 'most_probable': [total], 'maximum': [total]})
 
 if __name__ == '__main__':
     unittest.main()
