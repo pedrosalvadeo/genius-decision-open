@@ -58,7 +58,7 @@ ROUTES = {
         'Evaluate an accepted version through the real bounded engine. Consumes the shared agent job budget even on retry. Returns a frozen job receipt. Preserve verification, unknowns and all model/evidence limits; no empirical validation is implied.'),
     'twin_get_job': ('GET', '/jobs/{job_id}', 'twins:read', {'job_id': ID}, ('job_id',), 'Read an own frozen twin job and verification receipt.'),
     'twin_observe': ('POST', '/cases/{case_id}/observations', 'twins:write', {'case_id': ID, 'payload': PAYLOAD}, ('case_id', 'payload'),
-        'Record a source-attributed observation against a frozen prediction. Supported only by the semillero profile; stockflow observations are not implemented. Never fabricate measured evidence. See the REST observation contract for required fields.'),
+        'Record a source-attributed observation against a frozen prediction. Stockflow cases observe a declared stock in its declared unit: payload base_version, policy_id, scenario_id, day (0..horizon), variable (stock id), value (exact decimal or n/d), unit, observed_at (ISO8601 with zone), source, idempotency_key. The prediction is the latest completed evaluation of base_version; no automatic calibration. Never fabricate measured evidence. See the REST observation contract for required fields.'),
     'twin_compare': ('GET', '/cases/{case_id}/compare?before={before}&after={after}', 'twins:read', {'case_id': ID, 'before': dict(type='integer', minimum=1), 'after': dict(type='integer', minimum=1)}, ('case_id', 'before', 'after'),
         'Compare two accepted own versions while preserving changes to assumptions and evidence.'),
     'twin_export': ('GET', '/cases/{case_id}/export', 'twins:read', {'case_id': ID}, ('case_id',),

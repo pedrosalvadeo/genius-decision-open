@@ -550,9 +550,11 @@ class TwinService:
         base = integer(payload["base_version"], "base_version", 1)
         self._case(cid)
         observed_version = self._version(cid, base)
-        require(observed_version["model"]["profile"] == registry.D1, "observation_profile_not_supported",
+        model = observed_version["model"]
+        require(model["profile"] in (registry.D1, registry.STOCKFLOW), "observation_profile_not_supported",
                 "Este perfil todavía no admite registro de observaciones. La comparación de versiones sí está disponible.", 422)
-        day = integer(payload["day"], "day", 0, 14)
+        stockflow = model["profile"] == registry.STOCKFLOW
+        day = integer(payload["day"], "day", 0, model["horizon"] if stockflow else 14)
         key = text(payload["idempotency_key"], "idempotency_key", 128, 8)
         source = text(payload["source"], "source", 2000)
         observed_at = text(payload["observed_at"], "observed_at", 80)
@@ -562,7 +564,9 @@ class TwinService:
             raise ServiceError("invalid_observation_time", "La fecha debe ser ISO8601 con zona horaria.") from exc
         require(timestamp.tzinfo is not None, "invalid_observation_time", "La observación requiere zona horaria.")
         variable = payload["variable"]
-        units = {"water_in_tray_liters": "L", "minutes_a": "min", "minutes_b": "min"}
+        # Stock-flow cases observe a declared stock in its declared unit.
+        units = ({stock["id"]: stock["unit"] for stock in model["stocks"]} if stockflow else
+                 {"water_in_tray_liters": "L", "minutes_a": "min", "minutes_b": "min"})
         require(type(variable) is str and variable in units and payload["unit"] == units[variable], "observation_unit_mismatch", "Variable o unidad no admitida.")
         measured = rational(payload["value"])
         require(measured >= 0, "invalid_quantity", "La magnitud observada no puede ser negativa.")
@@ -575,13 +579,16 @@ class TwinService:
                 return json.loads(previous["response_json"])
             require(case["current_version"] == base, "version_conflict", "Registra la observación contra una versión base actual.", 409)
             prior = self._version(cid, base, conn)
+            policies = {policy["id"] for policy in prior["model"]["policies"]} if stockflow else prior["model"]["policies"]
+            scenarios = {scenario["id"] for scenario in prior["model"]["scenarios"]} if stockflow else prior["model"]["law"]
             require(type(payload["policy_id"]) is str and type(payload["scenario_id"]) is str and
-                    payload["policy_id"] in prior["model"]["policies"] and payload["scenario_id"] in prior["model"]["law"],
+                    payload["policy_id"] in policies and payload["scenario_id"] in scenarios,
                     "invalid_observation_reference", "Política/escenario no pertenece a esta versión.")
             prediction_job = conn.execute("SELECT * FROM jobs WHERE case_id=? AND version=? AND status='completed' ORDER BY created_at DESC LIMIT 1", (cid, base)).fetchone()
             require(prediction_job is not None, "frozen_prediction_required", "Evalúa primero esta versión para contrastar con una predicción congelada.", 422)
             frozen = json.loads(prediction_job["result_json"])
-            predicted = Fraction(frozen["canonical_results"]["policies"][payload["policy_id"]]["trajectories"][payload["scenario_id"]]["daily"][day][variable])
+            state = frozen["canonical_results"]["policies"][payload["policy_id"]]["trajectories"][payload["scenario_id"]]["daily"][day]
+            predicted = Fraction(state["stocks"][variable] if stockflow else state[variable])
             prediction_finished = datetime.fromisoformat(prediction_job["finished_at"])
             deviation = measured != predicted
             oid = identifier()

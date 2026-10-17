@@ -286,12 +286,12 @@ class IndependentD3HTTP(unittest.TestCase):
         self.assertEqual(export["dossier"]["versions"][0]["model_sha256"], accepted["version"]["model_sha256"])
         self.assertEqual(export["dossier"]["evaluations"][0], first)
         self.assertEqual(export["dossier"]["evaluations"][1], second)
-        unsupported = self.request("POST", f"/api/cases/{cid}/observations", {
+        mismatched = self.request("POST", f"/api/cases/{cid}/observations", {
             "base_version": 2, "policy_id": "hold", "scenario_id": "high", "day": 1,
-            "variable": "x", "value": "0/1", "unit": "L", "observed_at": "2026-10-13T00:00:00Z",
+            "variable": "x", "value": "0/1", "unit": "m3", "observed_at": "2026-10-13T00:00:00Z",
             "source": "Hypothetical rejected payload; not a real observation", "idempotency_key": "independent-observe"
-        }, 422)
-        self.assertEqual(unsupported["error"]["code"], "observation_profile_not_supported")
+        }, 400)
+        self.assertEqual(mismatched["error"]["code"], "observation_unit_mismatch")
         unchanged = self.request("GET", f"/api/cases/{cid}")
         self.assertEqual(unchanged["case"]["current_version"], 2)
         self.assertEqual(unchanged["observations"], [])
