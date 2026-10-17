@@ -109,3 +109,11 @@ Estado: `REPAIRED_NOTATION`. Estas normalizaciones no reemplazan la hipótesis a
 ## Cierre de revisión separada en esta release
 
 Las notas anteriores conservan el estado que tenían al registrarse. La auditoría interna separada final verificó AM-01–AM-04 y las normalizaciones de REVIEW_INTEGRATION §7 y emitió PASS para el contrato FP1. Véase [AUDIT_REPORT](../validation/AUDIT_REPORT.md); el gate integral se fundamenta en [ACCEPTANCE_REPORT](../../ACCEPTANCE_REPORT.md). No es aceptación del enunciado literal de 8.6 sin su hipótesis adicional, ni prueba mecanizada o validación empírica.
+
+## AM-02 — Ley empírica de escenarios y revisión de modelos
+
+**Texto completo:** `PROPOSAL_AM-02.md`, con la revisión adversarial separada y sus once reparaciones.
+
+**Estado:** `ACEPTADA_CON_REPARACIONES` el 2026-10-17. Agrega una premisa de legitimidad empírica para la ley de la Definición 8.9 (LEA) y un operador de revisión de modelos versionados.
+
+**Alcance:** no cambia S1 ni el kernel FP1. Ninguna LEA está admitida todavía: la primera aplicación, Lake Mead 2027, se rechaza por falta de resultados independientes y porque su clasificación depende de la política en vigor.
