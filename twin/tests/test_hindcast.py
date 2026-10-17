@@ -70,5 +70,14 @@ class HindcastTests(unittest.TestCase):
                                                                               str(actual(hindcast.month_index('2021-05')) + 3)], spread='3')])
 
 
+    def test_conformal_bands_use_past_errors_and_report_coverage(self):
+        self.assertEqual(hindcast.conformal_quantile([3, 1, 2], Fraction(1, 2)), 2)
+        self.assertIsNone(hindcast.conformal_quantile([1, 2], Fraction(19, 20)))  # too few errors for a 95% bound
+        result = hindcast.bands(self.rows, 'mead', 6, Fraction(1, 5), 36)
+        # Synthetic most probable errors at lead 6 are constant, so every band is exact and covers.
+        self.assertGreater(result['count'], 0)
+        self.assertEqual(result['covered'], result['count'])
+        self.assertEqual(Fraction(result['mean_width']), 0)
+
 if __name__ == '__main__':
     unittest.main()

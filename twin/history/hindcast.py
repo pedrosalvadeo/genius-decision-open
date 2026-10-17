@@ -8,6 +8,8 @@ contrasts  every projected value whose month later became historical, with the a
 envelope   whether the actual value fell inside the [minimum, maximum] projections of the
            same study.
 revisions  historical values that later studies changed (a measurement-robustness signal).
+bands      empirical bands from past errors (split-conformal quantiles) and their observed
+           out-of-sample coverage, the evidence an empirical law needs (PROPOSAL_AM-02).
 learn      selects a data-only correction genome with the discovery/confirmation rule of the
            habitat organisms, using only information published before each target study.
 
@@ -23,6 +25,7 @@ from collections import defaultdict
 import csv
 from fractions import Fraction
 import json
+import math
 from statistics import median
 import sys
 
@@ -208,6 +211,33 @@ def learn(rows, lake, lead, size=PHASE_SIZE, founder=FOUNDER):
                 meaning='Corrección operativa aprendida sólo con información publicada antes de cada estudio. No es bienestar ni PVS.')
 
 
+def conformal_quantile(errors, level):
+    """Rank ceil((n+1)*level) of the sorted errors, or None when the sample is too small for that level."""
+    ordered = sorted(errors)
+    rank = math.ceil((len(ordered) + 1) * level)
+    return ordered[rank - 1] if 1 <= rank <= len(ordered) else None
+
+
+def bands(rows, lake, lead, alpha=Fraction(1, 10), window=120):
+    """Band [projected + q(alpha/2), projected + q(1 - alpha/2)] from the last `window` knowable errors.
+
+    Coverage is counted only on targets whose band could be formed, using information published
+    before each study. Nominal coverage 1 - alpha is a claim; `covered / count` is the check.
+    """
+    out = []
+    for target in targets(rows, lake, lead):
+        past = target['past'][-window:]
+        low, high = conformal_quantile(past, alpha / 2), conformal_quantile(past, 1 - alpha / 2)
+        if low is None or high is None:
+            continue
+        out.append(dict(study=month_text(target['study']), lower=target['projected'] + low, upper=target['projected'] + high,
+                        actual=target['actual'], covered=target['projected'] + low <= target['actual'] <= target['projected'] + high))
+    covered = sum(b['covered'] for b in out)
+    return dict(protocol=PROTOCOL, lake=lake, lead=lead, nominal=str(1 - alpha), window=window, count=len(out), covered=covered,
+                mean_width=str(sum(b['upper'] - b['lower'] for b in out) / len(out)) if out else None,
+                meaning='Cobertura observada fuera de muestra de bandas empíricas. No es bienestar ni PVS.')
+
+
 def _text(m):
     return {k: str(v) for k, v in m.items()}
 
@@ -221,9 +251,20 @@ def main(argv=None):
     learning.add_argument('--lake', default='mead')
     learning.add_argument('--lead', type=int, default=12)
     learning.add_argument('--phase-size', type=int, default=PHASE_SIZE)
+    banding = commands.add_parser('bands')
+    banding.add_argument('csv')
+    banding.add_argument('--lake', default='mead')
+    banding.add_argument('--lead', type=int, default=12)
+    banding.add_argument('--alpha', type=Fraction, default=Fraction(1, 10))
+    banding.add_argument('--window', type=int, default=120)
     args = parser.parse_args(argv)
     rows = load(args.csv)
-    result = summary(rows) if args.command == 'summary' else learn(rows, args.lake, args.lead, args.phase_size)
+    if args.command == 'summary':
+        result = summary(rows)
+    elif args.command == 'learn':
+        result = learn(rows, args.lake, args.lead, args.phase_size)
+    else:
+        result = bands(rows, args.lake, args.lead, args.alpha, args.window)
     json.dump(result, sys.stdout, ensure_ascii=False, indent=1, default=str)
     print()
 

@@ -31,3 +31,16 @@ Almacenamiento de Lake Mead, error = real − proyectado, en kaf:
 - El rango mínimo–máximo de Reclamation contuvo la realidad en menos de la mitad de los casos, y las salidas por arriba y por abajo son parecidas. No es un intervalo de confianza.
 - Con el archivo completo, ninguna corrección simple (mediana o media de errores pasados) mejora de forma estable el más probable a 12 meses: en 7 ensayos no hubo variante elegible o se rechazó en confirmación. A 3 y 6 meses se adoptaron correcciones en algunos ensayos y se rechazaron en otros. El resultado de la transcripción parcial (mejora del 20–30 %) no se sostiene.
 - Lo que sí se sostiene es que hay que medir la incertidumbre en vez de tomarla de los escenarios publicados. Ese es el camino de la propuesta AM-02.
+
+Bandas empíricas al 90 % (`hindcast.py bands`): el más probable más los cuantiles 5 % y 95 % de los últimos 120 errores conocidos, sólo con información publicada antes de cada estudio.
+
+| Plazo | Real dentro de la banda | Ancho medio (kaf) | Ancho medio del rango de Reclamation (kaf) |
+|---|---|---|---|
+| 3 meses | 146 de 177 (82 %) | 931 | 231 |
+| 6 meses | 154 de 171 (90 %) | 2053 | 567 |
+| 12 meses | 148 de 159 (93 %) | 5042 | 1612 |
+| 23 meses | 124 de 137 (91 %) | 6183 | 4180 |
+
+- De 6 a 23 meses, las bandas cumplen la cobertura que declaran. A 3 meses se quedan cortas.
+- La incertidumbre real a 12 meses es unas tres veces el rango publicado.
+- Con ventanas de 36 errores o al 80 % la cobertura queda por debajo de lo nominal. Los errores están correlacionados en el tiempo.
