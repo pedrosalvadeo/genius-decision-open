@@ -1,0 +1,4 @@
+socket family 2 denied
+socket family 10 denied
+Credential-bearing environment absent; no client binaries or databases invoked
+3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]

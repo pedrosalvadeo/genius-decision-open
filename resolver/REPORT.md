@@ -2,14 +2,14 @@
 
 Estado generado desde `ledger.json`. El buscador inspecciona muestras; no cubre toda Internet.
 
-Problemas registrados: **20** · Soluciones preparadas: **4** · Aplicadas pendientes de verificación: **0** · Resultados verificados: **0**
+Problemas registrados: **20** · Soluciones preparadas: **5** · Aplicadas pendientes de verificación: **0** · Resultados verificados: **0**
 
 | Problema público | Estado | Última evidencia |
 |---|---|---|
 | [README: explain removing secrets and synchronising removals](https://github.com/getsotto/sotto/issues/612) | SOLUTION_PREPARED | Guía de eliminación y sincronización preparada en cinco idiomas; 20 pruebas documentales aprobadas y parche aplicado en copia limpia. Sin ejecutar el CLI, enviar cambios a Sotto ni firmar DCO. Kernel no ejecutado. |
 | [docs: add an end-to-end first-agent walkthrough](https://github.com/naninu123/4evergent/issues/28) | DETECTED | Detectado; pendiente de investigación. |
 | [Write a threat model for the engine, service and registry (docs/threat-model.md)](https://github.com/ezedike-evan/corridor-in-a-box/issues/301) | DETECTED | Detectado; pendiente de investigación. |
-| [docs(integrations): explain possible and confirmed fixes in each agent guide](https://github.com/wuisabel-gif/MemWhale/issues/423) | INVESTIGATING | Detectado; pendiente de investigación. |
+| [docs(integrations): explain possible and confirmed fixes in each agent guide](https://github.com/wuisabel-gif/MemWhale/issues/423) | SOLUTION_PREPARED | Preparadas cinco guías de MemWhale #423: candidato versus confirmación, procedencia, desactivación y excepción Rho. Nueve controles estáticos aprobados, repetidos en copia limpia. Sin envío, aplicación ni verificación de clientes en vivo. Kernel no ejecutado. |
 | [docs: document the authorization model](https://github.com/sorotrail/SoroBeacon/issues/472) | DETECTED | Detectado; pendiente de investigación. |
 | [test(gemini-cli): verify capture and proactive recall in a live Gemini CLI session](https://github.com/wuisabel-gif/MemWhale/issues/422) | DETECTED | Detectado; pendiente de investigación. |
 | [Docs: guide for writing a plugin](https://github.com/morethanrealio/brambit/issues/4) | SOLUTION_PREPARED | Guía y plugin preparados; cuatro pruebas de integración y controles de catálogos y estilo de pruebas aprobados. Pendiente de asignación, CLA y envío externo. |

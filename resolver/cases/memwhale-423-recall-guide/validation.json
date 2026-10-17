@@ -1,0 +1,45 @@
+{
+  "status": "SOLUTION_PREPARED",
+  "baseline": {
+    "tests": 9,
+    "failed_methods": 5,
+    "failed_subchecks": 18,
+    "passed_methods": 4,
+    "log": "baseline.log"
+  },
+  "acceptance": {
+    "tests_passed": 9,
+    "log": "acceptance.log"
+  },
+  "clean_patch_application": {
+    "git_apply_check": true,
+    "git_diff_check": true,
+    "tests_passed": 9,
+    "log": "portability.log"
+  },
+  "isolation": {
+    "python": "3.12.3",
+    "inherited_environment_removed": true,
+    "ipv4_ipv6_sockets_denied": true,
+    "personal_databases_accessed": false,
+    "upstream_programs_executed": false,
+    "log": "isolation.log"
+  },
+  "scope": {
+    "changed_files": 5,
+    "common_section_lines": 9,
+    "rho_section_lines": 3,
+    "command_blocks_unchanged": true,
+    "status_sections_unchanged": true,
+    "source_review": "source-review.md"
+  },
+  "limitations": [
+    "Static tests and manual source review only; not independent certification.",
+    "Full npm/Rust suites, runtime documentation-reference check and live clients not run.",
+    "No external comment, claim, PR, application or adoption."
+  ],
+  "kernel": {
+    "executed": false,
+    "reason": "No justified domain representation for this documentation correction; CAG/PVS/wellbeing not measured."
+  }
+}

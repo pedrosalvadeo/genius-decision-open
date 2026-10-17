@@ -1,0 +1,111 @@
+{
+  "claude-code": {
+    "headings": [
+      "## Status",
+      "## Requirements",
+      "## Setup",
+      "## Verify",
+      "## Available capabilities",
+      "## Example prompt",
+      "## Troubleshooting",
+      "## Uninstall"
+    ],
+    "code_blocks": [
+      "e3e54e324d0e7726dd22aab14fc3b3a3ff7a1bc7b00347460364f432e25b4ab7",
+      "3c77ae1213e680c76aa461464386cb0ae27b2fb1159f7c5ff74b6c67b5c9e0a4",
+      "680456d260b8f93abf218e74c1cfd415e8966d9cba37ace04535874af41e8784",
+      "0b6a003ffe91d07ff33f41652b40362ae2038af31cc7602961b976050180f81b",
+      "fe41713bba7ce35d506f401476cad2f3d245d341f1cfd55fafa232527d30729d",
+      "bdf5ca56a6ce691610c298a2b0ae2de30503d3c9004172346f04105b01fa53c8",
+      "bb25d5eaa8c6ebfe3ad9f2ec7711417fe17c8a65712198273204098bb9995d35",
+      "0bde24c066b615ea42eb8b2403b1380a607c6ce2e51ad4e926dd034688babb95",
+      "44ec10b43572d4c15bc37e793165f6b924297af446cfb5c3b71d5276966a08e1"
+    ],
+    "status": "ec69851b76442463e4b21871ee9d137961c88065e7c22f15872278c699255e73"
+  },
+  "cursor": {
+    "headings": [
+      "## Status",
+      "## Requirements",
+      "## Setup",
+      "## Verify",
+      "## Available capabilities",
+      "## Example prompt",
+      "## Troubleshooting",
+      "## Uninstall"
+    ],
+    "code_blocks": [
+      "f991220020be6697c07dd59dd2557bf519317020e28ac44cf0c8d39c692cca6a",
+      "46d50d23b5c6e27a8ec9f94e64d53465a9d9bcc55e399b66b086ec71caf4dafb",
+      "c2c74b8ae7a8b2fbd205e747adb2bf744bf3c5eca0c99d4ed1d9b216c485dbef",
+      "8923c02b0f57f9902352de6315523a292cdc7ec222abb7dea2ea99155e437921",
+      "ac64a990be183d4c01e45fbf379788cf4a0d7cc9078dc916c14dafe4e2479327",
+      "faf98943fd581dd7999779c548c404f153d7271640141fb50e516e8b7c640d5f"
+    ],
+    "status": "eec03373b17242c27ef651ab6e273ecf4f4c499e4ee8017fd8f7684774402fda"
+  },
+  "codex": {
+    "headings": [
+      "## Status",
+      "## Requirements",
+      "## Setup",
+      "## Verify",
+      "## Available capabilities",
+      "## Example prompt",
+      "## Troubleshooting",
+      "## Uninstall"
+    ],
+    "code_blocks": [
+      "e1edb681d0d2eabdb65e10984985fe82314a5720e87a2022f91b8abbdcc973a5",
+      "29b6f7eb8d5f0b2dfb44439cb794dfaedb872fb1ffa0f12d7fbea9500b71cd74",
+      "92e98452e9ae7f8985638205fbeb7aebddcde7cd630cc4905fa71b4aee9fd852"
+    ],
+    "status": "be163836b22692fe1f72bc47934882ae523dc5a14d76e35cd5771c66a7c39360"
+  },
+  "gemini-cli": {
+    "headings": [
+      "## Status",
+      "## Requirements",
+      "## Setup",
+      "## Verify",
+      "## Available capabilities",
+      "## Example prompt",
+      "## Troubleshooting",
+      "## Uninstall"
+    ],
+    "code_blocks": [
+      "2ad25b34d47d5a620e1fa7d0bd55e6e19ef4a3da7e511f0c7f1a61949fc60894",
+      "f991220020be6697c07dd59dd2557bf519317020e28ac44cf0c8d39c692cca6a",
+      "eaf0f30275e7e53af00f927f2d83b541e51146344fdaa4258f1923c1e13b0952",
+      "b38fb57245fd8c82a76cada0c556e5cac3c31d28fa68defb252988cb082988b2"
+    ],
+    "status": "4dffa4e63c62b3e979ce5190fac6c9c8da03e1dd4575403f9c9e0b5e838a55cd"
+  },
+  "rho": {
+    "headings": [
+      "## Status",
+      "## Requirements",
+      "## Setup",
+      "## Verify",
+      "## Available capabilities",
+      "## Example prompt",
+      "## Troubleshooting",
+      "## Uninstall"
+    ],
+    "code_blocks": [
+      "c696b8090886673fa8280c295c8f5aee7784a5c72b0e1c9be7455be3f438b136",
+      "5c788eb1e3a04a21a8c1b0a248cf375898f629af928fc07e12669b0a95b395dd",
+      "a6dced860678c4f44906d850af8a14cb1777f9f47368ea503ca47e5fba7d54d6",
+      "e095616a0138cd2075c74ac9d1d3b5765f036dd666ac5d532b2d2e3c4451aa00",
+      "c2881aa224ef1d3606714034772eece47525f591c3741ed7eb10533cab209fde",
+      "345a18d4dda7d31527c9391d2ac9f3174792ba8ec6aefb5145c9795da84f6097",
+      "dfab1f4f79599d84b505dbf5fe941996194b8b4de503163c912ca704a66ba976",
+      "757276c9f3e70ee3b790577bf28c8e143a5c6728935e061bb89c182e1b474473",
+      "ffa8f42379dc177947f1e3650b29098cd9c3236ac38b806ed3079e162348737c",
+      "698f25e3c1f8894418514a4925cc3be56a3dd76b92a71873bd63530636f5d504",
+      "2e5088a9d4bb35eaf93515e063f5a9c1fa9d239600c669ed85d9af07b99f8f2e",
+      "94ebba43925e246a854eaa734fd3e8f744e32cb11b77b803aacc8df33f367f0e"
+    ],
+    "status": "bc3df9f509224868080569b8a06728677b1babdacbbea93d24b546eab4fad440"
+  }
+}

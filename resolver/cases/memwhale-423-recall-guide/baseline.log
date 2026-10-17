@@ -1,0 +1,215 @@
+test_codex_unknown_exit_limit_kept (__main__.RecallGuideTests.test_codex_unknown_exit_limit_kept) ... ok
+test_command_blocks_unchanged (__main__.RecallGuideTests.test_command_blocks_unchanged) ... ok
+test_common_wording (__main__.RecallGuideTests.test_common_wording) ... 
+  test_common_wording (__main__.RecallGuideTests.test_common_wording) (client='claude-code') ... FAIL
+  test_common_wording (__main__.RecallGuideTests.test_common_wording) (client='cursor') ... FAIL
+  test_common_wording (__main__.RecallGuideTests.test_common_wording) (client='codex') ... FAIL
+  test_common_wording (__main__.RecallGuideTests.test_common_wording) (client='gemini-cli') ... FAIL
+test_eight_top_headings_unchanged (__main__.RecallGuideTests.test_eight_top_headings_unchanged) ... ok
+test_no_stale_certainty (__main__.RecallGuideTests.test_no_stale_certainty) ... 
+  test_no_stale_certainty (__main__.RecallGuideTests.test_no_stale_certainty) (client='cursor') ... FAIL
+  test_no_stale_certainty (__main__.RecallGuideTests.test_no_stale_certainty) (client='codex') ... FAIL
+  test_no_stale_certainty (__main__.RecallGuideTests.test_no_stale_certainty) (client='gemini-cli') ... FAIL
+test_release_links (__main__.RecallGuideTests.test_release_links) ... 
+  test_release_links (__main__.RecallGuideTests.test_release_links) (client='claude-code') ... FAIL
+  test_release_links (__main__.RecallGuideTests.test_release_links) (client='cursor') ... FAIL
+  test_release_links (__main__.RecallGuideTests.test_release_links) (client='codex') ... FAIL
+  test_release_links (__main__.RecallGuideTests.test_release_links) (client='gemini-cli') ... FAIL
+  test_release_links (__main__.RecallGuideTests.test_release_links) (client='rho') ... FAIL
+test_rho_exception (__main__.RecallGuideTests.test_rho_exception) ... FAIL
+test_short_sections (__main__.RecallGuideTests.test_short_sections) ... 
+  test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='claude-code') ... FAIL
+  test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='cursor') ... FAIL
+  test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='codex') ... FAIL
+  test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='gemini-cli') ... FAIL
+  test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='rho') ... FAIL
+test_status_claims_unchanged (__main__.RecallGuideTests.test_status_claims_unchanged) ... ok
+
+======================================================================
+FAIL: test_common_wording (__main__.RecallGuideTests.test_common_wording) (client='claude-code')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 40, in test_common_wording
+    self.assertEqual(section(read(client), '### Recall notes'), EXPECTED)
+AssertionError: '' != "### Recall notes\n\n`possible fix:` is t[513 chars]md)."
++ ### Recall notes
++ 
++ `possible fix:` is the next different command that passed after the failure;
++ `confirmed fix:` means the failing command passed after that candidate in at least two episodes.
++ The note names who last ran the candidate (an agent or a terminal), so evidence
++ can cross agents sharing the same local store.
++ This is observed history, not proof of cause; check whether it applies here.
++ Set `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook's environment to silence notes, not capture.
++ See the [0.20.0 release notes](../../docs/releases/0.20.0.md).
+
+
+======================================================================
+FAIL: test_common_wording (__main__.RecallGuideTests.test_common_wording) (client='cursor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 40, in test_common_wording
+    self.assertEqual(section(read(client), '### Recall notes'), EXPECTED)
+AssertionError: '' != "### Recall notes\n\n`possible fix:` is t[513 chars]md)."
++ ### Recall notes
++ 
++ `possible fix:` is the next different command that passed after the failure;
++ `confirmed fix:` means the failing command passed after that candidate in at least two episodes.
++ The note names who last ran the candidate (an agent or a terminal), so evidence
++ can cross agents sharing the same local store.
++ This is observed history, not proof of cause; check whether it applies here.
++ Set `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook's environment to silence notes, not capture.
++ See the [0.20.0 release notes](../../docs/releases/0.20.0.md).
+
+
+======================================================================
+FAIL: test_common_wording (__main__.RecallGuideTests.test_common_wording) (client='codex')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 40, in test_common_wording
+    self.assertEqual(section(read(client), '### Recall notes'), EXPECTED)
+AssertionError: '' != "### Recall notes\n\n`possible fix:` is t[513 chars]md)."
++ ### Recall notes
++ 
++ `possible fix:` is the next different command that passed after the failure;
++ `confirmed fix:` means the failing command passed after that candidate in at least two episodes.
++ The note names who last ran the candidate (an agent or a terminal), so evidence
++ can cross agents sharing the same local store.
++ This is observed history, not proof of cause; check whether it applies here.
++ Set `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook's environment to silence notes, not capture.
++ See the [0.20.0 release notes](../../docs/releases/0.20.0.md).
+
+
+======================================================================
+FAIL: test_common_wording (__main__.RecallGuideTests.test_common_wording) (client='gemini-cli')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 40, in test_common_wording
+    self.assertEqual(section(read(client), '### Recall notes'), EXPECTED)
+AssertionError: '' != "### Recall notes\n\n`possible fix:` is t[513 chars]md)."
++ ### Recall notes
++ 
++ `possible fix:` is the next different command that passed after the failure;
++ `confirmed fix:` means the failing command passed after that candidate in at least two episodes.
++ The note names who last ran the candidate (an agent or a terminal), so evidence
++ can cross agents sharing the same local store.
++ This is observed history, not proof of cause; check whether it applies here.
++ Set `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook's environment to silence notes, not capture.
++ See the [0.20.0 release notes](../../docs/releases/0.20.0.md).
+
+
+======================================================================
+FAIL: test_no_stale_certainty (__main__.RecallGuideTests.test_no_stale_certainty) (client='cursor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 63, in test_no_stale_certainty
+    self.assertNotIn('fix that worked last time', text)
+AssertionError: 'fix that worked last time' unexpectedly found in '# Cursor + MemoryWhale Give Cursor\'s agent the same local MemoryWhale tools: it can read what already failed and write down what it figured out. Memory access, guidance, and optional execution capture are separate components. ## Status Verified against Cursor\'s [MCP](https://cursor.com/docs/context/mcp) and [CLI MCP](https://cursor.com/docs/cli/mcp) documentation on 2026-08-29. Project config is `.cursor/mcp.json`. User config is `~/.cursor/mcp.json`. Both files are merged; a duplicate name in the project file wins. The development branch adds opt-in local Agent/Shell capture using the published [Cursor hooks contract](https://cursor.com/docs/hooks). Its fixtures are documentation-derived, not recordings from a pinned live Cursor version. **Live Cursor verification is pending:** Cursor was not installed in the test environment. This does not claim cloud-agent or native Windows capture support. ## Requirements - MemoryWhale installed with `mw-mcp` on `PATH`. - Cursor (editor or CLI `agent`). - Optional: the repository Rule file [`memorywhale.mdc`](memorywhale.mdc). - For capture: a build containing the new `--capture` and `--from-hook cursor` options, including `mw-remember`, on local macOS or Linux/WSL. These options are not in the published 0.10.0 binaries. ## Setup ### Connect the MCP server `mw-mcp` is a local stdio MCP server. Point Cursor at it via `mcp.json`: - This project only: copy [`mcp.json`](mcp.json) to `.cursor/mcp.json` in your project root. - Every project: put the same JSON in `~/.cursor/mcp.json`. ```json { "mcpServers": { "memorywhale": { "command": "mw-mcp" } } } ``` `mw-mcp` must be on `PATH` (the standard MemoryWhale install). If it isn\'t, use its absolute path as `command`. To point at a non-default database, add `"env": { "MEMORYWHALE_DATA_DIR": "/path/to/dir" }`. ### Add the Rule The MCP server gives Cursor the tools; this Rule teaches it when to reach for them (recurring failures, "how did we fix this last time", and saving a conclusion once a fix is found). - This project only: copy [`memorywhale.mdc`](memorywhale.mdc) to `.cursor/rules/memorywhale.mdc`. - Every project: add it via Cursor Settings → Rules → User Rules. It is an "Agent Requested" rule (`alwaysApply: false`), so Cursor pulls it in only when the description matches what you\'re doing. ### Opt into command capture (development branch) Build all helpers together from the repository root. This also provides a reader that recognizes the new structured `cursor` provenance value: ```bash cargo build --release --locked -p memorywhale-cli --bins export MW="$PWD/target/release/mw" "$MW" integrate cursor --capture --dry-run "$MW" integrate cursor --capture "$MW" integrate cursor --capture --check ``` Before enabling capture against an existing store, point the Cursor MCP configuration at this same build\'s absolute `target/release/mw-mcp` path and reload the connection. Building new capture helpers does not replace an older `mw-mcp` on PATH. Prefer a disposable data directory for the first test. This capture-only mode adds Shell-matched `postToolUse` and `postToolUseFailure` command hooks to `~/.cursor/hooks.json`. It does not install MCP, a Rule, or a skill, change permissions, or approve workspace trust. Follow Cursor\'s normal hook review/trust behavior before using them. Use `--hooks-file .cursor/hooks.json` on every command for an explicit project file. Arbitrary custom files are not automatically registered with Cursor. Existing hooks/settings are preserved. Unowned MemoryWhale capture conflicts, duplicate owned entries, and modified ownership snapshots fail without silently overwriting configuration. A private sidecar stores only the owned entries; interrupted writes require inspection rather than forced recovery. If `MEMORYWHALE_DATA_DIR` is set during installation, its absolute location is quoted into the hook command. Keep it aligned with the MCP server\'s store. Changing that setting or moving the helper requires explicit revert/reinstall with the same hooks-file selection. `--check` checks local configuration and executable paths; it does not run Cursor or prove hook delivery. ## Verify ```bash command -v mw-mcp ``` In the editor, open Settings → MCP and confirm `memorywhale` is listed. From the Cursor CLI, which uses the same config: ```bash agent mcp list agent mcp list-tools memorywhale ``` You should see the six tools: `recent_errors`, `search_memory`, `get_context`, `remember`, `similar_failures`, and `stats`. For capture, ask an approved local Cursor session to run a harmless unique command, then use the same MemoryWhale store to search its marker with `agent:cursor`. Inspect the recorded command, exit field, and `cursor_status` notes. Repeat with a nonzero exit and a cancelled/denied call where available. Record the actual Cursor version and event payload shape before calling that client configuration verified. The repository\'s credential-free tests exercise the complete helper-to-SQLite path and retrieve fixtures in fresh CLI and MCP processes: ```bash test_data="$(mktemp -d)" MEMORYWHALE_DATA_DIR="$test_data" cargo test --locked -p memorywhale-cli --test cursor_capture --test cursor_capture_install ``` These tests do not execute the commands written inside synthetic hook payloads or substitute for a live Cursor session. ## Available capabilities | Capability | Available | | --- | --- | | MCP memory access | Yes | | Automatic execution capture | Opt-in development adapter; documented local Shell contract, live client verification pending | | Memory-use guidance | Yes, optional Rule | MCP access is not automatic execution capture. Without explicitly installing the capture hooks, commands are recorded only through normal terminal capture, `mw-run`, or explicit `mw-remember` calls. ### Capture fidelity and limits - Only the generic Shell outcome pair is consumed. `afterShellExecution`, other tools, and blocking/pre-execution events are ignored to avoid overlapping surfaces. Repeated legitimate commands remain separate records; replaying an identical hook payload is not a globally deduplicated delivery protocol. - `postToolUse.tool_output` must be a JSON-stringified object. Numeric `exitCode` values from 0 through 255 are recorded when present. Tool completion, malformed output, or an error message never implies exit zero or exit one. - Failure, timeout, denial, and cancellation have separate `cursor_status` notes. Their numeric exit remains NULL; permission denial is explicitly marked not executed, and other failures do not confirm execution. - The actual absolute `cwd` must exist locally so directory capture policy can be applied. Missing, invalid, or unavailable cwd skips the event; neither workspace roots nor the hook process cwd are substituted. - Available conversation/generation/tool IDs, duration, and client-version metadata are retained with bounds. User email, arbitrary input notes, and claimed agent identity are not imported. - Hook JSON is bounded to 4 MiB. Commands over 8 KiB are skipped rather than truncated. Output previews are UTF-8-safe and capped at 20,000 bytes before shared redaction, with explicit truncation markers. IDs are capped at 256 bytes. - Shared exclusions, `off` and `commands-only` capture policy, and redaction still apply. Hook processing emits no decisions, returns normally on malformed input/storage failure, and uses a five-second configured timeout. - Hook feedback: after a recorded Shell command, the hook may print one `{"additional_context": "..."}` line, which Cursor adds to the conversation ([hooks reference](https://cursor.com/docs/agent/hooks)). It names the fix that worked last time when a command fails with an error seen before, and asks for a one-sentence lesson when a command passes right after failing. Otherwise stdout stays empty, and any lookup error is silent. Set `MEMORYWHALE_HOOK_FEEDBACK=0` in the hook\'s environment to record silently. - Build/use matching helpers and readers. Older releases that reject unknown producing-agent values may not read stores containing `cursor` records. The Rule falls back to the `mw` CLI, so even with only the binaries installed, Cursor can run `mw context --last-error` / `mw search "…"` / `mw remember "…"`. With no editor integration at all, `mw ask` packages the last failure onto your clipboard for any chat. ## Example prompt > Use MemoryWhale to check whether I encountered a similar failure before. ## Troubleshooting - Run `command -v mw-mcp` in the environment that launches Cursor. Use an absolute `command` if the GUI `PATH` differs from your shell. - Confirm you edited `.cursor/mcp.json` or `~/.cursor/mcp.json`, not some other client\'s file. - Restart Cursor or reload MCP if the server does not appear. - If the wrong database opens, set `MEMORYWHALE_DATA_DIR` in the server `env`. - Run `mw doctor` to check the MemoryWhale install. - For capture, check the selected hooks file, executable permissions, and the same data-directory setting with `mw integrate cursor --capture --check`. Hook failures are silent by default. For a controlled diagnostic invocation, set `MEMORYWHALE_HOOK_DIAGNOSTICS=1` in the environment of `mw-remember --from-hook cursor`; fixed, nonfatal stderr messages can explain skipped payloads or storage failures. Test with synthetic input and a disposable `MEMORYWHALE_DATA_DIR` to avoid recording an event twice in the normal store. The diagnostic messages never include the payload or underlying storage error. ## Uninstall Remove only the capture hooks with the same build/file selection used to install: ```bash "$MW" integrate cursor --capture --revert # For an explicit project file: "$MW" integrate cursor --capture --hooks-file .cursor/hooks.json --revert ``` This removes only unchanged owned capture entries, not memory, MCP configuration, Rules, or optional skills. Remove those independently if desired. Delete the `memorywhale` entry from `.cursor/mcp.json` and/or `~/.cursor/mcp.json`. Remove `.cursor/rules/memorywhale.mdc` or the matching user Rule. Restart Cursor. This does not delete the MemoryWhale database. '
+
+======================================================================
+FAIL: test_no_stale_certainty (__main__.RecallGuideTests.test_no_stale_certainty) (client='codex')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 64, in test_no_stale_certainty
+    self.assertNotIn('an error that a later command fixed before', text)
+AssertionError: 'an error that a later command fixed before' unexpectedly found in '# Codex CLI + MemoryWhale OpenAI\'s Codex CLI supports MCP servers via TOML config, so it can use MemoryWhale\'s six local memory tools. ## Status Verified against OpenAI\'s [Codex MCP](https://developers.openai.com/codex/mcp) documentation on 2026-08-29. User config is `~/.codex/config.toml`. Trusted projects may also use `.codex/config.toml`. Each server is a `[mcp_servers.<name>]` table with `command` for stdio. The TUI lists servers with `/mcp`. ## Requirements - MemoryWhale installed with `mw-mcp` on `PATH`. - Codex CLI (or the Codex IDE extension, which opens the same `config.toml`). ## Setup Add the block from [`config.toml`](config.toml) to `~/.codex/config.toml`: ```toml [mcp_servers.memorywhale] command = "mw-mcp" ``` `mw-mcp` must be on `PATH` (standard MemoryWhale install); otherwise use its absolute path. For a non-default database add `env = { MEMORYWHALE_DATA_DIR = "/path/to/dir" }`. The top-level key is `mcp_servers`, not `mcpServers`. ### Memory-use guidance Codex reads an `AGENTS.md` at your repo root. Add: > When a build/test/deploy fails, before proposing a fix, use `search_memory` > or `recent_errors` (MemoryWhale MCP) to check whether this failure has a known > cause or a saved lesson. Once you\'ve figured out why something failed or how a > fix worked, use `remember` to save that conclusion. ### Command capture and proactive recall (optional) ```bash mw integrate codex --capture # add the hook to ~/.codex/hooks.json mw integrate codex --capture --check # confirm it is installed mw integrate codex --capture --revert # remove only what MemoryWhale added ``` This adds one `PostToolUse` hook for Codex\'s `Bash` tool ([Codex hooks](https://developers.openai.com/codex/hooks)). It runs `mw-remember --from-hook codex`, which records each shell command Codex runs with its working directory and output. Your other hooks are kept; `--dry-run` shows the change without writing, and `--hooks-file PATH` edits another file. When the output contains an error that a later command fixed before, Codex gets one line in its context naming that fix, the same note Claude Code and Cursor get. Set `MEMORYWHALE_HOOK_FEEDBACK=0` to record without it. Limits, checked against Codex\'s source on 2026-10-04: - Codex hands the hook the command\'s combined output as one string with no exit code (its docs describe separate `exit_code`, `stdout`, and `stderr`; both shapes are accepted). Codex rows are stored with an unknown exit, so they do not appear in `recent_errors` or `mw context --last-error`, and the "passed after failing, save the lesson" note does not fire for Codex. - Commands still running in a background session when the tool call returns do not reach the hook. - Output is truncated by Codex before the hook sees it, then secret-scrubbed by MemoryWhale before it is written. ## Verify ```bash command -v mw-mcp mw integrate codex --capture --check ``` In the Codex TUI, run `/mcp` and confirm `memorywhale` is active. You should see the six tools: `recent_errors`, `search_memory`, `get_context`, `remember`, `similar_failures`, and `stats`. ## Available capabilities | Capability | Available | | --- | --- | | MCP memory access | Yes | | Automatic execution capture | Yes, opt-in (`--capture`); exit codes unknown | | Proactive recall | Yes, with capture | | Memory-use guidance | Yes, via `AGENTS.md` | MCP access alone is not execution capture; that needs `--capture`. Without the MCP server, the `mw` CLI still works: `mw context --last-error`, `mw search "…"`, `mw remember "…"`. ## Example prompt > Use MemoryWhale to check whether I encountered a similar failure before. ## Troubleshooting - Run `command -v mw-mcp` from the environment that launches Codex. - Confirm you edited `[mcp_servers.memorywhale]`, not an `mcpServers` JSON block from another client. - Restart Codex after editing `config.toml`. - If the wrong database opens, set `MEMORYWHALE_DATA_DIR` in `env`. - Run `mw doctor` to check the MemoryWhale install. ## Uninstall Run `mw integrate codex --capture --revert` if you installed capture. Delete the `[mcp_servers.memorywhale]` table from `~/.codex/config.toml` (and any project `.codex/config.toml`). Remove the `AGENTS.md` instruction if you added one. This does not delete the MemoryWhale database. '
+
+======================================================================
+FAIL: test_no_stale_certainty (__main__.RecallGuideTests.test_no_stale_certainty) (client='gemini-cli')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 64, in test_no_stale_certainty
+    self.assertNotIn('an error that a later command fixed before', text)
+AssertionError: 'an error that a later command fixed before' unexpectedly found in '# Gemini CLI + MemoryWhale Google\'s [Gemini CLI](https://github.com/google-gemini/gemini-cli) connects to MCP servers, so it can use MemoryWhale\'s six local memory tools. ## Status Verified against Gemini CLI\'s [MCP setup tutorial](https://geminicli.com/docs/cli/tutorials/mcp-setup/) and the project\'s [MCP server docs](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md) on 2026-08-29. Servers go in `mcpServers` inside `~/.gemini/settings.json` or `.gemini/settings.json`. Stdio servers use `command`. `/mcp list` shows connection status. ## Requirements - MemoryWhale installed with `mw-mcp` on `PATH`. - Gemini CLI installed. ## Setup ```bash mw integrate gemini # add MemoryWhale MCP to ~/.gemini/settings.json mw integrate gemini --check # confirm it is installed ``` `--dry-run` shows the change without writing, `--revert` removes only what MemoryWhale added, and `--config PATH` edits another settings file (such as a project\'s `.gemini/settings.json`). Your other settings and MCP servers are kept. To set it up by hand instead, add the `memorywhale` entry from [`settings.json`](settings.json) to your Gemini CLI settings: - Every project: `~/.gemini/settings.json` - This project only: `.gemini/settings.json` in the project root ```json { "mcpServers": { "memorywhale": { "command": "mw-mcp" } } } ``` If the file already has an `mcpServers` object, add `memorywhale` alongside your other servers rather than replacing it. `mw-mcp` must be on `PATH` (the standard MemoryWhale install); otherwise use its absolute path as `command`. For a non-default database add `"env": { "MEMORYWHALE_DATA_DIR": "/path/to/dir" }`. ### Memory-use guidance A `GEMINI.md` instruction (in your project or `~/.gemini/`) teaches the CLI when to use the tools: > When a build/test/deploy fails, before proposing a fix, use `search_memory` > or `recent_errors` (MemoryWhale MCP) to check whether this failure has a known > cause or a saved lesson. Once you\'ve figured out why something failed or how a > fix worked, use `remember` to save that conclusion. ### Command capture and proactive recall (optional) ```bash mw integrate gemini --capture # add the hook to ~/.gemini/settings.json mw integrate gemini --capture --check # confirm it is installed mw integrate gemini --capture --revert # remove only what MemoryWhale added ``` This adds one `AfterTool` hook for Gemini\'s `run_shell_command` tool ([Gemini CLI hooks](https://geminicli.com/docs/hooks/)). It runs `mw-remember --from-hook gemini`, which records each shell command Gemini runs with its working directory, output, and exit code, secret-scrubbed before it is written and searchable with `agent:gemini`. Gemini reports the exit code in the tool result (an `Exit Code:` line only when it is not zero), so Gemini rows count as failures in `recent_errors` and `mw context --last-error` like terminal capture. Spawn errors, signals, cancellations, and timeouts are stored with an unknown exit. When a command fails with an error that a later command fixed before, Gemini gets one line in its context naming that fix, and when a command passes right after failing it is asked to save the lesson, the same notes Claude Code gets. Set `MEMORYWHALE_HOOK_FEEDBACK=0` to record without them. Gemini may warn before running a new or changed hook; approve it once. ## Verify ```bash command -v mw-mcp mw integrate gemini --check mw integrate gemini --capture --check ``` Restart Gemini CLI and run `/mcp list`. `memorywhale` should show as connected with the six tools: `recent_errors`, `search_memory`, `get_context`, `remember`, `similar_failures`, and `stats`. ## Available capabilities | Capability | Available | | --- | --- | | MCP memory access | Yes | | Automatic execution capture | Yes, opt-in (`--capture`), with exit codes | | Proactive recall | Yes, with capture | | Memory-use guidance | Yes, via `GEMINI.md` | MCP access is not automatic execution capture. Without the MCP server, the `mw` CLI still works: `mw context --last-error`, `mw search "…"`, `mw remember "…"`. ## Example prompt > Use MemoryWhale to check whether I encountered a similar failure before. ## Troubleshooting - Run `command -v mw-mcp` from the environment that launches Gemini CLI. - Confirm `mcpServers` is valid JSON and restart the CLI. - If `/mcp list` shows Disconnected, run `gemini mcp list` and read the reported error. Check `PATH`, the `command` and `args` in settings, and whether `mw-mcp` starts on its own. A missing binary is only one cause. - If the wrong database opens, set `MEMORYWHALE_DATA_DIR` in `env`. - Run `mw doctor` to check the MemoryWhale install. ## Uninstall Run `mw integrate gemini --capture --revert` and `mw integrate gemini --revert`, or delete the `memorywhale` entry from `mcpServers` in `~/.gemini/settings.json` and/or `.gemini/settings.json`. Remove any `GEMINI.md` instruction you added. Restart Gemini CLI. This does not delete the MemoryWhale database. '
+
+======================================================================
+FAIL: test_release_links (__main__.RecallGuideTests.test_release_links) (client='claude-code')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 56, in test_release_links
+    self.assertIn('](../../docs/releases/0.20.0.md)', text)
+AssertionError: '](../../docs/releases/0.20.0.md)' not found in ''
+
+======================================================================
+FAIL: test_release_links (__main__.RecallGuideTests.test_release_links) (client='cursor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 56, in test_release_links
+    self.assertIn('](../../docs/releases/0.20.0.md)', text)
+AssertionError: '](../../docs/releases/0.20.0.md)' not found in ''
+
+======================================================================
+FAIL: test_release_links (__main__.RecallGuideTests.test_release_links) (client='codex')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 56, in test_release_links
+    self.assertIn('](../../docs/releases/0.20.0.md)', text)
+AssertionError: '](../../docs/releases/0.20.0.md)' not found in ''
+
+======================================================================
+FAIL: test_release_links (__main__.RecallGuideTests.test_release_links) (client='gemini-cli')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 56, in test_release_links
+    self.assertIn('](../../docs/releases/0.20.0.md)', text)
+AssertionError: '](../../docs/releases/0.20.0.md)' not found in ''
+
+======================================================================
+FAIL: test_release_links (__main__.RecallGuideTests.test_release_links) (client='rho')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 56, in test_release_links
+    self.assertIn('](../../docs/releases/0.20.0.md)', text)
+AssertionError: '](../../docs/releases/0.20.0.md)' not found in ''
+
+======================================================================
+FAIL: test_rho_exception (__main__.RecallGuideTests.test_rho_exception)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 50, in test_rho_exception
+    self.assertIn('Rho capture does not emit recall notes;', section(read('rho'), '### Recall notes'))
+AssertionError: 'Rho capture does not emit recall notes;' not found in ''
+
+======================================================================
+FAIL: test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='claude-code')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 46, in test_short_sections
+    self.assertGreater(len(lines), 1)
+AssertionError: 0 not greater than 1
+
+======================================================================
+FAIL: test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='cursor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 46, in test_short_sections
+    self.assertGreater(len(lines), 1)
+AssertionError: 0 not greater than 1
+
+======================================================================
+FAIL: test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='codex')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 46, in test_short_sections
+    self.assertGreater(len(lines), 1)
+AssertionError: 0 not greater than 1
+
+======================================================================
+FAIL: test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='gemini-cli')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 46, in test_short_sections
+    self.assertGreater(len(lines), 1)
+AssertionError: 0 not greater than 1
+
+======================================================================
+FAIL: test_short_sections (__main__.RecallGuideTests.test_short_sections) (client='rho')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/b3f449ba7f0f/genius-decision-open/resolver/cases/memwhale-423-recall-guide/verify_case.py", line 46, in test_short_sections
+    self.assertGreater(len(lines), 1)
+AssertionError: 0 not greater than 1
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.008s
+
+FAILED (failures=18)

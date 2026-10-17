@@ -1,0 +1,43 @@
+{
+  "repository": "https://github.com/wuisabel-gif/MemWhale",
+  "upstream_commit": "07e6ac952dbbb7b527fe78578271cd57937f0890",
+  "checked_at": "2026-10-17 00:21:01 UTC",
+  "issue_url": "https://github.com/wuisabel-gif/MemWhale/issues/423",
+  "issue_updated_at": "2026-10-16T20:03:42Z",
+  "issue_state": "open",
+  "assignees": [],
+  "comments": [],
+  "contribution_front_door": {
+    "url": "https://github.com/wuisabel-gif/MemWhale/issues/317",
+    "body": "Thanks for looking at MemoryWhale! This issue is the front door for new contributors. You don't need to know the whole codebase, and you don't need Rust for most of these.\n\n## 1. Pick a task\n\nComment on the issue you want so nobody duplicates work. Each one lists the files to touch and a command to check your change.\n\n**No code needed: try it and report**\n- #392, #421, #422: try proactive recall in a real Cursor, Codex, or Gemini CLI session and report what the agent saw. The 0.20.0 release notes list all three as \"not yet verified live\"; your report changes that.\n- #222: proofread a translation. Spanish and Brazilian Portuguese have had no native review yet; Arabic, German, French, Japanese, Korean, and Simplified or Traditional Chinese need review too. Even one section helps.\n\n**Docs**\n- #423: explain possible and confirmed fixes in each agent guide (five short sections, same wording)\n- #255: document live autosave and interrupted-session recovery\n\n**Small Rust tasks**\n- #425: test the three recall-hint wordings and the `Recall:` line of `mw context --last-error`\n- #426: test the `recall` block of the MCP `stats` tool end to end\n\n**TypeScript and CI**\n- #266: add three rows to a Vitest table (one file)\n- #424: run the dependency audits on a weekly schedule (GitHub Actions)\n\n**Bigger**\n- #148: behavioral tests for the React recall UI\n- #150: Rust coverage reporting with a measured baseline\n\nWant to add an integration for the agent or editor you use? Open an [integration request](https://github.com/wuisabel-gif/MemWhale/issues/new?template=integration_request.md). Existing ones in [`integrations/`](https://github.com/wuisabel-gif/MemWhale/tree/main/integrations) are good templates; `integrations/gemini-cli/` is the newest.\n\n## 2. Set up\n\n```bash\ngit clone https://github.com/<you>/MemWhale && cd MemWhale\nnpm ci && npm test                                  # frontend and docs tasks\ncargo test -p memorywhale-core -p memorywhale-cli   # Rust tasks\n```\n\nThe full checklist is in [CONTRIBUTING.md](https://github.com/wuisabel-gif/MemWhale/blob/main/CONTRIBUTING.md), and [docs/architecture.md](https://github.com/wuisabel-gif/MemWhale/blob/main/docs/architecture.md) explains where things live.\n\n## 3. Open a PR\n\nSmall, focused PRs are easiest to review. A draft PR is fine if you're stuck. You can expect a first review within about a day, and every contributor is thanked by name in the release notes.\n\nQuestions? Ask here or in [Discussions](https://github.com/wuisabel-gif/MemWhale/discussions).\n"
+  },
+  "open_pull_requests": [
+    {
+      "number": 427,
+      "url": "https://github.com/wuisabel-gif/MemWhale/pull/427",
+      "title": "test(mcp): cover the recall block of the stats tool end to end",
+      "head": "8328b5f3e658ee806a951f9ff29d73d1a451ba23"
+    },
+    {
+      "number": 420,
+      "url": "https://github.com/wuisabel-gif/MemWhale/pull/420",
+      "title": "chore(deps): bump tauri from 2.12.2 to 2.12.3 in the cargo group",
+      "head": "f14b4b54e7784a1330f5e90de878b37b305c4c82"
+    },
+    {
+      "number": 419,
+      "url": "https://github.com/wuisabel-gif/MemWhale/pull/419",
+      "title": "chore(deps): bump pullfrog/pullfrog from 0.1.95 to 0.1.98 in the actions group",
+      "head": "1bc431fc5689387683edc3e7da271b5752b9d67e"
+    },
+    {
+      "number": 292,
+      "url": "https://github.com/wuisabel-gif/MemWhale/pull/292",
+      "title": "test(codewhale): add native capture verification harness",
+      "head": "ce6b621f0bf9dc729e7248fb49d5eca29b4f6605"
+    }
+  ],
+  "reservation_commit": "https://github.com/pedrosalvadeo/genius-decision-open/commit/6b18a73e623be6f2f1298a16c64cc49da18715a0",
+  "external_actions": [],
+  "kernel_evaluation": null
+}

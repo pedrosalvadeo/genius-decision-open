@@ -81,6 +81,29 @@ no se aceptaron términos en nombre del usuario. Kernel no ejecutado por no exis
 una representación justificada. No regenerar esta entrega ni contar el issue
 agregado como resuelto. El historial y las entregas anteriores se conservaron.
 
+## Quinto ciclo: MemWhale #423
+
+Se prepararon cinco secciones breves sobre notas de recuperación: texto idéntico
+en Claude Code, Cursor, Codex y Gemini; Rho explícitamente no recibe notas.
+Se distingue candidato de confirmación en dos o más episodios, procedencia y
+almacén local; el historial no demuestra causalidad. Sin cambios de comandos,
+limitaciones ni estado de verificación en vivo. Paquete MIT y parche en
+`cases/memwhale-423-recall-guide/`, con reserva publicada antes de editar.
+
+Nueve controles estáticos aprobados y repetidos tras aplicar el parche en copia
+limpia. Antes fallaban cinco métodos (18 subcomprobaciones); cuatro pasaban.
+Rust y release notes fijados se revisaron, no se ejecutó MemWhale. Tests con
+Python 3.12.3 sin credenciales ni sockets IPv4/IPv6. No se instalaron dependencias
+ni se abrieron bases de datos personales. Suites completas y clientes en vivo
+no comprobados; no confundir coherencia documental con prueba de funcionamiento.
+
+SOLUTION_PREPARED, sin envío ni adopción. Falta permiso para comentar #423 y
+enviar PR externo: CONTRIBUTING/#317 exigen coordinación antes de reclamar.
+El borrador está listo; releer disponibilidad antes de enviarlo. No CLA/DCO
+exigido en la versión leída; no se aceptaron contratos. Kernel no ejecutado,
+sin representación justificada ni CAG/PVS/bienestar medidos. No regenerar ni
+renotificar esta entrega; avanzar los otros pendientes del registro.
+
 ## Siguiente encargo
 
 > Continuá el agente explorador y resolutor desde resolver/AGENT.md, ledger.json,
