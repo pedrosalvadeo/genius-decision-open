@@ -416,6 +416,17 @@
         ]
       },
       {
+        "id": "d_functions",
+        "basis": "decision",
+        "statement": "Función del sistema (módulo I), medida en cada gemelo proyectado como meses cumplidos hasta cada momento: el suministro opera con los embalses en 50 % o más, el mínimo histórico de 2003.",
+        "uncertainty": "Más meses cumplidos es mejor. El 50 % es una referencia histórica, no una regla de Denver Water.",
+        "spans": [],
+        "premises": [
+          "record_low",
+          "population"
+        ]
+      },
+      {
         "id": "modelling",
         "basis": "definition",
         "statement": "Unidad: puntos porcentuales de la capacidad de los embalses de suministro. Paso mensual, del 15/10/2026 al 15/10/2027 (paso 1 = mediados de noviembre). Riego exterior acumulado como existencia que registra el agua entregada a jardines. La ley sobre los inviernos se declara aparte (claim d_law).",
@@ -1034,6 +1045,29 @@
         },
         "claim_ids": [
           "d_life_task"
+        ]
+      },
+      {
+        "path": "/functions/0",
+        "value": {
+          "id": "above_2003_low",
+          "label": "Suministro con los embalses en 50 % o más, el mínimo de 2003 (meses cumplidos)",
+          "serves": [
+            "residents",
+            "denver_water"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "storage",
+              "op": "ge",
+              "value": "50/1"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
         ]
       },
       {

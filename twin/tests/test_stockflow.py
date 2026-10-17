@@ -36,6 +36,34 @@ class StockFlowContracts(unittest.TestCase):
         self.assertEqual(set(unforced["decision"]["frontier"]), {"manual_policy", "reserve_policy"})
         self.assertIsNone(unforced["decision"]["selected"])
 
+    def test_module_one_functions_are_measured_on_every_projected_twin(self):
+        model = default_model()
+        neutral = evaluate_model(model)["canonical_results"]
+        self.assertEqual({m["module"]: m["status"] for m in neutral["modules"]["modules"]}["I"], "NEUTRAL")
+        model["functions"] = [
+            {"id": "buffer_ok", "label": "Reserva disponible", "serves": ["P"], "measure": "cumulative",
+             "when": [{"kind": "stock", "stock": "buffer", "op": "ge", "value": "1/1"}]},
+            {"id": "buffer_now", "label": "Reserva ahora", "serves": [], "measure": "current",
+             "when": [{"kind": "stock", "stock": "buffer", "op": "ge", "value": "1/1"}]}]
+        result = evaluate_model(model)
+        self.assertTrue(result["verification"]["valid"])
+        results = result["canonical_results"]
+        manual = results["policies"]["manual_policy"]["functional"]
+        self.assertEqual(manual["native_cell"]["state"], "DEFINED")
+        # Buffer 2, 2, 0, 1 in the peak: held, held, missed, held.
+        self.assertEqual([(r["function"], r["terminal"], r["steps_held"], r["first_unmet_step"]) for r in manual["by_scenario"]["peak"]],
+                         [("buffer_ok", "3/1", 3, 2), ("buffer_now", "1/1", 3, 2)])
+        self.assertEqual({m["module"]: m["status"] for m in results["modules"]["modules"]}["I"], "FILLED")
+        self.assertEqual(results["decision"]["functional_criterion"], "DECLARED_FUNCTIONS_TERMINAL_PROFILE")
+        bad = deepcopy(model)
+        bad["functions"][0]["when"][0]["stock"] = "missing"
+        with self.assertRaises(ValueError):
+            validate_model(bad)
+        bad = deepcopy(model)
+        bad["functions"][1]["id"] = "buffer_ok"
+        with self.assertRaises(ValueError):
+            validate_model(bad)
+
     def test_law_missing_preserves_native_partial_and_zero_branch_still_counts(self):
         model = default_model(); model["law"] = None
         result = evaluate_model(model)

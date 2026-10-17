@@ -11,7 +11,7 @@ from pathlib import Path
 import re
 
 PROFILE = "STOCK_FLOW_FINITE_V1"
-ROOT_FIELDS = "profile name horizon step_unit stocks carriers capabilities initial_capabilities actions policies scenarios law welfare task require_all_scenarios selection assumptions".split()
+ROOT_FIELDS = "profile name horizon step_unit stocks carriers capabilities initial_capabilities actions policies scenarios law welfare task require_all_scenarios selection assumptions functions".split()
 ID_PATTERN = r"^[A-Za-z][A-Za-z0-9_.-]*$"
 Q_PATTERN = r"^(0|[1-9][0-9]*)/[1-9][0-9]*$"
 ASSUMPTION_KINDS = ["MODEL", "INITIALIZATION", "INFORMATION", "SEMANTIC", "CALIBRATION", "NORMATIVE", "PROBABILITY", "SYNTHETIC"]
@@ -78,6 +78,11 @@ def model_schema():
         "require_all_scenarios": {"type": "boolean"}, "selection": enum("none", "unique"),
         "assumptions": arr(obj({"id": ident, "kind": enum(*ASSUMPTION_KINDS), "statement": txt, "provenance": txt}), 1, 24),
     })
+    # Module I: functions the system performs, measured on every projected twin
+    # (route x scenario). Optional, so models without them keep a neutral profile.
+    schema["properties"]["functions"] = arr(obj({"id": ident, "label": txt,
+        "serves": {**arr(ident, 0, 6), "uniqueItems": True}, "measure": enum("current", "cumulative"),
+        "when": arr({"oneOf": [stock_pred, cap_pred]}, 1, 6)}), 0, 8)
     schema.update({"$schema": "https://json-schema.org/draft/2020-12/schema", "title": PROFILE,
         "x-semantic-rules": ["Reduced nonnegative rationals, numerator/denominator at most 12 digits",
         "Unique IDs and valid references", "P*S*(H+1)<=128; generated signatures<=16",
@@ -223,6 +228,16 @@ def validate_model(model):
         raise ValueError("operational task must not declare life semantics")
     for condition in task["conditions"]:
         refs([condition["stock"]], stocks, "task.condition.stock")
+    functions = model.get("functions", [])
+    if len({f["id"] for f in functions}) != len(functions):
+        raise ValueError("functions: duplicate ID")
+    for function in functions:
+        refs(function["serves"], tables["carriers"], "function.serves")
+        for predicate in function["when"]:
+            if predicate["kind"] == "stock":
+                refs([predicate["stock"]], stocks, "function.stock")
+            else:
+                refs([predicate["capability"]], caps, "function.capability")
     # Generate all reachable signatures here; never truncate excess signatures.
     traces = _compute(model)
     generated = {row["organization"] for policies in traces.values() for tr in policies.values() for row in tr["daily"]}
@@ -238,13 +253,36 @@ def _condition(stocks, condition):
     return a >= b if condition["op"] == "ge" else a <= b
 
 
+def _matches(pred, stocks, capabilities):
+    if pred["kind"] == "capability":
+        return (pred["capability"] in capabilities) == pred["present"]
+    return _condition(stocks, {"stock": pred["stock"], "op": pred["op"], "threshold": pred["value"]})
+
+
 def choose_action(policy, step, stocks, capabilities):
-    def matches(pred):
-        if pred["kind"] == "capability":
-            return (pred["capability"] in capabilities) == pred["present"]
-        return _condition(stocks, {"stock": pred["stock"], "op": pred["op"], "threshold": pred["value"]})
     return next((rule["action"] for rule in policy["rules"]
-                 if step in rule["steps"] and all(matches(p) for p in rule["when"])), policy["default_action"])
+                 if step in rule["steps"] and all(_matches(p, stocks, capabilities) for p in rule["when"])), policy["default_action"])
+
+
+def function_values(model, daily):
+    """Module I raw values per state of one projected twin: {function id: [raw per step]}.
+
+    current: 1 if every predicate holds at that state, else 0.
+    cumulative: number of states up to and including that one where it held.
+    The raw is a function of the state's whole history, which is the compiled FP1 state.
+    """
+    out = {}
+    for function in model.get("functions", []):
+        held = [int(all(_matches(p, {k: Fraction(v) for k, v in row["stocks"].items()}, set(row["capabilities"]))
+                        for p in function["when"])) for row in daily]
+        if function["measure"] == "cumulative":
+            total, values = 0, []
+            for h in held:
+                total += h
+                values.append(total)
+            held = values
+        out[function["id"]] = held
+    return out
 
 
 def _monitor(task, stocks, action_executed, previous_failed, previous_unknown):

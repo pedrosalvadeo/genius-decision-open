@@ -47,6 +47,18 @@ class LakeMeadCaseTests(unittest.TestCase):
                                       'worse_for': [{'carrier': 'lower_basin', 'dimension': 'mead_reserve'}]}])
         minimum = results['policies']['release_7']['by_scenario']['minimum']['wellbeing']
         self.assertEqual([(row['dimension'], row['worst']) for row in minimum], [('mead_reserve', '5207/1'), ('powell_reserve', '3141/1')])
+        # Module I on each projected twin: in the minimum year Glen Canyon keeps 3,510 ft for 11 months with 6 maf and 8 with 7 maf,
+        # so 6 maf is functionally at least as good everywhere; welfare still keeps both options on the frontier.
+        for policy, months in (('release_6', 11), ('release_7', 8)):
+            functional = results['policies'][policy]['functional']
+            self.assertEqual(functional['native_cell']['state'], 'DEFINED')
+            self.assertEqual([(row['function'], row['terminal']) for row in functional['by_scenario']['minimum']],
+                             [('glen_canyon_3510', f'{months}/1'), ('mead_1000', '13/1')])
+        self.assertEqual(decision['functional_comparison']['all_scenarios'],
+                         [{'left': 'release_6', 'right': 'release_7', 'relation': 'DOMINATES', 'better_on': ['glen_canyon_3510'], 'worse_on': []}])
+        ledger = {row['module']: row['status'] for row in results['modules']['modules']}
+        self.assertEqual(ledger, {'0': 'FILLED', 'V': 'FILLED', 'I': 'FILLED', 'II': 'SINGLE_SYSTEM', 'III': 'FILLED',
+                                  'IV': 'FILLED', 'VI': 'FILLED', 'VII': 'FILLED'})
 
 if __name__ == '__main__':
     unittest.main()
