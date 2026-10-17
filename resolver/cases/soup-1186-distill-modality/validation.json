@@ -1,0 +1,85 @@
+{
+  "status": "SOLUTION_PREPARED",
+  "scope": "Soup #1186 item 1 only: distillation with vision/audio. Item 2 (SFT/unsloth modalities) not addressed.",
+  "date_local": "2026-10-16",
+  "upstream_commit": "3da204fadbd278c01ad5a4b23906b443d15e9dd1",
+  "source_revision": 1,
+  "criteria": [
+    "Scope is item 1 of Soup #1186 only: refuse task=distill with modality=vision or audio at config load, with the unsupported modality, reason and text-only alternative named, for token and sequence modes.",
+    "Keep supported text distillation (including default modality) and unrelated valid SFT modalities loadable; preserve existing backend and teacher validation.",
+    "Exercise the real config loader and doctor's config-check path: unsupported modality must not be reported as honoured; regression tests must fail on the original code and when the new refusal is removed.",
+    "Inspect shipped recipes, templates and example configs before choosing immediate refusal; include a fixed changelog fragment, relevant documentation, portable patch and reproducible isolated evidence without training or downloading models."
+  ],
+  "results": {
+    "initial_red": {
+      "tests": 25,
+      "failed": 16,
+      "passed": 9,
+      "log": "baseline.txt"
+    },
+    "first_green": {
+      "tests": 25,
+      "passed": 25,
+      "log": "focused.txt"
+    },
+    "final_regression": {
+      "tests": 129,
+      "passed": 129,
+      "includes_new_tests": 29,
+      "includes_existing_tests": 100,
+      "log": "regression.txt"
+    },
+    "portable_patch": {
+      "apply_check": true,
+      "diff_check": true,
+      "new_tests_repeated": 29,
+      "passed": 29,
+      "log": "portability.txt"
+    },
+    "remove_only_refusal_mutation": {
+      "tests": 29,
+      "failed": 20,
+      "passed": 9,
+      "log": "mutation.txt"
+    },
+    "restore_refusal": {
+      "tests": 29,
+      "passed": 29,
+      "log": "restored.txt"
+    },
+    "lint": {
+      "command": "ruff check src/soup_cli/ scripts/ tests/ benchmarks/",
+      "passed": true,
+      "log": "lint.txt"
+    },
+    "shipped_configs": {
+      "inspected": 205,
+      "distillation_configs": 0,
+      "unsupported_combination": 0,
+      "log": "shipped-configs.json"
+    }
+  },
+  "execution": {
+    "python": "3.12.14",
+    "dependencies": "requirements-validation.txt",
+    "training_stack_installed": false,
+    "model_downloads": false,
+    "training": false,
+    "production_actions": false,
+    "isolation_harness": "../linux-vitals-149-locale/run_no_network.py",
+    "isolation_log": "isolation.txt",
+    "doctor": "Four actual CliRunner doctor --config invocations, plus four config-helper checks; no fake loader or gate."
+  },
+  "artifact": "solution.patch",
+  "limitations": [
+    "Only focused CPU/config regression subset; full upstream suite and OS/Python CI matrix not run.",
+    "No multimodal training implemented or assessed; refusal avoids silent fallback.",
+    "No external claim, PR, deployment, application or adoption.",
+    "Receipt and local tests are operator evidence, not independent certification."
+  ],
+  "genius": {
+    "calculation_performed": false,
+    "reason": "Small validation bug lacks a justified kernel representation; no invented score, CAG, PVS or welfare measurement."
+  },
+  "next_step": "Authorization for external claim comment with plan; then upstream coordination and authorized PR. Recheck current issue/PRs and complete maintainer-required CI. Item 2 remains separate."
+}

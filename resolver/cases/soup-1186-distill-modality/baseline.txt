@@ -1,0 +1,131 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0 -- /workspace/scratch/b3f449ba7f0f/soup-env/bin/python
+rootdir: /workspace/scratch/b3f449ba7f0f/soup-source
+configfile: pyproject.toml
+collecting ... collected 25 items
+
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-vision] FAILED [  4%]
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-audio] FAILED [  8%]
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-vision] FAILED [ 12%]
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-audio] FAILED [ 16%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-vision] FAILED [ 20%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-audio] FAILED [ 24%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-vision] FAILED [ 28%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-audio] FAILED [ 32%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-vision] FAILED [ 36%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-audio] FAILED [ 40%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-vision] FAILED [ 44%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-audio] FAILED [ 48%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-vision] FAILED [ 52%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-audio] FAILED [ 56%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-vision] FAILED [ 60%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-audio] FAILED [ 64%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[token-None] PASSED [ 68%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[token-text] PASSED [ 72%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[sequence-None] PASSED [ 76%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[sequence-text] PASSED [ 80%]
+tests/test_distill_modality.py::test_other_task_modalities_are_not_blanket_refused[vision] PASSED [ 84%]
+tests/test_distill_modality.py::test_other_task_modalities_are_not_blanket_refused[audio] PASSED [ 88%]
+tests/test_distill_modality.py::test_existing_backend_refusals_remain[mlx] PASSED [ 92%]
+tests/test_distill_modality.py::test_existing_backend_refusals_remain[unsloth] PASSED [ 96%]
+tests/test_distill_modality.py::test_teacher_is_still_required PASSED    [100%]
+
+=================================== FAILURES ===================================
+___________ test_schema_refuses_non_text_distillation[token-vision] ____________
+tests/test_distill_modality.py:47: in test_schema_refuses_non_text_distillation
+    with pytest.raises(ValidationError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+____________ test_schema_refuses_non_text_distillation[token-audio] ____________
+tests/test_distill_modality.py:47: in test_schema_refuses_non_text_distillation
+    with pytest.raises(ValidationError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+__________ test_schema_refuses_non_text_distillation[sequence-vision] __________
+tests/test_distill_modality.py:47: in test_schema_refuses_non_text_distillation
+    with pytest.raises(ValidationError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+__________ test_schema_refuses_non_text_distillation[sequence-audio] ___________
+tests/test_distill_modality.py:47: in test_schema_refuses_non_text_distillation
+    with pytest.raises(ValidationError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+________ test_string_loader_refuses_non_text_distillation[token-vision] ________
+tests/test_distill_modality.py:55: in test_string_loader_refuses_non_text_distillation
+    with pytest.raises(ValueError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+________ test_string_loader_refuses_non_text_distillation[token-audio] _________
+tests/test_distill_modality.py:55: in test_string_loader_refuses_non_text_distillation
+    with pytest.raises(ValueError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+______ test_string_loader_refuses_non_text_distillation[sequence-vision] _______
+tests/test_distill_modality.py:55: in test_string_loader_refuses_non_text_distillation
+    with pytest.raises(ValueError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_______ test_string_loader_refuses_non_text_distillation[sequence-audio] _______
+tests/test_distill_modality.py:55: in test_string_loader_refuses_non_text_distillation
+    with pytest.raises(ValueError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_________ test_file_loader_refuses_non_text_distillation[token-vision] _________
+tests/test_distill_modality.py:71: in test_file_loader_refuses_non_text_distillation
+    with pytest.raises(SystemExit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'SystemExit'>
+_________ test_file_loader_refuses_non_text_distillation[token-audio] __________
+tests/test_distill_modality.py:71: in test_file_loader_refuses_non_text_distillation
+    with pytest.raises(SystemExit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'SystemExit'>
+_______ test_file_loader_refuses_non_text_distillation[sequence-vision] ________
+tests/test_distill_modality.py:71: in test_file_loader_refuses_non_text_distillation
+    with pytest.raises(SystemExit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'SystemExit'>
+________ test_file_loader_refuses_non_text_distillation[sequence-audio] ________
+tests/test_distill_modality.py:71: in test_file_loader_refuses_non_text_distillation
+    with pytest.raises(SystemExit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'SystemExit'>
+_ test_doctor_config_check_refuses_instead_of_reporting_support[token-vision] __
+tests/test_distill_modality.py:90: in test_doctor_config_check_refuses_instead_of_reporting_support
+    with pytest.raises(typer.Exit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'click.exceptions.Exit'>
+__ test_doctor_config_check_refuses_instead_of_reporting_support[token-audio] __
+tests/test_distill_modality.py:90: in test_doctor_config_check_refuses_instead_of_reporting_support
+    with pytest.raises(typer.Exit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'click.exceptions.Exit'>
+_ test_doctor_config_check_refuses_instead_of_reporting_support[sequence-vision] _
+tests/test_distill_modality.py:90: in test_doctor_config_check_refuses_instead_of_reporting_support
+    with pytest.raises(typer.Exit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'click.exceptions.Exit'>
+_ test_doctor_config_check_refuses_instead_of_reporting_support[sequence-audio] _
+tests/test_distill_modality.py:90: in test_doctor_config_check_refuses_instead_of_reporting_support
+    with pytest.raises(typer.Exit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'click.exceptions.Exit'>
+=========================== short test summary info ============================
+FAILED tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-vision]
+FAILED tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-audio]
+FAILED tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-vision]
+FAILED tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-audio]
+FAILED tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-vision]
+FAILED tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-audio]
+FAILED tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-vision]
+FAILED tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-audio]
+FAILED tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-vision]
+FAILED tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-audio]
+FAILED tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-vision]
+FAILED tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-audio]
+FAILED tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-vision]
+FAILED tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-audio]
+FAILED tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-vision]
+FAILED tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-audio]
+========================= 16 failed, 9 passed in 0.42s =========================

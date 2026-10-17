@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0 -- /workspace/scratch/b3f449ba7f0f/soup-env/bin/python
+rootdir: /workspace/scratch/b3f449ba7f0f/soup-source
+configfile: pyproject.toml
+collecting ... collected 25 items
+
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-vision] PASSED [  4%]
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-audio] PASSED [  8%]
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-vision] PASSED [ 12%]
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-audio] PASSED [ 16%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-vision] PASSED [ 20%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-audio] PASSED [ 24%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-vision] PASSED [ 28%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-audio] PASSED [ 32%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-vision] PASSED [ 36%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-audio] PASSED [ 40%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-vision] PASSED [ 44%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-audio] PASSED [ 48%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-vision] PASSED [ 52%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-audio] PASSED [ 56%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-vision] PASSED [ 60%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-audio] PASSED [ 64%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[token-None] PASSED [ 68%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[token-text] PASSED [ 72%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[sequence-None] PASSED [ 76%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[sequence-text] PASSED [ 80%]
+tests/test_distill_modality.py::test_other_task_modalities_are_not_blanket_refused[vision] PASSED [ 84%]
+tests/test_distill_modality.py::test_other_task_modalities_are_not_blanket_refused[audio] PASSED [ 88%]
+tests/test_distill_modality.py::test_existing_backend_refusals_remain[mlx] PASSED [ 92%]
+tests/test_distill_modality.py::test_existing_backend_refusals_remain[unsloth] PASSED [ 96%]
+tests/test_distill_modality.py::test_teacher_is_still_required PASSED    [100%]
+
+============================== 25 passed in 0.36s ==============================

@@ -1,0 +1,16 @@
+{
+  "source_revision": 1,
+  "summary": "Preparado sólo el ítem 1 de Soup #1186: rechazo de destilación vision/audio al cargar configuración. 129 pruebas aprobadas; quitar el rechazo produce 20 fallos. Ítem 2 pendiente; sin envío ni aplicación externos. Kernel no ejecutado.",
+  "evidence": [
+    "resolver/cases/soup-1186-distill-modality/validation.json",
+    "resolver/cases/soup-1186-distill-modality/source-review.md"
+  ],
+  "criteria": [
+    "Scope is item 1 of Soup #1186 only: refuse task=distill with modality=vision or audio at config load, with the unsupported modality, reason and text-only alternative named, for token and sequence modes.",
+    "Keep supported text distillation (including default modality) and unrelated valid SFT modalities loadable; preserve existing backend and teacher validation.",
+    "Exercise the real config loader and doctor's config-check path: unsupported modality must not be reported as honoured; regression tests must fail on the original code and when the new refusal is removed.",
+    "Inspect shipped recipes, templates and example configs before choosing immediate refusal; include a fixed changelog fragment, relevant documentation, portable patch and reproducible isolated evidence without training or downloading models."
+  ],
+  "checks_passed": true,
+  "artifact": "resolver/cases/soup-1186-distill-modality/solution.patch"
+}

@@ -1,0 +1,202 @@
+diff --git a/changelog.d/0.76.0/1186.fixed.md b/changelog.d/0.76.0/1186.fixed.md
+new file mode 100644
+index 0000000..e14ad1e
+--- /dev/null
++++ b/changelog.d/0.76.0/1186.fixed.md
+@@ -0,0 +1,5 @@
++Refuse `task: distill` with `modality: vision` or `audio` at config load instead
++of silently running text-only distillation, in both token and sequence modes.
++The error names the unsupported modality and the text-only alternative;
++`soup doctor --config` also rejects the configuration. This addresses item 1
++of #1186 only, not the separate SFT/unsloth modality combination.
+diff --git a/docs/training.md b/docs/training.md
+index 6efcdf2..deb67f8 100644
+--- a/docs/training.md
++++ b/docs/training.md
+@@ -653,6 +653,10 @@ inputs / logits are auto-bridged across CPU / CUDA devices.
+ 
+ Distillation runs on `backend: transformers` only; `backend: mlx` and
+ `backend: unsloth` are refused at config load.
++Both token and sequence distillation require `modality: text` (the default).
++`modality: vision` and `audio` are refused at config load: the distill trainer
++does not process images or audio. Use text data with `modality: text`; changing
++that field does not convert a multimodal dataset into text.
+ Gradient accumulation uses the number of shifted, non-masked training targets across the complete
+ optimizer window. Splitting the same rows into unequal-length microbatches therefore preserves the
+ full-batch token mean instead of weighting every microbatch equally.
+diff --git a/src/soup_cli/config/schema.py b/src/soup_cli/config/schema.py
+index a2eab6a..ac9563e 100644
+--- a/src/soup_cli/config/schema.py
++++ b/src/soup_cli/config/schema.py
+@@ -5967,6 +5967,14 @@ class SoupConfig(BaseModel):
+             except ValueError as exc:
+                 raise ValueError(str(exc)) from exc
+ 
++            # #1186 item 1: both distillation modes use the text-only trainer.
++            if self.modality != "text":
++                raise ValueError(
++                    f"task='distill' does not support modality={self.modality!r}: "
++                    "the distill trainer is text-only and does not process images or audio. "
++                    "Use modality: text with text data; multimodal distillation is not wired."
++                )
++
+             chunk_offenders = [
+                 name
+                 for name, val in (
+diff --git a/tests/test_distill_modality.py b/tests/test_distill_modality.py
+new file mode 100644
+index 0000000..89e4d14
+--- /dev/null
++++ b/tests/test_distill_modality.py
+@@ -0,0 +1,151 @@
++"""Distillation must not silently ignore a requested input modality (#1186 item 1)."""
++
++from __future__ import annotations
++
++from io import StringIO
++from pathlib import Path
++
++import pytest
++import typer
++import yaml
++from pydantic import ValidationError
++from rich.console import Console
++
++from soup_cli.config.loader import load_config, load_config_from_string
++from soup_cli.config.schema import SoupConfig
++
++
++def _raw(modality: str | None, mode: str = "token") -> dict:
++    raw = {
++        "base": "test/student",
++        "task": "distill",
++        "backend": "transformers",
++        "data": {"train": "unused.jsonl", "format": "alpaca"},
++        "training": {
++            "teacher_model": "test/teacher",
++            "distill_mode": mode,
++            "quantization": "none",
++            "batch_size": 1,
++        },
++    }
++    if modality is not None:
++        raw["modality"] = modality
++    return raw
++
++
++def _assert_reason(text: str, modality: str) -> None:
++    text = " ".join(text.split())
++    assert "task='distill'" in text
++    assert f"modality={modality!r}" in text
++    assert "text-only" in text
++    assert "modality: text" in text
++
++
++@pytest.mark.parametrize("modality", ["vision", "audio"])
++@pytest.mark.parametrize("mode", ["token", "sequence"])
++def test_schema_refuses_non_text_distillation(modality: str, mode: str) -> None:
++    with pytest.raises(ValidationError) as caught:
++        SoupConfig(**_raw(modality, mode))
++    _assert_reason(str(caught.value), modality)
++
++
++@pytest.mark.parametrize("modality", ["vision", "audio"])
++@pytest.mark.parametrize("mode", ["token", "sequence"])
++def test_string_loader_refuses_non_text_distillation(modality: str, mode: str) -> None:
++    with pytest.raises(ValueError) as caught:
++        load_config_from_string(yaml.safe_dump(_raw(modality, mode)))
++    _assert_reason(str(caught.value), modality)
++
++
++@pytest.mark.parametrize("modality", ["vision", "audio"])
++@pytest.mark.parametrize("mode", ["token", "sequence"])
++def test_file_loader_refuses_non_text_distillation(
++    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, modality: str, mode: str,
++) -> None:
++    output = StringIO()
++    monkeypatch.setattr(
++        "soup_cli.config.loader.console", Console(file=output, width=180, color_system=None)
++    )
++    path = tmp_path / "soup.yaml"
++    path.write_text(yaml.safe_dump(_raw(modality, mode)), encoding="utf-8")
++    with pytest.raises(SystemExit) as caught:
++        load_config(path)
++    assert caught.value.code == 1
++    _assert_reason(output.getvalue(), modality)
++
++
++@pytest.mark.parametrize("modality", ["vision", "audio"])
++@pytest.mark.parametrize("mode", ["token", "sequence"])
++def test_doctor_config_check_refuses_instead_of_reporting_support(
++    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, modality: str, mode: str,
++) -> None:
++    from soup_cli.commands.doctor import _check_config_support
++
++    output = StringIO()
++    console = Console(file=output, width=180, color_system=None)
++    monkeypatch.setattr("soup_cli.config.loader.console", console)
++    monkeypatch.setattr("soup_cli.commands.doctor.console", console)
++    path = tmp_path / "soup.yaml"
++    path.write_text(yaml.safe_dump(_raw(modality, mode)), encoding="utf-8")
++    with pytest.raises(typer.Exit) as caught:
++        _check_config_support(str(path))
++    assert caught.value.exit_code == 2
++    _assert_reason(output.getvalue(), modality)
++    assert "Config could not be loaded" in output.getvalue()
++    assert "Config check" not in output.getvalue()
++
++
++@pytest.mark.parametrize("modality", [None, "text"])
++@pytest.mark.parametrize("mode", ["token", "sequence"])
++def test_text_distillation_still_loads(modality: str | None, mode: str) -> None:
++    raw = _raw(modality, mode)
++    for config in (SoupConfig(**raw), load_config_from_string(yaml.safe_dump(raw))):
++        assert config.modality == "text"
++        assert config.training.distill_mode == mode
++        assert config.training.teacher_model == "test/teacher"
++
++
++@pytest.mark.parametrize("modality", ["vision", "audio"])
++@pytest.mark.parametrize("mode", ["token", "sequence"])
++def test_doctor_cli_refuses_non_text_distillation(
++    tmp_path: Path, modality: str, mode: str,
++) -> None:
++    from typer.testing import CliRunner
++
++    from soup_cli.cli import app
++    from tests.conftest import strip_ansi
++
++    path = tmp_path / "soup.yaml"
++    path.write_text(yaml.safe_dump(_raw(modality, mode)), encoding="utf-8")
++    result = CliRunner().invoke(app, ["doctor", "--config", str(path)])
++    assert result.exit_code == 2, result.output
++    output = strip_ansi(result.output)
++    _assert_reason(output, modality)
++    assert "Config could not be loaded" in output
++    assert "Config check" not in output
++
++
++@pytest.mark.parametrize("modality", ["vision", "audio"])
++def test_other_task_modalities_are_not_blanket_refused(modality: str) -> None:
++    raw = _raw(modality)
++    raw["task"] = "sft"
++    raw["training"].pop("teacher_model")
++    raw["training"].pop("distill_mode")
++    config = load_config_from_string(yaml.safe_dump(raw))
++    assert config.task == "sft"
++    assert config.modality == modality
++
++
++@pytest.mark.parametrize("backend", ["mlx", "unsloth"])
++def test_existing_backend_refusals_remain(backend: str) -> None:
++    raw = _raw("text")
++    raw["backend"] = backend
++    with pytest.raises(ValidationError, match=f"backend={backend}"):
++        SoupConfig(**raw)
++
++
++def test_teacher_is_still_required() -> None:
++    raw = _raw("text")
++    raw["training"].pop("teacher_model")
++    with pytest.raises(ValidationError, match="teacher_model"):
++        SoupConfig(**raw)
