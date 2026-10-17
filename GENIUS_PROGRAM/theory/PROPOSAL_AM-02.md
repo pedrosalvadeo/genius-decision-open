@@ -32,6 +32,7 @@ Una LEA es una ley en el sentido de la Definición 8.9: masas racionales no nega
 - Con intercambiabilidad, los cuantiles de los errores pasados dan bandas con cobertura marginal garantizada de al menos $1-\alpha$ (Vovk, Gammerman y Shafer, 2005; Angelopoulos y Bates, 2021).
 - Las series hidrológicas no son intercambiables. Por eso se declara el supuesto y se usa la variante adaptativa (Gibbs y Candès, 2021).
 - La condición 2 comprueba la cobertura real en vez de suponerla.
+- Primera comprobación (`twin/history/lake_mead/README.md`): con los últimos 120 errores, las bandas al 90 % de Lake Mead cubrieron la realidad en el 90–93 % de los casos de 6 a 23 meses, pero en el 82 % a 3 meses. Esa banda a 3 meses no se admitiría.
 
 ### B. Operador de revisión $\mathcal R$
 
