@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from genius_beta.adapter import AdmissionError, ROOT, build_fdq, execute_profile
+from genius_beta.adapter import AdmissionError, ROOT, build_fdq, execute_profile, fdq_verifier_available
 
 
 def hours():
@@ -32,6 +32,15 @@ class AdapterTests(unittest.TestCase):
 
     def run_case(self, payload):
         return execute_profile(payload, self.case)
+
+    def run_fdq(self, payload):
+        """Run FDQ through the received verifier, or check the public edition refuses it up front."""
+        if fdq_verifier_available():
+            return self.run_case(payload)
+        with self.assertRaisesRegex(AdmissionError, "^FDQ_VERIFIER_NOT_IN_PUBLIC_EDITION$"):
+            self.run_case(payload)
+        self.assertFalse(self.case.exists())
+        return None
 
     def test_exact_hours_real_controller_r3_and_conditional(self):
         outcome = self.run_case(hours())
@@ -75,8 +84,10 @@ class AdapterTests(unittest.TestCase):
     def test_fdq_runs_received_verifier_frontier_does_not_select(self):
         payload = fdq()
         before = deepcopy(payload)
-        result = self.run_case(payload)
+        result = self.run_fdq(payload)
         self.assertEqual(payload, before)
+        if result is None:
+            return
         decision = result["response"]["decisions"][0]
         self.assertEqual(decision["state"], "PR_SET_OR_INCOMPARABLE")
         self.assertEqual(decision["answers"][0]["value"]["value"], {"frontier": ["p", "s"]})
@@ -84,7 +95,9 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(result["response"]["evidence"][0]["state"], "EV_CONDITIONAL")
 
     def test_fdq_selector_disabled_is_not_winner(self):
-        result = self.run_case(fdq("selector"))
+        result = self.run_fdq(fdq("selector"))
+        if result is None:
+            return
         value = result["response"]["decisions"][0]["answers"][0]["value"]["value"]
         self.assertEqual(value, {"selector": {"state": "OUTSIDE_DOMAIN", "cause": "SELECTION_DISABLED"}})
 
@@ -93,7 +106,10 @@ class AdapterTests(unittest.TestCase):
         cert = json.loads(payload["certificate_json"])
         cert["claim"]["frontier"] = ["q"]
         payload["certificate_json"] = json.dumps(cert)
-        response = self.run_case(payload)["response"]
+        result = self.run_fdq(payload)
+        if result is None:
+            return
+        response = result["response"]
         self.assertFalse(response["decisions"][0]["answers"])
         self.assertEqual(response["decisions"][0]["observed_values"][0]["status"], "REJECTED")
 

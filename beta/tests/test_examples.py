@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from genius_beta.adapter import ROOT, execute_profile
+from genius_beta.adapter import AdmissionError, ROOT, execute_profile, fdq_verifier_available
 
 
 class PublishedExamplesTests(unittest.TestCase):
@@ -23,6 +23,10 @@ class PublishedExamplesTests(unittest.TestCase):
                         self.assertEqual(hashlib.sha256((ROOT / source["path"]).read_bytes()).hexdigest(), source["sha256"])
                     payload = json.loads(raw)
                     self.assertEqual(payload["evidence_origin"], "synthetic")
+                    if payload["profile"] == "fdq" and not fdq_verifier_available():
+                        with self.assertRaisesRegex(AdmissionError, "^FDQ_VERIFIER_NOT_IN_PUBLIC_EDITION$"):
+                            execute_profile(payload, Path(temporary) / name)
+                        continue
                     actual = execute_profile(payload, Path(temporary) / name)
                     self.assertEqual(actual["evidence_origin"], "synthetic")
                     response = actual["response"]
