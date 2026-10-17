@@ -1,0 +1,9 @@
+{
+  "criteria": [
+    "Scope is item 1 of Soup #1186 only: refuse task=distill with modality=vision or audio at config load, with the unsupported modality, reason and text-only alternative named, for token and sequence modes.",
+    "Keep supported text distillation (including default modality) and unrelated valid SFT modalities loadable; preserve existing backend and teacher validation.",
+    "Exercise the real config loader and doctor's config-check path: unsupported modality must not be reported as honoured; regression tests must fail on the original code and when the new refusal is removed.",
+    "Inspect shipped recipes, templates and example configs before choosing immediate refusal; include a fixed changelog fragment, relevant documentation, portable patch and reproducible isolated evidence without training or downloading models."
+  ],
+  "reason": "Existing public need, current comments confirm item 1 is unclaimed; original unsloth backend issue and item 3 were fixed by others. Users requesting multimodal distillation silently get text-only training. A load-time gate is small and testable without GPU/model access. Prepare item 1 in a copy only; item 2 stays open, no external claim or PR is authorized."
+}

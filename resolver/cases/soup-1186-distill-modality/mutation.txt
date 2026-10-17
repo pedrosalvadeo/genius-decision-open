@@ -1,0 +1,411 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0 -- /workspace/scratch/b3f449ba7f0f/soup-env/bin/python
+rootdir: /workspace/scratch/b3f449ba7f0f/soup-patch-check
+configfile: pyproject.toml
+collecting ... collected 29 items
+
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-vision] FAILED [  3%]
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-audio] FAILED [  6%]
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-vision] FAILED [ 10%]
+tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-audio] FAILED [ 13%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-vision] FAILED [ 17%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-audio] FAILED [ 20%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-vision] FAILED [ 24%]
+tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-audio] FAILED [ 27%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-vision] FAILED [ 31%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-audio] FAILED [ 34%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-vision] FAILED [ 37%]
+tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-audio] FAILED [ 41%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-vision] FAILED [ 44%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-audio] FAILED [ 48%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-vision] FAILED [ 51%]
+tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-audio] FAILED [ 55%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[token-None] PASSED [ 58%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[token-text] PASSED [ 62%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[sequence-None] PASSED [ 65%]
+tests/test_distill_modality.py::test_text_distillation_still_loads[sequence-text] PASSED [ 68%]
+tests/test_distill_modality.py::test_doctor_cli_refuses_non_text_distillation[token-vision] FAILED [ 72%]
+tests/test_distill_modality.py::test_doctor_cli_refuses_non_text_distillation[token-audio] FAILED [ 75%]
+tests/test_distill_modality.py::test_doctor_cli_refuses_non_text_distillation[sequence-vision] FAILED [ 79%]
+tests/test_distill_modality.py::test_doctor_cli_refuses_non_text_distillation[sequence-audio] FAILED [ 82%]
+tests/test_distill_modality.py::test_other_task_modalities_are_not_blanket_refused[vision] PASSED [ 86%]
+tests/test_distill_modality.py::test_other_task_modalities_are_not_blanket_refused[audio] PASSED [ 89%]
+tests/test_distill_modality.py::test_existing_backend_refusals_remain[mlx] PASSED [ 93%]
+tests/test_distill_modality.py::test_existing_backend_refusals_remain[unsloth] PASSED [ 96%]
+tests/test_distill_modality.py::test_teacher_is_still_required PASSED    [100%]
+
+=================================== FAILURES ===================================
+___________ test_schema_refuses_non_text_distillation[token-vision] ____________
+tests/test_distill_modality.py:47: in test_schema_refuses_non_text_distillation
+    with pytest.raises(ValidationError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+____________ test_schema_refuses_non_text_distillation[token-audio] ____________
+tests/test_distill_modality.py:47: in test_schema_refuses_non_text_distillation
+    with pytest.raises(ValidationError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+__________ test_schema_refuses_non_text_distillation[sequence-vision] __________
+tests/test_distill_modality.py:47: in test_schema_refuses_non_text_distillation
+    with pytest.raises(ValidationError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+__________ test_schema_refuses_non_text_distillation[sequence-audio] ___________
+tests/test_distill_modality.py:47: in test_schema_refuses_non_text_distillation
+    with pytest.raises(ValidationError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+________ test_string_loader_refuses_non_text_distillation[token-vision] ________
+tests/test_distill_modality.py:55: in test_string_loader_refuses_non_text_distillation
+    with pytest.raises(ValueError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+________ test_string_loader_refuses_non_text_distillation[token-audio] _________
+tests/test_distill_modality.py:55: in test_string_loader_refuses_non_text_distillation
+    with pytest.raises(ValueError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+______ test_string_loader_refuses_non_text_distillation[sequence-vision] _______
+tests/test_distill_modality.py:55: in test_string_loader_refuses_non_text_distillation
+    with pytest.raises(ValueError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_______ test_string_loader_refuses_non_text_distillation[sequence-audio] _______
+tests/test_distill_modality.py:55: in test_string_loader_refuses_non_text_distillation
+    with pytest.raises(ValueError) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_________ test_file_loader_refuses_non_text_distillation[token-vision] _________
+tests/test_distill_modality.py:71: in test_file_loader_refuses_non_text_distillation
+    with pytest.raises(SystemExit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'SystemExit'>
+_________ test_file_loader_refuses_non_text_distillation[token-audio] __________
+tests/test_distill_modality.py:71: in test_file_loader_refuses_non_text_distillation
+    with pytest.raises(SystemExit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'SystemExit'>
+_______ test_file_loader_refuses_non_text_distillation[sequence-vision] ________
+tests/test_distill_modality.py:71: in test_file_loader_refuses_non_text_distillation
+    with pytest.raises(SystemExit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'SystemExit'>
+________ test_file_loader_refuses_non_text_distillation[sequence-audio] ________
+tests/test_distill_modality.py:71: in test_file_loader_refuses_non_text_distillation
+    with pytest.raises(SystemExit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'SystemExit'>
+_ test_doctor_config_check_refuses_instead_of_reporting_support[token-vision] __
+tests/test_distill_modality.py:90: in test_doctor_config_check_refuses_instead_of_reporting_support
+    with pytest.raises(typer.Exit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'click.exceptions.Exit'>
+__ test_doctor_config_check_refuses_instead_of_reporting_support[token-audio] __
+tests/test_distill_modality.py:90: in test_doctor_config_check_refuses_instead_of_reporting_support
+    with pytest.raises(typer.Exit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'click.exceptions.Exit'>
+_ test_doctor_config_check_refuses_instead_of_reporting_support[sequence-vision] _
+tests/test_distill_modality.py:90: in test_doctor_config_check_refuses_instead_of_reporting_support
+    with pytest.raises(typer.Exit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'click.exceptions.Exit'>
+_ test_doctor_config_check_refuses_instead_of_reporting_support[sequence-audio] _
+tests/test_distill_modality.py:90: in test_doctor_config_check_refuses_instead_of_reporting_support
+    with pytest.raises(typer.Exit) as caught:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE <class 'click.exceptions.Exit'>
+_________ test_doctor_cli_refuses_non_text_distillation[token-vision] __________
+tests/test_distill_modality.py:121: in test_doctor_cli_refuses_non_text_distillation
+    assert result.exit_code == 2, result.output
+E   AssertionError: Soup Doctor - checking your environment...
+E     
+E     ╭─────────────────────────────────── System ───────────────────────────────────╮
+E     │ Python:   3.12.14                                                            │
+E     │ Platform: Linux 6.18.44                                                      │
+E     │ Arch:     x86_64                                                             │
+E     │ `soup` runs under /workspace/scratch/b3f449ba7f0f/soup-env/bin/python;       │
+E     │ `python` on your PATH is /usr/bin/python3. site-packages may differ — for    │
+E     │ any `python -c` check use the soup interpreter explicitly.                   │
+E     ╰──────────────────────────────────────────────────────────────────────────────╯
+E     ╭──────────────────────────────────── GPU ─────────────────────────────────────╮
+E     │ Backend:  unknown (torch not installed)                                      │
+E     ╰──────────────────────────────────────────────────────────────────────────────╯
+E         System Resources     
+E     ┏━━━━━━━━━━┳━━━━━━━━━━━━┓
+E     ┃ Resource ┃ Value      ┃
+E     ┡━━━━━━━━━━╇━━━━━━━━━━━━┩
+E     │ RAM      │ 10 GB      │
+E     │ Disk     │ 18 GB free │
+E     └──────────┴────────────┘
+E     
+E                                 Dependencies                             
+E     ┏━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+E     ┃ Package      ┃ Required ┃ Installed ┃ Min Version ┃ Status        ┃
+E     ┡━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+E     │ pydantic     │   yes    │  2.14.1   │ >=2.0.0     │ OK            │
+E     │ typer        │   yes    │  0.20.1   │ >=0.15.4    │ OK            │
+E     │ rich         │   yes    │  15.0.0   │ >=13.0.0    │ OK            │
+E     │ pyyaml       │   yes    │   6.0.3   │ >=6.0       │ OK            │
+E     │ plotext      │   yes    │   6.1.0   │ >=5.2.0     │ OK            │
+E     │ fastapi      │ optional │     -     │ >=0.104.0   │ not installed │
+E     │ uvicorn      │ optional │     -     │ >=0.24.0    │ not installed │
+E     │ datasketch   │ optional │     -     │ >=1.6.0     │ not installed │
+E     │ lm-eval      │ optional │     -     │ >=0.4.0     │ not installed │
+E     │ wandb        │ optional │     -     │ >=0.15.0    │ not installed │
+E     │ deepspeed    │ optional │     -     │ >=0.12.0    │ not installed │
+E     │ httpx        │ optional │     -     │ >=0.24.0    │ not installed │
+E     │ unsloth      │ optional │     -     │ >=2024.8    │ not installed │
+E     │ Pillow       │ optional │     -     │ >=9.0.0     │ not installed │
+E     │ torchao      │ optional │     -     │ >=0.18.0    │ not installed │
+E     │ sglang       │ optional │     -     │ >=0.5.1     │ not installed │
+E     │ librosa      │ optional │     -     │ >=0.10.0    │ not installed │
+E     │ torch        │ [train]  │     -     │ >=2.6.0     │ not installed │
+E     │ transformers │ [train]  │     -     │ >=5.16.1    │ not installed │
+E     │ peft         │ [train]  │     -     │ >=0.20.0    │ not installed │
+E     │ trl          │ [train]  │     -     │ >=0.29.0    │ not installed │
+E     │ datasets     │ [train]  │     -     │ >=2.14.0    │ not installed │
+E     │ bitsandbytes │ [train]  │     -     │ >=0.41.0    │ not installed │
+E     │ accelerate   │ [train]  │     -     │ >=0.27.0    │ not installed │
+E     └──────────────┴──────────┴───────────┴─────────────┴───────────────┘
+E     
+E     Found 1 issue(s):
+E       > Training stack not installed: pip install "soup-cli[train]"
+E     
+E     Fix all:
+E       pip install "soup-cli[train]"
+E     
+E     Config check - task=distill backend=transformers modality=vision
+E       None of the 0 setting(s) known to be unread on task=distill 
+E     backend=transformers modality=vision is switched on in this config.
+E     
+E     GitHub: https://github.com/MakazhanAlpamys/Soup
+E     
+E   assert 0 == 2
+E    +  where 0 = <Result okay>.exit_code
+__________ test_doctor_cli_refuses_non_text_distillation[token-audio] __________
+tests/test_distill_modality.py:121: in test_doctor_cli_refuses_non_text_distillation
+    assert result.exit_code == 2, result.output
+E   AssertionError: Soup Doctor - checking your environment...
+E     
+E     ╭─────────────────────────────────── System ───────────────────────────────────╮
+E     │ Python:   3.12.14                                                            │
+E     │ Platform: Linux 6.18.44                                                      │
+E     │ Arch:     x86_64                                                             │
+E     │ `soup` runs under /workspace/scratch/b3f449ba7f0f/soup-env/bin/python;       │
+E     │ `python` on your PATH is /usr/bin/python3. site-packages may differ — for    │
+E     │ any `python -c` check use the soup interpreter explicitly.                   │
+E     ╰──────────────────────────────────────────────────────────────────────────────╯
+E     ╭──────────────────────────────────── GPU ─────────────────────────────────────╮
+E     │ Backend:  unknown (torch not installed)                                      │
+E     ╰──────────────────────────────────────────────────────────────────────────────╯
+E         System Resources     
+E     ┏━━━━━━━━━━┳━━━━━━━━━━━━┓
+E     ┃ Resource ┃ Value      ┃
+E     ┡━━━━━━━━━━╇━━━━━━━━━━━━┩
+E     │ RAM      │ 10 GB      │
+E     │ Disk     │ 18 GB free │
+E     └──────────┴────────────┘
+E     
+E                                 Dependencies                             
+E     ┏━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+E     ┃ Package      ┃ Required ┃ Installed ┃ Min Version ┃ Status        ┃
+E     ┡━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+E     │ pydantic     │   yes    │  2.14.1   │ >=2.0.0     │ OK            │
+E     │ typer        │   yes    │  0.20.1   │ >=0.15.4    │ OK            │
+E     │ rich         │   yes    │  15.0.0   │ >=13.0.0    │ OK            │
+E     │ pyyaml       │   yes    │   6.0.3   │ >=6.0       │ OK            │
+E     │ plotext      │   yes    │   6.1.0   │ >=5.2.0     │ OK            │
+E     │ fastapi      │ optional │     -     │ >=0.104.0   │ not installed │
+E     │ uvicorn      │ optional │     -     │ >=0.24.0    │ not installed │
+E     │ datasketch   │ optional │     -     │ >=1.6.0     │ not installed │
+E     │ lm-eval      │ optional │     -     │ >=0.4.0     │ not installed │
+E     │ wandb        │ optional │     -     │ >=0.15.0    │ not installed │
+E     │ deepspeed    │ optional │     -     │ >=0.12.0    │ not installed │
+E     │ httpx        │ optional │     -     │ >=0.24.0    │ not installed │
+E     │ unsloth      │ optional │     -     │ >=2024.8    │ not installed │
+E     │ Pillow       │ optional │     -     │ >=9.0.0     │ not installed │
+E     │ torchao      │ optional │     -     │ >=0.18.0    │ not installed │
+E     │ sglang       │ optional │     -     │ >=0.5.1     │ not installed │
+E     │ librosa      │ optional │     -     │ >=0.10.0    │ not installed │
+E     │ torch        │ [train]  │     -     │ >=2.6.0     │ not installed │
+E     │ transformers │ [train]  │     -     │ >=5.16.1    │ not installed │
+E     │ peft         │ [train]  │     -     │ >=0.20.0    │ not installed │
+E     │ trl          │ [train]  │     -     │ >=0.29.0    │ not installed │
+E     │ datasets     │ [train]  │     -     │ >=2.14.0    │ not installed │
+E     │ bitsandbytes │ [train]  │     -     │ >=0.41.0    │ not installed │
+E     │ accelerate   │ [train]  │     -     │ >=0.27.0    │ not installed │
+E     └──────────────┴──────────┴───────────┴─────────────┴───────────────┘
+E     
+E     Found 1 issue(s):
+E       > Training stack not installed: pip install "soup-cli[train]"
+E     
+E     Fix all:
+E       pip install "soup-cli[train]"
+E     
+E     Config check - task=distill backend=transformers modality=audio
+E       None of the 0 setting(s) known to be unread on task=distill 
+E     backend=transformers modality=audio is switched on in this config.
+E     
+E     GitHub: https://github.com/MakazhanAlpamys/Soup
+E     
+E   assert 0 == 2
+E    +  where 0 = <Result okay>.exit_code
+________ test_doctor_cli_refuses_non_text_distillation[sequence-vision] ________
+tests/test_distill_modality.py:121: in test_doctor_cli_refuses_non_text_distillation
+    assert result.exit_code == 2, result.output
+E   AssertionError: Soup Doctor - checking your environment...
+E     
+E     ╭─────────────────────────────────── System ───────────────────────────────────╮
+E     │ Python:   3.12.14                                                            │
+E     │ Platform: Linux 6.18.44                                                      │
+E     │ Arch:     x86_64                                                             │
+E     │ `soup` runs under /workspace/scratch/b3f449ba7f0f/soup-env/bin/python;       │
+E     │ `python` on your PATH is /usr/bin/python3. site-packages may differ — for    │
+E     │ any `python -c` check use the soup interpreter explicitly.                   │
+E     ╰──────────────────────────────────────────────────────────────────────────────╯
+E     ╭──────────────────────────────────── GPU ─────────────────────────────────────╮
+E     │ Backend:  unknown (torch not installed)                                      │
+E     ╰──────────────────────────────────────────────────────────────────────────────╯
+E         System Resources     
+E     ┏━━━━━━━━━━┳━━━━━━━━━━━━┓
+E     ┃ Resource ┃ Value      ┃
+E     ┡━━━━━━━━━━╇━━━━━━━━━━━━┩
+E     │ RAM      │ 10 GB      │
+E     │ Disk     │ 18 GB free │
+E     └──────────┴────────────┘
+E     
+E                                 Dependencies                             
+E     ┏━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+E     ┃ Package      ┃ Required ┃ Installed ┃ Min Version ┃ Status        ┃
+E     ┡━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+E     │ pydantic     │   yes    │  2.14.1   │ >=2.0.0     │ OK            │
+E     │ typer        │   yes    │  0.20.1   │ >=0.15.4    │ OK            │
+E     │ rich         │   yes    │  15.0.0   │ >=13.0.0    │ OK            │
+E     │ pyyaml       │   yes    │   6.0.3   │ >=6.0       │ OK            │
+E     │ plotext      │   yes    │   6.1.0   │ >=5.2.0     │ OK            │
+E     │ fastapi      │ optional │     -     │ >=0.104.0   │ not installed │
+E     │ uvicorn      │ optional │     -     │ >=0.24.0    │ not installed │
+E     │ datasketch   │ optional │     -     │ >=1.6.0     │ not installed │
+E     │ lm-eval      │ optional │     -     │ >=0.4.0     │ not installed │
+E     │ wandb        │ optional │     -     │ >=0.15.0    │ not installed │
+E     │ deepspeed    │ optional │     -     │ >=0.12.0    │ not installed │
+E     │ httpx        │ optional │     -     │ >=0.24.0    │ not installed │
+E     │ unsloth      │ optional │     -     │ >=2024.8    │ not installed │
+E     │ Pillow       │ optional │     -     │ >=9.0.0     │ not installed │
+E     │ torchao      │ optional │     -     │ >=0.18.0    │ not installed │
+E     │ sglang       │ optional │     -     │ >=0.5.1     │ not installed │
+E     │ librosa      │ optional │     -     │ >=0.10.0    │ not installed │
+E     │ torch        │ [train]  │     -     │ >=2.6.0     │ not installed │
+E     │ transformers │ [train]  │     -     │ >=5.16.1    │ not installed │
+E     │ peft         │ [train]  │     -     │ >=0.20.0    │ not installed │
+E     │ trl          │ [train]  │     -     │ >=0.29.0    │ not installed │
+E     │ datasets     │ [train]  │     -     │ >=2.14.0    │ not installed │
+E     │ bitsandbytes │ [train]  │     -     │ >=0.41.0    │ not installed │
+E     │ accelerate   │ [train]  │     -     │ >=0.27.0    │ not installed │
+E     └──────────────┴──────────┴───────────┴─────────────┴───────────────┘
+E     
+E     Found 1 issue(s):
+E       > Training stack not installed: pip install "soup-cli[train]"
+E     
+E     Fix all:
+E       pip install "soup-cli[train]"
+E     
+E     Config check - task=distill backend=transformers modality=vision
+E       None of the 0 setting(s) known to be unread on task=distill 
+E     backend=transformers modality=vision is switched on in this config.
+E     
+E     GitHub: https://github.com/MakazhanAlpamys/Soup
+E     
+E   assert 0 == 2
+E    +  where 0 = <Result okay>.exit_code
+________ test_doctor_cli_refuses_non_text_distillation[sequence-audio] _________
+tests/test_distill_modality.py:121: in test_doctor_cli_refuses_non_text_distillation
+    assert result.exit_code == 2, result.output
+E   AssertionError: Soup Doctor - checking your environment...
+E     
+E     ╭─────────────────────────────────── System ───────────────────────────────────╮
+E     │ Python:   3.12.14                                                            │
+E     │ Platform: Linux 6.18.44                                                      │
+E     │ Arch:     x86_64                                                             │
+E     │ `soup` runs under /workspace/scratch/b3f449ba7f0f/soup-env/bin/python;       │
+E     │ `python` on your PATH is /usr/bin/python3. site-packages may differ — for    │
+E     │ any `python -c` check use the soup interpreter explicitly.                   │
+E     ╰──────────────────────────────────────────────────────────────────────────────╯
+E     ╭──────────────────────────────────── GPU ─────────────────────────────────────╮
+E     │ Backend:  unknown (torch not installed)                                      │
+E     ╰──────────────────────────────────────────────────────────────────────────────╯
+E         System Resources     
+E     ┏━━━━━━━━━━┳━━━━━━━━━━━━┓
+E     ┃ Resource ┃ Value      ┃
+E     ┡━━━━━━━━━━╇━━━━━━━━━━━━┩
+E     │ RAM      │ 10 GB      │
+E     │ Disk     │ 18 GB free │
+E     └──────────┴────────────┘
+E     
+E                                 Dependencies                             
+E     ┏━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+E     ┃ Package      ┃ Required ┃ Installed ┃ Min Version ┃ Status        ┃
+E     ┡━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+E     │ pydantic     │   yes    │  2.14.1   │ >=2.0.0     │ OK            │
+E     │ typer        │   yes    │  0.20.1   │ >=0.15.4    │ OK            │
+E     │ rich         │   yes    │  15.0.0   │ >=13.0.0    │ OK            │
+E     │ pyyaml       │   yes    │   6.0.3   │ >=6.0       │ OK            │
+E     │ plotext      │   yes    │   6.1.0   │ >=5.2.0     │ OK            │
+E     │ fastapi      │ optional │     -     │ >=0.104.0   │ not installed │
+E     │ uvicorn      │ optional │     -     │ >=0.24.0    │ not installed │
+E     │ datasketch   │ optional │     -     │ >=1.6.0     │ not installed │
+E     │ lm-eval      │ optional │     -     │ >=0.4.0     │ not installed │
+E     │ wandb        │ optional │     -     │ >=0.15.0    │ not installed │
+E     │ deepspeed    │ optional │     -     │ >=0.12.0    │ not installed │
+E     │ httpx        │ optional │     -     │ >=0.24.0    │ not installed │
+E     │ unsloth      │ optional │     -     │ >=2024.8    │ not installed │
+E     │ Pillow       │ optional │     -     │ >=9.0.0     │ not installed │
+E     │ torchao      │ optional │     -     │ >=0.18.0    │ not installed │
+E     │ sglang       │ optional │     -     │ >=0.5.1     │ not installed │
+E     │ librosa      │ optional │     -     │ >=0.10.0    │ not installed │
+E     │ torch        │ [train]  │     -     │ >=2.6.0     │ not installed │
+E     │ transformers │ [train]  │     -     │ >=5.16.1    │ not installed │
+E     │ peft         │ [train]  │     -     │ >=0.20.0    │ not installed │
+E     │ trl          │ [train]  │     -     │ >=0.29.0    │ not installed │
+E     │ datasets     │ [train]  │     -     │ >=2.14.0    │ not installed │
+E     │ bitsandbytes │ [train]  │     -     │ >=0.41.0    │ not installed │
+E     │ accelerate   │ [train]  │     -     │ >=0.27.0    │ not installed │
+E     └──────────────┴──────────┴───────────┴─────────────┴───────────────┘
+E     
+E     Found 1 issue(s):
+E       > Training stack not installed: pip install "soup-cli[train]"
+E     
+E     Fix all:
+E       pip install "soup-cli[train]"
+E     
+E     Config check - task=distill backend=transformers modality=audio
+E       None of the 0 setting(s) known to be unread on task=distill 
+E     backend=transformers modality=audio is switched on in this config.
+E     
+E     GitHub: https://github.com/MakazhanAlpamys/Soup
+E     
+E   assert 0 == 2
+E    +  where 0 = <Result okay>.exit_code
+=========================== short test summary info ============================
+FAILED tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-vision]
+FAILED tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[token-audio]
+FAILED tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-vision]
+FAILED tests/test_distill_modality.py::test_schema_refuses_non_text_distillation[sequence-audio]
+FAILED tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-vision]
+FAILED tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[token-audio]
+FAILED tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-vision]
+FAILED tests/test_distill_modality.py::test_string_loader_refuses_non_text_distillation[sequence-audio]
+FAILED tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-vision]
+FAILED tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[token-audio]
+FAILED tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-vision]
+FAILED tests/test_distill_modality.py::test_file_loader_refuses_non_text_distillation[sequence-audio]
+FAILED tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-vision]
+FAILED tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[token-audio]
+FAILED tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-vision]
+FAILED tests/test_distill_modality.py::test_doctor_config_check_refuses_instead_of_reporting_support[sequence-audio]
+FAILED tests/test_distill_modality.py::test_doctor_cli_refuses_non_text_distillation[token-vision]
+FAILED tests/test_distill_modality.py::test_doctor_cli_refuses_non_text_distillation[token-audio]
+FAILED tests/test_distill_modality.py::test_doctor_cli_refuses_non_text_distillation[sequence-vision]
+FAILED tests/test_distill_modality.py::test_doctor_cli_refuses_non_text_distillation[sequence-audio]
+========================= 20 failed, 9 passed in 1.14s =========================

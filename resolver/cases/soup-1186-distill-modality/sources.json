@@ -1,0 +1,531 @@
+{
+  "checked_at": "2026-10-17T00:00:26Z",
+  "local_date": "2026-10-16",
+  "repository": "MakazhanAlpamys/Soup",
+  "commit": "3da204fadbd278c01ad5a4b23906b443d15e9dd1",
+  "issue": {
+    "url": "https://github.com/MakazhanAlpamys/Soup/issues/1186",
+    "state": "open",
+    "updated_at": "2026-10-16T18:39:02Z",
+    "assignees": [],
+    "labels": [
+      "bug",
+      "help wanted",
+      "difficulty:2"
+    ]
+  },
+  "comments": [
+    {
+      "url": "https://github.com/MakazhanAlpamys/Soup/issues/1186#issuecomment-5810351477",
+      "updated_at": "2026-09-24T08:08:45Z",
+      "body": "Two more of the same shape, found while reviewing #1167 by executing `setup()`, not fixed here:\n\n- **`task: distill` with `modality: vision` or `audio`** trains text-only: the distill path never reads `modality`.\n- **`task: sft` with `backend: unsloth` and `modality: vision` / `audio`** runs the transformers setup: the unsloth request is dropped for those modalities.\n\nBoth load without a word. Whoever takes this should decide per combination between a load-time refusal and real wiring, as above.\n"
+    },
+    {
+      "url": "https://github.com/MakazhanAlpamys/Soup/issues/1186#issuecomment-5819678487",
+      "updated_at": "2026-09-24T18:18:31Z",
+      "body": "Part of this issue landed in #1193 (merged as `210298c8`), by @chiliec. Thank you: `task: distill` with `backend: unsloth` is now refused at config load with a message that names the reason and the supported backend, instead of being accepted and trained on transformers. The two remaining combinations (distill with `modality: vision`/`audio`, and sft on unsloth with vision/audio) stay open here and are @chiliec's, as follow-up PRs."
+    },
+    {
+      "url": "https://github.com/MakazhanAlpamys/Soup/issues/1186#issuecomment-5956608935",
+      "updated_at": "2026-10-02T16:23:56Z",
+      "body": "Hi @chiliec, thank you for #1193: you checked that no shipped config pairs distill with unsloth before refusing it, and you ran the review's mutation yourself before saying the test was fixed. #1202 and #1308 since then have been just as careful.\n\nWe are checking in on the follow-ups from #1186 that were handed to you on 2026-09-24 (no comment or branch for them yet). Nothing is owed and no explanation is needed. What is still open here:\n\n1. `task: distill` with `modality: vision` or `audio` trains text-only, because the distill trainer never reads `modality`. Refuse it at config load, or wire it.\n2. `task: sft` with `backend: unsloth` and `modality: vision` or `audio` runs the transformers setup: the vision and audio branches in `SFTTrainerWrapper.setup()` come before the unsloth one. Refuse it at config load, or wire it. Items 1 and 2 are separate PRs, as agreed on #1193.\n3. The \"Tip: unsloth is installed. Add backend: unsloth\" line printed by `soup train` (`src/soup_cli/commands/train.py`, near line 1515) still shows for every task on the transformers backend. It should be gated on `UNSLOTH_SETUP_TASKS`; @Srinivasan8888's #1372 left it alone on purpose, for you.\n\nA one-line answer is plenty: \"still on it\", \"need a week or two\", \"taking only item N\", or \"releasing it\" are all fine.\n\nIf we have not heard by 2026-10-09, we will release the open items in this thread. Nobody is blamed, and everything you have already written stays credited if someone else continues.\n"
+    },
+    {
+      "url": "https://github.com/MakazhanAlpamys/Soup/issues/1186#issuecomment-6124075089",
+      "updated_at": "2026-10-12T12:15:41Z",
+      "body": "Hi @chiliec, following the check-in of 2026-10-02 (no comment or branch since), the follow-up items handed over on 2026-09-24 are released, as described in CONTRIBUTING, so that someone else can pick them up. #1193 stays yours, and nothing is lost: if you want any of the items back, say so in a comment.\n\nFor anyone else: the items listed in the 2026-10-02 comment above are open; items 1 and 2 are separate PRs. Comment here with a short plan before starting.\n"
+    },
+    {
+      "url": "https://github.com/MakazhanAlpamys/Soup/issues/1186#issuecomment-6124158796",
+      "updated_at": "2026-10-12T12:21:15Z",
+      "body": "Hi, sorry for the silence. I'd like to take item 3 back, PR today. Items 1 and 2 are free for others."
+    },
+    {
+      "url": "https://github.com/MakazhanAlpamys/Soup/issues/1186#issuecomment-6124811054",
+      "updated_at": "2026-10-12T13:02:41Z",
+      "body": "Thanks, @chiliec: item 3 is yours again and the `claimed` label is restored; #1782 is in review. Items 1 and 2 stay open for anyone, as you say.\n"
+    },
+    {
+      "url": "https://github.com/MakazhanAlpamys/Soup/issues/1186#issuecomment-6149416256",
+      "updated_at": "2026-10-16T18:39:00Z",
+      "body": "#1782 (merged as `34a7b38e`), by @chiliec, closes out item 3 of this issue together with #1746 (feec5c6d). Thank you.\n`soup train` prints the \"unsloth is installed\" tip only when the config would still load with `backend: unsloth`, which covers every task outside `UNSLOTH_SETUP_TASKS` and also `freeze_layers`, `rope_scaling_type` and `moe_lora` (#1746). #1782 pins it with three `soup train --dry-run` tests: the tip is printed for `sft` and not for `distill` or `classifier`. unsloth was not really installed in these tests; the check is stubbed.\nThis issue stays open. Where the items stand:\n\n| Item | State |\n|---|---|\n| 1. `task: distill` with `modality: vision` or `audio` trains text-only | open |\n| 2. `task: sft` with `backend: unsloth` and `modality: vision` or `audio` runs the transformers setup | open |\n| 3. the \"unsloth is installed\" tip is printed for tasks with no unsloth setup | fixed by #1746, tests in #1782 |\n\nClaim metadata update: item 3 is completed by #1746 and #1782, as recorded above, so the completed slice no longer reserves this aggregate issue. The stale `claimed` label is removed. Items 1 and 2 remain open and unclaimed; this is not a closure of those modality defects. The merged contribution stays credited to @chiliec.\n"
+    }
+  ],
+  "related_prs": [
+    {
+      "number": 1193,
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1193",
+      "title": "fix(distill): refuse backend: unsloth at config load (#1186)",
+      "merged": true,
+      "head": "de5f77d569f82dc105b3a1539842793998af5d85",
+      "body": "Part of #1186.\n\n`task: distill` with `backend: unsloth` passed validation, and then the run trained on plain transformers because nothing in the distill path reads the backend. This takes option 1 from the issue: `validate_distill_compat` now refuses `unsloth` the same way it refuses `mlx`, and the error names the supported backend.\n\nI checked `examples/`, `templates/`, the recipe catalog and the docs for any shipped config that pairs `distill` with `unsloth`, and found none, so there is nothing to warn about before refusing.\n\n**Tests** (in `tests/test_v0520.py`, next to the existing mlx test):\n- `test_validate_distill_compat_unsloth`: the helper raises.\n- `test_soup_config_refuses_distill_on_unsloth`: `SoupConfig` raises `ValidationError` at load.\n\nBoth fail with `DID NOT RAISE` when the new branch is removed, and pass with it.\n\n**Validation**\n- `pytest tests/test_v0520.py -k \"distill_compat or distill_on_unsloth\" --no-cov`: 2 failed before the change, 4 passed after.\n- Every `tests/test_*.py` that mentions distill, run before and after the change: the only difference is these two tests going green. My env had no `[train]` extra (no torch/trl), so 177 torch-dependent tests fail the same way on both sides. I did not run the full suite with the training stack installed.\n- `soup doctor --config` on a `task: distill` + `backend: unsloth` config now prints the refusal and exits 2 instead of reporting the config as clean.\n- `ruff check` on both touched files passes.\n"
+    },
+    {
+      "number": 1782,
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1782",
+      "title": "test(train): pin the unsloth tip to tasks with an unsloth setup (#1186)",
+      "merged": true,
+      "head": "87692be2a27df250afc9b0e5a75dfeb0d7834cde",
+      "body": "Item 3 of #1186, tests only.\n\n#1746 gates the \"unsloth is installed\" tip on whether the config still loads with `backend: unsloth`, which covers this item. This PR keeps only the tests for it.\n\n- `tests/test_issue1186_unsloth_tip_gated.py`: `--dry-run` with unsloth reported as installed. The tip shows for `sft`, and not for `distill` or `classifier`. Each case asserts the config loaded first (\"Training Setup\" panel), so the tip is not missing for the wrong reason.\n\nOn current main the three tests pass. With the `_unsloth_tip_applies(cfg)` gate replaced by `cfg.backend == \"transformers\"`, the `distill` and `classifier` cases fail. `ruff check` is clean.\n"
+    },
+    {
+      "number": 1948,
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1948",
+      "title": "test(config): name the refused and alias categories, and check every shipped config",
+      "merged": false,
+      "head": "6c9e598cd61a1c9e13a0856e19a2b5a946acd39c",
+      "body": "## What does this PR do?\n\nRefs #1814: parts 1 and 4 of the claim (the guard categories and the shipped-config test). `training.forgetting_threshold` (part 2) needs a per-entry staged deadline, since `STAGED_FIELD_SEVERITY` is one global switch; and `training.warmup_auto` (part 3) waits for your call on the issue. Both come in a follow-up.\n\n**Guard categories** (`tests/test_issue748_config_fields_reach_a_consumer.py`). `KNOWN_UNCONSUMED` mixed fields a user can set to no effect with four that a schema validator does read. They move to two named categories, each entry naming the validator that consumes it:\n\n| Category | Field | Validator |\n|---|---|---|\n| `REFUSED_AT_LOAD` | `training.packing_cross_doc_attn_mask` | `TrainingConfig._validate_cross_doc_attn_mask` |\n| `VALIDATOR_ALIASES` | `training.load_in_16bit` | `TrainingConfig._validate_load_in_aliases` (rewrites `quantization` to `none`) |\n| `VALIDATOR_ALIASES` | `training.llm_int8` | `SoupConfig._validate_llm_int8_alias` (asserts `8bit`) |\n| `VALIDATOR_ALIASES` | `training.unsloth_bnb_4bit` | `SoupConfig._validate_unsloth_bnb_4bit_compat` (asserts unsloth + `4bit`) |\n\n- The orphan check, the stale-name check, the now-wired check and both reason checks run over all three (`GUARDED`). The `KNOWN_UNCONSUMED` pin goes **36 → 32**, so it counts only silently inert fields; the categories get their own exact pins (1 and 3) and must not overlap.\n- Each category entry is checked, not trusted (`TestTheNamedCategoriesAreTrue`): the named validator exists; `packing_cross_doc_attn_mask: true` is refused naming the field; `load_in_16bit: true` with `quantization: 4bit` loads as `none`; `llm_int8: true` is refused with `4bit` and loads with `8bit`; `unsloth_bnb_4bit: true` is refused on transformers and loads on unsloth + `4bit`.\n\n**Shipped configs** (`tests/test_shipped_configs_set_no_inert_field.py`). Every recipe in `RECIPES` and every template is loaded, and the test fails, naming the config and the field, when one sets a field in `KNOWN_UNCONSUMED`, a staged field, or a deprecated value (recorded from the same `SoupConfig` construction the loader performs, since the loader turns those warnings into console lines). All 191 pass today (the issue counted 170 recipes at v0.76.0; the catalog has grown), and a floor on the count keeps the loop from passing over nothing. Each of the three detectors is shown to fire on a config that trips it.\n\n**Mutation:** dropping the `llm_int8` alias entry fails the orphan check (and the pin); removing the `8bit` check inside `_validate_llm_int8_alias` fails its category test. `tests/test_issue808_staged_config_fields.py`, `test_issue1272_cache_refusal_reason.py` and `test_issue799_autopilot_unwired_gates.py`, which import `KNOWN_UNCONSUMED`, pass unchanged (154 with the guard file).\n\nTest-only change, no user-visible impact, so no changelog fragment.\n\n## Type of change\n\n- [ ] Bug fix\n- [ ] New feature\n- [ ] Refactor / cleanup\n- [ ] Documentation\n- [x] Tests\n\n## Checklist\n\n- [x] `ruff check src/soup_cli/ scripts/ tests/` passes\n- [x] `pytest tests/ -v` passes — the two files and the importers above; full-suite result follows in a comment\n- [x] Updated relevant docs (`README.md` and the matching page under `docs/`) if needed — none needed, nothing user-facing changes\n- [x] Added a changelog fragment, or this change has no user-visible impact — no user-visible impact\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nhttps://claude.ai/code/session_01HvWXXPcBuhv2XzmqCY6DYe"
+    }
+  ],
+  "open_prs": [
+    {
+      "number": 1980,
+      "title": "fix(rl-checkpoint): report what a save wrote and stage the unsaved include flags (#808)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1980",
+      "head": "c9c525c79d2e9d19138cc772d82afe540fb61c7e"
+    },
+    {
+      "number": 1974,
+      "title": "fix(maintainer): clear completed claims and preserve scoped ownership",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1974",
+      "head": "d0a1eae4f1e2ad3cab355108f771ce98bb25afa6"
+    },
+    {
+      "number": 1973,
+      "title": "feat(peft): training.fast_lora switches the Fast-LoRA kernels on (#792)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1973",
+      "head": "f8cd4992ba4bd95829f125995181773b87cca597"
+    },
+    {
+      "number": 1972,
+      "title": "feat(provenance): record run base revisions and artifact identities",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1972",
+      "head": "1a2a5e880515ddfbb19e66fe7a1ba6d64657a7ba"
+    },
+    {
+      "number": 1971,
+      "title": "fix(monitoring): persist and cap spike recovery attempts across launches (Refs #808)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1971",
+      "head": "7bff49bcb9fda2354c3657e6c770d96ffd8e0199"
+    },
+    {
+      "number": 1968,
+      "title": "fix(loop): train one- and two-pair harvests and save why training was skipped (#1909)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1968",
+      "head": "48fdd6c7e07b4a81ad499db4c66da3c0e63a22ee"
+    },
+    {
+      "number": 1966,
+      "title": "fix(loop): probe the thumbs columns the harvest reads; drop the dead traces guard (#1440)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1966",
+      "head": "285fccdb2b62bc0ea302821950e93f9ecd5b4a56"
+    },
+    {
+      "number": 1962,
+      "title": "fix(streaming): report per-drive direct I/O state",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1962",
+      "head": "c22f5a324aee2c589e1ce21540e28a7a9372a1f6"
+    },
+    {
+      "number": 1960,
+      "title": "Fix/can run cleanup 1464",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1960",
+      "head": "40ad2f889837c80f26635f317352dc9a5fdd6ca3"
+    },
+    {
+      "number": 1958,
+      "title": "feat(eval): support batched greedy generation in ship scorers",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1958",
+      "head": "e1d2aebaa78996fce9df99660f303f2175f8e01d"
+    },
+    {
+      "number": 1957,
+      "title": "fix(export): handle absent MTP tensors in GGUF conversion",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1957",
+      "head": "a1817e0bc2799dbdccf2999a1f72f1dd83badf94"
+    },
+    {
+      "number": 1956,
+      "title": "fix(compile): pass eval suite signal and iteration bounds to optimizers (#1810)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1956",
+      "head": "6633f2358621284e0fd4be265252254ff95d21eb"
+    },
+    {
+      "number": 1953,
+      "title": "fix(terminal): strip bidi controls and invisible separators in for_terminal (#1861)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1953",
+      "head": "c1c933a33461b9ba436b20e0d80fe08a5a244db8"
+    },
+    {
+      "number": 1952,
+      "title": "fix(ui): delete training temp config when run ends (Refs #1464)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1952",
+      "head": "12921c455485c26368577e86437b8d45dea464f1"
+    },
+    {
+      "number": 1951,
+      "title": "refactor(export): remove deprecated awq and gptq export formats (#1710)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1951",
+      "head": "675ba8430f8824ac760c336f494dc51093b1d895"
+    },
+    {
+      "number": 1948,
+      "title": "test(config): name the refused and alias categories, and check every shipped config",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1948",
+      "head": "6c9e598cd61a1c9e13a0856e19a2b5a946acd39c"
+    },
+    {
+      "number": 1947,
+      "title": "fix(liger): report Liger as applied only for a model type in liger's kernel table",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1947",
+      "head": "b385f838f860f912ad45c8d86608e1cbb7259c94"
+    },
+    {
+      "number": 1946,
+      "title": "fix(config): refuse quantization 8bit on backend unsloth instead of loading 16-bit",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1946",
+      "head": "1ac0c71d1bfa15238de3a62d4827e1fc80ab8a13"
+    },
+    {
+      "number": 1943,
+      "title": "bench: record the end-to-end A/B of stream_nf4_scale_cache (#1892) and add the stream_ab_pairs driver",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1943",
+      "head": "d87a14e43f7c7e58aefa66031cc11b7b79283841"
+    },
+    {
+      "number": 1942,
+      "title": "fix(cli): move light refusals ahead of the torch import (#1817)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1942",
+      "head": "9962f08e4d623f305b12dbf4f186a7cd560464ab"
+    },
+    {
+      "number": 1941,
+      "title": "fix(cli): name the file in expect/lock errors and hint [train] in draft (#1830)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1941",
+      "head": "ba9cf35e357fede120b21a68cfdefc1fe6c28cdd"
+    },
+    {
+      "number": 1933,
+      "title": "fix(stream): build the streamed model from native code; Moonlight-16B LoRA on 8 GB",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1933",
+      "head": "08b8b258b17edfc45e014ca3f98a1ba605422a93"
+    },
+    {
+      "number": 1930,
+      "title": "fix(data): cap per-row skip warnings in the dataset loader (#1888)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1930",
+      "head": "7c2757b1d372908526b10ce89b4fd92354ad65bb"
+    },
+    {
+      "number": 1927,
+      "title": "ci: verify isolated core dependency floors",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1927",
+      "head": "943f15f1a48d0a2d4dcd86a38a1a97b389f533f2"
+    },
+    {
+      "number": 1925,
+      "title": "fix: fill four CLI message gaps from the v0.76.0 smoke (#1830)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1925",
+      "head": "b00deaf1a8b8dc57e5fc3b68aa5f99c24cf66e1b"
+    },
+    {
+      "number": 1924,
+      "title": "fix(eval): score wrapped and leading MCQ letters",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1924",
+      "head": "bb83e11319f077d4d6fb0ba961c0b243ca44c2e8"
+    },
+    {
+      "number": 1923,
+      "title": "fix(configs): set gradient_checkpointing in the shipped grpo/ipo/bco/reward_model/online_dpo configs",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1923",
+      "head": "39b635ba7a25179b31132d38baec608061eba1e5"
+    },
+    {
+      "number": 1920,
+      "title": "feat(mlx): add native DoRA for text SFT",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1920",
+      "head": "d008fad47bca520df2fffec579f456d2184b311a"
+    },
+    {
+      "number": 1919,
+      "title": "feat(stream): expert-granularity streaming for DeepSeek-V3 MoE layers",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1919",
+      "head": "9384d93ac44c8281f0a80948749571350033e407"
+    },
+    {
+      "number": 1906,
+      "title": "fix(weights): the checkpoint is the files the index names, not every *.safetensors",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1906",
+      "head": "f7150a85b46ad2d2699e53566df3fe8f7031034a"
+    },
+    {
+      "number": 1905,
+      "title": "fix(cli): exit non-zero when nothing succeeded in sweep, cmaes merge, drift-alarm, eval auto and loop watch --detach",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1905",
+      "head": "c57052afe48175c70c21ce4fde3b40e6e4686403"
+    },
+    {
+      "number": 1904,
+      "title": "test(ingest): prove urllib timeouts with response events",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1904",
+      "head": "58bd7a05b2dcb7b6bbebe5016a4cfeb3be70b5c4"
+    },
+    {
+      "number": 1903,
+      "title": "fix(eval): convert oversized baseline integers to ValueError",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1903",
+      "head": "e48f810c5212bd1198625fa963b618f70758da23"
+    },
+    {
+      "number": 1898,
+      "title": "test(yaml): the refusal tests fail in seconds if the limited loader regresses",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1898",
+      "head": "9abdda92b1c3dc68f24374ef6fb6d228d8eefa2c"
+    },
+    {
+      "number": 1895,
+      "title": "fix(eval): normalize malformed YAML and non-mapping roots in load_suite (#1878)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1895",
+      "head": "80ee870543e031c4363628e7e4b6daa136cceccb"
+    },
+    {
+      "number": 1891,
+      "title": "fix(relora): refuse a restart that would move a frozen reference (#1835)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1891",
+      "head": "e9a66b26d9330af69becfd33cc16850847e25cac"
+    },
+    {
+      "number": 1882,
+      "title": "fix(commands): escape Rich markup in soup data paths and flags",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1882",
+      "head": "47d4b8723b0c060f05b0232ec1334a8b5d5b71da"
+    },
+    {
+      "number": 1881,
+      "title": "fix(eval): normalize malformed or non-object gate suite YAML to ValueError (#1878)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1881",
+      "head": "138a40f16e79ea2415755f0184833899839ffdb9"
+    },
+    {
+      "number": 1880,
+      "title": "feat(stream): the output head and the loss in token chunks (#1693)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1880",
+      "head": "4281f7a3370c3ff9be6e0bfa5735a2910f05f5ed"
+    },
+    {
+      "number": 1872,
+      "title": "fix(ship): strip control bytes in _fail before escaping markup",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1872",
+      "head": "f705f47fceb32dcd0615faefba8521dcc20e0c61"
+    },
+    {
+      "number": 1871,
+      "title": "fix(ingest): preserve zero-valued Langfuse feedback",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1871",
+      "head": "945f6587f3f2812a873682231bafc4cce43d5c66"
+    },
+    {
+      "number": 1868,
+      "title": "fix(cli): escape model and output paths through for_terminal (#1864)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1868",
+      "head": "e051f8fde39e28a0355967f09132911e37171994"
+    },
+    {
+      "number": 1857,
+      "title": "fix(mlx): a split smaller than one batch no longer crashes the run (#1851)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1857",
+      "head": "d4857be2d9115d49ee09ffa36e09231f901b7fd2"
+    },
+    {
+      "number": 1855,
+      "title": "fix(mlx): seed MLX SFT so a run reproduces (#1850)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1855",
+      "head": "16181a4738adc590d8a72802e32297f293a56ed8"
+    },
+    {
+      "number": 1848,
+      "title": "fix(traces): share text-only conversation prompts across parsers (#1809)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1848",
+      "head": "0f025713404123e5422b6097dd09326b238d9028"
+    },
+    {
+      "number": 1846,
+      "title": "feat(mlx): native DPO on Apple Silicon",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1846",
+      "head": "3816fcebaf055110d2bd0f2f2afe6b29d5ecbe07"
+    },
+    {
+      "number": 1823,
+      "title": "fix(config): name a location for cross-field errors and a next step for unmatched keys",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1823",
+      "head": "4058d879e315b149cf6a0160d210464bf5f6beb1"
+    },
+    {
+      "number": 1786,
+      "title": "F4 moe small gemm",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1786",
+      "head": "cfc9515c68b7171b59fb4071b079bc6793bfc738"
+    },
+    {
+      "number": 1775,
+      "title": "fix(trainer): dynamic warmup for PRM, MoLE, PPO and wire PPO (refs #805)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1775",
+      "head": "9dccec03dba71b2067fdaae8e0a28076da823ce1"
+    },
+    {
+      "number": 1770,
+      "title": "feat(mcp): expose call_tool for callers that skip the MCP server (#1761)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1770",
+      "head": "f88f562f55dcaaa1927f8413c1bbc3f5875fb4b5"
+    },
+    {
+      "number": 1757,
+      "title": "fix(config): refuse use_mod on routes that never apply routing",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1757",
+      "head": "2cb4a6a812f03a6a137511c9911c3ce5a3c0b9f4"
+    },
+    {
+      "number": 1756,
+      "title": "fix(eval): do not credit a JSON number as a boolean in tool-call scoring (#1755)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1756",
+      "head": "a894317d62f05a0e09590eb0eb55c01189685a30"
+    },
+    {
+      "number": 1717,
+      "title": "fix(relora): prune optimizer moments deterministically",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1717",
+      "head": "2ff38d20be8f2caf3e47a62ec57a491f13925456"
+    },
+    {
+      "number": 1696,
+      "title": "docs(readme): Japanese README retranslated from the Turkish one (draft, question inside)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1696",
+      "head": "7d9fd041174437bf520315139af397d6f2e5e3a4"
+    },
+    {
+      "number": 1691,
+      "title": "docs(readme): Spanish and Portuguese READMEs (parked until a native reader maintains them)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1691",
+      "head": "49c98b333ef43946af35cfe3d0f4e50cab21f307"
+    },
+    {
+      "number": 1680,
+      "title": "docs(readme): Russian translation behind the sync ratchet",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1680",
+      "head": "08dccb9b3d44f77801c697946f69359c56f1656f"
+    },
+    {
+      "number": 1668,
+      "title": "chore: ignore local data, models, wheelhouse, and soup.yaml",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1668",
+      "head": "88e057278e2523ca5fd196f96b63eae79f34b749"
+    },
+    {
+      "number": 1623,
+      "title": "docs: update stream_layers scope, error messages, and descriptions (fixes #1619)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1623",
+      "head": "3c9a09120808094e817e74131d277cb2fd30aae9"
+    },
+    {
+      "number": 1593,
+      "title": "fix(layer-stream): charge the cuBLAS workspaces a streamed step holds (#1407)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1593",
+      "head": "0320791a8c46b8e0a3ede1301002e921e7d498de"
+    },
+    {
+      "number": 1591,
+      "title": "feat(diagnose): add --require-all-modes for evidence-only runs",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1591",
+      "head": "e6c2abec89c75b9172157081d3bd58f7c42b04e8"
+    },
+    {
+      "number": 1589,
+      "title": "fix(diagnose): report probes that measured nothing as NOT_RUN (#1525)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1589",
+      "head": "009b2b6b441747d7e4a18fc6fe113333c8409cd8"
+    },
+    {
+      "number": 1587,
+      "title": "fix(config): gate reasoning_effort and train_on_eot on the tasks that read them (#806)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1587",
+      "head": "f8543f8646901408d304fa7ed5b21f19a45d6323"
+    },
+    {
+      "number": 1584,
+      "title": "fix(cloud): ship the effective config, and refuse inputs the stub cannot carry (#1430)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1584",
+      "head": "08b9206daa96569feae61fe113015e69b12d8058"
+    },
+    {
+      "number": 1568,
+      "title": "test(cli): read JSON from result.stdout in version JSON tests",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1568",
+      "head": "c9bec122b6d9e70136d18faa6cd7227a7b256848"
+    },
+    {
+      "number": 1494,
+      "title": "fix(train): thread the freeze plan into the LoRA layer selection (#1432)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1494",
+      "head": "b877d316e8c0ed04709e1a753c3ed0a4a9cf65c1"
+    },
+    {
+      "number": 1289,
+      "title": "bench: publish layer count reconstruction validator",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1289",
+      "head": "893a6807e96538120eef5edbaeee21246fea15d1"
+    },
+    {
+      "number": 1288,
+      "title": "bench: publish repeated backward reconstruction",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1288",
+      "head": "ad52aa8cafacfa95c24ca2b3ec6c49d5ffafe017"
+    },
+    {
+      "number": 1287,
+      "title": "bench: publish depth versus bytes reconstruction",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1287",
+      "head": "5ab8577ec407a2fddd46e5df3253693202c467ce"
+    },
+    {
+      "number": 1196,
+      "title": "Fix preference max length enforcement across TRL wrappers",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1196",
+      "head": "8874d7cbd40c9481c69f3ed8edccdc404417e989"
+    },
+    {
+      "number": 1187,
+      "title": "Feat/laya reward integration",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1187",
+      "head": "d2e203a6de9e1d0118fd1bd3d030902a658d575c"
+    },
+    {
+      "number": 1184,
+      "title": "fix(serve): require the tool token on the adapter routes; let soup loop send it (#1139)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1184",
+      "head": "993d502e7e6187dfaf66b3d068431b32a6068a15"
+    },
+    {
+      "number": 1172,
+      "title": "bench: publish pinning cost harness for issue #379",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1172",
+      "head": "903dcb8f607adb9b73aa869b82f43d28371db999"
+    },
+    {
+      "number": 1141,
+      "title": "feat(stream): prepare real preference VRAM probes (#840)",
+      "url": "https://github.com/MakazhanAlpamys/Soup/pull/1141",
+      "head": "4d5ce353ef78979e07d289e2a0d0e591d184a3d6"
+    }
+  ],
+  "reservation": "https://github.com/pedrosalvadeo/genius-decision-open/commit/8666f642855fb68032efffa648406d6abc5d55d4",
+  "contribution": {
+    "license": "Apache-2.0",
+    "notice_included": true,
+    "external_claim_required": true,
+    "external_claim_made": false,
+    "cla_required": false,
+    "dco_required": false,
+    "terms_accepted_on_behalf_of_user": false
+  },
+  "selection": "Existing registry task, item 1 only. Current thread explicitly releases item 1; title defect and item 3 belong to earlier contributors. No new discovery sample."
+}

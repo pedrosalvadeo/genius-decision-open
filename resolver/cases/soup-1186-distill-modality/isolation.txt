@@ -1,0 +1,4 @@
+Environment keys: ['ANSIBLE_HOME', 'ANSIBLE_NOCOLOR', 'LANG', 'LOCPATH', 'PATH', 'PYTEST_DISABLE_PLUGIN_AUTOLOAD']
+Heavy dependencies available: {'torch': False, 'transformers': False, 'peft': False, 'trl': False, 'unsloth': False}
+AF_INET: blocked
+AF_INET6: blocked

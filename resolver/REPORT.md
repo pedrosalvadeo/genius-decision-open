@@ -2,7 +2,7 @@
 
 Estado generado desde `ledger.json`. El buscador inspecciona muestras; no cubre toda Internet.
 
-Problemas registrados: **20** · Soluciones preparadas: **3** · Aplicadas pendientes de verificación: **0** · Resultados verificados: **0**
+Problemas registrados: **20** · Soluciones preparadas: **4** · Aplicadas pendientes de verificación: **0** · Resultados verificados: **0**
 
 | Problema público | Estado | Última evidencia |
 |---|---|---|
@@ -21,7 +21,7 @@ Problemas registrados: **20** · Soluciones preparadas: **3** · Aplicadas pendi
 | [&#91;Bug&#93;: MiniCPM-o 4.5 early stop without answers during 2nd round in 1q1a_math of Omniinteract](https://github.com/vllm-project/vllm-omni/issues/8879) | DETECTED | Detectado; pendiente de investigación. |
 | [Probes parse localized output: non-English hosts get a false `failed_logins`, and certificate dates go unparsed](https://github.com/sameeralam3127/linux-vitals/issues/149) | SOLUTION_PREPARED | Parche preparado contra 086d99a: 25 fallos reproducidos antes; 266 pruebas locales aprobadas después y 53 repetidas en copia limpia. Pendientes permiso de envío y controles upstream; sin aplicación externa. |
 | [google: files.list with orderBy=name_natural is a 500 on a name like 10² or ², where real orders it](https://github.com/brekkylab/backlot/issues/593) | NEEDS_INFORMATION | Falta evidencia suficiente de colación natural de Drive: isdecimal evita el 500 pero no demuestra el orden correcto. No se cuenta una solución. |
-| [backend: unsloth is accepted and silently ignored for task: distill](https://github.com/MakazhanAlpamys/Soup/issues/1186) | DETECTED | Detectado; pendiente de investigación. |
+| [backend: unsloth is accepted and silently ignored for task: distill](https://github.com/MakazhanAlpamys/Soup/issues/1186) | SOLUTION_PREPARED | Preparado sólo el ítem 1 de Soup #1186: rechazo de destilación vision/audio al cargar configuración. 129 pruebas aprobadas; quitar el rechazo produce 20 fallos. Ítem 2 pendiente; sin envío ni aplicación externos. Kernel no ejecutado. |
 | [Bug: clipboard 500 (deadlock)](https://github.com/openedx/openedx-platform/issues/39118) | DETECTED | Detectado; pendiente de investigación. |
 | [hubspot: batch/read serves an input id or a properties element that is null, an object or an array, where real refuses the body](https://github.com/brekkylab/backlot/issues/611) | DETECTED | Detectado; pendiente de investigación. |
 | [training.gradient_checkpointing is decided by the trainer, not the config: `false` cannot turn it off on any 4-bit run, and 9 trainers can drop `true`](https://github.com/MakazhanAlpamys/Soup/issues/797) | DETECTED | Detectado; pendiente de investigación. |

@@ -56,6 +56,31 @@ renotificar esta entrega como novedad. Kernel no ejecutado: no hay una
 representación justificada para esta corrección documental. No se midieron CAG,
 PVS ni bienestar. El historial previo y los otros agentes no se modificaron.
 
+## Cuarto ciclo: Soup #1186, sólo ítem 1
+
+Se preparó en copia el rechazo al cargar `task: distill` con `modality: vision`
+o `audio`; ambos modos de destilación actuales procesan texto. El defecto del
+título (backend unsloth) ya era de #1193, y el ítem 3 de #1746/#1782: no atribuirlos
+a Genius. El ítem 2 (SFT/unsloth con visión/audio) continúa pendiente y separado.
+El hilo vigente confirma que los ítems 1 y 2 están libres; Soup exige comentar un
+plan antes de reclamar públicamente. No se envió comentario ni PR externo.
+
+Reserva interna publicada antes de implementar en `genius/resolver-soup-1186-modality`.
+Paquete Apache-2.0 con NOTICE en `cases/soup-1186-distill-modality/`. Antes del
+cambio: 16 fallos y 9 aprobadas. Regresión final: 129 aprobadas, incluidas 29
+nuevas y cuatro invocaciones reales de doctor --config. Al retirar sólo el
+rechazo nuevo: 20 fallos; restaurado: 29 aprobadas. Parche comprobado en copia
+limpia, Ruff completo aprobado. Inventario de 205 configs sin combinación afectada.
+Pruebas sin credenciales y sin sockets IPv4/IPv6; no se entrenó ni descargó modelos.
+Suite completa y matriz upstream pendientes. Python 3.12.14, sólo dependencias core.
+
+Estado SOLUTION_PREPARED únicamente para ese ítem, sin aplicación ni adopción.
+Próximo paso externo: permiso para comentario de reserva y PR, coordinación con
+el mantenedor y controles upstream. No requiere CLA/DCO según CONTRIBUTING leído;
+no se aceptaron términos en nombre del usuario. Kernel no ejecutado por no existir
+una representación justificada. No regenerar esta entrega ni contar el issue
+agregado como resuelto. El historial y las entregas anteriores se conservaron.
+
 ## Siguiente encargo
 
 > Continuá el agente explorador y resolutor desde resolver/AGENT.md, ledger.json,
