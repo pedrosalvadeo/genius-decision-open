@@ -1,0 +1,844 @@
+To:     All Annual Operating Plan Recipients
+
+From: Lower Colorado Region
+      Boulder Canyon Operations Office
+      River Operations Group
+      Daniel Bunk
+      P.O. Box 61470
+      Boulder City, NV 89006-1470
+      Phone: 702-293-8013
+
+In addition to the January 2016 24-Month Study based on the Most Probable inflow scenario, Reclamation conducted model runs to determine a possible range of
+reservoir elevations under Probable Minimum and Probable Maximum inflow scenarios. The Probable Minimum inflow scenario reflects a dry hydrologic condition
+which statistically would be exceeded 90% of the time. The Most Probable inflow scenario reflects a median hydrologic condition which statistically would be
+exceeded 50% of the time. The Probable Maximum inflow scenario reflects a wet hydrologic condition which statistically would be exceeded 10% of the time.
+There is approximately an 80% probability that a future elevation will fall inside the range of the minimum and maximum inflow scenarios. There are possible
+inflow scenarios that would result in reservoir elevations falling outside the ranges indicated in these reports.
+
+The projected Lake Mead elevations resulting from these three inflow scenarios are summarized in a graph located at the following link:
+http://www.usbr.gov/lc/region/g4000/24mo/2016/January-Chart.pdf.
+
+The water year 2016 unregulated inflow into Lake Powell under the January Probable Maximum inflow scenario is 13.71 maf, or 127 percent of average.
+Consistent with the Interim Guidelines, the Probable Maximum 24-Month Study results in a projected annual release volume from Glen Canyon Dam of 9.00 maf in
+water year 2016 and 11.95 maf in water year 2017.
+
+The Interim Guidelines are available for download at http://www.usbr.gov/lc/region/programs/strategies/RecordofDecision.pdf.
+The January 2016 Most Probable 24-Month Study is available for download at http://www.usbr.gov/lc/region/g4000/24mo/2016/JAN16.pdf.
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                Maximum Probable Inflow*
+                                                                                Fontenelle Reservoir
+                Regulated    Evap            Power       Bypass        Total     Reservoir Elev     Live
+                 Inflow     Losses          Release      Release      Release End of Month        Storage
+        Date (1000 Ac-Ft) (1000 Ac-Ft)    (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)      (1000 Ac-Ft)
+  *   Jan 2015      46          1              77            0            77         6490.98         234
+  H   Feb 2015      46          1              69            1            69         6487.37         210
+  I   Mar 2015      70          1              78            0            78         6486.00         201
+  S   Apr 2015      87          1             102            0           103         6483.35         185
+  T   May 2015     223          2             104            4           108         6499.95         298
+  O   Jun 2015     332          3             101          229           330         6499.84         297
+  R    Jul 2015    126          3              91           17           108         6501.77         312
+  I   Aug 2015      53          2              83            1            84         6497.37         279
+  C   Sep 2015      37          2               0           61            61         6493.88         254
+      WY 2015     1210         16             930          324          1254
+  A   Oct 2015      46           1             46            15           61          6491.60       238
+  L   Nov 2015      40           1             56             1           57          6489.03       221
+  *   Dec 2015      36           1             58             0           58          6485.40       197
+      Jan 2016      29            1            61             0            61         6479.77       165
+      Feb 2016      26            0            59             0            59         6473.00       132
+      Mar 2016      43           0             63            0             63         6468.33       112
+      Apr 2016      92           1             89            0            89          6468.80       114
+      May 2016     186            1            97            57           154         6475.84       146
+      Jun 2016     375            2           101           137           238         6497.52       281
+       Jul 2016    232            3           102            66           168         6505.56       342
+      Aug 2016      97            2            99            12           111         6503.49       326
+      Sep 2016      56            2            98             0           98          6497.75       282
+      WY 2016      1258          15           928           288          1216
+      Oct 2016      57            1            74            0            74          6495.29       264
+      Nov 2016      48            1            71            0            71          6491.85       240
+      Dec 2016      35            1            74            0            74          6485.76       201
+      Jan 2017      34            1            74            0            74          6478.68       160
+      Feb 2017      30           0             67            0            67          6470.95       123
+      Mar 2017      59           0             73            0            73          6467.41       108
+      Apr 2017     102           1             91            10           101         6467.55       109
+      May 2017     212            1            98            56           154         6479.96       166
+      Jun 2017     389            2            101          197           298         6494.07       256
+       Jul 2017    240            3            104           50           154         6505.17       339
+      Aug 2017     101            2             99           6            105         6504.38       333
+      Sep 2017      57            2            89            0            89          6499.90       298
+      WY 2017      1363          15           1014          318          1333
+      Oct 2017      56           1             92            0            92          6494.72       260
+      Nov 2017      46           1             95            0            95          6487.24       210
+      Dec 2017      32           1             98            0            98          6475.37       143
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                   Model Run ID: 3003   Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                 Maximum Probable Inflow*
+                                                                            Flaming Gorge Reservoir
+                  Unreg           Reg         Evap         Power         Bypass        Total        Bank      Reservoir Elev    Live       Jensen
+                  Inflow         Inflow      Losses       Release        Release      Release      Storage    End of Month Storage           Flow
+        Date   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)     (1000 Ac-Ft) (1000 Ac-Ft)
+  * Jan 2015       67               98          2            124             0           124         130        6026.99        3234           171
+  H Feb 2015       63               86          2            113             0           113         129        6026.25        3207           168
+  I Mar 2015        77              85          3            124             0           124         127        6025.15        3166           219
+  S Apr 2015       112             127          5             73             0            73         129        6026.41        3213           252
+  T May 2015       333             218          8            169            57           226         129        6026.01        3198           652
+  O Jun 2015       434             432         11            100             0           100         141        6034.01        3506           485
+  R  Jul 2015      157             140         14            104             0           104         142        6034.55        3528           195
+  I Aug 2015        56              87         13            104             0           104         141        6033.81        3498           130
+  C Sep 2015       39               62         11            100             1           101         139        6032.59        3450           127
+    WY 2015       1562            1606         82           1293            58          1352                                                 2856
+  A   Oct 2015      48            63           7            131              0           131         136        6030.73        3377          162
+  L   Nov 2015      38            55           4            131              0           131         133        6028.73        3300          176
+  *   Dec 2015      38            61           2            137              0           137         130        6026.75        3225          175
+      Jan 2016     39             71            2           135              0           135         127        6025.05        3162           152
+      Feb 2016     38              71           2           119              0           119         125        6023.72        3113          136
+      Mar 2016     87             107           3           126              0           126         124        6023.14        3092          191
+      Apr 2016     157            154           5           122              0           122         126        6023.86        3118          363
+      May 2016     306            274           8           165              0           165         129        6026.49        3216          769
+      Jun 2016     535            398          10           282             74           356         131        6027.31        3246          895
+       Jul 2016    302            237          14           129              0           129         134        6029.70        3337          294
+      Aug 2016     121            135          13           129              0           129         134        6029.53        3331          167
+      Sep 2016     71             113          11           125              0           125         133        6028.94        3308          151
+      WY 2016     1781           1738          80          1732             74          1806                                                 3633
+      Oct 2016      72            89            7           129              0          129          131        6027.73        3262          169
+      Nov 2016      60            83            3           125              0          125          130        6026.57        3219          161
+      Dec 2016      39            79            2           129              0          129          128        6025.22        3168          157
+      Jan 2017      45            86            2           129              0          129          126        6024.04        3125          157
+      Feb 2017      49            86            2           117              0          117          125        6023.17        3093          148
+      Mar 2017      115          129            3           129              0          129          124        6023.10        3091          218
+      Apr 2017      164          163            5           125              0          125          126        6023.98        3123          385
+      May 2017      323          265            8           177              0          177          129        6026.07        3200          834
+      Jun 2017      523          431           10           264              0          264          135        6030.04        3350          832
+       Jul 2017     291           206          14            123             0           123         137        6031.74        3417           268
+      Aug 2017      119           123          13            123             0           123         137        6031.43        3404           156
+      Sep 2017       70           103          11            119             0           119         136        6030.74        3378           143
+      WY 2017      1872          1842          80           1689             0          1689                                                 3628
+      Oct 2017      69            106          7            123              0           123         135        6030.13        3354          162
+      Nov 2017      55            105          4            119              0           119         134        6029.69        3337          153
+      Dec 2017      35            101          2            123              0           123         133        6029.10        3314          148
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                         Model Run ID: 3003                 Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                               Maximum Probable Inflow*
+                                                                               Taylor Park Reservoir
+                Regulated    Total     Reservoir Elev         Live
+                 Inflow     Release End of Month            Storage
+        Date (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)          (1000 Ac-Ft)
+  *   Jan 2015       6           6         9315.48             79
+  H   Feb 2015       4           5         9314.94             78
+  I   Mar 2015       7           6         9315.31             79
+  S   Apr 2015       9           6         9317.32             82
+  T   May 2015      19          10         9321.95             91
+  O   Jun 2015      62          50         9328.14            102
+  R    Jul 2015     21          28         9324.75             96
+  I   Aug 2015       9          22         9317.56             83
+  C   Sep 2015       7          18         9311.10             72
+      WY 2015      166         171
+  A   Oct 2015      7             8         9310.71           71
+  L   Nov 2015      5             6         9310.40           71
+  *   Dec 2015      5             6         9309.95           70
+
+      Jan 2016       5            6         9309.00          68
+      Feb 2016       4             6        9307.58           66
+      Mar 2016       4             6        9306.26          64
+      Apr 2016      11            12        9305.53           63
+      May 2016      37            28        9311.62          72
+      Jun 2016      61           36         9325.66          98
+       Jul 2016     36           32         9327.46          101
+      Aug 2016      16            32        9318.98           85
+      Sep 2016      10            20        9313.12          75
+      WY 2016      200           197
+      Oct 2016       8            14        9309.09           68
+      Nov 2016       6             6        9308.95           68
+      Dec 2016       5             6        9308.47           67
+      Jan 2017       5            6         9307.74           66
+      Feb 2017       4             6        9306.46           64
+      Mar 2017       5             6        9305.61           63
+      Apr 2017      10             6        9308.35           67
+      May 2017      34            24        9314.23           77
+      Jun 2017      52           28         9327.39          101
+       Jul 2017     25           28         9326.03           98
+      Aug 2017      12            22        9320.83           88
+      Sep 2017       8            16        9316.61           81
+      WY 2017      174           168
+      Oct 2017      7            12         9313.82           76
+      Nov 2017      5            6          9313.44           75
+      Dec 2017      5            6          9312.64           74
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast              Model Run ID: 3003   Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                Maximum Probable Inflow*
+                                                                               Blue Mesa Reservoir
+                UnReg         Regulated      Evap         Power       Bypass        Total       Reservoir Elev    Live
+                Inflow          Inflow      Losses       Release      Release      Release      End of Month Storage
+        Date (1000 Ac-Ft)    (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)        (Ft)     (1000 Ac-Ft)
+  *   Jan 2015     30              30            0           58            0           58          7485.48          547
+  H   Feb 2015     28              29            0           29            0           29          7485.47          547
+  I   Mar 2015     54              53            0           26            0           26          7488.96          573
+  S   Apr 2015     73              70            1           45            0           45          7492.04          597
+  T   May 2015   136              128            1           71            0           71          7498.96          653
+  O   Jun 2015   368              356            1          125           62          192          7517.76          815
+  R    Jul 2015  131              137            2          135           10          145          7516.74          806
+  I   Aug 2015     59              73            1          105            0          105          7512.97          772
+  C   Sep 2015     39              50            1           95            0           95          7507.65          726
+      WY 2015 1042               1047            9          835           72          912
+  A   Oct 2015      33            34              1          87            0           87          7501.39         673
+  L   Nov 2015      30            31              0          45            0           45          7499.64         658
+  *   Dec 2015      27            28              0          62            0           62          7495.46         624
+      Jan 2016      24            26              0         69             0            69         7489.99         581
+      Feb 2016      21            23              0         40             0           40          7487.79         564
+      Mar 2016      34            36              0         46             0           46          7486.43         554
+      Apr 2016      93            94              1         47             0           47          7492.43         600
+      May 2016     302           293              1        204           196           400         7478.08         492
+      Jun 2016     367           342              1        120             0           120         7506.12         713
+       Jul 2016    188           184              2        106             0           106         7514.94         789
+      Aug 2016      92           108              1        122             0           122         7513.25         774
+      Sep 2016      49            59              1        120             0           120         7506.16         713
+      WY 2016     1261           1258             9       1066           196          1263
+      Oct 2016      44            50              1         80             0           80          7502.55         682
+      Nov 2016      34            34              0         50             0           50          7500.57         666
+      Dec 2016      27            28              0        113             0           113         7490.00         581
+      Jan 2017      26            27              0        103             0           103         7479.84         505
+      Feb 2017      24            26              0         54             0           54          7475.85         476
+      Mar 2017      39            41              0         31             0           31          7477.15         485
+      Apr 2017      93            89              1         38             0           38          7483.99         535
+      May 2017     276           266              1        200           183           383         7467.30         418
+      Jun 2017     338           314              1         31             0           31          7504.59         700
+       Jul 2017    152           155              2         88             0           88          7512.12         764
+      Aug 2017      78            88              1        121             0           121         7508.19         730
+      Sep 2017      45            53              1        116             0           116         7500.58         666
+      WY 2017     1176           1170             8       1025           183          1208
+      Oct 2017      43            48              1          52            0          52           7499.97         661
+      Nov 2017      32            33              0          23            0          23           7501.13         671
+      Dec 2017      26            27              0         116            0          116          7490.00         581
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                         Model Run ID: 3003   Processed On: 1/14/2016 4:50:43PM
+                                 OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2016 24-Month Study
+                                                                                 Maximum Probable Inflow*
+                                                                                Morrow Point Reservoir
+                 Unreg      Blue Mesa       Side         Total       Power       Bypass        Total     Reservoir Elev       Live
+                 Inflow      Release       Inflow       Inflow      Release      Release      Release    End of Month       Storage
+         Date (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)        (1000 Ac-Ft)
+   *   Jan 2015    30           58            1            58          60           0            60          7152.01          111
+   H   Feb 2015    29           29            1            30          31           0            31          7151.25          110
+   I   Mar 2015     56          26            3            29          28           0            28          7151.69          110
+   S   Apr 2015     79          45            6            50          51           0            51          7150.61          110
+   T   May 2015    151          71           15            86          84           0            84          7153.24          112
+   O   Jun 2015    388         192           20           212          188          0           211          7154.42          113
+   R    Jul 2015   135         145            3           148          148          0           148          7154.93          113
+   I   Aug 2015     60         105            0           105          106          0           106          7153.74          112
+   C   Sep 2015    39           95            0            95          103          0           103          7143.98          104
+       WY 2015    1095         912           53           965          926          0           972
+
+   A   Oct 2015     34            87            0           87            93           0        93           7135.56         98
+   L   Nov 2015     31            45            1           46            47           0        47           7133.97         97
+   *   Dec 2015     28            62            1           62            46           0        47           7154.01         112
+
+       Jan 2016     25            69            1            70            70         0         70           7153.73         112
+       Feb 2016     23            40            2            42            42         0         42           7153.73         112
+       Mar 2016     37            46            3            49            49         0         49           7153.73         112
+       Apr 2016     103           47           10            57            57         0         57           7153.73         112
+       May 2016     329          400           27          427           306         121        427          7153.73         112
+       Jun 2016     385          120           19          139           139          0         139          7153.73         112
+        Jul 2016    193          106            5          111            111         0         111          7153.73         112
+       Aug 2016     95           122            3           125           125         0         125          7153.73         112
+       Sep 2016     52           120            3          123            123         0         123          7153.73         112
+       WY 2016     1335          1263          73          1336          1207        121       1328
+
+       Oct 2016     46            80            3           83            83          0         83           7153.73         112
+       Nov 2016     36            50            2           52            52          0         52           7153.73         112
+       Dec 2016     30           113            2          115           115          0         115          7153.73         112
+       Jan 2017     28           103            2          105           105          0         105          7153.73         112
+       Feb 2017     26            54            3           57            57          0         57           7153.73         112
+       Mar 2017     44            31            4           35            35          0         35           7153.73         112
+       Apr 2017     106           38           13           51            51          0         51           7153.73         112
+       May 2017     308          383           32          415           306         109        415          7153.73         112
+       Jun 2017     366           31           28           59            59          0         59           7153.73         112
+        Jul 2017    159           88            7           96            96          0         96           7153.73         112
+       Aug 2017     82           121            4          125           125          0         125          7153.73         112
+       Sep 2017      48          116            3           119          119          0         119          7153.73         112
+       WY 2017     1280          1208          104         1312          1204        109       1312
+       Oct 2017     45             52           3           55            55           0        55           7153.73         112
+       Nov 2017     34             23           2           25            25           0        25           7153.73         112
+       Dec 2017     28            116           2           118          118           0        118          7153.73         112
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                       Model Run ID: 3003    Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                 Maximum Probable Inflow*
+                                                                                  Crystal Reservoir
+                Unreg       Morrow         Side         Total            Power       Bypass        Total     Reservoir Elev    Live        Tunnel    Below Tunnel
+                Inflow      Release       Inflow       Inflow           Release      Release      Release    End of Month Storage           Flow         Flow
+        Date (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)     (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)
+  *   Jan 2015     35          60           5             64               55             9           64       6746.05          15             1          65
+  H   Feb 2015     34          31           4             35               11            22           33       6751.96          17             0          34
+  I   Mar 2015     63          28            6            35               35             0           35       6752.00          17             1          34
+  S   Apr 2015     85          51            7            58               58             0           58       6751.65          17            37          21
+  T   May 2015    164          84           13            97               90             6           96       6752.09          17            62          36
+  O   Jun 2015    429         211           41           253              110            78          252       6755.80          18            55          209
+  R    Jul 2015   143         148           9            156              114            44          158       6751.21          16            65          96
+  I   Aug 2015     63         106           4            110              110             0          111       6749.17          16            65          47
+  C   Sep 2015     42         103           3            106               96            11         107        6744.61          15            57          50
+      WY 2015    1201         972          106          1078              843           171         1078                                     393          709
+  A   Oct 2015      37           93           3             96             0             94         94         6750.81        16           51            44
+  L   Nov 2015      34           47           3             50             0             50         50         6750.12        16            0            51
+  *   Dec 2015      32           47           4             51             40            12         52         6747.07        15            1            53
+
+      Jan 2016     29            70            4             74             72            0          72        6753.04        17             0           72
+      Feb 2016     27            42            4             46             46            0          46        6753.04        17             0           46
+      Mar 2016     43            49            6             55             55            0          55        6753.04        17             5           50
+      Apr 2016     112           57            9             66             66            0          66        6753.04        17            30           36
+      May 2016     361          427           32            459            134          325         459        6753.04        17            55          404
+      Jun 2016     418          139           33            171            130           41         171        6753.04        17            60          111
+       Jul 2016    209          111          16             127            127            0         127        6753.04        17            65           62
+      Aug 2016     104          125            9            134            134            0         134        6753.04        17            65           69
+      Sep 2016     59           123            7            130            130            0         130        6753.04        17            55           75
+      WY 2016     1465          1328         130           1459            934          522        1456                                    387          1073
+      Oct 2016      53           83           7             90             90            0          90         6753.04        17            30           60
+      Nov 2016      41           52           5             58             58            0          58         6753.04        17             0           58
+      Dec 2016      35          115           5            120            120            0         120         6753.04        17             0          120
+      Jan 2017      33          105           5            111            111            0          111        6753.04        17             0          111
+      Feb 2017      30           57           4             61             61            0          61         6753.04        17             0            61
+      Mar 2017      51           35           7             43             43            0          43         6753.04        17             5            38
+      Apr 2017      121          51          15             66             66            0          66         6753.04        17            30            36
+      May 2017      351         415          44             459            134          325         459        6753.04        17            55           404
+      Jun 2017      415          59          49             108            108           0          108        6753.04        17            60            48
+       Jul 2017     179          96          19             115            115           0          115        6753.04        17            65            50
+      Aug 2017      92          125          10             135            134           1          135        6753.04        17            65            70
+      Sep 2017      56          119           7             126            126           0          126        6753.04        17            55            71
+      WY 2017      1458         1312         178           1491           1165          325        1491                                    365          1126
+
+      Oct 2017      52            55          7             61             61             0         61         6753.04        17           30            31
+      Nov 2017      39            25          5             30             30             0         30         6753.04        17           0             30
+      Dec 2017      32           118          5             123            123            0         123        6753.04        17           0             123
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                       Model Run ID: 3003              Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                               Maximum Probable Inflow*
+                                                                                 Vallecito Reservoir
+                Regulated    Total     Reservoir Elev         Live
+                 Inflow     Release End of Month            Storage
+        Date (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)          (1000 Ac-Ft)
+  *   Jan 2015       6           5         7654.18             97
+  H   Feb 2015       7           4         7655.19            100
+  I   Mar 2015      13          12         7655.67            101
+  S   Apr 2015      19          11         7658.49            108
+  T   May 2015      43          31         7662.94            120
+  O   Jun 2015     106         103         7664.05            123
+  R    Jul 2015     37          42         7661.73            117
+  I   Aug 2015      13          35         7652.83             94
+  C   Sep 2015      11          29         7645.08             75
+      WY 2015      294         285
+  A   Oct 2015      17           15         7645.65           77
+  L   Nov 2015      11           5          7648.25           83
+  *   Dec 2015       7           4          7649.57           86
+
+      Jan 2016       7            2         7651.60           91
+      Feb 2016       5             1        7653.01           94
+      Mar 2016      15             2        7658.25          108
+      Apr 2016      32            36        7656.76          104
+      May 2016      92           106        7650.78           89
+      Jun 2016     108           74         7663.91          122
+       Jul 2016     48           51         7662.46          119
+      Aug 2016      30            38        7659.25          110
+      Sep 2016      24            29        7656.88          104
+      WY 2016      395           363
+      Oct 2016      19            23        7655.08           99
+      Nov 2016      10            10        7655.29          100
+      Dec 2016       7             7        7655.29          100
+      Jan 2017       6            6         7655.26          100
+      Feb 2017       5             5        7655.29          100
+      Mar 2017      10             2        7658.63          109
+      Apr 2017      28            13        7664.10          123
+      May 2017      84            93        7660.53          113
+      Jun 2017      91           81         7664.10          123
+       Jul 2017     38           48         7660.15          113
+      Aug 2017      24            38        7654.44           98
+      Sep 2017      21            30        7650.82           89
+      WY 2017      343           354
+      Oct 2017      18           17         7651.01           89
+      Nov 2017      10           4          7653.24           95
+      Dec 2017      6            4          7654.13           97
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast              Model Run ID: 3003   Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                Maximum Probable Inflow*
+                                                                                  Navajo Reservoir
+                Mod Unreg        Azetea        Reg         Evap          NIIP        Total     Reservoir Elev   Live     Farmington
+                  Inflow       Tunnel Div     Inflow      Losses      Diversion     Release    End of Month Storage          Flow
+        Date   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)    (1000 Ac-Ft) (1000 Ac-Ft)
+  * Jan 2015         23             0             21           1             0         21        6037.90         1090          40
+  H Feb 2015         28             1             25           1             0         19        6038.43         1096          41
+  I Mar 2015         86             7             79           1             3         20        6043.43         1150          56
+  S Apr 2015         80             8             63           2            20         21        6045.22         1170          38
+  T May 2015        178            24            144           3            23         21        6053.44         1267          93
+  O Jun 2015        285            38            241           4            20         22        6068.60         1461         254
+  R  Jul 2015        76             9             71           5            39         27        6068.68         1462          90
+  I Aug 2015         15             1             36           4            33         42        6065.47         1419          70
+  C Sep 2015         15             0             33           3            25         33        6063.41         1392          66
+    WY 2015         900            90            797          27           170        289                                     903
+  A   Oct 2015      40             1             38           2           9           27         6063.43        1392
+  L   Nov 2015      35             1             28           1           0           19         6064.00        1400
+  *   Dec 2015      22             0             19           1           0           19         6063.81        1397
+
+      Jan 2016      23              0             18          1            0         23          6063.38        1391           36
+      Feb 2016      44              0             40          1            0         23          6064.60        1407           35
+      Mar 2016      160             7            139          2           5          88          6067.93        1452          117
+      Apr 2016      253            26            231          3           20         296         6061.27        1364          365
+      May 2016      375            58            331          4           34         307         6060.23        1351          487
+      Jun 2016      358            56            269          4           49         204         6061.16        1363         409
+       Jul 2016     134            20            117          4           53         31          6063.35        1391         137
+      Aug 2016      80              8             81          4           44         25          6063.97        1399           80
+      Sep 2016      67              4             68          3           24         53          6063.08        1388           96
+      WY 2016      1592           182           1379         28          238        1116                                     1762
+      Oct 2016      61              4            61          2            9          34          6064.40        1405          67
+      Nov 2016      40              2            37          1            0          33          6064.68        1408          53
+      Dec 2016      30              0            30          1            0          34          6064.30        1404          51
+      Jan 2017      25              0            25          1            0          34          6063.60        1394          49
+      Feb 2017      36              0            36          1            0          31          6063.95        1399          44
+      Mar 2017      117             5           103          2            5          34          6068.62        1462          61
+      Apr 2017      214            22           178          3            20         172         6067.39        1445         235
+      May 2017      347            55           301          4            34         299         6064.78        1410         473
+      Jun 2017      306            53           243          4            49         212         6063.06        1387         404
+       Jul 2017     96             15            91          5            53         29          6063.38        1391         118
+      Aug 2017       59             5            68           4           45          25         6062.96        1386          72
+      Sep 2017       58             3            63           3           25          34         6063.05        1387          74
+      WY 2017      1389           165           1236         28          238         970                                     1700
+      Oct 2017      58             3             54           2           9           27         6064.32        1404          59
+      Nov 2017      35             1             29           1           0           24         6064.62        1408          43
+      Dec 2017      25             0             23           1           0           25         6064.42        1405          40
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                         Model Run ID: 3003   Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                               Maximum Probable Inflow*
+                                                                                      Lake Powell
+                Unreg      Regulated      Evap      PowerPlant Bypass            Total    Reservoir Elev   Bank          EOM            Lees
+                Inflow       Inflow      Losses       Release      Release      Release End of Month Storage           Storage       Ferry Gage
+        Date (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)     (Ft)     (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft)
+  *   Jan 2015    348          449           8           862           0           862      3593.57         4945         11147           878
+  H   Feb 2015    424          464           8           589           0           589      3592.23         4936         11024           595
+  I   Mar 2015    552          543          14           649           0           649      3591.02         4927         10913           656
+  S   Apr 2015    639          539          21           600           0           600      3590.18         4921         10837           610
+  T   May 2015   1613         1431          25           699           0           699      3597.27         4973         11491           708
+  O   Jun 2015   3389         2570          44           800           0           800      3613.54         5101         13090           801
+  R    Jul 2015  1072         1002          55          1048           0          1048      3612.62         5093         12996          1076
+  I   Aug 2015    313          466          54           799           0           799      3609.07         5065         12637           814
+  C   Sep 2015    276          435          49           714           0           714      3606.01         5040         12333           726
+      WY 2015 10174           9419         368          8868         132          9000                                                  9136
+  A   Oct 2015     535           680           34          600           0           600       3606.44      5044        12375            609
+  L   Nov 2015     421           506           32          577           0           577       3605.47      5036        12280            583
+  *   Dec 2015     266           393           26          857           0           857       3600.80      5000        11827            863
+
+      Jan 2016      310          449            8          900           0           900       3596.32      4966        11402            911
+      Feb 2016      330          410            8         700            0           700       3593.35      4944        11126           710
+      Mar 2016      610          601          14          650            0           650       3592.72      4939        11068           659
+      Apr 2016     1337          1346         22          666            0           666       3599.24      4988        11677           680
+      May 2016     3024          3005          29          700           0           700       3620.20      5156        13785           710
+      Jun 2016     3683          3207          52          800           0           800       3639.68      5331        15965           805
+       Jul 2016    1855          1571          67          950           0           950       3643.99      5372        16479           960
+      Aug 2016      773          807           67          900           0           900       3642.75      5360        16331           916
+      Sep 2016      568          707           62          700           0           700       3642.33      5356        16280           715
+      WY 2016     13714         13682         420         9000           0          9000                                                9121
+      Oct 2016      634          712          43           600           0            600      3642.87      5361        16344            608
+      Nov 2016      537          613          41           600           0           600       3642.65      5359        16318            607
+      Dec 2016      409          589          33           850           0           850       3640.36      5337        16045            860
+      Jan 2017     409           579          10           950           0           950       3637.35      5309        15692            960
+      Feb 2017      446          538          11           800           0           800       3635.16      5289        15439            810
+      Mar 2017      775          707          18           900           0           900       3633.46      5273        15244            909
+      Apr 2017    1306          1211          29          1000           0          1000       3634.93      5287        15412           1017
+      May 2017    3063           3064         37          1100           0          1100       3649.85      5429        17197           1110
+      Jun 2017    3564           3006         61          1200           0          1200       3662.43      5559        18813           1203
+       Jul 2017    1568          1337          76          1400          0           1400      3661.46      5548        18684            1409
+      Aug 2017      694           756          74          1500          0           1500      3655.63      5488        17927            1516
+      Sep 2017      493           618          66          1049          0           1049      3652.00      5451        17466            1066
+      WY 2017     13897         13730         500         11949          0          11949                                               12074
+      Oct 2017     609           653           46          600           0           600       3652.06      5452        17473            609
+      Nov 2017     496           540           44          600           0           600       3651.29      5444        17377            606
+      Dec 2017     363           541           35          800           0           800       3649.11      5422        17105            806
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                       Model Run ID: 3003              Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                Maximum Probable Inflow*
+                                                                              Hoover Dam - Lake Mead
+                 Glen      Side Inflow    Evap         Total        Total      SNWP      Downstream      Bank      Reservoir Elev     EOM
+                Release Glen to Hoover Losses         Release      Release      Use      Requirements Storage      End of Month     Storage
+        Date (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 CFS) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)      (1000 Ac-Ft)
+  *   Jan 2015     862          73          31           832        13.5           6         832           697        1088.51        10729
+  H   Feb 2015     589          90          28           600        10.8           8         599           700        1088.98        10769
+  I   Mar 2015     649          57          31          1034        16.8          14        1033           677        1084.87        10419
+  S   Apr 2015     600          26          38          1087        18.3          20        1086           646        1079.03         9931
+  T   May 2015     699          25          43           871        14.2          25         862           632        1076.57         9729
+  O   Jun 2015     800          16          52           868        14.6          25         868           624        1075.08         9607
+  R    Jul 2015   1048          80          65           767        12.5          28         766           641        1078.15         9858
+  I   Aug 2015     799         114          70           803        13.1          27         802           642        1078.31         9871
+  C   Sep 2015     714          73          58          723         12.1          25         722           641        1078.10         9854
+      WY 2015     9000         722         540          9246                     221        9216
+  A   Oct 2015      600          118           42          578          9.4           20       577          645          1078.99       9927
+  L   Nov 2015      577           41           42          631         10.6           12       630          641          1078.23        9865
+  *   Dec 2015      857           42           36          619         10.1            8       618          656          1080.91       10087
+
+      Jan 2016      900           88           30           671        10.9             8       671         673          1084.04       10348
+      Feb 2016      700           83           28           677        11.8             7       677         677          1084.82       10415
+      Mar 2016      650           69           31           950        15.4            15       950         660          1081.73       10155
+      Apr 2016      666          115           38          1086        18.2            21      1086         638          1077.61       9814
+      May 2016      700           80           43           975        15.9            30       975         622          1074.52        9562
+      Jun 2016      800           44           52           864        14.5            28       864         615          1073.35        9468
+       Jul 2016     950           80           65           824        13.4            28       824         622          1074.68       9575
+      Aug 2016      900          127          69            726        11.8            25      726          635          1077.06       9769
+      Sep 2016      700          123           57           712        12.0            19      712          637          1077.45        9801
+      WY 2016      9000          1010         534          9313                       219      9310
+      Oct 2016      600           65          42            497         8.1            22      497          643          1078.64        9899
+      Nov 2016      600           57          42            611        10.3            13      611          643          1078.55        9891
+      Dec 2016      850           78          37            551         9.0             8      551          663          1082.31       10204
+      Jan 2017      950           77          30            695        11.3            8       695          681          1085.58       10478
+      Feb 2017      800           82          28            716        12.9            7       716          689          1087.02       10601
+      Mar 2017      900           74          31           1003        16.3           15       1003         684          1086.18       10530
+      Apr 2017     1000          133          39           1081        18.2            21      1081         684          1086.09       10522
+      May 2017     1100           83          45            985        16.0            30      985          691          1087.45       10638
+      Jun 2017     1200           25          55            872        14.6            30      872          708          1090.38       10890
+       Jul 2017    1400           69          70            833        13.5            31      833          741          1096.14       11393
+      Aug 2017     1500          127          76            745        12.1            29       745         788          1104.29       12122
+      Sep 2017      1049         134           64           713        12.0            16       713         812          1108.28       12487
+      WY 2017      11949         1004         559          9302                       231      9302
+      Oct 2017      600           61           47          465         7.6            21       465          820          1109.58       12608
+      Nov 2017      600           50           48          604         10.2           11       604          819          1109.45       12596
+      Dec 2017      800           96           41          544         8.9            8        544          837          1112.48       12880
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                      Model Run ID: 3003             Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                Maximum Probable Inflow*
+                                                                              Davis Dam - Lake Mohave
+                 Hoover           Side        Evap         Power         Spill       Total        Total Reservoir Elev     EOM
+                 Release         Inflow      Losses       Release      Release      Release      Release End of Month    Storage
+        Date   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 CFS)    (Ft)      (1000 Ac-Ft)
+  * Jan 2015        832            -22          10          660            0           660         10.7     642.98        1698
+  H Feb 2015        600             -8          10          625            0           625         11.3     641.43        1656
+  I Mar 2015       1034            -21          13          963            0           963         15.7     642.78        1693
+  S Apr 2015       1087            -18          17         1022            0          1022         17.2     643.88        1723
+  T May 2015        871            -10          22          854            0           854         13.9     643.30        1707
+  O Jun 2015        868            -19          26          810            0           810         13.6     643.81        1721
+  R  Jul 2015       767            -14          25          762            0           762         12.4     642.57        1687
+  I Aug 2015        803            -16          23          775            0           775         12.6     642.12        1675
+  C Sep 2015        723            -16          18          758            0           758         12.7     639.56        1606
+    WY 2015        9246           -142         198         8945            0          8945
+  A   Oct 2015      578            -7          15         655             0          655         10.7       635.80         1507
+  L   Nov 2015      631           -14          10         599             0          599         10.1       636.11         1514
+  *   Dec 2015      619           -13           9         527             0          527          8.6       638.77         1585
+
+      Jan 2016      671           -13         10           575            0          575          9.4       641.50         1658
+      Feb 2016      677           -13         10           641            0          641         11.1       642.00         1671
+      Mar 2016      950           -15         13           893            0          893         14.5       643.05         1700
+      Apr 2016     1086           -19         17          1052            0         1052         17.7       643.00         1699
+      May 2016      975           -15         22           938            0          938         15.3       643.00         1699
+      Jun 2016      864           -17         25          849             0          849         14.3       642.00         1671
+       Jul 2016     824           -13         25          799             0          799         13.0       641.50         1658
+      Aug 2016      726           -10         23          693             0          693         11.3       641.50         1658
+      Sep 2016      712            -6         18           728            0          728         12.2       640.01         1617
+      WY 2016      9313          -156         197         8948            0         8948
+
+      Oct 2016      497             1         15           667            0          667         10.8       633.00         1434
+      Nov 2016      611           -11         10           538            0          538          9.0       635.00         1486
+      Dec 2016      551           -12          9           433            0          433          7.0       638.71         1583
+      Jan 2017      695           -13         10           590            0          590          9.6       641.80         1666
+      Feb 2017      716           -13         10           693            0          693         12.5       641.80         1666
+      Mar 2017     1003           -15         13           941            0          941         15.3       643.05         1700
+      Apr 2017     1081           -19         17          1047            0         1047         17.6       643.00         1699
+      May 2017      985           -15         22           948            0          948         15.4       643.00         1699
+      Jun 2017      872           -17         25           856            0          856         14.4       642.00         1671
+       Jul 2017     833           -13         25           808            0          808         13.1       641.50         1658
+      Aug 2017      745           -10         23          712             0          712         11.6       641.50         1658
+      Sep 2017      713            -6         18           729            0          729         12.3       640.01         1617
+      WY 2017      9302          -143         197         8961            0         8961
+
+      Oct 2017      465            1           15         634             0          634         10.3       633.00         1434
+      Nov 2017      604           -11          10         532             0          532          8.9       635.00         1486
+      Dec 2017      544           -12           9         426             0          426          6.9       638.71         1583
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                         Model Run ID: 3003   Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                 Maximum Probable Inflow*
+                                                                           Parker Dam - Lake Havasu
+                  Davis           Side        Evap          Total         Total      MWD           CAP      Reservoir Elev    EOM        Flow To         Flow To
+                 Release         Inflow      Losses       Release        Release   Diversion    Diversion End of Month Storage            Mexico         Mexico
+        Date   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)   (1000 CFS) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)     (1000 Ac-Ft) (1000 Ac-Ft)    (1000 CFS)
+  * Jan 2015       660             17            6          348             5.7        105          180        448.22         584           146           2.4
+  H Feb 2015       625              9            8          473             8.5         54          109        447.38         568           172           3.1
+  I Mar 2015       963              3            9          707            11.5         86          146        447.89         578           219           3.6
+  S Apr 2015      1022             13           11          752            12.6        104          154        448.09         582           210           3.5
+  T May 2015       854             21           13          559             9.1        108          177        448.50         590           113           1.8
+  O Jun 2015       810             19           16          615            10.3        104           77        448.89         597           109           1.8
+  R  Jul 2015      762             18           17          592             9.6        107           70        447.99         580           107           1.7
+  I Aug 2015       775             16           17          580             9.4        107           70        448.30         586            93           1.5
+  C Sep 2015       758             19           15          487             8.2        104          168        448.04         581            90           1.5
+    WY 2015       8945            178          140         6135                       1195         1566                                    1510
+
+  A   Oct 2015     655            34           12          458             7.5          101         115         447.88        578           59            1.0
+  L   Nov 2015     599            11            9          385             6.5           98         120         447.57        572           93            1.6
+  *   Dec 2015     527            15            7          321             5.2          101         130         446.92        560          105            1.7
+
+      Jan 2016     575           18            6            348           5.7           99          143         446.50        552          154            2.5
+      Feb 2016     641            11           8            488           8.5           20          118         447.00        561          180            3.1
+      Mar 2016     893           15            9            722           11.7          65          111         446.70        555          206            3.4
+      Apr 2016    1052            23          11            780           13.1          60          175         448.70        593          192            3.2
+      May 2016     938            17          13            686           11.2          63          180         448.70        593           97            1.6
+      Jun 2016     849           15           16            696           11.7          60           78         448.70        593           98            1.6
+       Jul 2016    799            29          17            677           11.0          63           70         448.00        580           99            1.6
+      Aug 2016     693            27          17            566           9.2           63           70         447.50        571           99            1.6
+      Sep 2016     728            23          15            523           8.8           60          143         447.50        570           89            1.5
+      WY 2016     8948           239          140          6650                         853         1454                                   1470
+
+      Oct 2016     667            25          12            475            7.7          63          135         447.50        571           68            1.1
+      Nov 2016     538            27           9            381           6.4           60          110         447.50        571          103            1.7
+      Dec 2016     433            21           7            284           4.6           63          115         446.50        552          115            1.9
+      Jan 2017     590            18           6            379           6.2           63          154         446.50        552          154            2.5
+      Feb 2017     693            11           8            492           8.9           54          143         446.50        552          180            3.2
+      Mar 2017     941            15           9            722           11.7          63          150         446.70        555          206            3.4
+      Apr 2017    1047            23          11            768           12.9          60          182         448.70        593          192            3.2
+      May 2017     948            17          13            687           11.2          63          189         448.70        593           97            1.6
+      Jun 2017     856            15           16           694           11.7           60           86        448.70        593           98            1.6
+       Jul 2017    808            29           17           666           10.8           63           90        448.00        580           99            1.6
+      Aug 2017     712            27           17           564            9.2           63           91        447.50        571           99            1.6
+      Sep 2017     729            23           15           513            8.6           60          153        447.50        570           89            1.5
+      WY 2017     8961            252         139          6625                         739         1597                                   1500
+
+      Oct 2017     634            25           12          469             7.6           63         108         447.50        571           68            1.1
+      Nov 2017     532            27            9          375             6.3           60         108         447.50        571          103            1.7
+      Dec 2017     426            21            7          283             4.6           63         108         446.50        552          115            1.9
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                       Model Run ID: 3003                 Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                 Maximum Probable Inflow*
+                                                                              Hoover Dam - Lake Mead
+                  Power          Power Reservoir Elev EOM         Change In     Hoover         Hoover Gen   Hoover    Percent of
+                 Release        Release End of Month Storage       Storage    Static Head       Capacity Gross Energy   Units
+        Date   (1000 Ac-Ft)   (1000 CFS)    (Ft)    (1000 Ac-Ft) (1000 Ac-Ft)     (Ft)            MW        MKWH       Available       KWH/AF
+  * Jan 2015        832           13.5     1088.51     10729          62        441.51           1018.0       333.5         63          400.6
+  H Feb 2015        600           10.8     1088.98     10769          40        444.73            848.0       239.1         52          398.4
+  I Mar 2015       1034           16.8     1084.87     10419        -350        440.21            952.0       412.2         60          398.7
+  S Apr 2015       1087           18.3     1079.03      9931        -488        430.55           1217.0       427.4         76          393.2
+  T May 2015        871           14.2     1076.57      9729        -202        432.58           1165.0       337.2         74          387.2
+  O Jun 2015        868           14.6     1075.08      9607        -121        427.78           1573.0       332.0        100          382.4
+  R  Jul 2015       767           12.5     1078.15      9858         251        432.42           1455.0       292.7         94          381.4
+  I Aug 2015        803           13.1     1078.31      9871          13        434.75           1451.0       307.8         93          383.4
+  C Sep 2015        723           12.1     1078.10      9854         -17        435.36           1563.0       275.2        100          380.7
+    WY 2015        9246                                                                                      3596.9
+  A   Oct 2015      578          9.4         1078.99      9927          73         435.13        1088.0       221.8        70           383.6
+  L   Nov 2015      631          10.6        1078.23       9865        -63         433.49        1088.0       244.8        70           387.9
+  *   Dec 2015      619          10.1        1080.91      10087        222         434.77        1069.0       241.9        68           390.9
+
+      Jan 2016      671          10.9        1084.04      10348         262        436.32         775.0       267.0         49          398.0
+      Feb 2016      677          11.8        1084.82      10415          67        435.87         992.0       268.3         61          396.2
+      Mar 2016      950          15.4        1081.73      10155        -260        434.23         975.0       382.2         61          402.3
+      Apr 2016     1086          18.2        1077.61      9814         -341        427.89        1309.0       425.0        84           391.4
+      May 2016      975          15.9        1074.52      9562         -252        422.62        1537.0       372.5        100          382.1
+      Jun 2016      864          14.5        1073.35      9468          -94        420.84        1524.0       325.2        100          376.3
+       Jul 2016     824          13.4        1074.68      9575          107        421.41        1526.0       314.4        100          381.7
+      Aug 2016      726          11.8        1077.06      9769          194        423.41        1535.0       274.5        100          378.0
+      Sep 2016      712          12.0        1077.45      9801           32        425.27        1536.0       270.8        100          380.2
+      WY 2016      9313                                                                                      3608.4
+      Oct 2016      497           8.1        1078.64       9899         98         429.59        1338.0      191.4         87           384.8
+      Nov 2016      611          10.3        1078.55       9891         -7         432.31        1353.0      235.9         88           386.3
+      Dec 2016      551           9.0        1082.31      10204        312         435.53         896.0      213.8         57           387.8
+      Jan 2017      695          11.3        1085.58      10478        275         436.20         989.0      273.9         63           393.8
+      Feb 2017      716          12.9        1087.02      10601        123         438.26         885.0      290.0         56           405.0
+      Mar 2017     1003          16.3        1086.18      10530        -71         438.12         875.0      409.0         56           407.7
+      Apr 2017     1081          18.2        1086.09      10522         -8         433.28        1419.0      425.3         93           393.5
+      May 2017      985          16.0        1087.45      10638        116         433.93        1395.0      381.0         93           386.9
+      Jun 2017      872          14.6        1090.38      10890        252         435.69        1465.7      339.7         100          389.8
+       Jul 2017     833          13.5        1096.14      11393        503         440.49        1474.3      332.2         100          398.9
+      Aug 2017      745          12.1        1104.29      12122        729         447.55        1496.1      297.6         100          399.4
+      Sep 2017      713          12.0        1108.28      12487        366         454.06        1503.7       288.0        100          403.9
+      WY 2017      9302                                                                                      3677.8
+      Oct 2017      465          7.6         1109.58      12608        121         460.27        1309.9       187.7        87           403.9
+      Nov 2017      604          10.2        1109.45      12596        -12         463.03        1325.0       247.5        88           409.6
+      Dec 2017      544           8.9        1112.48      12880        284         465.93         877.9       223.2        57           409.9
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                      Model Run ID: 3003            Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                Maximum Probable Inflow*
+                                                                              Davis Dam - Lake Mohave
+                  Power          Power Reservoir Elev EOM         Change In      Davis         Davis Gen    Davis     Percent of
+                 Release        Release End of Month Storage       Storage    Static Head       Capacity Gross Energy   Units
+        Date   (1000 Ac-Ft)   (1000 CFS)     (Ft)   (1000 Ac-Ft) (1000 Ac-Ft)     (Ft)            MW        MKWH       Available      KWH/AF
+  * Jan 2015        660           10.7      642.98      1698         141        141.44           163.2         82.8        64          125.4
+  H Feb 2015       625            11.3      641.43      1656         -42        140.07           188.7         79.9        74          127.8
+  I Mar 2015        963           15.7      642.78      1693          37        139.75           229.5        123.2        90          128.0
+  S Apr 2015       1022           17.2      643.88      1723          30        141.00           255.0        129.5       100          126.8
+  T May 2015        854           13.9      643.30      1707         -16        141.92           252.5        110.0        99          128.8
+  O Jun 2015        810           13.6      643.81      1721          14        144.85           255.0        104.6       100          129.1
+  R  Jul 2015       762           12.4      642.57      1687         -34        140.97           255.0         98.4       100          129.1
+  I Aug 2015        775           12.6      642.12      1675         -12        142.40           255.0         99.2       100          127.9
+  C Sep 2015        758           12.7      639.56      1606         -69        137.76           255.0         95.5       100          126.0
+    WY 2015        8945                                                                                      1122.4
+  A   Oct 2015      655          10.7         635.80      1507         -99         136.05        211.7        81.6        83           124.5
+  L   Nov 2015      599          10.1         636.11      1514           8         136.53        165.8        72.5        65           121.0
+  *   Dec 2015      527           8.6         638.77      1585          70         135.98        155.6        65.1        61           123.6
+
+      Jan 2016      575           9.4         641.50      1658          73         136.02        158.1        71.7         62          124.6
+      Feb 2016      641          11.1         642.00      1671          14         137.21        170.9        80.4         67          125.4
+      Mar 2016      893          14.5         643.05      1700          29         136.81        209.1        111.6        82          125.0
+      Apr 2016     1052          17.7         643.00      1699          -2         136.40        242.3        130.9       95           124.5
+      May 2016      938          15.3         643.00      1699           0         136.04        255.0        117.4       100          125.2
+      Jun 2016      849          14.3         642.00      1671         -27         135.51        255.0        106.2       100          125.1
+       Jul 2016     799          13.0         641.50      1658         -14         134.73        255.0        99.7        100          124.8
+      Aug 2016      693          11.3         641.50      1658           0         134.46        255.0        86.7        100          125.2
+      Sep 2016      728          12.2         640.01      1617         -40         133.68        255.0        90.4        100          124.2
+      WY 2016      8948                                                                                      1114.2
+      Oct 2016      667          10.8         633.00      1434         -183        129.77        234.6        80.6        92           120.8
+      Nov 2016      538           9.0         635.00      1486           51        128.06        204.0        64.2        80           119.2
+      Dec 2016      433           7.0         638.71      1583           97        130.45        224.4        53.1        88           122.6
+      Jan 2017      590           9.6         641.80      1666           83        135.03        191.3        73.5        75           124.7
+      Feb 2017      693          12.5         641.80      1666            0        137.09        176.0        86.7        69           125.0
+      Mar 2017      941          15.3         643.05      1700           34        135.44        255.0       117.3        100          124.7
+      Apr 2017     1047          17.6         643.00      1699           -2        136.07        255.0       130.3        100          124.5
+      May 2017      948          15.4         643.00      1699            0        136.04        255.0       118.6        100          125.1
+      Jun 2017      856          14.4         642.00      1671          -27        135.51        255.0       107.0        100          125.0
+       Jul 2017     808          13.1         641.50      1658          -14        134.73        255.0       100.7        100          124.8
+      Aug 2017      712          11.6         641.50      1658            0        134.46        255.0        89.1        100          125.1
+      Sep 2017      729          12.3         640.01      1617          -40        133.68        255.0        90.5        100          124.2
+      WY 2017      8961                                                                                      1111.6
+      Oct 2017      634          10.3         633.00      1434         -183        129.77        234.6        76.8        92           121.0
+      Nov 2017      532           8.9         635.00      1486           51        128.06        204.0        63.4        80           119.3
+      Dec 2017      426           6.9         638.71      1583           97        130.45        224.4        52.2        88           122.7
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                     Model Run ID: 3003            Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                               Maximum Probable Inflow*
+                                                                             Parker Dam - Lake Havasu
+                  Power          Power Reservoir Elev EOM         Change In     Parker         Parker Gen   Parker    Percent of
+                 Release        Release End of Month Storage       Storage    Static Head       Capacity Gross Energy   Units
+        Date   (1000 Ac-Ft)   (1000 CFS)    (Ft)    (1000 Ac-Ft) (1000 Ac-Ft)     (Ft)            MW        MKWH       Available      KWH/AF
+  * Jan 2015        348            5.7     448.22       584           35         82.97           93.6        24.3          78          69.7
+  H Feb 2015        473            8.5     447.38       568          -16         81.70           94.8        33.2          79          70.2
+  I Mar 2015        707           11.5     447.89       578           10         79.76           108.0       49.6          90          70.2
+  S Apr 2015        752           12.6     448.09       582            4         80.20           120.0       52.5         100          69.8
+  T May 2015        559            9.1     448.50       590            8         81.62           112.8       39.5          94          70.7
+  O Jun 2015        615           10.3     448.89       597            7         79.48           120.0       43.6         100          70.8
+  R  Jul 2015       592            9.6     447.99       580          -17         81.75           120.0       41.8         100          70.7
+  I Aug 2015        580            9.4     448.30       586            6         82.40           120.0       40.9         100          70.4
+  C Sep 2015        487            8.2     448.04       581           -5         82.23           120.0       34.6         100          71.1
+    WY 2015        6135                                                                                      430.7
+  A   Oct 2015      458           7.5         447.88       578          -3          81.97        91.2         32.3        76           70.6
+  L   Nov 2015      385           6.5         447.57       572          -6          83.21        96.0         27.1         80          70.3
+  *   Dec 2015      321           5.2         446.92       560         -12          82.51        120.0        21.9        100          68.4
+
+      Jan 2016      348           5.7         446.50       552          -8          75.22        96.0         22.3         80          64.1
+      Feb 2016      488           8.5         447.00       561           9          75.38        93.6         32.0         78          65.6
+      Mar 2016      722          11.7         446.70       555          -6          74.26        120.0        47.0        100          65.2
+      Apr 2016      780          13.1         448.70       593          38          75.08        120.0        51.5        100          66.0
+      May 2016      686          11.2         448.70       593           0          76.05        120.0        45.6        100          66.4
+      Jun 2016      696          11.7         448.70       593           0          76.05        120.0        46.3        100          66.5
+       Jul 2016     677          11.0         448.00       580         -13          75.71        120.0        44.8        100          66.1
+      Aug 2016      566           9.2         447.50       571          -9          75.13        120.0        37.0        100          65.3
+      Sep 2016      523           8.8         447.50       570           0          74.89        120.0        34.0        100          65.0
+      WY 2016      6650                                                                                      441.8
+      Oct 2016      475          7.7          447.50       571           0          75.74        100.8       31.1         84           65.5
+      Nov 2016      381          6.4          447.50       571           0          75.92         97.2       24.7         81           65.0
+      Dec 2016      284          4.6          446.50       552         -19          74.40        120.0       17.7         100          62.6
+      Jan 2017      379          6.2          446.50       552           0          75.13         93.6       24.4         78           64.4
+      Feb 2017      492          8.9          446.50       552           0          74.71        102.0        32.0        85           65.1
+      Mar 2017      722          11.7         446.70       555           4          74.01        120.0        46.9        100          65.0
+      Apr 2017      768          12.9         448.70       593          38          75.08        120.0        50.6        100          66.0
+      May 2017      687          11.2         448.70       593           0          76.05        120.0        45.6        100          66.4
+      Jun 2017      694          11.7         448.70       593           0          76.05        120.0        46.2        100          66.5
+       Jul 2017     666          10.8         448.00       580         -13          75.71        120.0        44.0        100          66.1
+      Aug 2017      564           9.2         447.50       571          -9          75.13        120.0        36.8        100          65.3
+      Sep 2017      513           8.6         447.50       570           0          74.89        120.0        33.4        100          65.0
+      WY 2017      6625                                                                                      433.7
+      Oct 2017      469           7.6         447.50       571          0           75.74        100.8        30.7        84           65.4
+      Nov 2017      375           6.3         447.50       571          0           75.92         97.2        24.4         81          65.0
+      Dec 2017      283           4.6         446.50       552         -19          74.40        120.0        17.7        100          62.6
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                     Model Run ID: 3003            Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                Maximum Probable Inflow*
+                                                                                Upper Basin Power
+                Glen    Flaming              Blue     Morrow            Crystal  Fontenelle
+               Canyon    Gorge               Mesa      Point           Reservoir Reservoir
+       Date 1000 MWHR 1000 MWHR           1000 MWHR 1000 MWHR         1000 MWHR 1000 MWHR
+  * Jan 2015     373       48                 16         20               10           6
+  H Feb 2015     254       44                  8         10                2           5
+  I Mar 2015     278       48                  7          9                5           6
+   Winter 2015  1827      250                 72         83               46          37
+  S Apr 2015        256          28            13            17            11             7
+  T May 2015        299          65            21            30            18             8
+  O Jun 2015        348          40            38            67            21             9
+  R  Jul 2015       471          42            41            53            22             8
+  I Aug 2015        357          42            32            38            21             7
+  C Sep 2015        317          40            28            37            18             0
+ Summer 2015       2049         256           173           241           111            39
+  A   Oct 2015     264           52            26            32            0             4
+  L   Nov 2015     256           52            13            15            0             4
+  *   Dec 2015     378           53            18            16            7             4
+     Jan 2016      353           49            20            25           12              5
+     Feb 2016      272           43            12            15            8              4
+     Mar 2016      252           46            13            18           10              4
+   Winter 2016     1776         296           102           121           37             25
+    Apr 2016       260           44            14            20            11             6
+    May 2016       281           60            59           110            23             7
+    Jun 2016       335          103            36            50            22             8
+     Jul 2016      407           47            33            40           22             10
+    Aug 2016       387           47            38            45           23             10
+    Sep 2016       300           46            37            44           22              9
+ Summer 2016       1970         348           217           310           125            48
+      Oct 2016     257           47            24            30           16              7
+     Nov 2016      257           46            15            19           10              6
+     Dec 2016      364           47            34            41           21              6
+     Jan 2017      405           47            30            38           19              6
+     Feb 2017      339           42            15            20           11              5
+     Mar 2017      380           47             9            13            7              5
+   Winter 2017     2003         276           127           161           83             34
+    Apr 2017       422          45            11             18           11              6
+    May 2017       472          64            57            110           23              7
+    Jun 2017       528          97             9             21           19              8
+     Jul 2017      622          45            27             35           20             10
+    Aug 2017       662          45            38             45           23             10
+    Sep 2017       459          44            35             43           22              8
+ Summer 2017       3166         341           177           272           118            48
+      Oct 2017     262           45            16            20           11             8
+      Nov 2017     262           44             7            9             5             8
+      Dec 2017     348           45            35            43           21             7
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast               Model Run ID: 3003   Processed On: 1/14/2016 4:50:43PM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                         January 2016 24-Month Study
+                                                                                Maximum Probable Inflow*
+                                                                           Flood Control Criteria
+                                                                       Beginning of Month Conditions
+          Flaming  Blue         Lake Upper Basin Lake                               Flaming Blue          Tot or Max Lake   Lake       BOM Space   Mead    Mead Sys
+           Gorge   Mesa Navajo Powell   Total    Mead                   Total        Gorge Mesa      Navajo Allow    Powell Mead  Total Required Sched Rel FC Rel Cont
+  Date      KAF    KAF   KAF    KAF     KAF      KAF                    KAF           KAF   KAF       KAF    KAF      KAF   KAF    KAF    KAF      KAF      KAF MAF
+              ****PREDICTED SPACE****                                                                       ****EFFECTIVE SPACE****
+ Jan 2016    670   205   299   12495    13670    17290                  30960         670      205    299    1174     12495 17290 30960    5350    671        0    29.5
+ Jan 2016      670     205        299     12495      13670    17290     30960         311      202    172      685    12495     17290   30471     5350      671        0   29.5
+ Feb 2016      766     248        305     12920      14239    17029     31268         407      246    177      831    12920     17029   30779     1500      677        0   29.2
+ Mar 2016      848     265        289     13196      14598    16962     31560         489      265    160      914    13196     16962   31072     1500      950        0   28.9
+ Apr 2016      890     276        244     13254      14663    17222     31885         528      276    109      912    13254     17222   31388     1500     1086        0   29.2
+ May 2016      861     229        332     12645      14067    17563     31631         493      229    174      896    12645     17563   31104     1500      975        0   31.0
+ Jun 2016      733     337        345     10537      11953    17815     29768         352      329    150      831    10537     17815   29183     1500      864        0   33.5
+  Jul 2016     567     117        333      8357      9374     17909     27283         172      82      86      340    8357      17909   26606     1500      824        0   34.4
+                                                                                                          ****CREDITABLE SPACE****
+ Aug 2016      414      40        305      7843      8603     17802     26405         414      40     305   760   7843 17802 26405                1500      726        0   34.4
+ Sep 2016      438      55        297      7991      8781     17608     26389         438      55     297      790    7991      17608   26389     2270      712        0   34.2
+ Oct 2016      504     117        308      8042      8971     17576     26547         504      117    308      929    8042      17576   26547     3040      497        0   34.1
+ Nov 2016      567     147        291      7978      8984     17478     26462         567      147    291     1006    7978      17478   26462     3810      611        0   34.0
+ Dec 2016      635     163        288      8004      9090     17486     26576         635      163    288     1086    8004      17486   26576     4580      551        0   33.9
+ Jan 2017      725     248        292      8277      9542     17173     26716         725      248    292     1266    8277      17173   26716     5350      695        0   33.8
+                                                                                                              ****EFFECTIVE SPACE****
+ Jan 2017      725     248        292      8277      9542     17173     26716         448      219    166      833   8277  17173 26283            5350      695        0   33.8
+ Feb 2017      809     325        302      8630      10065    16899     26964         531      296    175     1003    8630      16899   26531     1500      716        0   33.5
+ Mar 2017      878     353        297      8883      10411    16776     27187         598      327    170     1095    8883      16776   26754     1500     1003        0   33.4
+ Apr 2017      895     344        234      9078      10552    16847     27399         612      318    100     1031    9078      16847   26957     1500     1081        0   33.6
+ May 2017      862     294        251      8910      10317    16855     27172         573      264     95      931    8910      16855   26696     1500      985        0   35.5
+ Jun 2017      728     412        286      7125      8550     16739     25289         427      371     92      890    7125      16739   24753     1500      872        0   37.9
+  Jul 2017     488     130        309      5509      6435     16487     22922         168      64      62      294    5509      16487   22290     1500      833        0   38.5
+                                                                                                          ****CREDITABLE SPACE****
+ Aug 2017      338      65        305      5638      6346     15984     22330         338      65     305   708  5638  15984 22330 1500                     745        0   38.3
+ Sep 2017      357      99        310      6395      7162     15255     22417         357      99     310      766    6395      15255   22417     2270      713        0   38.1
+ Oct 2017      418     163        309      6856      7747     14890     22636         418      163    309      890    6856      14890   22636     3040      465        0   38.0
+ Nov 2017      480     168        292      6849      7789     14769     22559         480      168    292      940    6849      14769   22559     3810      604        0   37.9
+ Dec 2017      547     159        288      6945      7939     14781     22720         547      159    288      994    6945      14781   22720     4580      544        0   37.8
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                     Model Run ID: 3003             Processed On: 1/14/2016 4:50:43PM
+

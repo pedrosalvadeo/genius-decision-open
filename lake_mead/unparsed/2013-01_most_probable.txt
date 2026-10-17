@@ -1,0 +1,916 @@
+To:    All Annual Operating Plan Recipients
+
+From: Lower Colorado Region
+      Boulder Canyon Operations Office
+      River Operations Group
+      Bruce Williams
+      P.O. Box 61470
+      Boulder City, NV 89006-1470
+      Phone: 702-293-8571
+
+The operation of Lake Powell and Lake Mead in this January 2013 24-Month Study is pursuant to the December 2007 Record of Decision on Colorado
+River Interim Guidelines for Lower Basin Shortages and the Coordinated Operations of Lake Powell and Lake Mead (Interim Guidelines), and reflects the
+draft 2013 AOP. Pursuant to the Interim Guidelines, the August 2012 24-Month Study projections of the January 1, 2013, system storage and reservoir
+water surface elevations set the operational tier for the coordinated operation of Lake Powell and Lake Mead during 2013.
+
+Consistent with Section 6.B of the Interim Guidelines, the Lake Powell operational tier for water year 2013 is the Upper Elevation Balancing Tier. The
+January 2013 24-Month Study projects the water year release volume from Lake Powell for 2013 to be 8.23 million acre-feet (maf).
+
+Consistent with Section 6.B.3 of the Interim Guidelines, if the April 24-Month study projects the September 30 Lake Powell elevation to be greater than the
+2013 Equalization elevation of 3,646.0 feet with an annual release from Lake Powell of 8.23 maf, the Equalization Tier will govern operations of Lake
+Powell for the remainder of the water year. If such an adjustment occurs, the water year release volume from Lake Powell may be greater than 8.23 maf.
+Based on analysis of a range of inflow scenarios, the current probability of realizing an inflow volume that would trigger Equalization in 2013 is less than 5
+percent.
+
+Consistent with Section 2.B.5 of the Interim Guidelines, the Intentionally Created Surplus (ICS) Surplus Condition is the criterion governing the operation of
+Lake Mead for calendar year 2013.
+
+The Interim Guidelines are available for download at http://www.usbr.gov/lc/region/programs/strategies/RecordofDecision.pdf.
+The draft 2013 AOP is available for download at http://www.usbr.gov/uc/water/rsvrs/ops/aop/AOP13_draft.pdf.
+
+Current runoff projections into Lake Powell are provided by the National Weather Service’s Colorado Basin River Forecast Center and are as follows:
+Observed unregulated inflow into Lake Powell for the month of December 2012 was 0.195 maf or 54 percent of the 30-year average from 1981 to 2010.
+The forecast for January 2013 unregulated inflow into Lake Powell is 0.230 maf or 64 percent of the 30-year average. The forecasted 2013 April through
+July unregulated inflow is 4.40 maf or 61 percent of average.
+
+In this study, the calendar year 2013 diversion for Metropolitan Water District of Southern California (MWD) is forecasted to be 0.885 maf. The calendar
+year 2013 diversion for the Central Arizona Project (CAP) is forecasted to be 1.531 maf. Consumptive use for Nevada above Hoover (SNWP Use) is
+forecasted to be 0.239 maf for calendar year 2013.
+
+Due to changing Lake Mead elevations, Hoover’s generator capacity is adjusted based on estimated effective capacity and plant availability. The
+estimated effective capacity is based on projected Lake Mead elevations. Unit capacity tests will be performed as the lake elevation changes in 2-foot
+increments. This study reflects these changes in the projections.
+
+Hoover, Davis, and Parker historical gross energy figures come from PO&M reports provided by the Lower Colorado Region’s Power Management Office,
+Bureau of Reclamation, Boulder City, Nevada. Questions regarding these historical energy numbers can be directed to Larry Karr at (702) 293-8094.
+                                                  OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                         January 2013 24-Month Study
+                                                                                                   Most Probable Inflow*
+                                                                                                 Fontenelle Reservoir
+                     Regulated        Evap             Power         Bypass          Total       Reservoir Elev       Live
+                       Inflow        Losses           Release        Release        Release      End of Month       Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)     (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)        (1000 Ac-Ft)
+   *    Jan 2012        32              1               74              0              74            6479.61          165
+   H    Feb 2012        30              0               69              0              69            6471.56          126
+   I    Mar 2012        64              0               67              0              67            6470.82          123
+   S     Apr 2012       98              1               60              0              60            6478.72          160
+   T    May 2012        130             1               61              0              62            6489.92          227
+   O    Jun 2012        189             2               83             16              99            6502.11          315
+   R     Jul 2012       92              3               72              3              75            6503.94          329
+   I    Aug 2012        36              2               68              0              68            6499.56          296
+   C    Sep 2012        23              2               46              8              54            6495.11          263
+        WY 2012         825            15              750             94             845
+
+   A     Oct 2012       29              1               25             28              53            6491.56          238
+   L    Nov 2012        35              1               22             28              51            6489.08          221
+   *    Dec 2012        28              1               52              0              52            6485.19          196
+
+        Jan 2013        25              1               56              0              56            6479.84          166
+        Feb 2013        22              0               47              0              47            6474.69          140
+        Mar 2013        43              0               52              0              52            6472.58          130
+         Apr 2013       70              1               51              0              51            6476.57          149
+        May 2013        110             1               89              0              89            6480.34          169
+        Jun 2013        245             2              102              9             112            6500.14          300
+         Jul 2013       130             3               85              0              85            6505.63          343
+        Aug 2013        60              2               82              0              82            6502.50          318
+        Sep 2013        42              2               68              0              68            6498.78          290
+        WY 2013         839            15              732             65             798
+
+         Oct 2013       46              1               71              0              71            6495.20          264
+        Nov 2013        41              1               68              0              68            6491.14          236
+        Dec 2013        32              1               71              0              71            6485.05          196
+        Jan 2014        30              1               71              0              71            6477.78          155
+        Feb 2014        28              0               64              0              64            6469.87          119
+        Mar 2014        53              0               71              0              71            6465.27          100
+         Apr 2014       85              1               83              0              83            6465.68          102
+        May 2014        164             1               96             14             111            6477.46          154
+        Jun 2014        299             2              102             50             152            6500.02          299
+         Jul 2014       178             3              101             30             131            6505.68          343
+        Aug 2014        77              2               74              0              74            6505.73          344
+        Sep 2014        46              2               64              0              64            6503.21          324
+        WY 2014        1078            15              935             94             1029
+
+         Oct 2014       49              1               66              0              66            6500.78          305
+        Nov 2014        42              1               64              0              64            6497.75          282
+        Dec 2014        32              1               66              0              66            6492.86          247
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                       Model Run ID: 2136   Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2013 24-Month Study
+                                                                                                 Most Probable Inflow*
+                                                                                             Flaming Gorge Reservoir
+                       Unreg           Reg           Evap           Power          Bypass           Total          Bank        Reservoir Elev     Live         Jensen
+                       Inflow         Inflow        Losses         Release         Release         Release        Storage      End of Month     Storage         Flow
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)    (1000 Ac-Ft)    (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)
+   *    Jan 2012        45             87              2             148                0            148            134          6029.85         3343            189
+   H    Feb 2012        47             86              2             140                0            140            132          6028.43         3289            186
+   I    Mar 2012        104           107              3             162                0            162            130          6026.95         3233            286
+   S     Apr 2012       136            98              5             122                0            122            129          6026.21         3205            331
+   T    May 2012        153            85              8             159               19            178            125          6023.57         3108            385
+   O    Jun 2012        188            98             10              87                0             87            125          6023.59         3108            156
+   R     Jul 2012       93             76             12              84                0             84            124          6023.04         3088             99
+   I    Aug 2012        29             60             12              80                0             80            123          6022.19         3058             90
+   C    Sep 2012        19             50             10              68                0             68            122          6021.43         3030             78
+        WY 2012         990           1010            78             1366              20            1386                                                       2278
+
+   A     Oct 2012       24             48              7              52                0             52            122          6021.15         3020             69
+   L    Nov 2012        39             55              3              49                0             49            122          6021.23         3023             73
+   *    Dec 2012        25             50              2              70                0             70            121          6020.63         3002            109
+
+        Jan 2013        28             59              2              74                0             74            120          6020.17         2986             74
+        Feb 2013        32             57              2              66                0             66            120          6019.87         2975             66
+        Mar 2013        83             92              3              50                0             50            121          6020.94         3013             50
+         Apr 2013       110            91              5              48                0             48            123          6021.97         3050             48
+        May 2013        175           154              7              95                0             95            125          6023.34         3099             95
+        Jun 2013        300           167             10             152                0            152            125          6023.47         3104            152
+         Jul 2013       160           115             13              74                0             74            126          6024.20         3131             74
+        Aug 2013        68             90             12              74                0             74            126          6024.31         3135             74
+        Sep 2013        45             71             11              71                0             71            126          6024.03         3125             71
+        WY 2013        1090           1049            76             874                0            874                                                         954
+
+         Oct 2013       52             77              7              74                0             74            126          6023.92         3121             74
+        Nov 2013        48             76              3              71                0             71            126          6023.94         3121             71
+        Dec 2013        35             74              2              74                0             74            125          6023.89         3120             74
+        Jan 2014        40             81              2              74                0             74            126          6024.03         3125             74
+        Feb 2014        45             81              2              67                0             67            126          6024.35         3136             67
+        Mar 2014        102           120              3              74                0             74            128          6025.49         3178             74
+         Apr 2014       134           131              5              71                0             71            130          6026.91         3231             71
+        May 2014        245           192              8             121                0            121            132          6028.51         3292            121
+        Jun 2014        390           242             10             224                0            224            133          6028.71         3300            224
+         Jul 2014       210           163             14             101                0            101            135          6029.92         3346            101
+        Aug 2014        89             86             13             101                0            101            133          6029.22         3319            101
+        Sep 2014        55             73             11              98                0             98            132          6028.30         3284             98
+        WY 2014        1444           1396            79             1151               0            1151                                                        1151
+
+         Oct 2014       59             77              7             101                0            101            131          6027.49         3253            101
+        Nov 2014        51             73              3              98                0             98            130          6026.76         3226             98
+        Dec 2014        35             69              2             101                0            101            128          6025.88         3193            101
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                              Model Run ID: 2136                  Processed On: 1/9/2013 1:38:06PM
+                                                  OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2013 24-Month Study
+                                                                                               Most Probable Inflow*
+                                                                                             Taylor Park Reservoir
+                     Regulated        Total       Reservoir Elev       Live
+                       Inflow        Release      End of Month       Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)        (1000 Ac-Ft)
+   *    Jan 2012         4              5             9307.37          66
+   H    Feb 2012         4              4             9307.22          66
+   I    Mar 2012         6              4             9308.28          67
+   S     Apr 2012       10              4             9311.81          73
+   T    May 2012        16              8             9316.40          81
+   O    Jun 2012         9              15            9312.87          75
+   R     Jul 2012        6              14            9307.53          66
+   I    Aug 2012         4              12            9302.28          58
+   C    Sep 2012         4              6             9300.80          56
+        WY 2012         80              94
+
+   A     Oct 2012        4              4             9301.04          57
+   L    Nov 2012         3              3             9301.07          57
+   *    Dec 2012         3              3             9301.09          57
+
+        Jan 2013         3              5             9299.70          55
+        Feb 2013         2              5             9297.82          52
+        Mar 2013         3              5             9296.34          50
+         Apr 2013        6              5             9297.51          52
+        May 2013        18              8             9304.74          62
+        Jun 2013        28              15            9313.05          75
+         Jul 2013       10              18            9308.06          67
+        Aug 2013         6              18            9299.85          55
+        Sep 2013         5              16            9290.83          44
+        WY 2013         90             103
+
+         Oct 2013        5              10            9286.29          39
+        Nov 2013         5              5             9286.31          39
+        Dec 2013         5              5             9286.49          39
+        Jan 2014         4              5             9286.34          39
+        Feb 2014         4              5             9285.66          38
+        Mar 2014         4              5             9285.60          38
+         Apr 2014        9              5             9289.63          42
+        May 2014        28              8             9305.31          63
+        Jun 2014        42              18            9319.70          86
+         Jul 2014       20              18            9320.88          89
+        Aug 2014        10              18            9316.58          81
+        Sep 2014         7              16            9311.45          72
+        WY 2014         143            115
+
+         Oct 2014        7              10            9309.36          69
+        Nov 2014         5              5             9309.74          69
+        Dec 2014         5              5             9309.86          70
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                             Model Run ID: 2136   Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2013 24-Month Study
+                                                                                                Most Probable Inflow*
+                                                                                             Blue Mesa Reservoir
+                       UnReg        Regulated        Evap         Power         Bypass          Total       Reservoir Elev     Live
+                       Inflow         Inflow        Losses       Release        Release        Release      End of Month     Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)
+   *    Jan 2012         22            23                0            52              0            52          7485.29          545
+   H    Feb 2012         21            22                0            34              0            34          7483.66          533
+   I    Mar 2012         40            39                0            32              0            32          7484.49          539
+   S     Apr 2012        57            51                1            58              0            58          7483.54          532
+   T    May 2012         74            66                1            71              0            71          7482.82          527
+   O    Jun 2012         45            50                1            93              0            93          7476.82          483
+   R     Jul 2012        30            39                1            90              0            90          7469.29          431
+   I    Aug 2012         28            36                1            79              0            79          7462.48          387
+   C    Sep 2012         19            21                1            67              0            67          7454.82          340
+        WY 2012         427            442               7           793              0           793
+
+   A     Oct 2012        20            20                0            33              0            33          7452.55          327
+   L    Nov 2012         19            19                0            19              0            19          7452.39          326
+   *    Dec 2012         18            18                0            16              0            16          7452.65          328
+
+        Jan 2013         16            18                0            22              0            22          7451.91          323
+        Feb 2013         14            17                0            13              0            13          7452.49          327
+        Mar 2013         23            25                0            18              0            18          7453.72          334
+         Apr 2013        52            51                1            35              0            35          7456.27          349
+        May 2013        122            112               1            62              0            62          7464.23          398
+        Jun 2013        153            140               1            56              0            56          7476.49          481
+         Jul 2013        63            71                1            92              0            92          7473.32          458
+        Aug 2013         38            50                1            97              0            97          7466.26          411
+        Sep 2013         30            41                1            77              0            77          7460.52          374
+        WY 2013         568            581               7           540              0           540
+
+         Oct 2013        33            38                0            44              0            44          7459.52          368
+        Nov 2013         29            29                0            13              0            13          7462.05          384
+        Dec 2013         26            25                0            14              0            14          7463.92          396
+        Jan 2014         24            24                0            24              0            24          7463.97          396
+        Feb 2014         22            23                0            21              0            21          7464.26          398
+        Mar 2014         36            36                0            26              0            26          7465.85          408
+         Apr 2014        77            73                1            36              0            36          7471.28          444
+        May 2014        221            201               1           118              0           118          7482.76          526
+        Jun 2014        261            237               1            36              0            36          7507.73          726
+         Jul 2014       117            115               2            81              0            81          7511.45          758
+        Aug 2014         63            71                1           120              0           120          7505.65          708
+        Sep 2014         38            47                1           104              0           104          7498.64          650
+        WY 2014         948            919               8           636              0           636
+
+         Oct 2014        38            42                1            58              0            58          7496.55          633
+        Nov 2014         31            31                0            29              0            29          7496.71          635
+        Dec 2014         26            25                0            78              0            78          7490.00          581
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                            Model Run ID: 2136   Processed On: 1/9/2013 1:38:06PM
+                                               OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                            January 2013 24-Month Study
+                                                                                                    Most Probable Inflow*
+                                                                                                Morrow Point Reservoir
+                        Unreg        Blue Mesa         Side           Total         Power          Bypass          Total       Reservoir Elev         Live
+                        Inflow        Release         Inflow         Inflow        Release         Release        Release      End of Month         Storage
+          Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)    (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)          (1000 Ac-Ft)
+    *    Jan 2012        23              52             1             53              52             0              52             7155.61           113
+    H    Feb 2012        22              34             1             35              35             0              35             7155.27           113
+    I    Mar 2012        43              32             2             35              34             0              34             7156.25           114
+    S     Apr 2012       63              58             6             64              63             0              63             7157.05           115
+    T    May 2012        80              71             6             76              79             0              79             7154.07           112
+    O    Jun 2012        45              93             1             93              93             0              93             7154.59           113
+    R     Jul 2012       31              90             0             90              89             0              89             7155.86           114
+    I    Aug 2012        28              79             0             80              80             0              80             7154.84           113
+    C    Sep 2012        19              67             0             68              71             0              71             7150.03           109
+         WY 2012         447            793            21             814             811            0             811
+
+    A     Oct 2012       22              33             1             34              40             0              40             7142.80           104
+    L    Nov 2012        20              19             1             20              16             0              16             7148.49           108
+    *    Dec 2012        18              16             1             17              18             0              18             7146.50           106
+
+         Jan 2013        17              22             1             23              17             0              17             7153.73           112
+         Feb 2013        15              13             1             14              14             0              14             7153.73           112
+         Mar 2013        25              18             2             20              20             0              20             7153.73           112
+          Apr 2013       57              35             5             40              40             0              40             7153.73           112
+         May 2013        134             62            12             74              74             0              74             7153.73           112
+         Jun 2013        164             56            11             67              67             0              67             7153.73           112
+          Jul 2013       65              92             2             94              94             0              94             7153.73           112
+         Aug 2013        40              97             2             99              99             0              99             7153.73           112
+         Sep 2013        32              77             2             79              79             0              79             7153.73           112
+         WY 2013         609            540            41             580             577            0             577
+
+          Oct 2013       35              44             2             46              46             0              46             7153.73           112
+         Nov 2013        31              13             2             15              15             0              15             7153.73           112
+         Dec 2013        28              14             2             16              16             0              16             7153.73           112
+         Jan 2014        27              24             2             26              26             0              26             7153.73           112
+         Feb 2014        25              21             3             24              24             0              24             7153.73           112
+         Mar 2014        40              26             4             30              30             0              30             7153.73           112
+          Apr 2014       88              36            11             47              47             0              47             7153.73           112
+         May 2014        247            118            26             144             144            0             144             7153.73           112
+         Jun 2014        281             36            20             56              56             0              56             7153.73           112
+          Jul 2014       123             81             6             87              87             0              87             7153.73           112
+         Aug 2014        67             120             3             123             123            0             123             7153.73           112
+         Sep 2014        41             104             3             107             107            0             107             7153.73           112
+         WY 2014        1032            636            84             720             720            0             720
+
+          Oct 2014       41              58             3             61              61             0              61             7153.73           112
+         Nov 2014        33              29             2             31              31             0              31             7153.73           112
+         Dec 2014        28              78             2             81              81             0              81             7153.73           112
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                                   Model Run ID: 2136   Processed On: 1/9/2013 1:38:06PM
+                                              OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2013 24-Month Study
+                                                                                                Most Probable Inflow*
+                                                                                                Crystal Reservoir
+                       Unreg         Morrow           Side           Total          Power         Bypass          Total       Reservoir Elev     Live             Tunnel      Below Tunnel
+                       Inflow        Release         Inflow         Inflow         Release        Release        Release      End of Month     Storage             Flow           Flow
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)    (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)
+   *    Jan 2012        27              52            3               56               53            3              56          6751.28            16               1              57
+   H    Feb 2012        26              35            3               38               15            23             38          6751.90            17               1              40
+   I    Mar 2012        49              34            6               40               40            0              40          6751.80            17               6              36
+   S     Apr 2012       71              63            8               71               71            0              71          6752.10            17              50              23
+   T    May 2012        86              79            6               84               86            0              86          6745.87            15              65              23
+   O    Jun 2012        49              93            3               96               97            0              97          6744.24            14              63              36
+   R     Jul 2012       35              89            4               93               93            0              93          6745.39            15              62              35
+   I    Aug 2012        32              80            3               84               84            0              84          6743.63            14              52              36
+   C    Sep 2012        22              71            2               74               63            11             74          6743.29            14              45              32
+        WY 2012         498            811            51             862              824            38            862                                             397            492
+
+   A     Oct 2012       24              40            3               42               40            0              40          6750.72            16              20              20
+   L    Nov 2012        23              16            4               19               21            0              21          6746.77            15               1              19
+   *    Dec 2012        22              18            4               22               22            0              22          6749.11            16               1              20
+
+        Jan 2013        20              17            3               20               19            0              19          6753.04            17               0              19
+        Feb 2013        18              14            3               17               17            0              17          6753.04            17               0              17
+        Mar 2013        29              20            4               24               24            0              24          6753.04            17               5              18
+         Apr 2013       65              40            8               48               48            0              48          6753.04            17              30              18
+        May 2013        152             74           18               92               92            0              92          6753.04            17              55              37
+        Jun 2013        179             67           15               82               82            0              82          6753.04            17              60              22
+         Jul 2013       69              94            4               98               98            0              98          6753.04            17              65              33
+        Aug 2013        44              99            4              103              103            0             103          6753.04            17              65              38
+        Sep 2013        35              79            3               82               82            0              82          6753.04            17              55              27
+        WY 2013         681            577            72             649              646            0             647                                             357            288
+
+         Oct 2013       39              46            4               50               50            0              50          6753.04            17              30              20
+        Nov 2013        35              15            4               19               19            0              19          6753.04            17               0              19
+        Dec 2013        32              16            5               20               20            0              20          6753.04            17               0              20
+        Jan 2014        31              26            5               31               31            0              31          6753.04            17               0              31
+        Feb 2014        29              24            4               27               27            0              27          6753.04            17               0              27
+        Mar 2014        46              30            6               36               36            0              36          6753.04            17               5              31
+         Apr 2014       101             47           12               60               60            0              60          6753.04            17              30              30
+        May 2014        281            144           34              178              134            44            178          6753.04            17              55             123
+        Jun 2014        315             56           34               90               90            0              90          6753.04            17              60              30
+         Jul 2014       138             87           14              102              102            0             102          6753.04            17              65              37
+        Aug 2014        75             123            8              132              132            0             132          6753.04            17              65              67
+        Sep 2014        47             107            6              113              113            0             113          6753.04            17              55              58
+        WY 2014        1169            720           137             857              813            44            857                                             365            492
+
+         Oct 2014       47              61            6               67               67            0              67          6753.04            17              30              37
+        Nov 2014        38              31            5               36               36            0              36          6753.04            17               0              36
+        Dec 2014        32              81            5               85               85            0              85          6753.04            17               0              85
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                                Model Run ID: 2136                       Processed On: 1/9/2013 1:38:06PM
+                                                  OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2013 24-Month Study
+                                                                                             Most Probable Inflow*
+                                                                                             Vallecito Reservoir
+                     Regulated        Total       Reservoir Elev       Live
+                       Inflow        Release      End of Month       Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)        (1000 Ac-Ft)
+   *    Jan 2012         5              3             7645.42          76
+   H    Feb 2012         4              4             7645.50          76
+   I    Mar 2012        12              4             7648.84          84
+   S     Apr 2012       36              3             7661.80          117
+   T    May 2012        42              35            7664.36          124
+   O    Jun 2012        17              36            7656.80          104
+   R     Jul 2012       11              35            7647.02          80
+   I    Aug 2012         7              33            7634.93          54
+   C    Sep 2012         4              22            7624.48          36
+        WY 2012         168            188
+
+   A     Oct 2012        3              3             7624.51          36
+   L    Nov 2012         3              1             7625.69          37
+   *    Dec 2012         3              0             7627.33          40
+
+        Jan 2013         2              0             7628.53          42
+        Feb 2013         2              0             7629.42          44
+        Mar 2013         4              0             7631.14          47
+         Apr 2013       12              0             7637.10          58
+        May 2013        47              27            7646.08          78
+        Jun 2013        54              41            7651.42          90
+         Jul 2013       22              38            7644.19          73
+        Aug 2013        14              34            7634.54          53
+        Sep 2013        12              24            7627.54          41
+        WY 2013         178            170
+
+         Oct 2013       12              12            7627.90          41
+        Nov 2013         8              0             7632.12          49
+        Dec 2013         6              0             7635.26          55
+        Jan 2014         5              0             7637.76          60
+        Feb 2014         5              0             7639.85          64
+        Mar 2014         9              0             7643.58          72
+         Apr 2014       23              2             7652.49          93
+        May 2014        71              39            7664.93          125
+        Jun 2014        70              70            7664.89          125
+         Jul 2014       29              42            7659.95          112
+        Aug 2014        20              38            7652.68          93
+        Sep 2014        17              30            7647.47          81
+        WY 2014         277            233
+
+         Oct 2014       16              17            7646.70          79
+        Nov 2014         9              7             7647.46          81
+        Dec 2014         6              6             7647.46          81
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                           Model Run ID: 2136   Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                          January 2013 24-Month Study
+                                                                                                Most Probable Inflow*
+                                                                                               Navajo Reservoir
+                     Mod Unreg        Azetea          Reg         Evap            NIIP          Total       Reservoir Elev     Live         Farmington
+                       Inflow       Tunnel Div       Inflow      Losses        Diversion       Release      End of Month     Storage           Flow
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)     (1000 Ac-Ft)
+   *    Jan 2012         18             0               16             1             1           30           6055.85          1296              50
+   H    Feb 2012         19             0               18             1             1           28           6054.95          1285              46
+   I    Mar 2012         74             7               61             2             6           31           6056.81          1308              70
+   S     Apr 2012        149           18               98             2             27          30           6059.88          1346              96
+   T    May 2012         131           17              105             4             34          110          6056.40          1303             176
+   O    Jun 2012         20             4               35             4             46          42           6051.70          1246              57
+   R     Jul 2012        10             1               33             4             44          52           6045.91          1178              60
+   I    Aug 2012          0             0               26             3             45          55           6038.86          1101              46
+   C    Sep 2012         -2             0               17             2             22          58           6032.62          1035              65
+        WY 2012          522            53             490            26            236          521                                            821
+
+   A     Oct 2012         3             0               3              1             11          40           6027.78           986              57
+   L    Nov 2012          9             0               7              1             0           23           6026.11           970              32
+   *    Dec 2012         12             0               9              0             0           22           6024.73           957              28
+
+        Jan 2013         12             0               10             0             0           24           6023.20           942              24
+        Feb 2013         15             0               13             1             0           28           6021.62           927              28
+        Mar 2013         41             1               37             1             2           30           6022.06           931              30
+         Apr 2013        89            14               63             2             18          18           6024.75           957              18
+        May 2013         175           26              129             3             32          15           6032.60          1035              15
+        Jun 2013         136           16              106             3             48          15           6036.48          1075              15
+         Jul 2013        40             2               54             4             53          23           6034.10          1050              23
+        Aug 2013         35             0               55             3             45          42           6030.63          1015              42
+        Sep 2013         33             0               45             2             26          33           6029.08           999              33
+        WY 2013          600            60             533            22            234          313                                            345
+
+         Oct 2013        40             0               39             1             7           30           6029.20          1001              30
+        Nov 2013         31             0               23             1             0           23           6029.13          1000              23
+        Dec 2013         25             0               19             1             0           28           6028.20           991              28
+        Jan 2014         22             0               17             0             0           28           6027.05           979              28
+        Feb 2014         30             0               26             1             0           25           6027.02           979              25
+        Mar 2014         92             2               82             1             2           24           6032.42          1033              24
+         Apr 2014        170           14              135             2             18          21           6041.37          1128              21
+        May 2014         277           37              208             3             33          40           6052.88          1260              40
+        Jun 2014         224           32              191             4             48          86           6057.18          1312              86
+         Jul 2014        66             6               72             4             53          22           6056.61          1305              22
+        Aug 2014         45             2               61             3             46          27           6055.40          1290              27
+        Sep 2014         43             0               55             3             26          27           6055.36          1290              27
+        WY 2014         1065            94             927            25            232          380                                            380
+
+         Oct 2014        47             1               47             2             7           30           6056.07          1299              30
+        Nov 2014         34             1               31             1             0           30           6056.08          1299              30
+        Dec 2014         25             0               25             1             0           31           6055.55          1292              31
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                                Model Run ID: 2136   Processed On: 1/9/2013 1:38:06PM
+                                              OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                          January 2013 24-Month Study
+                                                                                                 Most Probable Inflow*
+                                                                                                    Lake Powell
+                       Unreg        Regulated        Evap        PowerPlant       Bypass          Total     Reservoir Elev    Bank           EOM            Lees
+                       Inflow         Inflow        Losses         Release        Release        Release    End of Month     Storage        Storage         Ferry
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)      (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)
+   *    Jan 2012        356            503            10             852             0            852         3636.91          5305          15641             846
+   H    Feb 2012        342            460            11             653             0            653         3635.28          5290          15453             654
+   I    Mar 2012        560            625            19             600             0            600         3635.33          5290          15458             607
+   S     Apr 2012       764            689            29             606             0            606         3635.76          5294          15508             612
+   T    May 2012        792            770            35             601             0            601         3636.83          5304          15632             606
+   O    Jun 2012        353            398            54             709             0            709         3633.90          5277          15294             712
+   R     Jul 2012       154            285            62             886             0            886         3628.45          5228          14680             892
+   I    Aug 2012        101            289            60             800             0            800         3623.62          5186          14151             810
+   C    Sep 2012        104            296            54             481             0            481         3621.56          5168          13929             478
+        WY 2012        4908            5964           455           9466             0            9466                                                         9527
+
+   A     Oct 2012       190            294            37             498             0            498         3619.46          5150          13706             495
+   L    Nov 2012        246            273            35             652             78           730         3615.10          5114          13251             736
+   *    Dec 2012        201            247            27             801             0            801         3609.82          5071          12713             800
+
+        Jan 2013        230            287             8             800             0            800         3604.91          5032          12225             800
+        Feb 2013        250            296             9             600             0            600         3601.93          5009          11935             600
+        Mar 2013        420            373            14             600             0            600         3599.60          4991          11712             600
+         Apr 2013       650            531            23             550             0            550         3599.19          4988          11673             550
+        May 2013       1400            1160           27             600             0            600         3604.31          5027          12166             600
+        Jun 2013       1700            1398           44             800             0            800         3609.49          5068          12679             800
+         Jul 2013       650            630            53             801             0            801         3607.42          5051          12472             801
+        Aug 2013        340            457            52             850             0            850         3603.22          5018          12060             850
+        Sep 2013        300            399            47             600             0            600         3600.84          5000          11830             600
+        WY 2013        6577            6345           377           8152             78           8230                                                         8232
+
+         Oct 2013       422            451            32             600             0            600         3599.08          4987          11662             600
+        Nov 2013        431            431            31             600             0            600         3597.12          4972          11477             600
+        Dec 2013        363            392            24             800             0            800         3592.82          4940          11077             800
+        Jan 2014        361            400             7             800             0            800         3588.67          4910          10700             800
+        Feb 2014        393            409             8             600             0            600         3586.61          4895          10516             600
+        Mar 2014        665            563            13             600             0            600         3586.08          4891          10470             600
+         Apr 2014      1056            834            21             600             0            600         3588.30          4907          10667             600
+        May 2014       2343            1948           26             600             0            600         3601.48          5005          11892             600
+        Jun 2014       2666            2218           44             650             0            650         3615.60          5118          13302             650
+         Jul 2014      1091            962            56             850             0            850         3616.10          5122          13354             850
+        Aug 2014        500            599            55             900             0            900         3612.89          5096          13024             900
+        Sep 2014        408            527            50             630             0            630         3611.50          5084          12882             630
+        WY 2014        10698           9733           368           8230             0            8230                                                         8230
+
+         Oct 2014       512            566            35             600             0            600         3610.87          5079          12818             600
+        Nov 2014        473            515            33             600             0            600         3609.78          5070          12708             600
+        Dec 2014        363            488            26             800             0            800         3606.63          5045          12394             800
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                                Model Run ID: 2136            Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                         January 2013 24-Month Study
+                                                                                                  Most Probable Inflow*
+                                                                                             Hoover Dam - Lake Mead
+                        Glen           Side          Evap         Total           Total           SNWP        Downstream       Bank          Reservoir Elev        EOM
+                      Release         Inflow        Losses       Release         Release           Use        Requirements    Storage        End of Month         Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft)    (1000 CFS)      (1000 Ac-Ft)    (1000 Ac-Ft) (1000 Ac-Ft)          (Ft)          (1000 Ac-Ft)
+   *    Jan 2012         852           55             37            713           11.6               9            712            976             1134.18           15022
+   H    Feb 2012         653           44             34            775           13.5              10            775            969             1133.06           14907
+   I    Mar 2012         600           43             38            986           16.0              16            985            945             1129.41           14535
+   S     Apr 2012        606           46             46            1170          19.7              20            1163           909             1123.93           13986
+   T    May 2012         601           16             52            1008          16.4              30           1007            880             1119.38           13541
+   O    Jun 2012         709            7             62            989           16.6              28            989            858             1115.84           13200
+   R     Jul 2012        886           69             77            841           13.7              29            819            858             1115.92           13207
+   I    Aug 2012         800           169            82            798           13.0              24            793            862             1116.56           13269
+   C    Sep 2012         481           97             67            635           10.7              18            634            854             1115.16           13135
+        WY 2012         9466           732           638            9421                            226           9356
+
+   A     Oct 2012        498           53             49            346           5.6               20            331            862             1116.50           13263
+   L    Nov 2012         730           60             49            650           10.9              14            649            867             1117.24           13334
+   *    Dec 2012         801           50             43            476           7.7               11            432            886             1120.36           13636
+
+        Jan 2013         800           78             35            617           10.0              15            617            899             1122.39           13835
+        Feb 2013         600           98             32            663           11.9              17            663            898             1122.25           13821
+        Mar 2013         600           78             36            967           15.7              21            967            877             1118.91           13496
+         Apr 2013        550           76             44            1123          18.9              13            1123           843             1113.49           12975
+        May 2013         600           64             50            1025          16.7              24           1025            817             1109.14           12567
+        Jun 2013         800           33             59            944           15.9              22            944            805             1107.19           12387
+         Jul 2013        801           54             73            930           15.1              28            930            794             1105.39           12222
+        Aug 2013         850           103            78            859           14.0              23            859            794             1105.33           12216
+        Sep 2013         600           74             64            686           11.5              18            686            788             1104.36           12128
+        WY 2013         8230           821           612            9285                            227           9224
+
+         Oct 2013        600           49             46            525           8.5               17            525            792             1105.00           12186
+        Nov 2013         600           46             46            602           10.1              23            602            791             1104.73           12162
+        Dec 2013         800           108            40            526           8.6               18            526            810             1108.04           12465
+        Jan 2014         800           78             33            697           11.3              16            697            818             1109.38           12589
+        Feb 2014         600           98             31            674           12.1              18            674            817             1109.14           12567
+        Mar 2014         600           78             34            1015          16.5              21           1015            793             1105.13           12198
+         Apr 2014        600           76             42            1104          18.6              14            1104           763             1100.10           11744
+        May 2014         600           64             47            1001          16.3              24           1001            738             1095.78           11361
+        Jun 2014         650           33             56            930           15.6              22            930            719             1092.30           11056
+         Jul 2014        850           54             69            863           14.0              28            863            715             1091.69           11003
+        Aug 2014         900           103            74            826           13.4              23            826            720             1092.55           11078
+        Sep 2014         630           74             61            623           10.5              19            623            720             1092.57           11080
+        WY 2014         8230           861           580            9384                            243           9384
+
+         Oct 2014        600           49             44            452           7.4               17            452            728             1094.03           11208
+        Nov 2014         600           46             45            590           9.9               23            590            728             1093.89           11196
+        Dec 2014         800           108            39            484           7.9               18            484            750             1097.81           11540
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                                 Model Run ID: 2136                  Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                        January 2013 24-Month Study
+                                                                                               Most Probable Inflow*
+                                                                                         Davis Dam - Lake Mohave
+                      Hoover           Side          Evap         Power           Spill         Total          Total   Reservoir Elev       EOM
+                      Release         Inflow        Losses       Release        Release        Release        Release  End of Month        Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 CFS)      (Ft)         (1000 Ac-Ft)
+   *    Jan 2012         713           -23            10           638              0            638           10.4        640.38           1628
+   H    Feb 2012         775           -18            10           726              0            726           12.6        641.20           1650
+   I    Mar 2012         986           -23            13           931              0            931           15.1        641.93           1670
+   S     Apr 2012       1170           -24            17           1091             0           1091           18.3        643.35           1708
+   T    May 2012        1008           -14            22           980              0            980           15.9        643.06           1700
+   O    Jun 2012         989           -19            25           952              0            952           16.0        642.80           1693
+   R     Jul 2012        841           -9             25           805              0            805           13.1        642.89           1696
+   I    Aug 2012         798           -11            23           744              0            744           12.1        643.63           1716
+   C    Sep 2012         635           -5             18           723              0            723           12.1        639.55           1605
+        WY 2012         9421          -177           197           9051             0           9051
+
+   A     Oct 2012        346           -3             14           556              0            556           9.0         630.75           1377
+   L    Nov 2012         650           -11            10           499              0            499           8.4         635.82           1507
+   *    Dec 2012         476           -6             9            395              0            395           6.4         638.30           1572
+
+        Jan 2013         617           -13            10           508              0            508           8.3         641.50           1658
+        Feb 2013         663           -6             10           634              0            634           11.4        642.00           1671
+        Mar 2013         967           -14            13           911              0            911           14.8        643.05           1700
+         Apr 2013       1123           -14            17           1094             0           1094           18.4        643.00           1699
+        May 2013        1025           -14            22           989              0            989           16.1        643.00           1699
+        Jun 2013         944           -10            25           936              0            936           15.7        642.00           1671
+         Jul 2013        930           -4             25           913              0            913           14.9        641.50           1658
+        Aug 2013         859           -7             23           829              0            829           13.5        641.50           1658
+        Sep 2013         686            0             18           761              0            761           12.8        638.00           1564
+        WY 2013         9285          -105           196           9024             0           9024
+
+         Oct 2013        525            0             15           640              0            640           10.4        633.00           1434
+        Nov 2013         602           -15            10           525              0            525           8.8         635.00           1486
+        Dec 2013         526           -19            9            401              0            401           6.5         638.71           1583
+        Jan 2014         697           -13            10           591              0            591           9.6         641.80           1666
+        Feb 2014         674           -6             10           658              0            658           11.8        641.80           1666
+        Mar 2014        1015           -14            13           953              0            953           15.5        643.05           1700
+         Apr 2014       1104           -14            17           1075             0           1075           18.1        643.00           1699
+        May 2014        1001           -14            22           964              0            964           15.7        643.00           1699
+        Jun 2014         930           -10            25           921              0            921           15.5        642.00           1671
+         Jul 2014        863           -4             25           847              0            847           13.8        641.50           1658
+        Aug 2014         826           -7             23           796              0            796           12.9        641.50           1658
+        Sep 2014         623            0             18           698              0            698           11.7        638.00           1564
+        WY 2014         9384          -118           197           9070             0           9070
+
+         Oct 2014        452            0             15           568              0            568           9.2         633.00           1434
+        Nov 2014         590           -15            10           514              0            514           8.6         635.00           1486
+        Dec 2014         484           -19            9            358              0            358           5.8         638.71           1583
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                              Model Run ID: 2136   Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2013 24-Month Study
+                                                                                               Most Probable Inflow*
+                                                                                         Parker Dam - Lake Havasu
+                       Davis           Side          Evap           Total            Total        MWD             CAP        Reservoir Elev    EOM             Flow To        Flow To
+                      Release         Inflow        Losses         Release          Release     Diversion      Diversion     End of Month     Storage          Mexico         Mexico
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)     (1000 CFS)   (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)     (1000 Ac-Ft)   (1000 CFS)
+   *    Jan 2012        638            11              6            382               6.2           54            187          446.61            554             131           2.1
+   H    Feb 2012        726            11              8            497               8.6           49            169          447.10            563             159           2.8
+   I    Mar 2012        931             8              9            711               11.6          21            187          447.23            565             187           3.0
+   S     Apr 2012      1091            24             11            785               13.2          97            180          449.13            602             183           3.1
+   T    May 2012        980            26             13            709               11.5         100            179          448.81            596             99            1.6
+   O    Jun 2012        952            10             15            719               12.1          97            130          448.23            584             103           1.7
+   R     Jul 2012       805            46             17            675               11.0         101             34          448.91            598             124           2.0
+   I    Aug 2012        744            26             17            568               9.2          100             85          448.38            587             97            1.6
+   C    Sep 2012        723            31             15            548               9.2           74            137          446.98            561             90            1.5
+        WY 2012        9051           289            140            6652                           723           1763                                           1435
+
+   A     Oct 2012       556            34             12            482               7.8           14             32          449.31            606             70            1.1
+   L    Nov 2012        499            27              9            348               5.9           14            174          448.06            581             88            1.5
+   *    Dec 2012        395            21              7            289               4.7           15            132          446.41            550             131           2.2
+
+        Jan 2013        508            15              6            354               5.7           62             86          447.00            561             130           2.1
+        Feb 2013        634             7              8            462               8.3           9             155          447.00            561             158           2.9
+        Mar 2013        911            18              9            682               11.1          52            183          446.70            555             187           3.0
+         Apr 2013      1094            19             11            786               13.2          92            177          448.70            593             205           3.5
+        May 2013        989            18             13            703               11.4          95            184          448.70            593             112           1.8
+        Jun 2013        936            15             16            698               11.7          92            131          448.70            593             114           1.9
+         Jul 2013       913            21             17            732               11.9          95             91          448.00            580             115           1.9
+        Aug 2013        829            22             17            644               10.5          98             89          447.50            571             105           1.7
+        Sep 2013        761            20             15            556               9.3           92            122          446.81            557             102           1.7
+        WY 2013        9024           238            140            6736                           731           1556                                           1516
+
+         Oct 2013       640            23             12            448               7.3           66            139          446.31            548             64            1.0
+        Nov 2013        525            32              8            374               6.3           65            100          446.50            552             102           1.7
+        Dec 2013        401            26              6            275               4.5           67             74          446.50            552             106           1.7
+        Jan 2014        591            15              6            330               5.4           89            176          446.50            552             125           2.0
+        Feb 2014        658             7              8            444               8.0           79            127          446.50            552             156           2.8
+        Mar 2014        953            18              9            686               11.2          89            175          446.70            555             201           3.3
+         Apr 2014      1075            19             11            782               13.1          86            169          448.70            593             212           3.6
+        May 2014        964            18             13            695               11.3          89            173          448.70            593             111           1.8
+        Jun 2014        921            15             16            685               11.5          86            137          448.70            593             109           1.8
+         Jul 2014       847            21             17            724               11.8          89             38          448.00            580             111           1.8
+        Aug 2014        796            22             17            640               10.4          89             70          447.50            571             105           1.7
+        Sep 2014        698            20             15            545               9.2           60            101          446.81            557             102           1.7
+        WY 2014        9070           237            139            6627                           954           1481                                           1503
+
+         Oct 2014       568            23             12            443               7.2           15            124          446.31            548             65            1.1
+        Nov 2014        514            32              8            365               6.1           15            147          446.50            552             99            1.7
+        Dec 2014        358            26              6            266               4.3           15             92          446.50            552             105           1.7
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                              Model Run ID: 2136                      Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                         January 2013 24-Month Study
+                                                                                                  Most Probable Inflow*
+                                                                                             Hoover Dam - Lake Mead
+                       Power          Power     Reservoir Elev    EOM          Change In         Hoover      Hoover Gen      Hoover       Percent of
+                      Release        Release    End of Month     Storage        Storage        Static Head    Capacity    Gross Energy      Units
+         Date       (1000 Ac-Ft)   (1000 CFS)        (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)         (Ft)         MW           MKWH          Available       KWH/AF
+   *    Jan 2012         713          11.6          1134.18        15022          139            485.97       1146.0         308.0            61           432.1
+   H    Feb 2012         775          13.5          1133.06        14907          -115           484.32       1282.0         338.6            68           436.7
+   I    Mar 2012         986          16.0          1129.41        14535         -372            481.45       1047.0         427.4            56           433.4
+   S     Apr 2012       1170          19.7          1123.93        13986         -548            475.07       1164.0         505.3            62           432.0
+   T    May 2012        1008          16.4          1119.38        13541         -445            471.90       1050.0         429.0            56           425.4
+   O    Jun 2012         989          16.6          1115.84        13200         -341            470.21       1829.0         414.2           100           418.8
+   R     Jul 2012        841          13.7          1115.92        13207           8             471.23       1374.0         349.7            76           415.6
+   I    Aug 2012         798          13.0          1116.56        13269           61            471.53       1809.0         331.4           100           415.2
+   C    Sep 2012         635          10.7          1115.16        13135         -134            473.98       1809.0         261.9           100           412.2
+        WY 2012         9421                                                                                                 3985.6
+
+   A     Oct 2012        346           5.6          1116.50        13263          128            476.50       1051.0         141.3            58           409.0
+   L    Nov 2012         650          10.9          1117.24        13334           71            473.22       1051.0         276.3            58           424.7
+   *    Dec 2012         476           7.7          1120.36        13636          302            475.06       1520.0         198.5            84           417.3
+
+        Jan 2013         617          10.0          1122.39        13835          198            474.18       1062.0         261.3            59           423.7
+        Feb 2013         663          11.9          1122.25        13821          -14            473.92       1077.0         284.5            59           429.1
+        Mar 2013         967          15.7          1118.91        13496         -325            470.23       1304.0         415.4            72           429.6
+         Apr 2013       1123          18.9          1113.49        12975         -521            466.94       1055.0         494.6            59           440.6
+        May 2013        1025          16.7          1109.14        12567         -408            461.86       1078.0         437.3            61           426.5
+        Jun 2013         944          15.9          1107.19        12387         -180            454.79       1756.0         387.2           100           410.1
+         Jul 2013        930          15.1          1105.39        12222         -165            453.42       1747.0         377.7           100           406.3
+        Aug 2013         859          14.0          1105.33        12216           -6            452.66       1748.0         352.5           100           410.5
+        Sep 2013         686          11.5          1104.36        12128          -88            453.29       1744.0         275.2           100           401.2
+        WY 2013         9285                                                                                                 3901.8
+
+         Oct 2013        525           8.5          1105.00        12186           58            457.59       1374.0         207.9            79           396.4
+        Nov 2013         602          10.1          1104.73        12162          -24            459.32       1386.0         245.6            79           408.0
+        Dec 2013         526           8.6          1108.04        12465          303            459.00       1394.0         209.3            79           397.5
+        Jan 2014         697          11.3          1109.38        12589          124            460.18       1226.0         286.8            69           411.5
+        Feb 2014         674          12.1          1109.14        12567          -22            458.41       1435.0         276.9            81           411.1
+        Mar 2014        1015          16.5          1105.13        12198         -369            455.26       1516.0         414.6            87           408.6
+         Apr 2014       1104          18.6          1100.10        11744         -454            450.94       1401.0         456.9            82           413.8
+        May 2014        1001          16.3          1095.78        11361         -383            444.31       1694.0         395.6           100           395.3
+        Jun 2014         930          15.6          1092.30        11056         -305            440.77       1694.0         369.6           100           397.5
+         Jul 2014        863          14.0          1091.69        11003          -53            439.23       1694.0         344.7           100           399.4
+        Aug 2014         826          13.4          1092.55        11078           75            439.51       1694.0         328.6           100           397.7
+        Sep 2014         623          10.5          1092.57        11080           2             441.09       1694.0         244.7           100           393.0
+        WY 2014         9384                                                                                                 3781.1
+
+         Oct 2014        452           7.4          1094.03        11208          127            446.27       1330.8         178.0            79           393.6
+        Nov 2014         590           9.9          1093.89        11196          -12            448.47       1344.7         235.3            79           398.7
+        Dec 2014         484           7.9          1097.81        11540          344            448.52       1338.7         192.9            79           398.6
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                            Model Run ID: 2136            Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                         January 2013 24-Month Study
+                                                                                              Most Probable Inflow*
+                                                                                          Davis Dam - Lake Mohave
+                       Power          Power     Reservoir Elev    EOM          Change In        Davis      Davis Gen      Davis        Percent of
+                      Release        Release    End of Month     Storage        Storage      Static Head    Capacity   Gross Energy      Units
+         Date       (1000 Ac-Ft)   (1000 CFS)        (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)       (Ft)         MW          MKWH          Available       KWH/AF
+   *    Jan 2012         638          10.4            640.38       1628            42          138.75       170.9          77.2            67           121.0
+   H    Feb 2012         726          12.6            641.20       1650            22          140.80       163.2          90.8            64           125.1
+   I    Mar 2012         931          15.1            641.93       1670            20          140.23       204.0         117.4            80           126.2
+   S     Apr 2012       1091          18.3            643.35       1708            39          142.08       249.9         147.4            98           135.2
+   T    May 2012         980          15.9            643.06       1700            -8          141.39       252.5         128.9            99           131.5
+   O    Jun 2012         952          16.0            642.80       1693            -7          140.12       255.0         122.6           100           128.8
+   R     Jul 2012        805          13.1            642.89       1696            2           143.36       255.0         100.7           100           125.1
+   I    Aug 2012         744          12.1            643.63       1716            20          142.43       252.5          92.5            99           124.3
+   C    Sep 2012         723          12.1            639.55       1605           -111         137.86       255.0          96.5           100           133.5
+        WY 2012         9051                                                                                              1153.5
+
+   A     Oct 2012        556           9.0            630.75       1377          -228          130.98       206.6          68.5            81           123.3
+   L    Nov 2012         499           8.4            635.82       1507           130          136.16       168.3          67.9            66           136.0
+   *    Dec 2012         395           6.4            638.30       1572            65          134.78       183.6          44.1            72           115.9
+
+        Jan 2013         508           8.3            641.50       1658            86          135.60       163.2          63.4            64           124.9
+        Feb 2013         634          11.4            642.00       1671            14          137.63       158.1          79.4            62           125.3
+        Mar 2013         911          14.8            643.05       1700            29          136.52       219.3         113.7            86           124.9
+         Apr 2013       1094          18.4            643.00       1699            -2          136.07       255.0         136.0           100           124.3
+        May 2013         989          16.1            643.00       1699            0           136.04       255.0         123.6           100           124.9
+        Jun 2013         936          15.7            642.00       1671           -27          135.51       255.0         116.6           100           124.6
+         Jul 2013        913          14.9            641.50       1658           -14          134.73       255.0         113.4           100           124.2
+        Aug 2013         829          13.5            641.50       1658            0           134.46       255.0         103.1           100           124.4
+        Sep 2013         761          12.8            638.00       1564           -94          132.62       255.0          93.7           100           123.1
+        WY 2013         9024                                                                                              1123.5
+
+         Oct 2013        640          10.4            633.00       1434          -130          129.33       214.2          76.9            84           120.1
+        Nov 2013         525           8.8            635.00       1486            51          127.83       211.7          62.7            83           119.3
+        Dec 2013         401           6.5            638.71       1583            97          130.91       209.1          49.2            82           122.8
+        Jan 2014         591           9.6            641.80       1666            83          134.46       209.1          73.7            82           124.7
+        Feb 2014         658          11.8            641.80       1666            0           136.08       209.1          82.4            82           125.2
+        Mar 2014         953          15.5            643.05       1700            34          135.44       255.0         118.8           100           124.6
+         Apr 2014       1075          18.1            643.00       1699            -2          136.07       255.0         133.8           100           124.4
+        May 2014         964          15.7            643.00       1699            0           136.04       255.0         120.6           100           125.1
+        Jun 2014         921          15.5            642.00       1671           -27          135.51       255.0         114.9           100           124.7
+         Jul 2014        847          13.8            641.50       1658           -14          134.73       255.0         105.5           100           124.5
+        Aug 2014         796          12.9            641.50       1658            0           134.46       255.0          99.2           100           124.6
+        Sep 2014         698          11.7            638.00       1564           -94          132.62       255.0          86.1           100           123.4
+        WY 2014         9070                                                                                              1123.6
+
+         Oct 2014        568           9.2            633.00       1434          -130          129.33       214.2          68.4            84           120.5
+        Nov 2014         514           8.6            635.00       1486            51          127.83       211.7          61.3            83           119.4
+        Dec 2014         358           5.8            638.71       1583            97          130.91       209.1          44.1            82           123.1
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                         Model Run ID: 2136            Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                        January 2013 24-Month Study
+                                                                                              Most Probable Inflow*
+                                                                                         Parker Dam - Lake Havasu
+                       Power          Power     Reservoir Elev    EOM          Change In       Parker      Parker Gen      Parker      Percent of
+                      Release        Release    End of Month     Storage        Storage      Static Head    Capacity    Gross Energy     Units
+         Date       (1000 Ac-Ft)   (1000 CFS)        (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)       (Ft)         MW           MKWH         Available       KWH/AF
+   *    Jan 2012         382           6.2           446.61         554            17          80.68         67.2           25.6           56            67.1
+   H    Feb 2012         497           8.6           447.10         563            9           80.85         94.8           35.1           79            70.7
+   I    Mar 2012         711          11.6           447.23         565            2           81.75         97.2           48.8           81            68.6
+   S     Apr 2012        785          13.2           449.13         602            36          83.37         120.0          54.1          100            69.0
+   T    May 2012         709          11.5           448.81         596            -6          81.37         111.6          49.6           93            69.9
+   O    Jun 2012         719          12.1           448.23         584           -11          79.00         120.0          49.7          100            69.1
+   R     Jul 2012        675          11.0           448.91         598            13          82.94         120.0          46.8          100            69.4
+   I    Aug 2012         568           9.2           448.38         587           -10          80.54         120.0          39.3          100            69.2
+   C    Sep 2012         548           9.2           446.98         561           -26          81.05         120.0          37.8          100            69.0
+        WY 2012         6652                                                                                               458.2
+
+   A     Oct 2012        482           7.8           449.31         606            44          83.52         96.0           33.3           80            69.0
+   L    Nov 2012         348           5.9           448.06         581           -24          82.22         92.4           24.1           77            69.2
+   *    Dec 2012         289           4.7           446.41         550           -31          80.98         103.2          19.5           86            67.5
+
+        Jan 2013         354           5.7           447.00         561            11          74.91         102.0          22.6           85            63.9
+        Feb 2013         462           8.3           447.00         561            0           74.40         120.0          29.8          100            64.6
+        Mar 2013         682          11.1           446.70         555            -6          74.26         120.0          44.4          100            65.1
+         Apr 2013        786          13.2           448.70         593            38          75.08         120.0          51.9          100            66.0
+        May 2013         703          11.4           448.70         593            0           76.05         120.0          46.8          100            66.5
+        Jun 2013         698          11.7           448.70         593            0           76.05         120.0          46.4          100            66.5
+         Jul 2013        732          11.9           448.00         580           -13          75.71         120.0          48.5          100            66.3
+        Aug 2013         644          10.5           447.50         571           -10          75.13         120.0          42.2          100            65.6
+        Sep 2013         556           9.3           446.81         557           -13          74.55         120.0          36.1          100            64.9
+        WY 2013         6736                                                                                               445.6
+
+         Oct 2013        448           7.3           446.31         548            -9          74.77         102.0          28.9           85            64.6
+        Nov 2013         374           6.3           446.50         552            3           74.62         102.0          23.9           85            64.0
+        Dec 2013         275           4.5           446.50         552            0           74.71         102.0          17.2           85            62.7
+        Jan 2014         330           5.4           446.50         552            0           74.71         102.0          21.0           85            63.5
+        Feb 2014         444           8.0           446.50         552            0           73.92         120.0          28.5          100            64.1
+        Mar 2014         686          11.2           446.70         555            4           74.01         120.0          44.5          100            64.9
+         Apr 2014        782          13.1           448.70         593            38          75.08         120.0          51.6          100            66.0
+        May 2014         695          11.3           448.70         593            0           76.05         120.0          46.2          100            66.5
+        Jun 2014         685          11.5           448.70         593            0           76.05         120.0          45.5          100            66.5
+         Jul 2014        724          11.8           448.00         580           -13          75.71         120.0          48.0          100            66.3
+        Aug 2014         640          10.4           447.50         571           -10          75.13         120.0          42.0          100            65.6
+        Sep 2014         545           9.2           446.81         557           -13          74.55         120.0          35.4          100            64.9
+        WY 2014         6627                                                                                               432.7
+
+         Oct 2014        443           7.2           446.31         548            -9          74.77         102.0          28.6           85            64.6
+        Nov 2014         365           6.1           446.50         552            3           74.62         102.0          23.3           85            64.0
+        Dec 2014         266           4.3           446.50         552            0           74.71         102.0          16.6           85            62.6
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                         Model Run ID: 2136            Processed On: 1/9/2013 1:38:06PM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2013 24-Month Study
+                                                                                              Most Probable Inflow*
+                                                                                              Upper Basin Power
+                        Glen       Flaming           Blue          Morrow          Crystal     Fontenelle
+                       Canyon       Gorge            Mesa           Point         Reservoir    Reservoir
+          Date       1000 MWHR   1000 MWHR        1000 MWHR      1000 MWHR       1000 MWHR    1000 MWHR
+   *     Jan 2012      388           58               15              18             10            5
+   H     Feb 2012      295           54                9              12              2            4
+   I     Mar 2012      275           62                9              12              6            4
+       Winter 2012     2475          300              97              117            61            26
+   S   Apr 2012        276           47               16             22              14            4
+   T   May 2012        276           61               19             28              17            4
+   O   Jun 2012        324           34               26             33              19            7
+   R    Jul 2012       398           33               24             31              18            6
+   I   Aug 2012        360           31               21             28              16            6
+   C   Sep 2012        214           27               17             25              12            4
+    Summer 2012        1849          232              123            168             94            31
+   A     Oct 2012       221           20               8              13              6            2
+   *     Dec 2012       346           27               4               6              2            4
+         Jan 2013      320           27               6               6               3            4
+         Feb 2013      238           24               3               5               3            3
+         Mar 2013      237           18               5               7               4            4
+       Winter 2013     1361          115              26              38              18           17
+       Apr 2013        216           17                9             14               8            4
+       May 2013        237           35               17             27              16            7
+       Jun 2013        320           55               16             24              14            9
+        Jul 2013       321           27               26             34              17            8
+       Aug 2013        338           27               27             35              18            8
+       Sep 2013        237           26               21             28              14            6
+    Summer 2013        1669          187              115            163             87            41
+         Oct 2013      236           27               12              16              9            6
+         Nov 2013      235           26                4               5              3            6
+         Dec 2013       311          27                4               6              4            6
+         Jan 2014      309           27                7               9              5            5
+         Feb 2014      230           24                6               8              5            4
+         Mar 2014      229           27                7              11              6            4
+       Winter 2014     1551          157              38              56              32           32
+       Apr 2014        230           26               10             17              10             5
+       May 2014        234           44               34             52              23             6
+       Jun 2014        261           82                11            20              16             8
+        Jul 2014       346           37               25             31              18            10
+       Aug 2014        365           37               37             44              23             7
+       Sep 2014        254           36               32             38              19             6
+    Summer 2014        1689          263              148            203             109           43
+         Oct 2014       242           37              17              22             12            6
+         Nov 2014       241           36               9              11              6            6
+         Dec 2014       320           37              23              29             15            6
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                            Model Run ID: 2136   Processed On: 1/9/2013 1:38:06PM
+                                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2013 24-Month Study
+                                                                                             Most Probable Inflow*
+                                                                                         Flood Control Criteria
+                                                                                     Beginning of Month Conditions
+              Flaming        Blue                   Lake Upper Basin Lake                    Flaming   Blue             Tot or Max    Lake         Lake                 BOM Space     Mead      Mead   Sys
+               Gorge         Mesa      Navajo      Powell   Total    Mead           Total     Gorge    Mesa    Navajo     Allow      Powell        Mead         Total    Required   Sched Rel   FC Rel Cont
+   Date         KAF          KAF        KAF         KAF     KAF      KAF            KAF        KAF     KAF      KAF        KAF        KAF          KAF          KAF        KAF        KAF        KAF   MAF
+                       * * * * PR E D I C T E D S PAC E * * * *                                                             * * * * E F F E C T I V E S PAC E * * * *
+  Jan 2013       895         502         739        11615         13751   13741    27492       895     502      739       2136        11615         13741       27492      5350       617         0     32.9
+  Jan 2013       895         502         739        11615         13751   13741    27492       329     145      260        735        11615         13741       26108      5350       617         0     32.9
+  Feb 2013       942         506         754        12097         14300   13542    27841       375     151      274        801        12097         13542       26457      1500       663         0     32.5
+  Mar 2013       979         503         769        12387         14637   13556    28190       410     150      289        849        12387         13556       26806      1500       967         0     32.1
+  Apr 2013       951         496         765        12610         14822   13881    28698       376     145      282        803        12610         13881       27307      1500      1123         0     31.6
+  May 2013       895         481         739        12649         14764   14402    29159       314     128      237        679        12649         14402       27740      1500      1025         0     31.9
+  Jun 2013       826         432         661        12156         14074   14810    28874       234      68      123        426        12156         14810       27399      1500       944         0     32.5
+   Jul 2013      690         349         621        11643         13302   14990    28278       86      -29       32         89        11643         14990       26725      1500       930         0     32.1
+                                                                                                                           * * * * C R E D I TAB LE S PAC E * * * *
+  Aug 2013       621         371         646        11850         13487   15155    28626       621     371      646       1637        11850         15155       28626      1500       859         0     31.6
+  Sep 2013       641         419         681        12262         14003   15161    29145       641     419      681       1741        12262         15161       29145      2270       686         0     31.1
+  Oct 2013       680         455         697        12492         14323   15249    29549       680     455      697       1831        12492         15249       29549      3040       525         0     30.8
+  Nov 2013       710         461         695        12660         14526   15191    29686       710     461      695       1866        12660         15191       29686      3810       602         0     30.6
+  Dec 2013       737         446         696        12845         14723   15215    29900       737     446      696       1879        12845         15215       29900      4580       526         0     30.6
+  Jan 2014       778         434         705        13245         15162   14912    30034       778     434      705       1917        13245         14912       30034      5350       697         0     30.4
+                                                                                                                            * * * * E F F E C T I V E S PAC E * * * *
+  Jan 2014       778         434         705        13245         15162   14912    30034       434     417      485       1336        13245         14912       29428      5350       697         0     30.4
+  Feb 2014       814         433         717        13622         15586   14788    30332       467     417      496       1380        13622         14788       29723      1500       674         0     30.1
+  Mar 2014       839         431         717        13806         15794   14810    30560       489     416      495       1400        13806         14810       29948      1500      1015         0     29.9
+  Apr 2014       816         421         663        13852         15752   15179    30887       461     405      438       1304        13852         15179       30266      1500      1104         0     29.8
+  May 2014       761         385         568        13655         15369   15633    30958       399     364      323       1086        13655         15633       30305      1500      1001         0     31.0
+  Jun 2014       648         303         436        12430         13818   16016    29798       275     261      156        691        12430         16016       29077      1500       930         0     32.5
+   Jul 2014      495         103         384        11020         12002   16321    28311       109      36       51        195        11020         16321       27499      1500       863         0     32.6
+                                                                                                                           * * * * C R E D I TAB LE S PAC E * * * *
+  Aug 2014       405         71          391        10968         11835   16374    28197       405      71      391        867        10968         16374       28197      1500       826         0     32.2
+  Sep 2014       432         121         406        11298         12257   16299    28544       432     121      406        958        11298         16299       28544      2270       623         0     31.8
+  Oct 2014       486         179         406        11440         12512   16297    28797       486     179      406       1072        11440         16297       28797      3040       452         0     31.7
+  Nov 2014       536         196         397        11504         12634   16169    28789       536     196      397        1130       11504         16169       28789      3810       590         0     31.6
+  Dec 2014       586         195         397        11614         12793   16181    28957       586     195      397        1178       11614         16181       28957      4580       484         0     31.6
+
+* Based on the Colorado River Basin Forecast Center' s Most Probable Water Supply Forecast                                        Model Run ID: 2136                          Processed On: 1/9/2013 1:38:06PM
+

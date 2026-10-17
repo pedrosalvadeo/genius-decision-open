@@ -1,0 +1,859 @@
+To:    All Annual Operating Plan Recipients
+
+From: Lower Colorado Region
+      Boulder Canyon Operations Office
+      River Operations Group
+      Daniel Bunk
+      P.O. Box 61470
+      Boulder City, NV 89006-1470
+      Phone: 702-293-8013
+
+The operation of Lake Powell and Lake Mead in this January 2018 24-Month Study is pursuant to the December 2007 Record of Decision on Colorado
+River Interim Guidelines for Lower Basin Shortages and the Coordinated Operations of Lake Powell and Lake Mead (Interim Guidelines), and reflects the
+2018 Annual Operating Plan (AOP). Pursuant to the Interim Guidelines, the August 2017 24-Month Study projections of the January 1, 2018, system
+storage and reservoir water surface elevations set the operational tier for the coordinated operation of Lake Powell and Lake Mead during 2018.
+
+Consistent with Section 6.B of the Interim Guidelines, Lake Powell’s operations in water year 2018 will be governed by the Upper Elevation Balancing Tier,
+with an initial water year release volume of 8.23 maf and the potential for an April adjustment to equalization or balancing releases in April 2018. This
+January 2018 24-Month Study indicates that, consistent with Section 6.B.4 of the Interim Guidelines, an April adjustment to balancing releases is projected
+to occur and Lake Powell is projected to release 9.0 maf in water year 2018.
+
+Consistent with Section 2.B.5 of the Interim Guidelines, the Intentionally Created Surplus (ICS) Surplus Condition is the criterion governing the operation of
+Lake Mead for calendar year 2018.
+
+The Interim Guidelines are available for download at: https://www.usbr.gov/lc/region/programs/strategies/RecordofDecision.pdf.
+The 2018 AOP is available for download at: https://www.usbr.gov/lc/region/g4000/aop/AOP18.pdf.
+
+Current runoff projections into Lake Powell are provided by the National Weather Service’s Colorado Basin River Forecast Center and are as follows:
+Observed unregulated inflow into Lake Powell for the month of December was 0.299 maf or 82 percent of the 30-year average from 1981 to 2010. The
+forecast for January unregulated inflow into Lake Powell is 0.310 maf or 86 percent of the 30-year average. The forecasted 2018 April through July
+unregulated inflow is 3.900 maf or 54 percent of average.
+
+In this study, the calendar year 2018 diversion for Metropolitan Water District of Southern California (MWD) is forecasted to be 0.732 maf. The calendar
+year 2018 diversion for the Central Arizona Project (CAP) is forecasted to be 1.574 maf. Consumptive use for Nevada above Hoover (SNWP Use) is
+forecasted to be 0.290 maf for calendar year 2018.
+
+Due to changing Lake Mead elevations, Hoover’s generator capacity is adjusted based on estimated effective capacity and plant availability. The
+estimated effective capacity is based on projected Lake Mead elevations. Unit capacity tests will be performed as the lake elevation changes. This study
+reflects these changes in the projections.
+
+Hoover, Davis, and Parker historical gross energy figures come from PO&M reports provided by the Lower Colorado Region’s Power Management Office,
+Bureau of Reclamation, Boulder City, Nevada. Questions regarding these historical energy numbers can be directed to Eric Carty at (702) 293-8129.
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                     Most Probable Inflow*
+                                                                                 Fontenelle Reservoir
+                Regulated    Evap             Power       Bypass        Total     Reservoir Elev     Live
+                 Inflow     Losses           Release      Release      Release End of Month        Storage
+        Date (1000 Ac-Ft) (1000 Ac-Ft)     (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)      (1000 Ac-Ft)
+  *   Jan 2017      45          1                0            63           63         6483.20         184
+  H   Feb 2017      51          1                0            57           57         6482.06         178
+  I   Mar 2017     180          1                0           150          150         6486.90         207
+  S   Apr 2017     225          1                0           304          304         6472.17         128
+  T   May 2017     430          1               54           373          427         6472.55         129
+  O   Jun 2017     732          2               74           469          543         6502.49         317
+  R    Jul 2017    332          3               88           230          319         6503.83         328
+  I   Aug 2017     102          2               95            61          156         6496.34         271
+  C   Sep 2017      66          2               69             4           72         6495.21         263
+      WY 2017     2319         15              379          1890         2270
+  A   Oct 2017      73            1             80             0            80         6494.03       255
+  L   Nov 2017      62            1             78             0            78         6491.65       238
+  *   Dec 2017      46            1             72             8            80         6486.39       204
+      Jan 2018      44            1             80             0            80         6480.16       168
+      Feb 2018      40            0             73             0            73         6473.48       134
+      Mar 2018      60           0              80            0             80         6468.68       114
+      Apr 2018      85           1              83            0            83          6468.99       115
+      May 2018     165            1             97            28           126         6477.37       153
+      Jun 2018     330            2            101           108           209         6496.41       272
+       Jul 2018    200            3            103            32           135         6504.64       335
+      Aug 2018      76            2             71             0           71          6505.02       338
+      Sep 2018      47            2             68             0           68          6502.04       314
+      WY 2018      1228          15            986           177          1163
+      Oct 2018      49            1             71            0            71          6499.08       292
+      Nov 2018      42            1             68            0            68          6495.41       265
+      Dec 2018      32            1             71            0            71          6489.58       226
+      Jan 2019      30            1             71            0            71          6483.17       185
+      Feb 2019      28           1              68            0            68          6475.49       144
+      Mar 2019      53           0              82            0            82          6468.80       114
+      Apr 2019      85           1             82             0            82          6469.55       117
+      May 2019     164            1             97            29           126         6477.43       153
+      Jun 2019     299            2            102            53           155         6499.56       296
+       Jul 2019    178            3            101            29           130         6505.34       340
+      Aug 2019      77            2             94            0            94          6502.83       321
+      Sep 2019      46            2             71            0            71          6499.26       293
+      WY 2019      1083          15            978           111          1089
+      Oct 2019      49            1             70             0            70         6496.17       271
+      Nov 2019      42            1             68             0            68         6492.41       244
+      Dec 2019      32            1             70             0            70         6486.53       206
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                       Model Run ID: 3049   Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                             Flaming Gorge Reservoir
+                  Unreg           Reg         Evap         Power         Bypass        Total        Bank      Reservoir Elev    Live       Jensen
+                  Inflow         Inflow      Losses       Release        Release      Release      Storage    End of Month Storage           Flow
+        Date   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)     (1000 Ac-Ft) (1000 Ac-Ft)
+  * Jan 2017         49             67          2            110              0          110         124        6023.01        3087           149
+  H Feb 2017        106            112          2            109              0          109         124        6023.03        3088           189
+  I Mar 2017        400            370          3            256             26          282         128        6025.25        3169           408
+  S Apr 2017        350            428          5            268            244          511         124        6022.93        3084           745
+  T May 2017        582            580          8            278            171          449         129        6026.15        3203           857
+  O Jun 2017        895            705         11            263            223          486         137        6031.41        3404           859
+  R  Jul 2017       387            374         14            180             48          228         142        6034.61        3531           315
+  I Aug 2017        120            174         13            143              0          143         143        6035.05        3548           173
+  C Sep 2017         87             93         11            141              0          141         140        6033.63        3491           161
+    WY 2017        3153           3104         81           2016            712         2728                                                 4225
+  A   Oct 2017      88            95            8            107              0             107      140        6033.17        3473          155
+  L   Nov 2017      82            98            4            139              0             139      138        6032.07        3430          171
+  *   Dec 2017      52            86            2            174              0             174      135        6029.85        3343          201
+      Jan 2018      59             95           2             172             0              172     131        6027.87        3268           193
+      Feb 2018      57             90           2             156             0              156     129        6026.14        3202          180
+      Mar 2018      106           126           3             115             0              115     129        6026.36        3211          175
+      Apr 2018      135           133           5             110             0              110     130        6026.83        3228          250
+      May 2018      230           191           8             114             0              114     133        6028.58        3295          464
+      Jun 2018      400           279          11             174             0              174     136        6030.93        3385          504
+       Jul 2018     235           170          14             226             0              226     133        6029.18        3318          276
+      Aug 2018      90             85          13              98             0               98     132        6028.52        3292          116
+      Sep 2018      56             77          11              95             0               95     131        6027.79        3264          107
+      WY 2018      1590          1525          81            1680             0             1680                                             2792
+      Oct 2018      60            81            7             98              0              98      130        6027.16        3241          123
+      Nov 2018      51            77            3             95              0              95      130        6026.62        3220          123
+      Dec 2018      35            74            2             98              0              98      129        6025.93        3195          124
+      Jan 2019      40            81            2             98              0              98      128        6025.43        3176          123
+      Feb 2019      45            85            2             89              0              89      128        6025.27        3170          117
+      Mar 2019      102          132            3             98              0              98      129        6026.06        3200          175
+      Apr 2019      134          130            5             95              0              95      130        6026.82        3228          310
+      May 2019      245          208            8             98              0              98      134        6029.40        3326          630
+      Jun 2019      390          245           11            150              0             150      137        6031.52        3408          570
+       Jul 2019     210           163          14             155             0              155     137        6031.36        3402           255
+      Aug 2019       89           106          13              98             0               98     137        6031.24        3397           124
+      Sep 2019       55           81           11              95             0               95     136        6030.59        3372           114
+      WY 2019      1455          1462          81            1269             0             1269                                             2788
+      Oct 2019      59            81            7             98              0              98      135        6029.96        3348          131
+      Nov 2019      51            77            4             95              0              95      134        6029.42        3327          127
+      Dec 2019      35            73            2             98              0              98      133        6028.73        3300          124
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                            Model Run ID: 3049                 Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                                Taylor Park Reservoir
+                Regulated    Total     Reservoir Elev          Live
+                 Inflow     Release End of Month             Storage
+        Date (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)           (1000 Ac-Ft)
+  *   Jan 2017       6           5         9309.76              70
+  H   Feb 2017       4           5         9309.43              69
+  I   Mar 2017       6           6         9309.23              69
+  S   Apr 2017      13           9         9312.04              73
+  T   May 2017      30          19         9318.55              84
+  O   Jun 2017      62          45         9327.76             102
+  R    Jul 2017     24          26         9326.95             100
+  I   Aug 2017      12          25         9320.31              88
+  C   Sep 2017       8          18         9314.58              77
+      WY 2017      179         173
+  A   Oct 2017       8            8          9314.93           78
+  L   Nov 2017       6            6          9315.09           78
+  *   Dec 2017       4            6          9313.84           76
+
+      Jan 2018        4           6          9312.64           74
+      Feb 2018        4            6         9311.42           72
+      Mar 2018        4            6         9310.17           70
+      Apr 2018        7            6         9310.80           71
+      May 2018       24           12         9317.90           83
+      Jun 2018       32          19          9324.92           96
+       Jul 2018      13          18          9322.29           91
+      Aug 2018        8           16         9317.90           83
+      Sep 2018        6           15         9312.64           74
+      WY 2018       120          124
+      Oct 2018        6            6         9312.54           74
+      Nov 2018        5            6         9311.80           73
+      Dec 2018        5            6         9310.98           71
+      Jan 2019        4           6          9309.95           70
+      Feb 2019        4            6         9308.55           68
+      Mar 2019        4            6         9307.54           66
+      Apr 2019        9            6         9309.32           69
+      May 2019       28           20         9314.39           77
+      Jun 2019       42          22          9325.26           97
+       Jul 2019      20          22          9324.29           95
+      Aug 2019       10           20         9319.07           85
+      Sep 2019        7           16         9314.11           77
+      WY 2019       144          142
+      Oct 2019       7            8          9313.31           75
+      Nov 2019       5            6          9312.78           74
+      Dec 2019       5            6          9311.97           73
+
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                   Model Run ID: 3049   Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                                 Blue Mesa Reservoir
+                UnReg         Regulated      Evap         Power       Bypass        Total       Reservoir Elev    Live
+                Inflow          Inflow      Losses       Release      Release      Release      End of Month Storage
+        Date (1000 Ac-Ft)    (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)        (Ft)     (1000 Ac-Ft)
+  *   Jan 2017     29              28            0           34            0            34         7490.68          587
+  H   Feb 2017     28              29            0           44            1            44         7488.71          571
+  I   Mar 2017     70              70            0           69            0            70         7488.71          571
+  S   Apr 2017   145              140            1           53            0            53         7499.55          658
+  T   May 2017   244              233            1          151           65           293         7491.98          597
+  O   Jun 2017   392              373            1          139           35           175         7515.35          793
+  R    Jul 2017  135              137            2          113            0           110         7518.20          819
+  I   Aug 2017     84              96            1          111            0           111         7516.38          802
+  C   Sep 2017     35              45            1          115            0           114         7508.43          732
+      WY 2017 1245               1238            9          987          101          1163
+  A   Oct 2017      37             37             1          102            0           102        7500.64         667
+  L   Nov 2017      32             32             0           40            0            40        7499.68         659
+  *   Dec 2017      25             27             0           93            0            93        7491.44         593
+      Jan 2018      24             26             0           62            0            62        7486.74         556
+      Feb 2018      21             23             0           40            0           40         7484.52         539
+      Mar 2018      31             33             0           41            0           41         7483.41         531
+      Apr 2018      52             51             1           55            0           55         7482.74         526
+      May 2018     147            135             1           65            0           65         7491.78         595
+      Jun 2018     175            162             1           57            0           57         7504.52         699
+       Jul 2018     61             66             1           91            0           91         7501.36         673
+      Aug 2018      39             47             1           93            0           93         7495.58         625
+      Sep 2018      34             43             1           76            0           76         7491.37         592
+      WY 2018      678            681             8          813            0           813
+      Oct 2018      36             36             1           48            0           48         7489.77         580
+      Nov 2018      30             31             0           18            0           18         7491.49         593
+      Dec 2018      26             27             0           42            0           42         7489.49         577
+      Jan 2019      24             26             0           42            0           42         7487.35         561
+      Feb 2019      22             25             0           35            0           35         7485.93         550
+      Mar 2019      36             38             0           41            0           41         7485.46         547
+      Apr 2019      77             74             1           51            0           51         7488.45         569
+      May 2019     221            213             1          155            0           155        7495.69         626
+      Jun 2019     261            241             1           81            0           81         7514.51         786
+       Jul 2019    117            119             2           99            0           99         7516.52         804
+      Aug 2019      63             73             1          108            0           108        7512.44         767
+      Sep 2019      38             47             1           93            0           93         7506.98         720
+      WY 2019      951            949             9          813            0           813
+      Oct 2019      38             40             1           65            0           65         7503.86         693
+      Nov 2019      31             32             0           67            0           67         7499.66         659
+      Dec 2019      26             27             0          113            0           113        7488.83         572
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                            Model Run ID: 3049   Processed On: 1/12/2018 9:06:59AM
+                                 OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                           January 2018 24-Month Study
+                                                                                     Most Probable Inflow*
+                                                                                Morrow Point Reservoir
+                 Unreg      Blue Mesa       Side         Total       Power       Bypass        Total     Reservoir Elev       Live
+                 Inflow      Release       Inflow       Inflow      Release      Release      Release    End of Month       Storage
+         Date (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)        (1000 Ac-Ft)
+   *   Jan 2017    30            34           2            36          33           0            33          7153.75          112
+   H   Feb 2017    29            44           1            45          55           0            55          7140.48          102
+   I   Mar 2017     74           70           5            74          64           0            68          7148.96          108
+   S   Apr 2017    157           53          12            66          65           0            65          7149.64          109
+   T   May 2017    263          293          19           312          203          0           312          7149.70          109
+   O   Jun 2017    411          175          19           195          184          0           193          7151.34          110
+   R    Jul 2017   139          110           4           114          37           0           111          7155.13          113
+   I   Aug 2017     86         111            2           113           0           0           115          7152.68          111
+   C   Sep 2017    35          114            0           115          92           0           112          7155.62          114
+       WY 2017    1314         1163          69          1232          893          0          1226
+
+   A   Oct 2017      38           102            1           103          105           0        105         7153.17         112
+   L   Nov 2017      34            40            1            41          42            0         42         7152.45         111
+   *   Dec 2017      26            93            1            94           94           0         94         7152.45         111
+
+       Jan 2018     24             62            0            62           61           0        61          7153.73         112
+       Feb 2018     21             40            0            40           40           0        40          7153.73         112
+       Mar 2018     34             41            3            44           44           0        44          7153.73         112
+       Apr 2018     59             55            7            62           62           0        62          7153.73         112
+       May 2018     157            65           10            75          75            0        75          7153.73         112
+       Jun 2018     188            57           13            70           70           0        70          7153.73         112
+        Jul 2018    66             91            5            96           96           0        96          7153.73         112
+       Aug 2018     42             93            3            96           96           0        96          7153.73         112
+       Sep 2018     37             76            3           79           79            0        79          7153.73         112
+       WY 2018      726           813           48           861          862           0        862
+
+       Oct 2018      38            48            3            50           50           0        50          7153.73         112
+       Nov 2018      32            18            2            20           20           0        20          7153.73         112
+       Dec 2018      28            42            2            45           45           0        45          7153.73         112
+       Jan 2019      27            42            2            44           44           0        44          7153.73         112
+       Feb 2019      25            35            3            38           38           0        38          7153.73         112
+       Mar 2019      40            41            4            45           45           0        45          7153.73         112
+       Apr 2019      88            51           11            62           62           0        62          7153.73         112
+       May 2019      247          155           26           181          181           0        181         7153.73         112
+       Jun 2019      281           81           20           101          101           0        101         7153.73         112
+        Jul 2019     123           99            6           105          105           0        105         7153.73         112
+       Aug 2019      67           108            3           112          112           0        112         7153.73         112
+       Sep 2019       41           93            3            96           96           0         96         7153.73         112
+       WY 2019      1037          813           85           898          898           0        898
+       Oct 2019      41            65            3           68            68           0        68          7153.73         112
+       Nov 2019      33            67            2           69            69           0        69          7153.73         112
+       Dec 2019      28           113            2           115          115           0        115         7153.73         112
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                          Model Run ID: 3049    Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                                   Crystal Reservoir
+                Unreg       Morrow         Side         Total             Power       Bypass        Total     Reservoir Elev    Live        Tunnel    Below Tunnel
+                Inflow      Release       Inflow       Inflow            Release      Release      Release    End of Month Storage           Flow         Flow
+        Date (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)       (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)     (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)
+  *   Jan 2017     35           33          4             37                36             2           37       6750.29          16             1          37
+  H   Feb 2017     34           55           4            59                56             4           60       6749.56          16             0          60
+  I   Mar 2017     81           68           6            74                 0            73           73       6752.06          17             8          67
+  S   Apr 2017    167           65          10            75                31            44           75       6751.65          17            39          38
+  T   May 2017    285          312          22           334                86            73          331       6759.83          19            62          270
+  O   Jun 2017    446          193          36           229                44           127          231       6751.78          17            61          172
+  R    Jul 2017   148          111          8            119                96            25          121       6746.24          15            63          60
+  I   Aug 2017     89          115           3           119               119             0          119       6744.79          15            62          58
+  C   Sep 2017     39          112          4            116               115             0         115        6748.63          16            59          56
+      WY 2017    1423         1226         109          1335               751           350         1334                                     413          929
+  A   Oct 2017      43           105           5             110            109             0        109        6751.20        16           55            53
+  L   Nov 2017      38            42           4              46             46             0         46        6749.89        16            1            46
+  *   Dec 2017      29            94           3              97             97             0         97        6749.23        16            1            98
+
+      Jan 2018     26             61           2              63             62             0         62        6753.04        17             0           62
+      Feb 2018     24             40           3              43             43             0         43        6753.04        17             0           43
+      Mar 2018     39             44           5              49             49             0         49        6753.04        17             5           44
+      Apr 2018     69             62          10              72             72             0         72        6753.04        17            30           42
+      May 2018     177            75          20              95             95             0         95        6753.04        17            55           40
+      Jun 2018     205            70          17             87              87             0        87         6753.04        17            60           27
+       Jul 2018    69             96           3             99             99              0        99         6753.04        17           65            34
+      Aug 2018     45             96           3             99             99              0        99         6753.04        17           65            34
+      Sep 2018     40             79           3              82             82             0        82         6753.04        17            55           27
+      WY 2018      804           862          79             941            939             0        940                                    392          549
+      Oct 2018      42            50           4             54             54               0       54         6753.04        17           30            24
+      Nov 2018      36            20           4             24             24               0       24         6753.04        17            0            24
+      Dec 2018      32            45           5             49             49               0       49         6753.04        17            0            49
+      Jan 2019      31            44           5             49             49               0       49         6753.04        17            0            49
+      Feb 2019      29            38           4             42             42               0       42         6753.04        17            0            42
+      Mar 2019      46            45           6             51             51               0       51         6753.04        17            5            46
+      Apr 2019      101           62          12             74             74               0       74         6753.04        17           30            44
+      May 2019      281          181          34            215             134             81       215        6753.04        17            55          160
+      Jun 2019      315          101          34             134            130              5       134        6753.04        17            60           74
+       Jul 2019     138          105          14             120            120              0       120        6753.04        17            65           55
+      Aug 2019      75           112           8             120            120              0       120        6753.04        17            65           55
+      Sep 2019      47            96           6             102            102              0       102        6753.04        17            55           47
+      WY 2019      1174          898          137           1035            949             85      1035                                    365          670
+
+      Oct 2019      47             68          6             74             74              0        74         6753.04        17           30            44
+      Nov 2019      38             69          5             74             74              0        74         6753.04        17           0             74
+      Dec 2019      32            115          5             120            120             0        120        6753.04        17           0             120
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                           Model Run ID: 3049              Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                                  Vallecito Reservoir
+                Regulated    Total     Reservoir Elev          Live
+                 Inflow     Release End of Month             Storage
+        Date (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)           (1000 Ac-Ft)
+  *   Jan 2017       7           5         7648.89              84
+  H   Feb 2017       7          15         7645.42              76
+  I   Mar 2017      24          24         7645.75              77
+  S   Apr 2017      45          35         7649.82              87
+  T   May 2017      67          44         7658.86             109
+  O   Jun 2017      72          57         7664.54             124
+  R    Jul 2017     30          39         7660.94             115
+  I   Aug 2017      19          33         7655.15             100
+  C   Sep 2017       9          34         7644.31              74
+      WY 2017      303         297
+  A   Oct 2017       9            22         7638.22           61
+  L   Nov 2017       5            2          7639.49           63
+  *   Dec 2017       3            1          7640.27           65
+
+      Jan 2018        4           0          7641.92           68
+      Feb 2018        3            0         7643.09           71
+      Mar 2018        5            2         7644.42           74
+      Apr 2018       10            2         7647.86           82
+      May 2018       39           29         7651.73           91
+      Jun 2018       37          40          7650.20           87
+       Jul 2018      14          39          7638.85           62
+      Aug 2018       11           36         7625.21           37
+      Sep 2018       11           28         7611.79           19
+      WY 2018       151          202
+      Oct 2018       12           17         7606.86            14
+      Nov 2018        8            2         7612.76            20
+      Dec 2018        6            2         7616.62            25
+      Jan 2019        5           2          7619.39            28
+      Feb 2019        5            2         7621.60            31
+      Mar 2019        9            2         7625.98            38
+      Apr 2019       23            2         7637.59            59
+      May 2019       71           31         7654.98            99
+      Jun 2019       70          44          7664.91           125
+       Jul 2019      29          42          7659.83           112
+      Aug 2019       20           38         7652.55            93
+      Sep 2019       17           30         7647.35            81
+      WY 2019       276          212
+      Oct 2019      16            17         7646.58           79
+      Nov 2019      9             2          7649.51           86
+      Dec 2019      6             2          7651.34           90
+
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                   Model Run ID: 3049   Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                                   Navajo Reservoir
+                Mod Unreg        Azetea        Reg         Evap          NIIP        Total     Reservoir Elev   Live     Farmington
+                  Inflow       Tunnel Div     Inflow      Losses      Diversion     Release    End of Month Storage          Flow
+        Date   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)    (1000 Ac-Ft) (1000 Ac-Ft)
+  * Jan 2017         34             0             32           1             0         22        6056.65         1306          37
+  H Feb 2017         56             1             62           1             1         27        6059.31         1339          47
+  I Mar 2017         176           17            159           2             6         30        6068.54         1460          98
+  S Apr 2017         235           33            193           3            19         33        6078.18         1598          132
+  T May 2017         261           45            195           4            25        228        6073.94         1536          323
+  O Jun 2017         231           46            166           5            40        259        6063.90         1398          458
+  R  Jul 2017        49            11             48           4            43         38        6061.00         1361          95
+  I Aug 2017         30             5             38           4            35         36        6058.07         1323          57
+  C Sep 2017          9             2             33           3            23         42        6055.28         1289          46
+    WY 2017         1157          160            991          28           198        785                                     1422
+  A   Oct 2017       38            2             49            2            8          32        6055.89        1296          52
+  L   Nov 2017       19            0             16            1            0          25        6055.04        1286          42
+  *   Dec 2017       10            0              9            1            0          24        6053.69        1270          40
+
+      Jan 2018      14              0             10           1            0          24        6052.48        1255           34
+      Feb 2018      16              0             13           1            0          22        6051.66        1245           30
+      Mar 2018      40              0             37           2           5           25        6052.13        1251           37
+      Apr 2018      72             10             54           2           21          24        6052.75        1258           49
+      May 2018      155            23            123           3           35          25        6057.61        1318          100
+      Jun 2018      91             15             79           4           51          24        6057.57        1317           95
+       Jul 2018     32              2             56           4           56          25        6055.22        1288           54
+      Aug 2018      30              0             55           3           47          25        6053.53        1268           45
+      Sep 2018      30              0             47           3           26          24        6053.10        1262           41
+      WY 2018       547            52            547          26          249          298                                    617
+      Oct 2018       37             0             42          2            10          25        6053.63        1269          44
+      Nov 2018       30             0             24          1            0           24        6053.59        1268          39
+      Dec 2018       25             0             21          1            0           25        6053.21        1264          40
+      Jan 2019       22             0             18          1            0           25        6052.65        1257          38
+      Feb 2019       30             0             27          1            0           22        6052.99        1261          35
+      Mar 2019       92             0             86          2            5           25        6057.42        1315          47
+      Apr 2019       170           10            139          3            21          28        6064.30        1404          80
+      May 2019       277           23            214          4            36          192       6062.96        1386         338
+      Jun 2019       224           15            182          4            52          253       6052.80        1259         404
+       Jul 2019      66            2              77          4            57          29        6051.77        1246          96
+      Aug 2019        45            0             63           3           48           25       6050.69        1234          63
+      Sep 2019        43            0             55           3           26           24       6050.92        1236          56
+      WY 2019       1062           50            948          26          254          694                                   1281
+      Oct 2019       47            0             48            2           10          25        6051.98        1249          53
+      Nov 2019       34            0             27            1           0           24        6052.14        1251          42
+      Dec 2019       25            0             21            1           0           25        6051.75        1246          40
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                            Model Run ID: 3049   Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                                       Lake Powell
+                Unreg      Regulated      Evap      PowerPlant Bypass            Total    Reservoir Elev   Bank          EOM            Lees
+                Inflow       Inflow      Losses       Release      Release      Release End of Month Storage           Storage       Ferry Gage
+        Date (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)     (Ft)     (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft)
+  *   Jan 2017    359           415          8           880           0           880      3595.86         4962         11359           900
+  H   Feb 2017    555           565          8           711           0           711      3594.33         4951         11217           720
+  I   Mar 2017   1112           895         14           722           0           722      3595.91         4963         11364           730
+  S   Apr 2017   1608          1494         23           623           0           623      3604.14         5026         12149           629
+  T   May 2017   2377          2321         29           652           0           652      3619.09         5147         13667           658
+  O   Jun 2017   3115         2680          51          749            0          749       3634.89         5286         15408           763
+  R    Jul 2017  1073           889         64          850            0          850       3634.69         5284         15385           875
+  I   Aug 2017    446           495         63           900           0           900      3630.88         5250         14952           930
+  C   Sep 2017    196           410         57           663           0           663      3628.31         5227         14664           677
+      WY 2017 11905           11396        409          8874         126          9000                                                  9158
+  A   Oct 2017     449           533            39          640            0          640     3627.09       5216        14530            644
+  L   Nov 2017     387           454            37          630            0          630     3625.29       5200        14332            629
+  *   Dec 2017     299           483            29          740            0          740     3622.85       5179        14068            744
+
+      Jan 2018      310          470             9          860            0           860    3619.38       5150        13698            866
+      Feb 2018      335          458           10          730             0           730    3616.90       5129        13437           732
+      Mar 2018      475          483           16          800             0           800    3613.92       5104        13129           805
+      Apr 2018      550          510           25          705             0           705    3611.93       5088        12926           713
+      May 2018     1050          779            29          705            0           705    3612.34       5091        12967           711
+      Jun 2018     1750          1406          46          760             0           760    3617.71       5135        13522           766
+       Jul 2018     550          621           56          860             0           860    3615.09       5114        13249           875
+      Aug 2018      325          429           55          900             0           900    3610.32       5075        12762           914
+      Sep 2018      270          371            49          670            0           670    3607.09       5049        12439           679
+      WY 2018      6749          6998          401         9000            0          9000                                              9078
+      Oct 2018      397          444           34          640            0            640    3604.93       5032        12227           646
+      Nov 2018      420          445           32          640            0            640    3602.77       5015        12016           644
+      Dec 2018      363          442           25          720            0            720    3599.85       4993        11736           726
+      Jan 2019     361           440             8         860            0            860    3595.65       4961        11340           866
+      Feb 2019      393          442            8          750            0           750     3592.49       4937        11047           752
+      Mar 2019      665          604           13          800            0           800     3590.36       4922        10853           805
+      Apr 2019    1056           879           21          710            0           710     3591.86       4933        10989           718
+      May 2019    2343           2103          27          710            0            710    3605.22       5034        12255           716
+      Jun 2019    2666           2342          46          750            0            750    3619.28       5149        13687           756
+       Jul 2019    1091          1039           57          850           0            850    3620.43       5158        13809            865
+      Aug 2019      500           582           57          900           0            900    3617.13       5131        13461            914
+      Sep 2019      408           510           52          670           0            670    3615.24       5115        13265            679
+      WY 2019     10662         10272          380         9000           0           9000                                              9086
+      Oct 2019     512            566           36          640            0          640     3614.26       5107        13164            646
+      Nov 2019     473            543           34          640            0          640     3613.07       5097        13042            644
+      Dec 2019     363            513           27          720            0          720     3610.94       5080        12826            726
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                          Model Run ID: 3049              Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                               Hoover Dam - Lake Mead
+                 Glen      Side Inflow    Evap         Total        Total      SNWP      Downstream      Bank      Reservoir Elev     EOM
+                Release Glen to Hoover Losses         Release      Release      Use      Requirements Storage      End of Month     Storage
+        Date (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 CFS) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)      (1000 Ac-Ft)
+  *   Jan 2017     880         128          30           500         8.1           7         494           684        1086.08        10521
+  H   Feb 2017     711         150          28           488         8.8           7         487           704        1089.78        10838
+  I   Mar 2017     722          97          32           911        14.8          16         910           696        1088.26        10707
+  S   Apr 2017     623          92          39           961        16.1          20         960           677        1084.89        10420
+  T   May 2017     652          39          44           917        14.9          29         915           659        1081.56        10141
+  O   Jun 2017     749          17          53           864        14.5          29         864           648        1079.52         9971
+  R    Jul 2017    850          89          66           885        14.4          31         885           646        1079.03         9931
+  I   Aug 2017     900          94          70           683        11.1          28         683           658        1081.44        10131
+  C   Sep 2017     663          70          58          600         10.1          21         591           662        1082.05        10182
+      WY 2017     9000         994         541          8620                     235        8591
+  A   Oct 2017      640            44           43          596          9.7            23       595        663          1082.30       10202
+  L   Nov 2017      630            40           42          731         12.3            16       731        656          1080.95       10090
+  *   Dec 2017      740            44           37          594          9.7            13       593        664          1082.52       10221
+
+      Jan 2018       860           64           30           475         7.7            12       475        689          1087.03       10602
+      Feb 2018       730           72           28           673        12.1            14       673        694          1087.97       10683
+      Mar 2018       800           46           31          1004        16.3            21      1004        681          1085.65       10484
+      Apr 2018       705           39           39          1049        17.6            23      1049        659          1081.56       10140
+      May 2018       705           26           44           959        15.6            27       959        641          1078.17        9860
+      Jun 2018       760           10           52           870        14.6            33       870        630          1076.04        9686
+       Jul 2018      860           77           65           831        13.5            36       831        630          1076.10        9690
+      Aug 2018       900          127          70            740        12.0            34      740         641          1078.20       9863
+      Sep 2018       670          110           58           730        12.3            27      730         639          1077.83        9832
+      WY 2018       9000          699          539          9252                       280      9250
+      Oct 2018      640            71          42            525         8.5            28      525         646          1079.15        9941
+      Nov 2018      640            65          42            703        11.8            21      703         642          1078.45        9883
+      Dec 2018      720            51          36            631        10.3            14      631         648          1079.47        9967
+      Jan 2019      860            64          30            627        10.2           12       627         663          1082.33       10205
+      Feb 2019      750            72          28            697        12.6           14       697         668          1083.26       10283
+      Mar 2019      800           46           31           1058        17.2           21       1058        652          1080.28       10035
+      Apr 2019      710           39           38           1060        17.8            23      1060        630          1076.04        9686
+      May 2019       710           26          43            964        15.7            27      964         611          1072.59        9407
+      Jun 2019       750           10          51            875        14.7            33      875         599          1070.25        9219
+       Jul 2019     850            77          64            833        13.5           36       833         599          1070.19        9214
+      Aug 2019       900          127          68            729        11.9            34       729        611          1072.49        9398
+      Sep 2019       670          110           56           744        12.5            27       744        608          1071.95        9355
+      WY 2019       9000          757          528          9446                       291      9446
+      Oct 2019      640            71           41          506         8.2             28       506        616          1073.54       9483
+      Nov 2019      640            65           41          671         11.3            21       671        615          1073.20       9456
+      Dec 2019      720            51           36          595         9.7             14       595        622          1074.67       9574
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                         Model Run ID: 3049             Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                               Davis Dam - Lake Mohave
+                 Hoover           Side        Evap         Power         Spill       Total        Total Reservoir Elev     EOM
+                 Release         Inflow      Losses       Release      Release      Release      Release End of Month    Storage
+        Date   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft) (1000 CFS)    (Ft)      (1000 Ac-Ft)
+  * Jan 2017         500           -23          10          408            0           408          6.6     643.47        1712
+  H Feb 2017         488           -13          10          486            0           486         8.7      642.70        1690
+  I Mar 2017         911           -27          13          844            0           844         13.7     643.70        1718
+  S Apr 2017         961           -23          17          955            0           955         16.1     642.45        1684
+  T May 2017         917           -13          22          846            0           846         13.8     643.74        1719
+  O Jun 2017         864            -6          25          853            0           853         14.3     643.01        1699
+  R  Jul 2017        885            -5          26          809            0           809         13.2     644.65        1744
+  I Aug 2017         683            -8          23          707            0           707         11.5     642.64        1689
+  C Sep 2017         600           -11          18          656            0           656         11.0     639.47        1603
+    WY 2017         8620          -183         199         8261            0          8261
+  A   Oct 2017      596            -2           15         671             0          671        10.9       636.00         1512
+  L   Nov 2017      731           -18           11         595             0          595        10.0       640.07         1619
+  *   Dec 2017      594           -16            9         552             0          552         9.0       640.68         1636
+
+      Jan 2018       475          -19          10           424            0           424        6.9       641.50         1658
+      Feb 2018       673          -16          10           634            0           634       11.4       642.00         1671
+      Mar 2018      1004          -16          13           946            0           946       15.4       643.05         1700
+      Apr 2018      1049          -20          17          1013            0          1013       17.0       643.00         1699
+      May 2018       959          -13          22           924            0           924       15.0       643.00         1699
+      Jun 2018       870          -18          25           854            0           854       14.4       642.00         1671
+       Jul 2018      831          -16          25           803            0           803       13.1       641.50         1658
+      Aug 2018       740          -12          23           705            0           705       11.5       641.50         1658
+      Sep 2018       730          -11          18           740            0           740       12.4       640.01         1617
+      WY 2018       9252         -177          197         8862            0          8862
+
+      Oct 2018       525           -4          15          689            0            689       11.2       633.00         1434
+      Nov 2018       703          -11          10           630            0           630       10.6       635.00         1486
+      Dec 2018       631          -10            9          515            0           515        8.4       638.71         1583
+      Jan 2019       627          -19          10           516            0           516        8.4       641.80         1666
+      Feb 2019       697          -16          10           613           58           671       12.1       641.80         1666
+      Mar 2019      1058          -16          13           994            0           994       16.2       643.05         1700
+      Apr 2019      1060          -20          17          1024            0          1024       17.2       643.00         1699
+      May 2019       964          -13          22          929            0            929       15.1       643.00         1699
+      Jun 2019       875          -18          25          860            0            860       14.4       642.00         1671
+       Jul 2019      833          -16          25          805            0            805       13.1       641.50         1658
+      Aug 2019       729          -12          23          694            0            694       11.3       641.50         1658
+      Sep 2019       744          -11           18          755            0           755       12.7       640.01         1617
+      WY 2019       9446         -166          197         9024           58          9082
+
+      Oct 2019      506            -4           15         670             0           670       10.9       633.00         1434
+      Nov 2019      671           -11           10         598             0           598       10.1       635.00         1486
+      Dec 2019      595           -10            9         479             0           479        7.8       638.71         1583
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                            Model Run ID: 3049   Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                            Parker Dam - Lake Havasu
+                  Davis           Side        Evap          Total          Total      MWD           CAP      Reservoir Elev    EOM        Flow To         Flow To
+                 Release         Inflow      Losses       Release         Release   Diversion    Diversion End of Month Storage            Mexico         Mexico
+        Date   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft) (1000 Ac-Ft)    (1000 CFS) (1000 Ac-Ft) (1000 Ac-Ft)      (Ft)     (1000 Ac-Ft) (1000 Ac-Ft)    (1000 CFS)
+  * Jan 2017        408            33            6          244              4.0         68          126        447.29         567           126            2.1
+  H Feb 2017        486            14            8          393              7.1         13           62        448.30         586           160            2.9
+  I Mar 2017        844            11            9          687             11.2         24          136        447.83         577           203            3.3
+  S Apr 2017        955            13           11          729             12.3         42          160        448.73         594           181            3.0
+  T May 2017        846            22           13          634             10.3         44          175        448.31         586           111            1.8
+  O Jun 2017        853             0           15          689             11.6         57           79        448.41         588           126            2.1
+  R  Jul 2017       809            18           17          666             10.8         58           71        448.63         592           131            2.1
+  I Aug 2017        707            12           17          570              9.3         58           70        448.28         585           102            1.7
+  C Sep 2017        656            16           15          481              8.1         56          134        447.17         564           104            1.7
+    WY 2017        8261           219          140         6204                         664         1406                                    1513
+
+  A   Oct 2017     671             9           12           478             7.8             69       131         446.27        548           65             1.1
+  L   Nov 2017     595            12            9           349             5.9             89       127         447.86        577           99             1.7
+  *   Dec 2017     552            18            7           335             5.5             100      144         446.80        557          109             1.8
+
+      Jan 2018      424           17            6            319            5.2             29        89         446.50        552          138             2.2
+      Feb 2018      634            10           8            494            8.9             13       110         447.20        565          160             2.9
+      Mar 2018      946            7            9            723            11.8            40       181         446.70        555          198             3.2
+      Apr 2018     1013            19          11            718            12.1            82       174         448.70        593          175             2.9
+      May 2018      924            15          13            643            10.5            85       186         448.70        593           104            1.7
+      Jun 2018      854           15           16            685            11.5            82        73         448.70        593          105             1.8
+       Jul 2018     803            26          17            654            10.6            85        74         448.00        580          111             1.8
+      Aug 2018      705            25          17            593            9.6             85        33         447.50        571          100             1.6
+      Sep 2018      740            20          15            522            8.8             63       151         447.50        570            89            1.5
+      WY 2018      8862           193          139          6513                            822      1472                                   1453
+
+      Oct 2018      689           28           12            479             7.8            56       162         447.50        571           74             1.2
+      Nov 2018      630           19            9            407            6.8             56       172         447.50        571          116             1.9
+      Dec 2018      515           19            7            316            5.1             56       169         446.50        552          131             2.1
+      Jan 2019      516           17            6            322            5.2             78       122         446.50        552          138             2.2
+      Feb 2019      671           10            8            494            8.9             52       122         446.50        552          160             2.9
+      Mar 2019      994            7            9            720            11.7            69       190         446.70        555          198             3.2
+      Apr 2019     1024           19           11            713            12.0            87       185         448.70        593          175             2.9
+      May 2019      929           15           13            640            10.4            89       190         448.70        593          104             1.7
+      Jun 2019      860           15            16           678            11.4             87        80        448.70        593          105             1.8
+       Jul 2019     805           26            17           646            10.5             89        80        448.00        580          111             1.8
+      Aug 2019      694           25            17           581             9.4             89        30        447.50        571          100             1.6
+      Sep 2019      755           20            15           510             8.6             87       154        447.50        570           89             1.5
+      WY 2019      9082           220          139          6506                            895      1656                                   1500
+
+      Oct 2019     670            28           12           488             7.9             49       142         447.50        571           74             1.2
+      Nov 2019     598            19            9           411             6.9             49       142         447.50        571          116             1.9
+      Dec 2019     479            19            7           314             5.1             49       142         446.50        552          131             2.1
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                           Model Run ID: 3049                 Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                     Most Probable Inflow*
+                                                                               Hoover Dam - Lake Mead
+                  Power          Power Reservoir Elev EOM         Change In     Hoover        Hoover Gen   Hoover    Percent of
+                 Release        Release End of Month Storage       Storage    Static Head      Capacity Gross Energy   Units
+        Date   (1000 Ac-Ft)   (1000 CFS)    (Ft)    (1000 Ac-Ft) (1000 Ac-Ft)     (Ft)           MW        MKWH       Available       KWH/AF
+  * Jan 2017         500           8.1     1086.08     10521         442        442.12           857.0        192.4       55           384.9
+  H Feb 2017         488           8.8     1089.78     10838         317        446.75           938.0        190.4       58           390.4
+  I Mar 2017        911           14.8     1088.26     10707        -131        440.44          1291.1        362.0       79           397.2
+  S Apr 2017        961           16.1     1084.89     10420        -287        439.75          1227.0        381.0       76           396.5
+  T May 2017        917           14.9     1081.56     10141        -280        434.83          1307.0       360.6        80           393.4
+  O Jun 2017        864           14.5     1079.52      9971        -169        433.52          1500.0       335.0        94           387.5
+  R  Jul 2017        885          14.4     1079.03      9931         -40        432.24          1499.0        341.1       94           385.5
+  I Aug 2017         683          11.1     1081.44     10131         200        436.25          1478.1        261.0       93           382.0
+  C Sep 2017         600          10.1     1082.05     10182          51        440.10           976.1        230.7       66           384.8
+    WY 2017         8620                                                                                     3347.1
+  A   Oct 2017      596            9.7        1082.30      10202          21         441.43     976.1        229.0        66           384.2
+  L   Nov 2017      731           12.3        1080.95      10090        -113         435.01     996.0        287.9        63           393.6
+  *   Dec 2017      594            9.7        1082.52      10221         131         439.05     821.0        235.7        52           396.6
+
+      Jan 2018       475           7.7        1087.03      10602         381         437.72      834.0        189.1        51          397.9
+      Feb 2018       673          12.1        1087.97      10683          81         437.45     1222.0        267.4        75          397.2
+      Mar 2018      1004          16.3        1085.65      10484        -198         437.70      995.0        406.2       62           404.6
+      Apr 2018      1049          17.6        1081.56      10140        -344         432.76     1189.9        417.6       75           398.1
+      May 2018       959          15.6        1078.17       9860        -280         426.96     1483.0        371.8       95           387.7
+      Jun 2018       870          14.6        1076.04       9686        -174         423.98     1555.0        331.6       100          381.1
+       Jul 2018      831          13.5        1076.10       9690          5          423.44     1556.0        320.6       100          385.8
+      Aug 2018       740          12.0        1078.20       9863         172         424.68     1568.0        282.7       100          382.2
+      Sep 2018       730          12.3        1077.83       9832         -31         426.02     1565.0        280.3       100          384.2
+      WY 2018       9252                                                                                     3619.9
+      Oct 2018       525           8.5        1079.15      9941          109         431.34     1170.0       199.9        74           381.1
+      Nov 2018       703          11.8        1078.45      9883          -58         433.28     1263.0       275.3        81           391.5
+      Dec 2018       631          10.3        1079.47      9967           84         432.26     1167.0       246.8        74           390.9
+      Jan 2019       627          10.2        1082.33      10205         238         433.85      901.1       248.4        57           395.9
+      Feb 2019       697          12.6        1083.26      10283          78         435.26      825.0       282.0        52           404.5
+      Mar 2019      1058          17.2        1080.28      10035        -248         433.21      907.0       430.0        57           406.4
+      Apr 2019      1060          17.8        1076.04       9686        -349         427.43     1154.0       417.5        74           394.0
+      May 2019       964          15.7        1072.59      9407         -279         421.57     1437.1       369.2        94           383.1
+      Jun 2019       875          14.7        1070.25      9219         -187         418.35     1511.5       329.4        100          376.3
+       Jul 2019      833          13.5        1070.19      9214           -5         417.64     1511.1       316.9        100          380.6
+      Aug 2019       729          11.9        1072.49       9398         184         418.92     1524.1        274.5       100          376.6
+      Sep 2019       744          12.5        1071.95       9355         -43         420.27     1521.1        282.6       100          379.9
+      WY 2019       9446                                                                                     3672.5
+      Oct 2019      506           8.2         1073.54       9483        128          425.63     1138.8       195.8        74           387.1
+      Nov 2019      671           11.3        1073.20       9456        -27          427.89     1230.9       258.2        81           384.7
+      Dec 2019      595            9.7        1074.67       9574        119          427.28     1139.1       228.5        74           384.1
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                        Model Run ID: 3049            Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                               Davis Dam - Lake Mohave
+                  Power          Power Reservoir Elev EOM         Change In      Davis         Davis Gen    Davis     Percent of
+                 Release        Release End of Month Storage       Storage    Static Head       Capacity Gross Energy   Units
+        Date   (1000 Ac-Ft)   (1000 CFS)     (Ft)   (1000 Ac-Ft) (1000 Ac-Ft)     (Ft)            MW        MKWH       Available      KWH/AF
+  * Jan 2017         408           6.6      643.47      1712          59        143.95           164.5         54.6        65          133.8
+  H Feb 2017        486            8.7      642.70      1690         -21        141.54           162.1         63.8        64          131.4
+  I Mar 2017         844          13.7      643.70      1718          28        141.08           194.1        109.6        76          129.9
+  S Apr 2017         955          16.1      642.45      1684         -34        138.31           204.0        131.0        80          137.2
+  T May 2017         846          13.8      643.74      1719          35        142.74           232.0        108.4        91          128.1
+  O Jun 2017         853          14.3      643.01      1699         -20        141.59           255.0        107.4       100          126.0
+  R  Jul 2017        809          13.2      644.65      1744          45        143.65           255.0        101.5       100          125.5
+  I Aug 2017         707          11.5      642.64      1689         -55        143.10           255.0         89.9       100          127.1
+  C Sep 2017         656          11.0      639.47      1603         -86        138.07           253.3         83.2        99          126.8
+    WY 2017         8261                                                                                     1061.4
+  A   Oct 2017      671           10.9         636.00       1512        -91          134.26      179.3        81.3        70           121.3
+  L   Nov 2017      595           10.0         640.07       1619        107          138.81      151.3        73.1        59           122.7
+  *   Dec 2017      552            9.0         640.68       1636         17          139.44      131.6        69.5        52           126.0
+
+      Jan 2018       424           6.9         641.50       1658          22         136.92      159.6        53.7         63          126.5
+      Feb 2018       634          11.4         642.00       1671          14         137.49      162.1         79.5        64          125.3
+      Mar 2018       946          15.4         643.05       1700          29         136.95      204.0        118.0        80          124.7
+      Apr 2018      1013          17.0         643.00       1699          -1         137.36      207.4        126.3       81           124.7
+      May 2018       924          15.0         643.00       1699           0         137.43      204.0        115.8       80           125.3
+      Jun 2018       854          14.4         642.00       1671         -27         135.51      255.0        106.8       100          125.0
+       Jul 2018      803          13.1         641.50       1658         -14         134.73      255.0        100.2       100          124.8
+      Aug 2018       705          11.5         641.50       1658           0         134.46      255.0         88.1       100          125.1
+      Sep 2018       740          12.4         640.01       1617         -40         133.68      255.0        91.9        100          124.1
+      WY 2018       8862                                                                                     1104.2
+      Oct 2018       689          11.2         633.00       1434        -183         130.74      202.3        83.2        79           120.7
+      Nov 2018       630          10.6         635.00       1486          51         129.19      170.0        74.8        67           118.7
+      Dec 2018       515           8.4         638.71       1583          97         132.25      167.8        62.9        66           122.1
+      Jan 2019       516           8.4         641.80       1666          83         135.41      179.3        64.5        70           125.1
+      Feb 2019       613          11.0         641.80       1666           0         139.11      111.1        77.0        44           125.5
+      Mar 2019       994          16.2         643.05       1700          34         138.04      166.2       123.7        65           124.4
+      Apr 2019      1024          17.2         643.00       1699          -1         137.36      207.4       127.6        81           124.6
+      May 2019       929          15.1         643.00       1699           0         137.43      204.0       116.3        80           125.2
+      Jun 2019       860          14.4         642.00       1671         -27         135.51      255.0       107.4        100          125.0
+       Jul 2019      805          13.1         641.50       1658         -14         134.73      255.0       100.4        100          124.8
+      Aug 2019       694          11.3         641.50       1658           0         134.46      255.0        86.8        100          125.2
+      Sep 2019       755          12.7         640.01       1617         -40         133.68      255.0        93.6        100          124.0
+      WY 2019       9024                                                                                     1118.3
+      Oct 2019      670           10.9         633.00       1434        -183         130.74      202.3        81.0        79           120.8
+      Nov 2019      598           10.1         635.00       1486          51         129.19      170.0        71.1        67           118.9
+      Dec 2019      479            7.8         638.71       1583          97         132.25      167.8        58.6        66           122.3
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                        Model Run ID: 3049            Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                               Parker Dam - Lake Havasu
+                  Power          Power Reservoir Elev EOM         Change In     Parker        Parker Gen   Parker    Percent of
+                 Release        Release End of Month Storage       Storage    Static Head      Capacity Gross Energy   Units
+        Date   (1000 Ac-Ft)   (1000 CFS)    (Ft)    (1000 Ac-Ft) (1000 Ac-Ft)     (Ft)           MW        MKWH       Available      KWH/AF
+  * Jan 2017         244           4.0     447.29       567           -6         81.95           93.9       16.2          78          66.5
+  H Feb 2017         393           7.1     448.30       586           19         82.67           90.0       27.9          75          71.0
+  I Mar 2017         687          11.2     447.83       577           -9         79.98           90.0       48.8          75          71.1
+  S Apr 2017         729          12.3     448.73       594           17         80.51           120.0      51.3         100          70.3
+  T May 2017         634          10.3     448.31       586           -8         82.36           120.0      44.8         100          70.6
+  O Jun 2017         689          11.6     448.41       588            2         80.56           120.0      48.1         100          69.9
+  R  Jul 2017        666          10.8     448.63       592            4         82.74           120.0      46.5         100          69.9
+  I Aug 2017         570           9.3     448.28       585           -7         82.37           120.0      39.9         100          70.0
+  C Sep 2017         481           8.1     447.17       564          -21         81.08           120.0      33.8         100          70.2
+    WY 2017         6204                                                                                    434.1
+  A   Oct 2017      478           7.8         446.27        548          -17          80.03      92.9        33.6        77           70.4
+  L   Nov 2017      349           5.9         447.86        577           30          81.65      90.0        24.1        75           69.2
+  *   Dec 2017      335           5.5         446.80        557          -20          81.55      92.9        22.5        77           67.0
+
+      Jan 2018       319           5.2        446.50        552           -6          74.18      117.1       20.1         98          63.0
+      Feb 2018       494           8.9        447.20        565           13          75.55      92.1        32.5         77          65.8
+      Mar 2018       723          11.8        446.70        555           -9          75.03      104.5       47.7         87          65.9
+      Apr 2018       718          12.1        448.70        593           38          75.08      120.0       47.3        100          65.8
+      May 2018       643          10.5        448.70        593            0          76.05      120.0       42.7        100          66.3
+      Jun 2018       685          11.5        448.70        593            0          76.05      120.0       45.5        100          66.5
+       Jul 2018      654          10.6        448.00        580          -13          75.71      120.0       43.2        100          66.1
+      Aug 2018       593           9.6        447.50        571           -9          75.13      120.0       38.8        100          65.4
+      Sep 2018       522           8.8        447.50        570            0          74.89      120.0       34.0        100          65.0
+      WY 2018       6513                                                                                    431.9
+      Oct 2018       479          7.8         447.50        571            0         76.19       91.9       31.6         77           65.9
+      Nov 2018       407          6.8         447.50        571            0         75.83       99.0       26.5         83           65.2
+      Dec 2018       316          5.1         446.50        552          -19         74.40       120.0      19.9         100          63.0
+      Jan 2019       322          5.2         446.50        552            0         75.02        95.8      20.5         80           63.7
+      Feb 2019       494          8.9         446.50        552            0         75.21        92.1       32.4        77           65.6
+      Mar 2019       720          11.7        446.70        555            4         74.34       112.3       47.0         94          65.3
+      Apr 2019       713          12.0        448.70        593           38         75.08       120.0       46.9        100          65.8
+      May 2019       640          10.4        448.70        593            0         76.05       120.0       42.4        100          66.3
+      Jun 2019       678          11.4        448.70        593            0         76.05       120.0       45.1        100          66.5
+       Jul 2019      646          10.5        448.00        580          -13         75.71       120.0       42.7        100          66.0
+      Aug 2019       581           9.4        447.50        571           -9         75.13       120.0       38.0        100          65.4
+      Sep 2019       510           8.6        447.50        570            0         74.89       120.0       33.1        100          65.0
+      WY 2019       6506                                                                                    426.2
+      Oct 2019      488           7.9         447.50        571           0          76.29       90.0        32.3        75           66.1
+      Nov 2019      411           6.9         447.50        571           0          76.14       93.0        26.9         78          65.5
+      Dec 2019      314           5.1         446.50        552          -19         74.40       120.0       19.8        100          63.0
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                       Model Run ID: 3049            Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                                  Upper Basin Power
+                Glen    Flaming               Blue     Morrow            Crystal  Fontenelle
+               Canyon    Gorge                Mesa      Point           Reservoir Reservoir
+       Date 1000 MWHR 1000 MWHR            1000 MWHR 1000 MWHR         1000 MWHR 1000 MWHR
+  * Jan 2017     385       43                  10         11                5          0
+  H Feb 2017     307       43                  13         19               10          0
+  I Mar 2017     312       97                  19         22                0          0
+   Winter 2017  1945      289                  87        107               46          0
+  S Apr 2017        270          102            15            22             6               0
+  T May 2017       291           105            43            72            17               4
+  O Jun 2017       346           102            40            66             8               6
+  R  Jul 2017      399            71            35            13            18               8
+  I Aug 2017       421            56            34             0            22               9
+  C Sep 2017        306           56            35            33            22               6
+ Summer 2017       2033          492           202           207            93              33
+  A   Oct 2017      294          42             30            37            21              7
+  L   Nov 2017      288          55             12            14             8              7
+  *   Dec 2017      339          68             27            33            19              6
+     Jan 2018      356            63            18            22            11               6
+     Feb 2018      300            57            12            14             7               5
+     Mar 2018      327            42            12            16             8               5
+   Winter 2018     1904          327           111           136            74              36
+    Apr 2018       287            40            16            22            12               5
+    May 2018       286            42            19            27            16               7
+    Jun 2018       310            64            17            25            15               8
+     Jul 2018      352            83            28            35            17              10
+    Aug 2018       365            36            28            35            17               7
+    Sep 2018       270            35            22            28            14               7
+ Summer 2018       1870          300           130           172            92              43
+      Oct 2018     256            36            14            18             9               7
+     Nov 2018      255            35             5            7              4               6
+     Dec 2018      285            36            13            16             9               6
+     Jan 2019      339            36            12            16             9               6
+     Feb 2019      293            32            10            14             7               5
+     Mar 2019      311            36            12            16             9               6
+   Winter 2019     1740          211            66            87            47              35
+    Apr 2019       276           35            15             22           13                5
+    May 2019       280           36            46             65           23                7
+    Jun 2019       304           55            25             36           22                8
+     Jul 2019      350           57            31             38           21               10
+    Aug 2019       370           36            34             40           21                9
+    Sep 2019       274           35            29             34           18                7
+ Summer 2019       1854          254           179           236           118              45
+      Oct 2019      261          36             20            24            13              6
+      Nov 2019      259          35             20            25            13              6
+      Dec 2019      291          36             34            42            21              6
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                   Model Run ID: 3049   Processed On: 1/12/2018 9:06:59AM
+                                OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                          January 2018 24-Month Study
+                                                                                    Most Probable Inflow*
+                                                                             Flood Control Criteria
+                                                                         Beginning of Month Conditions
+          Flaming  Blue         Lake Upper Basin Lake                                Flaming Blue          Tot or Max Lake   Lake       BOM Space   Mead    Mead Sys
+           Gorge   Mesa Navajo Powell   Total    Mead                     Total       Gorge Mesa      Navajo Allow    Powell Mead  Total Required Sched Rel FC Rel Cont
+  Date      KAF    KAF   KAF    KAF     KAF      KAF                      KAF          KAF   KAF       KAF    KAF      KAF   KAF    KAF    KAF      KAF      KAF MAF
+              ****PREDICTED SPACE****                                                                        ****EFFECTIVE SPACE****
+ Jan 2018    546   237   426   10254    11464    17156                    28620        546      237    426    1210     10254 17156 28620    5350    475        0    32.0
+ Jan 2018      546      237       426      10254     11464     17156      28620        155      100    204      459        10254     17156   27870     5350      475        0   32.0
+ Feb 2018      659      273       441      10624     11997     16775      28773        268      138    218      625        10624     16775   28024     1500      673        0   31.7
+ Mar 2018      757      290       451      10885     12383     16694      29077        367      157    227      751        10885     16694   28329     1500     1004        0   31.2
+ Apr 2018      770      298       445      11193     12706     16893      29598        376      167    214      757        11193     16893   28842     1500     1049        0   30.7
+ May 2018      751      303       438      11396     12888     17237      30125        351      170    184      705        11396     17237   29338     1500      959        0   30.7
+ Jun 2018      646      234       378      11355     12614     17517      30131        234      88      86      408        11355     17517   29280     1500      870        0   31.4
+  Jul 2018     437      131       379      10800     11746     17691      29437             9   -30     31       10        10800     17691   28501     1500      831        0   31.0
+                                                                                                           ****CREDITABLE SPACE****
+ Aug 2018      442      157       408      11073     12079     17687      29766        442      157    408   1006 11073 17687 29766                    1500      740        0   30.6
+ Sep 2018      464      204       428      11560     12656     17514      30170        464      204    428      1096       11560     17514   30170     2270      730        0   30.1
+ Oct 2018      515      238       434      11883     13069     17545      30614        515      238    434      1186       11883     17545   30614     3040      525        0   29.8
+ Nov 2018      561      250       427      12095     13334     17436      30770        561      250    427      1238       12095     17436   30770     3810      703        0   29.5
+ Dec 2018      608      237       428      12306     13578     17494      31072        608      237    428      1273       12306     17494   31072     4580      631        0   29.3
+ Jan 2019      673      252       432      12586     13944     17410      31354        673      252    432      1358       12586     17410   31354     5350      627        0   29.1
+                                                                                                               ****EFFECTIVE SPACE****
+ Jan 2019      673      252       432      12586     13944     17410      31354        382      252    170      804   12586 17410 30801                5350      627        0   29.1
+ Feb 2019      733      269       439      12982     14423     17172      31595        440      269    176      885        12982     17172   31039     1500      697        0   28.9
+ Mar 2019      780      279       435      13275     14769     17094      31863        484      279    171      935        13275     17094   31304     1500     1058        0   28.5
+ Apr 2019      780      283       381      13469     14913     17342      32256        480      283    110      874        13469     17342   31685     1500     1060        0   28.5
+ May 2019      749      260       292      13333     14634     17691      32325        442      260     -1      701        13333     17691   31725     1500      964        0   29.7
+ Jun 2019      615      203       310      12067     13195     17970      31166        295      198    -23      471        12067     17970   30508     1500      875        0   31.1
+  Jul 2019     391      44        437      10635     11507     18158      29665         55      18      48      121        10635     18158   28914     1500      833        0   31.3
+                                                                                                               ****CREDITABLE SPACE****
+ Aug 2019      352      26        450      10513      11341    18163      29503        352      26     450       827  10513 18163 29503 1500                     729        0   31.0
+ Sep 2019      376      62        462      10861      11762    17979      29741        376      62     462      901        10861     17979   29741     2270      744        0   30.6
+ Oct 2019      429      110       460      11057      12055    18022      30077        429      110    460      998        11057     18022   30077     3040      506        0   30.4
+ Nov 2019      476      136       447      11158      12217    17894      30111        476      136    447      1059       11158     17894   30111     3810      671        0   30.2
+ Dec 2019      523      171       445      11280      12419    17921      30340        523      171    445      1139       11280     17921   30340     4580      595        0   30.1
+
+* Based on the Colorado River Basin Forecast Center's Most Probable Water Supply Forecast                             Model Run ID: 3049             Processed On: 1/12/2018 9:06:59AM
+

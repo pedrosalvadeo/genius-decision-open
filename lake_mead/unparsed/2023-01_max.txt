@@ -1,0 +1,941 @@
+    To:        All Annual Operating Plan Recipients
+
+    From:      Noe Santos, P.E.                                             From:     Alex Pivarnik
+               River Operations Manager                                               Supervisor, Water Management Group
+               Boulder Canyon Operations Office                                       Water and Power Division, Power Office
+               Interior Region 8: Lower Colorado Basin                                Interior Region 7: Upper Colorado Basin
+               Email: nsantos@usbr.gov                                                Email: apivarnik@usbr.gov
+
+
+Subject: January 2023 Probable Maximum 24-Month Study
+
+In addition to the January 2023 24-Month Study based on the Most Probable inflow scenario, and in accordance with the Upper Basin Drought Response
+Operations Agreement (DROA), Reclamation has conducted additional model runs in January to determine a possible range of reservoir elevations under
+Probable Minimum and Probable Maximum inflow scenarios. Probable minimum and probable maximum model runs are conducted in January, April, August, and
+October, or when necessary to incorporate changing conditions. The Probable Minimum inflow scenario reflects a dry hydrologic condition which statistically
+would be exceeded 90% of the time. The Most Probable inflow scenario reflects a median hydrologic condition which statistically would be exceeded 50% of the
+time. The Probable Maximum inflow scenario reflects a wet hydrologic condition which statistically would be exceeded 10% of the time. There is approximately an
+80% probability that a future elevation will fall inside the range of the minimum and maximum inflow scenarios. Additionally, there are possible inflow scenarios
+that would result in reservoir elevations falling outside the ranges indicated in these reports.
+
+The projected Lake Powell and Lake Mead elevations resulting from these three inflow scenarios are summarized in graphs located at either of the following links:
+
+https://www.usbr.gov/uc/water/crsp/studies/images/PowellElevations.pdf or
+https://www.usbr.gov/lc/region/g4000/24mo/2023/January-Chart.pdf.
+
+In light of the prolonged drought, low runoff conditions, and depleted storage at Lake Powell, the Department of the Interior implemented an action under Sections
+6 and 7.D of the 2007 Interim Guidelines specifically reducing the Glen Canyon Dam annual releases to 7.00 million acre-feet (maf) in water year (WY) 2022.1 This
+action was undertaken in conjunction with the 2022 Drought Response Operations Plan 2 (2022 Plan) actions which together are anticipated to add approximately
+one million additional acre-feet of storage to Lake Powell by April 2023. The Department of Interior and Reclamation will work to determine the manner in which to
+operate Glen Canyon Dam to ensure the benefits of these actions are preserved.
+
+The 2022 Plan provisions to protect a target elevation at Lake Powell of 3,525 feet through adjusting Glen Canyon Dam monthly volume releases have been
+incorporated into the January 2023 24-Month Study and include an adjusted monthly release volume pattern for Glen Canyon Dam that will hold back a total of
+0.523 maf in Lake Powell from December 2022 through April 2023. There are continued discussions when and how that same amount of water (0.523 maf) will be
+released later in the water year. The annual release volume from Lake Powell for WY 2023 will continue to be 7.00 maf, or higher, according to the provisions
+outlined below. If future projections indicate the monthly adjustments are insufficient to protect Powell’s elevation, Reclamation will again consider additional water
+releases from the upstream initial units of the Colorado River Storage Project according to the provisions of the 2022 Plan.
+
+The reduction of releases from Lake Powell from 7.48 maf to 7.00 maf in WY 2022 resulted in a reduced release volume of 0.480 maf that normally would have
+been released from Glen Canyon Dam to Lake Mead as part of the 7.48 maf annual release volume, consistent with routine operations under the 2007 Interim
+Guidelines. The reduction of releases from Glen Canyon Dam in WY 2022 (resulting in increased storage in Lake Powell) did not affect the operating
+
+1
+    For more information: https://www.usbr.gov/uc/DocLibrary/Plans/20220503-2022DROA-GlenCanyonDamOperationsDecisionLetter-508-DOI.pdf.
+2
+    For more information: https://www.usbr.gov/uc/DocLibrary/Plans/20220429-2022DroughtResponseOperationsPlan-ApprovalMemo-508-DOI.pdf.
+determinations for 2023 and was accounted for “as if” this volume of water had been delivered to Lake Mead. The 24-Month Study will continue to model 2023 and
+2024 operations at lakes Powell and Mead as if the 0.480 maf had been delivered to Lake Mead for operating condition purposes both for the U.S. Lower Basin
+and for Mexico unless otherwise determined through additional consultation and communication as described below. The elevations listed in this report reflect the
+projected physical elevations at each reservoir after implementing operations as described.
+
+The WY 2023 unregulated inflow into Lake Powell in the January Probable Maximum inflow scenario is 14.927 maf, or 155% of average. The Probable Maximum
+24-Month Study includes a release volume from Glen Canyon Dam of 9.50 maf in WY 2023 and 7.48 maf in WY 2024. Under the Probable Maximum scenario,
+Lake Powell’s physical elevation is projected to be 3,580.99 feet on December 31, 2023. With intervening flows between Lake Powell and Lake Mead of 0.943
+maf in CY 2023, Lake Mead’s physical elevation is projected to be 1,056.89 feet on December 31, 2023.
+
+
+The draft 2023 AOP is available online at:
+https://www.usbr.gov/uc/water/rsvrs/ops/aop/AOP23_draft.pdf.
+The Interim Guidelines are available online at:
+https://www.usbr.gov/lc/region/programs/strategies/RecordofDecision.pdf.
+The Colorado River DCPs are available online at:
+https://www.usbr.gov/dcp/finaldocs.html.
+The 2021 Lower Basin MOU is available online at:
+https://www.usbr.gov/lc/region/g4000/2021_MOU.pdf.
+The Upper Basin DROA is online at:
+https://www.usbr.gov/dcp/droa.html.
+The Upper Basin Hydrology Summary is available online at:
+https://www.usbr.gov/uc/water/crsp/studies/24Month_01_ucb.pdf.
+                                              OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2023 24-Month Study
+                                                                                               Maximum Probable Inflow*
+                                                                                               Fontenelle Reservoir
+                     Regulated        Evap           Power         Bypass          Total       Reservoir Elev       Live
+                       Inflow        Losses         Release        Release        Release      End of Month       Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)        (1000 Ac-Ft)
+
+   *    Jan 2022        29              1             51              0              51            6483.90          180
+   H    Feb 2022        23              1             46              0              46            6479.63          157
+   I    Mar 2022        46              1             50              0              50            6478.63          151
+   S    Apr 2022        50              1             5              44              49            6478.74          152
+   T    May 2022        63              1             47              8              55            6479.96          158
+   O    Jun 2022        241             2             82              0              82            6503.59          315
+   R     Jul 2022       102             3             83             11              93            6504.34          321
+   I    Aug 2022        56              2             67              1              68            6502.43          306
+   C    Sep 2022        29              2             61              0              61            6498.08          274
+        WY 2022         744            15            617             67             685
+
+   A    Oct 2022        40              1             22             39              61            6494.58          249
+   L    Nov 2022        33              1             10             48              58            6490.90          224
+   *    Dec 2022        28              1             56              2              58            6486.14          194
+
+        Jan 2023        25              1             58              0              58            6480.22          160
+        Feb 2023        24              0             53              0              53            6474.22          130
+        Mar 2023        42              0             77              0              77            6465.40           95
+        Apr 2023        105             1             34             55              89            6469.45          110
+        May 2023        203             1             97             85             181            6474.29          131
+        Jun 2023        488             2            101             225            326            6500.35          291
+         Jul 2023       255             3            101             123            224            6504.09          319
+        Aug 2023        91              2             92              0              92            6503.64          316
+        Sep 2023        52              2             89              0              89            6498.41          277
+        WY 2023        1386            14            790             578            1368
+
+        Oct 2023        51              1             92              0              92            6492.39          234
+        Nov 2023        45              1             78              0              78            6487.20          200
+        Dec 2023        34              1             68              0              68            6481.39          166
+        Jan 2024        33              0             68              0              68            6474.32          131
+        Feb 2024        31              0             63              0              63            6466.27           98
+        Mar 2024        64              0             67              0              67            6465.32           95
+        Apr 2024        97              1             35              3              37            6479.12          154
+        May 2024        224             1            102             77             180            6486.68          197
+        Jun 2024        404             2            104             204            307            6500.40          291
+         Jul 2024       223             3            101             88             189            6504.55          323
+        Aug 2024        80              2             79              0              79            6504.37          321
+        Sep 2024        46              2             71              0              71            6500.78          294
+        WY 2024        1332            15            929             371            1300
+
+        Oct 2024        50              1             74              0              74            6497.38          269
+        Nov 2024        45              1             71              0              71            6493.53          242
+        Dec 2024        32              1             74              0              74            6487.09          200
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                   Model Run ID: 3215   Processed On: 1/17/2023 8:48:49AM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                     January 2023 24-Month Study
+                                                                                               Maximum Probable Inflow*
+                                                                                          Flaming Gorge Reservoir
+                       Unreg           Reg           Evap           Power         Bypass            Total          Bank        Reservoir Elev     Live         Jensen
+                       Inflow         Inflow        Losses         Release        Release          Release        Storage      End of Month     Storage         Flow
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)     (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)
+   *    Jan 2022        33             55              2             52               0               52            117          6017.75         2901             80
+   H    Feb 2022        30             54              2             47               0               47            117          6017.87         2905             70
+   I    Mar 2022        74             83              3             52               0               52            118          6018.65         2932            111
+   S    Apr 2022        66             62              5             51               0               51            118          6018.81         2938            179
+   T    May 2022        88             88              7             139             48              187            114          6015.77         2769            570
+   O    Jun 2022        274           113              9             110             12              121            113          6015.25         2752            465
+   R     Jul 2022       125           110             11             79               0               79            106          6016.09         2780            137
+   I    Aug 2022        58             70             11             105              0              105            104          6014.73         2735            124
+   C    Sep 2022        32             63              9             112              0              112            102          6013.01         2680            125
+        WY 2022         897           837             70             927             60              987                                                        2138
+
+   A    Oct 2022        41             65              6             111              0              111            100          6011.45         2630            142
+   L    Nov 2022        40             63              3             102              0              102             98          6010.19         2590            132
+   *    Dec 2022        26             57              2             107              0              107             96          6008.59         2540            267
+
+        Jan 2023        34             67              1             108              0              108             95          6007.27         2500            130
+        Feb 2023        35             64              2             98               0               98             93          6006.15         2465            120
+        Mar 2023        85            120              2             165              0              165             91          6004.66         2420            228
+        Apr 2023        182           166              4             159              0              159             92          6004.76         2423            478
+        May 2023        372           350              6             198              0              198             97          6009.35         2564           1050
+        Jun 2023        702           540              9             207              0              207            110          6018.97         2876            952
+         Jul 2023       314           283             12             74               0               74            117          6024.49         3065            207
+        Aug 2023        112           113             12             99               0               99            117          6024.55         3067            135
+        Sep 2023        62             99             10             114              0              114            116          6023.86         3043            134
+        WY 2023        2006           1989            69            1541              0              1541                                                       3975
+
+        Oct 2023        61            102              7             102              0              102            116          6023.67         3036            134
+        Nov 2023        55             88              3             101              0              101            116          6023.23         3021            132
+        Dec 2023        37             71              2             112              0              112            114          6022.04         2980            136
+        Jan 2024        45             80              2             113              0              113            113          6021.04         2946            138
+        Feb 2024        50             82              2             105              0              105            112          6020.36         2922            131
+        Mar 2024        120           123              3             61               0               61            114          6022.01         2979            144
+        Apr 2024        146            86              4             60               0               60            115          6022.63         3000            306
+        May 2024        318           274              7             265              0              265            115          6022.68         3002            884
+        Jun 2024        525           428             10             141              0              141            125          6030.10         3269            687
+         Jul 2024       270           236             14             69               0               69            131          6033.85         3416            204
+        Aug 2024        92             91             13             99               0               99            131          6033.34         3396            126
+        Sep 2024        56             81             12             97               0               97            129          6032.67         3370            119
+        WY 2024        1775           1743            78            1325              0              1325                                                       3141
+
+        Oct 2024        62             86              8             66               0               66            130          6032.97         3381            104
+        Nov 2024        55             81              4             64               0               64            130          6033.30         3394            101
+        Dec 2024        34             76              2             98               0               98            130          6032.71         3371            123
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                            Model Run ID: 3215                  Processed On: 1/17/2023 8:48:49AM
+                                              OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                     January 2023 24-Month Study
+                                                                                           Maximum Probable Inflow*
+                                                                                          Taylor Park Reservoir
+                     Regulated        Total       Reservoir Elev       Live
+                       Inflow        Release      End of Month       Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)        (1000 Ac-Ft)
+   *    Jan 2022         4              4             9302.29          58
+   H    Feb 2022         3              4             9301.88          58
+   I    Mar 2022         4              4             9301.56          57
+   S    Apr 2022         8              6             9302.92          59
+   T    May 2022        27              12            9312.55          74
+   O    Jun 2022        26              19            9316.61          81
+   R     Jul 2022       11              15            9314.18          77
+   I    Aug 2022         8              14            9310.35          70
+   C    Sep 2022         5              8             9308.87          68
+        WY 2022         110            100
+
+   A    Oct 2022         6              6             9308.80          68
+   L    Nov 2022         4              5             9308.13          67
+   *    Dec 2022         4              5             9307.68          66
+
+        Jan 2023         4              5             9306.89          65
+        Feb 2023         3              5             9305.70          63
+        Mar 2023         4              5             9304.89          62
+        Apr 2023        11              17            9300.67          56
+        May 2023        43              26            9311.97          73
+        Jun 2023        69              33            9331.40         109
+         Jul 2023       26              33            9327.94         102
+        Aug 2023        12              24            9321.70          90
+        Sep 2023         9              18            9316.70          81
+        WY 2023         195            182
+
+        Oct 2023         7              9             9315.55          79
+        Nov 2023         5              6             9314.99          78
+        Dec 2023         5              6             9314.32          77
+        Jan 2024         5              6             9313.63          76
+        Feb 2024         4              6             9312.70          74
+        Mar 2024         5              6             9312.00          73
+        Apr 2024        10              12            9310.77          71
+        May 2024        30              18            9317.87          83
+        Jun 2024        51              27            9330.44         107
+         Jul 2024       24              27            9328.96         104
+        Aug 2024        11              24            9322.26          91
+        Sep 2024         8              18            9316.73          81
+        WY 2024         165            165
+
+        Oct 2024         8              9             9316.16          80
+        Nov 2024         5              6             9315.61          79
+        Dec 2024         4              6             9314.35          77
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                          Model Run ID: 3215   Processed On: 1/17/2023 8:48:49AM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                      January 2023 24-Month Study
+                                                                                             Maximum Probable Inflow*
+                                                                                             Blue Mesa Reservoir
+                       UnReg        Regulated        Evap         Power         Bypass          Total       Reservoir Elev     Live
+                       Inflow         Inflow        Losses       Release        Release        Release      End of Month     Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)
+   *    Jan 2022         20            20                0           14              0             14          7435.60          236
+   H    Feb 2022         18            19                0           14              0             14          7436.57          241
+   I    Mar 2022         30            30                0           32              0             32          7436.17          239
+   S    Apr 2022         62            60                0           44              0             46          7438.94          252
+   T    May 2022        177            162               1           79              0             79          7454.56          335
+   O    Jun 2022        133            126               1           69              0             69          7463.76          391
+   R     Jul 2022        59            63                1           84              0             84          7460.15          368
+   I    Aug 2022         57            64                1           89              0             89          7455.69          341
+   C    Sep 2022         31            33                1           55             28             82          7446.72          292
+        WY 2022         661            652               6          566             28            595
+
+   A    Oct 2022         32            32                0            0             58             58          7441.74          266
+   L    Nov 2022         26            27                0            1             10             11          7444.87          282
+   *    Dec 2022         24            25                0            6             10             17          7446.44          290
+
+        Jan 2023         20            21                0           18              0             18          7447.08          294
+        Feb 2023         18            20                0           14              0             14          7448.05          299
+        Mar 2023         30            31                0           18              0             18          7450.36          311
+        Apr 2023         90            96                1           41              0             41          7459.78          366
+        May 2023        309            292               1           71              0             71          7491.10          586
+        Jun 2023        431            395               1          200            188            388          7491.82          592
+         Jul 2023       155            162               1           90              0             90          7500.57          663
+        Aug 2023         86            98                1           93              0             93          7501.08          667
+        Sep 2023         47            56                1           87              0             87          7497.16          635
+        WY 2023        1268           1255               8          638            267            905
+
+        Oct 2023         40            42                1           78              0             78          7492.59          598
+        Nov 2023         31            32                0           34              0             34          7492.28          596
+        Dec 2023         26            27                0           71              0             71          7486.64          552
+        Jan 2024         25            26                0           53              0             53          7483.01          524
+        Feb 2024         23            25                0           32              0             32          7481.92          516
+        Mar 2024         41            42                0           36              0             36          7482.72          522
+        Apr 2024         93            95                1           42              0             42          7489.61          575
+        May 2024        247            235               1           97              0             97          7506.35          712
+        Jun 2024        335            311               1          206             59            264          7511.53          757
+         Jul 2024       140            143               2          120              0            120          7513.90          778
+        Aug 2024         69            82                1          110              0            110          7510.61          749
+        Sep 2024         41            51                1          108              0            108          7503.86          691
+        WY 2024        1111           1111               9          988             59            1047
+
+        Oct 2024         40            41                1           90              0             90          7497.87          641
+        Nov 2024         33            34                0           35              0             35          7497.70          639
+        Dec 2024         26            28                0          112              0            112          7487.07          555
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                          Model Run ID: 3215   Processed On: 1/17/2023 8:48:49AM
+                                               OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                            January 2023 24-Month Study
+                                                                                                 Maximum Probable Inflow*
+                                                                                                Morrow Point Reservoir
+                        Unreg        Blue Mesa         Side           Total         Power          Bypass          Total       Reservoir Elev         Live
+                        Inflow        Release         Inflow         Inflow        Release         Release        Release      End of Month         Storage
+          Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)    (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)          (1000 Ac-Ft)
+    *    Jan 2022        21              14             1             15              16             0              16             7144.25           105
+    H    Feb 2022        19              14             1             15              14             0              14             7145.30           105
+    I    Mar 2022        31              32             2             33              30             0              30             7149.87           109
+    S    Apr 2022        65              46             3             50              47             0              47             7153.31           112
+    T    May 2022        186             79             9             88              89             0              89             7152.08           111
+    O    Jun 2022        134             69             1             70              71             0              71             7150.86           110
+    R     Jul 2022       60              84             1             85              84             0              84             7152.31           111
+    I    Aug 2022        58              89             1             90              90             0              90             7152.25           111
+    C    Sep 2022        31              82             1             83              78             0              78             7157.81           115
+         WY 2022         685            595            24             619             614            0             614
+
+    A    Oct 2022        33              58             1             59              60             0              60             7156.10           114
+    L    Nov 2022        27              11             1             12              21             0              21             7143.98           104
+    *    Dec 2022        26              17             2             18              20             0              20             7141.82           103
+
+         Jan 2023        22              18             2             20              11             0              11             7153.73           112
+         Feb 2023        20              14             2             16              16             0              16             7153.73           112
+         Mar 2023        33              18             3             21              21             0              21             7153.73           112
+         Apr 2023        104             41            14             55              55             0              55             7153.73           112
+         May 2023        332             71            23             94              94             0              94             7153.73           112
+         Jun 2023        457            388            26             414             296           118            414             7153.72           112
+          Jul 2023       157             90             2             92              92             0              92             7153.73           112
+         Aug 2023        86              93             0             93              92             0              92             7153.73           112
+         Sep 2023        48              87             1             88              88             0              88             7153.73           112
+         WY 2023        1345            905            76             981             866           118            984
+
+         Oct 2023        42              78             2             80              80             0              80             7153.73           112
+         Nov 2023        33              34             2             36              36             0              36             7153.73           112
+         Dec 2023        28              71             2             73              73             0              73             7153.73           112
+         Jan 2024        26              53             1             54              54             0              54             7153.73           112
+         Feb 2024        25              32             2             34              34             0              34             7153.73           112
+         Mar 2024        43              36             2             38              38             0              38             7153.73           112
+         Apr 2024        105             42            12             54              54             0              54             7153.73           112
+         May 2024        274             97            27             124             124            0             124             7153.73           112
+         Jun 2024        358            264            23             287             287            0             287             7153.72           112
+          Jul 2024       147            120             7             127             127            0             127             7153.73           112
+         Aug 2024        71             110             2             112             112            0             112             7153.73           112
+         Sep 2024        43             108             2             110             110            0             110             7153.73           112
+         WY 2024        1195            1047           84            1131            1130            0             1130
+
+         Oct 2024        42              90             2             92              92             0              92             7153.73           112
+         Nov 2024        34              35             1             36              36             0              36             7153.73           112
+         Dec 2024        27             112             1             113             113            0             113             7153.73           112
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                                 Model Run ID: 3215   Processed On: 1/17/2023 8:48:49AM
+                                              OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                     January 2023 24-Month Study
+                                                                                               Maximum Probable Inflow*
+                                                                                                Crystal Reservoir
+                       Unreg         Morrow           Side           Total         Power           Bypass          Total       Reservoir Elev     Live             Tunnel      Below Tunnel
+                       Inflow        Release         Inflow         Inflow        Release          Release        Release      End of Month     Storage             Flow           Flow
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)     (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)      (1000 Ac-Ft)    (1000 Ac-Ft)
+   *    Jan 2022        25              16            4               21             20               0              21          6750.38            16               1              18
+   H    Feb 2022        22              14            3               17             18               0              18          6746.37            15               0              17
+   I    Mar 2022        36              30            4               34             32               1              32          6752.56            17               6              25
+   S    Apr 2022        73              47            8               54             54               1              54          6752.33            17              31              24
+   T    May 2022        203             89           17              105             92               13            106          6751.40            16              59              48
+   O    Jun 2022        145             71           10               82             80               2              81          6752.67            17              62              21
+   R     Jul 2022       64              84            5               89             90               0              90          6747.68            15              65              28
+   I    Aug 2022        62              90            4               94             92               0              93          6751.52            17              66              31
+   C    Sep 2022        33              78            2               80             69               12             80          6750.17            16              62              22
+        WY 2022         755            614            70             684            622               62            684                                             393             295
+
+   A    Oct 2022        36              60            3               63             53               10             63          6751.29            16              41              21
+   L    Nov 2022        29              21            2               23             21               2              23          6752.92            17               0              21
+   *    Dec 2022        28              20            2               22             22               0              22          6751.64            17               2              21
+
+        Jan 2023        25              11            3               14             13               0              13          6753.04            17               0              13
+        Feb 2023        23              16            3               19             17               3              19          6753.04            17               0              19
+        Mar 2023        38              21            5               26             26               0              26          6753.04            17               5              21
+        Apr 2023        119             55           15               70             70               0              70          6753.04            17              42              28
+        May 2023        382             94           50              144            134               9             144          6753.04            17              62              82
+        Jun 2023        501            414           44              458            130              328            458          6753.03            17              61              397
+         Jul 2023       167             92           10              102            101               0             101          6753.04            17              65              36
+        Aug 2023        95              92            9              101            101               0             101          6753.04            17              65              36
+        Sep 2023        55              88            7               95             95               0              95          6753.04            17              55              40
+        WY 2023        1498            984           153            1137            785              351           1136                                             398             737
+
+        Oct 2023        48              80            6               86             52               34             86          6753.04            17              55              31
+        Nov 2023        38              36            5               41             41               0              41          6753.04            17               0              41
+        Dec 2023        32              73            4               77             77               0              77          6753.04            17               0              77
+        Jan 2024        30              54            4               58             58               0              58          6753.04            17               0              58
+        Feb 2024        28              34            3               37             37               0              37          6753.04            17               0              37
+        Mar 2024        50              38            7               45             45               0              45          6753.04            17               5              40
+        Apr 2024        117             54           12               66             66               0              66          6753.04            17              42              24
+        May 2024        308            124           34              158            134               23            158          6753.04            17              62              96
+        Jun 2024        398            287           40              327            130              197            327          6753.03            17              61              266
+         Jul 2024       163            127           16              143            134               9             143          6753.04            17              65              78
+        Aug 2024        79             112            8              120            120               0             120          6753.04            17              65              55
+        Sep 2024        49             110            6              116            116               0             116          6753.04            17              55              61
+        WY 2024        1340            1130          145            1275            1011             264           1274                                             410             864
+
+        Oct 2024        48              92            6               98             56               42             98          6753.04            17              55              43
+        Nov 2024        39              36            5               41             41               0              41          6753.04            17               0              41
+        Dec 2024        32             113            5              118            118               0             118          6753.04            17               0              118
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                               Model Run ID: 3215                      Processed On: 1/17/2023 8:48:49AM
+                                              OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                     January 2023 24-Month Study
+                                                                                           Maximum Probable Inflow*
+                                                                                               Vallecito Reservoir
+                     Regulated        Total       Reservoir Elev       Live
+                       Inflow        Release      End of Month       Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)        (1000 Ac-Ft)
+   *    Jan 2022         4              0             7626.39          39
+   H    Feb 2022         3              0             7628.13          42
+   I    Mar 2022         7              0             7631.90          48
+   S    Apr 2022        27              2             7644.01          73
+   T    May 2022        53              33            7652.10          92
+   O    Jun 2022        26              34            7648.50          83
+   R     Jul 2022       19              32            7642.57          70
+   I    Aug 2022        18              28            7637.64          59
+   C    Sep 2022        12              26            7630.15          45
+        WY 2022         185            160
+
+   A    Oct 2022        14              3             7635.84          56
+   L    Nov 2022         7              0             7639.00          62
+   *    Dec 2022         5              0             7641.15          67
+
+        Jan 2023         5              2             7642.57          70
+        Feb 2023         5              2             7644.03          73
+        Mar 2023        11              2             7647.93          82
+        Apr 2023        29              2             7658.79         109
+        May 2023        78              75            7659.62         111
+        Jun 2023        93              78            7665.15         126
+         Jul 2023       40              46            7662.78         120
+        Aug 2023        24              38            7657.31         105
+        Sep 2023        22              30            7654.16          97
+        WY 2023         333            277
+
+        Oct 2023        17              17            7653.99          97
+        Nov 2023         9              5             7655.37         100
+        Dec 2023         6              6             7655.52         101
+        Jan 2024         6              6             7655.64         101
+        Feb 2024         5              5             7655.64         101
+        Mar 2024        11              2             7659.13         110
+        Apr 2024        28              11            7665.51         127
+        May 2024        78              80            7664.58         124
+        Jun 2024        84              81            7665.45         127
+         Jul 2024       33              43            7661.61         117
+        Aug 2024        20              38            7654.56          98
+        Sep 2024        19              29            7650.25          88
+        WY 2024         316            322
+
+        Oct 2024        15              16            7649.55          86
+        Nov 2024        10              2             7652.67          94
+        Dec 2024         7              2             7654.49          98
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                          Model Run ID: 3215   Processed On: 1/17/2023 8:48:49AM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                         January 2023 24-Month Study
+                                                                                             Maximum Probable Inflow*
+                                                                                               Navajo Reservoir
+                     Mod Unreg        Azotea          Reg         Evap            NIIP          Total       Reservoir Elev     Live         Farmington
+                       Inflow       Tunnel Div       Inflow      Losses        Diversion       Release      End of Month     Storage           Flow
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)     (1000 Ac-Ft)
+   *    Jan 2022         14             0              10             0             0            22           6019.21           859              38
+   H    Feb 2022         14             0              11             1             1            20           6018.00           848              33
+   I    Mar 2022         41             2              32             1             4            22           6018.57           853              38
+   S    Apr 2022         123           17              84             2             17           20           6023.53           898              44
+   T    May 2022         167           30              114            3             38           18           6029.39           954             104
+   O    Jun 2022         47             7              50             3             37           24           6027.89           939              61
+   R     Jul 2022        44             5              54             3             39           35           6025.41           916              55
+   I    Aug 2022         53             5              56             3             38           30           6023.95           902              49
+   C    Sep 2022         22             1              35             2             23           40           6020.65           872              56
+        WY 2022          574            66             484           20            200           296                                            595
+
+   A    Oct 2022         44             2              32             1             5            33           6019.84           865              51
+   L    Nov 2022         23             0              16             1             0            19           6019.52           862              37
+   *    Dec 2022         17             0              13             0             0            22           6018.45           852              37
+
+        Jan 2023         23             0              20             0             0            19           6018.49           853              31
+        Feb 2023         35             2              30             1             0            17           6019.91           865              29
+        Mar 2023         100           11              80             1             5            18           6025.90           920              45
+        Apr 2023         215           29              159            2             19           18           6038.03          1040              84
+        May 2023         345           47              295            3             33           136          6049.31          1163             308
+        Jun 2023         339           47              277            4             48           239          6048.10          1149             452
+         Jul 2023        111           13              104            4             52           20           6050.50          1177             124
+        Aug 2023         67             6              75             3             44           25           6050.68          1179              74
+        Sep 2023         61             5              63             3             24           24           6051.79          1192              62
+        WY 2023         1381           163            1162           23            231           588                                            1332
+
+        Oct 2023         47             3              44             2             9            18           6053.02          1207              48
+        Nov 2023         31             1              26             1             0            18           6053.66          1214              36
+        Dec 2023         23             0              22             1             0            18           6053.93          1218              33
+        Jan 2024         21             0              21             1             0            22           6053.80          1216              35
+        Feb 2024         31             1              30             1             0            20           6054.52          1225              32
+        Mar 2024         102           12              81             2             6            22           6058.78          1277              48
+        Apr 2024         185           24              143            3             21           21           6066.39          1376              82
+        May 2024         307           42              267            4             36           239          6065.52          1364             397
+        Jun 2024         272           37              232            4             52           290          6056.64          1250             476
+         Jul 2024        71             7              74             4             55           55           6053.32          1210             134
+        Aug 2024         48             3              62             3             46           26           6052.21          1197              65
+        Sep 2024         48             3              55             3             25           24           6052.51          1201              57
+        WY 2024         1186           135            1057           27            250           772                                            1442
+
+        Oct 2024         48             2              48             2             9            24           6053.69          1215              51
+        Nov 2024         35             1              26             1             0            21           6054.08          1219              41
+        Dec 2024         24             0              19             1             0            22           6053.84          1216              37
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                              Model Run ID: 3215   Processed On: 1/17/2023 8:48:49AM
+                                              OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                         January 2023 24-Month Study
+                                                                                               Maximum Probable Inflow*
+                                                                                                    Lake Powell
+                       Unreg        Regulated        Evap        PowerPlant       Bypass          Total     Reservoir Elev    Bank           EOM             Lees
+                       Inflow         Inflow        Losses         Release        Release        Release    End of Month     Storage        Storage       Ferry Gage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)      (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)
+   *    Jan 2022        249            269             4             673             0            673         3531.52          4561           6335             681
+   H    Feb 2022        215            235             4             540             0            540         3526.97          4538           6048             556
+   I    Mar 2022        329            327             7             574             0            574         3523.13          4519           5812             584
+   S    Apr 2022        594            490            12             502             0            502         3522.77          4517           5791             510
+   T    May 2022       1382            1212           14             598             0            598         3531.69          4561           6346             599
+   O    Jun 2022       1284            1198           25             598             0            598         3539.81          4604           6878             595
+   R     Jul 2022       491            463            28             672             0            672         3536.20          4551           6212             672
+   I    Aug 2022        368            444            27             713             0            713         3531.69          4529           5938             722
+   C    Sep 2022        245            420            24             547             0            547         3529.33          4517           5797             562
+        WY 2022        6084            6107           203           6999             0            6999                                                         7066
+
+   A    Oct 2022        437            535            17             480             0            480         3529.92          4520           5832             494
+   L    Nov 2022        349            394            17             498             0            498         3528.02          4511           5720             507
+   *    Dec 2022        281            358            13             550             0            550         3524.75          4496           5531             559
+
+        Jan 2023        280            338             3             980             0            980         3514.01          4448           4933             998
+        Feb 2023        300            343             3             870             0            870         3504.56          4409           4442             892
+        Mar 2023        480            482             5             698             0            698         3500.45          4393           4238             726
+        Apr 2023       1377            1156            8             893             0            893         3505.20          4412           4474             909
+        May 2023       3614            3073           12             921             0            921         3540.10          4570           6455             934
+        Jun 2023       4819            4275           28             850             0            850         3583.79          4822           9601             859
+         Jul 2023      1721            1389           41             960             0            960         3588.14          4850           9960             974
+        Aug 2023        752            754            41            1030             0            1030        3584.60          4827           9666             1043
+        Sep 2023        516            600            38             770             0            770         3582.24          4812           9475             782
+        WY 2023        14927          13698           227           9500             0            9500                                                         9677
+
+        Oct 2023        516            580            26             480             0            480         3583.08          4817           9543             495
+        Nov 2023        456            493            25             500             0            500         3582.72          4815           9513             512
+        Dec 2023        354            469            20             600             0            600         3580.99          4804           9373             611
+        Jan 2024        364            462             6             723             0            723         3577.88          4784           9126             740
+        Feb 2024        398            453             6             639             0            639         3575.60          4769           8947             660
+        Mar 2024        660            533            11             675             0            675         3573.78          4758           8806             701
+        Apr 2024       1106            850            17             601             0            601         3576.54          4775           9020             616
+        May 2024       2555            2361           22             599             0            599         3595.96          4904          10631             606
+        Jun 2024       3265            2917           41             628             0            628         3618.07          5071          12713             633
+         Jul 2024      1366            1190           55             709             0            709         3621.89          5102          13107             723
+        Aug 2024        520            595            56             758             0            758         3619.95          5086          12905             771
+        Sep 2024        427            539            51             568             0            568         3619.23          5080          12831             580
+        WY 2024        11987          11442           337           7480             0            7480                                                         7647
+
+        Oct 2024        515            555            35             643             0            643         3618.11          5071          12717             656
+        Nov 2024        503            501            33             642             0            642         3616.51          5058          12556             643
+        Dec 2024        361            509            26             715             0            715         3614.35          5041          12341             717
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                              Model Run ID: 3215            Processed On: 1/17/2023 8:48:49AM
+                                              OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2023 24-Month Study
+                                                                                             Maximum Probable Inflow*
+                                                                                           Hoover Dam - Lake Mead
+                        Glen         Side Inflow     Evap         Total          Total          SNWP        Downstream       Bank          Reservoir Elev        EOM
+                      Release      Glen to Hoover   Losses       Release        Release          Use        Requirements    Storage        End of Month         Storage
+         Date       (1000 Ac-Ft)    (1000 Ac-Ft)  (1000 Ac-Ft) (1000 Ac-Ft)   (1000 CFS)     (1000 Ac-Ft)    (1000 Ac-Ft) (1000 Ac-Ft)          (Ft)          (1000 Ac-Ft)
+   *    Jan 2022         673             60           25           640          10.4              11            639            583             1067.09           8970
+   H    Feb 2022         540             58           23           590          10.6              10            590            581             1066.78           8946
+   I    Mar 2022         574             41           25           1010         16.4              17           1009            555             1061.49           8536
+   S    Apr 2022         502             30           33           1027         17.3              17           1026            522             1054.69           8026
+   T    May 2022         598             8            40           1083         17.6              25           1075            489             1047.69           7517
+   O    Jun 2022         598             16           47           889          14.9              29            877            467             1043.02           7187
+   R     Jul 2022        672             70           45           822          13.4              31            814            458             1040.92           7041
+   I    Aug 2022         713            183           48           573           9.3              25            567            473             1044.28           7275
+   C    Sep 2022         547            118           48           539           9.1              22            545            476             1045.03           7328
+        WY 2022         6999            771           463          8899                           223           8888
+
+   A    Oct 2022         480             94           46           418           6.8              16            434            482             1046.28           7417
+   L    Nov 2022         498             18           40           713          12.0               9            714            467             1043.02           7187
+   *    Dec 2022         550             63           32           438           7.1               8            439            475             1044.82           7313
+
+        Jan 2023         980             96           23           458           7.5               7            458            511             1052.52           7866
+        Feb 2023         870            115           22           537           9.7               3            537            537             1057.89           8264
+        Mar 2023         698            149           24           961          15.6              13            961            528             1055.99           8122
+        Apr 2023         893             88           32           1074         18.0              20           1074            519             1054.15           7985
+        May 2023         921             68           40           1049         17.1              26           1049            511             1052.54           7867
+        Jun 2023         850             45           49           949          15.9              31            949            503             1050.81           7742
+         Jul 2023        960             74           47           834          13.6              31            834            511             1052.40           7857
+        Aug 2023        1030             67           51           787          12.8              31            787            525             1055.31           8071
+        Sep 2023         770             65           50           705          11.8              23            705            528             1056.02           8125
+        WY 2023         9500            943           455          8922                           218           8940
+
+        Oct 2023         480             80           48           539           8.8              15            539            526             1055.51           8086
+        Nov 2023         500             64           42           548           9.2               7            548            524             1055.09           8055
+        Dec 2023         600             59           34           449           7.3               7            449            534             1057.23           8214
+        Jan 2024         723             91           24           588           9.6              10            588            546             1059.62           8395
+        Feb 2024         639            109           22           563           9.8               7            563            555             1061.55           8541
+        Mar 2024         675            135           24           904          14.7              13            904            547             1059.94           8418
+        Apr 2024         601             79           32           1034         17.4              14           1034            523             1054.91           8042
+        May 2024         599             36           40           1011         16.4              18           1011            496             1049.32           7634
+        Jun 2024         628             26           48           908          15.3              26            908            476             1045.00           7326
+         Jul 2024        709             73           45           792          12.9              29            792            471             1043.87           7247
+        Aug 2024         758             69           49           764          12.4              31            764            470             1043.66           7232
+        Sep 2024         568             61           47           681          11.4              27            681            462             1041.96           7113
+        WY 2024         7480            881           455          8779                           204           8779
+
+        Oct 2024         643             69           45           498           8.1              22            498            471             1043.94           7252
+        Nov 2024         642             68           40           593          10.0              12            593            475             1044.81           7313
+        Dec 2024         715             69           33           531           8.6               8            531            488             1047.62           7512
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                             Model Run ID: 3215                  Processed On: 1/17/2023 8:48:49AM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                        January 2023 24-Month Study
+                                                                                             Maximum Probable Inflow*
+                                                                                         Davis Dam - Lake Mohave
+                      Hoover           Side          Evap         Power           Spill         Total          Total   Reservoir Elev       EOM
+                      Release         Inflow        Losses       Release        Release        Release        Release  End of Month        Storage
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft) (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 CFS)      (Ft)         (1000 Ac-Ft)
+   *    Jan 2022         640           -20            9           523               0            523           8.5         641.60           1661
+   H    Feb 2022         590           -26            8           555               0            555           10.0        641.69           1663
+   I    Mar 2022        1010           -38           10           931               0            931           15.1        642.79           1693
+   S    Apr 2022        1027           -31           13           975               0            975           16.4        643.08           1701
+   T    May 2022        1083           -20           14           1041              0           1041           16.9        643.35           1708
+   O    Jun 2022         889           -30           14           842               0            842           14.1        643.47           1712
+   R     Jul 2022        822           -26           12           770               0            770           12.5        643.97           1725
+   I    Aug 2022         573           -13           16           575               0            575           9.3         642.87           1695
+   C    Sep 2022         539           -6            16           617               0            617           10.4        639.17           1595
+        WY 2022         8899          -228           151          8495              0           8495
+
+   A    Oct 2022         418           -2            14           540               0            542           8.8         633.78           1454
+   L    Nov 2022         713           -15           13           516               0            516           8.7         640.22           1623
+   *    Dec 2022         438            4            13           436               0            436           7.1         639.97           1617
+
+        Jan 2023         458           -12            9           388               0            388           6.3         641.80           1666
+        Feb 2023         537           -11            8           513               0            513           9.2         642.00           1671
+        Mar 2023         961           -9            10           913               0            913           14.9        643.05           1700
+        Apr 2023        1074           -13           13           1050              0           1050           17.6        643.00           1699
+        May 2023        1049           -13           14           1022              0           1022           16.6        643.00           1699
+        Jun 2023         949           -18           14           917               0            917           15.4        643.00           1699
+         Jul 2023        834           -19           12           829               0            829           13.5        642.00           1671
+        Aug 2023         787           -17           15           754               0            754           12.3        642.00           1671
+        Sep 2023         705           -8            16           735               0            735           12.3        640.01           1617
+        WY 2023         8922          -133           151          8613              0           8615
+
+        Oct 2023         539           -11           14           697               0            697           11.3        633.00           1434
+        Nov 2023         548           -16           13           468               0            468           7.9         635.00           1486
+        Dec 2023         449           -5            13           313               0            313           5.1         639.51           1604
+        Jan 2024         588           -12            9           505               0            505           8.2         641.80           1666
+        Feb 2024         563           -11            8           544               0            544           9.5         641.80           1666
+        Mar 2024         904           -9            10           851               0            851           13.8        643.05           1700
+        Apr 2024        1034           -13           13           1011              0           1011           17.0        643.00           1699
+        May 2024        1011           -13           14           984               0            984           16.0        643.00           1699
+        Jun 2024         908           -18           14           876               0            876           14.7        643.00           1699
+         Jul 2024        792           -19           12           788               0            788           12.8        642.00           1671
+        Aug 2024         764           -17           15           731               0            731           11.9        642.00           1671
+        Sep 2024         681           -8            16           711               0            711           11.9        640.01           1617
+        WY 2024         8779          -151           151          8476              0           8476
+
+        Oct 2024         498           -11           14           656               0            656           10.7        633.00           1434
+        Nov 2024         593           -16           13           513               0            513           8.6         635.00           1486
+        Dec 2024         531           -5            13           395               0            395           6.4         639.51           1604
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                            Model Run ID: 3215   Processed On: 1/17/2023 8:48:49AM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                     January 2023 24-Month Study
+                                                                                             Maximum Probable Inflow*
+                                                                                       Parker Dam - Lake Havasu
+                       Davis           Side          Evap           Total          Total          MWD             CAP        Reservoir Elev    EOM             Flow To        Flow To
+                      Release         Inflow        Losses         Release        Release       Diversion      Diversion     End of Month     Storage          Mexico         Mexico
+         Date       (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 Ac-Ft)   (1000 CFS)     (1000 Ac-Ft)   (1000 Ac-Ft)        (Ft)      (1000 Ac-Ft)     (1000 Ac-Ft)   (1000 CFS)
+   *    Jan 2022        523            -3              6            342             5.6             96             89          446.38            550             114           1.9
+   H    Feb 2022        555            12              8            445             8.0             4             103          446.44            551             127           2.3
+   I    Mar 2022        931             2              9            658            10.7             97            133          448.02            580             170           2.8
+   S    Apr 2022        975             6             11            737            12.4            100            141          447.11            563             161           2.7
+   T    May 2022       1041             8             13            741            12.0            106            150          448.68            593             145           2.4
+   O    Jun 2022        842            18             15            679            11.4            103             60          448.30            586             154           2.6
+   R     Jul 2022       770            31             17            639            10.4            106             19          448.84            596             150           2.4
+   I    Aug 2022        575            40             17            482             7.8            106             16          448.16            583             120           2.0
+   C    Sep 2022        617            15             15            458             7.7            103             52          447.96            579             108           1.8
+        WY 2022        8495           176            140           6231                            1117          1112                                           1499
+
+   A    Oct 2022        542            26             12            393             6.4            106             66          447.14            564             67            1.1
+   L    Nov 2022        516             3              9            336             5.6            103             67          447.09            563             89            1.5
+   *    Dec 2022        436            12              7            277             4.5            101             63          447.06            562             87            1.4
+
+        Jan 2023        388            14              6            269             4.4             70             61          446.50            552             115           1.9
+        Feb 2023        513             5              8            420             7.6             11             62          447.00            561             130           2.3
+        Mar 2023        913             4              9            642            10.4             99            165          446.70            555             168           2.7
+        Apr 2023       1050             8             11            737            12.4             96            165          448.70            593             156           2.6
+        May 2023       1022             6             13            740            12.0             99            164          448.70            593             121           2.0
+        Jun 2023        917             7             16            733            12.3             96             67          448.70            593             128           2.1
+         Jul 2023       829            14             17            709            11.5             99             20          448.00            580             130           2.1
+        Aug 2023        754            13             17            630            10.2             99             20          447.50            571             103           1.7
+        Sep 2023        735            12             15            540             9.1             96             86          447.50            570             96            1.6
+        WY 2023        8615           124            139           6425                            1077          1006                                           1388
+
+        Oct 2023        697            18             12            470             7.6             99            125          447.50            571             68            1.1
+        Nov 2023        468            17              9            356             6.0             61             53          447.50            571             84            1.4
+        Dec 2023        313            18              7            253             4.1             64             21          446.50            552             84            1.4
+        Jan 2024        505            14              6            310             5.0             83            114          446.50            552             138           2.2
+        Feb 2024        544             5              8            408             7.1             4             123          446.50            552             124           2.2
+        Mar 2024        851             4              9            611             9.9             85            137          446.70            555             147           2.4
+        Apr 2024       1011             8             11            722            12.1             86            151          448.70            593             147           2.5
+        May 2024        984             6             13            726            11.8             81            158          448.70            593             110           1.8
+        Jun 2024        876             7             16            720            12.1             79             56          448.70            593             116           2.0
+         Jul 2024       788            14             17            687            11.2             81             19          448.00            580             123           2.0
+        Aug 2024        731            13             17            626            10.2             81             19          447.50            571             102           1.7
+        Sep 2024        711            12             15            535             9.0             79             84          447.50            570             99            1.7
+        WY 2024        8476           135            139           6424                            882           1058                                           1343
+
+        Oct 2024        656            18             12            486             7.9             81             86          447.50            571             89            1.4
+        Nov 2024        513            17              9            376             6.3             79             60          447.50            571             115           1.9
+        Dec 2024        395            18              7            270             4.4             81             68          446.50            552             110           1.8
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                            Model Run ID: 3215                     Processed On: 1/17/2023 8:48:49AM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                        January 2023 24-Month Study
+                                                                                               Maximum Probable Inflow*
+                                                                                         Hoover Dam - Lake Mead
+                       Power          Power     Reservoir Elev    EOM          Change In       Hoover      Hoover Gen      Hoover       Percent of
+                      Release        Release    End of Month     Storage        Storage      Static Head    Capacity    Gross Energy      Units
+         Date       (1000 Ac-Ft)   (1000 CFS)        (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)       (Ft)         MW           MKWH         Available        KWH/AF
+   *    Jan 2022         640          10.4         1067.09        8970            55           420.00        993.0         236.8            67           370.2
+   H    Feb 2022         590          10.6         1066.78        8946           -24           420.26        994.0         220.4            67           373.2
+   I    Mar 2022        1010          16.4         1061.49        8536           -409          413.69        898.0         375.9            62           372.3
+   S    Apr 2022        1027          17.3         1054.69        8026           -511          405.75        863.0         380.5            61           370.4
+   T    May 2022        1083          17.6         1047.69        7517           -509          397.38       1082.0         391.7            80           361.7
+   O    Jun 2022         889          14.9         1043.02        7187           -330          396.77       1076.9         315.1            81           354.6
+   R     Jul 2022        822          13.4         1040.92        7041           -146          392.29       1236.6         287.9            94           350.1
+   I    Aug 2022         573          9.3          1044.28        7275           234           399.70       1224.8         200.6            94           349.9
+   C    Sep 2022         539          9.1          1045.03        7328            53           400.65       1157.3         188.5            88           349.7
+        WY 2022         8899                                                                                               3240.9
+
+   A    Oct 2022         418          6.8          1046.28        7417            88           402.36        924.5         145.8            70           348.8
+   L    Nov 2022         713          12.0         1043.02        7187           -230          395.39        948.8         254.6            72           357.1
+   *    Dec 2022         438          7.1          1044.82        7313           126           403.20        975.8         152.9            72           348.9
+
+        Jan 2023         458          7.5          1052.52        7866           553           400.59        866.8         165.0            64           360.0
+        Feb 2023         537          9.7          1057.89        8264           398           406.20        895.3         195.5            66           364.3
+        Mar 2023         961          15.6         1055.99        8122           -142          407.53        877.5         360.4            66           375.0
+        Apr 2023        1074          18.0         1054.15        7985           -137          405.44        856.1         403.6            65           375.9
+        May 2023        1049          17.1         1052.54        7867           -118          403.01        938.5         385.5            72           367.5
+        Jun 2023         949          15.9         1050.81        7742           -126          400.74       1004.7         346.6            78           365.2
+         Jul 2023        834          13.6         1052.40        7857           115           399.39       1215.6         301.7            94           361.8
+        Aug 2023         787          12.8         1055.31        8071           215           401.28       1323.8         284.0           100           360.9
+        Sep 2023         705          11.8         1056.02        8125            53           403.72       1330.1         253.9           100           360.3
+        WY 2023         8922                                                                                               3249.5
+
+        Oct 2023         539          8.8          1055.51        8086           -38           409.33        917.5         195.0            69           362.1
+        Nov 2023         548          9.2          1055.09        8055           -31           411.18        911.4         200.5            69           366.1
+        Dec 2023         449          7.3          1057.23        8214           159           409.91        924.2         164.5            69           366.5
+        Jan 2024         588          9.6          1059.62        8395           180           409.83        951.9         215.5            70           366.5
+        Feb 2024         563          9.8          1061.55        8541           147           411.22        963.0         207.5            70           368.7
+        Mar 2024         904          14.7         1059.94        8418           -123          409.23       1177.4         332.8            87           368.3
+        Apr 2024        1034          17.4         1054.91        8042           -377          405.51       1144.3         379.1            87           366.5
+        May 2024        1011          16.4         1049.32        7634           -408          400.24       1108.0         362.2            87           358.3
+        Jun 2024         908          15.3         1045.00        7326           -308          395.96       1004.5         324.8            81           357.7
+         Jul 2024        792          12.9         1043.87        7247           -79           391.64       1228.9         278.4           100           351.5
+        Aug 2024         764          12.4         1043.66        7232           -15           391.30       1227.1         267.2           100           349.9
+        Sep 2024         681          11.4         1041.96        7113           -119          391.00       1212.6         235.9           100           346.6
+        WY 2024         8779                                                                                               3163.4
+
+        Oct 2024         498          8.1          1043.94        7252           139           395.70        957.7         177.7            78           356.9
+        Nov 2024         593          10.0         1044.81        7313            61           399.82        913.4         212.6            74           358.4
+        Dec 2024         531          8.6          1047.62        7512           199           398.23       1088.2         185.5            86           349.5
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                        Model Run ID: 3215            Processed On: 1/17/2023 8:48:49AM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                        January 2023 24-Month Study
+                                                                                             Maximum Probable Inflow*
+                                                                                         Davis Dam - Lake Mohave
+                       Power          Power     Reservoir Elev    EOM          Change In        Davis      Davis Gen      Davis        Percent of
+                      Release        Release    End of Month     Storage        Storage      Static Head    Capacity   Gross Energy      Units
+         Date       (1000 Ac-Ft)   (1000 CFS)        (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)       (Ft)         MW          MKWH         Available        KWH/AF
+   *    Jan 2022         523          8.5            641.60       1661            88           139.02       159.6          64.6            63           123.6
+   H    Feb 2022         555          10.0           641.69       1663             2           140.45       174.9          72.1            69           130.0
+   I    Mar 2022         931          15.1           642.79       1693            30           140.26       253.3         118.7            99           127.4
+   S    Apr 2022         975          16.4           643.08       1701             8           137.93       255.0         124.0           100           127.1
+   T    May 2022        1041          16.9           643.35       1708             7           140.42       241.8         132.1            95           126.9
+   O    Jun 2022         842          14.1           643.47       1712             3           139.18       251.6         108.5            99           128.9
+   R     Jul 2022        770          12.5           643.97       1725            14           144.37       255.0          99.3           100           129.1
+   I    Aug 2022         575          9.3            642.87       1695           -30           141.93       253.3          74.7            99           129.9
+   C    Sep 2022         617          10.4           639.17       1595           -100          137.50       248.2          78.5            97           127.3
+        WY 2022         8495                                                                                              1074.5
+
+   A    Oct 2022         540          8.8            633.78       1454           -141          134.35       185.9          66.9            73           123.8
+   L    Nov 2022         516          8.7            640.22       1623           169           141.13       154.7          62.5            61           121.1
+   *    Dec 2022         436          7.1            639.97       1617            -7           140.89       159.6          53.9            63           123.5
+
+        Jan 2023         388          6.3            641.80       1666            50           140.66       157.9          49.2            62           126.7
+        Feb 2023         513          9.2            642.00       1671             5           140.36       193.1          64.8            76           126.5
+        Mar 2023         913          14.9           643.05       1700            29           138.83       255.0         114.3           100           125.1
+        Apr 2023        1050          17.6           643.00       1699            -2           138.39       255.0         130.9           100           124.7
+        May 2023        1022          16.6           643.00       1699             0           138.71       255.0         127.7           100           125.0
+        Jun 2023         917          15.4           643.00       1699             0           139.11       255.0         114.9           100           125.3
+         Jul 2023        829          13.5           642.00       1671           -27           139.29       255.0         104.1           100           125.5
+        Aug 2023         754          12.3           642.00       1671             0           139.24       255.0          94.6           100           125.4
+        Sep 2023         735          12.3           640.01       1617           -54           138.22       255.0          91.5           100           124.5
+        WY 2023         8613                                                                                              1075.1
+
+        Oct 2023         697          11.3           633.00       1434           -183          134.11       227.0          84.2            89           120.8
+        Nov 2023         468          7.9            635.00       1486            51           133.06       159.8          56.1            63           119.9
+        Dec 2023         313          5.1            639.51       1604           118           137.61       154.7          38.8            61           124.0
+        Jan 2024         505          8.2            641.80       1666            62           139.55       156.3          63.5            61           125.7
+        Feb 2024         544          9.5            641.80       1666             0           140.17       160.0          68.7            63           126.3
+        Mar 2024         851          13.8           643.05       1700            34           139.09       194.1         106.6            76           125.3
+        Apr 2024        1011          17.0           643.00       1699            -2           138.61       249.9         126.2            98           124.9
+        May 2024         984          16.0           643.00       1699             0           138.91       255.0         123.1           100           125.1
+        Jun 2024         876          14.7           643.00       1699             0           139.35       255.0         109.9           100           125.5
+         Jul 2024        788          12.8           642.00       1671           -27           139.55       255.0          99.0           100           125.7
+        Aug 2024         731          11.9           642.00       1671             0           139.39       255.0          91.8           100           125.6
+        Sep 2024         711          11.9           640.01       1617           -54           138.38       255.0          88.6           100           124.7
+        WY 2024         8476                                                                                              1056.5
+
+        Oct 2024         656          10.7           633.00       1434           -183          134.38       227.0          79.4            89           121.1
+        Nov 2024         513          8.6            635.00       1486            51           132.73       159.8          61.4            63           119.6
+        Dec 2024         395          6.4            639.51       1604           118           136.97       154.7          48.7            61           123.4
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                       Model Run ID: 3215            Processed On: 1/17/2023 8:48:49AM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                       January 2023 24-Month Study
+                                                                                             Maximum Probable Inflow*
+                                                                                        Parker Dam - Lake Havasu
+                       Power          Power     Reservoir Elev    EOM          Change In       Parker      Parker Gen      Parker      Percent of
+                      Release        Release    End of Month     Storage        Storage      Static Head    Capacity    Gross Energy     Units
+         Date       (1000 Ac-Ft)   (1000 CFS)        (Ft)      (1000 Ac-Ft)   (1000 Ac-Ft)       (Ft)         MW           MKWH        Available        KWH/AF
+   *    Jan 2022         342          5.6           446.38         550           -18           80.46         93.9           23.0           78            67.4
+   H    Feb 2022         445          8.0           446.44         551             1           80.54         86.8           30.9           72            69.4
+   I    Mar 2022         658          10.7          448.02         580            30           77.95         112.3          45.8           94            69.6
+   S    Apr 2022         737          12.4          447.11         563           -17           79.08         120.0          50.8          100            68.9
+   T    May 2022         741          12.0          448.68         593            30           84.09         120.0          51.5          100            69.5
+   O    Jun 2022         679          11.4          448.30         586            -7           78.23         120.0          47.2          100            69.4
+   R     Jul 2022        639          10.4          448.84         596            10           82.19         120.0          44.7          100            69.9
+   I    Aug 2022         482          7.8           448.16         583           -13           83.58         120.0          33.4          100            69.3
+   C    Sep 2022         458          7.7           447.96         579            -4           81.26         120.0          31.4          100            68.7
+        WY 2022         6231                                                                                               431.0
+
+   A    Oct 2022         393          6.4           447.14         564           -15           81.28         91.9           27.2           77            69.1
+   L    Nov 2022         336          5.6           447.09         563            -1           82.54         82.0           22.8           68            68.0
+   *    Dec 2022         277          4.5           447.06         562             0           82.38         60.0           18.5           50            66.8
+
+        Jan 2023         269          4.4           446.50         552           -11           80.37         93.9           18.2           78            67.4
+        Feb 2023         420          7.6           447.00         561             9           78.72         95.2           29.0           79            69.2
+        Mar 2023         642          10.4          446.70         555            -6           77.55         120.0          44.1          100            68.6
+        Apr 2023         737          12.4          448.70         593            38           77.65         120.0          51.2          100            69.4
+        May 2023         740          12.0          448.70         593             0           78.78         120.0          51.9          100            70.2
+        Jun 2023         733          12.3          448.70         593             0           78.67         120.0          51.4          100            70.1
+         Jul 2023        709          11.5          448.00         580           -13           78.62         120.0          49.4          100            69.7
+        Aug 2023         630          10.2          447.50         571           -10           78.53         120.0          43.7          100            69.4
+        Sep 2023         540          9.1           447.50         570             0           78.78         120.0          37.4          100            69.3
+        WY 2023         6425                                                                                               444.7
+
+        Oct 2023         470          7.6           447.50         571             0           79.43         91.0           33.0           76            70.2
+        Nov 2023         356          6.0           447.50         571             0           80.24         92.0           24.5           77            68.8
+        Dec 2023         253          4.1           446.50         552           -19           80.73         112.3          16.1           94            63.7
+        Jan 2024         310          5.0           446.50         552             0           79.72         92.9           20.8           77            66.9
+        Feb 2024         408          7.1           446.50         552             0           78.69         95.4           28.2           79            69.1
+        Mar 2024         611          9.9           446.70         555             4           77.51         120.0          41.9          100            68.6
+        Apr 2024         722          12.1          448.70         593            38           77.74         120.0          50.2          100            69.5
+        May 2024         726          11.8          448.70         593             0           78.87         120.0          51.0          100            70.3
+        Jun 2024         720          12.1          448.70         593             0           78.75         120.0          50.5          100            70.2
+         Jul 2024        687          11.2          448.00         580           -13           78.77         120.0          47.9          100            69.8
+        Aug 2024         626          10.2          447.50         571           -10           78.56         120.0          43.4          100            69.4
+        Sep 2024         535          9.0           447.50         570             0           78.81         120.0          37.1          100            69.3
+        WY 2024         6424                                                                                               444.7
+
+        Oct 2024         486          7.9           447.50         571             0           79.31         91.0           34.1           76            70.1
+        Nov 2024         376          6.3           447.50         571             0           80.07         92.0           25.8           77            68.6
+        Dec 2024         270          4.4           446.50         552           -19           80.58         112.3          17.2           94            63.6
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                       Model Run ID: 3215            Processed On: 1/17/2023 8:48:49AM
+                                            OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                     January 2023 24-Month Study
+                                                                                           Maximum Probable Inflow*
+                                                                                               Upper Basin Power
+                        Glen       Flaming         Blue          Morrow          Crystal        Fontenelle
+                       Canyon       Gorge          Mesa           Point         Reservoir       Reservoir
+          Date       1000 MWHR   1000 MWHR      1000 MWHR      1000 MWHR       1000 MWHR       1000 MWHR
+   *     Jan 2022      252          19               3              5              1                4
+   H     Feb 2022      201          17               3              4              1                3
+   I     Mar 2022      208          19               8              9              4                3
+       Winter 2022     1259         123              34             50             17               19
+   S   Apr 2022        179          19              11              15             10               0
+   T   May 2022        214          52              20              31             18               3
+   O   Jun 2022        222          41              18              25             16               6
+   R    Jul 2022       251          29              23              29             17               7
+   I   Aug 2022        265          39              23              31             18               6
+   C   Sep 2022        201          42              14              27             13               5
+    Summer 2022        1332         222             108             160            92               28
+   A     Oct 2022       175          42              0              21             10               2
+   L     Nov 2022       181          38              0               6              2               1
+   *     Dec 2022       199          40              1               6              2               4
+         Jan 2023      339          35               5              4              2                4
+         Feb 2023      293          32               4              6              3                3
+         Mar 2023      232          53               5              8              5                4
+       Winter 2023     1419         240              15             50             23               18
+       Apr 2023        296          52              11               20            12               2
+       May 2023        321          64              20               34            23               5
+       Jun 2023        326          68              59              107            22               7
+        Jul 2023       389          25              27               33            18               8
+       Aug 2023        418          33              28               33            18               7
+       Sep 2023        311          38              26               32            16               7
+    Summer 2023        2061         280             171             258            109              36
+         Oct 2023      193          34               23             29              9               7
+         Nov 2023      201          34               10             13              7               5
+         Dec 2023      240          37               21             26             13               4
+         Jan 2024      288          38               16             20             10               4
+         Feb 2024      254          35                9             12              6               3
+         Mar 2024      266          21               10             14              8               3
+       Winter 2024     1442         199              90             114            54               27
+       Apr 2024        238          20              12               19            11               2
+       May 2024        243          89              29               45            23               6
+       Jun 2024        266          47              64              104            22               7
+        Jul 2024       309          23              38               46            23               8
+       Aug 2024        331          34              34               40            21               6
+       Sep 2024        248          33              33               40            20               6
+    Summer 2024        1633         246             210             293            121              35
+         Oct 2024       279          22              27             33             10               6
+         Nov 2024       278          22              11             13              7               5
+         Dec 2024       307          34              33             41             20               5
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                          Model Run ID: 3215   Processed On: 1/17/2023 8:48:49AM
+                                             OPERATION PLAN FOR COLORADO RIVER SYSTEM RESERVOIRS
+                                                                                     January 2023 24-Month Study
+                                                                                           Maximum Probable Inflow*
+                                                                Flood Control Criteria - Beginning of Month Conditions
+              Flaming     Blue                  Lake Upper Basin Lake                          Flaming   Blue            Tot or Max    Lake      Lake            BOM Space     Mead      Mead   Sys
+               Gorge      Mesa      Navajo     Powell   Total    Mead            Total          Gorge    Mesa   Navajo     Allow      Powell     Mead    Total    Required   Sched Rel   FC Rel Cont
+   Date         KAF       KAF        KAF        KAF     KAF      KAF             KAF             KAF     KAF     KAF        KAF        KAF       KAF     KAF        KAF        KAF        KAF   MAF
+                      ****PREDICTED SPACE****                                                                               ****EFFECTIVE SPACE****
+  Jan 2023      1,277     535         795       17783      20390     20307       40697         1277      535     795       2607   17783   20307 40697               5350       458         0    19.0
+  Jan 2023      1,277     535         795       17783      20390     20307       40697          716      413     497       1627       17783      20307   39716      5350       458         0    19.0
+  Feb 2023      1,352     531         795       18381      21058     19754       40812          790      411     497       1698       18381      19754   39832      1500       537         0    18.9
+  Mar 2023      1,415     526         783       18872      21595     19356       40952          853      407     483       1744       18872      19356   39972      1500       961         0    18.6
+  Apr 2023      1,496     513         728       19076      21813     19498       41310          932      396     422       1750       19076      19498   40324      1500      1074         0    18.9
+  May 2023      1,477     459         608       18840      21384     19635       41019          910      347     281       1537       18840      19635   40012      1500      1049         0    21.3
+  Jun 2023      1,316     238         485       16859      18898     19753       38651          736      108     122        966       16859      19753   37577      1500       949         0    24.8
+   Jul 2023     844       233         499       13713      15289     19878       35167          240       65      84        389       13713      19878   33981      1500       834         0    25.5
+                                                                                                                           ****CREDITABLE SPACE****
+  Aug 2023      627       162         471       13354      14613     19763       34376          627      162     471       1259       13354      19763   34376      1500       787         0    25.4
+  Sep 2023      628       158         469       13647      14902     19549       34450          628      158     469       1254       13647      19549   34450      2270       705         0    25.1
+  Oct 2023      691       190         456       13839      15176     19495       34672          691      190     456       1337       13839      19495   34672      3040       539         0    24.9
+  Nov 2023      740       227         441       13771      15179     19534       34713          740      227     441       1408       13771      19534   34713      3810       548         0    24.9
+  Dec 2023      789       229         434       13801      15253     19565       34818          789      229     434       1452       13801      19565   34818      4580       449         0    24.9
+  Jan 2024      865       273         430       13940      15509     19406       34915          865      273     430       1568       13940      19406   34915      5350       588         0    24.8
+                                                                                                                            ****EFFECTIVE SPACE****
+  Jan 2024      865       273         430       13940      15509     19406       34915          661      259     180       1100   13940   19406 34446               5350       588         0    24.8
+  Feb 2024      934       300         432       14188      15855     19225       35080          729      287     181       1198       14188      19225   34611      1500       563         0    24.7
+  Mar 2024      990       309         423       14366      16089     19079       35167          784      297     171       1252       14366      19079   34697      1500       904         0    24.6
+  Apr 2024      937       303         371       14508      16118     19202       35320          725      292     112       1129       14508      19202   34838      1500      1034         0    24.7
+  May 2024      856       250         272       14293      15672     19578       35250          639      240     -11        868       14293      19578   34740      1500      1011         0    26.0
+  Jun 2024      812       113         284       12682      13891     19986       33877          586       90     -39        637       12682      19986   33305      1500       908         0    28.1
+   Jul 2024     451        68         397       10601      11517     20294       31811          201       20      19        240       10601      20294   31135      1500       792         0    28.6
+                                                                                                                           ****CREDITABLE SPACE****
+  Aug 2024      272        47         438       10207      10963     20373       31336          272       47     438        756       10207      20373   31336      1500       764         0    28.3
+  Sep 2024      293        76         451       10409      11229     20388       31618          293       76     451        820       10409      20388   31618      2270       681         0    27.9
+  Oct 2024      347       134         447       10482      11411     20507       31918          347      134     447        929       10482      20507   31918      3040       498         0    27.7
+  Nov 2024      360       184         433       10596      11574     20368       31943          360      184     433        978       10596      20368   31943      3810       593         0    27.6
+  Dec 2024      374       185         429       10758      11746     20307       32054          374      185     429        988       10758      20307   32054      4580       531         0    27.6
+
+* Based on the Colorado River Basin Forecast Center's Maximum Probable Water Supply Forecast                                      Model Run ID: 3215                  Processed On: 1/17/2023 8:48:49AM
+
