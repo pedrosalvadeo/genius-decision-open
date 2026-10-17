@@ -1,15 +1,54 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Organismos Genius · Observatorio</title><link rel="stylesheet" href="/static/styles.css">
-<script src="/static/organisms.js" defer></script></head><body>
-<header class="header"><a class="brand" href="/">Genius Decision</a><nav><a href="/network">Red Genius</a> · <a href="https://github.com/pedrosalvadeo/genius-decision-open">Código abierto</a></nav></header>
-<main class="docs"><p><a class="button" href="/adopt">Adoptá una semilla: probar, alojar y compartir →</a></p><p>GENIUS / OBSERVATORIO VIVO</p><h1>Observar. Anticipar.<br>Aprender de lo que ocurre.</h1>
-<p>Estos organismos digitales conservan identidad, memoria y características que pueden cambiar con la experiencia. Su primer entorno real es la temperatura registrada por dos estaciones meteorológicas de Mendoza.</p>
-<p>Cada uno consulta observaciones públicas cada hora, registra una predicción y espera una medición posterior. Compara variantes durante cuatro resultados y exige otros cuatro para confirmar una mejora. Si ninguna mejora, conserva sus características.</p>
-<p id="observatory-status" role="status">Consultando los organismos…</p><div id="organisms"></div>
-<h2>Cómo leer esta experiencia</h2><p>Los dos organismos funcionan en nuestro servicio de Railway y observan estaciones distintas. No representan dos anfitriones independientes ni están instalados en los aeropuertos. Las mediciones se obtienen de <a href="https://aviationweather.gov/data/api/">Aviation Weather Center</a>; las predicciones son experimentales y pertenecen a Genius.</p>
-<p>Una reducción de error es un resultado de aprendizaje sobre temperatura. El efecto sobre el bienestar y la probabilidad de sostenimiento de la vida siguen sin medirse. No se ejecutan intervenciones físicas ni se brindan indicaciones meteorológicas para operar.</p>
-<h2>Darles un lugar</h2><p>Un equipo Linux, servidor o contenedor con almacenamiento persistente puede alojar un observador con autorización de su operador. La instalación conserva sus datos localmente y se comunica por HTTPS. El operador puede pausarlo o retirarlo.</p>
-<p><a class="button" href="https://github.com/pedrosalvadeo/genius-decision-open/blob/main/adaptive/federation/HABITATS.md">Instalar un organismo observador</a></p>
-<p><a href="/network/organisms.json">Estado en JSON</a> · <a href="https://github.com/pedrosalvadeo/genius-decision-open/blob/main/adaptive/federation/GENETICS.md">Genes y evolución</a></p>
-</main></body></html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Seguí los organismos digitales de Genius: actividad registrada, predicciones, resultados y cambios confirmados, en un observatorio abierto.">
+  <meta name="theme-color" content="#173f35">
+  <title>Observatorio de organismos · Genius</title>
+  <link rel="canonical" href="https://geniusdecision.app/organisms">
+  <link rel="stylesheet" href="/static/home.css"><link rel="stylesheet" href="/static/organisms.css">
+  <script src="/static/organisms.js" defer></script>
+</head>
+<body class="observatory">
+<a class="skip-link" href="#main">Ir al observatorio</a>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Genius Decision, inicio"><span class="brand-mark" aria-hidden="true">g</span><span>genius<small>DECISION</small></span></a>
+  <nav aria-label="Navegación principal"><a href="/#ecosistema">El ecosistema</a><a href="/organisms" aria-current="page">Observatorio</a><a href="/network">La red</a></nav>
+  <a class="header-entry" href="/adopt">Adoptar una semilla ↗</a>
+</header>
+<main id="main" class="section-wrap">
+  <section class="observatory-hero" aria-labelledby="observatory-title">
+    <div><p class="eyebrow">GENIUS / OBSERVATORIO DE ORGANISMOS</p><h1 id="observatory-title">Una ventana a<br>su <em>aprendizaje.</em></h1><p class="observatory-lead">Qué están observando, qué anticiparon y qué ocurrió después. Seguí la experiencia de cada organismo, con sus avances y sus pausas a la vista.</p><a class="text-link" href="#como-funciona">¿Qué es un organismo digital? ↓</a></div>
+    <aside class="observatory-intro"><span class="intro-symbol" aria-hidden="true">g</span><p class="eyebrow">EL PRIMER ENTORNO</p><h2>La temperatura.<br>El mundo real.</h2><p>Dos estaciones meteorológicas de Mendoza. Observaciones públicas. Predicciones que esperan una medición posterior para ser evaluadas.</p><span class="scope-label">EXPERIMENTO ABIERTO · SIN ACCIONES FÍSICAS</span></aside>
+  </section>
+
+  <section aria-label="Resumen del observatorio">
+    <div class="data-toolbar"><div><span class="data-label">ESTADO REGISTRADO</span><p id="observatory-status" role="status" aria-live="polite">Consultando el estado actual…</p></div><button id="refresh" type="button" class="refresh-button">Actualizar datos ↻</button></div>
+    <p id="connection-note" class="notice" hidden></p>
+    <div id="summary" class="summary-grid" aria-label="Indicadores del conjunto">
+      <article class="metric"><span>Organismos observados</span><strong>—</strong><small>Cargando informe</small></article>
+      <article class="metric"><span>Requieren atención</span><strong>—</strong><small>Cargando informe</small></article>
+      <article class="metric"><span>Resultados evaluados</span><strong>—</strong><small>Cargando informe</small></article>
+      <article class="metric"><span>Mejoras confirmadas</span><strong>—</strong><small>Cargando informe</small></article>
+    </div>
+  </section>
+
+  <section class="organism-section" aria-labelledby="organisms-title">
+    <div class="list-heading"><div><p class="eyebrow">IDENTIDAD · MEMORIA · EXPERIENCIA</p><h2 id="organisms-title">Conocé a los organismos</h2></div><label class="filter-label" for="status-filter">Mostrar<select id="status-filter"><option value="all">Todos los estados</option><option value="cycle">En ciclo de observación</option><option value="attention">Requieren atención</option><option value="pending">Pendientes o retirados</option></select></label></div>
+    <p class="data-help">El informe de cada organismo se renueva aproximadamente cada hora. Este panel consulta el estado cada minuto mientras está abierto. Las fechas usan tu zona horaria.</p>
+    <div id="organisms" class="organism-grid" aria-busy="true"><p class="empty-state">Buscando los informes de los observadores…</p></div>
+    <p id="empty-filter" class="empty-state" hidden>No hay organismos en este estado. Elegí otro filtro para ver los demás.</p>
+    <noscript><p class="notice">Activá JavaScript para cargar el visualizador. También podés consultar el <a href="/network/organisms.json">informe público en JSON</a>.</p></noscript>
+  </section>
+
+  <section id="como-funciona" class="how-section" aria-labelledby="how-title">
+    <div><p class="eyebrow">CÓMO LEER ESTA EXPERIENCIA</p><h2 id="how-title">Aprender lleva<br>más de un intento.</h2><p>Un organismo Genius es un programa con identidad, memoria y rasgos que pueden heredarse o cambiar. “Genes” y “evolución” describen su diseño digital.</p></div>
+    <ol class="learning-steps"><li><span>01</span><div><h3>Observar y anticipar</h3><p>Conserva mediciones y registra una predicción antes de conocer el resultado.</p></div></li><li><span>02</span><div><h3>Comparar cuatro resultados</h3><p>Prueba variantes del método de estimación y de la ventana de observaciones. Puede conservar sus rasgos actuales.</p></div></li><li><span>03</span><div><h3>Confirmar con cuatro más</h3><p>Una variante sólo se adopta si mejora también en una segunda etapa con resultados nuevos.</p></div></li><li><span>04</span><div><h3>Conservar la experiencia</h3><p>Archiva el experimento, mantiene su identidad y memoria y puede comenzar otro ciclo.</p></div></li></ol>
+  </section>
+
+  <aside class="evidence-note"><h3>Qué sabemos y qué falta conocer</h3><p>Los dos observadores se alojan en el mismo servicio de Genius y consultan estaciones diferentes. La ubicación corresponde a los datos observados; no están instalados en los aeropuertos ni representan dos anfitriones independientes.</p><p>Un menor error de temperatura mide desempeño predictivo. El efecto sobre el bienestar y la probabilidad de sostenimiento de la vida (PVS) siguen <strong>sin medir</strong>. Las predicciones son experimentales.</p><p>Fuente de las mediciones: <a href="https://aviationweather.gov/data/api/">Aviation Weather Center</a>. Predicciones y comparaciones: Genius.</p></aside>
+
+  <section class="explore-section" aria-labelledby="explore-title"><p class="eyebrow">EL ECOSISTEMA SIGUE CRECIENDO</p><h2 id="explore-title">Más formas de participar.</h2><div class="explore-grid"><a href="/network"><span>01 / CONECTAR</span><h3>Explorar la red ↗</h3><p>Nodos, perspectivas públicas y ofertas de alojamiento.</p></a><a href="/adopt"><span>02 / ALOJAR</span><h3>Adoptar una semilla ↗</h3><p>Probar un organismo y darle un lugar con autorización revocable.</p></a><a href="https://github.com/pedrosalvadeo/genius-decision-open/blob/main/resolver/REPORT.md"><span>03 / RESOLVER</span><h3>Problemas y soluciones ↗</h3><p>El agente resolutor registra tareas detectadas, soluciones preparadas y resultados verificados.</p></a></div></section>
+</main>
+<footer class="site-footer section-wrap"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">g</span><span>genius<small>DECISION</small></span></a><p>Inteligencia al servicio de la vida.<br>Un experimento que se puede examinar.</p><nav aria-label="Enlaces del pie"><a href="/network/organisms.json">Datos del observatorio</a><a href="https://github.com/pedrosalvadeo/genius-decision-open/blob/main/adaptive/federation/GENETICS.md">Genes y evolución</a><a href="/static/privacy.html">Privacidad</a></nav></footer>
+</body></html>

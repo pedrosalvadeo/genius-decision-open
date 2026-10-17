@@ -78,7 +78,7 @@ def install(app,db,body,error,quota,capacity,backup_ready):
                 if report['format']!='genius-living-report/1' or report['station']!=station:raise ValueError()
                 # Explicit public projection; never expose credentials or local file paths.
                 keys=('station','label','status','checked_at','next_check_at','node_id','source','source_kind',
-                      'latest_observation','last_scored','last_prediction','last_archive','organism',
+                      'latest_observation','last_scored','last_prediction','last_archive','organism','recent_results',
                       'physical_actions','wellbeing_effect','life_sustainment_probability','reason')
                 report={k:report[k] for k in keys if k in report}
                 report['report_stale']=stamp-int(instant(report['checked_at']).timestamp())>3*3600

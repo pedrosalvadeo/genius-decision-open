@@ -14,6 +14,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Verify observatory DOM behavior (no browser or server)
+        run: |
+          npm install --prefix beta/tests/browser --ignore-scripts --no-audit --no-fund
+          npm run --prefix beta/tests/browser test:observatory
       - name: Build the existing pinned runtime
         run: docker build -f beta/deploy/Dockerfile -t genius-club-test .
       - name: Build and start the installable Internet node offline

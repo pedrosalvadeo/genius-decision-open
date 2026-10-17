@@ -127,6 +127,11 @@ class Organism:
             scored_outcomes=history.get('scored_outcomes',0)+sum(sum('score' in r for r in t['rounds']) for t in state['trials'].values()),
             archived_trials=history.get('completed_trials',0),
             trials={k:t['status'] for k,t in state['trials'].items()},
+            trial_progress=[dict(id=k,status=t['status'],phase_size=PHASE_SIZE,
+                discovery_scored=sum('score' in r for r in t['rounds'][:PHASE_SIZE]),
+                confirmation_scored=sum('score' in r for r in t['rounds'][PHASE_SIZE:]),
+                pending_outcome=bool(t['rounds'] and 'score' not in t['rounds'][-1]))
+                for k,t in sorted(state['trials'].items())],
             context_traits=[dict(context_sha256=key,genome_sha256=digest(row['genome']),
                 generation=row['genome']['generation'],genes=row['genome']['genes'],evidence=row['evidence'])
                 for key,row in sorted(state['adaptations'].items())],
