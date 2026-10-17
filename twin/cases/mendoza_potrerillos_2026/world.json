@@ -1,0 +1,1280 @@
+{
+  "narrative": "Caso real con hipótesis declaradas: Potrerillos empieza la temporada 2026/27 al 43 % tras un año seco, con un pronóstico húmedo de 1780 hm³. Se comparan tres reglas de entrega para riego y lagunas ante el pronóstico, un año algo menor y un año como 2025/26.",
+  "observation": {
+    "format": "genius-system-observation/1",
+    "label": "Río Mendoza y Potrerillos 2026/27",
+    "window": {
+      "start": "2026-10-02T00:00:00-03:00",
+      "end": "2026-10-15T23:59:00-03:00"
+    },
+    "entities": [
+      {
+        "id": "potrerillos",
+        "label": "Embalse Potrerillos",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_storage"
+        ]
+      },
+      {
+        "id": "agro",
+        "label": "Riego agrícola",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_uses"
+        ]
+      },
+      {
+        "id": "lagoons",
+        "label": "Entrega a lagunas",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_lagoons"
+        ]
+      },
+      {
+        "id": "irrigators",
+        "label": "Regantes",
+        "kind": "person",
+        "evidence_ids": [
+          "e_uses"
+        ]
+      },
+      {
+        "id": "lagoon_ecosystem",
+        "label": "Ecosistema de las lagunas",
+        "kind": "living",
+        "evidence_ids": [
+          "e_lagoons"
+        ]
+      },
+      {
+        "id": "dgi",
+        "label": "Departamento General de Irrigación",
+        "kind": "organization",
+        "evidence_ids": [
+          "e_storage"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "e_storage",
+        "observed_at": "2026-10-15T12:00:00-03:00",
+        "source": "MDZ Online, 2026-10-15, https://www.mdzol.com/sociedad/2026/10/15/la-impresionante-transformacion-de-potrerillos-bajante-historica-a-la-espera-de-las-crecidas-1988461.html",
+        "basis": "reported",
+        "statement": "Potrerillos con 171 hm³ de 395 hm³.",
+        "uncertainty": "Boletín citado por la prensa."
+      },
+      {
+        "id": "e_uses",
+        "observed_at": "2026-10-02T12:00:00-03:00",
+        "source": "El Sol, \"Irrigación pronosticó más agua, pero advierte un dato sobre Potrerillos\", https://www.elsol.com.ar/mendoza/irrigacion-pronostico-mas-agua-pero-advierte-un-dato-sobre-potrerillos/",
+        "basis": "reported",
+        "statement": "Casi 300 hm³ de uso potable y unos 500 hm³ para el agro en el año anterior.",
+        "uncertainty": "Declaración pública."
+      },
+      {
+        "id": "e_lagoons",
+        "observed_at": "2026-10-03T12:00:00-03:00",
+        "source": "Diario Uno, \"El pronóstico de Irrigación: Va a sobrar agua equivalente al embalse Potrerillos en 1 año y medio\", https://www.diariouno.com.ar/sociedad/el-pronostico-irrigacion-va-sobrar-agua-equivalente-al-embalse-potrerillos-1-ano-y-medio-n1602168",
+        "basis": "reported",
+        "statement": "Irrigación menciona la recuperación de las lagunas con el agua sobrante.",
+        "uncertainty": "Sin volumen asignado."
+      }
+    ],
+    "relations": [
+      {
+        "id": "org_res",
+        "source": "dgi",
+        "target": "potrerillos",
+        "kind": "organizes",
+        "evidence_ids": [
+          "e_storage"
+        ]
+      },
+      {
+        "id": "org_agro",
+        "source": "dgi",
+        "target": "agro",
+        "kind": "organizes",
+        "evidence_ids": [
+          "e_uses"
+        ]
+      },
+      {
+        "id": "org_lag",
+        "source": "dgi",
+        "target": "lagoons",
+        "kind": "organizes",
+        "evidence_ids": [
+          "e_lagoons"
+        ]
+      },
+      {
+        "id": "sup_agro",
+        "source": "agro",
+        "target": "irrigators",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_uses"
+        ]
+      },
+      {
+        "id": "sup_lag",
+        "source": "lagoons",
+        "target": "lagoon_ecosystem",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_lagoons"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Pronóstico mensual completo y dotaciones 2026/27.",
+      "Población servida con agua potable como portador de bienestar.",
+      "Acuífero, dique Cipolletti, generación eléctrica y riesgo de crecidas aguas abajo."
+    ]
+  },
+  "construction": {
+    "format": "genius-world-construction/1",
+    "sources": [
+      {
+        "id": "dgi_forecast",
+        "origin": "Departamento General de Irrigación, \"Informe de la situación hídrica a partir del Pronóstico de Escurrimientos temporada 2026/2027\", https://www.irrigacion.gov.ar/web/2026/10/02/informe-de-la-situacion-hidrica-a-partir-del-pronostico-de-escurrimientos-temporada-2026-2027/",
+        "observed_at": "2026-10-02T12:00:00-03:00",
+        "content": "En la Temporada 25/26 escurrieron 797 hm 3. […] se espera un derrame de 1780 hm³, lo que representa el 129% respecto de un año medio para la sección de aforos Guido."
+      },
+      {
+        "id": "mdz_oct15",
+        "origin": "MDZ Online, 2026-10-15, https://www.mdzol.com/sociedad/2026/10/15/la-impresionante-transformacion-de-potrerillos-bajante-historica-a-la-espera-de-las-crecidas-1988461.html",
+        "observed_at": "2026-10-15T12:00:00-03:00",
+        "content": "Potrerillos acumula 171 hectómetros cúbicos de agua. […] La capacidad máxima consignada para el embalse es de 395 hectómetros cúbicos […] el embalse se encuentra actualmente al 43% de su capacidad de almacenamiento […] el valor histórico informado desde 2010 es de 265 hectómetros cúbicos […] El mayor aporte comenzará con los primeros deshielos del verano"
+      },
+      {
+        "id": "elsol",
+        "origin": "El Sol, \"Irrigación pronosticó más agua, pero advierte un dato sobre Potrerillos\", https://www.elsol.com.ar/mendoza/irrigacion-pronostico-mas-agua-pero-advierte-un-dato-sobre-potrerillos/",
+        "observed_at": "2026-10-02T12:00:00-03:00",
+        "content": "el embalse Potrerillos aparece clasificado con reservas extremadamente bajas […] le tenemos que restar los casi 300 del uso potable […] quedan unos 500 para el agro […] Para diciembre de 2026, Irrigación estima un derrame de 300 hm³ […] para enero de 2027 prevé 320 hm³ […] con 250 hm³ proyectados […] para el ciclo 2026-2027 se estima un derrame de 1.780 hectómetros cúbicos (hm³)"
+      },
+      {
+        "id": "diariouno",
+        "origin": "Diario Uno, \"El pronóstico de Irrigación: Va a sobrar agua equivalente al embalse Potrerillos en 1 año y medio\", https://www.diariouno.com.ar/sociedad/el-pronostico-irrigacion-va-sobrar-agua-equivalente-al-embalse-potrerillos-1-ano-y-medio-n1602168",
+        "observed_at": "2026-10-03T12:00:00-03:00",
+        "content": "El año pasado fue un año de 800 hectómetros y este año llegaremos a 1.800 hectómetros. […] va a sobrar aproximadamente en 1 año y medio el volumen equivalente al embalse Potrerillos. […] recuperación de ecosistemas como las lagunas de Rosario […] el agua puede salirse del cauce, romper calles e inundar fincas"
+      }
+    ],
+    "claims": [
+      {
+        "id": "storage_now",
+        "basis": "reported",
+        "statement": "Potrerillos almacena 171 hm³ de 395 hm³ de capacidad (43 %) a mediados de octubre de 2026; reservas clasificadas como extremadamente bajas.",
+        "uncertainty": "Cifras de boletín de Irrigación reproducidas por la prensa.",
+        "spans": [
+          {
+            "source_id": "mdz_oct15",
+            "start": 0,
+            "end": 52,
+            "quote": "Potrerillos acumula 171 hectómetros cúbicos de agua."
+          },
+          {
+            "source_id": "mdz_oct15",
+            "start": 57,
+            "end": 133,
+            "quote": "La capacidad máxima consignada para el embalse es de 395 hectómetros cúbicos"
+          },
+          {
+            "source_id": "elsol",
+            "start": 0,
+            "end": 76,
+            "quote": "el embalse Potrerillos aparece clasificado con reservas extremadamente bajas"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "forecast",
+        "basis": "reported",
+        "statement": "Pronóstico oficial del río Mendoza para 2026/27: 1780 hm³ (129 % de un año medio); en 2025/26 escurrieron 797 hm³.",
+        "uncertainty": "Pronóstico de escurrimiento, no medición; en 2025/26 el pronóstico inicial (845 hm³) resultó mayor que lo escurrido.",
+        "spans": [
+          {
+            "source_id": "dgi_forecast",
+            "start": 48,
+            "end": 165,
+            "quote": "se espera un derrame de 1780 hm³, lo que representa el 129% respecto de un año medio para la sección de aforos Guido."
+          },
+          {
+            "source_id": "dgi_forecast",
+            "start": 0,
+            "end": 43,
+            "quote": "En la Temporada 25/26 escurrieron 797 hm 3."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "monthly_peak",
+        "basis": "reported",
+        "statement": "Derrames mensuales previstos: diciembre 300 hm³, enero 320 hm³, febrero 250 hm³.",
+        "uncertainty": "Pronóstico mensual citado por la prensa.",
+        "spans": [
+          {
+            "source_id": "elsol",
+            "start": 169,
+            "end": 232,
+            "quote": "Para diciembre de 2026, Irrigación estima un derrame de 300 hm³"
+          },
+          {
+            "source_id": "elsol",
+            "start": 237,
+            "end": 269,
+            "quote": "para enero de 2027 prevé 320 hm³"
+          },
+          {
+            "source_id": "elsol",
+            "start": 274,
+            "end": 297,
+            "quote": "con 250 hm³ proyectados"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "uses",
+        "basis": "reported",
+        "statement": "Del volumen anual, casi 300 hm³ van a uso potable y unos 500 hm³ quedaron para el agro en un año de 800 hm³.",
+        "uncertainty": "Declaración del titular de Irrigación sobre el año anterior; no es una dotación fijada para 2026/27.",
+        "spans": [
+          {
+            "source_id": "elsol",
+            "start": 81,
+            "end": 131,
+            "quote": "le tenemos que restar los casi 300 del uso potable"
+          },
+          {
+            "source_id": "elsol",
+            "start": 136,
+            "end": 164,
+            "quote": "quedan unos 500 para el agro"
+          },
+          {
+            "source_id": "diariouno",
+            "start": 0,
+            "end": 86,
+            "quote": "El año pasado fue un año de 800 hectómetros y este año llegaremos a 1.800 hectómetros."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "surplus_uses",
+        "basis": "reported",
+        "statement": "Irrigación prevé agua sobrante, menciona la recuperación de ecosistemas como las lagunas de Rosario y advierte riesgo de desbordes.",
+        "uncertainty": "Declaraciones públicas, sin volúmenes asignados.",
+        "spans": [
+          {
+            "source_id": "diariouno",
+            "start": 91,
+            "end": 182,
+            "quote": "va a sobrar aproximadamente en 1 año y medio el volumen equivalente al embalse Potrerillos."
+          },
+          {
+            "source_id": "diariouno",
+            "start": 187,
+            "end": 242,
+            "quote": "recuperación de ecosistemas como las lagunas de Rosario"
+          },
+          {
+            "source_id": "diariouno",
+            "start": 247,
+            "end": 310,
+            "quote": "el agua puede salirse del cauce, romper calles e inundar fincas"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "h_monthly",
+        "basis": "hypothesis",
+        "statement": "Reparto mensual del pronóstico (noviembre a octubre): 120, 300, 320, 250, 185, 110, 85, 75, 75, 75, 85, 100 hm³; suma 1780. Diciembre a febrero son los citados; el resto es reparto propio.",
+        "uncertainty": "Supuesto propio sobre la forma del hidrograma fuera de los tres meses citados. Requiere el pronóstico mensual completo de Irrigación.",
+        "spans": [],
+        "premises": [
+          "forecast",
+          "monthly_peak"
+        ]
+      },
+      {
+        "id": "h_scenarios",
+        "basis": "hypothesis",
+        "statement": "Escenarios: el pronóstico; por debajo del pronóstico en la misma proporción que 2025/26 (797/845); y un año como 2025/26 (797 hm³ en total). Los dos últimos escalan el reparto mensual.",
+        "uncertainty": "Supuesto propio; no hay escenarios publicados por Irrigación.",
+        "spans": [],
+        "premises": [
+          "forecast",
+          "h_monthly"
+        ]
+      },
+      {
+        "id": "h_potable",
+        "basis": "hypothesis",
+        "statement": "El uso potable retira 25 hm³ por mes del embalse (300 hm³ por año).",
+        "uncertainty": "Reparto uniforme propio; el consumo real varía por estación.",
+        "spans": [],
+        "premises": [
+          "uses"
+        ]
+      },
+      {
+        "id": "h_agro",
+        "basis": "hypothesis",
+        "statement": "Temporada de riego: noviembre a mayo y octubre (8 meses). Dotación como el año seco: 500 hm³ (62,5 por mes); reforzada: 750 hm³ (93,75 por mes).",
+        "uncertainty": "Meses y refuerzo de 1,5 veces son supuestos propios; Irrigación no publicó dotaciones 2026/27.",
+        "spans": [],
+        "premises": [
+          "uses"
+        ]
+      },
+      {
+        "id": "d_ecology",
+        "basis": "decision",
+        "statement": "Entrega ecológica a las lagunas: 20 hm³ en cada mes que empiece con el embalse en 355 hm³ (90 %) o más.",
+        "uncertainty": "Opción planteada por el modelizador a partir de la mención pública de las lagunas; volumen y umbral son elección propia.",
+        "spans": [],
+        "premises": [
+          "surplus_uses",
+          "storage_now"
+        ]
+      },
+      {
+        "id": "d_threshold",
+        "basis": "decision",
+        "statement": "Condición de la tarea: el embalse no baja de 25 hm³ (un mes de agua potable) en ningún mes.",
+        "uncertainty": "Referencia operativa elegida por el modelizador, no regla de Irrigación ni umbral de vida.",
+        "spans": [],
+        "premises": [
+          "h_potable"
+        ]
+      },
+      {
+        "id": "d_policies",
+        "basis": "decision",
+        "statement": "Opciones: dotación de año seco; dotación reforzada; dotación reforzada más entrega ecológica cuando el embalse está casi lleno.",
+        "uncertainty": "Opciones planteadas por el modelizador; no son propuestas oficiales.",
+        "spans": [],
+        "premises": [
+          "uses",
+          "surplus_uses"
+        ]
+      },
+      {
+        "id": "modelling",
+        "basis": "definition",
+        "statement": "Unidad hm³. Paso mensual de noviembre de 2026 a octubre de 2027. El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. Sin ley de probabilidad.",
+        "uncertainty": "No se modelan diques aguas abajo (Cipolletti), acuíferos, generación eléctrica ni pérdidas de conducción.",
+        "spans": [],
+        "premises": [
+          "storage_now",
+          "forecast"
+        ]
+      }
+    ],
+    "fragments": [
+      {
+        "path": "/profile",
+        "value": "STOCK_FLOW_FINITE_V1",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/name",
+        "value": "Río Mendoza y Potrerillos: temporada 2026/27",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/horizon",
+        "value": 12,
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/step_unit",
+        "value": "step",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/0",
+        "value": {
+          "id": "potrerillos",
+          "label": "Embalse Potrerillos",
+          "unit": "hm3",
+          "kind": "persistent",
+          "initial": "171/1",
+          "capacity": "395/1"
+        },
+        "claim_ids": [
+          "storage_now"
+        ]
+      },
+      {
+        "path": "/stocks/1",
+        "value": {
+          "id": "agro",
+          "label": "Agua entregada a riego (acumulada)",
+          "unit": "hm3",
+          "kind": "persistent",
+          "initial": "0/1",
+          "capacity": "5000/1"
+        },
+        "claim_ids": [
+          "modelling",
+          "h_agro"
+        ]
+      },
+      {
+        "path": "/stocks/2",
+        "value": {
+          "id": "lagoons",
+          "label": "Agua entregada a las lagunas (acumulada)",
+          "unit": "hm3",
+          "kind": "persistent",
+          "initial": "0/1",
+          "capacity": "5000/1"
+        },
+        "claim_ids": [
+          "modelling",
+          "d_ecology"
+        ]
+      },
+      {
+        "path": "/carriers/0",
+        "value": {
+          "id": "irrigators",
+          "label": "Regantes del río Mendoza",
+          "kind": "person"
+        },
+        "claim_ids": [
+          "uses"
+        ]
+      },
+      {
+        "path": "/carriers/1",
+        "value": {
+          "id": "lagoon_ecosystem",
+          "label": "Ecosistema de las lagunas",
+          "kind": "living"
+        },
+        "claim_ids": [
+          "surplus_uses"
+        ]
+      },
+      {
+        "path": "/capabilities/0",
+        "value": {
+          "id": "operate",
+          "label": "Operación del embalse"
+        },
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/initial_capabilities/0",
+        "value": "operate",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/actions/0",
+        "value": {
+          "id": "hold",
+          "label": "Sin entregas de riego",
+          "requires": [],
+          "withdrawals": {},
+          "deposits": {},
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/actions/1",
+        "value": {
+          "id": "dry_allocation",
+          "label": "Riego con dotación de año seco",
+          "requires": [
+            "operate"
+          ],
+          "withdrawals": {
+            "potrerillos": "125/2"
+          },
+          "deposits": {
+            "agro": "125/2"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_agro"
+        ]
+      },
+      {
+        "path": "/actions/2",
+        "value": {
+          "id": "reinforced_allocation",
+          "label": "Riego con dotación reforzada",
+          "requires": [
+            "operate"
+          ],
+          "withdrawals": {
+            "potrerillos": "375/4"
+          },
+          "deposits": {
+            "agro": "375/4"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_agro"
+        ]
+      },
+      {
+        "path": "/actions/3",
+        "value": {
+          "id": "reinforced_and_lagoons",
+          "label": "Riego reforzado y entrega a las lagunas",
+          "requires": [
+            "operate"
+          ],
+          "withdrawals": {
+            "potrerillos": "455/4"
+          },
+          "deposits": {
+            "agro": "375/4",
+            "lagoons": "20/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_agro",
+          "d_ecology"
+        ]
+      },
+      {
+        "path": "/actions/4",
+        "value": {
+          "id": "lagoons_only",
+          "label": "Entrega a las lagunas fuera de temporada de riego",
+          "requires": [
+            "operate"
+          ],
+          "withdrawals": {
+            "potrerillos": "20/1"
+          },
+          "deposits": {
+            "lagoons": "20/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "d_ecology"
+        ]
+      },
+      {
+        "path": "/policies/0",
+        "value": {
+          "id": "dry_allocation",
+          "label": "Dotación de año seco",
+          "default_action": "hold",
+          "rules": [
+            {
+              "steps": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                12
+              ],
+              "when": [],
+              "action": "dry_allocation"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_policies"
+        ]
+      },
+      {
+        "path": "/policies/1",
+        "value": {
+          "id": "reinforced",
+          "label": "Dotación reforzada",
+          "default_action": "hold",
+          "rules": [
+            {
+              "steps": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                12
+              ],
+              "when": [],
+              "action": "reinforced_allocation"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_policies"
+        ]
+      },
+      {
+        "path": "/policies/2",
+        "value": {
+          "id": "reinforced_lagoons",
+          "label": "Reforzada y lagunas con embalse casi lleno",
+          "default_action": "hold",
+          "rules": [
+            {
+              "steps": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                12
+              ],
+              "when": [
+                {
+                  "kind": "stock",
+                  "stock": "potrerillos",
+                  "op": "ge",
+                  "value": "355/1"
+                }
+              ],
+              "action": "reinforced_and_lagoons"
+            },
+            {
+              "steps": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                12
+              ],
+              "when": [],
+              "action": "reinforced_allocation"
+            },
+            {
+              "steps": [
+                8,
+                9,
+                10,
+                11
+              ],
+              "when": [
+                {
+                  "kind": "stock",
+                  "stock": "potrerillos",
+                  "op": "ge",
+                  "value": "355/1"
+                }
+              ],
+              "action": "lagoons_only"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_policies",
+          "d_ecology"
+        ]
+      },
+      {
+        "path": "/scenarios/0",
+        "value": {
+          "id": "forecast",
+          "label": "Pronóstico oficial (1780 hm³)",
+          "events": [
+            {
+              "inflows": {
+                "potrerillos": "120/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "300/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "320/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "250/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "185/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "110/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "85/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "75/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "75/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "75/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "85/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "100/1"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "h_monthly",
+          "h_scenarios",
+          "h_potable"
+        ]
+      },
+      {
+        "path": "/scenarios/1",
+        "value": {
+          "id": "below",
+          "label": "Por debajo del pronóstico como en 2025/26",
+          "events": [
+            {
+              "inflows": {
+                "potrerillos": "19128/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "47820/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "51008/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "39850/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "29489/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "17534/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "13549/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "11955/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "11955/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "11955/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "13549/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "15940/169"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "h_monthly",
+          "h_scenarios",
+          "h_potable"
+        ]
+      },
+      {
+        "path": "/scenarios/2",
+        "value": {
+          "id": "like_2025",
+          "label": "Año como 2025/26 (797 hm³)",
+          "events": [
+            {
+              "inflows": {
+                "potrerillos": "4782/89"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "11955/89"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "12752/89"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "19925/178"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "29489/356"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "8767/178"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "13549/356"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "11955/356"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "11955/356"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "11955/356"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "13549/356"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "potrerillos": "3985/89"
+              },
+              "renewables": {},
+              "drains": {
+                "potrerillos": "25/1"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "h_monthly",
+          "h_scenarios",
+          "h_potable"
+        ]
+      },
+      {
+        "path": "/law",
+        "value": null,
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/welfare/0",
+        "value": {
+          "carrier": "irrigators",
+          "dimension": "irrigation",
+          "label": "Agua entregada para riego",
+          "stock": "agro",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "uses",
+          "h_agro"
+        ]
+      },
+      {
+        "path": "/welfare/1",
+        "value": {
+          "carrier": "lagoon_ecosystem",
+          "dimension": "lagoon_water",
+          "label": "Agua entregada a las lagunas",
+          "stock": "lagoons",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "surplus_uses",
+          "d_ecology"
+        ]
+      },
+      {
+        "path": "/task",
+        "value": {
+          "kind": "operational",
+          "label": "Mantener al menos 25 hm³ en Potrerillos en todos los meses",
+          "living_carriers": [],
+          "conditions": [
+            {
+              "stock": "potrerillos",
+              "op": "ge",
+              "threshold": "25/1"
+            }
+          ],
+          "require_action_success": true
+        },
+        "claim_ids": [
+          "d_threshold"
+        ]
+      },
+      {
+        "path": "/require_all_scenarios",
+        "value": true,
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/selection",
+        "value": "none",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/assumptions/0",
+        "value": {
+          "id": "Calibration",
+          "kind": "CALIBRATION",
+          "statement": "Reparto mensual, escenarios, consumo potable mensual y dotaciones son hipótesis propias sobre cifras publicadas.",
+          "provenance": "Claims h_monthly, h_scenarios, h_potable, h_agro"
+        },
+        "claim_ids": [
+          "h_monthly",
+          "h_agro"
+        ]
+      },
+      {
+        "path": "/assumptions/1",
+        "value": {
+          "id": "Threshold",
+          "kind": "NORMATIVE",
+          "statement": "El mínimo de 25 hm³ y la regla de entrega ecológica son elecciones del modelizador.",
+          "provenance": "Claims d_threshold, d_ecology"
+        },
+        "claim_ids": [
+          "d_threshold",
+          "d_ecology"
+        ]
+      },
+      {
+        "path": "/assumptions/2",
+        "value": {
+          "id": "NoLaw",
+          "kind": "PROBABILITY",
+          "statement": "No se asignan probabilidades a los escenarios.",
+          "provenance": "Claim modelling"
+        },
+        "claim_ids": [
+          "modelling"
+        ]
+      }
+    ],
+    "scope": {
+      "format": "genius-system-scope/1",
+      "observation_revision": 1,
+      "label": "Embalse, riego y lagunas",
+      "members": [
+        "potrerillos",
+        "agro",
+        "lagoons",
+        "irrigators",
+        "lagoon_ecosystem",
+        "dgi"
+      ],
+      "intervention_entities": [
+        "dgi"
+      ],
+      "evaluation_entities": [
+        "potrerillos",
+        "agro",
+        "lagoons",
+        "irrigators",
+        "lagoon_ecosystem",
+        "dgi"
+      ],
+      "bindings": [
+        {
+          "collection": "stocks",
+          "model_id": "potrerillos",
+          "entity_id": "potrerillos"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "agro",
+          "entity_id": "agro"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "lagoons",
+          "entity_id": "lagoons"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "irrigators",
+          "entity_id": "irrigators"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "lagoon_ecosystem",
+          "entity_id": "lagoon_ecosystem"
+        }
+      ],
+      "rationale": "Irrigación decide entregas; se evalúan embalse, riego y lagunas. Fuera de alcance: acuífero, energía y crecidas."
+    },
+    "unresolved": []
+  },
+  "provenance": "Interpretación manual de extractos textuales citados; cifras no citadas declaradas como hipótesis."
+}
