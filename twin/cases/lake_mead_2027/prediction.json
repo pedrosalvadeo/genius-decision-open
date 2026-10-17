@@ -1,0 +1,140 @@
+{
+ "format": "genius-twin-frozen-prediction/1",
+ "case": "lake_mead_2027",
+ "world_sha256": "7fc6246934b03a6f7338fdf3cde9ca3be0bee29b1eaaf947a107792484295be5",
+ "model_sha256": "8667eb948c181ad53bfdd346a181f5a8b1fb070d43655faff2a47e2880f2261e",
+ "native_input_digest": "4b9b383d9911a88a940934b6044d0d38604d245f7853e86046a28677e0b8c201",
+ "decision": {
+  "feasible": [],
+  "failed": [
+   "release_6",
+   "release_7"
+  ],
+  "selected": null,
+  "selection_status": "OUTSIDE_DOMAIN"
+ },
+ "observable": {
+  "stock": "mead",
+  "unit": "kaf",
+  "reading": "Almacenamiento de Lake Mead a fin de mes (mil acre-pies), fila histórica del 24-Month Study siguiente.",
+  "sources": [
+   "https://www.usbr.gov/lc/region/g4000/24mo.pdf"
+  ]
+ },
+ "calendar": [
+  "2026-09-30",
+  "2026-10-31",
+  "2026-11-30",
+  "2026-12-31",
+  "2027-01-31",
+  "2027-02-28",
+  "2027-03-31",
+  "2027-04-30",
+  "2027-05-31",
+  "2027-06-30",
+  "2027-07-31",
+  "2027-08-31",
+  "2027-09-30"
+ ],
+ "calendar_basis": "Paso 0 = fin de septiembre de 2026 (dato histórico); paso k = fin de cada mes de octubre de 2026 a septiembre de 2027 (claim modelling de world.json).",
+ "matching": "Una lectura se asigna al paso cuya fecha está a 7 días o menos; si no hay ninguno, no se contrasta.",
+ "predicted": {
+  "release_6": {
+   "minimum": [
+    "6827/1",
+    "6636/1",
+    "6534/1",
+    "6580/1",
+    "6558/1",
+    "6515/1",
+    "6055/1",
+    "5508/1",
+    "5067/1",
+    "4763/1",
+    "4696/1",
+    "4812/1",
+    "4844/1"
+   ],
+   "most_probable": [
+    "6827/1",
+    "6657/1",
+    "6568/1",
+    "6605/1",
+    "6592/1",
+    "6547/1",
+    "6125/1",
+    "5624/1",
+    "5227/1",
+    "4964/1",
+    "4920/1",
+    "5055/1",
+    "5105/1"
+   ],
+   "maximum": [
+    "6827/1",
+    "6669/1",
+    "6609/1",
+    "6662/1",
+    "6674/1",
+    "6638/1",
+    "6286/1",
+    "5867/1",
+    "5536/1",
+    "5309/1",
+    "5294/1",
+    "5475/1",
+    "5553/1"
+   ]
+  },
+  "release_7": {
+   "minimum": [
+    "6827/1",
+    "6636/1",
+    "6534/1",
+    "6580/1",
+    "6558/1",
+    "6515/1",
+    "6055/1",
+    "5508/1",
+    "5237/1",
+    "5207/1",
+    "5343/1",
+    "5675/1",
+    "5775/1"
+   ],
+   "most_probable": [
+    "6827/1",
+    "6657/1",
+    "6568/1",
+    "6605/1",
+    "6592/1",
+    "6547/1",
+    "6125/1",
+    "5624/1",
+    "5397/1",
+    "5408/1",
+    "5567/1",
+    "5918/1",
+    "6036/1"
+   ],
+   "maximum": [
+    "6827/1",
+    "6669/1",
+    "6609/1",
+    "6662/1",
+    "6674/1",
+    "6638/1",
+    "6286/1",
+    "5867/1",
+    "5706/1",
+    "5753/1",
+    "5941/1",
+    "6338/1",
+    "6484/1"
+   ]
+  }
+ },
+ "meaning": "Predicción condicional al modelo declarado. Sin ley de probabilidad no hay escenario más probable; contrastar no valida el modelo.",
+ "frozen_at": "2026-10-17T05:29:03+00:00",
+ "prediction_sha256": "9e87b700b98b604bdc2d536c56ccf27c40caabb296253137b5146cd6c2ab5329"
+}

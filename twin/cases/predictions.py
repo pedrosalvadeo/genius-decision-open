@@ -46,6 +46,12 @@ SETUP = {
         calendar_basis='Paso 0 = mediados de octubre de 2026 (171 hm³); paso k = fin de cada mes de noviembre a septiembre (convención del modelizador).',
         reading='Volumen embalsado en Potrerillos que informa el Departamento General de Irrigación o la prensa que lo cita.',
         sources=['https://www.irrigacion.gov.ar']),
+    'lake_mead_2027': dict(
+        stock='mead', unit='kaf',
+        calendar=[_month_end(2026 + (8 + k) // 12, (8 + k) % 12 + 1) for k in range(13)],
+        calendar_basis='Paso 0 = fin de septiembre de 2026 (dato histórico); paso k = fin de cada mes de octubre de 2026 a septiembre de 2027 (claim modelling de world.json).',
+        reading='Almacenamiento de Lake Mead a fin de mes (mil acre-pies), fila histórica del 24-Month Study siguiente.',
+        sources=['https://www.usbr.gov/lc/region/g4000/24mo.pdf']),
 }
 
 

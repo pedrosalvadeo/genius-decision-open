@@ -15,7 +15,7 @@ contrast a real reading with the frozen prediction. The test
 
 | Tool | Arguments | What you get |
 |---|---|---|
-| `twin_field_cases` | none | The cited cases, for example `denver_water_2026` and `mendoza_potrerillos_2026` |
+| `twin_field_cases` | none | The cited cases, for example `denver_water_2026`, `mendoza_potrerillos_2026` and `lake_mead_2027` |
 | `twin_field_case` | `case_id` | `narrative`, `observation` (sources and systems) and `construction` (claims with exact quotes, fragments, scope) |
 
 The hypotheses in a case stay hypotheses. Do not present them as facts.
