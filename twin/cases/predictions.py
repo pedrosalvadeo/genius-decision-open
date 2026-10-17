@@ -27,6 +27,7 @@ CASES = Path(__file__).resolve().parent
 FORMAT = 'genius-twin-frozen-prediction/1'
 # Matching a reading to a model step is a bookkeeping convention, not a Genius rule.
 WINDOW_DAYS = 7
+FROZEN_WORLD = 'frozen_world.json'
 
 
 def _month_end(year, month):
@@ -55,16 +56,16 @@ SETUP = {
 }
 
 
-def _world(case):
-    path = CASES / case / 'world.json'
+def _world(case, name='world.json'):
+    path = CASES / case / name
     raw = path.read_bytes()
     return json.loads(raw), hashlib.sha256(raw).hexdigest()
 
 
-def compute(case):
+def compute(case, name='world.json'):
     """The prediction exactly as the twin evaluates the committed world, without a timestamp."""
     setup = SETUP[case]
-    world, world_sha256 = _world(case)
+    world, world_sha256 = _world(case, name)
     prepared = construction.prepare(world['construction'], dict(id='observation', revision=1, observation=world['observation'], historical_gaps={}))
     if prepared['status'] != 'READY_FOR_REVIEW':
         raise SystemExit(f'{case}: world construction is {prepared["status"]}')
@@ -96,6 +97,9 @@ def freeze(case):
     prediction['prediction_sha256'] = sha({k: v for k, v in prediction.items() if k != 'prediction_sha256'})
     path = CASES / case / 'prediction.json'
     path.write_text(json.dumps(prediction, ensure_ascii=False, indent=1) + '\n')
+    # The world a prediction was frozen from is kept byte for byte, so later revisions of the model
+    # (new tasks, laws or welfare rules) never break the contrast with that prediction.
+    (CASES / case / FROZEN_WORLD).write_bytes((CASES / case / 'world.json').read_bytes())
     return path
 
 
@@ -105,7 +109,7 @@ def load(case):
 
 def contrast(case, reading_date, value, observed_at, source):
     frozen = load(case)
-    fresh = compute(case)
+    fresh = compute(case, FROZEN_WORLD if (CASES / case / FROZEN_WORLD).exists() else 'world.json')
     for key in ('world_sha256', 'model_sha256', 'native_input_digest', 'predicted'):
         if fresh[key] != frozen[key]:
             raise SystemExit(f'{case}: the committed world no longer reproduces the frozen prediction ({key})')

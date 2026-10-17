@@ -182,6 +182,111 @@ def _value(cell):
     return deepcopy(cell.get("value")) if cell.get("state") == "DEFINED" else None
 
 
+def _shortfall(model, trajectories):
+    """How far and how long each scenario misses each task condition; a diagnostic, not wellbeing or PVS."""
+    out = {}
+    for sid, trajectory in trajectories.items():
+        rows = []
+        for condition in model["task"]["conditions"]:
+            values = [state["stocks"].get(condition["stock"]) for state in trajectory["daily"]]
+            if condition.get("threshold") is None or any(v is None for v in values):
+                # An unknown threshold or stock is not coerced into a gap.
+                rows.append({"stock": condition["stock"], "op": condition["op"], "threshold": condition.get("threshold"),
+                             "steps_missed": None, "worst_gap": None, "first_missed_step": None})
+                continue
+            threshold = Fraction(condition["threshold"])
+            gaps = [max(threshold - Fraction(v), Fraction()) if condition["op"] == "ge" else max(Fraction(v) - threshold, Fraction()) for v in values]
+            rows.append({"stock": condition["stock"], "op": condition["op"], "threshold": q(threshold),
+                         "steps_missed": sum(gap > 0 for gap in gaps), "worst_gap": q(max(gaps)),
+                         "first_missed_step": next((i for i, gap in enumerate(gaps) if gap > 0), None)})
+        failed = sum(1 for state in trajectory["daily"] if state.get("action_executed") is False)
+        out[sid] = {"conditions": rows, "failed_actions": failed if model["task"].get("require_action_success") else None}
+    return out
+
+
+def _oriented(binding, value):
+    return Fraction(value) * (1 if binding["direction"] == "higher" else -1)
+
+
+def _by_scenario(model, trajectories):
+    """Per scenario: whether the task holds, the PVS of the law concentrated on that scenario, and each welfare condition."""
+    life = model["task"]["kind"] == "life_conditions"
+    out = {}
+    for sid, trajectory in trajectories.items():
+        status = trajectory["daily"][-1]["task_status"]
+        given = {"success": "1", "failure": "0"}.get(status)
+        rows = []
+        for w in model["welfare"]:
+            values = [Fraction(state["stocks"][w["stock"]]) for state in trajectory["daily"]]
+            worst = min(values) if w["direction"] == "higher" else max(values)
+            rows.append({"carrier": w["carrier"], "dimension": w["dimension"], "stock": w["stock"], "direction": w["direction"],
+                         "initial": q(values[0]), "final": q(values[-1]), "worst": q(worst)})
+        out[sid] = {"task_status": status, "pvs_given_scenario": given if life else None,
+                    "task_value_given_scenario": given, "wellbeing": rows}
+    return out
+
+
+def law_range(by_scenario, key):
+    """Bounds of sum_s law(s) * value(s) over every law on the declared scenarios; None if any value is undefined."""
+    values = [row[key] for row in by_scenario.values()]
+    if not values or any(v is None for v in values):
+        return None
+    low, high = min(map(Fraction, values)), max(map(Fraction, values))
+    return {"min": q(low), "max": q(high), "law_invariant": low == high}
+
+
+def welfare_relation(model, left, right, scenarios):
+    """FP1 product comparator restricted to `scenarios`: every (scenario, step, carrier, dimension) coordinate, no sums."""
+    better, worse = set(), set()
+    for sid in scenarios:
+        for a, b in zip(left[sid]["daily"], right[sid]["daily"]):
+            for w in model["welfare"]:
+                x, y = _oriented(w, a["stocks"][w["stock"]]), _oriented(w, b["stocks"][w["stock"]])
+                if x > y:
+                    better.add((w["carrier"], w["dimension"]))
+                elif x < y:
+                    worse.add((w["carrier"], w["dimension"]))
+    relation = ("EQUIVALENT" if not better and not worse else "DOMINATES" if not worse else
+                "DOMINATED" if not better else "INCOMPARABLE")
+    as_list = lambda pairs: [{"carrier": c, "dimension": d} for c, d in sorted(pairs)]
+    return {"relation": relation, "better_for": as_list(better), "worse_for": as_list(worse)}
+
+
+def welfare_comparison(model, trajectories):
+    """Pairwise welfare relations per scenario and over all scenarios together."""
+    ids = [p["id"] for p in model["policies"]]
+    scenario_ids = [s["id"] for s in model["scenarios"]]
+    def pairs(scope):
+        return [{"left": a, "right": b, **welfare_relation(model, trajectories[a], trajectories[b], scope)}
+                for i, a in enumerate(ids) for b in ids[i + 1:]]
+    return {"by_scenario": {sid: pairs([sid]) for sid in scenario_ids}, "all_scenarios": pairs(scenario_ids),
+            "rule": "FP1_PRODUCT_SAME_SCENARIO_STEP_CARRIER_DIMENSION_NO_SUMS"}
+
+
+def shortfall_order(shortfalls):
+    """Pairs (a, b) where a misses no condition by more, nor for more steps, than b in any scenario.
+
+    The order holds under every law, so it can separate policies that a binary task ties."""
+    def key(policy):
+        out = []
+        for sid in sorted(shortfalls[policy]):
+            scenario = shortfalls[policy][sid]
+            if any(row["worst_gap"] is None for row in scenario["conditions"]):
+                return None
+            out += [(Fraction(row["worst_gap"]), row["steps_missed"]) for row in scenario["conditions"]]
+            if scenario["failed_actions"] is not None:
+                out.append((Fraction(scenario["failed_actions"]), scenario["failed_actions"]))
+        return out
+    keys = {policy: key(policy) for policy in shortfalls}
+    known = [policy for policy in shortfalls if keys[policy] is not None]
+    pairs = []
+    for a in known:
+        for b in known:
+            if a != b and all(x[0] <= y[0] and x[1] <= y[1] for x, y in zip(keys[a], keys[b])) and keys[a] != keys[b]:
+                pairs.append([a, b])
+    return sorted(pairs)
+
+
 def evaluate_model(model):
     """Execute/verify both CAG modes; retain legitimate partial native outputs."""
     runs, manifests = {}, {}
@@ -226,7 +331,11 @@ def evaluate_model(model):
                 "native_cells": {"possible": deepcopy(p["generative"]["cag"]), "robust": deepcopy(r["generative"]["cag"])}},
             "pvs": pvs, "task_probability": probability,
             "viability": {"all_scenarios": all_scenarios, "partition": partition, "native_cell": deepcopy(r["probability"]["partition"])},
-            "endpoint_probability": {"value": endpoint, "event": "declared_state_conditions_at_terminal_only", "origin": "EXACT_DOMAIN_DERIVATION_NOT_THE_TRAJECTORY_EVENT"}}
+            "endpoint_probability": {"value": endpoint, "event": "declared_state_conditions_at_terminal_only", "origin": "EXACT_DOMAIN_DERIVATION_NOT_THE_TRAJECTORY_EVENT"},
+            "shortfall": {"by_scenario": _shortfall(model, trajectories[pid]), "interpretation": "SEVERITY_DIAGNOSTIC_NOT_WELLBEING_OR_PVS"},
+            "by_scenario": _by_scenario(model, trajectories[pid])}
+        policies[pid]["pvs"]["law_range"] = law_range(policies[pid]["by_scenario"], "pvs_given_scenario")
+        policies[pid]["task_probability"]["law_range"] = law_range(policies[pid]["by_scenario"], "task_value_given_scenario")
     decision_value = _value(native["decision"])
     if decision_value is not None:
         selection = decision_value["selection"]
@@ -234,6 +343,9 @@ def evaluate_model(model):
         decision.update({"selected": _value(selection), "selection_status": selection["state"]})
     else:
         decision = {"coverage": None, "feasible": [], "failed": [], "unknown": [], "frontier": [], "pairs": [], "selected": None, "selection_status": native["decision"]["state"]}
+    decision["wellbeing_comparison"] = welfare_comparison(model, trajectories)
+    decision["shortfall_order"] = {"strictly_less_severe": shortfall_order({pid: policies[pid]["shortfall"]["by_scenario"] for pid in policies}),
+        "interpretation": "HOLDS_UNDER_EVERY_LAW_DIAGNOSTIC_NOT_SELECTION"}
     decision.update({"native_cell": deepcopy(native["decision"]), "selection_rule": model["selection"],
         "comparison_cag_mode": "robust", "require_all_scenarios": model["require_all_scenarios"],
         "functional_criterion": "NEUTRAL_EMPTY_PROFILE"})

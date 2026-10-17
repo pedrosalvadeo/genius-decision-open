@@ -33,6 +33,14 @@ SOURCES = [
          observed_at='2026-03-25T12:00:00-06:00', content=' […] '.join([
              "storage in Denver Water's supply reservoirs is currently at 80% of full.",
              'reduce total water demand by 20% from March 25, 2026 through April 30, 2027.'])),
+    dict(id='dw_water_watch', origin='Denver Water, "Water Watch Report", 12/10/2026, https://www.denverwater.org/sites/default/files/water-watch-report.pdf',
+         observed_at='2026-10-12T12:00:00-06:00', content=' […] '.join([
+             'October 12, 2026 Water Watch Report',
+             'Total system supply reservoir contents are shown in acre-feet (AF).',
+             'TOTAL 378,895 480,506 567,906 67 85 90',
+             'Day of Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Sum of YTD-Avg',
+             'Expected Daily Use 109 109 109 120 175 261 300 288 263 170 114 107 193',
+             'Values are in million gallons (MG).'])),
 ]
 BY_ID = {s['id']: s for s in SOURCES}
 
@@ -83,13 +91,24 @@ CLAIMS = [
     claim('h_runoff', 'hypothesis', 'Aporte neto del deshielo (mayo, junio, julio): seco como 2026 = 2, 3, 1 puntos; normal = 8, 14, 6; húmedo (>150 % de nieve) = 12, 20, 12.',
           'Supuesto propio. El seco replica que en 2026 el almacenamiento casi no subió; el húmedo alcanza el llenado que la empresa asocia a >150 % de nieve; el normal queda entre ambos. Denver Water publica escenarios seco/normal/húmedo que deberían reemplazar estas cifras.',
           premises=['dry_runoff_2026', 'refill_needs']),
-    claim('d_threshold', 'decision', 'Condición de la tarea: mantener el almacenamiento en 50 % o más en todos los meses (no romper el mínimo histórico de 2003).',
-          'Elegida por el modelizador como referencia operativa, pendiente de revisión; no es un umbral de vida ni una regla de Denver Water.', premises=['record_low']),
+    claim('capacity_use', 'reported', 'Capacidad total de los embalses de suministro: 567.906 acre-pies (67 % lleno el 12/10/2026). Uso diario esperado en enero, febrero y marzo, sin riego: 109 millones de galones.',
+          'Cifras de la empresa; el uso esperado es un promedio, no un mínimo garantizado.',
+          [span('dw_water_watch', 'TOTAL 378,895 480,506 567,906 67 85 90'), span('dw_water_watch', 'Expected Daily Use 109 109 109 120 175 261 300 288 263 170 114 107 193'),
+           span('dw_water_watch', 'Values are in million gallons (MG).')]),
+    claim('h_life_reserve', 'hypothesis', 'Un año entero de uso de invierno (109 millones de galones por día durante 365 días) son unos 122.100 acre-pies, 21,5 % de la capacidad (109.000.000 × 365 / 325.851 galones por acre-pie / 567.906 = 21,499 %).',
+          'Usa el uso de invierno como aproximación del uso esencial; el uso interior estricto es algo menor, así que el umbral es prudente.',
+          premises=['capacity_use']),
+    claim('d_life_task', 'decision', 'Condición de vida: los embalses guardan en todo momento al menos un año de agua de uso de invierno (21,5 % de la capacidad) para las 1,5 millones de personas servidas, aunque no entre agua.',
+          'Elegida por el modelizador como condición material del suministro esencial hasta el deshielo siguiente; el mínimo de 50 % de 2003 queda como referencia histórica.',
+          premises=['h_life_reserve', 'population', 'record_low']),
+    claim('d_law', 'decision', 'Ley de probabilidad declarada sobre los tres inviernos: un tercio cada uno.',
+          'Sin respaldo empírico todavía: no hay archivo de pronósticos de Denver contrastado con AM-02. La PVS es condicional a esta ley; cuando el rango bajo toda ley es un único valor, el resultado no depende de ella.',
+          premises=['h_runoff']),
     claim('d_policies', 'decision', 'Opciones comparadas: mantener la prohibición todo el horizonte; reanudar riego de Etapa 1 de mayo a septiembre; reanudarlo sólo en los meses que empiezan con almacenamiento de 70 % o más.',
           'Opciones planteadas por el modelizador a partir de la discusión pública (Etapa 2 nunca aplicada, prohibición "hasta bien entrada la primavera"). El umbral de 70 % es elección propia.', premises=['lawn_ban']),
     claim('d_org_welfare', 'decision', 'El bienestar de Denver Water como organización se representa por la reserva que administra (almacenamiento, más es mejor).',
           'Representación elegida por el modelizador a partir de su objetivo público de preservar el suministro; no es una métrica declarada por la empresa.', premises=['lawn_ban', 'storage_now']),
-    claim('modelling', 'definition', 'Unidad: puntos porcentuales de la capacidad de los embalses de suministro. Paso mensual, del 15/10/2026 al 15/10/2027 (paso 1 = mediados de noviembre). Riego exterior acumulado como existencia que registra el agua entregada a jardines. Sin ley de probabilidad: no se asignan pesos a los inviernos.',
+    claim('modelling', 'definition', 'Unidad: puntos porcentuales de la capacidad de los embalses de suministro. Paso mensual, del 15/10/2026 al 15/10/2027 (paso 1 = mediados de noviembre). Riego exterior acumulado como existencia que registra el agua entregada a jardines. La ley sobre los inviernos se declara aparte (claim d_law).',
           'Decisiones de representación; no se modelan embalses individuales, derechos ni el río aguas abajo.', premises=['storage_now', 'population']),
 ]
 
@@ -130,16 +149,16 @@ FRAGMENTS = [
 for i, s in enumerate(['dry', 'normal', 'wet']):
     FRAGMENTS.append((f'/scenarios/{i}', dict(id=s, label=LABELS[s], events=events(s)), ['h_winter_drawdown', 'h_summer_base', 'h_runoff']))
 FRAGMENTS += [
-    ('/law', None, ['modelling']),
+    ('/law', {'dry': '1/3', 'normal': '1/3', 'wet': '1/3'}, ['d_law']),
     ('/welfare/0', dict(carrier='residents', dimension='outdoor_water', label='Agua disponible para jardines, árboles y césped', stock='outdoor', direction='higher'), ['modelling', 'lawn_ban']),
     ('/welfare/1', dict(carrier='denver_water', dimension='reserve', label='Reserva de los embalses que administra', stock='storage', direction='higher'), ['d_org_welfare']),
-    ('/task', dict(kind='operational', label='Mantener el almacenamiento en 50 % o más en todos los meses', living_carriers=[],
-                   conditions=[dict(stock='storage', op='ge', threshold='50/1')], require_action_success=True), ['d_threshold']),
+    ('/task', dict(kind='life_conditions', label='Guardar siempre al menos un año de agua de invierno (21,5 % de la capacidad) para la población', living_carriers=['residents'],
+                   conditions=[dict(stock='storage', op='ge', threshold='43/2')], require_action_success=False), ['d_life_task']),
     ('/require_all_scenarios', True, ['modelling']),
     ('/selection', 'none', ['modelling']),
     ('/assumptions/0', dict(id='Calibration', kind='CALIBRATION', statement='Caídas mensuales, costo del riego y aportes del deshielo son hipótesis propias calibradas sobre cifras publicadas; no son datos mensuales de Denver Water.', provenance='Claims h_winter_drawdown, h_summer_base, h_outdoor_stage1, h_runoff'), ['h_winter_drawdown', 'h_runoff']),
-    ('/assumptions/1', dict(id='Threshold', kind='NORMATIVE', statement='El umbral de 50 % es una referencia elegida por el modelizador, no una regla de la empresa ni un umbral de vida.', provenance='Claim d_threshold'), ['d_threshold']),
-    ('/assumptions/2', dict(id='NoLaw', kind='PROBABILITY', statement='No se asignan probabilidades a los inviernos; los resultados valen escenario por escenario.', provenance='Claim modelling'), ['modelling']),
+    ('/assumptions/1', dict(id='LifeReserve', kind='NORMATIVE', statement='La condición de vida es guardar un año de agua de uso de invierno para la población (21,5 % de la capacidad); el riego exterior y la reserva se comparan como bienestar, sin sumarlos.', provenance='Claims capacity_use, h_life_reserve, d_life_task'), ['d_life_task']),
+    ('/assumptions/2', dict(id='WinterLaw', kind='PROBABILITY', statement='Un tercio para cada invierno, declarado sin respaldo empírico; la PVS es condicional a esta ley y se informa su rango bajo toda ley.', provenance='Claim d_law'), ['d_law']),
 ]
 
 ENTITIES = [

@@ -18,9 +18,15 @@ class MendozaPotrerillosCaseTests(unittest.TestCase):
         self.assertEqual(traces['dry_allocation']['forecast']['totals']['spilled']['potrerillos'], '1537/2')
         self.assertFalse(traces['reinforced']['like_2025']['daily'][7]['action_executed'])
         decision = registry.evaluate(model)['canonical_results']['decision']
-        self.assertEqual(decision['feasible'], ['dry_allocation'])
-        self.assertEqual(decision['failed'], ['reinforced', 'reinforced_lagoons'])
+        self.assertEqual(decision['feasible'], ['dry_allocation', 'reinforced', 'reinforced_lagoons'])
+        self.assertEqual(decision['failed'], [])
         self.assertIsNone(decision['selected'])
+        results = registry.evaluate(model)['canonical_results']
+        # A month of drinking water is kept in every scenario; reinforced irrigation trades reserve for irrigation.
+        self.assertTrue(all(results['policies'][p]['pvs']['value'] == '1/1' for p in results['policies']))
+        like_2025 = {(x['left'], x['right']): x['relation'] for x in decision['wellbeing_comparison']['by_scenario']['like_2025']}
+        self.assertEqual(like_2025[('reinforced', 'reinforced_lagoons')], 'EQUIVALENT')
+        self.assertEqual(like_2025[('dry_allocation', 'reinforced')], 'INCOMPARABLE')
 
 
 if __name__ == '__main__':

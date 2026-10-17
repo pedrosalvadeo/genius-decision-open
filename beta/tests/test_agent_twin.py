@@ -213,7 +213,7 @@ class AgentTwinTests(unittest.TestCase):
             acknowledge_declared=True,idempotency_key='field-confirm')))
         result=self.call('twin_evaluate',dict(case_id=cid,version=1))
         decision=result['evaluation']['canonical_results']['decision']
-        self.assertEqual((decision['feasible'],decision['failed'],decision['selected']),(['keep_ban','resume_if_70'],['resume_may'],None))
+        self.assertEqual((decision['feasible'],decision['failed'],decision['selected']),(['keep_ban','resume_if_70','resume_may'],[],None))
         observed=self.call('twin_observe',dict(case_id=cid,payload=dict(base_version=1,policy_id='keep_ban',scenario_id='dry',
             day=1,variable='storage',unit='pct_capacity',value='65.5',observed_at='2026-11-15T12:00:00+00:00',
             source='Synthetic test reading; no field data',idempotency_key='field-reading')))['observation']
