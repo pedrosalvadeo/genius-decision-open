@@ -297,7 +297,7 @@
       {
         "id": "h_monthly",
         "basis": "hypothesis",
-        "statement": "Reparto mensual del pronóstico (noviembre a octubre): 120, 300, 320, 250, 185, 110, 85, 75, 75, 75, 85, 100 hm³; suma 1780. Diciembre a febrero son los citados; el resto es reparto propio.",
+        "statement": "Reparto mensual del pronóstico (noviembre a septiembre): 120, 300, 320, 250, 185, 110, 85, 75, 75, 75, 85 hm³; suma 1680, el resto de los 1780 corresponde a octubre de 2026, ya transcurrido al inicio. Diciembre a febrero son los citados; el resto es reparto propio.",
         "uncertainty": "Supuesto propio sobre la forma del hidrograma fuera de los tres meses citados. Requiere el pronóstico mensual completo de Irrigación.",
         "spans": [],
         "premises": [
@@ -329,7 +329,7 @@
       {
         "id": "h_agro",
         "basis": "hypothesis",
-        "statement": "Temporada de riego: noviembre a mayo y octubre (8 meses). Dotación como el año seco: 500 hm³ (62,5 por mes); reforzada: 750 hm³ (93,75 por mes).",
+        "statement": "Temporada de riego en el horizonte: noviembre a mayo (7 meses). Dotación de año seco: 62,5 hm³ por mes (500 hm³ repartidos en 8 meses de temporada); reforzada: 93,75 hm³ por mes (1,5 veces).",
         "uncertainty": "Meses y refuerzo de 1,5 veces son supuestos propios; Irrigación no publicó dotaciones 2026/27.",
         "spans": [],
         "premises": [
@@ -369,9 +369,19 @@
         ]
       },
       {
+        "id": "d_org_welfare",
+        "basis": "decision",
+        "statement": "El bienestar de Irrigación como organización se representa por la reserva de Potrerillos (más es mejor).",
+        "uncertainty": "Representación elegida por el modelizador; Irrigación no publicó una métrica propia.",
+        "spans": [],
+        "premises": [
+          "storage_now"
+        ]
+      },
+      {
         "id": "modelling",
         "basis": "definition",
-        "statement": "Unidad hm³. Paso mensual de noviembre de 2026 a octubre de 2027. El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. Sin ley de probabilidad.",
+        "statement": "Unidad hm³. Paso mensual de noviembre de 2026 a septiembre de 2027 (11 pasos; el límite de salida del gemelo impide un paso más con tres escenarios y tres opciones). El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. Sin ley de probabilidad.",
         "uncertainty": "No se modelan diques aguas abajo (Cipolletti), acuíferos, generación eléctrica ni pérdidas de conducción.",
         "spans": [],
         "premises": [
@@ -397,7 +407,7 @@
       },
       {
         "path": "/horizon",
-        "value": 12,
+        "value": 11,
         "claim_ids": [
           "modelling"
         ]
@@ -473,6 +483,17 @@
         },
         "claim_ids": [
           "surplus_uses"
+        ]
+      },
+      {
+        "path": "/carriers/2",
+        "value": {
+          "id": "dgi",
+          "label": "Departamento General de Irrigación",
+          "kind": "organization"
+        },
+        "claim_ids": [
+          "storage_now"
         ]
       },
       {
@@ -608,8 +629,7 @@
                 4,
                 5,
                 6,
-                7,
-                12
+                7
               ],
               "when": [],
               "action": "dry_allocation"
@@ -635,8 +655,7 @@
                 4,
                 5,
                 6,
-                7,
-                12
+                7
               ],
               "when": [],
               "action": "reinforced_allocation"
@@ -662,8 +681,7 @@
                 4,
                 5,
                 6,
-                7,
-                12
+                7
               ],
               "when": [
                 {
@@ -683,8 +701,7 @@
                 4,
                 5,
                 6,
-                7,
-                12
+                7
               ],
               "when": [],
               "action": "reinforced_allocation"
@@ -828,16 +845,6 @@
                 "potrerillos": "25/1"
               },
               "remove_capabilities": []
-            },
-            {
-              "inflows": {
-                "potrerillos": "100/1"
-              },
-              "renewables": {},
-              "drains": {
-                "potrerillos": "25/1"
-              },
-              "remove_capabilities": []
             }
           ]
         },
@@ -956,16 +963,6 @@
             {
               "inflows": {
                 "potrerillos": "13549/169"
-              },
-              "renewables": {},
-              "drains": {
-                "potrerillos": "25/1"
-              },
-              "remove_capabilities": []
-            },
-            {
-              "inflows": {
-                "potrerillos": "15940/169"
               },
               "renewables": {},
               "drains": {
@@ -1096,16 +1093,6 @@
                 "potrerillos": "25/1"
               },
               "remove_capabilities": []
-            },
-            {
-              "inflows": {
-                "potrerillos": "3985/89"
-              },
-              "renewables": {},
-              "drains": {
-                "potrerillos": "25/1"
-              },
-              "remove_capabilities": []
             }
           ]
         },
@@ -1148,6 +1135,19 @@
         "claim_ids": [
           "surplus_uses",
           "d_ecology"
+        ]
+      },
+      {
+        "path": "/welfare/2",
+        "value": {
+          "carrier": "dgi",
+          "dimension": "reserve",
+          "label": "Reserva de Potrerillos",
+          "stock": "potrerillos",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_org_welfare"
         ]
       },
       {
@@ -1270,6 +1270,11 @@
           "collection": "carriers",
           "model_id": "lagoon_ecosystem",
           "entity_id": "lagoon_ecosystem"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "dgi",
+          "entity_id": "dgi"
         }
       ],
       "rationale": "Irrigación decide entregas; se evalúan embalse, riego y lagunas. Fuera de alcance: acuífero, energía y crecidas."

@@ -71,12 +71,12 @@ CLAIMS = [
           [span('diariouno', 'va a sobrar aproximadamente en 1 año y medio el volumen equivalente al embalse Potrerillos.'),
            span('diariouno', 'recuperación de ecosistemas como las lagunas de Rosario'),
            span('diariouno', 'el agua puede salirse del cauce, romper calles e inundar fincas')]),
-    claim('h_monthly', 'hypothesis', 'Reparto mensual del pronóstico (noviembre a octubre): 120, 300, 320, 250, 185, 110, 85, 75, 75, 75, 85, 100 hm³; suma 1780. Diciembre a febrero son los citados; el resto es reparto propio.',
+    claim('h_monthly', 'hypothesis', 'Reparto mensual del pronóstico (noviembre a septiembre): 120, 300, 320, 250, 185, 110, 85, 75, 75, 75, 85 hm³; suma 1680, el resto de los 1780 corresponde a octubre de 2026, ya transcurrido al inicio. Diciembre a febrero son los citados; el resto es reparto propio.',
           'Supuesto propio sobre la forma del hidrograma fuera de los tres meses citados. Requiere el pronóstico mensual completo de Irrigación.', premises=['forecast', 'monthly_peak']),
     claim('h_scenarios', 'hypothesis', 'Escenarios: el pronóstico; por debajo del pronóstico en la misma proporción que 2025/26 (797/845); y un año como 2025/26 (797 hm³ en total). Los dos últimos escalan el reparto mensual.',
           'Supuesto propio; no hay escenarios publicados por Irrigación.', premises=['forecast', 'h_monthly']),
     claim('h_potable', 'hypothesis', 'El uso potable retira 25 hm³ por mes del embalse (300 hm³ por año).', 'Reparto uniforme propio; el consumo real varía por estación.', premises=['uses']),
-    claim('h_agro', 'hypothesis', 'Temporada de riego: noviembre a mayo y octubre (8 meses). Dotación como el año seco: 500 hm³ (62,5 por mes); reforzada: 750 hm³ (93,75 por mes).',
+    claim('h_agro', 'hypothesis', 'Temporada de riego en el horizonte: noviembre a mayo (7 meses). Dotación de año seco: 62,5 hm³ por mes (500 hm³ repartidos en 8 meses de temporada); reforzada: 93,75 hm³ por mes (1,5 veces).',
           'Meses y refuerzo de 1,5 veces son supuestos propios; Irrigación no publicó dotaciones 2026/27.', premises=['uses']),
     claim('d_ecology', 'decision', 'Entrega ecológica a las lagunas: 20 hm³ en cada mes que empiece con el embalse en 355 hm³ (90 %) o más.',
           'Opción planteada por el modelizador a partir de la mención pública de las lagunas; volumen y umbral son elección propia.', premises=['surplus_uses', 'storage_now']),
@@ -84,15 +84,17 @@ CLAIMS = [
           'Referencia operativa elegida por el modelizador, no regla de Irrigación ni umbral de vida.', premises=['h_potable']),
     claim('d_policies', 'decision', 'Opciones: dotación de año seco; dotación reforzada; dotación reforzada más entrega ecológica cuando el embalse está casi lleno.',
           'Opciones planteadas por el modelizador; no son propuestas oficiales.', premises=['uses', 'surplus_uses']),
-    claim('modelling', 'definition', 'Unidad hm³. Paso mensual de noviembre de 2026 a octubre de 2027. El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. Sin ley de probabilidad.',
+    claim('d_org_welfare', 'decision', 'El bienestar de Irrigación como organización se representa por la reserva de Potrerillos (más es mejor).',
+          'Representación elegida por el modelizador; Irrigación no publicó una métrica propia.', premises=['storage_now']),
+    claim('modelling', 'definition', 'Unidad hm³. Paso mensual de noviembre de 2026 a septiembre de 2027 (11 pasos; el límite de salida del gemelo impide un paso más con tres escenarios y tres opciones). El escurrimiento entra al embalse; lo que excede la capacidad se registra como derrame no controlado aguas abajo. Riego y entrega ecológica se acumulan como agua entregada. Sin ley de probabilidad.',
           'No se modelan diques aguas abajo (Cipolletti), acuíferos, generación eléctrica ni pérdidas de conducción.', premises=['storage_now', 'forecast']),
 ]
 
-H = 12
-FORECAST = [120, 300, 320, 250, 185, 110, 85, 75, 75, 75, 85, 100]
+H = 11
+FORECAST = [120, 300, 320, 250, 185, 110, 85, 75, 75, 75, 85]
 SCALE = dict(forecast=Fraction(1), below=Fraction(797, 845), like_2025=Fraction(797, 1780))
 LABELS = dict(forecast='Pronóstico oficial (1780 hm³)', below='Por debajo del pronóstico como en 2025/26', like_2025='Año como 2025/26 (797 hm³)')
-IRRIGATION = [1, 2, 3, 4, 5, 6, 7, 12]  # Nov..May and Oct
+IRRIGATION = [1, 2, 3, 4, 5, 6, 7]  # Nov..May
 
 
 def q(x):
@@ -118,6 +120,7 @@ FRAGMENTS = [
     ('/stocks/2', dict(id='lagoons', label='Agua entregada a las lagunas (acumulada)', unit='hm3', kind='persistent', initial='0/1', capacity='5000/1'), ['modelling', 'd_ecology']),
     ('/carriers/0', dict(id='irrigators', label='Regantes del río Mendoza', kind='person'), ['uses']),
     ('/carriers/1', dict(id='lagoon_ecosystem', label='Ecosistema de las lagunas', kind='living'), ['surplus_uses']),
+    ('/carriers/2', dict(id='dgi', label='Departamento General de Irrigación', kind='organization'), ['storage_now']),
     ('/capabilities/0', dict(id='operate', label='Operación del embalse'), ['modelling']),
     ('/initial_capabilities/0', 'operate', ['modelling']),
     ('/actions/0', dict(id='hold', label='Sin entregas de riego', requires=[], withdrawals={}, deposits={}, add_capabilities=[], remove_capabilities=[]), ['modelling']),
@@ -139,6 +142,7 @@ FRAGMENTS += [
     ('/law', None, ['modelling']),
     ('/welfare/0', dict(carrier='irrigators', dimension='irrigation', label='Agua entregada para riego', stock='agro', direction='higher'), ['uses', 'h_agro']),
     ('/welfare/1', dict(carrier='lagoon_ecosystem', dimension='lagoon_water', label='Agua entregada a las lagunas', stock='lagoons', direction='higher'), ['surplus_uses', 'd_ecology']),
+    ('/welfare/2', dict(carrier='dgi', dimension='reserve', label='Reserva de Potrerillos', stock='potrerillos', direction='higher'), ['d_org_welfare']),
     ('/task', dict(kind='operational', label='Mantener al menos 25 hm³ en Potrerillos en todos los meses', living_carriers=[],
                    conditions=[dict(stock='potrerillos', op='ge', threshold='25/1')], require_action_success=True), ['d_threshold']),
     ('/require_all_scenarios', True, ['modelling']),
@@ -176,7 +180,7 @@ OBSERVATION = dict(format='genius-system-observation/1', label='Río Mendoza y P
 SCOPE = dict(format='genius-system-scope/1', observation_revision=1, label='Embalse, riego y lagunas',
              members=[e['id'] for e in ENTITIES], intervention_entities=['dgi'], evaluation_entities=[e['id'] for e in ENTITIES],
              bindings=[dict(collection='stocks', model_id=s, entity_id=s) for s in ('potrerillos', 'agro', 'lagoons')] +
-                      [dict(collection='carriers', model_id=c, entity_id=c) for c in ('irrigators', 'lagoon_ecosystem')],
+                      [dict(collection='carriers', model_id=c, entity_id=c) for c in ('irrigators', 'lagoon_ecosystem', 'dgi')],
              rationale='Irrigación decide entregas; se evalúan embalse, riego y lagunas. Fuera de alcance: acuífero, energía y crecidas.')
 
 WORLD = dict(

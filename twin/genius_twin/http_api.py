@@ -115,6 +115,17 @@ def make_blueprint(service_factory, name="twin_api"):
         except KeyError as exc:
             raise ServiceError("example_not_found", "Ejemplo no encontrado.", 404) from exc
 
+    @bp.get("/field-cases")
+    def field_cases():
+        return jsonify(field_cases=registry.field_cases())
+
+    @bp.get("/field-cases/<case_id>")
+    def field_case(case_id):
+        try:
+            return jsonify(registry.field_case(case_id))
+        except KeyError as exc:
+            raise ServiceError("field_case_not_found", "Caso no encontrado.", 404) from exc
+
     @bp.get("/cases")
     def cases():
         return jsonify(service_factory().list_cases())

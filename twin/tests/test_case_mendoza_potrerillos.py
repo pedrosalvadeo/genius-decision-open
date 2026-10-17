@@ -15,8 +15,8 @@ class MendozaPotrerillosCaseTests(unittest.TestCase):
         self.assertEqual(result['status'], 'READY_FOR_REVIEW')
         model = result['model']
         traces = stockflow.compute_trajectories(model)
-        self.assertEqual(traces['dry_allocation']['forecast']['totals']['spilled']['potrerillos'], '1687/2')
-        self.assertEqual(traces['reinforced']['like_2025']['daily'][-1]['stocks']['potrerillos'], '47/4')
+        self.assertEqual(traces['dry_allocation']['forecast']['totals']['spilled']['potrerillos'], '1537/2')
+        self.assertFalse(traces['reinforced']['like_2025']['daily'][7]['action_executed'])
         decision = registry.evaluate(model)['canonical_results']['decision']
         self.assertEqual(decision['feasible'], ['dry_allocation'])
         self.assertEqual(decision['failed'], ['reinforced', 'reinforced_lagoons'])

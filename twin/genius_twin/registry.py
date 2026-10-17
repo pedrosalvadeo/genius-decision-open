@@ -81,6 +81,26 @@ def example(name):
     return {**row, "model": model, "provenance": "SYNTHETIC_EXAMPLE_NOT_FIELD_EVIDENCE"}
 
 
+def field_cases():
+    """Cited real-world cases kept in twin/cases; each carries its own construction."""
+    directory = Path(__file__).resolve().parents[1] / "cases"
+    rows = []
+    for path in sorted(directory.glob("*/world.json")):
+        world = json.loads(path.read_text(encoding="utf-8"))
+        name = next((f["value"] for f in world["construction"]["fragments"] if f["path"] == "/name"), path.parent.name)
+        rows.append({"id": path.parent.name, "title": name, "narrative": world["narrative"], "profile": STOCKFLOW})
+    return rows
+
+
+def field_case(name):
+    row = next((row for row in field_cases() if row["id"] == name), None)
+    if row is None:
+        raise KeyError(name)
+    world = json.loads((Path(__file__).resolve().parents[1] / "cases" / name / "world.json").read_text(encoding="utf-8"))
+    return {**row, "observation": world["observation"], "construction": world["construction"],
+            "provenance": "CITED_FIELD_CASE_WITH_DECLARED_HYPOTHESES"}
+
+
 def schema(profile):
     if profile == D1:
         return {"$schema": "https://json-schema.org/draft/2020-12/schema", "title": D1,

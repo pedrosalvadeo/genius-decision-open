@@ -87,6 +87,8 @@ CLAIMS = [
           'Elegida por el modelizador como referencia operativa, pendiente de revisión; no es un umbral de vida ni una regla de Denver Water.', premises=['record_low']),
     claim('d_policies', 'decision', 'Opciones comparadas: mantener la prohibición todo el horizonte; reanudar riego de Etapa 1 de mayo a septiembre; reanudarlo sólo en los meses que empiezan con almacenamiento de 70 % o más.',
           'Opciones planteadas por el modelizador a partir de la discusión pública (Etapa 2 nunca aplicada, prohibición "hasta bien entrada la primavera"). El umbral de 70 % es elección propia.', premises=['lawn_ban']),
+    claim('d_org_welfare', 'decision', 'El bienestar de Denver Water como organización se representa por la reserva que administra (almacenamiento, más es mejor).',
+          'Representación elegida por el modelizador a partir de su objetivo público de preservar el suministro; no es una métrica declarada por la empresa.', premises=['lawn_ban', 'storage_now']),
     claim('modelling', 'definition', 'Unidad: puntos porcentuales de la capacidad de los embalses de suministro. Paso mensual, del 15/10/2026 al 15/10/2027 (paso 1 = mediados de noviembre). Riego exterior acumulado como existencia que registra el agua entregada a jardines. Sin ley de probabilidad: no se asignan pesos a los inviernos.',
           'Decisiones de representación; no se modelan embalses individuales, derechos ni el río aguas abajo.', premises=['storage_now', 'population']),
 ]
@@ -115,6 +117,7 @@ FRAGMENTS = [
     ('/stocks/0', dict(id='storage', label='Almacenamiento de embalses de suministro', unit='pct_capacity', kind='persistent', initial='67/1', capacity='100/1'), ['storage_now', 'modelling']),
     ('/stocks/1', dict(id='outdoor', label='Agua entregada a riego exterior (acumulada)', unit='pct_capacity', kind='persistent', initial='0/1', capacity='100/1'), ['modelling', 'h_outdoor_stage1']),
     ('/carriers/0', dict(id='residents', label='Población servida (1,5 millones)', kind='person'), ['population']),
+    ('/carriers/1', dict(id='denver_water', label='Denver Water (directorio)', kind='organization'), ['lawn_ban']),
     ('/capabilities/0', dict(id='supply', label='Sistema de suministro operando'), ['modelling']),
     ('/initial_capabilities/0', 'supply', ['modelling']),
     ('/actions/0', dict(id='no_outdoor', label='Sin riego de césped ni aspersión', requires=[], withdrawals={}, deposits={}, add_capabilities=[], remove_capabilities=[]), ['lawn_ban']),
@@ -129,6 +132,7 @@ for i, s in enumerate(['dry', 'normal', 'wet']):
 FRAGMENTS += [
     ('/law', None, ['modelling']),
     ('/welfare/0', dict(carrier='residents', dimension='outdoor_water', label='Agua disponible para jardines, árboles y césped', stock='outdoor', direction='higher'), ['modelling', 'lawn_ban']),
+    ('/welfare/1', dict(carrier='denver_water', dimension='reserve', label='Reserva de los embalses que administra', stock='storage', direction='higher'), ['d_org_welfare']),
     ('/task', dict(kind='operational', label='Mantener el almacenamiento en 50 % o más en todos los meses', living_carriers=[],
                    conditions=[dict(stock='storage', op='ge', threshold='50/1')], require_action_success=True), ['d_threshold']),
     ('/require_all_scenarios', True, ['modelling']),
@@ -164,7 +168,8 @@ SCOPE = dict(format='genius-system-scope/1', observation_revision=1, label='Emba
              members=['storage', 'outdoor', 'residents', 'denver_water'], intervention_entities=['denver_water'],
              evaluation_entities=['storage', 'outdoor', 'residents', 'denver_water'],
              bindings=[dict(collection='stocks', model_id='storage', entity_id='storage'), dict(collection='stocks', model_id='outdoor', entity_id='outdoor'),
-                       dict(collection='carriers', model_id='residents', entity_id='residents')],
+                       dict(collection='carriers', model_id='residents', entity_id='residents'),
+                       dict(collection='carriers', model_id='denver_water', entity_id='denver_water')],
              rationale='El directorio de Denver Water decide el riego; se evalúan embalses, riego y población. Fuera de alcance: río aguas abajo y otros municipios.')
 
 WORLD = dict(
