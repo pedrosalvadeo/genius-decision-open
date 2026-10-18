@@ -88,6 +88,9 @@ def model_schema():
     schema["properties"]["subsystems"] = arr(obj({"id": ident, "label": txt,
         "stocks": {**arr(ident, 1, 6), "uniqueItems": True}, "carriers": {**arr(ident, 0, 6), "uniqueItems": True}}), 0, 6)
     schema["properties"]["interfaces"] = arr(obj({"id": ident, "label": txt, "source": ident, "target": ident}), 0, 8)
+    # Module III: a capability with holds_when exists exactly in the states whose
+    # stocks satisfy it (e.g. hydropower above a minimum power pool). Optional.
+    schema["properties"]["capabilities"]["items"]["properties"]["holds_when"] = arr(stock_pred, 1, 6)
     schema.update({"$schema": "https://json-schema.org/draft/2020-12/schema", "title": PROFILE,
         "x-semantic-rules": ["Reduced nonnegative rationals, numerator/denominator at most 12 digits",
         "Unique IDs and valid references", "P*S*(H+1)<=128; generated signatures<=16",
@@ -180,6 +183,12 @@ def validate_model(model):
     H = model["horizon"]
     if len(model["policies"]) * len(model["scenarios"]) * (H + 1) > 128:
         raise ValueError("occurrence limit P*S*(H+1)<=128 exceeded")
+    held = {c["id"] for c in caps.values() if "holds_when" in c}
+    for cid in held:
+        refs([p["stock"] for p in caps[cid]["holds_when"]], stocks, "capability.holds_when")
+    if held & (set(model["initial_capabilities"]) | {k for a in actions.values() for k in a["add_capabilities"] + a["remove_capabilities"]}
+               | {k for s in model["scenarios"] for e in s["events"] for k in e["remove_capabilities"]}):
+        raise ValueError("a capability with holds_when follows the state only: not initial, added or removed")
     for policy in model["policies"]:
         refs([policy["default_action"]], actions, "policy.default_action")
         for rule in policy["rules"]:
@@ -328,6 +337,17 @@ def function_values(model, daily):
     return out
 
 
+def _state_capabilities(model, balances, capabilities):
+    """Module III: capabilities with holds_when exist exactly where the state satisfies them."""
+    for c in model["capabilities"]:
+        if "holds_when" in c:
+            if all(_matches(p, balances, capabilities) for p in c["holds_when"]):
+                capabilities.add(c["id"])
+            else:
+                capabilities.discard(c["id"])
+    return capabilities
+
+
 def _monitor(task, stocks, action_executed, previous_failed, previous_unknown):
     verdicts = [_condition(stocks, c) for c in task["conditions"]]
     failed = previous_failed or any(v is False for v in verdicts)
@@ -347,7 +367,7 @@ def _compute(model):
         output[policy["id"]] = {}
         for scenario in model["scenarios"]:
             balances = initial.copy()
-            capabilities = set(model["initial_capabilities"])
+            capabilities = _state_capabilities(model, balances, set(model["initial_capabilities"]))
             failed, unknown, endpoint = _monitor(model["task"], balances, None, False, False)
             daily = [{"day": 0, "step": 0, "stocks": {k: q(v) for k, v in balances.items()},
                       "capabilities": sorted(capabilities), "organization": signature(capabilities),
@@ -395,6 +415,7 @@ def _compute(model):
                     ledger[k]["unmet"] = demand - ledger[k]["drained"]
                     balances[k] -= ledger[k]["drained"]
                 capabilities.difference_update(event["remove_capabilities"])
+                _state_capabilities(model, balances, capabilities)
                 for k, rec in ledger.items():
                     rec["after"] = balances[k]
                     if rec["before"] + rec["renewal"] - rec["expiry"] + rec["inflow"] - rec["withdrawal"] + rec["deposit"] - rec["spill"] - rec["drained"] != rec["after"]:

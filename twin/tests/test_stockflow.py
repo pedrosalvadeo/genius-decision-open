@@ -89,6 +89,22 @@ class StockFlowContracts(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_model(bad)
 
+    def test_module_three_capability_follows_the_state(self):
+        model = default_model()
+        model["capabilities"].append({"id": "buffer_live", "label": "Reserva en uso",
+                                      "holds_when": [{"kind": "stock", "stock": "buffer", "op": "ge", "value": "1/1"}]})
+        traces = compute_trajectories(model)
+        # Buffer 2, 2, 0, 1 in the peak: the capability is lost at step 2 and comes back at step 3.
+        self.assertEqual(["buffer_live" in row["capabilities"] for row in traces["manual_policy"]["peak"]["daily"]], [True, True, False, True])
+        result = evaluate_model(model)
+        self.assertTrue(result["verification"]["valid"])
+        for mutation in (lambda m: m["initial_capabilities"].append("buffer_live"),
+                         lambda m: m["actions"][0]["add_capabilities"].append("buffer_live"),
+                         lambda m: m["capabilities"][-1]["holds_when"][0].update(stock="missing")):
+            bad = deepcopy(model); mutation(bad)
+            with self.assertRaises(ValueError):
+                validate_model(bad)
+
     def test_law_missing_preserves_native_partial_and_zero_branch_still_counts(self):
         model = default_model(); model["law"] = None
         result = evaluate_model(model)

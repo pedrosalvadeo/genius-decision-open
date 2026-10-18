@@ -68,6 +68,12 @@ La frontera conjunta suele traer todas las opciones porque ninguna es mejor para
 - Mendoza: regantes, lagunas y población, dotación reforzada con entrega ecológica; Irrigación, dotación de año seco.
 - Cuenca del Colorado: para Glen Canyon, sólo que Denver mantenga la prohibición y Powell libere 6 millones.
 
+## Módulo III: capacidades que siguen al estado, y un límite de la CAG
+
+Una capacidad puede declarar `holds_when`: existe exactamente en los estados cuyas existencias lo cumplen (se pierde y se recupera con el estado). Primer uso, `cases/lake_mead_2028` (mensual en 2027, trimestral en 2028, para caber en el límite de producción): Glen Canyon Dam genera electricidad sólo con Powell en 3.490 pies o más. Con afluencia mínima, liberar 7 millones en 2027 la deja sin generar desde agosto de 2027 hasta la primavera de 2028; liberar 6 la mantiene, pero deja a Mead bajo 1.000 pies desde marzo de 2028.
+
+**Límite encontrado.** La CAG del kernel es el origen más lo que la receta logra (`kernel/genius_kernel/structural.py`, "Origin plus declared union/intersection"). Mide qué organizaciones nuevas genera una ruta, pero nunca castiga perder una capacidad que ya existía: las dos rutas de Mead 2028 tienen la misma CAG robusta. Hoy la pérdida se ve en la organización de cada mes y en una función (meses con generación). Propuesta (pendiente de aprobación, como AM-02): agregar a III una **CAG conservada**, las capacidades de origen que la ruta mantiene en todos los estados de todas las ramas, comparada por inclusión junto a la CAG actual en la decisión.
+
 ## Siguiente
 
 Exponer la federación por API y MCP, sumar portadores comunes reales (por ejemplo, la población que depende de varios embalses) y reemplazar las hipótesis de alineación y desvío por datos (archivos de pronósticos y desvíos de Moffat y Roberts).
