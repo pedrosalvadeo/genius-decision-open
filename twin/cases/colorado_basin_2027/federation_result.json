@@ -1,0 +1,868 @@
+{
+ "assumptions": [
+  {
+   "id": "SharedHydrology",
+   "provenance": "Hipótesis del modelizador. En 2026 ambos tuvieron un año muy seco (caso denver_water_2026, claim dry_runoff_2026; caso lake_mead_2027). Sin estudio de correlación todavía.",
+   "statement": "La misma nieve del alto Colorado gobierna el deshielo de Denver y la afluencia a Powell, así que los escenarios se alinean: seco con mínimo, normal con más probable y húmedo con máximo."
+  },
+  {
+   "id": "DiversionReplacement",
+   "provenance": "Hipótesis del modelizador; los derechos y el calendario reales de desvío pueden diferir. Ver acoplamiento west_slope_diversion.",
+   "statement": "Cada punto de almacenamiento que Denver usa en riego exterior se repone, en la mitad que proviene del alto Colorado, con un desvío adicional que reduce la afluencia a Powell al paso siguiente."
+  },
+  {
+   "id": "JointLaw",
+   "provenance": "Casos denver_water_2026 (claim d_law) y lake_mead_2027 (claim d_law).",
+   "statement": "Un tercio para cada año alineado, la ley que ya declaran los dos gemelos."
+  }
+ ],
+ "by_joint_route": {
+  "denver:keep_ban+mead:release_6": {
+   "by_scenario": {
+    "dry": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "normal": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "wet": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    }
+   },
+   "feasible": true,
+   "joint_pvs": "1/1",
+   "joint_pvs_law_range": {
+    "law_invariant": true,
+    "max": "1/1",
+    "min": "1/1"
+   },
+   "routes": {
+    "denver": "keep_ban",
+    "mead": "release_6"
+   }
+  },
+  "denver:keep_ban+mead:release_7": {
+   "by_scenario": {
+    "dry": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "normal": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "wet": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    }
+   },
+   "feasible": true,
+   "joint_pvs": "1/1",
+   "joint_pvs_law_range": {
+    "law_invariant": true,
+    "max": "1/1",
+    "min": "1/1"
+   },
+   "routes": {
+    "denver": "keep_ban",
+    "mead": "release_7"
+   }
+  },
+  "denver:resume_if_70+mead:release_6": {
+   "by_scenario": {
+    "dry": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "normal": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "wet": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    }
+   },
+   "feasible": true,
+   "joint_pvs": "1/1",
+   "joint_pvs_law_range": {
+    "law_invariant": true,
+    "max": "1/1",
+    "min": "1/1"
+   },
+   "routes": {
+    "denver": "resume_if_70",
+    "mead": "release_6"
+   }
+  },
+  "denver:resume_if_70+mead:release_7": {
+   "by_scenario": {
+    "dry": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "normal": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "wet": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    }
+   },
+   "feasible": true,
+   "joint_pvs": "1/1",
+   "joint_pvs_law_range": {
+    "law_invariant": true,
+    "max": "1/1",
+    "min": "1/1"
+   },
+   "routes": {
+    "denver": "resume_if_70",
+    "mead": "release_7"
+   }
+  },
+  "denver:resume_may+mead:release_6": {
+   "by_scenario": {
+    "dry": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "normal": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "wet": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    }
+   },
+   "feasible": true,
+   "joint_pvs": "1/1",
+   "joint_pvs_law_range": {
+    "law_invariant": true,
+    "max": "1/1",
+    "min": "1/1"
+   },
+   "routes": {
+    "denver": "resume_may",
+    "mead": "release_6"
+   }
+  },
+  "denver:resume_may+mead:release_7": {
+   "by_scenario": {
+    "dry": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "normal": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "wet": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    }
+   },
+   "feasible": true,
+   "joint_pvs": "1/1",
+   "joint_pvs_law_range": {
+    "law_invariant": true,
+    "max": "1/1",
+    "min": "1/1"
+   },
+   "routes": {
+    "denver": "resume_may",
+    "mead": "release_7"
+   }
+  }
+ },
+ "couplings": [
+  {
+   "factor": "283953/100000",
+   "id": "west_slope_diversion",
+   "label": "El riego exterior de Denver se repone con agua del alto Colorado que deja de llegar a Lake Powell",
+   "lag": 1,
+   "provenance": "1 punto de capacidad de Denver = 5,67906 mil acre-pies (567.906 acre-pies de capacidad total, caso denver_water_2026). La mitad se atribuye al alto Colorado: 'the West Slope, the source of half of Denver Water's supply' (Denver Water, TAP, septiembre de 2025, https://coyotegulch.blog/2025/09/04/dog-days-a-drag-for-dillon-reservoir-tough-combination-of-conditions-force-denver-water-to-lean-heavily-on-its-summit-county-workhorse-for-summer-water-supply-todd-hartman-denverwater-org/). Moffat y Roberts desvían en promedio unos 57.000 y 58.600 acre-pies por año (CWCB, https://dnrweblink.state.co.us/CWCB/0/doc/125202/Page7.aspx). Retardo de un paso: el paso k de Denver es mediados de mes y el de Mead fin del mes siguiente.",
+   "source": {
+    "interface": "outdoor_watering",
+    "member": "denver"
+   },
+   "target": {
+    "member": "mead",
+    "stock": "powell"
+   }
+  }
+ ],
+ "decision": {
+  "by_actor": {
+   "denver.denver_water": {
+    "best": [
+     "denver:keep_ban+mead:release_6",
+     "denver:keep_ban+mead:release_7"
+    ],
+    "status": "TIED_OR_INCOMPARABLE"
+   },
+   "denver.residents": {
+    "best": [
+     "denver:resume_may+mead:release_6",
+     "denver:resume_may+mead:release_7",
+     "denver:resume_if_70+mead:release_6",
+     "denver:resume_if_70+mead:release_7"
+    ],
+    "status": "TIED_OR_INCOMPARABLE"
+   },
+   "mead.glen_canyon": {
+    "best": [
+     "denver:keep_ban+mead:release_6"
+    ],
+    "status": "UNIQUE"
+   },
+   "mead.lower_basin": {
+    "best": [
+     "denver:keep_ban+mead:release_7",
+     "denver:resume_may+mead:release_7",
+     "denver:resume_if_70+mead:release_7"
+    ],
+    "status": "TIED_OR_INCOMPARABLE"
+   }
+  },
+  "feasibility": "JOINT_LIFE_CONDITION_IN_EVERY_JOINT_SCENARIO",
+  "feasible": [
+   "denver:keep_ban+mead:release_6",
+   "denver:keep_ban+mead:release_7",
+   "denver:resume_may+mead:release_6",
+   "denver:resume_may+mead:release_7",
+   "denver:resume_if_70+mead:release_6",
+   "denver:resume_if_70+mead:release_7"
+  ],
+  "frontier": [
+   "denver:keep_ban+mead:release_6",
+   "denver:keep_ban+mead:release_7",
+   "denver:resume_may+mead:release_6",
+   "denver:resume_may+mead:release_7",
+   "denver:resume_if_70+mead:release_6",
+   "denver:resume_if_70+mead:release_7"
+  ],
+  "pairs": [
+   {
+    "better_for": [
+     {
+      "criterion": "function",
+      "who": "mead.glen_canyon_3510"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:keep_ban+mead:release_6",
+    "relation": "INCOMPARABLE",
+    "right": "denver:keep_ban+mead:release_7",
+    "worse_for": [
+     {
+      "criterion": "welfare",
+      "who": "mead.lower_basin"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "function",
+      "who": "denver.above_2003_low"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:keep_ban+mead:release_6",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_may+mead:release_6",
+    "worse_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "function",
+      "who": "denver.above_2003_low"
+     },
+     {
+      "criterion": "function",
+      "who": "mead.glen_canyon_3510"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:keep_ban+mead:release_6",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_may+mead:release_7",
+    "worse_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.lower_basin"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:keep_ban+mead:release_6",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_if_70+mead:release_6",
+    "worse_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "function",
+      "who": "mead.glen_canyon_3510"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:keep_ban+mead:release_6",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_if_70+mead:release_7",
+    "worse_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.lower_basin"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "function",
+      "who": "denver.above_2003_low"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.lower_basin"
+     }
+    ],
+    "left": "denver:keep_ban+mead:release_7",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_may+mead:release_6",
+    "worse_for": [
+     {
+      "criterion": "function",
+      "who": "mead.glen_canyon_3510"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "function",
+      "who": "denver.above_2003_low"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:keep_ban+mead:release_7",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_may+mead:release_7",
+    "worse_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.lower_basin"
+     }
+    ],
+    "left": "denver:keep_ban+mead:release_7",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_if_70+mead:release_6",
+    "worse_for": [
+     {
+      "criterion": "function",
+      "who": "mead.glen_canyon_3510"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:keep_ban+mead:release_7",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_if_70+mead:release_7",
+    "worse_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "function",
+      "who": "mead.glen_canyon_3510"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:resume_may+mead:release_6",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_may+mead:release_7",
+    "worse_for": [
+     {
+      "criterion": "welfare",
+      "who": "mead.lower_basin"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     }
+    ],
+    "left": "denver:resume_may+mead:release_6",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_if_70+mead:release_6",
+    "worse_for": [
+     {
+      "criterion": "function",
+      "who": "denver.above_2003_low"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "function",
+      "who": "mead.glen_canyon_3510"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:resume_may+mead:release_6",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_if_70+mead:release_7",
+    "worse_for": [
+     {
+      "criterion": "function",
+      "who": "denver.above_2003_low"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.lower_basin"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.lower_basin"
+     }
+    ],
+    "left": "denver:resume_may+mead:release_7",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_if_70+mead:release_6",
+    "worse_for": [
+     {
+      "criterion": "function",
+      "who": "denver.above_2003_low"
+     },
+     {
+      "criterion": "function",
+      "who": "mead.glen_canyon_3510"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "welfare",
+      "who": "denver.residents"
+     }
+    ],
+    "left": "denver:resume_may+mead:release_7",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_if_70+mead:release_7",
+    "worse_for": [
+     {
+      "criterion": "function",
+      "who": "denver.above_2003_low"
+     },
+     {
+      "criterion": "welfare",
+      "who": "denver.denver_water"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ]
+   },
+   {
+    "better_for": [
+     {
+      "criterion": "function",
+      "who": "mead.glen_canyon_3510"
+     },
+     {
+      "criterion": "welfare",
+      "who": "mead.glen_canyon"
+     }
+    ],
+    "left": "denver:resume_if_70+mead:release_6",
+    "relation": "INCOMPARABLE",
+    "right": "denver:resume_if_70+mead:release_7",
+    "worse_for": [
+     {
+      "criterion": "welfare",
+      "who": "mead.lower_basin"
+     }
+    ]
+   }
+  ],
+  "rule": "PRODUCT_ORDER_OVER_MEMBER_WELFARE_STEPS_FUNCTION_TERMINALS_AND_JOINT_PVS_NO_SUMS",
+  "selected": null
+ },
+ "format": "genius-federation-result/1",
+ "joint_routes": [
+  {
+   "id": "denver:keep_ban+mead:release_6",
+   "routes": {
+    "denver": "keep_ban",
+    "mead": "release_6"
+   }
+  },
+  {
+   "id": "denver:keep_ban+mead:release_7",
+   "routes": {
+    "denver": "keep_ban",
+    "mead": "release_7"
+   }
+  },
+  {
+   "id": "denver:resume_may+mead:release_6",
+   "routes": {
+    "denver": "resume_may",
+    "mead": "release_6"
+   }
+  },
+  {
+   "id": "denver:resume_may+mead:release_7",
+   "routes": {
+    "denver": "resume_may",
+    "mead": "release_7"
+   }
+  },
+  {
+   "id": "denver:resume_if_70+mead:release_6",
+   "routes": {
+    "denver": "resume_if_70",
+    "mead": "release_6"
+   }
+  },
+  {
+   "id": "denver:resume_if_70+mead:release_7",
+   "routes": {
+    "denver": "resume_if_70",
+    "mead": "release_7"
+   }
+  }
+ ],
+ "joint_scenarios": [
+  {
+   "id": "dry",
+   "label": "Año seco en el alto Colorado",
+   "members": {
+    "denver": "dry",
+    "mead": "minimum"
+   }
+  },
+  {
+   "id": "normal",
+   "label": "Año normal en el alto Colorado",
+   "members": {
+    "denver": "normal",
+    "mead": "most_probable"
+   }
+  },
+  {
+   "id": "wet",
+   "label": "Año húmedo en el alto Colorado",
+   "members": {
+    "denver": "wet",
+    "mead": "maximum"
+   }
+  }
+ ],
+ "law": {
+  "dry": "1/3",
+  "normal": "1/3",
+  "wet": "1/3"
+ },
+ "members": {
+  "denver": {
+   "case": "denver_water_2026",
+   "coupled_variants": [],
+   "modules": {
+    "0": "FILLED",
+    "I": "FILLED",
+    "II": "FILLED",
+    "III": "FILLED",
+    "IV": "FILLED",
+    "V": "FILLED",
+    "VI": "FILLED",
+    "VII": "FILLED"
+   },
+   "routes": [
+    "keep_ban",
+    "resume_may",
+    "resume_if_70"
+   ]
+  },
+  "mead": {
+   "case": "lake_mead_2027",
+   "coupled_variants": [
+    {
+     "coupled_totals": {
+      "west_slope_diversion": {
+       "dry": "0/1",
+       "normal": "0/1",
+       "wet": "0/1"
+      }
+     },
+     "key": [
+      "keep_ban"
+     ],
+     "sources": {
+      "denver": "keep_ban"
+     }
+    },
+    {
+     "coupled_totals": {
+      "west_slope_diversion": {
+       "dry": "283953/10000",
+       "normal": "283953/10000",
+       "wet": "283953/10000"
+      }
+     },
+     "key": [
+      "resume_may"
+     ],
+     "sources": {
+      "denver": "resume_may"
+     }
+    },
+    {
+     "coupled_totals": {
+      "west_slope_diversion": {
+       "dry": "0/1",
+       "normal": "851859/50000",
+       "wet": "851859/50000"
+      }
+     },
+     "key": [
+      "resume_if_70"
+     ],
+     "sources": {
+      "denver": "resume_if_70"
+     }
+    }
+   ],
+   "modules": {
+    "0": "FILLED",
+    "I": "FILLED",
+    "II": "FILLED",
+    "III": "FILLED",
+    "IV": "FILLED",
+    "V": "FILLED",
+    "VI": "FILLED",
+    "VII": "FILLED"
+   },
+   "routes": [
+    "release_6",
+    "release_7"
+   ]
+  }
+ },
+ "name": "Cuenca del Colorado 2027: Denver, Lake Powell y Lake Mead",
+ "scope": "EACH_MEMBER_KERNEL_VERIFIED_JOINT_LAYER_READS_MEMBER_RESULTS",
+ "shared_carriers": []
+}

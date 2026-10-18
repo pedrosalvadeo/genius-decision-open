@@ -203,6 +203,11 @@ class AgentTwinTests(unittest.TestCase):
         case=self.call('twin_field_case',dict(case_id='denver_water_2026'))
         self.assertEqual(case['provenance'],'CITED_FIELD_CASE_WITH_DECLARED_HYPOTHESES')
         self.assertEqual(self.rpc('twin_field_case',dict(case_id='missing')).json['result']['structuredContent']['error']['http_status'],404)
+        self.assertIn('colorado_basin_2027',{row['id'] for row in self.call('twin_federations')['federations']})
+        basin=self.call('twin_federation',dict(federation_id='colorado_basin_2027'))
+        self.assertEqual(basin['result']['scope'],'EACH_MEMBER_KERNEL_VERIFIED_JOINT_LAYER_READS_MEMBER_RESULTS')
+        self.assertEqual(basin['result']['decision']['by_actor']['mead.glen_canyon']['best'],['denver:keep_ban+mead:release_6'])
+        self.assertEqual(self.rpc('twin_federation',dict(federation_id='missing')).json['result']['structuredContent']['error']['http_status'],404)
         cid=self.call('twin_create_case',{'payload':dict(text=case['narrative'],title=case['title'],profile=STOCKFLOW)})['case']['id']
         self.call('twin_observe_system',dict(case_id=cid,payload=dict(base_version=0,observation_revision=0,
             idempotency_key='field-observation',observation=case['observation'])))
