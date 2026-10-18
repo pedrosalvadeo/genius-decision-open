@@ -237,8 +237,8 @@ class AgentTwinTests(unittest.TestCase):
             day=1,variable='storage',unit='pct_capacity',value='65.5',observed_at='2026-11-15T12:00:00+00:00',
             source='Synthetic test reading; no field data',idempotency_key='field-reading')))['observation']
         self.assertEqual(observed['comparison']['status'],'MATCH_NOT_MODEL_VALIDATION')
-        reread=self.call('twin_get_job',dict(job_id=result['job']['id']))
-        self.assertEqual(reread['job']['freshness']['observed_after_computation'],[observed['id']])
+        fresh=self.call('twin_job_freshness',dict(job_id=result['job']['id']))
+        self.assertEqual((fresh['status'],fresh['observed_after_computation']),('SUPERSEDED_BY_NEWER_OBSERVATION',[observed['id']]))
 
     def test_system_observations_scopes_limits_identity_and_native_receipt(self):
         fixture=self.call('twin_system_example')

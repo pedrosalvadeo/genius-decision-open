@@ -56,6 +56,16 @@ class DecisionWindowTest(unittest.TestCase):
         full = registry.evaluate(self.model)["canonical_results"]["decision"]
         self.assertEqual(full["frontier"], ["campaign", "campaign_and_defer", "defer_below_two_days"])
 
+    def test_observation_age_counts_and_merged_committed_route_is_renamed(self):
+        window = {"available_seconds": 60, "step_seconds": WEEK, "first_action_offset_seconds": 3600}
+        self.assertEqual(plan(self.model, window)["committed_steps"], 0)
+        with self.assertRaisesRegex(ValueError, "3 steps are committed"):
+            plan(self.model, {**window, "observation_age_seconds": 3 * WEEK})
+        late = plan(self.model, {**window, "observation_age_seconds": 3 * WEEK, "committed_route": "campaign"})
+        self.assertEqual(late["committed_steps"], 3)
+        self.assertEqual(late["committed_route"], "as_usual")
+        self.assertIn("as_usual", {p["id"] for p in late["model"]["policies"]})
+
     def test_commit_keeps_later_rules_and_rejects_empty_choices(self):
         model, identical = commit(self.model, 2, "as_usual")
         self.assertEqual(identical, [])

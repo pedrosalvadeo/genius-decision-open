@@ -18,7 +18,7 @@ from .stockflow import q, validate_model
 
 FORMAT = "genius-decision-window/1"
 FIELDS = {"available_seconds", "step_seconds", "first_action_offset_seconds", "action_latency_seconds",
-          "committed_route", "seconds_per_cell", "fixed_seconds"}
+          "observation_age_seconds", "committed_route", "seconds_per_cell", "fixed_seconds"}
 # Measured on 2026-10-18 in the build container: the five field cases took
 # 29-44 ms per cell (2.9-4.7 s each). A decider replaces it with its own.
 REFERENCE_SECONDS_PER_CELL = Fraction(1, 20)
@@ -93,7 +93,10 @@ def plan(model, window):
         raise ValueError("window fields: " + ", ".join(sorted(FIELDS)))
     available = _seconds(window, "available_seconds", positive=True)
     step = _seconds(window, "step_seconds", positive=True)
+    # Times are measured from the observed state (the model's step 0); the
+    # computation starts observation_age_seconds after it.
     offset = _seconds(window, "first_action_offset_seconds", 0)
+    age = _seconds(window, "observation_age_seconds", 0)
     latency = _seconds(window, "action_latency_seconds", 0)
     per_cell = _seconds(window, "seconds_per_cell", q(REFERENCE_SECONDS_PER_CELL))
     fixed_cost = _seconds(window, "fixed_seconds", 0)
@@ -102,7 +105,7 @@ def plan(model, window):
     estimate = fixed_cost + per_cell * n
     fits = estimate <= available
     # A decider that cannot finish acts at the end of its window at the latest.
-    elapsed = min(estimate, available) + latency
+    elapsed = age + min(estimate, available) + latency
     steps = committed_steps(elapsed, H, step, offset)
     result = {"format": FORMAT, "cells": n, "estimated_compute_seconds": q(estimate),
               "available_seconds": q(available), "cost_basis": cost_basis,
@@ -118,7 +121,9 @@ def plan(model, window):
         if "committed_route" not in window:
             raise ValueError(f"{steps} steps are committed before the decision takes effect; declare committed_route")
         result["model"], result["identical_routes"] = commit(model, steps, window["committed_route"])
-        result["committed_route"] = window["committed_route"]
+        # A committed route merged into an identical earlier one is named by the route kept.
+        same = {row["route"]: row["same_as"] for row in result["identical_routes"]}
+        result["committed_route"] = same.get(window["committed_route"], window["committed_route"])
     else:
         result["model"] = deepcopy(model)
     if not fits:

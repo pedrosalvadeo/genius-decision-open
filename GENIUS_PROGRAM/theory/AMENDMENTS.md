@@ -130,6 +130,6 @@ Las notas anteriores conservan el estado que tenían al registrarse. La auditor�
 
 **Texto completo:** `PROPOSAL_AM-05.md`.
 
-**Estado:** `PROPUESTA` el 2026-10-18, pendiente de la aprobación de Pedro. Cuando el cálculo completo no entra en la ventana del decisor, los escenarios se evalúan de a uno, por masa decreciente, y se entregan cotas exactas de PVS y rutas refutadas. Una selección sólo se emite si queda una única ruta no refutada, condicionada a los escenarios que faltan.
+**Estado:** `PROPUESTA` el 2026-10-18, pendiente de la aprobación de Pedro. Cuando el cálculo completo no entra en la ventana del decisor, los escenarios se evalúan de a uno, por masa decreciente, y se entregan cotas exactas de PVS y rutas refutadas. Una selección sólo se emite si el modelo la permite y queda una única ruta no refutada, condicionada a los escenarios que faltan. Una revisión adversarial separada pidió diez reparaciones, ya incorporadas.
 
-**Alcance:** no cambia S1 ni el kernel FP1. Los pasos comprometidos (`decision_window.py`) y la frescura de cada job ya funcionan sin cambiar la matemática.
+**Alcance:** no cambia S1 ni el kernel FP1. Los pasos comprometidos (`decision_window.py`) y la frescura de cada resultado ya funcionan sin cambiar la matemática.
