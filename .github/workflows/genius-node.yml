@@ -59,6 +59,31 @@ jobs:
           name: denver-snow
           path: out/
 
+  inflow:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Harvest water-year unregulated inflow to Lake Powell (Reclamation RISE)
+        run: python twin/history/rise_inflow.py --out out/powell_unregulated_wy.csv
+      - name: Probe the Mendoza river at Guido (INA annual table, national hydrological database)
+        continue-on-error: true
+        run: |
+          sudo apt-get install -y -qq poppler-utils >/dev/null
+          mkdir -p out/mendoza
+          curl -sSL -A 'genius-history-node' -o out/mendoza/poblete.pdf https://www.ina.gob.ar/cra/riego/fertirriego/pdf/Poblete.pdf && pdftotext -layout out/mendoza/poblete.pdf out/mendoza/poblete.txt && grep -nE '(19|20)[0-9]{2}' out/mendoza/poblete.txt | head -200
+          curl -sSL -A 'genius-history-node' -o out/mendoza/snih.html https://snih.hidricosargentina.gob.ar/ && grep -oiE 'href="[^"]*"' out/mendoza/snih.html | head -60
+      - uses: actions/upload-artifact@v4
+        with:
+          name: inflow
+          path: out/
+
   harvest:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
