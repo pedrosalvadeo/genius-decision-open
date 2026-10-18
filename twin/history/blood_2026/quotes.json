@@ -1,32 +1,126 @@
 [
- {"url": "https://www.redcross.org/about-us/news-and-events/press-release/2026/red-cross-declares-national-blood-supply-crisis-urges-immediate-.html",
-  "phrases": ["national blood supply crisis", "one-day", "type O"]},
- {"url": "https://www.redcross.org/about-us/news-and-events/press-release/2026/red-cross-declares-shortage-after-blood-supply-falls-35-.html",
-  "phrases": ["35%", "shortage"]},
- {"url": "https://americasblood.org/abc-news/understanding-the-state-of-the-nations-blood-supply",
-  "phrases": ["3 or more days", "2-day supply", "a day or less"]},
- {"url": "https://americasblood.org/abc-news/blood-donations-urged-by-interorganizational-task-force-following-supply-declines-summer-2026/",
-  "phrases": ["task force", "days"]},
- {"url": "https://americasblood.org/for-donors/americas-blood-supply/",
-  "phrases": ["days"]},
- {"url": "https://www.aha.org/news/headline/2026-07-28-red-cross-declares-national-blood-supply-crisis-member-advisory-includes-resources-assist-donations",
-  "phrases": ["life-threatening emergencies"]},
- {"url": "https://www.axios.com/2026/07/28/us-blood-supply-health-red-cross-donate",
-  "phrases": ["one-day", "type O"]},
- {"url": "https://www.deseret.com/lifestyle/2026/07/28/american-red-cross-declares-blood-shortage-emergency-hospitals-postpone-surgeries/",
-  "phrases": ["25%"]},
- {"url": "https://www.medicaldaily.com/red-cross-second-national-blood-crisis-type-o-supply-2026-476645",
-  "phrases": ["60%", "80%"]},
- {"url": "https://www.beckershospitalreview.com/supply-chain/nations-2nd-ever-blood-crisis-delays-hospital-surgeries/",
-  "phrases": ["surger"]},
- {"url": "https://hoodline.com/2026/10/red-cross-launches-300-million-lifeblood-fund-after-summer-blood-crisis-hits-four-year-low/",
-  "phrases": ["300 million", "four-year low"]},
- {"url": "https://www.salta.gob.ar/prensa/noticias/el-stock-de-sangre-en-el-centro-de-hemoterapia-es-critico-110547",
-  "phrases": ["todo grupo y factor"]},
- {"url": "https://fm899.com.ar/hemoterapia-busca-reforzar-las-reservas-de-sangre-ante-la-llegada-del-milagro/",
-  "phrases": ["entre 150 y 250 unidades", "35 días"]},
- {"url": "https://elmonterizo.com/salta-en-alerta-buscan-80-donantes-de-sangre-por-dia-y-salen-a-los-barrios",
-  "phrases": ["80 donantes"]},
- {"url": "https://nuevodiariodesalta.com.ar/el-centro-regional-de-hemoterapia-necesita-100-donantes-por-dia-para-garantizar-el-abastecimiento-de-sangre/",
-  "phrases": ["100 donantes por día"]}
+ {
+  "url": "https://www.redcross.org/about-us/news-and-events/press-release/2026/red-cross-declares-national-blood-supply-crisis-urges-immediate-.html",
+  "phrases": [
+   "national blood supply crisis",
+   "one-day",
+   "type O"
+  ]
+ },
+ {
+  "url": "https://www.redcross.org/about-us/news-and-events/press-release/2026/red-cross-declares-shortage-after-blood-supply-falls-35-.html",
+  "phrases": [
+   "35%",
+   "shortage"
+  ]
+ },
+ {
+  "url": "https://americasblood.org/abc-news/understanding-the-state-of-the-nations-blood-supply",
+  "phrases": [
+   "3 or more days",
+   "2-day supply",
+   "a day or less"
+  ]
+ },
+ {
+  "url": "https://americasblood.org/abc-news/blood-donations-urged-by-interorganizational-task-force-following-supply-declines-summer-2026/",
+  "phrases": [
+   "task force",
+   "days"
+  ]
+ },
+ {
+  "url": "https://americasblood.org/for-donors/americas-blood-supply/",
+  "phrases": [
+   "days"
+  ]
+ },
+ {
+  "url": "https://www.aha.org/news/headline/2026-07-28-red-cross-declares-national-blood-supply-crisis-member-advisory-includes-resources-assist-donations",
+  "phrases": [
+   "life-threatening emergencies"
+  ]
+ },
+ {
+  "url": "https://www.axios.com/2026/07/28/us-blood-supply-health-red-cross-donate",
+  "phrases": [
+   "one-day",
+   "type O"
+  ]
+ },
+ {
+  "url": "https://www.deseret.com/lifestyle/2026/07/28/american-red-cross-declares-blood-shortage-emergency-hospitals-postpone-surgeries/",
+  "phrases": [
+   "25%"
+  ]
+ },
+ {
+  "url": "https://www.medicaldaily.com/red-cross-second-national-blood-crisis-type-o-supply-2026-476645",
+  "phrases": [
+   "60%",
+   "80%"
+  ]
+ },
+ {
+  "url": "https://www.beckershospitalreview.com/supply-chain/nations-2nd-ever-blood-crisis-delays-hospital-surgeries/",
+  "phrases": [
+   "surger"
+  ]
+ },
+ {
+  "url": "https://hoodline.com/2026/10/red-cross-launches-300-million-lifeblood-fund-after-summer-blood-crisis-hits-four-year-low/",
+  "phrases": [
+   "300 million",
+   "four-year low"
+  ]
+ },
+ {
+  "url": "https://www.salta.gob.ar/prensa/noticias/el-stock-de-sangre-en-el-centro-de-hemoterapia-es-critico-110547",
+  "phrases": [
+   "todo grupo y factor"
+  ]
+ },
+ {
+  "url": "https://fm899.com.ar/hemoterapia-busca-reforzar-las-reservas-de-sangre-ante-la-llegada-del-milagro/",
+  "phrases": [
+   "entre 150 y 250 unidades",
+   "35 d\u00edas"
+  ]
+ },
+ {
+  "url": "https://elmonterizo.com/salta-en-alerta-buscan-80-donantes-de-sangre-por-dia-y-salen-a-los-barrios",
+  "phrases": [
+   "80 donantes"
+  ]
+ },
+ {
+  "url": "https://nuevodiariodesalta.com.ar/el-centro-regional-de-hemoterapia-necesita-100-donantes-por-dia-para-garantizar-el-abastecimiento-de-sangre/",
+  "phrases": [
+   "100 donantes por d\u00eda"
+  ]
+ },
+ {
+  "url": "https://www.redcross.org/local/utah/about-us/news-and-events/press-releases/blooddonationday2026ut.html",
+  "phrases": [
+   "13,000"
+  ]
+ },
+ {
+  "url": "https://news.wttw.com/2026/08/03/red-cross-hospitals-confront-challenge-nationwide-blood-shortage",
+  "phrases": [
+   "type O"
+  ]
+ },
+ {
+  "url": "https://www.healthline.com/health-news/red-cross-declares-national-blood-supply-crisis",
+  "phrases": [
+   "four-year"
+  ]
+ },
+ {
+  "url": "https://americasblood.org/",
+  "phrases": [
+   "days"
+  ]
+ }
 ]

@@ -72,6 +72,9 @@ jobs:
           python-version: '3.12'
       - name: Harvest water-year unregulated inflow to Lake Powell (Reclamation RISE)
         run: python twin/history/rise_inflow.py --out out/powell_unregulated_wy.csv
+      - name: Harvest the peak of each US influenza season (CDC ILINet via Delphi)
+        continue-on-error: true
+        run: python twin/history/flu_seasons.py --out out/flu_peak_wili.csv
       - name: Verify the blood-supply case quotes against the live pages
         continue-on-error: true
         run: python twin/history/source_quotes.py twin/history/blood_2026/quotes.json --out out/blood_quotes.json
