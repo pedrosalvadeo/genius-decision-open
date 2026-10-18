@@ -65,7 +65,7 @@ class StockFlowContracts(unittest.TestCase):
             validate_model(bad)
         # A function may name a shared catalog kind, and only one from the catalog.
         tagged = deepcopy(model)
-        tagged["functions"][0]["kind"] = "water_supply"
+        tagged["functions"][0]["kind"] = "water"
         validate_model(tagged)
         tagged["functions"][0]["kind"] = "happiness"
         with self.assertRaises(ValueError):

@@ -285,7 +285,7 @@
    }
   },
   "by_function_kind": {
-   "dam_operation": {
+   "infrastructure": {
     "best": [
      "denver:keep_ban+mead:release_6",
      "denver:resume_may+mead:release_6",
@@ -294,10 +294,10 @@
     "functions": [
      "mead.glen_canyon_3510"
     ],
-    "label": "Operación confiable de una presa",
+    "label": "Operación confiable de una infraestructura",
     "status": "TIED_OR_INCOMPARABLE"
    },
-   "water_supply": {
+   "water": {
     "best": [
      "denver:keep_ban+mead:release_6",
      "denver:keep_ban+mead:release_7",
@@ -308,7 +308,7 @@
      "denver.above_2003_low",
      "mead.mead_1000"
     ],
-    "label": "Abastecimiento de agua a la población y sus usos",
+    "label": "Agua para las personas y sus usos",
     "status": "TIED_OR_INCOMPARABLE"
    }
   },

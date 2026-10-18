@@ -5,7 +5,7 @@ import json
 from flask import Blueprint, jsonify, request
 
 from . import registry
-from .service import ServiceError
+from .service import ServiceError, fields
 
 
 def _pairs(pairs):
@@ -138,6 +138,17 @@ def make_blueprint(service_factory, name="twin_api"):
             return jsonify(federation.federation_case(name))
         except KeyError as exc:
             raise ServiceError("federation_not_found", "Federación no encontrada.", 404) from exc
+
+    @bp.post("/laws/driver")
+    def driver_law():
+        from fractions import Fraction
+        from .driver_law import certificate
+        body = json_body()
+        fields(body, {"series", "anchors", "tie", "driver"}, {"series", "anchors"})
+        try:
+            return jsonify(certificate(body["series"], body["anchors"], body.get("tie"), Fraction(95, 100), str(body.get("driver", "driver"))[:200]))
+        except (ValueError, AttributeError, TypeError) as exc:
+            raise ServiceError("invalid_driver_law", str(exc), 400) from exc
 
     @bp.get("/cases")
     def cases():

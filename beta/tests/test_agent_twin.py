@@ -208,6 +208,8 @@ class AgentTwinTests(unittest.TestCase):
         self.assertEqual(basin['result']['scope'],'EACH_MEMBER_KERNEL_VERIFIED_JOINT_LAYER_READS_MEMBER_RESULTS')
         self.assertEqual(basin['result']['decision']['by_actor']['mead.glen_canyon']['best'],['denver:keep_ban+mead:release_6'])
         self.assertEqual(self.rpc('twin_federation',dict(federation_id='missing')).json['result']['structuredContent']['error']['http_status'],404)
+        law=self.call('twin_driver_law',dict(series=[dict(period=str(y),value=str(v)) for y,v in enumerate([3,5,9,4,6],2020)],anchors=dict(low='4',high='8')))
+        self.assertEqual((law['format'],law['admitted'],law['followed']),('genius-driver-law/1',False,dict(low=3,high=2)))
         cid=self.call('twin_create_case',{'payload':dict(text=case['narrative'],title=case['title'],profile=STOCKFLOW)})['case']['id']
         self.call('twin_observe_system',dict(case_id=cid,payload=dict(base_version=0,observation_revision=0,
             idempotency_key='field-observation',observation=case['observation'])))
