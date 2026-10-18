@@ -59,6 +59,35 @@ jobs:
           name: denver-snow
           path: out/
 
+  inflow:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Harvest water-year unregulated inflow to Lake Powell (Reclamation RISE)
+        run: python twin/history/rise_inflow.py --out out/powell_unregulated_wy.csv
+      - name: Harvest the peak of each US influenza season (CDC ILINet via Delphi)
+        continue-on-error: true
+        run: python twin/history/flu_seasons.py --out out/flu_peak_wili.csv
+      - name: Verify the blood-supply case quotes against the live pages
+        continue-on-error: true
+        run: python twin/history/source_quotes.py twin/history/blood_2026/quotes.json --out out/blood_quotes.json
+      - name: Probe the Mendoza river at Guido (SNIH monthly series workbook)
+        continue-on-error: true
+        run: |
+          python -m pip install -q openpyxl
+          python twin/history/snih_probe.py out/snih_mensuales.xlsx Guido Cacheuta Mendoza
+      - uses: actions/upload-artifact@v4
+        with:
+          name: inflow
+          path: out/
+
   harvest:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest

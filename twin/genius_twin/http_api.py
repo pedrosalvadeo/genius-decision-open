@@ -142,11 +142,12 @@ def make_blueprint(service_factory, name="twin_api"):
     @bp.post("/laws/driver")
     def driver_law():
         from fractions import Fraction
-        from .driver_law import certificate
+        from .driver_law import WINDOW, certificate
         body = json_body()
-        fields(body, {"series", "anchors", "tie", "driver"}, {"series", "anchors"})
+        fields(body, {"series", "anchors", "tie", "driver", "window"}, {"series", "anchors"})
         try:
-            return jsonify(certificate(body["series"], body["anchors"], body.get("tie"), Fraction(95, 100), str(body.get("driver", "driver"))[:200]))
+            return jsonify(certificate(body["series"], body["anchors"], body.get("tie"), Fraction(95, 100), str(body.get("driver", "driver"))[:200],
+                                       body.get("window", WINDOW)))
         except (ValueError, AttributeError, TypeError) as exc:
             raise ServiceError("invalid_driver_law", str(exc), 400) from exc
 

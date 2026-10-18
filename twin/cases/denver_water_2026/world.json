@@ -387,7 +387,7 @@
       {
         "id": "d_law",
         "basis": "decision",
-        "statement": "Ley empírica admitida por AM-02 sobre los tres inviernos: seco 4/39, normal 28/39, húmedo 7/39. Cada año de 1991 a 2026 se asigna al escenario cuya nieve del 1 de abril se parece más (seco anclado en 2026, 34,4 % de la mediana; normal en 100 %; húmedo en 150 %), con 12 estaciones SNOTEL del NRCS en las cuencas de Denver Water. Resultaron 3 secos (2002, 2012, 2026), 27 normales y 6 húmedos (1993, 1996, 1997, 2011, 2014, 2019). Un tercio cada uno queda descalibrado; la frecuencia suavizada (k+1)/(n+3) pasa la calibración, con 36 resultados independientes (se exigen 30). Certificado: twin/history/denver_snow/law_certificate.json.",
+        "statement": "Ley empírica admitida por AM-02 sobre los tres inviernos: seco 4/33, normal 8/11, húmedo 5/33. Cada año de los últimos 30 (1997 a 2026, regla de ventana de AM-02 elegida por Pedro el 18/10/2026) se asigna al escenario cuya nieve del 1 de abril se parece más (seco anclado en 2026, 34,4 % de la mediana; normal en 100 %; húmedo en 150 %), con 12 estaciones SNOTEL del NRCS en las cuencas de Denver Water. Resultaron 3 secos (2002, 2012, 2026), 23 normales y 4 húmedos (1997, 2011, 2014, 2019). Un tercio cada uno queda descalibrado; la frecuencia suavizada (k+1)/(n+3) pasa la calibración, con 30 resultados independientes. Con los 36 años desde 1991 la ley sería 4/39, 28/39, 7/39. Certificado: twin/history/denver_snow/law_certificate.json.",
         "uncertainty": "Retrospectiva precuencial: se revoca si los contrastes prospectivos la descalibran. Las anclas de los escenarios son del modelizador; del lado del Platte Sur sólo Hoosier Pass tiene registro desde 1991. La PVS no depende de la ley en este caso (rango bajo toda ley de un único valor).",
         "spans": [],
         "premises": [
@@ -1003,9 +1003,9 @@
       {
         "path": "/law",
         "value": {
-          "dry": "4/39",
-          "normal": "28/39",
-          "wet": "7/39"
+          "dry": "4/33",
+          "normal": "8/11",
+          "wet": "5/33"
         },
         "claim_ids": [
           "d_law"
@@ -1171,7 +1171,7 @@
         "value": {
           "id": "WinterLaw",
           "kind": "PROBABILITY",
-          "statement": "Ley empírica admitida por AM-02 con la nieve del 1 de abril de 1991 a 2026 (NRCS SNOTEL): seco 4/39, normal 28/39, húmedo 7/39. La PVS se informa también bajo toda ley.",
+          "statement": "Ley empírica admitida por AM-02 con la nieve del 1 de abril de los últimos 30 años, 1997 a 2026 (NRCS SNOTEL): seco 4/33, normal 8/11, húmedo 5/33. La PVS se informa también bajo toda ley.",
           "provenance": "Claim d_law; twin/history/snow_law.py, twin/history/denver_snow/law_certificate.json"
         },
         "claim_ids": [

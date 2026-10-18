@@ -34,7 +34,7 @@ Cuatro de las seis combinaciones reproducen exactamente un estudio publicado (Me
 
 ## Resultado del kernel
 
-Revisión del 17/10/2026: la tarea es una condición de vida (Lake Mead sobre su nivel muerto de 895 pies, representado con 2.547 mil acre-pies) y la ley es un tercio por afluencia, el candidato calibrado de AM-02 sobre 13 octubres (no admitido: se exigen 30).
+Revisión del 17/10/2026: la tarea es una condición de vida (Lake Mead sobre su nivel muerto de 895 pies, representado con 2.547 mil acre-pies) y la ley es un tercio por afluencia, el candidato calibrado de AM-02 sobre 13 octubres. Revisión del 18/10/2026: AM-02 la admite sobre los últimos 30 años de afluencia no regulada de Powell (1996-2025, `twin/history/powell_law.py`); con el registro completo desde 1964 admitiría 12/65, 27/65 y 2/5.
 
 - PVS = 1 con ambas liberaciones, con la ley declarada y con cualquier otra: en 2027 ninguna combinación acerca Mead al nivel muerto. El mínimo es 4.696 mil acre-pies (6 millones, afluencia mínima, julio).
 - Bienestar: en cada afluencia, liberar 7 es mejor para la cuenca baja (más agua en Mead) y peor para Glen Canyon (menos en Powell). Las opciones no se pueden ordenar sin sumar portadores, así que la frontera tiene las dos y no hay selección.

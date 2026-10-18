@@ -11,7 +11,10 @@ intervals and a Bonferroni correction, and mean log score. Among calibrated
 candidates the best score is chosen; the law is admitted only with no refusal.
 
 The driver must not depend on the routes the twin compares, and periods must not
-overlap; the caller declares both. The result is labelled RETROSPECTIVE_PREQUENTIAL:
+overlap; the caller declares both. Only the most recent WINDOW periods are used (rule
+chosen by Pedro on 2026-10-18 for every domain: a drivers' climate or regime can drift, as
+the Colorado basin's did after 2000, and the latest 30 periods describe the present best);
+`window=None` uses the whole series and is reported as such. The result is labelled RETROSPECTIVE_PREQUENTIAL:
 prospective contrasts must later confirm it or the law is revoked. Masses are exact
 fractions; confidence bounds are floats used only for the check.
 """
@@ -21,6 +24,7 @@ import math
 FORMAT = "genius-driver-law/1"
 MIN_INDEPENDENT_OUTCOMES = 30
 MAX_PERIODS = 400
+WINDOW = MIN_INDEPENDENT_OUTCOMES
 
 
 def _fraction(value, where):
@@ -83,8 +87,10 @@ def evaluate(followed, scenarios, procedure, confidence):
                 mean_log_score=None if score is None else round(score, 6))
 
 
-def certificate(series, anchors, tie=None, confidence=Fraction(95, 100), driver="driver"):
-    """`series`: [{"period", "value"}] oldest first; `anchors`: {scenario: value}, 2 to 8 scenarios."""
+def certificate(series, anchors, tie=None, confidence=Fraction(95, 100), driver="driver", window=WINDOW):
+    """`series`: [{"period", "value"}] oldest first; `anchors`: {scenario: value}, 2 to 8 scenarios.
+
+    `window`: how many of the most recent periods to use (None for all)."""
     if not isinstance(anchors, dict) or not 2 <= len(anchors) <= 8:
         raise ValueError("anchors: 2 to 8 scenarios")
     scenarios = list(anchors)
@@ -99,6 +105,11 @@ def certificate(series, anchors, tie=None, confidence=Fraction(95, 100), driver=
     periods = [str(p.get("period", "")) for p in series]
     if len(set(periods)) != len(periods) or "" in periods:
         raise ValueError("series: periods must be present and unique")
+    if window is not None and (isinstance(window, bool) or not isinstance(window, int) or window < 1):
+        raise ValueError("window: a positive integer or null")
+    offered = len(series)
+    if window is not None:
+        series, periods = series[-window:], periods[-window:]
     values = [_fraction(p.get("value"), f"series.{p.get('period')}") for p in series]
     followed = [min(scenarios, key=lambda s: (abs(v - anchor[s]), s != tie)) for v in values]
     results = {name: evaluate(followed, scenarios, procedure, confidence) for name, procedure in CANDIDATES.items()}
@@ -112,7 +123,7 @@ def certificate(series, anchors, tie=None, confidence=Fraction(95, 100), driver=
     law = None if chosen is None else CANDIDATES[chosen](followed, scenarios)
     return dict(
         format=FORMAT, amendment="AM-02", driver=driver, anchors={s: str(v) for s, v in anchor.items()}, tie=tie,
-        outcomes=len(series), followed={s: followed.count(s) for s in scenarios},
+        window=window, periods_offered=offered, outcomes=len(series), followed={s: followed.count(s) for s in scenarios},
         classification=[{"period": p, "scenario": f} for p, f in zip(periods, followed)],
         evaluation=dict(kind="RETROSPECTIVE_PREQUENTIAL", confidence=str(confidence), candidates=results),
         chosen=chosen, law=None if law is None else {s: str(v) for s, v in law.items()},

@@ -1,0 +1,8 @@
+{
+ "source": "CDC ILINet national weighted ILI (%), via Delphi Epidata fluview",
+ "url": "https://api.delphi.cmu.edu/epidata/fluview/?regions=nat&epiweeks=199740-202639",
+ "response_sha256": "be7351af5ecde1d6ab68ef80f08a0eafa076a99accb833ff89f05cf73f0ef8da",
+ "method": "Weekly peak of wILI over each season (epiweek 40 to 20)",
+ "incomplete_seasons": {},
+ "harvested_by": "genius-node.yml job inflow, run 39089925503 (2026-10-18)"
+}

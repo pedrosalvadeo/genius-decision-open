@@ -1,0 +1,1379 @@
+{
+  "narrative": "Caso real con hipótesis declaradas, el primero fuera del agua: tras la crisis de sangre del verano de 2026, la reserva de tipo 0 de la Cruz Roja entra al invierno. Se comparan seguir igual, postergar cirugías programadas cuando la reserva baja de 2 días, una campaña de donantes antes de las fiestas, y ambas, ante gripes leve, moderada y grave.",
+  "observation": {
+    "format": "genius-system-observation/1",
+    "label": "Sangre tipo 0 en EE.UU., invierno 2026/27",
+    "window": {
+      "start": "2026-01-20T00:00:00-05:00",
+      "end": "2026-10-18T23:59:00-04:00"
+    },
+    "entities": [
+      {
+        "id": "inventory",
+        "label": "Reserva de tipo 0",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_crisis"
+        ]
+      },
+      {
+        "id": "electives",
+        "label": "Cirugías programadas",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_share"
+        ]
+      },
+      {
+        "id": "donor_pool",
+        "label": "Donaciones extra de campaña",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_fund"
+        ]
+      },
+      {
+        "id": "emergency_patients",
+        "label": "Pacientes de trauma y emergencias",
+        "kind": "person",
+        "evidence_ids": [
+          "e_crisis"
+        ]
+      },
+      {
+        "id": "surgical_patients",
+        "label": "Pacientes de cirugías programadas",
+        "kind": "person",
+        "evidence_ids": [
+          "e_share"
+        ]
+      },
+      {
+        "id": "red_cross",
+        "label": "Cruz Roja Americana",
+        "kind": "organization",
+        "evidence_ids": [
+          "e_crisis"
+        ]
+      },
+      {
+        "id": "donors",
+        "label": "Donantes",
+        "kind": "person",
+        "evidence_ids": [
+          "e_need"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "e_crisis",
+        "observed_at": "2026-07-27T12:00:00-04:00",
+        "source": "American Red Cross, \"American Red Cross Declares Second-Ever National Blood Supply Crisis, Urges Immediate Blood Donations\", 27/07/2026, https://www.redcross.org/about-us/news-and-events/press-release/2026/red-cross-declares-national-blood-supply-crisis-urges-immediate-.html",
+        "basis": "reported",
+        "statement": "Menos de un día de 0 positivo; distribución de tipo 0 limitada a emergencias.",
+        "uncertainty": "Comunicado."
+      },
+      {
+        "id": "e_share",
+        "observed_at": "2026-07-27T12:00:00-04:00",
+        "source": "American Red Cross, \"American Red Cross Declares Second-Ever National Blood Supply Crisis, Urges Immediate Blood Donations\", 27/07/2026, https://www.redcross.org/about-us/news-and-events/press-release/2026/red-cross-declares-national-blood-supply-crisis-urges-immediate-.html",
+        "basis": "reported",
+        "statement": "Tipo 0 cerca del 60 % de la distribución; 65 % de la necesidad programada.",
+        "uncertainty": "Proporciones aproximadas."
+      },
+      {
+        "id": "e_need",
+        "observed_at": "2026-09-04T12:00:00-06:00",
+        "source": "American Red Cross Utah, Blood Donation Day release, 04/09/2026, https://www.redcross.org/local/utah/about-us/news-and-events/press-releases/blooddonationday2026ut.html",
+        "basis": "reported",
+        "statement": "Más de 13.000 donaciones por día.",
+        "uncertainty": "Cifra redonda."
+      },
+      {
+        "id": "e_fund",
+        "observed_at": "2026-10-04T12:00:00-04:00",
+        "source": "Hoodline, \"Red Cross Launches $300 Million Lifeblood Fund After Summer Blood Crisis Hits Four-Year Low\", 04/10/2026, https://hoodline.com/2026/10/red-cross-launches-300-million-lifeblood-fund-after-summer-blood-crisis-hits-four-year-low/",
+        "basis": "reported",
+        "statement": "Fondo de 300 millones para la base de donantes.",
+        "uncertainty": "Nota de prensa."
+      }
+    ],
+    "relations": [
+      {
+        "id": "org_inv",
+        "source": "red_cross",
+        "target": "inventory",
+        "kind": "organizes",
+        "evidence_ids": [
+          "e_crisis"
+        ]
+      },
+      {
+        "id": "org_pool",
+        "source": "red_cross",
+        "target": "donor_pool",
+        "kind": "organizes",
+        "evidence_ids": [
+          "e_fund"
+        ]
+      },
+      {
+        "id": "sup_em",
+        "source": "inventory",
+        "target": "emergency_patients",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_crisis"
+        ]
+      },
+      {
+        "id": "sup_el",
+        "source": "electives",
+        "target": "surgical_patients",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_share"
+        ]
+      },
+      {
+        "id": "sup_pool",
+        "source": "donors",
+        "target": "donor_pool",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_need"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Reserva actual de la Cruz Roja en unidades o días.",
+      "Parte de la sangre que va a cirugías que se pueden postergar.",
+      "Efecto de la gripe sobre donaciones separado del de las fiestas y el clima.",
+      "Otros proveedores (cerca del 60 % del país)."
+    ]
+  },
+  "construction": {
+    "format": "genius-world-construction/1",
+    "sources": [
+      {
+        "id": "rc_crisis",
+        "origin": "American Red Cross, \"American Red Cross Declares Second-Ever National Blood Supply Crisis, Urges Immediate Blood Donations\", 27/07/2026, https://www.redcross.org/about-us/news-and-events/press-release/2026/red-cross-declares-national-blood-supply-crisis-urges-immediate-.html",
+        "observed_at": "2026-07-27T12:00:00-04:00",
+        "content": "The American Red Cross has declared its second-ever national blood supply crisis after blood donations fell to a four-year summer low. […] the Red Cross now has less than a one-day national supply of type O positive blood — the most commonly transfused blood type. […] To help ensure blood is available for patients facing the most critical, life-threatening emergencies across the country, the Red Cross has begun limiting distributions of type O blood to individual hospitals. […] Type O blood accounts for about 60% of Red Cross blood distributions because it is essential for both everyday patient care and medical emergencies […] Hospitals now schedule about 65% of their anticipated blood needs in advance"
+      },
+      {
+        "id": "rc_january",
+        "origin": "American Red Cross, \"Red Cross Declares Severe Shortage after Blood Supply Falls 35% in Past Month\", 20/01/2026, https://www.redcross.org/about-us/news-and-events/press-release/2026/red-cross-declares-shortage-after-blood-supply-falls-35-.html",
+        "observed_at": "2026-01-20T12:00:00-05:00",
+        "content": "the inventory has continued to drop at an alarming rate of about 35% over the past month"
+      },
+      {
+        "id": "rc_september",
+        "origin": "American Red Cross Utah, Blood Donation Day release, 04/09/2026, https://www.redcross.org/local/utah/about-us/news-and-events/press-releases/blooddonationday2026ut.html",
+        "observed_at": "2026-09-04T12:00:00-06:00",
+        "content": "has eased after thousands of donors responded. However, the blood supply remains vulnerable and continued donations are needed to keep pace with hospital demand. […] The Red Cross must collect more than 13,000 blood donations each day to meet the needs of patients at hospitals and transfusion centers nationwide."
+      },
+      {
+        "id": "hoodline",
+        "origin": "Hoodline, \"Red Cross Launches $300 Million Lifeblood Fund After Summer Blood Crisis Hits Four-Year Low\", 04/10/2026, https://hoodline.com/2026/10/red-cross-launches-300-million-lifeblood-fund-after-summer-blood-crisis-hits-four-year-low/",
+        "observed_at": "2026-10-04T12:00:00-04:00",
+        "content": "Red Cross Launches $300 Million Lifeblood Fund After Summer Blood Crisis Hits Four-Year Low […] Donated red blood cells have a maximum shelf life of just 42 days under refrigeration"
+      },
+      {
+        "id": "flu",
+        "origin": "CDC ILINet, national weighted influenza-like illness (%), via Delphi Epidata, seasons 1997/98 to 2025/26, harvested 18/10/2026 (twin/history/blood_2026/flu_peak_wili.csv)",
+        "observed_at": "2026-10-18T02:24:00Z",
+        "content": "2015/2016,33,3.56024,201610 […] 2004/2005,33,5.44151,200507 […] 2025/2026,34,8.29853,202552"
+      }
+    ],
+    "claims": [
+      {
+        "id": "crisis",
+        "basis": "reported",
+        "statement": "El 27 de julio de 2026 la Cruz Roja declaró su segunda crisis nacional de sangre: menos de un día de reserva nacional de 0 positivo, y empezó a limitar la distribución de tipo 0 a cada hospital para las emergencias que amenazan la vida.",
+        "uncertainty": "Comunicado de la Cruz Roja; la reserva exacta en unidades no se publica.",
+        "spans": [
+          {
+            "source_id": "rc_crisis",
+            "start": 0,
+            "end": 134,
+            "quote": "The American Red Cross has declared its second-ever national blood supply crisis after blood donations fell to a four-year summer low."
+          },
+          {
+            "source_id": "rc_crisis",
+            "start": 139,
+            "end": 264,
+            "quote": "the Red Cross now has less than a one-day national supply of type O positive blood — the most commonly transfused blood type."
+          },
+          {
+            "source_id": "rc_crisis",
+            "start": 269,
+            "end": 478,
+            "quote": "To help ensure blood is available for patients facing the most critical, life-threatening emergencies across the country, the Red Cross has begun limiting distributions of type O blood to individual hospitals."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "type_o_share",
+        "basis": "reported",
+        "statement": "El tipo 0 es cerca del 60 % de lo que distribuye la Cruz Roja; los hospitales programan cerca del 65 % de su necesidad con anticipación.",
+        "uncertainty": "Proporciones aproximadas del comunicado.",
+        "spans": [
+          {
+            "source_id": "rc_crisis",
+            "start": 483,
+            "end": 630,
+            "quote": "Type O blood accounts for about 60% of Red Cross blood distributions because it is essential for both everyday patient care and medical emergencies"
+          },
+          {
+            "source_id": "rc_crisis",
+            "start": 635,
+            "end": 711,
+            "quote": "Hospitals now schedule about 65% of their anticipated blood needs in advance"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "daily_need",
+        "basis": "reported",
+        "statement": "La Cruz Roja debe recolectar más de 13.000 donaciones por día; en septiembre la crisis había cedido, pero el suministro sigue vulnerable.",
+        "uncertainty": "Cifra redonda de un comunicado regional.",
+        "spans": [
+          {
+            "source_id": "rc_september",
+            "start": 166,
+            "end": 313,
+            "quote": "The Red Cross must collect more than 13,000 blood donations each day to meet the needs of patients at hospitals and transfusion centers nationwide."
+          },
+          {
+            "source_id": "rc_september",
+            "start": 0,
+            "end": 161,
+            "quote": "has eased after thousands of donors responded. However, the blood supply remains vulnerable and continued donations are needed to keep pace with hospital demand."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "january_drop",
+        "basis": "reported",
+        "statement": "En enero de 2026, con la temporada de gripe más alta del registro, la reserva cayó cerca de 35 % en un mes.",
+        "uncertainty": "El comunicado no da la reserva inicial ni separa gripe, feriados y clima.",
+        "spans": [
+          {
+            "source_id": "rc_january",
+            "start": 0,
+            "end": 88,
+            "quote": "the inventory has continued to drop at an alarming rate of about 35% over the past month"
+          },
+          {
+            "source_id": "flu",
+            "start": 64,
+            "end": 91,
+            "quote": "2025/2026,34,8.29853,202552"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "fund",
+        "basis": "reported",
+        "statement": "En octubre de 2026 la Cruz Roja lanzó un fondo de 300 millones de dólares para reconstruir su base de donantes; los glóbulos rojos duran como máximo 42 días.",
+        "uncertainty": "Nota de prensa local.",
+        "spans": [
+          {
+            "source_id": "hoodline",
+            "start": 0,
+            "end": 91,
+            "quote": "Red Cross Launches $300 Million Lifeblood Fund After Summer Blood Crisis Hits Four-Year Low"
+          },
+          {
+            "source_id": "hoodline",
+            "start": 96,
+            "end": 181,
+            "quote": "Donated red blood cells have a maximum shelf life of just 42 days under refrigeration"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "h_demand",
+        "basis": "hypothesis",
+        "statement": "Distribución de tipo 0 de la Cruz Roja: 7,8 mil unidades por día (60 % de 13.000), 109,2 mil por quincena. Un día de reserva = 7,8 mil unidades. Sin gripe, la recolección iguala la distribución.",
+        "uncertainty": "Supone que las 13.000 donaciones diarias equivalen a la necesidad diaria y que el tipo 0 se recolecta en la misma proporción en que se distribuye.",
+        "spans": [],
+        "premises": [
+          "type_o_share",
+          "daily_need"
+        ]
+      },
+      {
+        "id": "h_elective",
+        "basis": "hypothesis",
+        "statement": "El 15 % de la distribución de tipo 0 (16,38 mil unidades por quincena) va a cirugías programadas que se pueden postergar.",
+        "uncertainty": "Supuesto propio, sin fuente: el 65 % programado incluye tratamientos que no se postergan (oncología, anemias crónicas).",
+        "spans": [],
+        "premises": [
+          "type_o_share",
+          "h_demand"
+        ]
+      },
+      {
+        "id": "h_initial",
+        "basis": "hypothesis",
+        "statement": "Reserva de tipo 0 de la Cruz Roja al 1 de noviembre de 2026: 2,5 días (19,5 mil unidades).",
+        "uncertainty": "Supuesto propio: la Cruz Roja no publica la reserva; en septiembre la crisis había cedido pero el suministro seguía vulnerable. Es la hipótesis que más pesa en el resultado.",
+        "spans": [],
+        "premises": [
+          "daily_need",
+          "crisis"
+        ]
+      },
+      {
+        "id": "h_flu",
+        "basis": "hypothesis",
+        "statement": "Gripe grave: entre el 13 de diciembre y el 6 de febrero la recolección cae por debajo de la distribución en 35 % de la reserva inicial por mes (3,4125 mil unidades por quincena), como en enero de 2026. Moderada: la mitad. Leve: sin caída.",
+        "uncertainty": "Supuesto propio que traslada la caída de enero de 2026 a una reserva de 2,5 días; no separa gripe de feriados.",
+        "spans": [],
+        "premises": [
+          "january_drop",
+          "h_initial",
+          "h_demand"
+        ]
+      },
+      {
+        "id": "h_campaign",
+        "basis": "hypothesis",
+        "statement": "Una campaña de donantes en noviembre y la primera quincena de diciembre suma 5 % a la recolección (5,46 mil unidades por quincena).",
+        "uncertainty": "Supuesto propio sobre lo que el fondo de donantes puede lograr; no hay meta publicada.",
+        "spans": [],
+        "premises": [
+          "fund",
+          "h_demand"
+        ]
+      },
+      {
+        "id": "d_scenarios",
+        "basis": "decision",
+        "statement": "Escenarios: gripe leve, moderada y grave, anclados en el pico semanal de ILINet de 2015/16 (3,56 %), 2004/05 (5,44 %) y 2025/26 (8,30 %).",
+        "uncertainty": "Las temporadas de referencia son elección del modelizador.",
+        "spans": [
+          {
+            "source_id": "flu",
+            "start": 0,
+            "end": 27,
+            "quote": "2015/2016,33,3.56024,201610"
+          },
+          {
+            "source_id": "flu",
+            "start": 32,
+            "end": 59,
+            "quote": "2004/2005,33,5.44151,200507"
+          },
+          {
+            "source_id": "flu",
+            "start": 64,
+            "end": 91,
+            "quote": "2025/2026,34,8.29853,202552"
+          }
+        ],
+        "premises": [
+          "h_flu"
+        ]
+      },
+      {
+        "id": "d_law",
+        "basis": "decision",
+        "statement": "Ley declarada sobre los tres escenarios: un tercio cada uno.",
+        "uncertainty": "AM-02 sobre los picos de gripe (twin/history/blood_2026) tiene 29 temporadas, una menos de las 30 que exige; se admitirá con la temporada 2026/27. La PVS es condicional a esta ley y se informa su rango bajo toda ley.",
+        "spans": [],
+        "premises": [
+          "d_scenarios"
+        ]
+      },
+      {
+        "id": "d_life_task",
+        "basis": "decision",
+        "statement": "Condición de vida: la reserva de tipo 0 nunca baja de un día (7,8 mil unidades), el nivel en que la Cruz Roja declaró la crisis y empezó a racionar para emergencias que amenazan la vida.",
+        "uncertainty": "Umbral elegido por el modelizador a partir del comunicado; protege a pacientes de trauma y emergencias. Las cirugías programadas se comparan como bienestar.",
+        "spans": [],
+        "premises": [
+          "crisis",
+          "h_demand"
+        ]
+      },
+      {
+        "id": "d_policies",
+        "basis": "decision",
+        "statement": "Opciones: seguir igual; postergar cirugías programadas cuando la reserva baja de 2 días; campaña de donantes antes de las fiestas; campaña y postergación.",
+        "uncertainty": "Opciones planteadas por el modelizador a partir de lo que hizo la Cruz Roja en julio; no son propuestas oficiales.",
+        "spans": [],
+        "premises": [
+          "crisis",
+          "fund"
+        ]
+      },
+      {
+        "id": "d_welfare",
+        "basis": "decision",
+        "statement": "Bienestar: los pacientes de cirugías programadas por las unidades que reciben; la Cruz Roja por su reserva (más es mejor); los donantes por las donaciones extra que se les piden (menos es mejor).",
+        "uncertainty": "Representación del modelizador; ninguna parte la declaró.",
+        "spans": [],
+        "premises": [
+          "h_elective",
+          "h_campaign"
+        ]
+      },
+      {
+        "id": "d_functions",
+        "basis": "decision",
+        "statement": "Funciones del sistema (módulo I), en quincenas cumplidas: abastecer a los hospitales con 2 días de reserva o más (salud) y sostener la reserva mínima de emergencia de un día (seguridad).",
+        "uncertainty": "Más quincenas cumplidas es mejor; el umbral de 2 días es elección del modelizador.",
+        "spans": [],
+        "premises": [
+          "crisis",
+          "h_demand"
+        ]
+      },
+      {
+        "id": "d_subsystems",
+        "basis": "decision",
+        "statement": "Subsistemas (módulo II): la reserva de la Cruz Roja con sus donantes, y los quirófanos con los pacientes de cirugías programadas. Los une la distribución para cirugías programadas.",
+        "uncertainty": "No se modelan otros proveedores (la Cruz Roja es cerca del 40 % del país), plaquetas ni plasma.",
+        "spans": [],
+        "premises": [
+          "h_elective"
+        ]
+      },
+      {
+        "id": "modelling",
+        "basis": "definition",
+        "statement": "Unidad: mil unidades de glóbulos rojos tipo 0 de la Cruz Roja. Paso quincenal del 1 de noviembre de 2026 al 20 de febrero de 2027 (8 pasos). La recolección entra a la reserva y la distribución no programada sale cada quincena; la capacidad de 200 mil unidades es una cota de modelado que nunca se alcanza, porque la recolección de cada quincena entra antes que la distribución; el vencimiento (42 días) no se modela.",
+        "uncertainty": "Agrega tipos 0 positivo y negativo; no modela bancos de hospitales ni transferencias entre regiones.",
+        "spans": [],
+        "premises": [
+          "h_demand",
+          "fund"
+        ]
+      }
+    ],
+    "fragments": [
+      {
+        "path": "/profile",
+        "value": "STOCK_FLOW_FINITE_V1",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/name",
+        "value": "Sangre tipo 0 en EE.UU.: invierno 2026/27",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/horizon",
+        "value": 8,
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/step_unit",
+        "value": "step",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/0",
+        "value": {
+          "id": "inventory",
+          "label": "Reserva de glóbulos rojos tipo 0 de la Cruz Roja",
+          "unit": "kunits",
+          "kind": "persistent",
+          "initial": "39/2",
+          "capacity": "200/1"
+        },
+        "claim_ids": [
+          "h_initial",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/1",
+        "value": {
+          "id": "electives",
+          "label": "Unidades entregadas a cirugías programadas (acumulado)",
+          "unit": "kunits",
+          "kind": "persistent",
+          "initial": "0/1",
+          "capacity": "5000/1"
+        },
+        "claim_ids": [
+          "h_elective"
+        ]
+      },
+      {
+        "path": "/stocks/2",
+        "value": {
+          "id": "donor_pool",
+          "label": "Donaciones extra que la campaña puede pedir",
+          "unit": "kunits",
+          "kind": "persistent",
+          "initial": "819/50",
+          "capacity": "819/50"
+        },
+        "claim_ids": [
+          "h_campaign"
+        ]
+      },
+      {
+        "path": "/carriers/0",
+        "value": {
+          "id": "emergency_patients",
+          "label": "Pacientes de trauma y emergencias",
+          "kind": "person"
+        },
+        "claim_ids": [
+          "crisis"
+        ]
+      },
+      {
+        "path": "/carriers/1",
+        "value": {
+          "id": "surgical_patients",
+          "label": "Pacientes de cirugías programadas",
+          "kind": "person"
+        },
+        "claim_ids": [
+          "h_elective"
+        ]
+      },
+      {
+        "path": "/carriers/2",
+        "value": {
+          "id": "red_cross",
+          "label": "Cruz Roja Americana",
+          "kind": "organization"
+        },
+        "claim_ids": [
+          "crisis"
+        ]
+      },
+      {
+        "path": "/carriers/3",
+        "value": {
+          "id": "donors",
+          "label": "Donantes de sangre",
+          "kind": "person"
+        },
+        "claim_ids": [
+          "h_campaign"
+        ]
+      },
+      {
+        "path": "/capabilities/0",
+        "value": {
+          "id": "operate",
+          "label": "Distribución de sangre"
+        },
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/initial_capabilities/0",
+        "value": "operate",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/actions/0",
+        "value": {
+          "id": "defer",
+          "label": "Postergar cirugías programadas",
+          "requires": [],
+          "withdrawals": {},
+          "deposits": {},
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "d_policies"
+        ]
+      },
+      {
+        "path": "/actions/1",
+        "value": {
+          "id": "supply_electives",
+          "label": "Abastecer cirugías programadas",
+          "requires": [
+            "operate"
+          ],
+          "withdrawals": {
+            "inventory": "819/50"
+          },
+          "deposits": {
+            "electives": "819/50"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_elective"
+        ]
+      },
+      {
+        "path": "/actions/2",
+        "value": {
+          "id": "campaign_and_electives",
+          "label": "Campaña de donantes y cirugías programadas",
+          "requires": [
+            "operate"
+          ],
+          "withdrawals": {
+            "inventory": "819/50",
+            "donor_pool": "273/50"
+          },
+          "deposits": {
+            "electives": "819/50",
+            "inventory": "273/50"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_elective",
+          "h_campaign"
+        ]
+      },
+      {
+        "path": "/actions/3",
+        "value": {
+          "id": "campaign_only",
+          "label": "Campaña de donantes y cirugías postergadas",
+          "requires": [
+            "operate"
+          ],
+          "withdrawals": {
+            "donor_pool": "273/50"
+          },
+          "deposits": {
+            "inventory": "273/50"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_campaign"
+        ]
+      },
+      {
+        "path": "/policies/0",
+        "value": {
+          "id": "as_usual",
+          "label": "Seguir igual",
+          "default_action": "supply_electives",
+          "rules": []
+        },
+        "claim_ids": [
+          "d_policies"
+        ]
+      },
+      {
+        "path": "/policies/1",
+        "value": {
+          "id": "defer_below_two_days",
+          "label": "Postergar cirugías programadas con menos de 2 días",
+          "default_action": "defer",
+          "rules": [
+            {
+              "steps": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "when": [
+                {
+                  "kind": "stock",
+                  "stock": "inventory",
+                  "op": "ge",
+                  "value": "78/5"
+                }
+              ],
+              "action": "supply_electives"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_policies"
+        ]
+      },
+      {
+        "path": "/policies/2",
+        "value": {
+          "id": "campaign",
+          "label": "Campaña de donantes antes de las fiestas",
+          "default_action": "supply_electives",
+          "rules": [
+            {
+              "steps": [
+                1,
+                2,
+                3
+              ],
+              "when": [],
+              "action": "campaign_and_electives"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_policies",
+          "h_campaign"
+        ]
+      },
+      {
+        "path": "/policies/3",
+        "value": {
+          "id": "campaign_and_defer",
+          "label": "Campaña y postergación con menos de 2 días",
+          "default_action": "defer",
+          "rules": [
+            {
+              "steps": [
+                1,
+                2,
+                3
+              ],
+              "when": [
+                {
+                  "kind": "stock",
+                  "stock": "inventory",
+                  "op": "ge",
+                  "value": "78/5"
+                }
+              ],
+              "action": "campaign_and_electives"
+            },
+            {
+              "steps": [
+                1,
+                2,
+                3
+              ],
+              "when": [],
+              "action": "campaign_only"
+            },
+            {
+              "steps": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "when": [
+                {
+                  "kind": "stock",
+                  "stock": "inventory",
+                  "op": "ge",
+                  "value": "78/5"
+                }
+              ],
+              "action": "supply_electives"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_policies",
+          "h_campaign"
+        ]
+      },
+      {
+        "path": "/scenarios/0",
+        "value": {
+          "id": "mild",
+          "label": "Gripe leve (como 2015/16)",
+          "events": [
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_scenarios",
+          "h_flu",
+          "h_demand",
+          "h_elective"
+        ]
+      },
+      {
+        "path": "/scenarios/1",
+        "value": {
+          "id": "moderate",
+          "label": "Gripe moderada (como 2004/05)",
+          "events": [
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "17199/160"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "17199/160"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "17199/160"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "17199/160"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_scenarios",
+          "h_flu",
+          "h_demand",
+          "h_elective"
+        ]
+      },
+      {
+        "path": "/scenarios/2",
+        "value": {
+          "id": "severe",
+          "label": "Gripe grave (como 2025/26)",
+          "events": [
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "8463/80"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "8463/80"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "8463/80"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "8463/80"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "inventory": "546/5"
+              },
+              "renewables": {},
+              "drains": {
+                "inventory": "4641/50"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_scenarios",
+          "h_flu",
+          "h_demand",
+          "h_elective"
+        ]
+      },
+      {
+        "path": "/law",
+        "value": {
+          "mild": "1/3",
+          "moderate": "1/3",
+          "severe": "1/3"
+        },
+        "claim_ids": [
+          "d_law"
+        ]
+      },
+      {
+        "path": "/welfare/0",
+        "value": {
+          "carrier": "surgical_patients",
+          "dimension": "elective_supply",
+          "label": "Sangre entregada a cirugías programadas",
+          "stock": "electives",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/welfare/1",
+        "value": {
+          "carrier": "red_cross",
+          "dimension": "reserve",
+          "label": "Reserva de tipo 0",
+          "stock": "inventory",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/welfare/2",
+        "value": {
+          "carrier": "donors",
+          "dimension": "extra_asks",
+          "label": "Donaciones extra que quedan sin pedir",
+          "stock": "donor_pool",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/task",
+        "value": {
+          "kind": "life_conditions",
+          "label": "La reserva de tipo 0 nunca baja de un día (7,8 mil unidades)",
+          "living_carriers": [
+            "emergency_patients"
+          ],
+          "conditions": [
+            {
+              "stock": "inventory",
+              "op": "ge",
+              "threshold": "39/5"
+            }
+          ],
+          "require_action_success": false
+        },
+        "claim_ids": [
+          "d_life_task"
+        ]
+      },
+      {
+        "path": "/functions/0",
+        "value": {
+          "id": "hospital_supply",
+          "kind": "health",
+          "label": "Hospitales abastecidos con 2 días de reserva o más (quincenas cumplidas)",
+          "serves": [
+            "surgical_patients",
+            "emergency_patients"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "inventory",
+              "op": "ge",
+              "value": "78/5"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
+        ]
+      },
+      {
+        "path": "/functions/1",
+        "value": {
+          "id": "emergency_reserve",
+          "kind": "safety",
+          "label": "Reserva de emergencia de un día o más (quincenas cumplidas)",
+          "serves": [
+            "emergency_patients"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "inventory",
+              "op": "ge",
+              "value": "39/5"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
+        ]
+      },
+      {
+        "path": "/subsystems/0",
+        "value": {
+          "id": "blood_bank",
+          "label": "Reserva de la Cruz Roja y donantes",
+          "stocks": [
+            "inventory",
+            "donor_pool"
+          ],
+          "carriers": [
+            "red_cross",
+            "donors",
+            "emergency_patients"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/subsystems/1",
+        "value": {
+          "id": "operating_rooms",
+          "label": "Cirugías programadas",
+          "stocks": [
+            "electives"
+          ],
+          "carriers": [
+            "surgical_patients"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/interfaces/0",
+        "value": {
+          "id": "elective_distribution",
+          "label": "Sangre distribuida a cirugías programadas (mil unidades)",
+          "source": "blood_bank",
+          "target": "operating_rooms"
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/require_all_scenarios",
+        "value": true,
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/selection",
+        "value": "none",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/assumptions/0",
+        "value": {
+          "id": "Calibration",
+          "kind": "CALIBRATION",
+          "statement": "Distribución diaria, parte programada, reserva inicial, efecto de la gripe y efecto de la campaña son hipótesis propias sobre cifras publicadas.",
+          "provenance": "Claims h_demand, h_elective, h_initial, h_flu, h_campaign"
+        },
+        "claim_ids": [
+          "h_demand",
+          "h_elective",
+          "h_initial",
+          "h_flu",
+          "h_campaign"
+        ]
+      },
+      {
+        "path": "/assumptions/1",
+        "value": {
+          "id": "LifeReserve",
+          "kind": "NORMATIVE",
+          "statement": "La condición de vida es no bajar de un día de reserva de tipo 0; cirugías programadas, reserva y pedidos a donantes se comparan como bienestar, sin sumarlos.",
+          "provenance": "Claims d_life_task, d_welfare"
+        },
+        "claim_ids": [
+          "d_life_task",
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/assumptions/2",
+        "value": {
+          "id": "FluLaw",
+          "kind": "PROBABILITY",
+          "statement": "Un tercio para cada temporada de gripe, declarado: AM-02 tiene 29 temporadas y exige 30. La PVS es condicional a esta ley y se informa su rango bajo toda ley.",
+          "provenance": "Claim d_law; twin/history/flu_seasons.py"
+        },
+        "claim_ids": [
+          "d_law"
+        ]
+      }
+    ],
+    "scope": {
+      "format": "genius-system-scope/1",
+      "observation_revision": 1,
+      "label": "Reserva de tipo 0, cirugías programadas y donantes",
+      "members": [
+        "inventory",
+        "electives",
+        "donor_pool",
+        "emergency_patients",
+        "surgical_patients",
+        "red_cross",
+        "donors"
+      ],
+      "intervention_entities": [
+        "red_cross"
+      ],
+      "evaluation_entities": [
+        "inventory",
+        "electives",
+        "donor_pool",
+        "emergency_patients",
+        "surgical_patients",
+        "red_cross",
+        "donors"
+      ],
+      "bindings": [
+        {
+          "collection": "stocks",
+          "model_id": "inventory",
+          "entity_id": "inventory"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "electives",
+          "entity_id": "electives"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "donor_pool",
+          "entity_id": "donor_pool"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "emergency_patients",
+          "entity_id": "emergency_patients"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "surgical_patients",
+          "entity_id": "surgical_patients"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "red_cross",
+          "entity_id": "red_cross"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "donors",
+          "entity_id": "donors"
+        }
+      ],
+      "rationale": "La Cruz Roja y los hospitales deciden campañas y postergaciones; se evalúan reserva, cirugías y donantes. Fuera de alcance: otros bancos de sangre, plaquetas y plasma."
+    },
+    "unresolved": []
+  },
+  "provenance": "Interpretación manual de extractos textuales citados y verificados contra las páginas; cifras no citadas declaradas como hipótesis."
+}
