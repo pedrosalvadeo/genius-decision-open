@@ -1,0 +1,645 @@
+{
+ "format": "genius-joint-driver-law/1",
+ "amendment": "AM-02.1 (PROPOSED, NOT ADMITTED UNTIL REVIEWED)",
+ "drivers": [
+  {
+   "name": "Denver April 1 snow index (share of the 1991-2020 median)",
+   "anchors": {
+    "dry": "609/1772",
+    "normal": "1",
+    "wet": "3/2"
+   },
+   "tie": "normal"
+  },
+  {
+   "name": "Lake Powell water-year unregulated inflow (af)",
+   "anchors": {
+    "dry": "4070000",
+    "normal": "7800000",
+    "wet": "15099000"
+   },
+   "tie": "normal"
+  }
+ ],
+ "scenarios": {
+  "aligned_dry": [
+   [
+    "dry",
+    "dry"
+   ]
+  ],
+  "aligned_normal": [
+   [
+    "normal",
+    "normal"
+   ]
+  ],
+  "aligned_wet": [
+   [
+    "wet",
+    "wet"
+   ]
+  ],
+  "powell_drier_than_denver": [
+   [
+    "normal",
+    "dry"
+   ],
+   [
+    "wet",
+    "dry"
+   ],
+   [
+    "wet",
+    "normal"
+   ]
+  ],
+  "powell_wetter_than_denver": [
+   [
+    "normal",
+    "wet"
+   ],
+   [
+    "dry",
+    "wet"
+   ],
+   [
+    "dry",
+    "normal"
+   ]
+  ]
+ },
+ "representatives": {
+  "aligned_dry": [
+   "dry",
+   "dry"
+  ],
+  "aligned_normal": [
+   "normal",
+   "normal"
+  ],
+  "aligned_wet": [
+   "wet",
+   "wet"
+  ],
+  "powell_drier_than_denver": [
+   "normal",
+   "dry"
+  ],
+  "powell_wetter_than_denver": [
+   "normal",
+   "wet"
+  ]
+ },
+ "window": 30,
+ "periods_offered": 35,
+ "periods_without_every_driver": [
+  "1964",
+  "1965",
+  "1966",
+  "1967",
+  "1968",
+  "1969",
+  "1970",
+  "1971",
+  "1972",
+  "1973",
+  "1974",
+  "1975",
+  "1976",
+  "1977",
+  "1978",
+  "1979",
+  "1980",
+  "1981",
+  "1982",
+  "1983",
+  "1984",
+  "1985",
+  "1986",
+  "1987",
+  "1988",
+  "1989",
+  "1990",
+  "2026"
+ ],
+ "outcomes": 30,
+ "joint_table": {
+  "dry × dry": 2,
+  "dry × normal": 0,
+  "dry × wet": 0,
+  "normal × dry": 6,
+  "normal × normal": 11,
+  "normal × wet": 6,
+  "wet × dry": 0,
+  "wet × normal": 2,
+  "wet × wet": 3
+ },
+ "followed": {
+  "aligned_dry": 2,
+  "aligned_normal": 11,
+  "aligned_wet": 3,
+  "powell_drier_than_denver": 8,
+  "powell_wetter_than_denver": 6
+ },
+ "classification": [
+  {
+   "period": "1996",
+   "cell": [
+    "wet",
+    "normal"
+   ],
+   "scenario": "powell_drier_than_denver"
+  },
+  {
+   "period": "1997",
+   "cell": [
+    "wet",
+    "wet"
+   ],
+   "scenario": "aligned_wet"
+  },
+  {
+   "period": "1998",
+   "cell": [
+    "normal",
+    "wet"
+   ],
+   "scenario": "powell_wetter_than_denver"
+  },
+  {
+   "period": "1999",
+   "cell": [
+    "normal",
+    "wet"
+   ],
+   "scenario": "powell_wetter_than_denver"
+  },
+  {
+   "period": "2000",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2001",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2002",
+   "cell": [
+    "dry",
+    "dry"
+   ],
+   "scenario": "aligned_dry"
+  },
+  {
+   "period": "2003",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2004",
+   "cell": [
+    "normal",
+    "dry"
+   ],
+   "scenario": "powell_drier_than_denver"
+  },
+  {
+   "period": "2005",
+   "cell": [
+    "normal",
+    "wet"
+   ],
+   "scenario": "powell_wetter_than_denver"
+  },
+  {
+   "period": "2006",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2007",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2008",
+   "cell": [
+    "normal",
+    "wet"
+   ],
+   "scenario": "powell_wetter_than_denver"
+  },
+  {
+   "period": "2009",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2010",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2011",
+   "cell": [
+    "wet",
+    "wet"
+   ],
+   "scenario": "aligned_wet"
+  },
+  {
+   "period": "2012",
+   "cell": [
+    "dry",
+    "dry"
+   ],
+   "scenario": "aligned_dry"
+  },
+  {
+   "period": "2013",
+   "cell": [
+    "normal",
+    "dry"
+   ],
+   "scenario": "powell_drier_than_denver"
+  },
+  {
+   "period": "2014",
+   "cell": [
+    "wet",
+    "normal"
+   ],
+   "scenario": "powell_drier_than_denver"
+  },
+  {
+   "period": "2015",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2016",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2017",
+   "cell": [
+    "normal",
+    "wet"
+   ],
+   "scenario": "powell_wetter_than_denver"
+  },
+  {
+   "period": "2018",
+   "cell": [
+    "normal",
+    "dry"
+   ],
+   "scenario": "powell_drier_than_denver"
+  },
+  {
+   "period": "2019",
+   "cell": [
+    "wet",
+    "wet"
+   ],
+   "scenario": "aligned_wet"
+  },
+  {
+   "period": "2020",
+   "cell": [
+    "normal",
+    "dry"
+   ],
+   "scenario": "powell_drier_than_denver"
+  },
+  {
+   "period": "2021",
+   "cell": [
+    "normal",
+    "dry"
+   ],
+   "scenario": "powell_drier_than_denver"
+  },
+  {
+   "period": "2022",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2023",
+   "cell": [
+    "normal",
+    "wet"
+   ],
+   "scenario": "powell_wetter_than_denver"
+  },
+  {
+   "period": "2024",
+   "cell": [
+    "normal",
+    "normal"
+   ],
+   "scenario": "aligned_normal"
+  },
+  {
+   "period": "2025",
+   "cell": [
+    "normal",
+    "dry"
+   ],
+   "scenario": "powell_drier_than_denver"
+  }
+ ],
+ "evaluation": {
+  "kind": "RETROSPECTIVE_PREQUENTIAL",
+  "confidence": "19/20",
+  "candidates": {
+   "uniform": {
+    "count": 30,
+    "per_band_confidence": 0.99,
+    "bands": {
+     "aligned_dry": {
+      "observed": 2,
+      "mean_mass": 0.2,
+      "interval": [
+       0.0035,
+       0.274
+      ],
+      "inside": true
+     },
+     "aligned_normal": {
+      "observed": 11,
+      "mean_mass": 0.2,
+      "interval": [
+       0.1604,
+       0.6157
+      ],
+      "inside": true
+     },
+     "aligned_wet": {
+      "observed": 3,
+      "mean_mass": 0.2,
+      "interval": [
+       0.0116,
+       0.3203
+      ],
+      "inside": true
+     },
+     "powell_drier_than_denver": {
+      "observed": 8,
+      "mean_mass": 0.2,
+      "interval": [
+       0.0929,
+       0.5156
+      ],
+      "inside": true
+     },
+     "powell_wetter_than_denver": {
+      "observed": 6,
+      "mean_mass": 0.2,
+      "interval": [
+       0.0545,
+       0.4428
+      ],
+      "inside": true
+     }
+    },
+    "calibrated": true,
+    "mean_log_score": -1.609438
+   },
+   "frequency": {
+    "count": 30,
+    "per_band_confidence": 0.99,
+    "bands": {
+     "aligned_dry": {
+      "observed": 2,
+      "mean_mass": 0.1202,
+      "interval": [
+       0.0035,
+       0.274
+      ],
+      "inside": true
+     },
+     "aligned_normal": {
+      "observed": 11,
+      "mean_mass": 0.3008,
+      "interval": [
+       0.1604,
+       0.6157
+      ],
+      "inside": true
+     },
+     "aligned_wet": {
+      "observed": 3,
+      "mean_mass": 0.1472,
+      "interval": [
+       0.0116,
+       0.3203
+      ],
+      "inside": true
+     },
+     "powell_drier_than_denver": {
+      "observed": 8,
+      "mean_mass": 0.2042,
+      "interval": [
+       0.0929,
+       0.5156
+      ],
+      "inside": true
+     },
+     "powell_wetter_than_denver": {
+      "observed": 6,
+      "mean_mass": 0.2276,
+      "interval": [
+       0.0545,
+       0.4428
+      ],
+      "inside": true
+     }
+    },
+    "calibrated": true,
+    "mean_log_score": -1.607724
+   },
+   "independent_drivers": {
+    "count": 30,
+    "per_band_confidence": 0.99,
+    "bands": {
+     "aligned_dry": {
+      "observed": 2,
+      "mean_mass": 0.0311,
+      "interval": [
+       0.0035,
+       0.274
+      ],
+      "inside": true
+     },
+     "aligned_normal": {
+      "observed": 11,
+      "mean_mass": 0.2588,
+      "interval": [
+       0.1604,
+       0.6157
+      ],
+      "inside": true
+     },
+     "aligned_wet": {
+      "observed": 3,
+      "mean_mass": 0.0984,
+      "interval": [
+       0.0116,
+       0.3203
+      ],
+      "inside": true
+     },
+     "powell_drier_than_denver": {
+      "observed": 8,
+      "mean_mass": 0.2917,
+      "interval": [
+       0.0929,
+       0.5156
+      ],
+      "inside": true
+     },
+     "powell_wetter_than_denver": {
+      "observed": 6,
+      "mean_mass": 0.3201,
+      "interval": [
+       0.0545,
+       0.4428
+      ],
+      "inside": true
+     }
+    },
+    "calibrated": true,
+    "mean_log_score": -1.62591
+   }
+  }
+ },
+ "chosen": "frequency",
+ "law": {
+  "aligned_dry": "3/35",
+  "aligned_normal": "12/35",
+  "aligned_wet": "4/35",
+  "powell_drier_than_denver": "9/35",
+  "powell_wetter_than_denver": "1/5"
+ },
+ "refusals": [],
+ "admitted": true,
+ "low_power": [
+  "aligned_dry",
+  "aligned_wet"
+ ],
+ "assumptions": [],
+ "declared_by_caller": [
+  "the scenario partition was fixed before looking at the joint record",
+  "no driver depends on the compared routes",
+  "periods do not overlap",
+  "the same period label means the same period for every driver"
+ ],
+ "meaning": "Masa empírica conjunta de que cada período caiga en cada escenario, según varios conductores a la vez. La candidata de conductores independientes es un supuesto que la calibración conjunta pone a prueba; no rechazarlo no lo demuestra. Retrospectiva precuencial. No es bienestar.",
+ "partition_sensitivity": {
+  "by_direction (primary)": {
+   "chosen": "frequency",
+   "admitted": true,
+   "law": {
+    "aligned_dry": "3/35",
+    "aligned_normal": "12/35",
+    "aligned_wet": "4/35",
+    "powell_drier_than_denver": "9/35",
+    "powell_wetter_than_denver": "1/5"
+   },
+   "scores": {
+    "uniform": -1.609438,
+    "frequency": -1.607724,
+    "independent_drivers": -1.62591
+   }
+  },
+  "first_draft (picked after seeing the table)": {
+   "chosen": "frequency",
+   "admitted": true,
+   "law": {
+    "aligned_dry": "1/12",
+    "aligned_normal": "1/3",
+    "aligned_wet": "1/9",
+    "denver_normal_powell_dry": "7/36",
+    "denver_normal_powell_wet": "7/36",
+    "other_misaligned": "1/12"
+   },
+   "scores": {
+    "uniform": -1.791759,
+    "frequency": -1.783661,
+    "independent_drivers": -1.874552
+   }
+  },
+  "by_powell": {
+   "chosen": "uniform",
+   "admitted": true,
+   "law": {
+    "dry": "1/3",
+    "normal": "1/3",
+    "wet": "1/3"
+   },
+   "scores": {
+    "uniform": -1.098612,
+    "frequency": -1.163541,
+    "independent_drivers": -1.163541
+   }
+  },
+  "aligned_or_not": {
+   "chosen": "uniform",
+   "admitted": true,
+   "law": {
+    "aligned": "1/2",
+    "misaligned": "1/2"
+   },
+   "scores": {
+    "uniform": -0.693147,
+    "frequency": -0.740971,
+    "independent_drivers": -0.732659
+   }
+  }
+ },
+ "law_status": "SELECTION_FRAGILE_UNDER_PARTITION",
+ "pearson_raw_values": 0.605,
+ "federation_assumption": {
+  "statement": "SharedHydrology: Denver and Powell years always align (federation colorado_basin_2027).",
+  "aligned_years": 16,
+  "misaligned_years": 14,
+  "verdict": "REFUTED_BY_RECORD",
+  "caveat": "How many years misalign depends on the anchors: Powell wet sits at 194 % of its normal anchor, Denver wet at 150 %."
+ }
+}

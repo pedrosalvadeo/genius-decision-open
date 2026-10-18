@@ -117,3 +117,11 @@ Las notas anteriores conservan el estado que tenían al registrarse. La auditor�
 **Estado:** `ACEPTADA_CON_REPARACIONES` el 2026-10-17. Agrega una premisa de legitimidad empírica para la ley de la Definición 8.9 (LEA) y un operador de revisión de modelos versionados.
 
 **Alcance:** no cambia S1 ni el kernel FP1. Ninguna LEA está admitida todavía: la primera aplicación, Lake Mead 2027, se rechaza por falta de resultados independientes y porque su clasificación depende de la política en vigor.
+
+## AM-02.1 — Ley empírica con varios conductores
+
+**Texto completo:** `PROPOSAL_AM-02.1.md`.
+
+**Estado:** `PROPUESTA` desde el 2026-10-18, pendiente de la revisión de Pedro. Extiende la LEA de AM-02 a escenarios definidos por 2 o 3 conductores exógenos a la vez. Los escenarios forman una partición de todas las combinaciones de categorías. Hay tres candidatas fijadas de antemano: masas iguales, frecuencia conjunta y conductores independientes. Se comprueban como en AM-02.
+
+**Alcance:** no cambia S1 ni el kernel FP1. La API y el MCP no la sirven todavía. En la cuenca del Colorado, 14 de los últimos 30 años no alinearon la nieve de Denver con la afluencia a Powell, lo que refuta el supuesto `SharedHydrology` de la federación. Qué ley gana depende de la partición, así que esa ley es frágil. Una revisión adversarial separada pidió diez reparaciones, ya incorporadas.

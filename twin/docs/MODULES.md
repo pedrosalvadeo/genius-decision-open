@@ -98,6 +98,8 @@ Tamaño de los mundos (cualquier dominio): el límite de celdas políticas × es
 
 Perfil por defecto (cualquier dominio): un relato nuevo empieza siempre como modelo general de existencias y flujos. Antes, un relato que nombraba plantas, una huerta o un semillero caía en la plantilla sintética D1, y lo mismo una planta potabilizadora o industrial. D1 queda como ejemplo de regresión, disponible sólo si se pide por nombre.
 
+Varios factores a la vez (propuesta AM-02.1, pendiente de revisión): `driver_law.joint_certificate` certifica una ley sobre escenarios definidos por 2 o 3 conductores. Los escenarios forman una partición de todas las combinaciones de categorías, y las candidatas son masas iguales, frecuencia conjunta y conductores independientes. En el Colorado (`twin/history/colorado_joint_law.json`), la nieve de Denver y la afluencia a Powell no coincidieron en 14 de los últimos 30 años, así que el supuesto de alineación de la federación no se sostiene. Qué candidata gana depende de cómo se agrupan los desacoples, y el certificado lo marca como frágil. La API y el MCP no la sirven hasta que Pedro la apruebe.
+
 Primer caso fuera del agua, `twin/cases/us_blood_2026`: reserva de sangre tipo 0 de la Cruz Roja en el invierno 2026/27, con escenarios de gripe, la condición de vida de no bajar de un día de reserva, bienestar de pacientes, Cruz Roja y donantes, y funciones `health` y `safety` del catálogo. Los ocho módulos quedan llenos con el mismo kernel. Seguir igual incumple la condición con gripe grave (PVS 2/3); la campaña y la postergación la cumplen siempre, y la elección entre ellas depende de a quién se le pide el esfuerzo.
 
 ## Módulo IV en el Colorado: por qué no se separan los estados todavía
