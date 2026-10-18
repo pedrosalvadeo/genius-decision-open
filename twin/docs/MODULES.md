@@ -1,5 +1,7 @@
 # Los 8 módulos como componentes del gemelo
 
+Versión sin casos ni dominios, sólo con los contratos de cada módulo: [MODULE_CONTRACTS.md](MODULE_CONTRACTS.md).
+
 Pedro, 17/10/2026: el módulo 0 lo sistematiza el gemelo; el módulo I también sirve al gemelo, pero sobre tantos escenarios (gemelos) como establezcan sus rutas. Cada módulo se sistematiza como componente de un sistema mayor.
 
 Cada evaluación de un gemelo entrega ahora `canonical_results.modules` (`genius_twin/modules.py`): qué encarna cada módulo, qué recibe, qué entrega y su estado. El registro lee resultados; no calcula ninguno.
