@@ -18,7 +18,9 @@ class RouteSearchTest(unittest.TestCase):
         self.assertEqual(len(result["rows"]), 4 + 2 * 6)
         row = result["rows"][-1]
         self.assertEqual(set(row), {"format", "batch", "route", "origin", "policy", "feasible", "frontier",
-                                    "strictly_dominated_by", "pvs", "cag_robust", "by_scenario"})
+                                    "strictly_dominated_by", "pvs", "cag_robust", "by_scenario", "model_sha256"})
+        self.assertEqual(row["format"], "genius-route-verdicts/2")
+        self.assertEqual(set(row["by_scenario"]["severe"]), {"task_status", "wellbeing_worst", "wellbeing_final", "functions_terminal", "welfare_path"})
         self.assertEqual(set(row["by_scenario"]), {"mild", "moderate", "severe"})
         self.assertEqual(result["declared_frontier"], ["defer_below_two_days", "campaign", "campaign_and_defer"])
 
