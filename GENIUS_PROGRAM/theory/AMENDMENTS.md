@@ -125,3 +125,11 @@ Las notas anteriores conservan el estado que tenían al registrarse. La auditor�
 **Estado:** `ACEPTADA` el 2026-10-18 por Pedro. Extiende la LEA de AM-02 a escenarios definidos por 2 o 3 conductores exógenos a la vez. Los escenarios forman una partición de todas las combinaciones de categorías. Hay tres candidatas fijadas de antemano: masas iguales, frecuencia conjunta y conductores independientes. Se comprueban como en AM-02.
 
 **Alcance:** no cambia S1 ni el kernel FP1. Se sirve en `POST /laws/driver/joint` y en el MCP (`twin_joint_driver_law`). En la cuenca del Colorado, 14 de los últimos 30 años no alinearon la nieve de Denver con la afluencia a Powell, lo que refuta el supuesto `SharedHydrology` de la federación. Qué ley gana depende de la partición, así que esa ley es frágil. Una revisión adversarial separada pidió diez reparaciones, ya incorporadas.
+
+## AM-05 — Decisión dentro de una ventana de oportunidad
+
+**Texto completo:** `PROPOSAL_AM-05.md`.
+
+**Estado:** `PROPUESTA` el 2026-10-18, pendiente de la aprobación de Pedro. Cuando el cálculo completo no entra en la ventana del decisor, los escenarios se evalúan de a uno, por masa decreciente, y se entregan cotas exactas de PVS y rutas refutadas. Una selección sólo se emite si queda una única ruta no refutada, condicionada a los escenarios que faltan.
+
+**Alcance:** no cambia S1 ni el kernel FP1. Los pasos comprometidos (`decision_window.py`) y la frescura de cada job ya funcionan sin cambiar la matemática.

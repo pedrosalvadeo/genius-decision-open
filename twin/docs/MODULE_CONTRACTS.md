@@ -77,10 +77,16 @@ Todo resultado matemático lo calcula el kernel FP1 y lo verifica su verificador
   - API REST y herramientas MCP para agentes;
   - la aplicación web para personas;
   - el sobre de evaluación se empaqueta sin pérdida y se reconstruye idéntico al leerlo.
+- **Ventana de decisión** (`decision_window.py`). Cada decisor tiene su propio tiempo para decidir y su propia velocidad de cálculo, y la realidad sigue mientras calcula:
+  - el decisor declara en segundos su ventana, la duración real de un paso, cuánto falta para la primera acción, cuánto tarda en aplicar una decisión y su costo medido por celda;
+  - los pasos cuya acción ocurre antes de que la decisión pueda actuar quedan comprometidos con la ruta que se sigue ahora; las rutas que sólo se diferenciaban en esos pasos dejan de ser una opción;
+  - el resultado es un modelo declarado común, que se evalúa como cualquier otro.
+- **Gemelo que cambia durante el cálculo.** Cada cálculo queda fijado a la evidencia con la que empezó y nunca se reescribe. Cada job informa `freshness`: si se observó la realidad durante el cálculo o después, el resultado describe un estado anterior, y el gemelo vivo (`living.reanchor`) recalcula desde la observación nueva, con menos pasos por delante.
 - **Independiente del dominio:** sí.
+- **Pendiente de aprobación:** qué se entrega cuando el cálculo completo no entra en la ventana ([PROPOSAL_AM-05](../../GENIUS_PROGRAM/theory/PROPOSAL_AM-05.md)).
 
 ## Lo que todavía depende de algo particular
 
 1. **El perfil D1 (semillero).** Es la plantilla sintética original; queda sólo como ejemplo de prueba y se usa si se pide por nombre.
-2. **Los límites de tamaño** de 0, V, III y IV. Son límites medidos de cómputo, no del dominio. Subirlos más exige medir de nuevo tiempo, memoria y salida.
+2. **Los límites de tamaño** de 0, V, III y IV. Son límites medidos de cómputo, no del dominio. Subirlos más exige medir de nuevo tiempo, memoria y salida. Medido el 2026-10-18: los cinco casos de campo tardan de 2,9 a 4,7 s, entre 29 y 44 ms por celda.
 3. **Las series reales.** Cada dominio necesita sus propias fuentes. El nodo de historia cosecha cualquier serie pública, pero alguien debe nombrarla. Faltan, por ejemplo, el caudal anual del río Mendoza en Guido y la temporada de gripe 2026/27 para admitir esa ley.

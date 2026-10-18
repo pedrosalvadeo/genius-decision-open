@@ -79,7 +79,14 @@ ROUTES = {
         'Accept reviewed model assumptions only within the authority granted by the decision owner. Payload: base_version, idempotency_key, confirmed=true, acknowledge_declared or acknowledge_synthetic=true. Never invent human confirmation. Acceptance does not validate empirical facts or authorize physical action.'),
     'twin_evaluate': ('POST', '/cases/{case_id}/evaluate', 'twins:evaluate', {'case_id': ID, 'version': dict(type='integer', minimum=1)}, ('case_id', 'version'),
         'Evaluate an accepted version through the real bounded engine. Consumes the shared agent job budget even on retry. Returns a frozen job receipt. Preserve verification, unknowns and all model/evidence limits; no empirical validation is implied.'),
-    'twin_get_job': ('GET', '/jobs/{job_id}', 'twins:read', {'job_id': ID}, ('job_id',), 'Read an own frozen twin job and verification receipt.'),
+    'twin_get_job': ('GET', '/jobs/{job_id}', 'twins:read', {'job_id': ID}, ('job_id',), 'Read an own frozen twin job and verification receipt. job.freshness says whether reality was observed again during or after the computation (then re-anchor and evaluate again); job.elapsed_seconds is your own measured cost.'),
+    'twin_decision_window': ('POST', '/cases/{case_id}/window', 'twins:read',
+        {'case_id': ID, 'version': dict(type='integer', minimum=1), 'window': dict(type='object', properties=dict(
+            available_seconds=dict(type=['integer', 'string']), step_seconds=dict(type=['integer', 'string']),
+            first_action_offset_seconds=dict(type=['integer', 'string']), action_latency_seconds=dict(type=['integer', 'string']),
+            committed_route=dict(type='string'), seconds_per_cell=dict(type=['integer', 'string']), fixed_seconds=dict(type=['integer', 'string'])),
+            required=['available_seconds', 'step_seconds'])}, ('case_id', 'version', 'window'),
+        'Plan an evaluation for your own window of opportunity, in any domain. window: seconds you have to decide, real seconds per model step, seconds until the first step\'s action, seconds to put a decision into effect, the route you follow now, and your measured cost (seconds_per_cell from elapsed_seconds / cells of your past jobs; otherwise a reference measurement is used and labelled). Returns whether the evaluation fits, how many steps are already committed to your current route before a decision can act, the routes that become identical, and the model to evaluate (propose it as a version). Exact numbers only; nothing is dropped silently.'),
     'twin_observe': ('POST', '/cases/{case_id}/observations', 'twins:write', {'case_id': ID, 'payload': PAYLOAD}, ('case_id', 'payload'),
         'Record a source-attributed observation against a frozen prediction. Stockflow cases observe a declared stock in its declared unit: payload base_version, policy_id, scenario_id, day (0..horizon), variable (stock id), value (exact decimal or n/d), unit, observed_at (ISO8601 with zone), source, idempotency_key. The prediction is the latest completed evaluation of base_version; no automatic calibration. Never fabricate measured evidence. See the REST observation contract for required fields.'),
     'twin_compare': ('GET', '/cases/{case_id}/compare?before={before}&after={after}', 'twins:read', {'case_id': ID, 'before': dict(type='integer', minimum=1), 'after': dict(type='integer', minimum=1)}, ('case_id', 'before', 'after'),
@@ -115,6 +122,8 @@ def execute(name, args, authorization, rest):
                    'text': args['text'], 'structured': {'construction': args['construction']}}
     elif name == 'twin_driver_law':
         payload = {k: args[k] for k in ('series', 'anchors', 'tie', 'driver', 'window') if k in args}
+    elif name == 'twin_decision_window':
+        payload = {'version': args['version'], 'window': args['window']}
     elif name == 'twin_joint_driver_law':
         payload = {k: args[k] for k in ('drivers', 'scenarios', 'window') if k in args}
     elif name == 'twin_delete_case':

@@ -136,7 +136,14 @@ class ServiceTests(unittest.TestCase):
         self.assertEqual(value["case"]["status"], "review_required")
         again = self.client.post(f"/api/cases/{cid}/observations", json=observation)
         self.assertEqual(again.get_json(), value)
-        self.assertEqual(self.client.get(f'/api/jobs/{before["job"]["id"]}').get_json(), before)
+        self.assertEqual(before["job"]["freshness"]["status"], "CURRENT")
+        reread = self.client.get(f'/api/jobs/{before["job"]["id"]}').get_json()
+        # The frozen result is unchanged; only its freshness says reality was observed again.
+        self.assertEqual(reread["evaluation"], before["evaluation"])
+        self.assertEqual(reread["job"]["freshness"]["status"], "SUPERSEDED_BY_NEWER_OBSERVATION")
+        self.assertEqual(reread["job"]["freshness"]["observed_after_computation"], [value["observation"]["id"]])
+        self.assertEqual({k: v for k, v in reread["job"].items() if k != "freshness"},
+                         {k: v for k, v in before["job"].items() if k != "freshness"})
         revised = self.client.post(f"/api/cases/{cid}/evaluate", json={"version": 2}).get_json()["evaluation"]
         self.assertEqual(revised["recommendation_status"], "SUSPENDED_PENDING_MODEL_REVIEW")
 

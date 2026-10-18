@@ -59,6 +59,11 @@ de declaración directa siguiente sigue disponible.
    desde la historia de un conductor exógeno: un valor por período y el ancla de cada escenario.
    `twin_joint_driver_law` hace lo mismo con 2 o 3 conductores a la vez (AM-02.1): los
    escenarios cubren todas las combinaciones de categorías, fijadas antes de mirar el registro.
+   `twin_decision_window` planifica para tu propia ventana de oportunidad: cuánto tiempo
+   tenés, cuánto dura un paso del modelo y cuánto te cuesta calcular. Devuelve cuántos pasos
+   quedan comprometidos con la ruta actual antes de que una decisión pueda actuar, qué rutas
+   dejan de ser una opción y el modelo a evaluar. `twin_get_job` informa `freshness`: si la
+   realidad se observó de nuevo durante o después del cálculo, re-ancla y evalúa otra vez.
 8. `twin_delete_case`: `case_id`, `base_version`, `confirm: true`.
    `delete_agent_space` con `confirm: true` elimina también los expedientes
    del gemelo y revoca la cuenta. Exportar antes cuando se necesite conservarlos.
