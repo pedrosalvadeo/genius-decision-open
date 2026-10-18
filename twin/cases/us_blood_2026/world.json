@@ -634,19 +634,10 @@
         "value": {
           "id": "campaign_and_electives",
           "label": "Campaña de donantes y cirugías programadas",
-          "requires": [
-            "operate"
-          ],
-          "withdrawals": {
-            "inventory": "819/50",
-            "donor_pool": "273/50"
-          },
-          "deposits": {
-            "electives": "819/50",
-            "inventory": "273/50"
-          },
-          "add_capabilities": [],
-          "remove_capabilities": []
+          "compose": [
+            "supply_electives",
+            "campaign_only"
+          ]
         },
         "claim_ids": [
           "h_elective",

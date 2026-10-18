@@ -92,6 +92,8 @@ Lake Mead (`twin/history/powell_law.py`): 62 años hidrológicos de afluencia no
 
 Fuera del agua: `twin/history/flu_seasons.py` cosecha el pico de cada temporada de gripe de EE.UU. (ILINet de los CDC por Delphi, octubre a mayo, 29 temporadas de 1997/98 a 2025/26) como conductor para gemelos de suministros de salud en invierno, y `twin/history/source_quotes.py` verifica contra la página viva las citas de cualquier caso.
 
+Acciones compuestas (cualquier dominio): una acción puede declarar `compose` con 2 a 4 acciones del modelo que se hacen en el mismo paso. `stockflow.expand_actions` completa sus requisitos y cambios de capacidad como unión, y sus retiros y depósitos como suma por existencia; se ejecuta todo o nada. `validate_model` rechaza una composición cuyos flujos no coinciden con sus partes o que compone otra compuesta. El kernel no cambia: sigue viendo una acción por paso.
+
 Primer caso fuera del agua, `twin/cases/us_blood_2026`: reserva de sangre tipo 0 de la Cruz Roja en el invierno 2026/27, con escenarios de gripe, la condición de vida de no bajar de un día de reserva, bienestar de pacientes, Cruz Roja y donantes, y funciones `health` y `safety` del catálogo. Los ocho módulos quedan llenos con el mismo kernel. Seguir igual incumple la condición con gripe grave (PVS 2/3); la campaña y la postergación la cumplen siempre, y la elección entre ellas depende de a quién se le pide el esfuerzo.
 
 ## Módulo IV en el Colorado: por qué no se separan los estados todavía

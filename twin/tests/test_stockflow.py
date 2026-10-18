@@ -112,6 +112,22 @@ class StockFlowContracts(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_model(bad)
 
+    def test_composed_action_is_the_union_and_sum_of_its_parts(self):
+        from genius_twin.stockflow import expand_actions
+        model = default_model()
+        model["actions"].append(dict(id="manual_and_prepare", label="Cuidado y reserva en el mismo paso", compose=["manual", "prepare"]))
+        model = expand_actions(model)
+        both = model["actions"][-1]
+        self.assertEqual((both["requires"], both["withdrawals"], both["deposits"], both["add_capabilities"]),
+                         (["care"], {"water": "3/1", "time": "50/1"}, {"buffer": "3/1"}, ["reserve_ready"]))
+        validate_model(model)
+        tampered = deepcopy(model); tampered["actions"][-1]["withdrawals"]["water"] = "1/1"
+        with self.assertRaisesRegex(ValueError, "differ from the composition"):
+            validate_model(tampered)
+        nested = expand_actions({**deepcopy(model), "actions": model["actions"] + [dict(id="nested", label="x", compose=["manual_and_prepare", "manual"])]})
+        with self.assertRaises(ValueError):
+            validate_model(nested)
+
     def test_law_missing_preserves_native_partial_and_zero_branch_still_counts(self):
         model = default_model(); model["law"] = None
         result = evaluate_model(model)

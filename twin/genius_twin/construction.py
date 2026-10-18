@@ -224,7 +224,7 @@ def prepare(document, observation_record=None):
     for fragment in document['fragments']:
         _assign(assembled, fragment['path'], fragment['value'])
     gaps = []
-    assembled = _materialize(assembled, '', gaps)
+    assembled = stockflow.expand_actions(_materialize(assembled, '', gaps))
     model = _inspect(assembled, stockflow.model_schema(), '', gaps)
     gaps.extend(dict(path=u['path'],code=u['reason'],question=u['question']) for u in document['unresolved'])
     if not gaps:
