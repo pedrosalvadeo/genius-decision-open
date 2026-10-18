@@ -18,7 +18,7 @@ import time
 
 from flask import g, jsonify, request, send_from_directory
 
-MODEL = "claude-opus-5-5"
+MODEL = "claude-haiku-5-5"  # Pedro, 2026-10-18: the cheapest model on both sides, so the comparison stays fair
 MAX_QUESTION = 4000
 DEADLINE_SECONDS = 105  # gunicorn's twin timeout is 120 s
 MAX_HORIZON = 8
