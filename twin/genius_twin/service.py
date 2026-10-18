@@ -579,6 +579,39 @@ class TwinService:
                 "meaning": "The result describes the evidence of its version when the computation started; "
                            "newer observations call for re-anchoring and evaluating again, not for editing this result."}
 
+    def evaluate_anytime(self, cid, payload):
+        """AM-05: evaluate scenario by scenario within a decider's window; exact bounds, nothing filled in.
+
+        Not stored as a job: a frozen prediction for observations still comes from a full evaluation.
+        """
+        from . import anytime
+        fields(payload, {"version", "budget_seconds", "tie_order"}, {"version", "budget_seconds"})
+        self._case(cid)
+        version = self._version(cid, integer(payload["version"], "version", 1))
+        require(version["model"]["profile"] == registry.STOCKFLOW, "window_profile_not_supported",
+                "El cálculo por escenarios usa el gemelo general.", 422)
+        require(self.system_context(cid, version)["status"] != "REVIEW_REQUIRED", "system_scope_review_required",
+                "Revisa los límites frente a la última observación y al modelo actual antes de recalcular.", 409)
+        # Leaves room under the web worker timeout for the run that is already going when the window closes.
+        limit = min(self.execution_context.get("timeout", 90), 60)
+        budget = payload["budget_seconds"]
+        require(type(budget) in (int, str) and type(budget) is not bool, "invalid_budget", "El tiempo disponible es un número exacto de segundos.", 422)
+        try:
+            budget = Fraction(budget)
+        except (ValueError, ZeroDivisionError) as exc:
+            raise ServiceError("invalid_budget", "El tiempo disponible es un número exacto de segundos.", 422) from exc
+        require(0 < budget <= limit, "invalid_budget", f"El tiempo disponible debe estar entre 0 y {limit} segundos.", 422)
+        try:
+            result = anytime.evaluate(deepcopy(version["model"]), self.evaluator, budget, payload.get("tie_order"))
+        except ValueError as exc:
+            raise ServiceError("invalid_anytime_request", str(exc), 422) from exc
+        except TimeoutError as exc:
+            raise ServiceError("evaluation_timeout", "Un escenario no terminó dentro del límite de ejecución; no se infiere inviabilidad.", 504) from exc
+        result.update({"case_id": cid, "version": version["version"], "model_sha256": version["model_sha256"],
+                       "execution_identity": registry.execution_identity(version["model"]["profile"], self.execution_context),
+                       "stored": False})
+        return result
+
     def decision_window(self, cid, payload):
         """Plan an evaluation for a decider's window of opportunity (decision_window.plan)."""
         from .decision_window import plan

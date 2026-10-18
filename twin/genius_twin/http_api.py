@@ -194,6 +194,10 @@ def make_blueprint(service_factory, name="twin_api"):
     def evaluate(cid):
         return jsonify(service_factory().evaluate(cid, json_body()))
 
+    @bp.post("/cases/<cid>/anytime/evaluate")
+    def evaluate_anytime(cid):
+        return jsonify(service_factory().evaluate_anytime(cid, json_body()))
+
     @bp.post("/cases/<cid>/window")
     def decision_window(cid):
         return jsonify(service_factory().decision_window(cid, json_body()))

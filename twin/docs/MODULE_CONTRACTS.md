@@ -83,7 +83,7 @@ Todo resultado matemático lo calcula el kernel FP1 y lo verifica su verificador
   - el resultado es un modelo declarado común, que se evalúa como cualquier otro.
 - **Gemelo que cambia durante el cálculo.** Cada cálculo queda fijado a la evidencia con la que empezó y nunca se reescribe. `GET /jobs/<id>/freshness` lo informa: si se observó la realidad durante el cálculo o después, el resultado describe un estado anterior, y el gemelo vivo (`living.reanchor`) recalcula desde la observación nueva, con menos pasos por delante.
 - **Independiente del dominio:** sí.
-- **Pendiente de aprobación:** qué se entrega cuando el cálculo completo no entra en la ventana ([PROPOSAL_AM-05](../../GENIUS_PROGRAM/theory/PROPOSAL_AM-05.md)).
+- **Cuando el cálculo completo no entra en la ventana** (AM-05, aprobada; `anytime.py`). Los escenarios se evalúan de a uno, primero los más probables, hasta que se cierra la ventana. Se entregan las rutas refutadas y la PVS como intervalo exacto; lo no evaluado nunca se rellena. Sólo se selecciona una ruta si el modelo lo permite y queda una sola no refutada ([PROPOSAL_AM-05](../../GENIUS_PROGRAM/theory/PROPOSAL_AM-05.md)).
 
 ## Lo que todavía depende de algo particular
 

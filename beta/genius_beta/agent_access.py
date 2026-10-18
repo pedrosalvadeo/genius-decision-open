@@ -35,7 +35,7 @@ def required_scope(method, path):
             return 'twins:write'
         if method == 'PATCH' and re.fullmatch(r'cases/[a-f0-9]{32}/draft', suffix):
             return 'twins:write'
-        if method == 'POST' and (suffix in ('laws/driver', 'laws/driver/joint') or re.fullmatch(r'cases/[a-f0-9]{32}/evaluate', suffix)):
+        if method == 'POST' and (suffix in ('laws/driver', 'laws/driver/joint') or re.fullmatch(r'cases/[a-f0-9]{32}/(anytime/)?evaluate', suffix)):
             return 'twins:evaluate'
         if method == 'DELETE' and re.fullmatch(r'cases/[a-f0-9]{32}', suffix):
             return 'twins:delete'

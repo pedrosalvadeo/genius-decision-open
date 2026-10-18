@@ -1,6 +1,6 @@
 # Propuesta AM-05 — Decisión dentro de una ventana de oportunidad
 
-Estado: `PROPUESTA`. Necesita la aprobación de Pedro.
+Estado: `ACEPTADA`. Pedro la aprobó el 2026-10-18 («Apruebo»).
 - Redactada el 2026-10-18, después de que Pedro señalara que cada decisor tiene su propia capacidad de cálculo y su propia ventana de oportunidad: algunas decisiones admiten mucho tiempo y otras casi nada. Además la realidad cambia, y los gemelos deben ajustarse durante el cálculo previo a actuar.
 - No modifica S1 ni el kernel FP1.
 
@@ -48,7 +48,7 @@ Para una persona que decide en días, esto alcanza. Para un agente que decide en
    - un escenario evaluado sin decidir (un umbral nulo) no refuta y aporta lo mismo que uno no evaluado: entre 0 y su masa;
    - con `require_all_scenarios: false` ninguna ruta queda refutada, así que nunca se selecciona antes de terminar;
    - las funciones, la CAG y el bienestar se informan sólo en los escenarios evaluados. Nada se extrapola a los que faltan.
-4. Si la ley es nula, no hay orden por masa. Rige el orden declarado, y la PVS sigue indefinida como hoy. Lo que se informa es su rango bajo toda ley: el extremo inferior es 1 sólo si la ruta tuvo éxito en todos los escenarios, ya evaluados todos; el superior es 0 si falló en algún escenario evaluado; en otro caso cada extremo queda abierto entre 0 y 1.
+4. Si la ley es nula, no hay orden por masa. Rige el orden declarado, y la PVS sigue indefinida como hoy. Lo que se informa es su rango bajo toda ley, y sólo cuando están evaluados todos los escenarios: va de 0 a 1 si la ruta falla en alguno y tiene éxito en otro, es 1 si tiene éxito en todos y es 0 si falla en todos. Mientras falte un escenario el rango no se informa, porque ese escenario puede cambiar cualquiera de sus extremos. (Al implementar se corrigió el texto aprobado, que decía que un fallo evaluado fija el extremo superior en 0: con éxitos en otros escenarios, una ley puede ponerles toda la masa.)
 
 ### B. Qué se entrega al cerrar la ventana
 
@@ -96,3 +96,11 @@ Sus reparaciones ya están incorporadas:
 - Una cota no es una estimación. La PVS indefinida sigue indefinida.
 - Ningún criterio distinto se suma.
 - El kernel FP1 no cambia.
+
+## Hecho al aprobar (2026-10-18)
+
+1. `twin/genius_twin/anytime.py` evalúa escenario por escenario y entrega las cotas, las rutas refutadas y, cuando corresponde, la selección condicionada.
+2. Se sirve en `POST /cases/<cid>/anytime/evaluate` y en la herramienta MCP `twin_evaluate_anytime`. Cuenta como una evaluación y no se guarda como predicción congelada: para contrastar observaciones sigue haciendo falta la evaluación completa.
+3. La ventana máxima es de 60 s por pedido. Así queda margen para la corrida que esté en curso al cerrarse la ventana.
+4. Con los tres escenarios del banco de sangre evaluados, las cotas coinciden exactamente con la PVS de la evaluación completa.
+5. El estado quedó como `ACEPTADA` en `AMENDMENTS.md`.
