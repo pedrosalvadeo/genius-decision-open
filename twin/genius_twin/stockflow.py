@@ -93,6 +93,9 @@ def model_schema():
     schema["properties"]["subsystems"] = arr(obj({"id": ident, "label": txt,
         "stocks": {**arr(ident, 1, 6), "uniqueItems": True}, "carriers": {**arr(ident, 0, 6), "uniqueItems": True}}), 0, 6)
     schema["properties"]["interfaces"] = arr(obj({"id": ident, "label": txt, "source": ident, "target": ident}), 0, 8)
+    # Any domain: an action may compose 2 to 4 declared actions done in the same step;
+    # expand_actions fills its requirements and flows as their union and sum. Optional.
+    schema["properties"]["actions"]["items"]["properties"]["compose"] = {**arr(ident, 2, 4), "uniqueItems": True}
     # Module III: a capability with holds_when exists exactly in the states whose
     # stocks satisfy it (e.g. hydropower above a minimum power pool). Optional.
     schema["properties"]["capabilities"]["items"]["properties"]["holds_when"] = arr(stock_pred, 1, 6)
@@ -158,6 +161,34 @@ def _shape(value, spec, path="model"):
             raise ValueError(f"{path}: outside finite limit")
 
 
+def composed(parts):
+    """One action doing every part in the same step, all or nothing: union of requirements
+    and capability changes, sum of withdrawals and deposits per stock."""
+    out = {"requires": [], "withdrawals": {}, "deposits": {}, "add_capabilities": [], "remove_capabilities": []}
+    for part in parts:
+        for field in ("requires", "add_capabilities", "remove_capabilities"):
+            out[field] += [c for c in part[field] if c not in out[field]]
+        for field in ("withdrawals", "deposits"):
+            for k, v in part[field].items():
+                out[field][k] = q(Fraction(out[field].get(k, "0")) + Fraction(v))
+    return out
+
+
+def expand_actions(model):
+    """Fill each composed action from its parts; malformed input is left for validate_model."""
+    actions = model.get("actions") if isinstance(model, dict) else None
+    if not isinstance(actions, list):
+        return model
+    by_id = {a.get("id"): a for a in actions if isinstance(a, dict)}
+    expanded = []
+    for action in actions:
+        parts = [by_id.get(i) for i in action.get("compose", [])] if isinstance(action, dict) and isinstance(action.get("compose"), list) else []
+        if parts and all(isinstance(p, dict) and "compose" not in p and all(f in p for f in ("requires", "withdrawals", "deposits", "add_capabilities", "remove_capabilities")) for p in parts):
+            action = {"id": action.get("id"), "label": action.get("label"), **composed(parts), "compose": action["compose"]}
+        expanded.append(action)
+    return {**model, "actions": expanded}
+
+
 def validate_model(model):
     _shape(model, model_schema())
     tables = {}
@@ -174,6 +205,13 @@ def validate_model(model):
         if Fraction(stock["initial"]) > Fraction(stock["capacity"]):
             raise ValueError("initial stock exceeds capacity")
     for action in actions.values():
+        if "compose" in action:
+            refs(action["compose"], actions, "action.compose")
+            parts = [actions[i] for i in action["compose"]]
+            if any("compose" in p for p in parts):
+                raise ValueError(f"action {action['id']}: a composed action cannot compose another")
+            if {k: action[k] for k in ("requires", "withdrawals", "deposits", "add_capabilities", "remove_capabilities")} != composed(parts):
+                raise ValueError(f"action {action['id']}: flows differ from the composition of its parts")
         for field in ("requires", "add_capabilities", "remove_capabilities"):
             refs(action[field], caps, "action." + field)
         if set(action["add_capabilities"]) & set(action["remove_capabilities"]):
