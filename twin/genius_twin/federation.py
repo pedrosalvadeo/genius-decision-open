@@ -21,6 +21,7 @@ from .stockflow import _shape, interface_flows, q
 
 FORMAT = "genius-federation/1"
 CASES = Path(__file__).resolve().parents[1] / "cases"
+RESULT = "federation_result.json"
 
 
 def schema():
@@ -244,3 +245,36 @@ def evaluate(spec):
                      "feasibility": "JOINT_LIFE_CONDITION_IN_EVERY_JOINT_SCENARIO"},
         "assumptions": deepcopy(spec["assumptions"]),
     }
+
+
+def federations():
+    """Federations kept in twin/cases, each with its frozen result (written by `main`, checked by the tests)."""
+    rows = []
+    for path in sorted(CASES.glob("*/federation.json")):
+        spec = json.loads(path.read_text())
+        rows.append({"id": path.parent.name, "title": spec["name"], "members": [m["case"] for m in spec["members"]],
+                     "frozen_result": (path.parent / RESULT).exists()})
+    return rows
+
+
+def federation_case(name):
+    if name not in {row["id"] for row in federations()}:
+        raise KeyError(name)
+    folder = CASES / name
+    result = folder / RESULT
+    return {"id": name, "spec": json.loads((folder / "federation.json").read_text()),
+            "result": json.loads(result.read_text()) if result.exists() else None,
+            "provenance": "CITED_FIELD_CASES_COMPOSED_WITH_DECLARED_COUPLINGS"}
+
+
+def main(argv=None):
+    import argparse
+    parser = argparse.ArgumentParser(description="Evaluate a federation in twin/cases and freeze its result.")
+    parser.add_argument("case")
+    args = parser.parse_args(argv)
+    result = evaluate(json.loads((CASES / args.case / "federation.json").read_text()))
+    (CASES / args.case / RESULT).write_text(json.dumps(result, ensure_ascii=False, indent=1, sort_keys=True) + "\n")
+
+
+if __name__ == "__main__":
+    main()

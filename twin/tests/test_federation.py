@@ -26,6 +26,15 @@ class ColoradoBasinFederationTests(unittest.TestCase):
                          {'dry': '283953/10000', 'normal': '283953/10000', 'wet': '283953/10000'})
         self.assertEqual(variants[('keep_ban',)]['coupled_totals']['west_slope_diversion']['dry'], '0/1')
 
+    def test_frozen_result_is_what_the_federation_computes(self):
+        # Served by GET /federations/<id>; regenerate with python -m genius_twin.federation <case>.
+        frozen = federation.federation_case('colorado_basin_2027')
+        self.assertEqual(frozen['result'], json.loads(json.dumps(self.result)))
+        self.assertEqual(frozen['spec'], self.spec)
+        self.assertEqual([r['id'] for r in federation.federations()], ['colorado_basin_2027'])
+        with self.assertRaises(KeyError):
+            federation.federation_case('../denver_water_2026')
+
     def test_joint_pvs_and_a_cross_twin_tradeoff(self):
         rows = self.result['by_joint_route']
         self.assertEqual(len(rows), 6)

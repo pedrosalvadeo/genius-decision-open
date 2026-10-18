@@ -126,6 +126,19 @@ def make_blueprint(service_factory, name="twin_api"):
         except KeyError as exc:
             raise ServiceError("field_case_not_found", "Caso no encontrado.", 404) from exc
 
+    @bp.get("/federations")
+    def federations():
+        from . import federation
+        return jsonify(federations=federation.federations())
+
+    @bp.get("/federations/<name>")
+    def federation_case(name):
+        from . import federation
+        try:
+            return jsonify(federation.federation_case(name))
+        except KeyError as exc:
+            raise ServiceError("federation_not_found", "Federación no encontrada.", 404) from exc
+
     @bp.get("/cases")
     def cases():
         return jsonify(service_factory().list_cases())

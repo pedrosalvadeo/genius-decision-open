@@ -26,8 +26,8 @@ def required_scope(method, path):
         return club.required_scope(method, path)
     if path.startswith('/api/twin/'):
         suffix = path[len('/api/twin/'):]
-        if method == 'GET' and (suffix in ('capabilities', 'profiles', 'examples', 'cases', 'runtime', 'world/contract', 'interventions/schema', 'interventions/example', 'systems/schema', 'systems/scope-schema', 'systems/example', 'field-cases')
-                or re.fullmatch(r'(profiles/[A-Za-z0-9_-]+/schema|examples/[A-Za-z0-9_-]+|field-cases/[A-Za-z0-9_-]+|cases/[a-f0-9]{32}(/compare|/export|/systems)?|jobs/[a-f0-9]{32})', suffix)):
+        if method == 'GET' and (suffix in ('capabilities', 'profiles', 'examples', 'cases', 'runtime', 'world/contract', 'interventions/schema', 'interventions/example', 'systems/schema', 'systems/scope-schema', 'systems/example', 'field-cases', 'federations')
+                or re.fullmatch(r'(profiles/[A-Za-z0-9_-]+/schema|examples/[A-Za-z0-9_-]+|field-cases/[A-Za-z0-9_-]+|federations/[A-Za-z0-9_-]+|cases/[a-f0-9]{32}(/compare|/export|/systems)?|jobs/[a-f0-9]{32})', suffix)):
             return 'twins:read'
         if method == 'POST' and (suffix == 'cases' or re.fullmatch(r'(cases/[a-f0-9]{32}/(proposals|observations|systems|world/prepare)|proposals/[a-f0-9]{32}/accept)', suffix)):
             return 'twins:write'

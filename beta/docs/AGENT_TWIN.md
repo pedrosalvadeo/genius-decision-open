@@ -52,6 +52,9 @@ de declaración directa siguiente sigue disponible.
    declarada en su unidad, para una política, un escenario y un paso. Nunca recalibra
    el modelo. Los grafos de sistemas tienen un registro independiente.
    `twin_field_cases` y `twin_field_case` dan casos reales citados para empezar.
+   `twin_federations` y `twin_federation` dan gemelos de gemelos (por ejemplo la
+   cuenca del Colorado) con su resultado congelado: PVS conjunta, frontera y mejor
+   ruta conjunta para cada actor.
 8. `twin_delete_case`: `case_id`, `base_version`, `confirm: true`.
    `delete_agent_space` con `confirm: true` elimina también los expedientes
    del gemelo y revoca la cuenta. Exportar antes cuando se necesite conservarlos.
