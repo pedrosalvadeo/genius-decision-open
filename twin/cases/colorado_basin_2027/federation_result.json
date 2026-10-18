@@ -284,6 +284,34 @@
     "status": "TIED_OR_INCOMPARABLE"
    }
   },
+  "by_function_kind": {
+   "dam_operation": {
+    "best": [
+     "denver:keep_ban+mead:release_6",
+     "denver:resume_may+mead:release_6",
+     "denver:resume_if_70+mead:release_6"
+    ],
+    "functions": [
+     "mead.glen_canyon_3510"
+    ],
+    "label": "Operación confiable de una presa",
+    "status": "TIED_OR_INCOMPARABLE"
+   },
+   "water_supply": {
+    "best": [
+     "denver:keep_ban+mead:release_6",
+     "denver:keep_ban+mead:release_7",
+     "denver:resume_if_70+mead:release_6",
+     "denver:resume_if_70+mead:release_7"
+    ],
+    "functions": [
+     "denver.above_2003_low",
+     "mead.mead_1000"
+    ],
+    "label": "Abastecimiento de agua a la población y sus usos",
+    "status": "TIED_OR_INCOMPARABLE"
+   }
+  },
   "feasibility": "JOINT_LIFE_CONDITION_IN_EVERY_JOINT_SCENARIO",
   "feasible": [
    "denver:keep_ban+mead:release_6",

@@ -63,6 +63,13 @@ class StockFlowContracts(unittest.TestCase):
         bad["functions"][1]["id"] = "buffer_ok"
         with self.assertRaises(ValueError):
             validate_model(bad)
+        # A function may name a shared catalog kind, and only one from the catalog.
+        tagged = deepcopy(model)
+        tagged["functions"][0]["kind"] = "water_supply"
+        validate_model(tagged)
+        tagged["functions"][0]["kind"] = "happiness"
+        with self.assertRaises(ValueError):
+            validate_model(tagged)
 
     def test_module_two_subsystems_recompose_and_interfaces_carry_flows(self):
         model = default_model()

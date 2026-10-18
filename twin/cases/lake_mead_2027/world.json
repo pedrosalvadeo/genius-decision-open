@@ -1263,6 +1263,7 @@
         "path": "/functions/0",
         "value": {
           "id": "glen_canyon_3510",
+          "kind": "dam_operation",
           "label": "Glen Canyon Dam opera con Powell en 3.510 pies o más (meses cumplidos)",
           "serves": [
             "glen_canyon"
@@ -1285,6 +1286,7 @@
         "path": "/functions/1",
         "value": {
           "id": "mead_1000",
+          "kind": "water_supply",
           "label": "Lake Mead en 1.000 pies o más para la cuenca baja (meses cumplidos)",
           "serves": [
             "lower_basin"

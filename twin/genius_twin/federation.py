@@ -17,6 +17,7 @@ import json
 from pathlib import Path
 
 from . import construction, registry
+from .function_catalog import CATALOG
 from .stockflow import _shape, interface_flows, q
 
 FORMAT = "genius-federation/1"
@@ -216,16 +217,22 @@ def evaluate(spec):
     def actor_keys(actor, row):
         return {k for k in row["_coords"] if (k[0] == "welfare" and k[1] == actor)
                 or (k[0] == "function" and actor in serves.get((k[1], k[2]), []))}
-    by_actor = {}
-    for actor in actors:
-        keys = actor_keys(actor, rows[pool[0]])
-        if not keys:
-            by_actor[actor] = {"best": None, "status": "NO_CRITERIA"}
-            continue
+    def best_by(keys):
         beaten = {b for a in pool for b in pool if a != b and all(rows[a]["_coords"][k] >= rows[b]["_coords"][k] for k in keys)
                   and any(rows[a]["_coords"][k] > rows[b]["_coords"][k] for k in keys)}
         best = [i for i in pool if i not in beaten]
-        by_actor[actor] = {"best": best, "status": "UNIQUE" if len(best) == 1 else "TIED_OR_INCOMPARABLE"}
+        return {"best": best, "status": "UNIQUE" if len(best) == 1 else "TIED_OR_INCOMPARABLE"}
+    by_actor = {}
+    for actor in actors:
+        keys = actor_keys(actor, rows[pool[0]])
+        by_actor[actor] = best_by(keys) if keys else {"best": None, "status": "NO_CRITERIA"}
+    # Module I across members: the same catalog function, measured by different twins, compared without sums.
+    kinds = {(mid, f["id"]): f["kind"] for mid in members for f in renamed[mid].get("functions", []) if "kind" in f}
+    by_function_kind = {}
+    for kind in sorted(set(kinds.values())):
+        keys = {k for k in rows[pool[0]]["_coords"] if k[0] == "function" and kinds.get((k[1], k[2])) == kind}
+        by_function_kind[kind] = {"label": CATALOG[kind], "functions": sorted(f"{m}.{f}" for (m, f), v in kinds.items() if v == kind),
+                                  **best_by(keys)}
     for row in rows.values():
         del row["_coords"]
     member_ledgers = {}
@@ -240,7 +247,7 @@ def evaluate(spec):
                               {"key": list(k), **v} for k, v in variants.get(mid, {}).items()]} for mid in members},
         "joint_scenarios": deepcopy(spec["scenarios"]), "law": deepcopy(law), "couplings": deepcopy(spec["couplings"]),
         "shared_carriers": deepcopy(spec["shared_carriers"]), "joint_routes": joint_routes, "by_joint_route": rows,
-        "decision": {"feasible": feasible, "frontier": frontier, "pairs": pairs, "by_actor": by_actor, "selected": frontier[0] if len(frontier) == 1 else None,
+        "decision": {"feasible": feasible, "frontier": frontier, "pairs": pairs, "by_actor": by_actor, "by_function_kind": by_function_kind, "selected": frontier[0] if len(frontier) == 1 else None,
                      "rule": "PRODUCT_ORDER_OVER_MEMBER_WELFARE_STEPS_FUNCTION_TERMINALS_AND_JOINT_PVS_NO_SUMS",
                      "feasibility": "JOINT_LIFE_CONDITION_IN_EVERY_JOINT_SCENARIO"},
         "assumptions": deepcopy(spec["assumptions"]),
