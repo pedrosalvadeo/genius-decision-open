@@ -72,13 +72,18 @@ jobs:
           python-version: '3.12'
       - name: Harvest water-year unregulated inflow to Lake Powell (Reclamation RISE)
         run: python twin/history/rise_inflow.py --out out/powell_unregulated_wy.csv
-      - name: Probe the Mendoza river at Guido (INA annual table, national hydrological database)
+      - name: Verify the blood-supply case quotes against the live pages
+        continue-on-error: true
+        run: python twin/history/source_quotes.py twin/history/blood_2026/quotes.json --out out/blood_quotes.json
+      - name: Probe the Mendoza river at Guido (national hydrological database)
         continue-on-error: true
         run: |
-          sudo apt-get install -y -qq poppler-utils >/dev/null
           mkdir -p out/mendoza
-          curl -sSL -A 'genius-history-node' -o out/mendoza/poblete.pdf https://www.ina.gob.ar/cra/riego/fertirriego/pdf/Poblete.pdf && pdftotext -layout out/mendoza/poblete.pdf out/mendoza/poblete.txt && grep -nE '(19|20)[0-9]{2}' out/mendoza/poblete.txt | head -200
-          curl -sSL -A 'genius-history-node' -o out/mendoza/snih.html https://snih.hidricosargentina.gob.ar/ && grep -oiE 'href="[^"]*"' out/mendoza/snih.html | head -60
+          for u in https://snih.hidricosargentina.gob.ar/Filtros.aspx https://bdhi.hidricosargentina.gob.ar/ https://www.argentina.gob.ar/obras-publicas/hidricas/base-de-datos-hidrologica-integrada https://www.argentina.gob.ar/sites/default/files/pronostico2013-2014.pdf; do
+            echo "== $u"; curl -sSL -m 60 -A 'genius-history-node' -o out/mendoza/page "$u" -w '%{http_code} %{content_type}\n' || continue
+            grep -aoiE '(href|src|action)="[^"]*"' out/mendoza/page | sort -u | head -80
+            grep -aoiE '[^<>]{0,120}(guido|mendoza|derrame)[^<>]{0,120}' out/mendoza/page | head -20
+          done
       - uses: actions/upload-artifact@v4
         with:
           name: inflow
