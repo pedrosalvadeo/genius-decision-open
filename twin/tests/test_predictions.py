@@ -46,5 +46,25 @@ class FrozenPredictionTests(unittest.TestCase):
             self.assertEqual(len(log['observations']), 1)
 
 
+    def test_living_twin_restarts_from_an_observed_step_and_keeps_the_prediction(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            shutil.copytree(predictions.CASES / 'lake_mead_2028', root / 'lake_mead_2028')
+            before = (root / 'lake_mead_2028' / 'prediction.json').read_bytes()
+            with patch.object(predictions, 'CASES', root):
+                record = predictions.live('lake_mead_2028', date(2027, 3, 31), {'mead': '6025', 'powell': '5070'}, ['glen_release'],
+                                          '2027-04-15T12:00:00-07:00', 'Synthetic test reading; no field data')
+                self.assertEqual((record['step'], record['horizon']), (6, 10))
+                self.assertEqual(record['predicted']['release_6']['most_probable'][:3], ['6025/1', '5524/1', '5127/1'])
+                self.assertEqual(record['pvs'], {'release_6': '1/1', 'release_7': '1/1'})
+                with self.assertRaises(SystemExit):
+                    predictions.live('lake_mead_2028', date(2027, 3, 30), {'mead': '6025', 'powell': '5070'}, [], '2027-04-15T12:00:00-07:00', 'Off-calendar')
+                with self.assertRaises(SystemExit):
+                    predictions.live('lake_mead_2028', date(2027, 4, 30), {'mead': '6025'}, [], '2027-05-15T12:00:00-07:00', 'Missing Powell')
+            self.assertEqual((root / 'lake_mead_2028' / 'prediction.json').read_bytes(), before)
+            log = json.loads((root / 'lake_mead_2028' / 'living.json').read_text())
+            self.assertEqual(len(log['restarts']), 1)
+
+
 if __name__ == '__main__':
     unittest.main()

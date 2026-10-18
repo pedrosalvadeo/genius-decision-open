@@ -68,6 +68,12 @@ La frontera conjunta suele traer todas las opciones porque ninguna es mejor para
 - Mendoza: regantes, lagunas y población, dotación reforzada con entrega ecológica; Irrigación, dotación de año seco.
 - Cuenca del Colorado: para Glen Canyon, sólo que Denver mantenga la prohibición y Powell libere 6 millones.
 
+## Módulo 0: gemelo vivo
+
+La predicción congelada no se toca nunca; el gemelo vivo es otro modelo. `genius_twin/living.py` (`reanchor`) toma el modelo congelado y un paso con todo su estado observado (cada existencia y las capacidades presentes) y arma un modelo nuevo cuyo paso 0 es ese estado, con las reglas restantes de cada ruta y los eventos restantes de cada escenario. Si falta una existencia, no la completa con ninguna trayectoria: rechaza. Si dos escenarios dejan de diferir, lo dice. La ley, las hipótesis y las funciones quedan como estaban.
+
+`python twin/cases/predictions.py live <caso> --date <fecha de un paso> --stock id=valor ... --capability ... --observed-at ... --source ...` evalúa ese gemelo y agrega a `<caso>/living.json` qué concluye ahora: factibles, frontera, mejor ruta por actor, PVS y la nueva trayectoria. Junto con `contrast` (cuánto se apartó la lectura de cada ruta y escenario) el gemelo aprende del sistema real sin recalibrar nada a escondidas. `lake_mead_2028` ya tiene su predicción congelada; la primera lectura real llega con el 24-Month Study de noviembre.
+
 ## Módulo III: capacidades que siguen al estado, y un límite de la CAG
 
 Una capacidad puede declarar `holds_when`: existe exactamente en los estados cuyas existencias lo cumplen (se pierde y se recupera con el estado). Primer uso, `cases/lake_mead_2028` (mensual en 2027, trimestral en 2028, para caber en el límite de producción): Glen Canyon Dam genera electricidad sólo con Powell en 3.490 pies o más. Con afluencia mínima, liberar 7 millones en 2027 la deja sin generar desde agosto de 2027 hasta la primavera de 2028; liberar 6 la mantiene, pero deja a Mead bajo 1.000 pies desde marzo de 2028.
