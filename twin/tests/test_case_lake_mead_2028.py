@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import unittest
 
-from genius_twin import construction, registry, stockflow
+from genius_twin import construction, living, registry, stockflow
 
 CASE = Path(__file__).parents[1] / 'cases' / 'lake_mead_2028' / 'world.json'
 
@@ -50,6 +50,26 @@ class LakeMead2028CaseTests(unittest.TestCase):
         flows = results['policies']['release_7']['composition']['interfaces_by_scenario']['most_probable']
         self.assertEqual({row['interface']: row['total'] for row in flows}, {'glen_release': '931/1', 'release_withheld_2028': '947/1'})
         self.assertTrue(results['modules']['complete'])
+
+    def test_living_twin_restarts_from_an_observed_step(self):
+        world = json.loads(CASE.read_text())
+        model = construction.prepare(world['construction'], dict(id='observation', revision=1, observation=world['observation'], historical_gaps={}))['model']
+        traces = stockflow.compute_trajectories(model)
+        # End of March 2027 (step 6), before the routes differ: Mead 100 thousand acre-feet below the most probable study.
+        observed = {'mead': '6025/1', 'powell': '5070/1'}
+        twin = living.reanchor(model, 6, observed, ['glen_release'])
+        self.assertEqual(twin['horizon'], 10)
+        self.assertEqual(twin['policies'][1]['rules'][0]['steps'], [2])  # May 2027 is now step 2
+        lived = stockflow.compute_trajectories(twin)
+        for policy in ('release_6', 'release_7'):
+            original = [int(s['stocks']['mead'].split('/')[0]) for s in traces[policy]['most_probable']['daily'][6:]]
+            now = [int(s['stocks']['mead'].split('/')[0]) for s in lived[policy]['most_probable']['daily']]
+            self.assertEqual(now, [v - 100 for v in original])
+        self.assertTrue(registry.evaluate(twin)['verification']['valid'])
+        with self.assertRaisesRegex(ValueError, 'every stock must be observed'):
+            living.reanchor(model, 6, {'mead': '6025/1'}, ['glen_release'])
+        with self.assertRaises(ValueError):
+            living.reanchor(model, 16, observed, ['glen_release'])
 
 
 if __name__ == '__main__':

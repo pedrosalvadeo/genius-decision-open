@@ -34,4 +34,8 @@ Los estudios más probables muestran que la ventaja de Mead con 7 millones se de
 - Los extractos sobre la cota mínima de generación vienen del índice del buscador, porque la página de Reclamation no se pudo abrir desde el entorno de construcción.
 - La ley de un tercio por afluencia fue calibrada por AM-02 para un año; para el segundo no está contrastada.
 
+## Predicción congelada y gemelo vivo
+
+`prediction.json` congela el 18/10/2026 el almacenamiento de Mead por ruta y afluencia en cada paso; `frozen_world.json` guarda el mundo byte a byte. Con cada estudio mensual se puede contrastar la lectura (`predictions.py contrast`) y reiniciar el gemelo desde Mead y Powell observados (`predictions.py live`, módulo 0).
+
 Reproducir: `PYTHONPATH=twin:kernel python -m unittest twin.tests.test_case_lake_mead_2028` desde la raíz.

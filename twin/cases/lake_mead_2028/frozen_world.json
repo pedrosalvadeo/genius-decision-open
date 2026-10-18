@@ -1,0 +1,1784 @@
+{
+  "narrative": "Caso real con proyecciones oficiales a dos años (mensual en 2027, trimestral en 2028): en abril de 2027 Reclamation decide si Powell libera 6 o 7 millones de acre-pies. Con afluencia mínima, liberar 7 deja a Glen Canyon sin generar electricidad desde agosto de 2027 hasta la primavera de 2028; liberar 6 deja a Mead bajo 1.000 pies desde marzo de 2028.",
+  "observation": {
+    "format": "genius-system-observation/1",
+    "label": "Lake Mead y Lake Powell: años hidrológicos 2027 y 2028",
+    "window": {
+      "start": "2026-08-21T00:00:00-06:00",
+      "end": "2026-10-17T23:59:00-07:00"
+    },
+    "entities": [
+      {
+        "id": "mead",
+        "label": "Lake Mead",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_storage"
+        ]
+      },
+      {
+        "id": "powell",
+        "label": "Lake Powell",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_storage"
+        ]
+      },
+      {
+        "id": "lower_basin",
+        "label": "Población y usuarios de la cuenca baja",
+        "kind": "person",
+        "evidence_ids": [
+          "e_cut"
+        ]
+      },
+      {
+        "id": "glen_canyon",
+        "label": "Operación de Glen Canyon Dam",
+        "kind": "organization",
+        "evidence_ids": [
+          "e_release",
+          "e_power"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "e_storage",
+        "observed_at": "2026-10-15T12:00:00-07:00",
+        "source": "Bureau of Reclamation, \"October 2026 Most Probable 24-Month Study: 6 maf Lake Powell Release Scenario\", 15/10/2026, https://www.usbr.gov/lc/region/g4000/24mo_6.pdf",
+        "basis": "measurement",
+        "statement": "Fin de septiembre de 2026: Mead 6.827 y Powell 5.155 mil acre-pies.",
+        "uncertainty": "Fila histórica del estudio de octubre."
+      },
+      {
+        "id": "e_release",
+        "observed_at": "2026-08-21T12:00:00-06:00",
+        "source": "U.S. Department of the Interior / Reclamation, \"Interior Department Finalizes Plans for 2027-2028 Colorado River Operations\", 21/08/2026, https://www.usbr.gov/newsroom/news-release/5392",
+        "basis": "reported",
+        "statement": "Liberación esperada de Powell entre 6,0 y 7,0 millones de acre-pies en 2027, decidida en abril.",
+        "uncertainty": "Puede salir del rango tras consultas."
+      },
+      {
+        "id": "e_cut",
+        "observed_at": "2026-08-21T12:00:00-06:00",
+        "source": "U.S. Department of the Interior / Reclamation, \"Interior Department Finalizes Plans for 2027-2028 Colorado River Operations\", 21/08/2026, https://www.usbr.gov/newsroom/news-release/5392",
+        "basis": "reported",
+        "statement": "Entregas a la cuenca baja reducidas 1,25 millones de acre-pies en 2027.",
+        "uncertainty": "Reparto entre estados no modelado."
+      },
+      {
+        "id": "e_power",
+        "observed_at": "2026-10-17T12:00:00-07:00",
+        "source": "Bureau of Reclamation, comunicado https://www.usbr.gov/newsroom/news-release/5282 (extractos tomados del índice del buscador el 17/10/2026; la página no se pudo abrir desde el entorno de construcción)",
+        "basis": "reported",
+        "statement": "Bajo 3.490 pies Glen Canyon Dam deja de generar electricidad.",
+        "uncertainty": "Extractos del buscador, no la página abierta."
+      }
+    ],
+    "relations": [
+      {
+        "id": "powell_to_mead",
+        "source": "powell",
+        "target": "mead",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_release"
+        ]
+      },
+      {
+        "id": "ops_powell",
+        "source": "glen_canyon",
+        "target": "powell",
+        "kind": "organizes",
+        "evidence_ids": [
+          "e_release"
+        ]
+      },
+      {
+        "id": "mead_basin",
+        "source": "mead",
+        "target": "lower_basin",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_cut"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Liberaciones de Powell distintas de las proyectadas por Reclamation.",
+      "Probabilidad admitida de cada afluencia de dos años.",
+      "Clientes de la electricidad de Glen Canyon, México y los ecosistemas del Gran Cañón."
+    ]
+  },
+  "construction": {
+    "format": "genius-world-construction/1",
+    "sources": [
+      {
+        "id": "usbr_mp6",
+        "origin": "Bureau of Reclamation, \"October 2026 Most Probable 24-Month Study: 6 maf Lake Powell Release Scenario\", 15/10/2026, https://www.usbr.gov/lc/region/g4000/24mo_6.pdf",
+        "observed_at": "2026-10-15T12:00:00-07:00",
+        "content": "The October 2026 24-Month Study results in the attached report reflect a 6 maf release from Lake Powell in operating year 2027. […] Glen Canyon Dam - Lake Powell, Reservoir Elevation End of Month (Ft) / End Of Month Storage (1000 Ac-Ft): Sep 2026 3518.08 / 5155; Oct 2026 3519.23 / 5219; Nov 2026 3519.44 / 5230; Dec 2026 3518.29 / 5166; Jan 2027 3517.00 / 5096; Feb 2027 3516.28 / 5057; Mar 2027 3516.53 / 5070; Apr 2027 3519.97 / 5260; May 2027 3533.28 / 6034; Jun 2027 3548.86 / 7022; Jul 2027 3547.97 / 6963; Aug 2027 3543.09 / 6645; Sep 2027 3540.65 / 6490; Oct 2027 3540.09 / 6455; Nov 2027 3538.87 / 6378; Dec 2027 3535.54 / 6171; Jan 2028 3529.21 / 5791; Feb 2028 3524.68 / 5526; Mar 2028 3521.54 / 5348; Apr 2028 3523.29 / 5447; May 2028 3538.63 / 6363; Jun 2028 3557.16 / 7587; Jul 2028 3555.35 / 7462; Aug 2028 3549.95 / 7095; Sep 2028 3546.58 / 6872 […] Hoover Dam - Lake Mead, Reservoir Elevation End of Month (Ft) / End Of Month Storage (1000 Ac-Ft): Sep 2026 1037.80 / 6827; Oct 2026 1035.29 / 6657; Nov 2026 1033.97 / 6568; Dec 2026 1034.52 / 6605; Jan 2027 1034.33 / 6592; Feb 2027 1033.64 / 6547; Mar 2027 1027.24 / 6125; Apr 2027 1019.35 / 5624; May 2027 1012.87 / 5227; Jun 2027 1008.47 / 4964; Jul 2027 1007.73 / 4920; Aug 2027 1010.01 / 5055; Sep 2027 1010.85 / 5105; Oct 2027 1011.99 / 5174; Nov 2027 1011.81 / 5163; Dec 2027 1014.25 / 5310; Jan 2028 1019.95 / 5662; Feb 2028 1024.22 / 5931; Mar 2028 1022.58 / 5827; Apr 2028 1018.20 / 5552; May 2028 1012.74 / 5219; Jun 2028 1009.36 / 5016; Jul 2028 1009.85 / 5045; Aug 2028 1013.16 / 5244; Sep 2028 1014.81 / 5344"
+      },
+      {
+        "id": "usbr_mp7",
+        "origin": "Bureau of Reclamation, \"October 2026 Most Probable 24-Month Study: 7 maf Lake Powell Release Scenario\", 15/10/2026, https://www.usbr.gov/lc/region/g4000/24mo_7.pdf",
+        "observed_at": "2026-10-15T12:00:00-07:00",
+        "content": "The October 2026 24-Month Study results in the attached report reflect a 7 maf release from Lake Powell in operating year 2027. […] Glen Canyon Dam - Lake Powell, Reservoir Elevation End of Month (Ft) / End Of Month Storage (1000 Ac-Ft): Sep 2026 3518.08 / 5155; Oct 2026 3519.23 / 5219; Nov 2026 3519.44 / 5230; Dec 2026 3518.29 / 5166; Jan 2027 3517.00 / 5096; Feb 2027 3516.28 / 5057; Mar 2027 3516.53 / 5070; Apr 2027 3519.97 / 5260; May 2027 3530.48 / 5866; Jun 2027 3542.13 / 6584; Jul 2027 3538.03 / 6326; Aug 2027 3529.28 / 5794; Sep 2027 3525.48 / 5573; Oct 2027 3524.91 / 5540; Nov 2027 3523.60 / 5464; Dec 2027 3519.97 / 5260; Jan 2028 3515.12 / 4993; Feb 2028 3512.06 / 4830; Mar 2028 3510.69 / 4757; Apr 2028 3514.35 / 4952; May 2028 3532.11 / 5963; Jun 2028 3552.79 / 7287; Jul 2028 3552.59 / 7272; Aug 2028 3548.91 / 7025; Sep 2028 3546.90 / 6893 […] Hoover Dam - Lake Mead, Reservoir Elevation End of Month (Ft) / End Of Month Storage (1000 Ac-Ft): Sep 2026 1037.80 / 6827; Oct 2026 1035.29 / 6657; Nov 2026 1033.97 / 6568; Dec 2026 1034.52 / 6605; Jan 2027 1034.33 / 6592; Feb 2027 1033.64 / 6547; Mar 2027 1027.24 / 6125; Apr 2027 1019.35 / 5624; May 2027 1015.68 / 5397; Jun 2027 1015.85 / 5408; Jul 2027 1018.43 / 5567; Aug 2027 1024.02 / 5918; Sep 2027 1025.86 / 6036; Oct 2027 1026.87 / 6102; Nov 2027 1026.66 / 6088; Dec 2027 1028.91 / 6234; Jan 2028 1032.47 / 6468; Feb 2028 1034.98 / 6636; Mar 2028 1031.79 / 6424; Apr 2028 1026.10 / 6052; May 2028 1019.31 / 5621; Jun 2028 1014.39 / 5318; Jul 2028 1013.01 / 5235; Aug 2028 1014.29 / 5312; Sep 2028 1014.43 / 5321"
+      },
+      {
+        "id": "usbr_min",
+        "origin": "Bureau of Reclamation, \"October 2026 Probable Minimum 24-Month Study\", 15/10/2026, https://www.usbr.gov/lc/region/g4000/24mo_MIN.pdf",
+        "observed_at": "2026-10-15T12:00:00-07:00",
+        "content": "The Probable Minimum 24-Month Study includes a release volume from Glen Canyon Dam of 6.00 maf in WY 2027 and WY 2028. […] Glen Canyon Dam - Lake Powell, Reservoir Elevation End of Month (Ft) / End Of Month Storage (1000 Ac-Ft): Sep 2026 3518.08 / 5155; Oct 2026 3519.23 / 5219; Nov 2026 3519.44 / 5230; Dec 2026 3518.29 / 5166; Jan 2027 3515.58 / 5018; Feb 2027 3513.27 / 4894; Mar 2027 3511.22 / 4785; Apr 2027 3511.03 / 4775; May 2027 3512.40 / 4847; Jun 2027 3517.10 / 5101; Jul 2027 3511.76 / 4814; Aug 2027 3503.22 / 4375; Sep 2027 3497.03 / 4072; Oct 2027 3495.61 / 4004; Nov 2027 3494.43 / 3948; Dec 2027 3493.05 / 3884; Jan 2028 3491.39 / 3807; Feb 2028 3490.99 / 3788; Mar 2028 3492.71 / 3868; Apr 2028 3496.20 / 4032; May 2028 3507.95 / 4615; Jun 2028 3519.10 / 5211; Jul 2028 3513.49 / 4906; Aug 2028 3506.00 / 4515; Sep 2028 3501.61 / 4295 […] Hoover Dam - Lake Mead, Reservoir Elevation End of Month (Ft) / End Of Month Storage (1000 Ac-Ft): Sep 2026 1037.80 / 6827; Oct 2026 1034.98 / 6636; Nov 2026 1033.45 / 6534; Dec 2026 1034.15 / 6580; Jan 2027 1033.82 / 6558; Feb 2027 1033.17 / 6515; Mar 2027 1026.16 / 6055; Apr 2027 1017.48 / 5508; May 2027 1010.21 / 5067; Jun 2027 1005.04 / 4763; Jul 2027 1003.87 / 4696; Aug 2027 1005.88 / 4812; Sep 2027 1006.43 / 4844; Oct 2027 1005.97 / 4817; Nov 2027 1003.92 / 4699; Dec 2027 1003.25 / 4660; Jan 2028 1003.28 / 4662; Feb 2028 1002.87 / 4638; Mar 2028 995.09 / 4202; Apr 2028 989.43 / 3895; May 2028 985.88 / 3708; Jun 2028 983.53 / 3586; Jul 2028 982.43 / 3530; Aug 2028 984.94 / 3659; Sep 2028 985.87 / 3707"
+      },
+      {
+        "id": "usbr_max",
+        "origin": "Bureau of Reclamation, \"October 2026 Probable Maximum 24-Month Study\", 15/10/2026, https://www.usbr.gov/lc/region/g4000/24mo_MAX.pdf",
+        "observed_at": "2026-10-15T12:00:00-07:00",
+        "content": "The Probable Maximum 24-Month Study includes a release volume from Glen Canyon Dam of 7.00 maf in WY 2027 and 11.50 maf in WY 2028. […] Glen Canyon Dam - Lake Powell, Reservoir Elevation End of Month (Ft) / End Of Month Storage (1000 Ac-Ft): Sep 2026 3518.08 / 5155; Oct 2026 3519.50 / 5233; Nov 2026 3520.20 / 5273; Dec 2026 3519.61 / 5240; Jan 2027 3521.79 / 5362; Feb 2027 3524.57 / 5520; Mar 2027 3529.64 / 5815; Apr 2027 3540.90 / 6506; May 2027 3571.32 / 8618; Jun 2027 3606.71 / 11608; Jul 2027 3609.61 / 11881; Aug 2027 3606.13 / 11554; Sep 2027 3606.39 / 11578; Oct 2027 3606.63 / 11600; Nov 2027 3605.83 / 11526; Dec 2027 3602.74 / 11240; Jan 2028 3595.52 / 10593; Feb 2028 3589.55 / 10078; Mar 2028 3584.15 / 9629; Apr 2028 3584.15 / 9630; May 2028 3600.52 / 11038; Jun 2028 3617.70 / 12676; Jul 2028 3617.81 / 12686; Aug 2028 3611.99 / 12111; Sep 2028 3608.21 / 11749 […] Hoover Dam - Lake Mead, Reservoir Elevation End of Month (Ft) / End Of Month Storage (1000 Ac-Ft): Sep 2026 1037.80 / 6827; Oct 2026 1035.47 / 6669; Nov 2026 1034.57 / 6609; Dec 2026 1035.36 / 6662; Jan 2027 1035.54 / 6674; Feb 2027 1035.00 / 6638; Mar 2027 1029.71 / 6286; Apr 2027 1023.21 / 5867; May 2027 1020.67 / 5706; Jun 2027 1021.41 / 5753; Jul 2027 1024.38 / 5941; Aug 2027 1030.49 / 6338; Sep 2027 1032.71 / 6484; Oct 2027 1036.83 / 6761; Nov 2027 1039.20 / 6923; Dec 2027 1043.50 / 7221; Jan 2028 1053.32 / 7925; Feb 2028 1060.97 / 8497; Mar 2028 1063.68 / 8705; Apr 2028 1063.84 / 8717; May 2028 1062.97 / 8650; Jun 2028 1064.41 / 8761; Jul 2028 1069.31 / 9145; Aug 2028 1076.33 / 9709; Sep 2028 1081.03 / 10097"
+      },
+      {
+        "id": "doi_aug21",
+        "origin": "U.S. Department of the Interior / Reclamation, \"Interior Department Finalizes Plans for 2027-2028 Colorado River Operations\", 21/08/2026, https://www.usbr.gov/newsroom/news-release/5392",
+        "observed_at": "2026-08-21T12:00:00-06:00",
+        "content": "with an expected water year release between 6.0 and 7.0 million acre-feet. […] The water year 2027 release volume will be determined in April. […] maintaining a minimum elevation of 3,510 feet to support continued operational reliability at Glen Canyon Dam. […] For Lake Mead, water deliveries to the Lower Basin States will be reduced by 1.25 million-acre feet for calendar year 2027."
+      },
+      {
+        "id": "usbr_5282",
+        "origin": "Bureau of Reclamation, comunicado https://www.usbr.gov/newsroom/news-release/5282 (extractos tomados del índice del buscador el 17/10/2026; la página no se pudo abrir desde el entorno de construcción)",
+        "observed_at": "2026-10-17T12:00:00-07:00",
+        "content": "3,490 ft – minimum power pool […] below this level Glen Canyon Dam's ability to release water is reduced and it can no longer produce hydropower."
+      },
+      {
+        "id": "hoodline_oct16",
+        "origin": "Hoodline, 16/10/2026, https://hoodline.com/2026/10/lake-mead-s-outlook-brightens-but-vegas-s-lifeline-still-sits-near-record-lows",
+        "observed_at": "2026-10-16T12:00:00-07:00",
+        "content": "The 1,000-foot mark is a major concern for water planners"
+      },
+      {
+        "id": "nps_capacity",
+        "origin": "National Park Service, Lake Mead National Recreation Area, \"Storage Capacity of Lake Mead\", https://www.nps.gov/lake/learn/nature/storage-capacity-of-lake-mead.htm",
+        "observed_at": "2026-10-17T12:00:00-07:00",
+        "content": "a 'dead pool' exists at 895 feet in elevation, which is the lowest water outlet at Hoover Dam."
+      }
+    ],
+    "claims": [
+      {
+        "id": "storage_now",
+        "basis": "measurement",
+        "statement": "Fin de septiembre de 2026 (dato histórico): Lake Mead 1.037,80 pies y 6.827 mil acre-pies; Lake Powell 3.518,08 pies y 5.155 mil acre-pies.",
+        "uncertainty": "Fila histórica del estudio de octubre; Reclamation puede revisarla en estudios posteriores.",
+        "spans": [
+          {
+            "source_id": "usbr_mp6",
+            "start": 965,
+            "end": 988,
+            "quote": "Sep 2026 1037.80 / 6827"
+          },
+          {
+            "source_id": "usbr_mp6",
+            "start": 238,
+            "end": 261,
+            "quote": "Sep 2026 3518.08 / 5155"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "release_range",
+        "basis": "reported",
+        "statement": "Se espera que Powell libere entre 6,0 y 7,0 millones de acre-pies en el año hidrológico 2027; el volumen se decide en abril.",
+        "uncertainty": "Reclamation puede salir de ese rango tras consultas; el modelo compara los dos extremos publicados.",
+        "spans": [
+          {
+            "source_id": "doi_aug21",
+            "start": 0,
+            "end": 74,
+            "quote": "with an expected water year release between 6.0 and 7.0 million acre-feet."
+          },
+          {
+            "source_id": "doi_aug21",
+            "start": 79,
+            "end": 142,
+            "quote": "The water year 2027 release volume will be determined in April."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "powell_3510",
+        "basis": "reported",
+        "statement": "Interior fija como objetivo mantener Lake Powell en 3.510 pies o más por la confiabilidad operativa de Glen Canyon Dam.",
+        "uncertainty": "Objetivo operativo, no garantía.",
+        "spans": [
+          {
+            "source_id": "doi_aug21",
+            "start": 147,
+            "end": 257,
+            "quote": "maintaining a minimum elevation of 3,510 feet to support continued operational reliability at Glen Canyon Dam."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "lower_basin_cut",
+        "basis": "reported",
+        "statement": "Las entregas a los estados de la cuenca baja se reducen 1,25 millones de acre-pies en el año calendario 2027.",
+        "uncertainty": "Ya incluida en las proyecciones; las reglas de 2028 son las que Reclamation usó en sus estudios.",
+        "spans": [
+          {
+            "source_id": "doi_aug21",
+            "start": 262,
+            "end": 385,
+            "quote": "For Lake Mead, water deliveries to the Lower Basin States will be reduced by 1.25 million-acre feet for calendar year 2027."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "mead_1000",
+        "basis": "reported",
+        "statement": "Los 1.000 pies de Lake Mead son una preocupación mayor para los planificadores.",
+        "uncertainty": "Referencia periodística, no una regla operativa.",
+        "spans": [
+          {
+            "source_id": "hoodline_oct16",
+            "start": 0,
+            "end": 57,
+            "quote": "The 1,000-foot mark is a major concern for water planners"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "power_pool",
+        "basis": "reported",
+        "statement": "La cota mínima de generación de Glen Canyon Dam es 3.490 pies: por debajo, la presa ve reducida su capacidad de liberar agua y deja de generar electricidad.",
+        "uncertainty": "Texto tomado de los extractos que muestra el buscador del comunicado de Reclamation, no de la página abierta; la cota de 3.490 pies coincide con otros documentos de Reclamation (Registro de Decisión post-2026).",
+        "spans": [
+          {
+            "source_id": "usbr_5282",
+            "start": 0,
+            "end": 29,
+            "quote": "3,490 ft – minimum power pool"
+          },
+          {
+            "source_id": "usbr_5282",
+            "start": 34,
+            "end": 145,
+            "quote": "below this level Glen Canyon Dam's ability to release water is reduced and it can no longer produce hydropower."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "mp6_path",
+        "basis": "reported",
+        "statement": "Trayectoria más probable con 6 millones de acre-pies liberados desde Powell en el año operativo 2027, de septiembre de 2026 a septiembre de 2028.",
+        "uncertainty": "Proyección oficial condicionada a la afluencia más probable; la liberación de 2028 es la que Reclamation proyecta con sus reglas.",
+        "spans": [
+          {
+            "source_id": "usbr_mp6",
+            "start": 0,
+            "end": 127,
+            "quote": "The October 2026 24-Month Study results in the attached report reflect a 6 maf release from Lake Powell in operating year 2027."
+          },
+          {
+            "source_id": "usbr_mp6",
+            "start": 238,
+            "end": 861,
+            "quote": "Sep 2026 3518.08 / 5155; Oct 2026 3519.23 / 5219; Nov 2026 3519.44 / 5230; Dec 2026 3518.29 / 5166; Jan 2027 3517.00 / 5096; Feb 2027 3516.28 / 5057; Mar 2027 3516.53 / 5070; Apr 2027 3519.97 / 5260; May 2027 3533.28 / 6034; Jun 2027 3548.86 / 7022; Jul 2027 3547.97 / 6963; Aug 2027 3543.09 / 6645; Sep 2027 3540.65 / 6490; Oct 2027 3540.09 / 6455; Nov 2027 3538.87 / 6378; Dec 2027 3535.54 / 6171; Jan 2028 3529.21 / 5791; Feb 2028 3524.68 / 5526; Mar 2028 3521.54 / 5348; Apr 2028 3523.29 / 5447; May 2028 3538.63 / 6363; Jun 2028 3557.16 / 7587; Jul 2028 3555.35 / 7462; Aug 2028 3549.95 / 7095; Sep 2028 3546.58 / 6872"
+          },
+          {
+            "source_id": "usbr_mp6",
+            "start": 965,
+            "end": 1588,
+            "quote": "Sep 2026 1037.80 / 6827; Oct 2026 1035.29 / 6657; Nov 2026 1033.97 / 6568; Dec 2026 1034.52 / 6605; Jan 2027 1034.33 / 6592; Feb 2027 1033.64 / 6547; Mar 2027 1027.24 / 6125; Apr 2027 1019.35 / 5624; May 2027 1012.87 / 5227; Jun 2027 1008.47 / 4964; Jul 2027 1007.73 / 4920; Aug 2027 1010.01 / 5055; Sep 2027 1010.85 / 5105; Oct 2027 1011.99 / 5174; Nov 2027 1011.81 / 5163; Dec 2027 1014.25 / 5310; Jan 2028 1019.95 / 5662; Feb 2028 1024.22 / 5931; Mar 2028 1022.58 / 5827; Apr 2028 1018.20 / 5552; May 2028 1012.74 / 5219; Jun 2028 1009.36 / 5016; Jul 2028 1009.85 / 5045; Aug 2028 1013.16 / 5244; Sep 2028 1014.81 / 5344"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "mp7_path",
+        "basis": "reported",
+        "statement": "Trayectoria más probable con 7 millones de acre-pies liberados desde Powell en 2027, de septiembre de 2026 a septiembre de 2028.",
+        "uncertainty": "Proyección oficial; idéntica a la de 6 hasta abril de 2027.",
+        "spans": [
+          {
+            "source_id": "usbr_mp7",
+            "start": 0,
+            "end": 127,
+            "quote": "The October 2026 24-Month Study results in the attached report reflect a 7 maf release from Lake Powell in operating year 2027."
+          },
+          {
+            "source_id": "usbr_mp7",
+            "start": 238,
+            "end": 861,
+            "quote": "Sep 2026 3518.08 / 5155; Oct 2026 3519.23 / 5219; Nov 2026 3519.44 / 5230; Dec 2026 3518.29 / 5166; Jan 2027 3517.00 / 5096; Feb 2027 3516.28 / 5057; Mar 2027 3516.53 / 5070; Apr 2027 3519.97 / 5260; May 2027 3530.48 / 5866; Jun 2027 3542.13 / 6584; Jul 2027 3538.03 / 6326; Aug 2027 3529.28 / 5794; Sep 2027 3525.48 / 5573; Oct 2027 3524.91 / 5540; Nov 2027 3523.60 / 5464; Dec 2027 3519.97 / 5260; Jan 2028 3515.12 / 4993; Feb 2028 3512.06 / 4830; Mar 2028 3510.69 / 4757; Apr 2028 3514.35 / 4952; May 2028 3532.11 / 5963; Jun 2028 3552.79 / 7287; Jul 2028 3552.59 / 7272; Aug 2028 3548.91 / 7025; Sep 2028 3546.90 / 6893"
+          },
+          {
+            "source_id": "usbr_mp7",
+            "start": 965,
+            "end": 1588,
+            "quote": "Sep 2026 1037.80 / 6827; Oct 2026 1035.29 / 6657; Nov 2026 1033.97 / 6568; Dec 2026 1034.52 / 6605; Jan 2027 1034.33 / 6592; Feb 2027 1033.64 / 6547; Mar 2027 1027.24 / 6125; Apr 2027 1019.35 / 5624; May 2027 1015.68 / 5397; Jun 2027 1015.85 / 5408; Jul 2027 1018.43 / 5567; Aug 2027 1024.02 / 5918; Sep 2027 1025.86 / 6036; Oct 2027 1026.87 / 6102; Nov 2027 1026.66 / 6088; Dec 2027 1028.91 / 6234; Jan 2028 1032.47 / 6468; Feb 2028 1034.98 / 6636; Mar 2028 1031.79 / 6424; Apr 2028 1026.10 / 6052; May 2028 1019.31 / 5621; Jun 2028 1014.39 / 5318; Jul 2028 1013.01 / 5235; Aug 2028 1014.29 / 5312; Sep 2028 1014.43 / 5321"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "min_path",
+        "basis": "reported",
+        "statement": "Trayectoria con afluencia mínima probable y 6,00 millones de acre-pies liberados en 2027 y en 2028.",
+        "uncertainty": "Proyección oficial; no hay estudio mínimo con 7 millones.",
+        "spans": [
+          {
+            "source_id": "usbr_min",
+            "start": 0,
+            "end": 118,
+            "quote": "The Probable Minimum 24-Month Study includes a release volume from Glen Canyon Dam of 6.00 maf in WY 2027 and WY 2028."
+          },
+          {
+            "source_id": "usbr_min",
+            "start": 229,
+            "end": 852,
+            "quote": "Sep 2026 3518.08 / 5155; Oct 2026 3519.23 / 5219; Nov 2026 3519.44 / 5230; Dec 2026 3518.29 / 5166; Jan 2027 3515.58 / 5018; Feb 2027 3513.27 / 4894; Mar 2027 3511.22 / 4785; Apr 2027 3511.03 / 4775; May 2027 3512.40 / 4847; Jun 2027 3517.10 / 5101; Jul 2027 3511.76 / 4814; Aug 2027 3503.22 / 4375; Sep 2027 3497.03 / 4072; Oct 2027 3495.61 / 4004; Nov 2027 3494.43 / 3948; Dec 2027 3493.05 / 3884; Jan 2028 3491.39 / 3807; Feb 2028 3490.99 / 3788; Mar 2028 3492.71 / 3868; Apr 2028 3496.20 / 4032; May 2028 3507.95 / 4615; Jun 2028 3519.10 / 5211; Jul 2028 3513.49 / 4906; Aug 2028 3506.00 / 4515; Sep 2028 3501.61 / 4295"
+          },
+          {
+            "source_id": "usbr_min",
+            "start": 956,
+            "end": 1572,
+            "quote": "Sep 2026 1037.80 / 6827; Oct 2026 1034.98 / 6636; Nov 2026 1033.45 / 6534; Dec 2026 1034.15 / 6580; Jan 2027 1033.82 / 6558; Feb 2027 1033.17 / 6515; Mar 2027 1026.16 / 6055; Apr 2027 1017.48 / 5508; May 2027 1010.21 / 5067; Jun 2027 1005.04 / 4763; Jul 2027 1003.87 / 4696; Aug 2027 1005.88 / 4812; Sep 2027 1006.43 / 4844; Oct 2027 1005.97 / 4817; Nov 2027 1003.92 / 4699; Dec 2027 1003.25 / 4660; Jan 2028 1003.28 / 4662; Feb 2028 1002.87 / 4638; Mar 2028 995.09 / 4202; Apr 2028 989.43 / 3895; May 2028 985.88 / 3708; Jun 2028 983.53 / 3586; Jul 2028 982.43 / 3530; Aug 2028 984.94 / 3659; Sep 2028 985.87 / 3707"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "max_path",
+        "basis": "reported",
+        "statement": "Trayectoria con afluencia máxima probable: 7,00 millones liberados en 2027 y 11,50 en 2028.",
+        "uncertainty": "Proyección oficial; no hay estudio máximo con 6 millones en 2027.",
+        "spans": [
+          {
+            "source_id": "usbr_max",
+            "start": 0,
+            "end": 131,
+            "quote": "The Probable Maximum 24-Month Study includes a release volume from Glen Canyon Dam of 7.00 maf in WY 2027 and 11.50 maf in WY 2028."
+          },
+          {
+            "source_id": "usbr_max",
+            "start": 242,
+            "end": 879,
+            "quote": "Sep 2026 3518.08 / 5155; Oct 2026 3519.50 / 5233; Nov 2026 3520.20 / 5273; Dec 2026 3519.61 / 5240; Jan 2027 3521.79 / 5362; Feb 2027 3524.57 / 5520; Mar 2027 3529.64 / 5815; Apr 2027 3540.90 / 6506; May 2027 3571.32 / 8618; Jun 2027 3606.71 / 11608; Jul 2027 3609.61 / 11881; Aug 2027 3606.13 / 11554; Sep 2027 3606.39 / 11578; Oct 2027 3606.63 / 11600; Nov 2027 3605.83 / 11526; Dec 2027 3602.74 / 11240; Jan 2028 3595.52 / 10593; Feb 2028 3589.55 / 10078; Mar 2028 3584.15 / 9629; Apr 2028 3584.15 / 9630; May 2028 3600.52 / 11038; Jun 2028 3617.70 / 12676; Jul 2028 3617.81 / 12686; Aug 2028 3611.99 / 12111; Sep 2028 3608.21 / 11749"
+          },
+          {
+            "source_id": "usbr_max",
+            "start": 983,
+            "end": 1607,
+            "quote": "Sep 2026 1037.80 / 6827; Oct 2026 1035.47 / 6669; Nov 2026 1034.57 / 6609; Dec 2026 1035.36 / 6662; Jan 2027 1035.54 / 6674; Feb 2027 1035.00 / 6638; Mar 2027 1029.71 / 6286; Apr 2027 1023.21 / 5867; May 2027 1020.67 / 5706; Jun 2027 1021.41 / 5753; Jul 2027 1024.38 / 5941; Aug 2027 1030.49 / 6338; Sep 2027 1032.71 / 6484; Oct 2027 1036.83 / 6761; Nov 2027 1039.20 / 6923; Dec 2027 1043.50 / 7221; Jan 2028 1053.32 / 7925; Feb 2028 1060.97 / 8497; Mar 2028 1063.68 / 8705; Apr 2028 1063.84 / 8717; May 2028 1062.97 / 8650; Jun 2028 1064.41 / 8761; Jul 2028 1069.31 / 9145; Aug 2028 1076.33 / 9709; Sep 2028 1081.03 / 10097"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "h_release_effect",
+        "basis": "hypothesis",
+        "statement": "Liberar 7 en vez de 6 millones en 2027 mueve de Powell a Mead, de mayo a septiembre de 2027, 170, 274, 203, 216 y 68 mil acre-pies (931 en total), lo que Mead gana entre ambos estudios más probables.",
+        "uncertainty": "Se supone el mismo efecto con cualquier afluencia; la menor evaporación de Powell no se modela (hasta 14 mil acre-pies de sesgo prudente).",
+        "spans": [],
+        "premises": [
+          "mp6_path",
+          "mp7_path"
+        ]
+      },
+      {
+        "id": "h_effect_2028",
+        "basis": "hypothesis",
+        "statement": "En el año hidrológico 2028, según los dos estudios más probables, la ruta de 7 millones libera menos que la de 6: Mead pierde esa ventaja y termina 23 mil acre-pies por debajo. El modelo lo representa como agua que deja de pasar de Powell a Mead en cada trimestre de 2028: 327 mil acre-pies de enero a marzo (118, 101 y 108), 295 de abril a junio (97, 98 y 100) y 325 de julio a septiembre (112, 122 y 91).",
+        "uncertainty": "Octubre a diciembre de 2027 (3, 3 y 1, evaporación) no se modelan. Se supone igual con cualquier afluencia, aunque en la afluencia mínima Reclamation podría liberar todavía menos.",
+        "spans": [],
+        "premises": [
+          "mp6_path",
+          "mp7_path"
+        ]
+      },
+      {
+        "id": "h_cross_scenarios",
+        "basis": "hypothesis",
+        "statement": "Los cruces sin estudio publicado (mínima con 7 millones, máxima con 6) se obtienen sumando o restando ambos efectos a los estudios mínimo y máximo.",
+        "uncertainty": "Construcción propia. Los otros cuatro cruces reproducen los estudios publicados, salvo 7 millones con afluencia más probable: en 2028 Mead se aparta hasta 7 mil acre-pies y Powell hasta 20 (evaporación no modelada).",
+        "spans": [],
+        "premises": [
+          "h_release_effect",
+          "h_effect_2028",
+          "min_path",
+          "max_path"
+        ]
+      },
+      {
+        "id": "h_powell_storage_3510",
+        "basis": "hypothesis",
+        "statement": "A 3.510 pies, Lake Powell guarda unos 4.724 mil acre-pies (interpolación lineal entre jul 2027, 3.511,76 pies y 4.814, y ago 2027, 3.503,22 pies y 4.375, del estudio mínimo).",
+        "uncertainty": "La relación cota-volumen no es lineal; error esperado de pocos mil acre-pies.",
+        "spans": [
+          {
+            "source_id": "usbr_min",
+            "start": 479,
+            "end": 527,
+            "quote": "Jul 2027 3511.76 / 4814; Aug 2027 3503.22 / 4375"
+          }
+        ],
+        "premises": [
+          "powell_3510"
+        ]
+      },
+      {
+        "id": "h_powell_storage_3490",
+        "basis": "hypothesis",
+        "statement": "A 3.490 pies. Lake Powell guarda unos 3.742 mil acre-pies (extrapolación lineal desde ene 2028, 3.491,39 pies y 3.807, y feb 2028, 3.490,99 pies y 3.788, del estudio mínimo: da 3.741,0 y se redondea hacia arriba).",
+        "uncertainty": "Extrapola un pie fuera de las filas publicadas; error esperado de pocos mil acre-pies. En febrero de 2028, dentro de un trimestre que el modelo no mide mes a mes, el estudio mínimo con 6 millones deja a Powell 46 mil acre-pies (cerca de un pie) sobre ese umbral.",
+        "spans": [
+          {
+            "source_id": "usbr_min",
+            "start": 629,
+            "end": 677,
+            "quote": "Jan 2028 3491.39 / 3807; Feb 2028 3490.99 / 3788"
+          }
+        ],
+        "premises": [
+          "power_pool"
+        ]
+      },
+      {
+        "id": "h_mead_storage_1000",
+        "basis": "hypothesis",
+        "statement": "A 1.000 pies, Lake Mead guarda unos 4.478 mil acre-pies (interpolación lineal entre feb 2028, 1.002,87 pies y 4.638, y mar 2028, 995,09 pies y 4.202, del estudio mínimo).",
+        "uncertainty": "La relación cota-volumen no es lineal; error esperado de pocos mil acre-pies.",
+        "spans": [
+          {
+            "source_id": "usbr_min",
+            "start": 1381,
+            "end": 1428,
+            "quote": "Feb 2028 1002.87 / 4638; Mar 2028 995.09 / 4202"
+          }
+        ],
+        "premises": [
+          "mead_1000"
+        ]
+      },
+      {
+        "id": "mead_dead_pool",
+        "basis": "reported",
+        "statement": "El nivel muerto de Lake Mead está en 895 pies, la salida más baja de Hoover Dam.",
+        "uncertainty": "Cota física de la presa.",
+        "spans": [
+          {
+            "source_id": "nps_capacity",
+            "start": 0,
+            "end": 94,
+            "quote": "a 'dead pool' exists at 895 feet in elevation, which is the lowest water outlet at Hoover Dam."
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "h_mead_dead_storage",
+        "basis": "hypothesis",
+        "statement": "Se toma 2.547 mil acre-pies como almacenamiento de Lake Mead en el nivel muerto (capacidad total menos viva en la tabla de Reclamation de 2022, https://www.usbr.gov/lc/region/g4000/LakeMeadReservoirCapacityAllocations_2022.pdf).",
+        "uncertainty": "Prudente con cualquier lectura de la columna de almacenamiento (viva o total).",
+        "spans": [],
+        "premises": [
+          "mead_dead_pool"
+        ]
+      },
+      {
+        "id": "d_life_task",
+        "basis": "decision",
+        "statement": "Condición de vida: Lake Mead se mantiene sobre su nivel muerto todos los meses de los años hidrológicos 2027 y 2028, de modo que el agua puede seguir llegando a la población de la cuenca baja.",
+        "uncertainty": "Condición material mínima del suministro; cuánta agua recibe cada portador se compara como bienestar.",
+        "spans": [],
+        "premises": [
+          "h_mead_dead_storage",
+          "lower_basin_cut"
+        ]
+      },
+      {
+        "id": "d_law",
+        "basis": "decision",
+        "statement": "Ley de probabilidad: un tercio para cada afluencia de dos años (mínima, más probable y máxima), el candidato calibrado de AM-02 para el primer año.",
+        "uncertainty": "AM-02 la contrastó con 13 octubres para un año; para el segundo año no está contrastada y los estudios mínimo y máximo encadenan dos años extremos. La PVS es condicional a esta ley; el rango bajo toda ley se informa junto a ella.",
+        "spans": [],
+        "premises": [
+          "min_path",
+          "mp6_path",
+          "max_path"
+        ]
+      },
+      {
+        "id": "d_policies",
+        "basis": "decision",
+        "statement": "Opciones comparadas: liberar 6 o 7 millones de acre-pies desde Powell en 2027, con la liberación de 2028 que Reclamation proyecta en cada caso.",
+        "uncertainty": "Volúmenes intermedios o menores a 6 no tienen proyección publicada.",
+        "spans": [],
+        "premises": [
+          "release_range",
+          "mp6_path",
+          "mp7_path",
+          "h_effect_2028"
+        ]
+      },
+      {
+        "id": "d_welfare",
+        "basis": "decision",
+        "statement": "El bienestar de los usuarios de la cuenca baja se representa por el agua en Lake Mead; el de la operación de Glen Canyon Dam, por el agua en Lake Powell (más es mejor).",
+        "uncertainty": "Representación elegida por el modelizador.",
+        "spans": [],
+        "premises": [
+          "lower_basin_cut",
+          "powell_3510"
+        ]
+      },
+      {
+        "id": "d_power",
+        "basis": "decision",
+        "statement": "Capacidad generativa (módulo III): Glen Canyon Dam genera electricidad sólo con Powell en 3.490 pies o más (unos 3.742 mil acre-pies). La capacidad sigue al estado: se pierde bajo ese nivel y vuelve si Powell lo recupera.",
+        "uncertainty": "Los clientes de esa electricidad no se modelan como portadores. La CAG del kernel siempre incluye la organización de origen, así que perder la generación no la cambia; la pérdida se ve en la organización de cada mes y en la función de meses con generación (claim d_functions).",
+        "spans": [],
+        "premises": [
+          "power_pool",
+          "h_powell_storage_3490"
+        ]
+      },
+      {
+        "id": "d_functions",
+        "basis": "decision",
+        "statement": "Funciones del sistema (módulo I), como estados cumplidos hasta cada momento (un estado es un mes en 2027 y un trimestre en 2028): Glen Canyon opera con Powell en 3.510 pies o más; Glen Canyon genera electricidad; Hoover entrega a la cuenca baja con Mead en 1.000 pies o más.",
+        "uncertainty": "Más meses cumplidos es mejor; no se suman entre funciones.",
+        "spans": [],
+        "premises": [
+          "powell_3510",
+          "h_powell_storage_3510",
+          "d_power",
+          "mead_1000",
+          "h_mead_storage_1000"
+        ]
+      },
+      {
+        "id": "d_subsystems",
+        "basis": "decision",
+        "statement": "Subsistemas (módulo II): Lake Powell con Glen Canyon Dam, y Lake Mead con la cuenca baja. Dos interfaces: la liberación adicional de 2027 hacia Mead, y la liberación de 2028 que la ruta de 7 millones deja de hacer (queda en Powell).",
+        "uncertainty": "Las liberaciones base ya están dentro de las proyecciones; las interfaces miden lo que la decisión cambia.",
+        "spans": [],
+        "premises": [
+          "h_release_effect",
+          "h_effect_2028"
+        ]
+      },
+      {
+        "id": "modelling",
+        "basis": "definition",
+        "statement": "Unidad: mil acre-pies de almacenamiento a fin de mes. Paso 0 = fin de septiembre de 2026; pasos 1 a 12 = fin de cada mes hasta septiembre de 2027; pasos 13 a 16 = fin de cada trimestre del año hidrológico 2028 (diciembre, marzo, junio y septiembre). En 2028 no se mide lo que ocurre dentro de cada trimestre. Escenarios: las tres afluencias de Reclamation. La capacidad de 30.000 es una cota de modelado.",
+        "uncertainty": "No se modelan otros embalses, el reparto entre estados ni la menor capacidad de liberar bajo 3.490 pies.",
+        "spans": [],
+        "premises": [
+          "storage_now"
+        ]
+      }
+    ],
+    "fragments": [
+      {
+        "path": "/profile",
+        "value": "STOCK_FLOW_FINITE_V1",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/name",
+        "value": "Lake Mead y Lake Powell: años hidrológicos 2027 y 2028",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/horizon",
+        "value": 16,
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/step_unit",
+        "value": "step",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/0",
+        "value": {
+          "id": "mead",
+          "label": "Almacenamiento de Lake Mead",
+          "unit": "kaf",
+          "kind": "persistent",
+          "initial": "6827/1",
+          "capacity": "30000/1"
+        },
+        "claim_ids": [
+          "storage_now",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/1",
+        "value": {
+          "id": "powell",
+          "label": "Almacenamiento de Lake Powell",
+          "unit": "kaf",
+          "kind": "persistent",
+          "initial": "5155/1",
+          "capacity": "30000/1"
+        },
+        "claim_ids": [
+          "storage_now",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/carriers/0",
+        "value": {
+          "id": "lower_basin",
+          "label": "Población y usuarios de la cuenca baja (Arizona, California, Nevada)",
+          "kind": "person"
+        },
+        "claim_ids": [
+          "lower_basin_cut"
+        ]
+      },
+      {
+        "path": "/carriers/1",
+        "value": {
+          "id": "glen_canyon",
+          "label": "Operación de Glen Canyon Dam",
+          "kind": "organization"
+        },
+        "claim_ids": [
+          "powell_3510"
+        ]
+      },
+      {
+        "path": "/capabilities/0",
+        "value": {
+          "id": "glen_release",
+          "label": "Glen Canyon Dam liberando agua hacia Lake Mead"
+        },
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/capabilities/1",
+        "value": {
+          "id": "glen_power",
+          "label": "Glen Canyon Dam generando electricidad (Powell en 3.490 pies o más)",
+          "holds_when": [
+            {
+              "kind": "stock",
+              "stock": "powell",
+              "op": "ge",
+              "value": "3742/1"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_power"
+        ]
+      },
+      {
+        "path": "/initial_capabilities/0",
+        "value": "glen_release",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/actions/0",
+        "value": {
+          "id": "base_release",
+          "label": "Liberación del volumen de la ruta de 6 millones",
+          "requires": [],
+          "withdrawals": {},
+          "deposits": {},
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "mp6_path"
+        ]
+      },
+      {
+        "path": "/actions/1",
+        "value": {
+          "id": "extra_may",
+          "label": "Liberación adicional del volumen de 7 millones (may 2027)",
+          "requires": [
+            "glen_release"
+          ],
+          "withdrawals": {
+            "powell": "170/1"
+          },
+          "deposits": {
+            "mead": "170/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_release_effect"
+        ]
+      },
+      {
+        "path": "/actions/2",
+        "value": {
+          "id": "extra_jun",
+          "label": "Liberación adicional del volumen de 7 millones (jun 2027)",
+          "requires": [
+            "glen_release"
+          ],
+          "withdrawals": {
+            "powell": "274/1"
+          },
+          "deposits": {
+            "mead": "274/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_release_effect"
+        ]
+      },
+      {
+        "path": "/actions/3",
+        "value": {
+          "id": "extra_jul",
+          "label": "Liberación adicional del volumen de 7 millones (jul 2027)",
+          "requires": [
+            "glen_release"
+          ],
+          "withdrawals": {
+            "powell": "203/1"
+          },
+          "deposits": {
+            "mead": "203/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_release_effect"
+        ]
+      },
+      {
+        "path": "/actions/4",
+        "value": {
+          "id": "extra_aug",
+          "label": "Liberación adicional del volumen de 7 millones (aug 2027)",
+          "requires": [
+            "glen_release"
+          ],
+          "withdrawals": {
+            "powell": "216/1"
+          },
+          "deposits": {
+            "mead": "216/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_release_effect"
+        ]
+      },
+      {
+        "path": "/actions/5",
+        "value": {
+          "id": "extra_sep",
+          "label": "Liberación adicional del volumen de 7 millones (sep 2027)",
+          "requires": [
+            "glen_release"
+          ],
+          "withdrawals": {
+            "powell": "68/1"
+          },
+          "deposits": {
+            "mead": "68/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_release_effect"
+        ]
+      },
+      {
+        "path": "/actions/6",
+        "value": {
+          "id": "less_295",
+          "label": "Liberación trimestral de 2028 menor en 295 mil acre-pies que la de la ruta de 6 millones",
+          "requires": [
+            "glen_release"
+          ],
+          "withdrawals": {
+            "mead": "295/1"
+          },
+          "deposits": {
+            "powell": "295/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_effect_2028"
+        ]
+      },
+      {
+        "path": "/actions/7",
+        "value": {
+          "id": "less_325",
+          "label": "Liberación trimestral de 2028 menor en 325 mil acre-pies que la de la ruta de 6 millones",
+          "requires": [
+            "glen_release"
+          ],
+          "withdrawals": {
+            "mead": "325/1"
+          },
+          "deposits": {
+            "powell": "325/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_effect_2028"
+        ]
+      },
+      {
+        "path": "/actions/8",
+        "value": {
+          "id": "less_327",
+          "label": "Liberación trimestral de 2028 menor en 327 mil acre-pies que la de la ruta de 6 millones",
+          "requires": [
+            "glen_release"
+          ],
+          "withdrawals": {
+            "mead": "327/1"
+          },
+          "deposits": {
+            "powell": "327/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_effect_2028"
+        ]
+      },
+      {
+        "path": "/policies/0",
+        "value": {
+          "id": "release_6",
+          "label": "Liberar 6 millones de acre-pies en 2027",
+          "default_action": "base_release",
+          "rules": []
+        },
+        "claim_ids": [
+          "d_policies"
+        ]
+      },
+      {
+        "path": "/policies/1",
+        "value": {
+          "id": "release_7",
+          "label": "Liberar 7 millones de acre-pies en 2027 (y menos en 2028, según Reclamation)",
+          "default_action": "base_release",
+          "rules": [
+            {
+              "steps": [
+                8
+              ],
+              "when": [],
+              "action": "extra_may"
+            },
+            {
+              "steps": [
+                9
+              ],
+              "when": [],
+              "action": "extra_jun"
+            },
+            {
+              "steps": [
+                10
+              ],
+              "when": [],
+              "action": "extra_jul"
+            },
+            {
+              "steps": [
+                11
+              ],
+              "when": [],
+              "action": "extra_aug"
+            },
+            {
+              "steps": [
+                12
+              ],
+              "when": [],
+              "action": "extra_sep"
+            },
+            {
+              "steps": [
+                15
+              ],
+              "when": [],
+              "action": "less_295"
+            },
+            {
+              "steps": [
+                16
+              ],
+              "when": [],
+              "action": "less_325"
+            },
+            {
+              "steps": [
+                14
+              ],
+              "when": [],
+              "action": "less_327"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_policies",
+          "h_release_effect",
+          "h_effect_2028"
+        ]
+      },
+      {
+        "path": "/scenarios/0",
+        "value": {
+          "id": "minimum",
+          "label": "Afluencia mínima probable (dos años)",
+          "events": [
+            {
+              "inflows": {
+                "powell": "64/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "191/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "11/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "102/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "46/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "64/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "22/1",
+                "powell": "148/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "43/1",
+                "powell": "124/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "460/1",
+                "powell": "109/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "547/1",
+                "powell": "10/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "72/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "441/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "254/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "304/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "67/1",
+                "powell": "287/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "116/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "439/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "32/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "303/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "184/1",
+                "powell": "188/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "458/1",
+                "powell": "16/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "1343/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "616/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "121/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "916/1"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "mp6_path",
+          "min_path",
+          "max_path",
+          "h_cross_scenarios"
+        ]
+      },
+      {
+        "path": "/scenarios/1",
+        "value": {
+          "id": "most_probable",
+          "label": "Afluencia más probable (dos años)",
+          "events": [
+            {
+              "inflows": {
+                "powell": "64/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "170/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "11/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "89/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "37/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "64/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "13/1",
+                "powell": "70/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "45/1",
+                "powell": "39/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "13/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "422/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "190/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "501/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "774/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "397/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "988/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "263/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {},
+              "renewables": {},
+              "drains": {
+                "mead": "44/1",
+                "powell": "59/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "135/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "318/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "50/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "155/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "205/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "319/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "517/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "823/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "2239/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "811/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "328/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "715/1"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "mp6_path",
+          "min_path",
+          "max_path",
+          "h_cross_scenarios"
+        ]
+      },
+      {
+        "path": "/scenarios/2",
+        "value": {
+          "id": "maximum",
+          "label": "Afluencia máxima probable (dos años)",
+          "events": [
+            {
+              "inflows": {
+                "powell": "78/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "158/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "40/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "60/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "53/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "33/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "12/1",
+                "powell": "122/1"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "158/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "36/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "295/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "352/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "691/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "419/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "2282/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "331/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "3264/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "227/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "powell": "476/1"
+              },
+              "renewables": {},
+              "drains": {
+                "mead": "15/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "181/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "111/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "78/1",
+                "powell": "92/1"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "737/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "338/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "1811/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "1938/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "351/1",
+                "powell": "2752/1"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "mead": "1661/1"
+              },
+              "renewables": {},
+              "drains": {
+                "powell": "1252/1"
+              },
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "mp6_path",
+          "min_path",
+          "max_path",
+          "h_cross_scenarios"
+        ]
+      },
+      {
+        "path": "/law",
+        "value": {
+          "minimum": "1/3",
+          "most_probable": "1/3",
+          "maximum": "1/3"
+        },
+        "claim_ids": [
+          "d_law"
+        ]
+      },
+      {
+        "path": "/welfare/0",
+        "value": {
+          "carrier": "lower_basin",
+          "dimension": "mead_reserve",
+          "label": "Agua almacenada en Lake Mead",
+          "stock": "mead",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/welfare/1",
+        "value": {
+          "carrier": "glen_canyon",
+          "dimension": "powell_reserve",
+          "label": "Agua almacenada en Lake Powell",
+          "stock": "powell",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/task",
+        "value": {
+          "kind": "life_conditions",
+          "label": "Lake Mead sobre su nivel muerto (895 pies) todos los meses de 2027 y 2028: el agua sigue llegando a la cuenca baja",
+          "living_carriers": [
+            "lower_basin"
+          ],
+          "conditions": [
+            {
+              "stock": "mead",
+              "op": "ge",
+              "threshold": "2547/1"
+            }
+          ],
+          "require_action_success": false
+        },
+        "claim_ids": [
+          "d_life_task"
+        ]
+      },
+      {
+        "path": "/functions/0",
+        "value": {
+          "id": "glen_canyon_3510",
+          "label": "Glen Canyon Dam opera con Powell en 3.510 pies o más (estados cumplidos)",
+          "serves": [
+            "glen_canyon"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "powell",
+              "op": "ge",
+              "value": "4724/1"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
+        ]
+      },
+      {
+        "path": "/functions/1",
+        "value": {
+          "id": "glen_generating",
+          "label": "Glen Canyon Dam genera electricidad (estados cumplidos)",
+          "serves": [
+            "glen_canyon"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "capability",
+              "capability": "glen_power",
+              "present": true
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
+        ]
+      },
+      {
+        "path": "/functions/2",
+        "value": {
+          "id": "mead_1000",
+          "label": "Lake Mead en 1.000 pies o más para la cuenca baja (estados cumplidos)",
+          "serves": [
+            "lower_basin"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "mead",
+              "op": "ge",
+              "value": "4478/1"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
+        ]
+      },
+      {
+        "path": "/subsystems/0",
+        "value": {
+          "id": "powell_sub",
+          "label": "Lake Powell y Glen Canyon Dam",
+          "stocks": [
+            "powell"
+          ],
+          "carriers": [
+            "glen_canyon"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/subsystems/1",
+        "value": {
+          "id": "mead_sub",
+          "label": "Lake Mead y la cuenca baja",
+          "stocks": [
+            "mead"
+          ],
+          "carriers": [
+            "lower_basin"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/interfaces/0",
+        "value": {
+          "id": "glen_release",
+          "label": "Liberación de Glen Canyon a Lake Mead adicional a la ruta de 6 millones, 2027 (mil acre-pies)",
+          "source": "powell_sub",
+          "target": "mead_sub"
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/interfaces/1",
+        "value": {
+          "id": "release_withheld_2028",
+          "label": "Liberación de 2028 que la ruta de 7 millones deja en Powell (mil acre-pies)",
+          "source": "mead_sub",
+          "target": "powell_sub"
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/require_all_scenarios",
+        "value": true,
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/selection",
+        "value": "none",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/assumptions/0",
+        "value": {
+          "id": "ReleaseEffect",
+          "kind": "CALIBRATION",
+          "statement": "El efecto de liberar 7 en vez de 6 millones en 2027, y la menor liberación de 2028 que sigue, se toman de los estudios más probables y se suponen iguales con cualquier afluencia.",
+          "provenance": "Claims h_release_effect, h_effect_2028, h_cross_scenarios"
+        },
+        "claim_ids": [
+          "h_release_effect",
+          "h_effect_2028",
+          "h_cross_scenarios"
+        ]
+      },
+      {
+        "path": "/assumptions/1",
+        "value": {
+          "id": "DeadPoolStorage",
+          "kind": "CALIBRATION",
+          "statement": "El nivel muerto de Lake Mead se representa con 2.547 mil acre-pies.",
+          "provenance": "Claims mead_dead_pool, h_mead_dead_storage"
+        },
+        "claim_ids": [
+          "h_mead_dead_storage"
+        ]
+      },
+      {
+        "path": "/assumptions/2",
+        "value": {
+          "id": "PowerPoolStorage",
+          "kind": "CALIBRATION",
+          "statement": "La cota mínima de generación de Glen Canyon (3.490 pies) se representa con 3.742 mil acre-pies, extrapolando un pie desde el estudio mínimo.",
+          "provenance": "Claims power_pool, h_powell_storage_3490"
+        },
+        "claim_ids": [
+          "h_powell_storage_3490"
+        ]
+      },
+      {
+        "path": "/assumptions/3",
+        "value": {
+          "id": "LifeCondition",
+          "kind": "NORMATIVE",
+          "statement": "La condición de vida es que el agua pueda seguir saliendo de Lake Mead hacia la cuenca baja; cuánta agua recibe cada portador se compara como bienestar, sin sumarlo.",
+          "provenance": "Claim d_life_task"
+        },
+        "claim_ids": [
+          "d_life_task"
+        ]
+      },
+      {
+        "path": "/assumptions/4",
+        "value": {
+          "id": "InflowLaw",
+          "kind": "PROBABILITY",
+          "statement": "Un tercio para cada afluencia de dos años: candidato de AM-02 para el primer año, no admitido y no contrastado para el segundo. La PVS es condicional a esta ley.",
+          "provenance": "Claim d_law; twin/history/empirical_law.py --driver inflow"
+        },
+        "claim_ids": [
+          "d_law"
+        ]
+      }
+    ],
+    "scope": {
+      "format": "genius-system-scope/1",
+      "observation_revision": 1,
+      "label": "Powell, Mead y quienes dependen de ellos",
+      "members": [
+        "mead",
+        "powell",
+        "lower_basin",
+        "glen_canyon"
+      ],
+      "intervention_entities": [
+        "glen_canyon"
+      ],
+      "evaluation_entities": [
+        "mead",
+        "powell",
+        "lower_basin",
+        "glen_canyon"
+      ],
+      "bindings": [
+        {
+          "collection": "stocks",
+          "model_id": "mead",
+          "entity_id": "mead"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "powell",
+          "entity_id": "powell"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "lower_basin",
+          "entity_id": "lower_basin"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "glen_canyon",
+          "entity_id": "glen_canyon"
+        }
+      ],
+      "rationale": "La liberación de 2027 desde Glen Canyon Dam es la decisión; se siguen sus consecuencias en 2028 sobre ambos embalses, la generación y quienes dependen de ellos."
+    },
+    "unresolved": []
+  },
+  "provenance": "Proyecciones oficiales de Reclamation transcritas de sus tablas y extractos textuales citados; cifras no citadas declaradas como hipótesis."
+}

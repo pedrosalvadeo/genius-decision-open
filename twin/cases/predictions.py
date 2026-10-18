@@ -5,6 +5,8 @@ freeze   writes <case>/prediction.json from the committed world.json with the
 contrast compares one real reading with every frozen policy and scenario and
          appends the receipt to <case>/observations.json. It never edits the
          prediction or calibrates the model.
+live     (module 0) restarts the frozen model from a fully observed step and
+         appends what the living twin now concludes to <case>/living.json.
 
 Run from the repository root with PYTHONPATH=twin:kernel:
   python twin/cases/predictions.py freeze denver_water_2026
@@ -19,7 +21,7 @@ import json
 from pathlib import Path
 import sys
 
-from genius_twin import construction, registry
+from genius_twin import construction, living, registry
 from genius_twin.service import q, rational
 from genius_twin.store import sha
 
@@ -53,7 +55,22 @@ SETUP = {
         calendar_basis='Paso 0 = fin de septiembre de 2026 (dato histórico); paso k = fin de cada mes de octubre de 2026 a septiembre de 2027 (claim modelling de world.json).',
         reading='Almacenamiento de Lake Mead a fin de mes (mil acre-pies), fila histórica del 24-Month Study siguiente.',
         sources=['https://www.usbr.gov/lc/region/g4000/24mo.pdf']),
+    'lake_mead_2028': dict(
+        stock='mead', unit='kaf',
+        calendar=[_month_end(2026 + (8 + k) // 12, (8 + k) % 12 + 1) for k in range(13)]
+                 + [_month_end(2027, 12), _month_end(2028, 3), _month_end(2028, 6), _month_end(2028, 9)],
+        calendar_basis='Paso 0 = fin de septiembre de 2026; pasos 1 a 12 = fin de cada mes hasta septiembre de 2027; pasos 13 a 16 = fin de cada trimestre de 2028 (claim modelling de world.json).',
+        reading='Almacenamiento de Lake Mead a fin de mes (mil acre-pies), fila histórica del 24-Month Study siguiente.',
+        sources=['https://www.usbr.gov/lc/region/g4000/24mo.pdf']),
 }
+
+
+def _model(case, name='world.json'):
+    world, _ = _world(case, name)
+    prepared = construction.prepare(world['construction'], dict(id='observation', revision=1, observation=world['observation'], historical_gaps={}))
+    if prepared['status'] != 'READY_FOR_REVIEW':
+        raise SystemExit(f'{case}: world construction is {prepared["status"]}')
+    return prepared['model']
 
 
 def _world(case, name='world.json'):
@@ -149,6 +166,48 @@ def contrast(case, reading_date, value, observed_at, source):
     return record
 
 
+def live(case, reading_date, stocks, capabilities, observed_at, source):
+    """Module 0: the frozen model restarted from what was observed at one step; the prediction stays as it was."""
+    frozen = load(case)
+    calendar = [date.fromisoformat(day) for day in frozen['calendar']]
+    if reading_date not in calendar:
+        raise SystemExit(f'{reading_date} is not a step date of {case}: {", ".join(frozen["calendar"])}')
+    step = calendar.index(reading_date)
+    model = _model(case, FROZEN_WORLD if (CASES / case / FROZEN_WORLD).exists() else 'world.json')
+    if sha(model) != frozen['model_sha256']:
+        raise SystemExit(f'{case}: the frozen world no longer reproduces the frozen model')
+    try:
+        twin = living.reanchor(model, step, {k: q(rational(v)) for k, v in stocks.items()}, capabilities,
+                               label=f"{model['name']}, vivo desde {reading_date.isoformat()}")
+    except ValueError as exc:
+        raise SystemExit(f'{case}: {exc}')
+    results = registry.evaluate(twin)['canonical_results']
+    decision = results['decision']
+    timestamp = datetime.fromisoformat(observed_at.replace('Z', '+00:00'))
+    if timestamp.tzinfo is None:
+        raise SystemExit('observed_at needs a time zone')
+    record = {
+        'case': case, 'prediction_sha256': frozen['prediction_sha256'], 'step': step, 'reading_date': reading_date.isoformat(),
+        'observed_stocks': {s['id']: s['initial'] for s in twin['stocks']},
+        'observed_capabilities': twin['initial_capabilities'], 'observed_at': timestamp.isoformat(), 'source': source,
+        'origin': 'CITED_PUBLIC_READING', 'source_authentication': 'NOT_ESTABLISHED',
+        'living_model_sha256': sha(twin), 'horizon': twin['horizon'], 'calendar': frozen['calendar'][step:],
+        'decision': {key: decision.get(key) for key in ('feasible', 'frontier', 'selected')},
+        'by_actor': {carrier: row['best'] for carrier, row in decision.get('by_actor', {}).get('by_carrier', {}).items()},
+        'pvs': {pid: row['pvs'].get('value') for pid, row in results['policies'].items()},
+        'predicted': {pid: {sid: [state['stocks'][frozen['observable']['stock']] for state in tr['daily']]
+                            for sid, tr in row['trajectories'].items()} for pid, row in results['policies'].items()},
+        'meaning': 'Gemelo vivo: el modelo congelado reiniciado desde el estado observado, con las reglas y eventos restantes. No recalibra la ley ni las hipótesis.',
+    }
+    path = CASES / case / 'living.json'
+    log = json.loads(path.read_text()) if path.exists() else {'format': 'genius-twin-living/1', 'case': case, 'restarts': []}
+    if any(row['reading_date'] == record['reading_date'] and row['source'] == source for row in log['restarts']):
+        raise SystemExit('this restart is already recorded')
+    log['restarts'].append(record)
+    path.write_text(json.dumps(log, ensure_ascii=False, indent=1) + '\n')
+    return record
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     commands = parser.add_subparsers(dest='command', required=True)
@@ -159,9 +218,20 @@ def main(argv=None):
     reading.add_argument('--value', required=True, help='Exact decimal or n/d in the observable unit')
     reading.add_argument('--observed-at', required=True, help='ISO8601 with time zone, when it was published or read')
     reading.add_argument('--source', required=True, help='Publisher, URL and the exact quoted figure')
+    restart = commands.add_parser('live')
+    restart.add_argument('case', choices=sorted(SETUP))
+    restart.add_argument('--date', required=True, type=date.fromisoformat, help='Step date the observed state refers to')
+    restart.add_argument('--stock', action='append', required=True, help='id=value for every stock, exact decimal or n/d')
+    restart.add_argument('--capability', action='append', default=[], help='Capability observed present (repeatable)')
+    restart.add_argument('--observed-at', required=True, help='ISO8601 with time zone')
+    restart.add_argument('--source', required=True, help='Publisher, URL and the exact quoted figures')
     args = parser.parse_args(argv)
     if args.command == 'freeze':
         print(freeze(args.case))
+    elif args.command == 'live':
+        stocks = dict(item.split('=', 1) for item in args.stock)
+        json.dump(live(args.case, args.date, stocks, args.capability, args.observed_at, args.source), sys.stdout, ensure_ascii=False, indent=1)
+        print()
     else:
         json.dump(contrast(args.case, args.date, args.value, args.observed_at, args.source), sys.stdout, ensure_ascii=False, indent=1)
         print()
