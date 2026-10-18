@@ -78,15 +78,11 @@ jobs:
       - name: Verify the blood-supply case quotes against the live pages
         continue-on-error: true
         run: python twin/history/source_quotes.py twin/history/blood_2026/quotes.json --out out/blood_quotes.json
-      - name: Probe the Mendoza river at Guido (national hydrological database)
+      - name: Probe the Mendoza river at Guido (SNIH monthly series workbook)
         continue-on-error: true
         run: |
-          mkdir -p out/mendoza
-          for u in https://snih.hidricosargentina.gob.ar/Filtros.aspx https://bdhi.hidricosargentina.gob.ar/ https://www.argentina.gob.ar/obras-publicas/hidricas/base-de-datos-hidrologica-integrada https://www.argentina.gob.ar/sites/default/files/pronostico2013-2014.pdf; do
-            echo "== $u"; curl -sSL -m 60 -A 'genius-history-node' -o out/mendoza/page "$u" -w '%{http_code} %{content_type}\n' || continue
-            grep -aoiE '(href|src|action)="[^"]*"' out/mendoza/page | sort -u | head -80
-            grep -aoiE '[^<>]{0,120}(guido|mendoza|derrame)[^<>]{0,120}' out/mendoza/page | head -20
-          done
+          python -m pip install -q openpyxl
+          python twin/history/snih_probe.py out/snih_mensuales.xlsx Guido Cacheuta Mendoza
       - uses: actions/upload-artifact@v4
         with:
           name: inflow
