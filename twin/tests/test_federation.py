@@ -27,11 +27,11 @@ class ColoradoBasinFederationTests(unittest.TestCase):
         self.assertEqual(variants[('keep_ban',)]['coupled_totals']['west_slope_diversion']['dry'], '0/1')
 
     def test_the_same_catalog_function_is_compared_across_twins(self):
-        supply = self.result['decision']['by_function_kind']['water_supply']
+        supply = self.result['decision']['by_function_kind']['water']
         self.assertEqual(supply['functions'], ['denver.above_2003_low', 'mead.mead_1000'])
         # Resuming in May is the only Denver route that loses basin water supply; Powell's release does not change it.
         self.assertEqual(sorted(supply['best']), sorted(f'denver:{d}+mead:{m}' for d in ('keep_ban', 'resume_if_70') for m in ('release_6', 'release_7')))
-        self.assertNotIn('hydropower', self.result['decision']['by_function_kind'])
+        self.assertNotIn('energy', self.result['decision']['by_function_kind'])
 
     def test_frozen_result_is_what_the_federation_computes(self):
         # Served by GET /federations/<id>; regenerate with python -m genius_twin.federation <case>.

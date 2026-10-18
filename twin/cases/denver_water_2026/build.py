@@ -158,7 +158,7 @@ FRAGMENTS += [
     ('/welfare/1', dict(carrier='denver_water', dimension='reserve', label='Reserva de los embalses que administra', stock='storage', direction='higher'), ['d_org_welfare']),
     ('/task', dict(kind='life_conditions', label='Guardar siempre al menos un año de agua de invierno (21,5 % de la capacidad) para la población', living_carriers=['residents'],
                    conditions=[dict(stock='storage', op='ge', threshold='43/2')], require_action_success=False), ['d_life_task']),
-    ('/functions/0', dict(id='above_2003_low', kind='water_supply', label='Suministro con los embalses en 50 % o más, el mínimo de 2003 (meses cumplidos)', serves=['residents', 'denver_water'],
+    ('/functions/0', dict(id='above_2003_low', kind='water', label='Suministro con los embalses en 50 % o más, el mínimo de 2003 (meses cumplidos)', serves=['residents', 'denver_water'],
                           measure='cumulative', when=[dict(kind='stock', stock='storage', op='ge', value='50/1')]), ['d_functions']),
     ('/subsystems/0', dict(id='reservoirs', label='Embalses de Denver Water', stocks=['storage'], carriers=['denver_water']), ['d_subsystems']),
     ('/subsystems/1', dict(id='gardens', label='Jardines de la población servida', stocks=['outdoor'], carriers=['residents']), ['d_subsystems']),

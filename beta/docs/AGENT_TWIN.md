@@ -55,6 +55,8 @@ de declaración directa siguiente sigue disponible.
    `twin_federations` y `twin_federation` dan gemelos de gemelos (por ejemplo la
    cuenca del Colorado) con su resultado congelado: PVS conjunta, frontera y mejor
    ruta conjunta para cada actor.
+   `twin_driver_law` saca una ley de escenarios empírica (AM-02) para cualquier dominio
+   desde la historia de un conductor exógeno: un valor por período y el ancla de cada escenario.
 8. `twin_delete_case`: `case_id`, `base_version`, `confirm: true`.
    `delete_agent_space` con `confirm: true` elimina también los expedientes
    del gemelo y revoca la cuenta. Exportar antes cuando se necesite conservarlos.

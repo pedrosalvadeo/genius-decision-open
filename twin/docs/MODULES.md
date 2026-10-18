@@ -36,7 +36,7 @@ Funciones de los casos reales:
 
 En los tres casos la frontera no cambia: el bienestar sigue siendo incomparable entre portadores.
 
-**Catálogo común** (`genius_twin/function_catalog.py`): una función puede declarar `kind`, una de abastecimiento de agua (`water_supply`), generación eléctrica (`hydropower`), operación de una presa (`dam_operation`), margen para crecidas (`flood_margin`), riego (`irrigation`) o agua para ecosistemas (`ecological_flow`). Cada gemelo conserva sus propios umbrales; el tipo sólo dice de qué función esencial se trata, para comparar la misma función entre gemelos sin sumarlas. La federación entrega `decision.by_function_kind`: por cada tipo, las rutas conjuntas que ninguna otra supera en todas las funciones de ese tipo, en todos los miembros y escenarios. En la cuenca del Colorado, el abastecimiento de agua (Denver en 50 % o más y Mead en 1.000 pies o más) descarta sólo reanudar el riego en mayo; lo que libere Powell no lo cambia en 2027.
+**Catálogo común** (`genius_twin/function_catalog.py`): una función puede declarar `kind`, que nombra lo que sostiene para las personas y otros seres vivos, no un dominio: agua, alimento, energía, salud, cuidado, vivienda, ingreso, educación, movilidad, protección frente a amenazas, operación de una infraestructura y ecosistemas. Un embalse, una sala de hospital o una red de escuelas declaran los mismos tipos. Cada gemelo conserva sus propios umbrales; el tipo sólo dice de qué función esencial se trata, para comparar la misma función entre gemelos sin sumarlas. La federación entrega `decision.by_function_kind`: por cada tipo, las rutas conjuntas que ninguna otra supera en todas las funciones de ese tipo, en todos los miembros y escenarios. En la cuenca del Colorado, el abastecimiento de agua (Denver en 50 % o más y Mead en 1.000 pies o más) descarta sólo reanudar el riego en mayo; lo que libere Powell no lo cambia en 2027.
 
 ## Módulo II: subsistemas e interfaces
 
@@ -81,6 +81,10 @@ La predicción congelada no se toca nunca; el gemelo vivo es otro modelo. `geniu
 ## Módulo VI: ley empírica de los inviernos de Denver
 
 `twin/history/nrcs_snow.py` corre en el nodo de historia (GitHub Actions, porque este entorno no llega al NRCS) y baja la nieve del 1 de abril de 1991 a 2026 de las estaciones SNOTEL de las cuencas de Denver Water. `twin/history/snow_law.py` asigna cada año al invierno del modelo más parecido y aplica AM-02: un tercio cada uno queda descalibrado y se admite seco 4/39, normal 28/39, húmedo 7/39, con 36 resultados independientes. En Denver la PVS no depende de la ley, así que la decisión no cambia; sí cambia lo que el gemelo sabe: el húmedo de 150 % nunca ocurrió en 36 años.
+
+## Módulo VI en cualquier dominio: ley desde un conductor
+
+`genius_twin/driver_law.py` (`genius-driver-law/1`) hace lo de AM-02 para cualquier gemelo: recibe la historia de un conductor exógeno (nieve, caudal, casos por semana, demanda, precios; un valor por período independiente) y el valor ancla de cada escenario del gemelo (de 2 a 8). Asigna cada período al escenario más cercano, prueba en orden precuencial los dos candidatos fijados de antemano (partes iguales y frecuencia suavizada), exige calibración y 30 resultados, y devuelve la ley con los mismos identificadores de escenario del gemelo, lista para su campo `law`, o los motivos por los que no se admite. Se usa por API (`POST /api/twin/laws/driver`) y MCP (`twin_driver_law`). Reproduce exactamente la ley de Denver.
 
 ## Módulo IV en el Colorado: por qué no se separan los estados todavía
 

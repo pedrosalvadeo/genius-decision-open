@@ -1242,7 +1242,7 @@
         "path": "/functions/0",
         "value": {
           "id": "flood_margin",
-          "kind": "flood_margin",
+          "kind": "safety",
           "label": "Potrerillos con margen para amortiguar crecidas: 355 hm³ (90 %) o menos (meses cumplidos)",
           "serves": [
             "residents",

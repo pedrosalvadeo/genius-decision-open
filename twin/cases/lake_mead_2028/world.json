@@ -1541,7 +1541,7 @@
         "path": "/functions/0",
         "value": {
           "id": "glen_canyon_3510",
-          "kind": "dam_operation",
+          "kind": "infrastructure",
           "label": "Glen Canyon Dam opera con Powell en 3.510 pies o más (estados cumplidos)",
           "serves": [
             "glen_canyon"
@@ -1564,7 +1564,7 @@
         "path": "/functions/1",
         "value": {
           "id": "glen_generating",
-          "kind": "hydropower",
+          "kind": "energy",
           "label": "Glen Canyon Dam genera electricidad (estados cumplidos)",
           "serves": [
             "glen_canyon"
@@ -1586,7 +1586,7 @@
         "path": "/functions/2",
         "value": {
           "id": "mead_1000",
-          "kind": "water_supply",
+          "kind": "water",
           "label": "Lake Mead en 1.000 pies o más para la cuenca baja (estados cumplidos)",
           "serves": [
             "lower_basin"

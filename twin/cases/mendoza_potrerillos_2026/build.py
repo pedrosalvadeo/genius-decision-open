@@ -154,7 +154,7 @@ FRAGMENTS += [
     ('/welfare/2', dict(carrier='dgi', dimension='reserve', label='Reserva de Potrerillos', stock='potrerillos', direction='higher'), ['d_org_welfare']),
     ('/task', dict(kind='life_conditions', label='Guardar siempre al menos un mes de agua potable (25 hm³) en Potrerillos', living_carriers=['residents'],
                    conditions=[dict(stock='potrerillos', op='ge', threshold='25/1')], require_action_success=False), ['d_life_task']),
-    ('/functions/0', dict(id='flood_margin', kind='flood_margin', label='Potrerillos con margen para amortiguar crecidas: 355 hm³ (90 %) o menos (meses cumplidos)', serves=['residents', 'irrigators'],
+    ('/functions/0', dict(id='flood_margin', kind='safety', label='Potrerillos con margen para amortiguar crecidas: 355 hm³ (90 %) o menos (meses cumplidos)', serves=['residents', 'irrigators'],
                           measure='cumulative', when=[dict(kind='stock', stock='potrerillos', op='le', value='355/1')]), ['d_functions']),
     ('/subsystems/0', dict(id='reservoir', label='Embalse Potrerillos', stocks=['potrerillos'], carriers=['dgi', 'residents']), ['d_subsystems']),
     ('/subsystems/1', dict(id='irrigation', label='Riego del río Mendoza', stocks=['agro'], carriers=['irrigators']), ['d_subsystems']),

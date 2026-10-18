@@ -16,6 +16,11 @@ ROUTES = {
         'List twins of twins: cited field cases composed into a larger system (for example Denver and Lake Mead/Powell in the Colorado basin) with declared couplings and shared carriers.'),
     'twin_federation': ('GET', '/federations/{federation_id}', 'twins:read', {'federation_id': NAME}, ('federation_id',),
         'Read one federation and its frozen result: each member twin kernel-verified on its own, joint scenarios and law, joint life condition and PVS per joint route, product-order frontier with no sums, and the best joint routes for each actor. Couplings and alignments are declared hypotheses.'),
+    'twin_driver_law': ('POST', '/laws/driver', 'twins:evaluate',
+        {'series': dict(type='array', minItems=1, maxItems=400, items=dict(type='object', properties=dict(period=dict(type='string'), value=dict(type='string')), required=['period', 'value'])),
+         'anchors': dict(type='object', minProperties=2, maxProperties=8, additionalProperties=dict(type='string')),
+         'tie': dict(type='string'), 'driver': dict(type='string', maxLength=200)}, ('series', 'anchors'),
+        'Derive an empirical scenario law (AM-02) for any twin from the history of one exogenous driver: snow, river flow, weekly cases, demand, prices. series: one exact value per independent period, oldest first. anchors: the driver value that defines each of the twin\'s scenarios (use the twin\'s scenario ids). Returns a law over those ids ready for the model\'s law field, or the refusals (fewer than 30 outcomes, no calibrated candidate). You declare that the driver does not depend on the compared routes and periods do not overlap; never invent history.'),
     'twin_prepare_world': ('POST', '/cases/{case_id}/world/prepare', 'twins:write',
         {'case_id': ID, 'payload': PAYLOAD}, ('case_id', 'payload'),
         'Preview a construction without saving or accepting it. Payload: base_version, construction following twin_world_contract. Returns draft/model, missing-data questions, formal diagnostics, source-span checks and boundary receipt. Missing quantities are never defaulted; null law/thresholds remain unknown. READY_FOR_REVIEW is not empirical validation.'),
@@ -98,6 +103,8 @@ def execute(name, args, authorization, rest):
     elif name == 'twin_propose_world':
         payload = {'base_version': args['base_version'], 'kind': 'world_model',
                    'text': args['text'], 'structured': {'construction': args['construction']}}
+    elif name == 'twin_driver_law':
+        payload = {k: args[k] for k in ('series', 'anchors', 'tie', 'driver') if k in args}
     elif name == 'twin_delete_case':
         payload = {'base_version': args['base_version']}
     return rest(method, path, payload, authorization)
