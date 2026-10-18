@@ -43,6 +43,19 @@ class DriverLawTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             driver_law.certificate(series + series[:1], {'a': '1', 'b': '2'})
 
+    def test_powell_law_is_frozen(self):
+        # The Mead law: 30 recent water years admit thirds; the whole record admits a wetter frequency law.
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('powell_law', Path(__file__).resolve().parents[1] / 'history' / 'powell_law.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        result = module.certificates()
+        saved = json.loads((Path(__file__).resolve().parents[1] / 'history' / 'lake_mead' / 'powell_law_wy2027.json').read_text())
+        self.assertEqual(json.loads(json.dumps(result, sort_keys=True)), saved)
+        self.assertEqual(result['whole_record']['anchors'], {'minimum': '4070000', 'most_probable': '7800000', 'maximum': '15099000'})
+        self.assertEqual((result['last_30_years']['law'], result['last_30_years']['admitted']), ({'minimum': '1/3', 'most_probable': '1/3', 'maximum': '1/3'}, True))
+        self.assertEqual((result['whole_record']['law'], result['whole_record']['outcomes']), ({'minimum': '11/64', 'most_probable': '27/64', 'maximum': '13/32'}, 61))
+
     def test_http_endpoint(self):
         with tempfile.TemporaryDirectory() as temp:
             client = create_app(Path(temp) / 'db.sqlite3', testing=True, evaluator=registry.evaluate).test_client()

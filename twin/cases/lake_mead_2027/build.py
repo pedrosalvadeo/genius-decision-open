@@ -147,7 +147,7 @@ CLAIMS = [
           'Es la condición material mínima del suministro; no mide cuánta agua recibe cada persona, que se compara como bienestar. Los objetivos de 3.510 pies en Powell y 1.000 pies en Mead son operativos y se miden como funciones del sistema (claim d_functions).',
           premises=['h_mead_dead_storage', 'lower_basin_cut']),
     claim('d_law', 'decision', 'Ley de probabilidad sobre las tres afluencias: un tercio cada una. Es el candidato que elige la enmienda AM-02 al contrastar contra la afluencia no regulada de Lake Powell los estudios de octubre de 2009 a 2025: está calibrado (mínima 5, más probable 6, máxima 2 de 13 octubres) y puntúa mejor que la frecuencia observada.',
-          'No está admitida empíricamente: AM-02 exige 30 resultados independientes y hay 13. La PVS que se calcula con ella es condicional a esta ley; el rango bajo toda ley se informa junto a ella.',
+          'Contraste climatológico (twin/history/powell_law.py): 61 años hidrológicos de afluencia no regulada de Powell (RISE, 1964-2024) asignados a la afluencia de 2027 más cercana de cada estudio. En los últimos 30 años AM-02 admite un tercio cada una (7, 13 y 10 años). Con el registro completo admite otra ley, 11/64, 27/64 y 13/32, más húmeda porque pesa los años previos a la sequía iniciada en 2000. La ventana es una elección declarada; la PVS es condicional a esta ley y el rango bajo toda ley se informa junto a ella.',
           premises=['min_path', 'mp6_path', 'max_path']),
     claim('d_policies', 'decision', 'Opciones comparadas: liberar 6 o 7 millones de acre-pies desde Powell en el año operativo 2027, los dos volúmenes que Reclamation proyecta.',
           'Volúmenes intermedios o menores a 6 no tienen proyección publicada y quedan fuera.', premises=['release_range', 'mp6_path', 'mp7_path']),
@@ -242,7 +242,7 @@ FRAGMENTS += [
     ('/assumptions/0', dict(id='ReleaseEffect', kind='CALIBRATION', statement='El efecto de liberar 7 en vez de 6 millones se toma de los estudios más probables y se supone igual con cualquier afluencia.', provenance='Claims h_release_effect, h_cross_scenarios'), ['h_release_effect', 'h_cross_scenarios']),
     ('/assumptions/1', dict(id='DeadPoolStorage', kind='CALIBRATION', statement='El nivel muerto de Lake Mead se representa con 2.547 mil acre-pies, prudente con cualquier lectura de la columna de almacenamiento.', provenance='Claims mead_dead_pool, h_mead_dead_storage'), ['h_mead_dead_storage']),
     ('/assumptions/2', dict(id='LifeCondition', kind='NORMATIVE', statement='La condición de vida es que el agua pueda seguir saliendo de Lake Mead hacia la cuenca baja; cuánta agua recibe cada portador se compara como bienestar, sin sumarlo.', provenance='Claim d_life_task'), ['d_life_task']),
-    ('/assumptions/3', dict(id='InflowLaw', kind='PROBABILITY', statement='Un tercio para cada afluencia: candidato calibrado de AM-02 sobre 13 octubres, no admitido (se exigen 30). La PVS es condicional a esta ley.', provenance='Claim d_law; twin/history/empirical_law.py --driver inflow'), ['d_law']),
+    ('/assumptions/3', dict(id='InflowLaw', kind='PROBABILITY', statement='Un tercio para cada afluencia: ley admitida por AM-02 sobre los últimos 30 años de afluencia de Powell (1995-2024); también calibrada sobre 13 octubres de estudios. La PVS es condicional a esta ley.', provenance='Claim d_law; twin/history/powell_law.py; twin/history/empirical_law.py --driver inflow'), ['d_law']),
 ]
 
 ENTITIES = [

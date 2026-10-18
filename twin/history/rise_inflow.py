@@ -62,7 +62,8 @@ def main(argv=None):
     parser.add_argument('--last-wy', type=int, default=2025)
     parser.add_argument('--out', required=True)
     args = parser.parse_args(argv)
-    values, digest, url = daily(date(args.first_wy - 1, 10, 1), date(args.last_wy, 9, 30))
+    # RISE treats dateTime[before] as exclusive, so ask for one day past the last water year.
+    values, digest, url = daily(date(args.first_wy - 1, 10, 1), date(args.last_wy, 10, 1))
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     missing = {}

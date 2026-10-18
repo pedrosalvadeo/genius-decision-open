@@ -177,7 +177,7 @@ CLAIMS = [
     claim('d_life_task', 'decision', 'Condición de vida: Lake Mead se mantiene sobre su nivel muerto todos los meses de los años hidrológicos 2027 y 2028, de modo que el agua puede seguir llegando a la población de la cuenca baja.',
           'Condición material mínima del suministro; cuánta agua recibe cada portador se compara como bienestar.', premises=['h_mead_dead_storage', 'lower_basin_cut']),
     claim('d_law', 'decision', 'Ley de probabilidad: un tercio para cada afluencia de dos años (mínima, más probable y máxima), el candidato calibrado de AM-02 para el primer año.',
-          'AM-02 la contrastó con 13 octubres para un año; para el segundo año no está contrastada y los estudios mínimo y máximo encadenan dos años extremos. La PVS es condicional a esta ley; el rango bajo toda ley se informa junto a ella.',
+          'Para el primer año AM-02 la admite sobre los últimos 30 años de afluencia de Powell (twin/history/powell_law.py; con el registro completo desde 1964 admitiría 11/64, 27/64 y 13/32) y la calibró con 13 octubres de estudios; para el segundo año no está contrastada y los estudios mínimo y máximo encadenan dos años extremos. La PVS es condicional a esta ley; el rango bajo toda ley se informa junto a ella.',
           premises=['min_path', 'mp6_path', 'max_path']),
     claim('d_policies', 'decision', 'Opciones comparadas: liberar 6 o 7 millones de acre-pies desde Powell en 2027, con la liberación de 2028 que Reclamation proyecta en cada caso.',
           'Volúmenes intermedios o menores a 6 no tienen proyección publicada.', premises=['release_range', 'mp6_path', 'mp7_path', 'h_effect_2028']),
@@ -285,7 +285,7 @@ FRAGMENTS += [
     ('/assumptions/1', dict(id='DeadPoolStorage', kind='CALIBRATION', statement='El nivel muerto de Lake Mead se representa con 2.547 mil acre-pies.', provenance='Claims mead_dead_pool, h_mead_dead_storage'), ['h_mead_dead_storage']),
     ('/assumptions/2', dict(id='PowerPoolStorage', kind='CALIBRATION', statement='La cota mínima de generación de Glen Canyon (3.490 pies) se representa con 3.742 mil acre-pies, extrapolando un pie desde el estudio mínimo.', provenance='Claims power_pool, h_powell_storage_3490'), ['h_powell_storage_3490']),
     ('/assumptions/3', dict(id='LifeCondition', kind='NORMATIVE', statement='La condición de vida es que el agua pueda seguir saliendo de Lake Mead hacia la cuenca baja; cuánta agua recibe cada portador se compara como bienestar, sin sumarlo.', provenance='Claim d_life_task'), ['d_life_task']),
-    ('/assumptions/4', dict(id='InflowLaw', kind='PROBABILITY', statement='Un tercio para cada afluencia de dos años: candidato de AM-02 para el primer año, no admitido y no contrastado para el segundo. La PVS es condicional a esta ley.', provenance='Claim d_law; twin/history/empirical_law.py --driver inflow'), ['d_law']),
+    ('/assumptions/4', dict(id='InflowLaw', kind='PROBABILITY', statement='Un tercio para cada afluencia de dos años: ley admitida por AM-02 para el primer año sobre los últimos 30 años de afluencia de Powell (1995-2024); no contrastada para el segundo. La PVS es condicional a esta ley.', provenance='Claim d_law; twin/history/powell_law.py; twin/history/empirical_law.py --driver inflow'), ['d_law']),
 ]
 
 ENTITIES = [

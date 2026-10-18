@@ -1,0 +1,582 @@
+{
+ "last_30_years": {
+  "admitted": true,
+  "amendment": "AM-02",
+  "anchors": {
+   "maximum": "15099000",
+   "minimum": "4070000",
+   "most_probable": "7800000"
+  },
+  "chosen": "uniform",
+  "classification": [
+   {
+    "period": "1995",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1996",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1997",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1998",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1999",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2000",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2001",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2002",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2003",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2004",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2005",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2006",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2007",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2008",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2009",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2010",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2011",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2012",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2013",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2014",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2015",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2016",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2017",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2018",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2019",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2020",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2021",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2022",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2023",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2024",
+    "scenario": "most_probable"
+   }
+  ],
+  "declared_by_caller": [
+   "the driver does not depend on the compared routes",
+   "periods do not overlap"
+  ],
+  "driver": "Lake Powell water-year unregulated inflow (af)",
+  "evaluation": {
+   "candidates": {
+    "frequency": {
+     "bands": {
+      "maximum": {
+       "inside": true,
+       "interval": [
+        0.1469,
+        0.5672
+       ],
+       "mean_mass": 0.4047,
+       "observed": 10
+      },
+      "minimum": {
+       "inside": true,
+       "interval": [
+        0.0802,
+        0.463
+       ],
+       "mean_mass": 0.1983,
+       "observed": 7
+      },
+      "most_probable": {
+       "inside": true,
+       "interval": [
+        0.2232,
+        0.6624
+       ],
+       "mean_mass": 0.397,
+       "observed": 13
+      }
+     },
+     "calibrated": true,
+     "count": 30,
+     "mean_log_score": -1.156102,
+     "per_band_confidence": 0.983333
+    },
+    "uniform": {
+     "bands": {
+      "maximum": {
+       "inside": true,
+       "interval": [
+        0.1469,
+        0.5672
+       ],
+       "mean_mass": 0.3333,
+       "observed": 10
+      },
+      "minimum": {
+       "inside": true,
+       "interval": [
+        0.0802,
+        0.463
+       ],
+       "mean_mass": 0.3333,
+       "observed": 7
+      },
+      "most_probable": {
+       "inside": true,
+       "interval": [
+        0.2232,
+        0.6624
+       ],
+       "mean_mass": 0.3333,
+       "observed": 13
+      }
+     },
+     "calibrated": true,
+     "count": 30,
+     "mean_log_score": -1.098612,
+     "per_band_confidence": 0.983333
+    }
+   },
+   "confidence": "19/20",
+   "kind": "RETROSPECTIVE_PREQUENTIAL"
+  },
+  "followed": {
+   "maximum": 10,
+   "minimum": 7,
+   "most_probable": 13
+  },
+  "format": "genius-driver-law/1",
+  "law": {
+   "maximum": "1/3",
+   "minimum": "1/3",
+   "most_probable": "1/3"
+  },
+  "meaning": "Masa emp\u00edrica de que cada per\u00edodo se parezca m\u00e1s a cada escenario, seg\u00fan el conductor declarado. Retrospectiva precuencial: se revoca si los contrastes prospectivos la descalibran. No es bienestar.",
+  "outcomes": 30,
+  "refusals": [],
+  "tie": "most_probable"
+ },
+ "whole_record": {
+  "admitted": true,
+  "amendment": "AM-02",
+  "anchors": {
+   "maximum": "15099000",
+   "minimum": "4070000",
+   "most_probable": "7800000"
+  },
+  "chosen": "frequency",
+  "classification": [
+   {
+    "period": "1964",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1965",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1966",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1967",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1968",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1969",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1970",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1971",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1972",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1973",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1974",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1975",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1976",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1977",
+    "scenario": "minimum"
+   },
+   {
+    "period": "1978",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1979",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1980",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1981",
+    "scenario": "minimum"
+   },
+   {
+    "period": "1982",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1983",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1984",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1985",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1986",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1987",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1988",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1989",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1990",
+    "scenario": "minimum"
+   },
+   {
+    "period": "1991",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1992",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1993",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1994",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1995",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1996",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "1997",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1998",
+    "scenario": "maximum"
+   },
+   {
+    "period": "1999",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2000",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2001",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2002",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2003",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2004",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2005",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2006",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2007",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2008",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2009",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2010",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2011",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2012",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2013",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2014",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2015",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2016",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2017",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2018",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2019",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2020",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2021",
+    "scenario": "minimum"
+   },
+   {
+    "period": "2022",
+    "scenario": "most_probable"
+   },
+   {
+    "period": "2023",
+    "scenario": "maximum"
+   },
+   {
+    "period": "2024",
+    "scenario": "most_probable"
+   }
+  ],
+  "declared_by_caller": [
+   "the driver does not depend on the compared routes",
+   "periods do not overlap"
+  ],
+  "driver": "Lake Powell water-year unregulated inflow (af)",
+  "evaluation": {
+   "candidates": {
+    "frequency": {
+     "bands": {
+      "maximum": {
+       "inside": true,
+       "interval": [
+        0.2618,
+        0.5706
+       ],
+       "mean_mass": 0.441,
+       "observed": 25
+      },
+      "minimum": {
+       "inside": true,
+       "interval": [
+        0.0687,
+        0.3074
+       ],
+       "mean_mass": 0.1293,
+       "observed": 10
+      },
+      "most_probable": {
+       "inside": true,
+       "interval": [
+        0.2762,
+        0.5866
+       ],
+       "mean_mass": 0.4297,
+       "observed": 26
+      }
+     },
+     "calibrated": true,
+     "count": 61,
+     "mean_log_score": -1.081089,
+     "per_band_confidence": 0.983333
+    },
+    "uniform": {
+     "bands": {
+      "maximum": {
+       "inside": true,
+       "interval": [
+        0.2618,
+        0.5706
+       ],
+       "mean_mass": 0.3333,
+       "observed": 25
+      },
+      "minimum": {
+       "inside": false,
+       "interval": [
+        0.0687,
+        0.3074
+       ],
+       "mean_mass": 0.3333,
+       "observed": 10
+      },
+      "most_probable": {
+       "inside": true,
+       "interval": [
+        0.2762,
+        0.5866
+       ],
+       "mean_mass": 0.3333,
+       "observed": 26
+      }
+     },
+     "calibrated": false,
+     "count": 61,
+     "mean_log_score": -1.098612,
+     "per_band_confidence": 0.983333
+    }
+   },
+   "confidence": "19/20",
+   "kind": "RETROSPECTIVE_PREQUENTIAL"
+  },
+  "followed": {
+   "maximum": 25,
+   "minimum": 10,
+   "most_probable": 26
+  },
+  "format": "genius-driver-law/1",
+  "law": {
+   "maximum": "13/32",
+   "minimum": "11/64",
+   "most_probable": "27/64"
+  },
+  "meaning": "Masa emp\u00edrica de que cada per\u00edodo se parezca m\u00e1s a cada escenario, seg\u00fan el conductor declarado. Retrospectiva precuencial: se revoca si los contrastes prospectivos la descalibran. No es bienestar.",
+  "outcomes": 61,
+  "refusals": [],
+  "tie": "most_probable"
+ }
+}
