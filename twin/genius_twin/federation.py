@@ -244,6 +244,10 @@ def evaluate(spec):
                      "rule": "PRODUCT_ORDER_OVER_MEMBER_WELFARE_STEPS_FUNCTION_TERMINALS_AND_JOINT_PVS_NO_SUMS",
                      "feasibility": "JOINT_LIFE_CONDITION_IN_EVERY_JOINT_SCENARIO"},
         "assumptions": deepcopy(spec["assumptions"]),
+        "labels": {"members": {m["id"]: m["label"] for m in spec["members"]},
+                   "routes": {mid: {p["id"]: p["label"] for p in renamed[mid]["policies"]} for mid in members},
+                   "actors": {**{carrier_id(mid, c["id"]): c["label"] for mid in members for c in renamed[mid]["carriers"]},
+                              **{s["id"]: s["label"] for s in spec["shared_carriers"]}}},
     }
 
 

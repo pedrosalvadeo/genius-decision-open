@@ -64,6 +64,26 @@ async function showFieldCases(){
   $("#field-case-list").replaceChildren(...rows.map(row=>button(row.title,()=>run(()=>openFieldCase(row.id)),"secondary small",{"data-field-case":row.id})));
   $("#field-cases").hidden=false;
 }
+function jointRouteLabel(result,id){const routes=result.by_joint_route[id].routes;return Object.entries(routes).map(([member,route])=>`${result.labels.members[member]}: ${result.labels.routes[member][route]}`).join(" · ");}
+// When the best joint routes are every combination of some routes per member, say it per member.
+function bestRoutesItems(result,best){
+  const members=Object.keys(result.labels.members),chosen=Object.fromEntries(members.map(m=>[m,[...new Set(best.map(id=>result.by_joint_route[id].routes[m]))]]));
+  if(members.reduce((n,m)=>n*chosen[m].length,1)!==best.length)return best.map(id=>element("li",{text:jointRouteLabel(result,id)}));
+  return members.map(m=>element("li",{text:`${result.labels.members[m]}: ${chosen[m].length===result.members[m].routes.length&&chosen[m].length>1?"cualquiera de sus opciones":chosen[m].map(r=>result.labels.routes[m][r]).join(" o ")}`}));
+}
+async function showFederations(){
+  const catalog=await api("/api/federations"),rows=(catalog.federations||[]).filter(row=>row.frozen_result);if(!rows.length)return;
+  const blocks=[];
+  for(const row of rows){
+    const {result}=await api(`/api/federations/${encodeURIComponent(row.id)}`);
+    const pvs=[...new Set(result.joint_routes.map(r=>result.by_joint_route[r.id].joint_pvs))].join(", ");
+    blocks.push(element("article",{class:"panel federation","data-federation":row.id},element("h3",{text:result.name}),
+      p(`${result.joint_routes.length} rutas conjuntas, ${result.decision.frontier.length} en la frontera. PVS conjunta: ${pvs}.`,"hint"),
+      element("ul",{},Object.entries(result.decision.by_actor).filter(([,v])=>v.best).map(([actor,v])=>element("li",{"data-actor":actor},
+        element("strong",{text:result.labels.actors[actor]}),element("ul",{},bestRoutesItems(result,v.best)))))));
+  }
+  $("#federation-list").replaceChildren(...blocks);$("#federations").hidden=false;
+}
 async function loadGeneralExample(id){const data=await api(`/api/examples/${encodeURIComponent(id)}`);d3.model=copy(data.model);d3.exampleId=id;d3.text=`Ejemplo sintético: ${data.title}.\n${d3.text}`;markGeneral();await saveGeneralDraft();d3.section="scope";render();}
 async function proposeGeneral(){
   await saveGeneralDraft();const response=await api(`/api/cases/${encodeURIComponent(activeCase().id)}/proposals`,{base_version:activeCase().current_version,kind:"declared_model",text:d3.text,structured:{model:d3.model}});
@@ -243,4 +263,4 @@ $("#case-library").addEventListener("click",()=>run(showCaseLibrary));
 $("#intake-mode").addEventListener("change",()=>{$("#admission-note").textContent=$("#intake-mode").value==="d1"?"Ejemplo sintético original: dos plantas, dos cuidadores y 14 días. Otros relatos pueden construirse con el modo general.":"Completa planes, recursos y condiciones temporales con valores que puedas revisar. Las premisas se conservan como declaradas.";});
 window.addEventListener("beforeunload",event=>{if(isGeneral()&&d3.dirty){event.preventDefault();event.returnValue="";}});
 // Not through run(): startup requests hold the busy flag and the per-account lock (409); the list is optional.
-(async()=>{for(let attempt=0;attempt<4;attempt++){try{await showFieldCases();return;}catch(error){if(error.status!==409)return;await new Promise(resolve=>setTimeout(resolve,800*(attempt+1)));}}})();
+(async()=>{for(let attempt=0;attempt<4;attempt++){try{await showFieldCases();await showFederations();return;}catch(error){if(error.status!==409)return;await new Promise(resolve=>setTimeout(resolve,800*(attempt+1)));}}})();
