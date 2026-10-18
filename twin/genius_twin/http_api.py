@@ -194,6 +194,14 @@ def make_blueprint(service_factory, name="twin_api"):
     def evaluate(cid):
         return jsonify(service_factory().evaluate(cid, json_body()))
 
+    @bp.post("/cases/<cid>/window")
+    def decision_window(cid):
+        return jsonify(service_factory().decision_window(cid, json_body()))
+
+    @bp.get("/jobs/<jid>/freshness")
+    def job_freshness(jid):
+        return jsonify(service_factory().job_freshness(jid))
+
     @bp.get("/jobs/<jid>")
     def read_job(jid):
         return jsonify(service_factory().read_job(jid))

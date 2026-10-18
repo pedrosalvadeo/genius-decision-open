@@ -137,7 +137,12 @@ class ServiceTests(unittest.TestCase):
         again = self.client.post(f"/api/cases/{cid}/observations", json=observation)
         self.assertEqual(again.get_json(), value)
         self.assertEqual(self.client.get(f'/api/jobs/{before["job"]["id"]}').get_json(), before)
-        revised = self.client.post(f"/api/cases/{cid}/evaluate", json={"version": 2}).get_json()["evaluation"]
+        fresh = self.client.get(f'/api/jobs/{before["job"]["id"]}/freshness').get_json()
+        self.assertEqual((fresh["status"], fresh["observed_after_computation"]),
+                         ("SUPERSEDED_BY_NEWER_OBSERVATION", [value["observation"]["id"]]))
+        revised_response = self.client.post(f"/api/cases/{cid}/evaluate", json={"version": 2}).get_json()
+        revised = revised_response["evaluation"]
+        self.assertEqual(self.client.get(f'/api/jobs/{revised_response["job"]["id"]}/freshness').get_json()["status"], "CURRENT")
         self.assertEqual(revised["recommendation_status"], "SUSPENDED_PENDING_MODEL_REVIEW")
 
 

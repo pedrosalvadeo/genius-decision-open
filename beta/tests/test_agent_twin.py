@@ -227,10 +227,18 @@ class AgentTwinTests(unittest.TestCase):
         result=self.call('twin_evaluate',dict(case_id=cid,version=1))
         decision=result['evaluation']['canonical_results']['decision']
         self.assertEqual((decision['feasible'],decision['failed'],decision['selected']),(['keep_ban','resume_if_70','resume_may'],[],None))
+        month=30*24*3600
+        window=self.call('twin_decision_window',dict(case_id=cid,version=1,window=dict(available_seconds=60,step_seconds=month,first_action_offset_seconds=3600)))
+        self.assertEqual((window['format'],window['status'],window['committed_steps']),('genius-decision-window/1','FITS_WINDOW',0))
+        late=self.call('twin_decision_window',dict(case_id=cid,version=1,window=dict(available_seconds=2*month,step_seconds=month,
+            seconds_per_cell=str(month),committed_route='keep_ban')))
+        self.assertEqual((late['status'],late['committed_steps'],late['committed_route']),('DOES_NOT_FIT_WINDOW',2,'keep_ban'))
         observed=self.call('twin_observe',dict(case_id=cid,payload=dict(base_version=1,policy_id='keep_ban',scenario_id='dry',
             day=1,variable='storage',unit='pct_capacity',value='65.5',observed_at='2026-11-15T12:00:00+00:00',
             source='Synthetic test reading; no field data',idempotency_key='field-reading')))['observation']
         self.assertEqual(observed['comparison']['status'],'MATCH_NOT_MODEL_VALIDATION')
+        fresh=self.call('twin_job_freshness',dict(job_id=result['job']['id']))
+        self.assertEqual((fresh['status'],fresh['observed_after_computation']),('SUPERSEDED_BY_NEWER_OBSERVATION',[observed['id']]))
 
     def test_system_observations_scopes_limits_identity_and_native_receipt(self):
         fixture=self.call('twin_system_example')

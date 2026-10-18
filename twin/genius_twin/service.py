@@ -484,9 +484,10 @@ class TwinService:
             running = conn.execute("SELECT id FROM jobs WHERE case_id=? AND version=? AND status='running'", (cid, version["version"])).fetchone()
             require(running is None, "job_running", "Esta versión ya se está evaluando.", 409, {"job_id": running["id"]} if running else None)
             existing = conn.execute("SELECT * FROM jobs WHERE case_id=? AND version=? AND execution_key=? AND status='completed' ORDER BY created_at DESC LIMIT 1", (cid, version["version"], execution_key)).fetchone()
-            if existing:
-                return self._job_response(existing)
-            conn.execute("INSERT INTO jobs(id,case_id,version,status,created_at,finished_at,result_json,error_json,execution_key,execution_identity_json) VALUES(?,?,?,'running',?,NULL,NULL,NULL,?,?)", (jid, cid, version["version"], now(), execution_key, dumps(identity)))
+            if not existing:
+                conn.execute("INSERT INTO jobs(id,case_id,version,status,created_at,finished_at,result_json,error_json,execution_key,execution_identity_json) VALUES(?,?,?,'running',?,NULL,NULL,NULL,?,?)", (jid, cid, version["version"], now(), execution_key, dumps(identity)))
+        if existing:
+            return self._job_response(existing)
         try:
             result = self.evaluator(deepcopy(version["model"]))
             require(type(result) is dict and "native_result" in result and "canonical_results" in result,
@@ -540,12 +541,56 @@ class TwinService:
     def _job_response(row):
         job = Store.job(row, full=True)
         result = job.pop("evaluation")
+        if job["finished_at"]:
+            job["elapsed_seconds"] = round((datetime.fromisoformat(job["finished_at"]) - datetime.fromisoformat(job["created_at"])).total_seconds(), 3)
         return {"job": job, "evaluation": result}
 
     def read_job(self, jid):
         row = self.store.one("SELECT * FROM jobs WHERE id=?", (jid,))
         require(row is not None, "job_not_found", "Evaluación no encontrada.", 404)
         return self._job_response(row)
+
+    def job_freshness(self, jid):
+        """Whether reality was observed again during or after this computation.
+
+        A computation is pinned to the evidence it started with and its job is
+        never rewritten, so freshness is read separately. An observation is newer
+        when it was recorded after the computation started or belongs to a later
+        version of the case; then the decider re-anchors and evaluates again.
+        """
+        row = self.store.one("SELECT * FROM jobs WHERE id=?", (jid,))
+        require(row is not None, "job_not_found", "Evaluación no encontrada.", 404)
+        require(row["status"] == "completed", "job_not_completed", "La evaluación no terminó.", 409)
+        started, finished = datetime.fromisoformat(row["created_at"]), datetime.fromisoformat(row["finished_at"])
+        rows = self.store.read("SELECT id,recorded_version,created_at FROM observations WHERE case_id=? ORDER BY created_at,id", (row["case_id"],))
+        during, after, later_version = [], [], []
+        for r in rows:
+            at = datetime.fromisoformat(r["created_at"])
+            if at > finished:
+                after.append(r["id"])
+            elif at > started:
+                during.append(r["id"])
+            elif r["recorded_version"] > row["version"]:
+                later_version.append(r["id"])
+        return {"job_id": jid, "version": row["version"],
+                "status": "SUPERSEDED_BY_NEWER_OBSERVATION" if during or after or later_version else "CURRENT",
+                "observed_during_computation": during, "observed_after_computation": after,
+                "observed_before_in_later_version": later_version,
+                "meaning": "The result describes the evidence of its version when the computation started; "
+                           "newer observations call for re-anchoring and evaluating again, not for editing this result."}
+
+    def decision_window(self, cid, payload):
+        """Plan an evaluation for a decider's window of opportunity (decision_window.plan)."""
+        from .decision_window import plan
+        fields(payload, {"version", "window"}, {"version", "window"})
+        self._case(cid)
+        version = self._version(cid, integer(payload["version"], "version", 1))
+        require(version["model"]["profile"] == registry.STOCKFLOW, "window_profile_not_supported",
+                "La ventana de decisión usa el gemelo general.", 422)
+        try:
+            return plan(version["model"], payload["window"])
+        except (ValueError, TypeError, ZeroDivisionError) as exc:
+            raise ServiceError("invalid_decision_window", str(exc), 422) from exc
 
     def observe(self, cid, payload):
         required = {"base_version", "policy_id", "scenario_id", "day", "variable", "value", "unit", "observed_at", "source", "idempotency_key"}
