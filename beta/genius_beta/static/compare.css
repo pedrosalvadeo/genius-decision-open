@@ -21,3 +21,5 @@
 .genius-side ul{padding-left:1.1rem;margin:.4rem 0}
 .genius-side li{margin:.25rem 0}
 @media(max-width:860px){.compare{padding:0 1rem;margin-top:1.4rem}.compare-grid{grid-template-columns:1fr}.compare-side,.compare-form{padding:1.1rem}}
+.num-input{width:6.5rem;min-height:36px;padding:.35rem .5rem}
+.genius-side h4{margin:1rem 0 .3rem;font-size:.85rem}

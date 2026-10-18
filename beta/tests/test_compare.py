@@ -114,6 +114,21 @@ class CompareEndpointTests(unittest.TestCase):
         again = self.http.post('/api/compare/market', json={'question': '¿Qué hago?'}, headers=self.csrf)
         self.assertEqual(again.status_code, 429)
 
+    def test_recalculate_with_the_persons_corrections(self):
+        self.make(FakeClient([json.dumps(DRAFT)]))
+        model = self.http.post('/api/compare/genius', json={'question': 'x'}, headers=self.csrf).json['model']
+        model['scenarios'][1]['events'][1]['drains']['buffer'] = '1'  # a milder peak: keeping as usual now keeps life
+        r = self.http.post('/api/compare/recalculate', json={'model': model, 'changes': ['Pico, paso 2: 3 → 1']}, headers=self.csrf)
+        self.assertEqual(r.status_code, 200, r.json)
+        routes = {x['id']: x for x in r.json['summary']['routes']}
+        self.assertEqual(routes['keep']['loses_life_in'], [])
+        self.assertTrue(r.json['recalculated'])
+        self.assertEqual(r.json['model']['assumptions'][-1]['id'], 'person_corrections')
+        self.assertIn('3 → 1', r.json['model']['assumptions'][-1]['statement'])
+        model['law'] = {'usual': '1/2', 'peak': '1/3'}
+        bad = self.http.post('/api/compare/recalculate', json={'model': model}, headers=self.csrf)
+        self.assertEqual((bad.status_code, bad.json['error']['code']), (400, 'invalid_model'))
+
     def test_needs_login_and_a_key(self):
         self.make(None)
         self.assertEqual(self.app.test_client().post('/api/compare/market', json={'question': 'x'}).status_code, 401)
