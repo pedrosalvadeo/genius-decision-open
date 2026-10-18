@@ -84,5 +84,18 @@ class EmpiricalLawTests(unittest.TestCase):
             self.assertFalse(any(r.startswith('POLICY_DEPENDENT') for r in cert['refusals']))
 
 
+
+class DenverSnowLawTests(unittest.TestCase):
+    def test_april_snow_admits_a_law_and_rejects_thirds(self):
+        import snow_law
+        cert = snow_law.certificate(HISTORY / 'denver_snow' / 'april1.csv')
+        self.assertEqual(cert['outcomes'], 36)
+        self.assertEqual(cert['non_normal_years'], {'dry': [2002, 2012, 2026], 'wet': [1993, 1996, 1997, 2011, 2014, 2019]})
+        self.assertFalse(cert['evaluation']['candidates']['uniform']['calibrated'])
+        self.assertEqual((cert['chosen'], cert['law'], cert['admitted']), ('frequency', {'dry': '4/39', 'normal': '28/39', 'wet': '7/39'}, True))
+        committed = __import__('json').loads((HISTORY / 'denver_snow' / 'law_certificate.json').read_text())
+        self.assertEqual(committed, __import__('json').loads(__import__('json').dumps(cert)))
+
+
 if __name__ == '__main__':
     unittest.main()

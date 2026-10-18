@@ -41,6 +41,24 @@ jobs:
           grep -q '^2025-10,min,.*,2025-09,powell,3544.69,6749,historical,162$' oct25.csv
           python twin/history/hindcast.py summary oct25.csv > /dev/null
 
+  snow:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Harvest April 1 snow for Denver Water's watersheds (NRCS SNOTEL)
+        run: python twin/history/nrcs_snow.py --out out/april1.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: denver-snow
+          path: out/
+
   harvest:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest

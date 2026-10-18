@@ -74,6 +74,14 @@ La predicción congelada no se toca nunca; el gemelo vivo es otro modelo. `geniu
 
 `python twin/cases/predictions.py live <caso> --date <fecha de un paso> --stock id=valor ... --capability ... --observed-at ... --source ...` evalúa ese gemelo y agrega a `<caso>/living.json` qué concluye ahora: factibles, frontera, mejor ruta por actor, PVS y la nueva trayectoria. Junto con `contrast` (cuánto se apartó la lectura de cada ruta y escenario) el gemelo aprende del sistema real sin recalibrar nada a escondidas. `lake_mead_2028` ya tiene su predicción congelada; la primera lectura real llega con el 24-Month Study de noviembre.
 
+## Módulo VI: ley empírica de los inviernos de Denver
+
+`twin/history/nrcs_snow.py` corre en el nodo de historia (GitHub Actions, porque este entorno no llega al NRCS) y baja la nieve del 1 de abril de 1991 a 2026 de las estaciones SNOTEL de las cuencas de Denver Water. `twin/history/snow_law.py` asigna cada año al invierno del modelo más parecido y aplica AM-02: un tercio cada uno queda descalibrado y se admite seco 4/39, normal 28/39, húmedo 7/39, con 36 resultados independientes. En Denver la PVS no depende de la ley, así que la decisión no cambia; sí cambia lo que el gemelo sabe: el húmedo de 150 % nunca ocurrió en 36 años.
+
+## Módulo IV en el Colorado: por qué no se separan los estados todavía
+
+Los recortes de 2027 y 2028 están fijados por estado (Arizona 760, California 440 y Nevada 50 mil acre-pies, México 250 por tratado) y no dependen de liberar 6 o 7 millones. Lo que sí distingue a los estados es la condición de vida: Las Vegas toma agua bajo el nivel muerto de Hoover (toma a 860 pies con bombeo de nivel bajo); Arizona, California y México dependen de que Hoover libere. Ningún escenario de 2027-2028 se acerca a 895 pies, así que separar portadores hoy no cambia ningún resultado. Conviene hacerlo cuando un escenario baje de 1.000 pies.
+
 ## Módulo III: capacidades que siguen al estado, y un límite de la CAG
 
 Una capacidad puede declarar `holds_when`: existe exactamente en los estados cuyas existencias lo cumplen (se pierde y se recupera con el estado). Primer uso, `cases/lake_mead_2028` (mensual en 2027, trimestral en 2028, para caber en el límite de producción): Glen Canyon Dam genera electricidad sólo con Powell en 3.490 pies o más. Con afluencia mínima, liberar 7 millones en 2027 la deja sin generar desde agosto de 2027 hasta la primavera de 2028; liberar 6 la mantiene, pero deja a Mead bajo 1.000 pies desde marzo de 2028.
