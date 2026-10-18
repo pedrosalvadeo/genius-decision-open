@@ -205,6 +205,20 @@ def genius_answer(client, question, clock=time.monotonic):
     return {"status": "MODEL_NOT_VALID", "attempts": len(errors), "repairs": errors}
 
 
+def recalculate(model, changes=()):
+    """The person's corrected model, judged by the kernel alone: no language model, no new hypotheses."""
+    from genius_twin import registry
+    model = expand(model)
+    if changes:
+        model["assumptions"] = [a for a in model["assumptions"] if a["id"] != "person_corrections"] + [{
+            "id": "person_corrections", "kind": "CALIBRATION",
+            "statement": "Valores corregidos por la persona: " + "; ".join(changes)[:1900],
+            "provenance": "Corrección de la persona sobre el modelo redactado por la IA"}]
+    registry.validate(model)
+    results = registry.evaluate(model)["canonical_results"]
+    return {"status": "EVALUATED", "recalculated": True, "model": model, "summary": summarize(model, results)}
+
+
 def summarize(model, results):
     """The kernel's verdict in the order Pedro set (2026-10-18): life condition and PVS first, then each carrier's best routes."""
     policies = results["policies"]
@@ -301,3 +315,17 @@ def install(app, APIError, fail_quota):
     @app.post("/api/compare/genius")
     def compare_genius():
         return answer("genius", genius_answer)
+
+    @app.post("/api/compare/recalculate")
+    def compare_recalculate():
+        data = request.get_json(silent=True)
+        model = data.get("model") if isinstance(data, dict) else None
+        changes = data.get("changes", []) if isinstance(data, dict) else []
+        if not isinstance(model, dict) or not isinstance(changes, list) or len(changes) > 100 \
+                or not all(isinstance(c, str) and len(c) <= 200 for c in changes):
+            raise APIError("invalid_model", "Mandá el modelo y la lista de correcciones.", 400)
+        fail_quota(f"compare-recalculate:{g.user['id']}", app.config["MAX_COMPARE_RECALCULATIONS_DAILY"])
+        try:
+            return jsonify(recalculate(model, changes))
+        except (ValueError, KeyError, TypeError, AttributeError, IndexError, ZeroDivisionError, RuntimeError) as error:
+            raise APIError("invalid_model", f"El modelo corregido no es válido: {error}"[:400], 400)
