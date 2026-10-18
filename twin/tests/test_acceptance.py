@@ -258,7 +258,7 @@ class DossierAndHTTPAgreement(unittest.TestCase):
         return response.get_json()
 
     def create(self):
-        data = self.post("/api/cases", {"text": "Quiero revisar el semillero de ejemplo.", "title": "Aceptación sintética"}, 201)
+        data = self.post("/api/cases", {"text": "Quiero revisar el semillero de ejemplo.", "title": "Aceptación sintética", "profile": "SEMILLERO_14D_SYNTHETIC_V1"}, 201)
         cid, pid = data["case"]["id"], data["proposal"]["id"]
         accepted = self.post("/api/proposals/"+pid+"/accept", self.acceptance(0, "initial-0001"))
         return cid, accepted
@@ -283,7 +283,12 @@ class DossierAndHTTPAgreement(unittest.TestCase):
         self.assertIsNone(outside["proposal"])
         self.assertEqual(outside["case"]["current_version"], 0)
         self.assertEqual(outside["obligations"][0]["cause"], "MODELO_PENDIENTE")
-        inside = self.post("/api/cases", {"text": "Mis plantas reales necesitan riego."}, 201)
+        # Words never route a story to the synthetic template, in any domain.
+        for story in ("Mis plantas reales necesitan riego.", "La planta potabilizadora opera al límite."):
+            general = self.post("/api/cases", {"text": story}, 201)
+            self.assertIsNone(general["proposal"])
+            self.assertEqual(general["obligations"][0]["cause"], "MODELO_PENDIENTE")
+        inside = self.post("/api/cases", {"text": "Mis plantas reales necesitan riego.", "profile": "SEMILLERO_14D_SYNTHETIC_V1"}, 201)
         proposal = inside["proposal"]
         self.assertEqual(proposal["metadata"]["evidence_origin"], "SYNTHETIC_STIPULATION")
         self.assertIn("probability law", proposal["metadata"]["not_inferred_from_narrative"])

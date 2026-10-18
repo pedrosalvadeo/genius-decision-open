@@ -20,7 +20,7 @@ class ServiceTests(unittest.TestCase):
         self.temp.cleanup()
 
     def initial(self):
-        response = self.client.post("/api/cases", json={"text": "Quiero cuidar un semillero durante 14 días"})
+        response = self.client.post("/api/cases", json={"text": "Quiero cuidar un semillero durante 14 días", "profile": "SEMILLERO_14D_SYNTHETIC_V1"})
         self.assertEqual(response.status_code, 201)
         result = response.get_json()
         return result["case"]["id"], result["proposal"]["id"]
