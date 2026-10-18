@@ -619,6 +619,8 @@ def create_app(overrides=None):
     install_missions(app,db,body,APIError,capacity)
     install_mcp_access(app,body,APIError,fail_quota,digest)
     install_taxis(app,APIError)
+    from .compare import install as install_compare
+    install_compare(app,APIError,fail_quota)
     install_contributions(app,db,body,APIError,fail_quota,capacity,
         lambda: not backup_enabled() or backup_health(app.config['DATA_DIR']) == 'ok')
     if app.config['TWIN_ENABLED'] or (app.config['DATA_DIR'] / 'twins').exists():

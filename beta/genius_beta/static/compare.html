@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="La misma pregunta, dos respuestas: una IA del mercado y Genius, lado a lado.">
+  <meta name="referrer" content="no-referrer">
+  <title>Comparar · Genius Decision</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/compare.css">
+  <script defer src="/static/compare.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+<header class="topbar"><a href="/" class="brand" aria-label="Genius, inicio"><span class="brand-mark" aria-hidden="true">g</span><span>genius<span class="brand-sub">DECISION</span></span></a><span class="beta-label">BETA · COMPARACIÓN</span><div class="session" id="session" hidden><span id="username-label"></span><a href="/app">Mi espacio</a></div></header>
+<main id="main" class="compare">
+  <section class="compare-intro">
+    <p class="eyebrow">LA MISMA PREGUNTA, DOS RESPUESTAS</p>
+    <h1>Una IA del mercado y Genius, lado a lado.</h1>
+    <p class="lead">Escribí una decisión que tengas que tomar. A la izquierda responde Claude tal como lo usa cualquiera. A la derecha, la misma IA sólo traduce tu decisión a un modelo con rutas, escenarios y personas afectadas; el kernel de Genius lo calcula y la respuesta sale de sus resultados: si cada ruta conserva la condición de vida, su PVS y el bienestar de cada portador.</p>
+  </section>
+  <div id="login-needed" class="callout warning" hidden><strong>Necesitás entrar a Genius</strong><p>Cada comparación usa una IA paga, así que está disponible para cuentas de la beta.</p><a class="button primary" href="/app?next=/comparar">Entrar <span aria-hidden="true">→</span></a></div>
+  <div id="not-configured" class="callout warning" hidden><strong>La comparación todavía no está configurada en este servidor</strong><p>Falta la clave de la IA. Mientras tanto podés ver cómo Genius calcula casos reales en el gemelo.</p><a href="/twin/">Abrir el gemelo</a></div>
+  <form id="ask" class="card compare-form" hidden>
+    <label for="question">Tu decisión</label>
+    <textarea id="question" rows="4" maxlength="4000" required placeholder="Por ejemplo: tengo 3.000 dólares ahorrados y me ofrecen un trabajo mejor pago en otra ciudad. Mi madre vive conmigo y necesita cuidados. ¿Me mudo?"></textarea>
+    <p class="field-help">No incluyas nombres de terceros, datos sensibles ni secretos. Tu pregunta se envía a Anthropic (Claude) para las dos respuestas y no se guarda en Genius.</p>
+    <button class="button primary" id="send" type="submit">Comparar <span aria-hidden="true">→</span></button>
+  </form>
+  <div id="error" class="notice error" role="alert" hidden></div>
+  <section id="answers" class="compare-grid" hidden aria-live="polite">
+    <article class="card compare-side">
+      <p class="eyebrow">IA DEL MERCADO</p>
+      <h2>Claude, tal como viene</h2>
+      <p class="small muted">La pregunta sola, sin instrucciones de Genius.</p>
+      <div id="market" class="side-body"></div>
+    </article>
+    <article class="card compare-side genius-side">
+      <p class="eyebrow">GENIUS</p>
+      <h2>Calculado por el kernel</h2>
+      <p class="small muted">La IA redacta el modelo; el kernel decide qué ruta conserva la vida y qué gana cada portador. Sin sumar criterios.</p>
+      <div id="genius" class="side-body"></div>
+    </article>
+  </section>
+  <p class="scope-foot">Los resultados de Genius valen bajo las hipótesis del modelo, que se muestran completas: cada número que la IA tuvo que suponer está marcado como hipótesis. No reemplazan asesoramiento de salud, legal o financiero.</p>
+</main>
+</body>
+</html>
