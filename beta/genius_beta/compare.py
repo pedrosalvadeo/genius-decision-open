@@ -53,7 +53,7 @@ Rules the validator enforces:
 - task.living_carriers name person or living carriers; there is always a life condition: the material condition that keeps those carriers alive or healthy (health, food, water, shelter, money for essentials, an ecosystem's minimum...).
 - assumption kinds: MODEL, INITIALIZATION, INFORMATION, SEMANTIC, CALIBRATION, NORMATIVE, PROBABILITY, SYNTHETIC. Every number you had to invent is a hypothesis: list it with provenance "Supuesto del modelador a partir de la pregunta" unless the person gave it. The law is a PROBABILITY assumption.
 
-Modelling guidance: include the routes the person mentions plus the obvious alternatives (keep as is, a prudent one); scenarios cover what is uncertain (good, usual, bad); model every carrier whose wellbeing the decision changes, including people not asking and living systems affected; keep it small and readable. Labels, statements and the name are in the person's language.
+Modelling guidance: the life condition threshold is the real danger line (where health, livelihood or a living system is actually harmed), and the adverse scenario must be able to cross it when a route really risks it; if every route keeps life in every scenario, check that this is true and not an artifact of generous numbers. Include the routes the person mentions plus the obvious alternatives (keep as is, a prudent one); scenarios cover what is uncertain (good, usual, bad); model every carrier whose wellbeing the decision changes, including people not asking and living systems affected; keep it small and readable. Labels, statements and the name are in the person's language; do not assume the person's gender unless they state it.
 
 If the message contains no decision at all (only a greeting or a fact question), return {"not_a_decision": "one sentence in the person's language saying what Genius needs: a choice between ways of acting"}."""
 
@@ -94,6 +94,15 @@ def _num(value):
     return f"{n.numerator}/{n.denominator}"
 
 
+def _unit(value):
+    """A unit as the schema's identifier ("miles de m³" -> "miles_de_m3"); only spelling changes."""
+    import re
+    import unicodedata
+    text = unicodedata.normalize("NFKD", str(value or "unit")).encode("ascii", "ignore").decode()
+    text = re.sub(r"[^A-Za-z0-9_.-]+", "_", text).strip("_.-")[:64]
+    return text if text[:1].isalpha() else ("u_" + text)[:64] if text else "unit"
+
+
 def _amounts(values):
     return {k: _num(v) for k, v in (values or {}).items()}
 
@@ -107,7 +116,7 @@ def _predicate(p):
 def expand(draft):
     """Compact draft -> STOCK_FLOW_FINITE_V1 model: defaults and exact rationals only, no parameter is invented."""
     from genius_twin.stockflow import PROFILE
-    stocks = [{"id": s["id"], "label": s.get("label") or s["id"], "unit": s.get("unit") or "unit",
+    stocks = [{"id": s["id"], "label": s.get("label") or s["id"], "unit": _unit(s.get("unit")),
                "kind": s.get("kind", "persistent"), "initial": _num(s["initial"]), "capacity": _num(s["capacity"])}
               for s in draft["stocks"]]
     capabilities = [{"id": c["id"], "label": c.get("label") or c["id"]} for c in draft.get("capabilities") or []] or [{"id": "act", "label": "Capacidad de actuar"}]

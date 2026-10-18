@@ -11,9 +11,9 @@ from genius_beta import compare
 
 DRAFT = {
     "name": "Cuidar con reserva", "horizon": 3, "step_unit": "day",
-    "stocks": [{"id": "water", "label": "Agua", "unit": "L", "initial": 8, "capacity": 8},
-               {"id": "time", "label": "Tiempo", "unit": "minute", "kind": "renewable", "initial": 30, "capacity": 30},
-               {"id": "buffer", "label": "Reserva viva", "unit": "L", "initial": 2, "capacity": "4"}],
+    "stocks": [{"id": "water", "label": "Agua", "unit": "litros (L)", "initial": 8, "capacity": 8},
+               {"id": "time", "label": "Tiempo", "unit": "3 minutos", "kind": "renewable", "initial": 30, "capacity": 30},
+               {"id": "buffer", "label": "Reserva viva", "unit": "litros (L)", "initial": 2, "capacity": "4"}],
     "carriers": [{"id": "A", "label": "Persona cuidadora"}, {"id": "P", "label": "Planta", "kind": "living"}],
     "capabilities": [{"id": "care", "label": "Cuidado"}, {"id": "ready", "label": "Reserva lista"}],
     "initial_capabilities": ["care"],
@@ -67,6 +67,7 @@ class GeniusAnswerTests(unittest.TestCase):
         self.assertEqual(s["life_filter"]["keep_life_everywhere"], ["plan"])
         self.assertEqual({c["id"]: c["best"] for c in s["carriers"]}, {"A": ["plan"], "P": ["plan"]})
         self.assertEqual(result["model"]["stocks"][1]["initial"], "30/1")
+        self.assertEqual([x["unit"] for x in result["model"]["stocks"]], ["litros_L", "u_3_minutos", "litros_L"])
         self.assertEqual(result["model"]["scenarios"][0]["events"][0]["renewables"], {"time": "30/1"})
         self.assertEqual(result["model"]["assumptions"][1]["provenance"], "Supuesto del modelador a partir de la pregunta")
 
