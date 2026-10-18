@@ -1,0 +1,118 @@
+{
+ "procedure": "genius-empirical-law/1",
+ "amendment": "AM-02",
+ "data": "april1.csv",
+ "data_sha256": "5b5a41f8651b696c25fa26af541664d28ec11e2b646abcfeab081a5ffedf9263",
+ "driver": "april1_snow_index",
+ "anchors": {
+  "dry": "34.4%",
+  "normal": "100.0%",
+  "wet": "150.0%"
+ },
+ "outcomes": 36,
+ "followed": {
+  "normal": 27,
+  "wet": 6,
+  "dry": 3
+ },
+ "non_normal_years": {
+  "dry": [
+   2002,
+   2012,
+   2026
+  ],
+  "wet": [
+   1993,
+   1996,
+   1997,
+   2011,
+   2014,
+   2019
+  ]
+ },
+ "evaluation": {
+  "kind": "RETROSPECTIVE_PREQUENTIAL",
+  "confidence": "19/20",
+  "candidates": {
+   "uniform": {
+    "count": 36,
+    "per_band_confidence": 0.983333,
+    "bands": {
+     "dry": {
+      "observed": 3,
+      "mean_mass": 0.3333,
+      "interval": [
+       0.0116,
+       0.2583
+      ],
+      "inside": false
+     },
+     "normal": {
+      "observed": 27,
+      "mean_mass": 0.3333,
+      "interval": [
+       0.5414,
+       0.8987
+      ],
+      "inside": false
+     },
+     "wet": {
+      "observed": 6,
+      "mean_mass": 0.3333,
+      "interval": [
+       0.05,
+       0.3641
+      ],
+      "inside": true
+     }
+    },
+    "calibrated": false,
+    "mean_log_score": -1.098612
+   },
+   "frequency": {
+    "count": 36,
+    "per_band_confidence": 0.983333,
+    "bands": {
+     "dry": {
+      "observed": 3,
+      "mean_mass": 0.1154,
+      "interval": [
+       0.0116,
+       0.2583
+      ],
+      "inside": true
+     },
+     "normal": {
+      "observed": 27,
+      "mean_mass": 0.6443,
+      "interval": [
+       0.5414,
+       0.8987
+      ],
+      "inside": true
+     },
+     "wet": {
+      "observed": 6,
+      "mean_mass": 0.2403,
+      "interval": [
+       0.05,
+       0.3641
+      ],
+      "inside": true
+     }
+    },
+    "calibrated": true,
+    "mean_log_score": -0.815181
+   }
+  }
+ },
+ "chosen": "frequency",
+ "law": {
+  "dry": "4/39",
+  "normal": "28/39",
+  "wet": "7/39"
+ },
+ "refusals": [],
+ "admitted": true,
+ "meaning": "Masa empírica de que el invierno se parezca más a cada escenario de Denver, según la nieve del 1 de abril. Retrospectiva precuencial: se revoca si los contrastes prospectivos la descalibran."
+}

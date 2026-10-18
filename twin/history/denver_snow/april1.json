@@ -1,0 +1,84 @@
+{
+ "stations": [
+  {
+   "triplet": "335:CO:SNTL",
+   "name": "Berthoud Summit",
+   "huc": "140100010202",
+   "begin": "1963-09-01 00:00"
+  },
+  {
+   "triplet": "345:CO:SNTL",
+   "name": "Bison Lake",
+   "huc": "140100011401",
+   "begin": "1985-09-30 00:00"
+  },
+  {
+   "triplet": "415:CO:SNTL",
+   "name": "Copper Mountain",
+   "huc": "140100020302",
+   "begin": "1978-10-01 00:00"
+  },
+  {
+   "triplet": "485:CO:SNTL",
+   "name": "Fremont Pass",
+   "huc": "140100020301",
+   "begin": "1979-10-01 00:00"
+  },
+  {
+   "triplet": "505:CO:SNTL",
+   "name": "Grizzly Peak",
+   "huc": "140100020201",
+   "begin": "1979-10-01 00:00"
+  },
+  {
+   "triplet": "531:CO:SNTL",
+   "name": "Hoosier Pass",
+   "huc": "101900010102",
+   "begin": "1979-10-01 00:00"
+  },
+  {
+   "triplet": "565:CO:SNTL",
+   "name": "Lake Irene",
+   "huc": "140100010302",
+   "begin": "1978-10-01 00:00"
+  },
+  {
+   "triplet": "607:CO:SNTL",
+   "name": "Lynx Pass",
+   "huc": "140100011001",
+   "begin": "1979-10-01 00:00"
+  },
+  {
+   "triplet": "688:CO:SNTL",
+   "name": "Phantom Valley",
+   "huc": "140100010302",
+   "begin": "1979-10-01 00:00"
+  },
+  {
+   "triplet": "793:CO:SNTL",
+   "name": "Stillwater Creek",
+   "huc": "140100010306",
+   "begin": "1985-10-01 00:00"
+  },
+  {
+   "triplet": "802:CO:SNTL",
+   "name": "Summit Ranch",
+   "huc": "140100020502",
+   "begin": "1979-10-01 00:00"
+  },
+  {
+   "triplet": "869:CO:SNTL",
+   "name": "Willow Creek Pass",
+   "huc": "140100010102",
+   "begin": "1978-10-01 00:00"
+  }
+ ],
+ "normal_period": [
+  1991,
+  2020
+ ],
+ "method": "Sum of April 1 SWE over sum of 1991-2020 station medians, complete years only",
+ "api": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/ (stations, data WTEQ DAILY)",
+ "harvested_by": "GitHub Actions run 39082635798 (Genius history node, job snow), artifact denver-snow 12119606050, 2026-10-18; values copied from the job log",
+ "note": "Only Hoosier Pass represents the South Platte side: the other South Platte stations started after 1991."
+}
