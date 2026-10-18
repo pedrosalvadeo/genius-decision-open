@@ -7,6 +7,10 @@ contrast compares one real reading with every frozen policy and scenario and
          prediction or calibrates the model.
 live     (module 0) restarts the frozen model from a fully observed step and
          appends what the living twin now concludes to <case>/living.json.
+         When <case>/population.json exists, its next generation lives from
+         that restart.
+population founds <case>/population.json: the living population of routes
+         (genius_twin.population), generation 0 from the model's step 0.
 
 Run from the repository root with PYTHONPATH=twin:kernel:
   python twin/cases/predictions.py freeze denver_water_2026
@@ -21,7 +25,7 @@ import json
 from pathlib import Path
 import sys
 
-from genius_twin import construction, living, registry
+from genius_twin import construction, living, population, registry
 from genius_twin.service import q, rational
 from genius_twin.store import sha
 
@@ -30,6 +34,7 @@ FORMAT = 'genius-twin-frozen-prediction/1'
 # Matching a reading to a model step is a bookkeeping convention, not a Genius rule.
 WINDOW_DAYS = 7
 FROZEN_WORLD = 'frozen_world.json'
+POPULATION = 'population.json'
 
 
 def _month_end(year, month):
@@ -205,7 +210,26 @@ def live(case, reading_date, stocks, capabilities, observed_at, source):
         raise SystemExit('this restart is already recorded')
     log['restarts'].append(record)
     path.write_text(json.dumps(log, ensure_ascii=False, indent=1) + '\n')
+    population_path = CASES / case / POPULATION
+    if population_path.exists():
+        alive = json.loads(population_path.read_text())
+        if alive['base_model_sha256'] != population._digest(model):
+            raise SystemExit(f'{case}: the population was founded on another model')
+        alive = population.advance(alive, twin, step, f'{reading_date.isoformat()} · {source}', registry.evaluate)
+        population_path.write_text(json.dumps(alive, ensure_ascii=False, indent=1) + '\n')
+        record['population_generation'] = alive['generations'][-1]
     return record
+
+
+def found_population(case, batches=6):
+    """Generation 0 of the case's living population of routes, from the frozen world when there is one."""
+    model = _model(case, FROZEN_WORLD if (CASES / case / FROZEN_WORLD).exists() else 'world.json')
+    path = CASES / case / POPULATION
+    if path.exists():
+        raise SystemExit(f'{case}: the population already lives; it advances with each restart (live)')
+    alive = population.found(model, case, registry.evaluate, batches=batches)
+    path.write_text(json.dumps(alive, ensure_ascii=False, indent=1) + '\n')
+    return alive['generations'][-1]
 
 
 def main(argv=None):
@@ -225,8 +249,14 @@ def main(argv=None):
     restart.add_argument('--capability', action='append', default=[], help='Capability observed present (repeatable)')
     restart.add_argument('--observed-at', required=True, help='ISO8601 with time zone')
     restart.add_argument('--source', required=True, help='Publisher, URL and the exact quoted figures')
+    founding = commands.add_parser('population')
+    founding.add_argument('case', choices=sorted(p.name for p in CASES.iterdir() if (p / 'world.json').exists()))
+    founding.add_argument('--batches', type=int, default=6)
     args = parser.parse_args(argv)
-    if args.command == 'freeze':
+    if args.command == 'population':
+        json.dump(found_population(args.case, args.batches), sys.stdout, ensure_ascii=False, indent=1)
+        print()
+    elif args.command == 'freeze':
         print(freeze(args.case))
     elif args.command == 'live':
         stocks = dict(item.split('=', 1) for item in args.stock)

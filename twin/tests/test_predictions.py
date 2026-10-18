@@ -65,6 +65,33 @@ class FrozenPredictionTests(unittest.TestCase):
             log = json.loads((root / 'lake_mead_2028' / 'living.json').read_text())
             self.assertEqual(len(log['restarts']), 1)
 
+    def test_each_restart_brings_a_generation_of_the_living_population(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            shutil.copytree(predictions.CASES / 'denver_water_2026', root / 'denver_water_2026')
+            founded = json.loads((root / 'denver_water_2026' / predictions.POPULATION).read_text())
+            self.assertEqual(len(founded['generations']), 1)
+            with patch.object(predictions, 'CASES', root):
+                record = predictions.live('denver_water_2026', date(2026, 12, 15), {'storage': '60', 'outdoor': '0'}, [],
+                                          '2026-12-16T12:00:00-07:00', 'Synthetic test reading; no field data')
+                with self.assertRaises(SystemExit):
+                    predictions.found_population('denver_water_2026')
+            generation = record['population_generation']
+            self.assertEqual((generation['generation'], generation['step']), (1, 2))
+            self.assertTrue(generation['observation'].startswith('2026-12-15 · Synthetic'))
+            alive = json.loads((root / 'denver_water_2026' / predictions.POPULATION).read_text())
+            self.assertEqual(alive['generations'][-1], generation)
+            self.assertEqual(alive['base_model_sha256'], founded['base_model_sha256'])
+
+    def test_committed_populations_are_founded_on_the_frozen_models(self):
+        from genius_twin import population
+        for case in ('denver_water_2026', 'mendoza_potrerillos_2026', 'lake_mead_2027', 'us_blood_2026'):
+            with self.subTest(case=case):
+                alive = json.loads((predictions.CASES / case / predictions.POPULATION).read_text())
+                name = predictions.FROZEN_WORLD if (predictions.CASES / case / predictions.FROZEN_WORLD).exists() else 'world.json'
+                self.assertEqual(alive['base_model_sha256'], population._digest(predictions._model(case, name)))
+                self.assertEqual(len(alive['generations']), 1)
+
 
 if __name__ == '__main__':
     unittest.main()

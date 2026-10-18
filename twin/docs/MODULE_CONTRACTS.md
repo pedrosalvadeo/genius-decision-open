@@ -96,6 +96,22 @@ Todo resultado matemático lo calcula el kernel FP1 y lo verifica su verificador
   - Comparación del 2026-10-18 en sangre y Denver, 10 tandas, semillas 4 a 6, mismo número de rutas evaluadas por el kernel. Al final se enfrentaron las campeonas de las 9 corridas de cada caso. Para la reserva de la Cruz Roja quedaron sin superar 3 de 3 campeonas de la red, 2 de 3 de la red con historia y 1 de 3 del azar. Para los residentes de Denver, 2 de 3, 2 de 3 y 1 de 3. Para los demás portadores todas empataron. Son pocas corridas: es una señal, no una prueba.
   - Una primera versión, que predecía sólo el bienestar final y el peor, no superó al azar. Por eso ahora predice el bienestar en cada paso.
   - Costo medido: unos 175 s por búsqueda con la red y 85 s con el azar; con 250 filas de historia, 260 s.
+- **Población viva de rutas** (`population.py`; Pedro, 2026-10-18: llevar Genius a vida artificial). Las piezas de la vida artificial ya estaban en los módulos, y este ciclo las junta:
+  - el genoma son las rutas, escritas en el lenguaje del gemelo;
+  - el metabolismo es el gemelo vivo, que se reinicia desde cada estado observado;
+  - la selección es el kernel: primero la condición de vida, después la mejor ruta para cada portador. Cada portador es un nicho, y por eso viven varias rutas a la vez;
+  - una ruta muere cuando el gemelo del presente la muestra perdiendo la condición de vida en algún escenario mientras otra la mantiene, o cuando otras rutas le ganan todos sus nichos. Si ninguna ruta mantiene la vida, ninguna muere por eso, y la búsqueda sigue buscando una que la mantenga;
+  - la herencia: cada veredicto queda en la memoria de la población (las últimas 200 filas) y entrena al proponente aprendido de la generación siguiente, visto desde el nuevo presente.
+
+  Queda fijo y fuera de la evolución: el kernel, el ideal de bienestar y cuidado de la vida, y el mundo declarado (acciones, escenarios, ley y condiciones de vida). La población no contacta a nadie ni se copia a ningún lado. Las rutas se guardan en los pasos originales del modelo, así cada una conserva su identidad entre generaciones.
+
+  `python twin/cases/predictions.py population <caso>` funda la generación 0. Cada `predictions.py live`, que reinicia el gemelo desde un estado observado completo, trae la generación siguiente. El 2026-10-18 se fundaron las poblaciones de Denver, sangre, Mendoza y Lake Mead 2027:
+  - Denver: murió «reanudar en mayo», que pierde la vida en el año seco. Viven «mantener la prohibición» para Denver Water y «reanudar si el embalse llega al 70 %» para los residentes;
+  - sangre: murió «seguir igual», que pierde la vida con gripe severa. Nació una ruta nueva para la reserva de la Cruz Roja;
+  - Mendoza: murieron las dos rutas reforzadas, que pierden la vida en un año como 2025. Nacieron rutas nuevas para los regantes y para las lagunas;
+  - Lake Mead 2027: ninguna ruta mantiene la vida en el escenario mínimo. Nadie murió por eso y la búsqueda sigue.
+
+  Una generación nueva necesita un reinicio con todos los stocks observados, y una lectura publicada suele traer uno solo. En Denver, por ejemplo, falta observar el riego exterior acumulado.
 
 ## Lo que todavía depende de algo particular
 
