@@ -36,6 +36,8 @@ Funciones de los casos reales:
 
 En los tres casos la frontera no cambia: el bienestar sigue siendo incomparable entre portadores.
 
+**Catálogo común** (`genius_twin/function_catalog.py`): una función puede declarar `kind`, una de abastecimiento de agua (`water_supply`), generación eléctrica (`hydropower`), operación de una presa (`dam_operation`), margen para crecidas (`flood_margin`), riego (`irrigation`) o agua para ecosistemas (`ecological_flow`). Cada gemelo conserva sus propios umbrales; el tipo sólo dice de qué función esencial se trata, para comparar la misma función entre gemelos sin sumarlas. La federación entrega `decision.by_function_kind`: por cada tipo, las rutas conjuntas que ninguna otra supera en todas las funciones de ese tipo, en todos los miembros y escenarios. En la cuenca del Colorado, el abastecimiento de agua (Denver en 50 % o más y Mead en 1.000 pies o más) descarta sólo reanudar el riego en mayo; lo que libere Powell no lo cambia en 2027.
+
 ## Módulo II: subsistemas e interfaces
 
 Campos opcionales `subsystems` (cada uno con sus existencias y portadores; deben repartir todas las existencias) e `interfaces` (`source` y `target`, dos subsistemas). En cada paso, una acción ejecutada que retira de las existencias del origen lleva sus depósitos a las del destino; la interfaz acumula ese flujo.

@@ -80,7 +80,10 @@ async function showFederations(){
     blocks.push(element("article",{class:"panel federation","data-federation":row.id},element("h3",{text:result.name}),
       p(`${result.joint_routes.length} rutas conjuntas, ${result.decision.frontier.length} en la frontera. PVS conjunta: ${pvs}.`,"hint"),
       element("ul",{},Object.entries(result.decision.by_actor).filter(([,v])=>v.best).map(([actor,v])=>element("li",{"data-actor":actor},
-        element("strong",{text:result.labels.actors[actor]}),element("ul",{},bestRoutesItems(result,v.best)))))));
+        element("strong",{text:result.labels.actors[actor]}),element("ul",{},bestRoutesItems(result,v.best))))),
+      p("Por función esencial, medida en todos los gemelos que la cumplen:","hint"),
+      element("ul",{},Object.entries(result.decision.by_function_kind||{}).map(([kind,v])=>element("li",{"data-function-kind":kind},
+        element("strong",{text:v.label}),element("ul",{},bestRoutesItems(result,v.best)))))));
   }
   $("#federation-list").replaceChildren(...blocks);$("#federations").hidden=false;
 }

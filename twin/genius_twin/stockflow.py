@@ -10,6 +10,8 @@ import json
 from pathlib import Path
 import re
 
+from .function_catalog import CATALOG
+
 PROFILE = "STOCK_FLOW_FINITE_V1"
 ROOT_FIELDS = "profile name horizon step_unit stocks carriers capabilities initial_capabilities actions policies scenarios law welfare task require_all_scenarios selection assumptions functions subsystems interfaces".split()
 ID_PATTERN = r"^[A-Za-z][A-Za-z0-9_.-]*$"
@@ -80,9 +82,12 @@ def model_schema():
     })
     # Module I: functions the system performs, measured on every projected twin
     # (route x scenario). Optional, so models without them keep a neutral profile.
-    schema["properties"]["functions"] = arr(obj({"id": ident, "label": txt,
+    # An optional `kind` names the shared catalog entry (function_catalog.py).
+    function = obj({"id": ident, "label": txt,
         "serves": {**arr(ident, 0, 6), "uniqueItems": True}, "measure": enum("current", "cumulative"),
-        "when": arr({"oneOf": [stock_pred, cap_pred]}, 1, 6)}), 0, 8)
+        "when": arr({"oneOf": [stock_pred, cap_pred]}, 1, 6)})
+    function["properties"]["kind"] = enum(*CATALOG)
+    schema["properties"]["functions"] = arr(function, 0, 8)
     # Module II: subsystems partition the stocks; an interface carries what
     # actions move from one subsystem's stocks into another's. Optional.
     schema["properties"]["subsystems"] = arr(obj({"id": ident, "label": txt,

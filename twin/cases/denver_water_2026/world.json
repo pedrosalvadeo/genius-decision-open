@@ -1063,6 +1063,7 @@
         "path": "/functions/0",
         "value": {
           "id": "above_2003_low",
+          "kind": "water_supply",
           "label": "Suministro con los embalses en 50 % o más, el mínimo de 2003 (meses cumplidos)",
           "serves": [
             "residents",
