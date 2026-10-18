@@ -83,6 +83,20 @@ class FrozenPredictionTests(unittest.TestCase):
             self.assertEqual(alive['generations'][-1], generation)
             self.assertEqual(alive['base_model_sha256'], founded['base_model_sha256'])
 
+    def test_daily_evolution_grows_the_node_state_and_leaves_the_committed_population(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root, state = Path(temporary) / 'cases', Path(temporary) / 'state'
+            shutil.copytree(predictions.CASES / 'denver_water_2026', root / 'denver_water_2026')
+            committed = (root / 'denver_water_2026' / predictions.POPULATION).read_bytes()
+            with patch.object(predictions, 'CASES', root):
+                first = predictions.evolve_population('denver_water_2026', batches=1, state=state)
+                second = predictions.evolve_population('denver_water_2026', batches=1, state=state)
+            self.assertEqual((first['generation'], first['kind'], first['step']), (1, 'SAME_PRESENT', 0))
+            self.assertEqual(second['generation'], 2)
+            self.assertEqual((root / 'denver_water_2026' / predictions.POPULATION).read_bytes(), committed)
+            grown = json.loads((state / 'denver_water_2026' / predictions.POPULATION).read_text())
+            self.assertEqual(len(grown['generations']), 3)
+
     def test_committed_populations_are_founded_on_the_frozen_models(self):
         from genius_twin import population
         for case in ('denver_water_2026', 'mendoza_potrerillos_2026', 'lake_mead_2027', 'us_blood_2026'):

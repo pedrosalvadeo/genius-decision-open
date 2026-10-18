@@ -1,3 +1,4 @@
+from copy import deepcopy
 import unittest
 
 from genius_twin import living, population, registry
@@ -45,6 +46,20 @@ class PopulationTest(unittest.TestCase):
         own_batch0 = [r for r in self.pop["memory"] if r["generation"] == 1 and r["batch"] == 0]
         self.assertEqual(learning["rows"], len(rows_gen0) + len(own_batch0))
         self.assertTrue(all("policy_original" in r for r in self.pop["memory"]))
+
+    def test_between_observations_the_population_keeps_evolving_on_the_same_present(self):
+        now = living.reanchor(self.model, 2, OBSERVED, self.model["initial_capabilities"])
+        pop = deepcopy(self.pop)
+        before = len(pop["memory"])
+        population.evolve(pop, now, registry.evaluate, batches=1, seed=1)
+        gen2 = pop["generations"][2]
+        self.assertEqual((gen2["generation"], gen2["kind"], gen2["step"]), (2, "SAME_PRESENT", 2))
+        self.assertEqual(self.gen1["kind"], "OBSERVED_PRESENT")
+        self.assertEqual(gen2["life_condition_kept_by"], sorted(set(gen2["niches"].values())))
+        self.assertGreater(gen2["learning"][0]["rows"], self.gen1["learning"][0]["rows"])
+        self.assertGreaterEqual(len(pop["memory"]), before)
+        with self.assertRaises(ValueError):
+            population.evolve(pop, self.model, registry.evaluate)
 
     def test_a_generation_needs_a_later_full_restart(self):
         now = living.reanchor(self.model, 2, OBSERVED, self.model["initial_capabilities"])

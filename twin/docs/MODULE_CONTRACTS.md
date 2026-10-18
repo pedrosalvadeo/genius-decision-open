@@ -111,7 +111,9 @@ Todo resultado matemático lo calcula el kernel FP1 y lo verifica su verificador
   - Mendoza: murieron las dos rutas reforzadas, que pierden la vida en un año como 2025. Nacieron rutas nuevas para los regantes y para las lagunas;
   - Lake Mead 2027: ninguna ruta mantiene la vida en el escenario mínimo. Nadie murió por eso y la búsqueda sigue.
 
-  Una generación nueva necesita un reinicio con todos los stocks observados, y una lectura publicada suele traer uno solo. En Denver, por ejemplo, falta observar el riego exterior acumulado.
+  Entre observaciones la población sigue evolucionando sobre el mismo presente (`population.evolve`; Pedro, 2026-10-18: «Sí, a diario»). El nodo de población (`.github/workflows/population-node.yml`) le agrega una generación por día a cada población y guarda el estado en la rama `node-population`, así `main` y el deploy sólo cambian por observación. Sólo un reinicio observado puede matar una ruta por la realidad.
+
+  Una generación nueva desde la realidad necesita un reinicio con todos los stocks observados, y una lectura publicada suele traer uno solo. En Denver, por ejemplo, falta observar el riego exterior acumulado.
 
 ## Lo que todavía depende de algo particular
 
