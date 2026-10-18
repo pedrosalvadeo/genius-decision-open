@@ -4,8 +4,8 @@ Anchors are the water-year 2027 unregulated inflow totals at Lake Powell in Recl
 October 2026 minimum, most probable and maximum 24-Month Studies (studies.csv). Each past
 water year (powell_unregulated_wy.csv, RISE item 4301) is assigned to the closest anchor.
 The law is climatological: it does not use what the October forecast knows. Two windows
-are certified, the whole record and the most recent 30 years, because the record is not
-known to be stationary (the basin has been drier since 2000).
+are certified: the most recent 30 years, the AM-02 window rule Pedro chose on 2026-10-18 and
+the law the twins use, and the whole record for comparison (the basin has been drier since 2000).
 
 Run: python twin/history/powell_law.py > twin/history/lake_mead/powell_law_wy2027.json
 """
@@ -39,9 +39,9 @@ def series():
 
 def certificates():
     found, history = anchors(), series()
-    windows = {'whole_record': history, 'last_30_years': history[-driver_law.MIN_INDEPENDENT_OUTCOMES:]}
-    return {name: driver_law.certificate(periods, found, tie='most_probable', driver='Lake Powell water-year unregulated inflow (af)')
-            for name, periods in windows.items()}
+    windows = {'whole_record': None, 'last_30_years': driver_law.WINDOW}
+    return {name: driver_law.certificate(history, found, tie='most_probable', driver='Lake Powell water-year unregulated inflow (af)', window=window)
+            for name, window in windows.items()}
 
 
 if __name__ == '__main__':

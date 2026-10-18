@@ -101,7 +101,7 @@ CLAIMS = [
     claim('d_life_task', 'decision', 'Condición de vida: los embalses guardan en todo momento al menos un año de agua de uso de invierno (21,5 % de la capacidad) para las 1,5 millones de personas servidas, aunque no entre agua.',
           'Elegida por el modelizador como condición material del suministro esencial hasta el deshielo siguiente; el mínimo de 50 % de 2003 queda como referencia histórica.',
           premises=['h_life_reserve', 'population', 'record_low']),
-    claim('d_law', 'decision', 'Ley empírica admitida por AM-02 sobre los tres inviernos: seco 4/39, normal 28/39, húmedo 7/39. Cada año de 1991 a 2026 se asigna al escenario cuya nieve del 1 de abril se parece más (seco anclado en 2026, 34,4 % de la mediana; normal en 100 %; húmedo en 150 %), con 12 estaciones SNOTEL del NRCS en las cuencas de Denver Water. Resultaron 3 secos (2002, 2012, 2026), 27 normales y 6 húmedos (1993, 1996, 1997, 2011, 2014, 2019). Un tercio cada uno queda descalibrado; la frecuencia suavizada (k+1)/(n+3) pasa la calibración, con 36 resultados independientes (se exigen 30). Certificado: twin/history/denver_snow/law_certificate.json.',
+    claim('d_law', 'decision', 'Ley empírica admitida por AM-02 sobre los tres inviernos: seco 4/33, normal 8/11, húmedo 5/33. Cada año de los últimos 30 (1997 a 2026, regla de ventana de AM-02 elegida por Pedro el 18/10/2026) se asigna al escenario cuya nieve del 1 de abril se parece más (seco anclado en 2026, 34,4 % de la mediana; normal en 100 %; húmedo en 150 %), con 12 estaciones SNOTEL del NRCS en las cuencas de Denver Water. Resultaron 3 secos (2002, 2012, 2026), 23 normales y 4 húmedos (1997, 2011, 2014, 2019). Un tercio cada uno queda descalibrado; la frecuencia suavizada (k+1)/(n+3) pasa la calibración, con 30 resultados independientes. Con los 36 años desde 1991 la ley sería 4/39, 28/39, 7/39. Certificado: twin/history/denver_snow/law_certificate.json.',
           'Retrospectiva precuencial: se revoca si los contrastes prospectivos la descalibran. Las anclas de los escenarios son del modelizador; del lado del Platte Sur sólo Hoosier Pass tiene registro desde 1991. La PVS no depende de la ley en este caso (rango bajo toda ley de un único valor).',
           premises=['h_runoff']),
     claim('d_policies', 'decision', 'Opciones comparadas: mantener la prohibición todo el horizonte; reanudar riego de Etapa 1 de mayo a septiembre; reanudarlo sólo en los meses que empiezan con almacenamiento de 70 % o más.',
@@ -153,7 +153,7 @@ FRAGMENTS = [
 for i, s in enumerate(['dry', 'normal', 'wet']):
     FRAGMENTS.append((f'/scenarios/{i}', dict(id=s, label=LABELS[s], events=events(s)), ['h_winter_drawdown', 'h_summer_base', 'h_runoff']))
 FRAGMENTS += [
-    ('/law', {'dry': '4/39', 'normal': '28/39', 'wet': '7/39'}, ['d_law']),
+    ('/law', {'dry': '4/33', 'normal': '8/11', 'wet': '5/33'}, ['d_law']),
     ('/welfare/0', dict(carrier='residents', dimension='outdoor_water', label='Agua disponible para jardines, árboles y césped', stock='outdoor', direction='higher'), ['modelling', 'lawn_ban']),
     ('/welfare/1', dict(carrier='denver_water', dimension='reserve', label='Reserva de los embalses que administra', stock='storage', direction='higher'), ['d_org_welfare']),
     ('/task', dict(kind='life_conditions', label='Guardar siempre al menos un año de agua de invierno (21,5 % de la capacidad) para la población', living_carriers=['residents'],
@@ -167,7 +167,7 @@ FRAGMENTS += [
     ('/selection', 'none', ['modelling']),
     ('/assumptions/0', dict(id='Calibration', kind='CALIBRATION', statement='Caídas mensuales, costo del riego y aportes del deshielo son hipótesis propias calibradas sobre cifras publicadas; no son datos mensuales de Denver Water.', provenance='Claims h_winter_drawdown, h_summer_base, h_outdoor_stage1, h_runoff'), ['h_winter_drawdown', 'h_runoff']),
     ('/assumptions/1', dict(id='LifeReserve', kind='NORMATIVE', statement='La condición de vida es guardar un año de agua de uso de invierno para la población (21,5 % de la capacidad); el riego exterior y la reserva se comparan como bienestar, sin sumarlos.', provenance='Claims capacity_use, h_life_reserve, d_life_task'), ['d_life_task']),
-    ('/assumptions/2', dict(id='WinterLaw', kind='PROBABILITY', statement='Ley empírica admitida por AM-02 con la nieve del 1 de abril de 1991 a 2026 (NRCS SNOTEL): seco 4/39, normal 28/39, húmedo 7/39. La PVS se informa también bajo toda ley.', provenance='Claim d_law; twin/history/snow_law.py, twin/history/denver_snow/law_certificate.json'), ['d_law']),
+    ('/assumptions/2', dict(id='WinterLaw', kind='PROBABILITY', statement='Ley empírica admitida por AM-02 con la nieve del 1 de abril de los últimos 30 años, 1997 a 2026 (NRCS SNOTEL): seco 4/33, normal 8/11, húmedo 5/33. La PVS se informa también bajo toda ley.', provenance='Claim d_law; twin/history/snow_law.py, twin/history/denver_snow/law_certificate.json'), ['d_law']),
 ]
 
 ENTITIES = [

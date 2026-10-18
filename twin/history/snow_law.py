@@ -5,7 +5,8 @@ Each year's outcome is the Denver scenario whose snow it was closest to: dry is 
 wet at 150 % (the case defines it as "snow above 150 %"). Ties go to normal. The candidates,
 calibration check and log score are those of empirical_law.py; a forecast for year t uses only
 outcomes up to t-1, as it would be issued the October before. Snow is exogenous to Denver's
-watering rules, and one April 1 per year gives non-overlapping outcomes.
+watering rules, and one April 1 per year gives non-overlapping outcomes. Only the most recent
+30 years are used (the AM-02 window rule, genius_twin/driver_law.py).
 
 Run from the repository root:
   python twin/history/snow_law.py twin/history/denver_snow/april1.csv
@@ -22,6 +23,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent))
 import empirical_law  # noqa: E402
 
+WINDOW = 30  # same rule as genius_twin.driver_law.WINDOW
 DENVER = {'minimum': 'dry', 'most_probable': 'normal', 'maximum': 'wet'}
 
 
@@ -38,6 +40,8 @@ def outcomes(path):
 
 def certificate(path, confidence=Fraction(95, 100)):
     history, anchor = outcomes(path)
+    offered = len(history)
+    history = history[-WINDOW:]
     results = {name: empirical_law.evaluate(history, procedure, confidence) for name, procedure in empirical_law.CANDIDATES.items()}
     eligible = sorted((r['mean_log_score'], name) for name, r in results.items() if r['calibrated'])
     chosen = eligible[-1][1] if eligible else None
@@ -50,7 +54,7 @@ def certificate(path, confidence=Fraction(95, 100)):
     return dict(
         procedure=empirical_law.PROCEDURE, amendment='AM-02', data=Path(path).name,
         data_sha256=hashlib.sha256(Path(path).read_bytes()).hexdigest(), driver='april1_snow_index',
-        anchors={DENVER[s]: f'{float(100 * v):.1f}%' for s, v in anchor.items()}, outcomes=len(history),
+        anchors={DENVER[s]: f'{float(100 * v):.1f}%' for s, v in anchor.items()}, window=WINDOW, years_offered=offered, outcomes=len(history),
         followed={DENVER[s]: n for s, n in Counter(o['followed'] for o in history).items()},
         non_normal_years={DENVER[s]: [o['year'] for o in history if o['followed'] == s] for s in ('minimum', 'maximum')},
         evaluation=dict(kind='RETROSPECTIVE_PREQUENTIAL', confidence=str(confidence),

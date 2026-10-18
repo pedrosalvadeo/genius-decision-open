@@ -27,7 +27,7 @@ class DriverLawTests(unittest.TestCase):
         self.assertEqual(result['law'], saved['law'])
         self.assertEqual(result['evaluation']['candidates']['frequency']['mean_log_score'],
                          saved['evaluation']['candidates']['frequency']['mean_log_score'])
-        self.assertEqual(result['followed'], {'dry': 3, 'normal': 27, 'wet': 6})
+        self.assertEqual((result['followed'], result['periods_offered'], result['window']), ({'dry': 3, 'normal': 23, 'wet': 4}, 36, 30))
 
     def test_any_domain_and_refusals(self):
         # Weekly hospital admissions against three epidemic scenarios: too few weeks to admit.
@@ -62,7 +62,10 @@ class DriverLawTests(unittest.TestCase):
             series, anchors = denver()
             response = client.post('/api/laws/driver', json=dict(series=series, anchors=anchors, tie='normal'))
             self.assertEqual(response.status_code, 200, response.json)
-            self.assertEqual(response.json['law'], {'dry': '4/39', 'normal': '28/39', 'wet': '7/39'})
+            self.assertEqual(response.json['law'], {'dry': '4/33', 'normal': '8/11', 'wet': '5/33'})
+            whole = client.post('/api/laws/driver', json=dict(series=series, anchors=anchors, tie='normal', window=None))
+            self.assertEqual(whole.json['law'], {'dry': '4/39', 'normal': '28/39', 'wet': '7/39'})
+            self.assertEqual(client.post('/api/laws/driver', json=dict(series=series, anchors=anchors, window=0)).status_code, 400)
             self.assertEqual(client.post('/api/laws/driver', json=dict(series=series, anchors={'a': '1'})).status_code, 400)
             self.assertEqual(client.post('/api/laws/driver', json=dict(series=series)).status_code, 400)
 

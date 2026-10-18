@@ -224,8 +224,10 @@
   },
   "meaning": "Masa emp\u00edrica de que cada per\u00edodo se parezca m\u00e1s a cada escenario, seg\u00fan el conductor declarado. Retrospectiva precuencial: se revoca si los contrastes prospectivos la descalibran. No es bienestar.",
   "outcomes": 30,
+  "periods_offered": 62,
   "refusals": [],
-  "tie": "most_probable"
+  "tie": "most_probable",
+  "window": 30
  },
  "whole_record": {
   "admitted": true,
@@ -580,7 +582,9 @@
   },
   "meaning": "Masa emp\u00edrica de que cada per\u00edodo se parezca m\u00e1s a cada escenario, seg\u00fan el conductor declarado. Retrospectiva precuencial: se revoca si los contrastes prospectivos la descalibran. No es bienestar.",
   "outcomes": 62,
+  "periods_offered": 62,
   "refusals": [],
-  "tie": "most_probable"
+  "tie": "most_probable",
+  "window": null
  }
 }

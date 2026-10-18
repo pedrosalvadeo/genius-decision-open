@@ -23,9 +23,10 @@ def main(path, *needles):
         for i, row in enumerate(sheet.iter_rows(values_only=True)):
             cells = ['' if c is None else str(c) for c in row]
             line = ' | '.join(cells)[:400]
-            if i < 6:
+            label = cells[0] if cells else ''
+            if i < 30:
                 print(f'{i}: {line}')
-            elif hits < 40 and any(n.lower() in line.lower() for n in needles):
+            elif hits < 200 and (any(n.lower() in line.lower() for n in needles) or (label and not label[:4].isdigit())):
                 hits += 1
                 print(f'{i}: {line}')
 

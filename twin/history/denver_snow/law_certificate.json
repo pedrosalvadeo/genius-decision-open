@@ -9,10 +9,12 @@
   "normal": "100.0%",
   "wet": "150.0%"
  },
- "outcomes": 36,
+ "window": 30,
+ "years_offered": 36,
+ "outcomes": 30,
  "followed": {
-  "normal": 27,
-  "wet": 6,
+  "wet": 4,
+  "normal": 23,
   "dry": 3
  },
  "non_normal_years": {
@@ -22,8 +24,6 @@
    2026
   ],
   "wet": [
-   1993,
-   1996,
    1997,
    2011,
    2014,
@@ -35,33 +35,33 @@
   "confidence": "19/20",
   "candidates": {
    "uniform": {
-    "count": 36,
+    "count": 30,
     "per_band_confidence": 0.983333,
     "bands": {
      "dry": {
       "observed": 3,
       "mean_mass": 0.3333,
       "interval": [
-       0.0116,
-       0.2583
+       0.014,
+       0.3037
       ],
       "inside": false
      },
      "normal": {
-      "observed": 27,
+      "observed": 23,
       "mean_mass": 0.3333,
       "interval": [
-       0.5414,
-       0.8987
+       0.537,
+       0.9198
       ],
       "inside": false
      },
      "wet": {
-      "observed": 6,
+      "observed": 4,
       "mean_mass": 0.3333,
       "interval": [
-       0.05,
-       0.3641
+       0.027,
+       0.3465
       ],
       "inside": true
      }
@@ -70,47 +70,47 @@
     "mean_log_score": -1.098612
    },
    "frequency": {
-    "count": 36,
+    "count": 30,
     "per_band_confidence": 0.983333,
     "bands": {
      "dry": {
       "observed": 3,
-      "mean_mass": 0.1154,
+      "mean_mass": 0.1488,
       "interval": [
-       0.0116,
-       0.2583
+       0.014,
+       0.3037
       ],
       "inside": true
      },
      "normal": {
-      "observed": 27,
-      "mean_mass": 0.6443,
+      "observed": 23,
+      "mean_mass": 0.6477,
       "interval": [
-       0.5414,
-       0.8987
+       0.537,
+       0.9198
       ],
       "inside": true
      },
      "wet": {
-      "observed": 6,
-      "mean_mass": 0.2403,
+      "observed": 4,
+      "mean_mass": 0.2035,
       "interval": [
-       0.05,
-       0.3641
+       0.027,
+       0.3465
       ],
       "inside": true
      }
     },
     "calibrated": true,
-    "mean_log_score": -0.815181
+    "mean_log_score": -0.809611
    }
   }
  },
  "chosen": "frequency",
  "law": {
-  "dry": "4/39",
-  "normal": "28/39",
-  "wet": "7/39"
+  "dry": "4/33",
+  "normal": "8/11",
+  "wet": "5/33"
  },
  "refusals": [],
  "admitted": true,

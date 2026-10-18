@@ -80,11 +80,17 @@ La predicción congelada no se toca nunca; el gemelo vivo es otro modelo. `geniu
 
 ## Módulo VI: ley empírica de los inviernos de Denver
 
-`twin/history/nrcs_snow.py` corre en el nodo de historia (GitHub Actions, porque este entorno no llega al NRCS) y baja la nieve del 1 de abril de 1991 a 2026 de las estaciones SNOTEL de las cuencas de Denver Water. `twin/history/snow_law.py` asigna cada año al invierno del modelo más parecido y aplica AM-02: un tercio cada uno queda descalibrado y se admite seco 4/39, normal 28/39, húmedo 7/39, con 36 resultados independientes. En Denver la PVS no depende de la ley, así que la decisión no cambia; sí cambia lo que el gemelo sabe: el húmedo de 150 % nunca ocurrió en 36 años.
+`twin/history/nrcs_snow.py` corre en el nodo de historia (GitHub Actions, porque este entorno no llega al NRCS) y baja la nieve del 1 de abril de 1991 a 2026 de las estaciones SNOTEL de las cuencas de Denver Water. `twin/history/snow_law.py` asigna cada año al invierno del modelo más parecido y aplica AM-02: un tercio cada uno queda descalibrado y se admite seco 4/33, normal 8/11, húmedo 5/33 con los últimos 30 años (con los 36 desde 1991 sería 4/39, 28/39, 7/39). En Denver la PVS no depende de la ley, así que la decisión no cambia; sí cambia lo que el gemelo sabe: el húmedo de 150 % nunca ocurrió en 36 años.
 
 ## Módulo VI en cualquier dominio: ley desde un conductor
 
 `genius_twin/driver_law.py` (`genius-driver-law/1`) hace lo de AM-02 para cualquier gemelo: recibe la historia de un conductor exógeno (nieve, caudal, casos por semana, demanda, precios; un valor por período independiente) y el valor ancla de cada escenario del gemelo (de 2 a 8). Asigna cada período al escenario más cercano, prueba en orden precuencial los dos candidatos fijados de antemano (partes iguales y frecuencia suavizada), exige calibración y 30 resultados, y devuelve la ley con los mismos identificadores de escenario del gemelo, lista para su campo `law`, o los motivos por los que no se admite. Se usa por API (`POST /api/twin/laws/driver`) y MCP (`twin_driver_law`). Reproduce exactamente la ley de Denver.
+
+Regla de ventana (Pedro, 18/10/2026, para todos los dominios): AM-02 usa los 30 períodos más recientes. El régimen de un conductor puede cambiar, como la cuenca del Colorado desde 2000, y los últimos 30 describen mejor el presente. `window` en la API y el MCP permite pedir otra ventana (`null` = toda la serie), y el certificado informa `window` y `periods_offered`.
+
+Lake Mead (`twin/history/powell_law.py`): 62 años hidrológicos de afluencia no regulada de Powell (RISE, ítem 4301, 1964-2025) asignados a la afluencia de 2027 de los estudios mínimo, más probable y máximo de octubre de 2026 (4,07; 7,80 y 15,10 millones de acre-pies). Con los últimos 30 años AM-02 admite un tercio cada uno (8, 13 y 9 años); con todo el registro admitiría 12/65, 27/65 y 2/5. Es una ley climatológica: no usa lo que sabe el pronóstico de octubre.
+
+Fuera del agua: `twin/history/flu_seasons.py` cosecha el pico de cada temporada de gripe de EE.UU. (ILINet de los CDC por Delphi, octubre a mayo, 29 temporadas de 1997/98 a 2025/26) como conductor para gemelos de suministros de salud en invierno, y `twin/history/source_quotes.py` verifica contra la página viva las citas de cualquier caso.
 
 ## Módulo IV en el Colorado: por qué no se separan los estados todavía
 
