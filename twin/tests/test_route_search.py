@@ -8,7 +8,7 @@ class RouteSearchTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.model = blood_model()
-        cls.result = route_search.search(cls.model, registry.evaluate, batches=2, seed=1)
+        cls.result = route_search.search(cls.model, registry.evaluate, batches=2, seed=1, goal="dominance")
 
     def test_every_batch_is_kernel_verified_and_rows_record_each_verdict(self):
         result = self.result
@@ -36,8 +36,21 @@ class RouteSearchTest(unittest.TestCase):
                         self.assertIn(p["value"], values[p["stock"]])
 
     def test_search_is_reproducible_by_seed(self):
-        again = route_search.search(self.model, registry.evaluate, batches=1, seed=1)
+        again = route_search.search(self.model, registry.evaluate, batches=1, seed=1, goal="dominance")
         self.assertEqual(again["rows"][4:10], self.result["rows"][4:10])
+
+    def test_per_carrier_keeps_the_life_condition_and_a_champion_for_each_carrier(self):
+        result = route_search.search(self.model, registry.evaluate, batches=1, seed=1)
+        self.assertEqual(result["goal"], "per_carrier")
+        self.assertEqual(result["declared_champions"], {"emergency_patients": "campaign", "surgical_patients": "campaign",
+                                                        "red_cross": "campaign", "donors": "defer_below_two_days"})
+        # as_usual loses the life condition under severe flu, so it is never a champion.
+        self.assertNotIn("as_usual", result["champions"].values())
+        self.assertEqual(result["improvements"], [{"batch": 1, "carrier": "red_cross", "route": "r2", "replaces": "campaign"}])
+        rows = {(r["batch"], r["route"]): r for r in result["rows"]}
+        self.assertTrue(rows[(1, "r2")]["feasible"])
+        with self.assertRaises(ValueError):
+            route_search.search(self.model, registry.evaluate, goal="sum")
 
     def test_rejects_no_room_for_candidates(self):
         with self.assertRaises(ValueError):

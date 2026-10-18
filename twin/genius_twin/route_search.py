@@ -9,6 +9,13 @@ compares them exactly; the batch frontier (feasible and not strictly dominated
 in the product order over functions, CAG, wellbeing and PVS) becomes the next
 elite. No criterion is summed and no verdict comes from the proposer.
 
+Goals. "per_carrier" (Pedro, 2026-10-18): the life condition first, then the
+best route for each carrier. A champion per carrier is kept among the routes
+that keep the life condition and have the highest PVS in the batch; a new
+route replaces it only if the kernel's per-carrier comparison (by_actor) no
+longer counts the champion among that carrier's best. "dominance": a new route
+replaces an elite only by strictly dominating it in the full product order.
+
 Every verdict is kept as a row: the route, its per-scenario results and its
 place in the batch order. Those rows are the training data for a proposer that
 learns where better routes are.
@@ -17,6 +24,7 @@ from copy import deepcopy
 import hashlib
 import json
 import random
+from fractions import Fraction
 
 from .stockflow import validate_model
 
@@ -90,9 +98,38 @@ def _rows(model, batch, ids, canonical, origin):
     return rows
 
 
-def search(model, evaluate_model, batches=10, elites=3, seed=0):
-    """Batches of elites plus new candidates; the kernel's batch frontier becomes the next elite."""
+def _pvs_key(value):
+    return Fraction(value) if value is not None else Fraction(-1)
+
+
+def _champions(canonical, ids, champions, children):
+    """Per carrier: keep the champion while it stays among that carrier's best; else the best newcomer."""
+    by_actor = canonical["decision"]["by_actor"]
+    pvs = {pid: _pvs_key(canonical["policies"][pid]["pvs"]["value"]) for pid in by_actor["candidates"]}
+    top = max(pvs.values()) if pvs else None
+    changes, ties = [], []
+    for carrier, row in by_actor["by_carrier"].items():
+        if row["best"] is None:
+            continue
+        best = [pid for pid in row["best"] if pvs.get(pid) == top]
+        current = champions.get(carrier)
+        if not best:
+            continue
+        if current not in best:
+            new = sorted(best, key=lambda pid: (pid not in children, ids.index(pid)))[0]
+            champions[carrier] = new
+            if current is not None:
+                changes.append({"carrier": carrier, "route": new, "replaces": current})
+        else:
+            ties += [{"carrier": carrier, "route": pid, "tied_with": current} for pid in best if pid in children]
+    return changes, ties
+
+
+def search(model, evaluate_model, batches=10, elites=3, seed=0, goal="per_carrier"):
+    """Batches of elites plus new candidates, judged by the kernel (see the module docstring for goals)."""
     validate_model(model)
+    if goal not in ("per_carrier", "dominance"):
+        raise ValueError("goal is per_carrier or dominance")
     if not 1 <= elites < MAX_ROUTES:
         raise ValueError(f"elites must leave room for candidates (1 to {MAX_ROUTES - 1})")
     rng = random.Random(seed)
@@ -106,7 +143,13 @@ def search(model, evaluate_model, batches=10, elites=3, seed=0):
     routes = {p["id"]: p for p in model["policies"]}
     origin = {pid: "DECLARED" for pid in order}
     rows = _rows(model, 0, order, first["canonical_results"], origin)
-    elite = start[:elites]
+    champions = {}
+    if goal == "per_carrier":
+        _champions(first["canonical_results"], order, champions, set())
+        elite = list(dict.fromkeys(champions.values()))[:MAX_ROUTES - 1] or start[:elites]
+    else:
+        elite = start[:elites]
+    declared_champions = dict(champions)
     seen = {_key(p) for p in model["policies"]}
     improvements, history, made = [], [], 0
     pool = list(elite)  # every route left undominated in some batch may be a parent
@@ -144,6 +187,15 @@ def search(model, evaluate_model, batches=10, elites=3, seed=0):
         ids = [p["id"] for p in batch_model["policies"]]
         rows += _rows(batch_model, b, ids, canonical, origin)
         strict = {(p["left"], p["right"]) for p in canonical["decision"]["pairs"] if p["strict"] == "1"}
+        if goal == "per_carrier":
+            changes, ties = _champions(canonical, ids, champions, {c["id"] for c in children})
+            improvements += [{"batch": b, **c} for c in changes]
+            pool += [t["route"] for t in ties if t["route"] not in pool]
+            pool += [pid for pid in champions.values() if pid not in pool]
+            history.append({"batch": b, "status": "VERIFIED", "candidates": [c["id"] for c in children],
+                            "champions": dict(champions), "ties": ties})
+            elite = list(dict.fromkeys(champions.values()))[:MAX_ROUTES - 1]
+            continue
         for child in children:
             beaten = sorted(pid for pid in elite if (child["id"], pid) in strict)
             if beaten:
@@ -158,7 +210,9 @@ def search(model, evaluate_model, batches=10, elites=3, seed=0):
             elite = (winners + [pid for pid in frontier if pid not in winners])[:elites]
     digest = hashlib.sha256(json.dumps(model, sort_keys=True).encode()).hexdigest()
     return {"format": FORMAT, "model_sha256": digest, "seed": seed, "batches": history,
-            "declared_frontier": start, "elite": elite, "elite_routes": [routes[pid] for pid in elite],
+            "goal": goal, "declared_frontier": start, "declared_champions": declared_champions, "champions": champions,
+            "elite": elite, "elite_routes": [routes[pid] for pid in elite],
             "improvements": improvements, "undominated_pool": pool, "rows": rows,
-            "meaning": "Routes proposed by variation and judged by the kernel batch by batch. The elite is the frontier of "
-                       "the last batch, not a global optimum; no criterion is summed and nothing is selected."}
+            "meaning": "Routes proposed by variation and judged by the kernel batch by batch. Champions are the best route found "
+                       "for each carrier among those keeping the life condition with the highest PVS; the dominance elite is "
+                       "the last batch frontier. Neither is a global optimum; no criterion is summed and nothing is selected."}
