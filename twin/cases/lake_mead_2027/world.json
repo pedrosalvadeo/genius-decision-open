@@ -459,7 +459,7 @@
         "id": "d_law",
         "basis": "decision",
         "statement": "Ley de probabilidad sobre las tres afluencias: un tercio cada una. Es el candidato que elige la enmienda AM-02 al contrastar contra la afluencia no regulada de Lake Powell los estudios de octubre de 2009 a 2025: está calibrado (mínima 5, más probable 6, máxima 2 de 13 octubres) y puntúa mejor que la frecuencia observada.",
-        "uncertainty": "Contraste climatológico (twin/history/powell_law.py): 61 años hidrológicos de afluencia no regulada de Powell (RISE, 1964-2024) asignados a la afluencia de 2027 más cercana de cada estudio. En los últimos 30 años AM-02 admite un tercio cada una (7, 13 y 10 años). Con el registro completo admite otra ley, 11/64, 27/64 y 13/32, más húmeda porque pesa los años previos a la sequía iniciada en 2000. La ventana es una elección declarada; la PVS es condicional a esta ley y el rango bajo toda ley se informa junto a ella.",
+        "uncertainty": "Contraste climatológico (twin/history/powell_law.py): 62 años hidrológicos de afluencia no regulada de Powell (RISE, 1964-2025) asignados a la afluencia de 2027 más cercana de cada estudio. En los últimos 30 años AM-02 admite un tercio cada una (8, 13 y 9 años). Con el registro completo admite otra ley, 12/65, 27/65 y 2/5, más húmeda porque pesa los años previos a la sequía iniciada en 2000. La ventana es una elección declarada; la PVS es condicional a esta ley y el rango bajo toda ley se informa junto a ella.",
         "spans": [],
         "premises": [
           "min_path",
@@ -1405,7 +1405,7 @@
         "value": {
           "id": "InflowLaw",
           "kind": "PROBABILITY",
-          "statement": "Un tercio para cada afluencia: ley admitida por AM-02 sobre los últimos 30 años de afluencia de Powell (1995-2024); también calibrada sobre 13 octubres de estudios. La PVS es condicional a esta ley.",
+          "statement": "Un tercio para cada afluencia: ley admitida por AM-02 sobre los últimos 30 años de afluencia de Powell (1996-2025); también calibrada sobre 13 octubres de estudios. La PVS es condicional a esta ley.",
           "provenance": "Claim d_law; twin/history/powell_law.py; twin/history/empirical_law.py --driver inflow"
         },
         "claim_ids": [

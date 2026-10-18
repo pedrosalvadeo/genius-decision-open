@@ -1,8 +1,8 @@
 {
  "source": "Reclamation RISE item 4301, Lake Powell daily unregulated inflow (acre-feet)",
- "last_url": "https://data.usbr.gov/rise/api/result?itemId=4301&dateTime%5Bafter%5D=1963-10-01&dateTime%5Bbefore%5D=2025-09-30&order%5BdateTime%5D=ASC&itemsPerPage=10000&page=3",
- "responses_sha256": "ec443d16d3d11fb689c34239f5ab2ccab67aec3fb74f9bf9fdbec90bc08f477d",
+ "last_url": "https://data.usbr.gov/rise/api/result?itemId=4301&dateTime%5Bafter%5D=1963-10-01&dateTime%5Bbefore%5D=2025-10-01&order%5BdateTime%5D=ASC&itemsPerPage=10000&page=3",
+ "responses_sha256": "54bdfdd52667edb6e6a632cfe70217bfbc5e3d9289ea2355133e8aee8305feea",
  "method": "Sum of daily values over each complete water year (Oct-Sep)",
- "incomplete_years": {"2025": 1},
- "harvested_by": "genius-node.yml job inflow, run 39089179142 (2026-10-18)"
+ "incomplete_years": {},
+ "harvested_by": "genius-node.yml job inflow, run 39089652992 (2026-10-18)"
 }

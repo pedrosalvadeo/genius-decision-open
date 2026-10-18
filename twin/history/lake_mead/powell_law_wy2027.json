@@ -10,10 +10,6 @@
   "chosen": "uniform",
   "classification": [
    {
-    "period": "1995",
-    "scenario": "maximum"
-   },
-   {
     "period": "1996",
     "scenario": "most_probable"
    },
@@ -128,6 +124,10 @@
    {
     "period": "2024",
     "scenario": "most_probable"
+   },
+   {
+    "period": "2025",
+    "scenario": "minimum"
    }
   ],
   "declared_by_caller": [
@@ -142,20 +142,20 @@
       "maximum": {
        "inside": true,
        "interval": [
-        0.1469,
-        0.5672
+        0.1234,
+        0.5336
        ],
-       "mean_mass": 0.4047,
-       "observed": 10
+       "mean_mass": 0.3575,
+       "observed": 9
       },
       "minimum": {
        "inside": true,
        "interval": [
-        0.0802,
-        0.463
+        0.1012,
+        0.4989
        ],
-       "mean_mass": 0.1983,
-       "observed": 7
+       "mean_mass": 0.2113,
+       "observed": 8
       },
       "most_probable": {
        "inside": true,
@@ -163,13 +163,13 @@
         0.2232,
         0.6624
        ],
-       "mean_mass": 0.397,
+       "mean_mass": 0.4312,
        "observed": 13
       }
      },
      "calibrated": true,
      "count": 30,
-     "mean_log_score": -1.156102,
+     "mean_log_score": -1.163541,
      "per_band_confidence": 0.983333
     },
     "uniform": {
@@ -177,20 +177,20 @@
       "maximum": {
        "inside": true,
        "interval": [
-        0.1469,
-        0.5672
+        0.1234,
+        0.5336
        ],
        "mean_mass": 0.3333,
-       "observed": 10
+       "observed": 9
       },
       "minimum": {
        "inside": true,
        "interval": [
-        0.0802,
-        0.463
+        0.1012,
+        0.4989
        ],
        "mean_mass": 0.3333,
-       "observed": 7
+       "observed": 8
       },
       "most_probable": {
        "inside": true,
@@ -212,8 +212,8 @@
    "kind": "RETROSPECTIVE_PREQUENTIAL"
   },
   "followed": {
-   "maximum": 10,
-   "minimum": 7,
+   "maximum": 9,
+   "minimum": 8,
    "most_probable": 13
   },
   "format": "genius-driver-law/1",
@@ -480,6 +480,10 @@
    {
     "period": "2024",
     "scenario": "most_probable"
+   },
+   {
+    "period": "2025",
+    "scenario": "minimum"
    }
   ],
   "declared_by_caller": [
@@ -494,34 +498,34 @@
       "maximum": {
        "inside": true,
        "interval": [
-        0.2618,
-        0.5706
+        0.2571,
+        0.5627
        ],
-       "mean_mass": 0.441,
+       "mean_mass": 0.4404,
        "observed": 25
       },
       "minimum": {
        "inside": true,
        "interval": [
-        0.0687,
-        0.3074
+        0.0784,
+        0.3219
        ],
-       "mean_mass": 0.1293,
-       "observed": 10
+       "mean_mass": 0.13,
+       "observed": 11
       },
       "most_probable": {
        "inside": true,
        "interval": [
-        0.2762,
-        0.5866
+        0.2713,
+        0.5786
        ],
-       "mean_mass": 0.4297,
+       "mean_mass": 0.4296,
        "observed": 26
       }
      },
      "calibrated": true,
-     "count": 61,
-     "mean_log_score": -1.081089,
+     "count": 62,
+     "mean_log_score": -1.092055,
      "per_band_confidence": 0.983333
     },
     "uniform": {
@@ -529,8 +533,8 @@
       "maximum": {
        "inside": true,
        "interval": [
-        0.2618,
-        0.5706
+        0.2571,
+        0.5627
        ],
        "mean_mass": 0.3333,
        "observed": 25
@@ -538,24 +542,24 @@
       "minimum": {
        "inside": false,
        "interval": [
-        0.0687,
-        0.3074
+        0.0784,
+        0.3219
        ],
        "mean_mass": 0.3333,
-       "observed": 10
+       "observed": 11
       },
       "most_probable": {
        "inside": true,
        "interval": [
-        0.2762,
-        0.5866
+        0.2713,
+        0.5786
        ],
        "mean_mass": 0.3333,
        "observed": 26
       }
      },
      "calibrated": false,
-     "count": 61,
+     "count": 62,
      "mean_log_score": -1.098612,
      "per_band_confidence": 0.983333
     }
@@ -565,17 +569,17 @@
   },
   "followed": {
    "maximum": 25,
-   "minimum": 10,
+   "minimum": 11,
    "most_probable": 26
   },
   "format": "genius-driver-law/1",
   "law": {
-   "maximum": "13/32",
-   "minimum": "11/64",
-   "most_probable": "27/64"
+   "maximum": "2/5",
+   "minimum": "12/65",
+   "most_probable": "27/65"
   },
   "meaning": "Masa emp\u00edrica de que cada per\u00edodo se parezca m\u00e1s a cada escenario, seg\u00fan el conductor declarado. Retrospectiva precuencial: se revoca si los contrastes prospectivos la descalibran. No es bienestar.",
-  "outcomes": 61,
+  "outcomes": 62,
   "refusals": [],
   "tie": "most_probable"
  }

@@ -506,7 +506,7 @@
         "id": "d_law",
         "basis": "decision",
         "statement": "Ley de probabilidad: un tercio para cada afluencia de dos años (mínima, más probable y máxima), el candidato calibrado de AM-02 para el primer año.",
-        "uncertainty": "Para el primer año AM-02 la admite sobre los últimos 30 años de afluencia de Powell (twin/history/powell_law.py; con el registro completo desde 1964 admitiría 11/64, 27/64 y 13/32) y la calibró con 13 octubres de estudios; para el segundo año no está contrastada y los estudios mínimo y máximo encadenan dos años extremos. La PVS es condicional a esta ley; el rango bajo toda ley se informa junto a ella.",
+        "uncertainty": "Para el primer año AM-02 la admite sobre los últimos 30 años de afluencia de Powell (twin/history/powell_law.py; con el registro completo desde 1964 admitiría 12/65, 27/65 y 2/5) y la calibró con 13 octubres de estudios; para el segundo año no está contrastada y los estudios mínimo y máximo encadenan dos años extremos. La PVS es condicional a esta ley; el rango bajo toda ley se informa junto a ella.",
         "spans": [],
         "premises": [
           "min_path",
@@ -1730,7 +1730,7 @@
         "value": {
           "id": "InflowLaw",
           "kind": "PROBABILITY",
-          "statement": "Un tercio para cada afluencia de dos años: ley admitida por AM-02 para el primer año sobre los últimos 30 años de afluencia de Powell (1995-2024); no contrastada para el segundo. La PVS es condicional a esta ley.",
+          "statement": "Un tercio para cada afluencia de dos años: ley admitida por AM-02 para el primer año sobre los últimos 30 años de afluencia de Powell (1996-2025); no contrastada para el segundo. La PVS es condicional a esta ley.",
           "provenance": "Claim d_law; twin/history/powell_law.py; twin/history/empirical_law.py --driver inflow"
         },
         "claim_ids": [

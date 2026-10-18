@@ -54,7 +54,7 @@ class DriverLawTests(unittest.TestCase):
         self.assertEqual(json.loads(json.dumps(result, sort_keys=True)), saved)
         self.assertEqual(result['whole_record']['anchors'], {'minimum': '4070000', 'most_probable': '7800000', 'maximum': '15099000'})
         self.assertEqual((result['last_30_years']['law'], result['last_30_years']['admitted']), ({'minimum': '1/3', 'most_probable': '1/3', 'maximum': '1/3'}, True))
-        self.assertEqual((result['whole_record']['law'], result['whole_record']['outcomes']), ({'minimum': '11/64', 'most_probable': '27/64', 'maximum': '13/32'}, 61))
+        self.assertEqual((result['whole_record']['law'], result['whole_record']['outcomes']), ({'minimum': '12/65', 'most_probable': '27/65', 'maximum': '2/5'}, 62))
 
     def test_http_endpoint(self):
         with tempfile.TemporaryDirectory() as temp:

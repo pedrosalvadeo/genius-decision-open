@@ -2,7 +2,8 @@
 
 The driver for winter health-supply twins: the national weighted percentage of
 outpatient visits for influenza-like illness (wILI), one value per week. A season runs
-from epidemiological week 40 to week 39 of the next year; its value is the weekly peak.
+from epidemiological week 40 to week 20 of the next year (October to May, the window
+ILINet reported every year since 1997); its value is the weekly peak in that window.
 Seasons missing weeks are left out and reported. Deterministic, no gap filling.
 
 Run (needs network):
@@ -51,6 +52,8 @@ def main(argv=None):
     for row in rows:
         year, week = divmod(int(row['epiweek']), 100)
         season = year if week >= 40 else year - 1
+        if 20 < week < 40:
+            continue
         if row.get('wili') is not None:
             by_season.setdefault(season, []).append((int(row['epiweek']), Fraction(str(row['wili']))))
     out = Path(args.out)
@@ -61,13 +64,13 @@ def main(argv=None):
         writer.writerow(['season', 'weeks', 'peak_wili', 'peak_epiweek'])
         for season in range(args.first_season, args.last_season + 1):
             found = by_season.get(season, [])
-            if len(found) < 52:
+            if len(found) < 33:
                 short[season] = len(found)
                 continue
             week, peak = max(found, key=lambda pair: (pair[1], -pair[0]))
             writer.writerow([f'{season}/{season + 1}', len(found), f'{float(peak):.5f}'.rstrip('0').rstrip('.'), week])
     meta = dict(source='CDC ILINet national weighted ILI (%), via Delphi Epidata fluview', url=url, response_sha256=digest,
-                method='Weekly peak of wILI over each season (epiweek 40 to 39)', incomplete_seasons=short)
+                method='Weekly peak of wILI over each season (epiweek 40 to 20)', incomplete_seasons=short)
     out.with_suffix('.json').write_text(json.dumps(meta, indent=1) + '\n')
     print(out.read_text())
     print(json.dumps(meta), file=sys.stderr)
