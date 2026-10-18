@@ -23,7 +23,12 @@ class ColoradoBasinFederationTests(unittest.TestCase):
         self.assertEqual(set(variants), {('keep_ban',), ('resume_may',), ('resume_if_70',)})
         # Resuming in May waters 10 points; half of 5.67906 kaf per point leaves Powell.
         self.assertEqual(variants[('resume_may',)]['coupled_totals']['west_slope_diversion'],
-                         {'dry': '283953/10000', 'normal': '283953/10000', 'wet': '283953/10000'})
+                         dict.fromkeys(['dry', 'normal', 'wet', 'powell_drier', 'powell_wetter'], '283953/10000'))
+        # Resuming above 70 % waters in Denver's normal year but not its dry one, so the misaligned year
+        # (Denver normal, Powell minimum, AM-02.1) diverts water from a Powell that is already at its minimum.
+        totals = variants[('resume_if_70',)]['coupled_totals']['west_slope_diversion']
+        self.assertEqual((totals['dry'], totals['powell_drier']), ('0/1', '851859/50000'))
+        self.assertEqual(self.result['law'], {'dry': '3/35', 'normal': '12/35', 'wet': '4/35', 'powell_drier': '9/35', 'powell_wetter': '1/5'})
         self.assertEqual(variants[('keep_ban',)]['coupled_totals']['west_slope_diversion']['dry'], '0/1')
 
     def test_the_same_catalog_function_is_compared_across_twins(self):
@@ -62,8 +67,8 @@ class ColoradoBasinFederationTests(unittest.TestCase):
 
     def test_invalid_alignment_and_cycles_are_rejected(self):
         bad = deepcopy(self.spec)
-        bad['scenarios'][1]['members']['mead'] = 'minimum'
-        with self.assertRaises(ValueError):
+        bad['scenarios'][1]['members'] = dict(bad['scenarios'][0]['members'])
+        with self.assertRaisesRegex(ValueError, 'same scenario of every member'):
             federation.evaluate(bad)
         bad = deepcopy(self.spec)
         bad['law'] = {'dry': '1/2', 'normal': '1/2', 'wet': '1/2'}

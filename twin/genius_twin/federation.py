@@ -67,11 +67,11 @@ def validate(spec, models):
         for mid, sid in scenario["members"].items():
             if sid not in {s["id"] for s in models[mid]["scenarios"]}:
                 raise ValueError(f"unknown scenario {sid} of {mid}")
-    for mid in members:
-        chosen = [s["members"][mid] for s in spec["scenarios"]]
-        if len(set(chosen)) != len(chosen):
-            # Two joint scenarios with one member scenario would repeat a complete event word.
-            raise ValueError("joint scenarios must map to distinct scenarios of each member")
+    combos = [tuple(sorted(s["members"].items())) for s in spec["scenarios"]]
+    if len(set(combos)) != len(combos):
+        raise ValueError("two joint scenarios name the same scenario of every member")
+    # Joint scenarios may share a member scenario (AM-02.1 cells off the diagonal): the member
+    # then sees one realization, evaluated once with their summed mass (_merge_identical).
     ids = [s["id"] for s in spec["scenarios"]]
     if len(set(ids)) != len(ids):
         raise ValueError("duplicate joint scenario")
@@ -105,6 +105,30 @@ def _member_model(model, spec, mid):
     return out
 
 
+def _merge_identical(model):
+    """Joint scenarios with the same complete event word are one realization for this member:
+    keep the first, give it their summed mass, and map every joint scenario to the kept one."""
+    kept, key = {}, {}
+    for scenario in model["scenarios"]:
+        key[scenario["id"]] = kept.setdefault(json.dumps(scenario["events"], sort_keys=True), scenario["id"])
+    if len(kept) == len(model["scenarios"]):
+        return model, key
+    out = deepcopy(model)
+    ids = set(kept.values())
+    out["scenarios"] = [s for s in out["scenarios"] if s["id"] in ids]
+    if model["law"] is not None:
+        mass = {s["id"]: Fraction(0) for s in out["scenarios"]}
+        for sid, value in model["law"].items():
+            mass[key[sid]] += Fraction(value)
+        out["law"] = {sid: q(v) for sid, v in mass.items()}
+    return out, key
+
+
+def _evaluated(model):
+    merged, key = _merge_identical(model)
+    return registry.evaluate(merged)["canonical_results"], key
+
+
 def _coupled(model, couplings, flows):
     """Add each coupling's step increments, lagged and scaled, to the target stock's events."""
     out = deepcopy(model)
@@ -134,7 +158,7 @@ def evaluate(spec):
     results, variants = {}, {}
     for mid in members:
         if mid not in targets:
-            results[mid] = {(): registry.evaluate(renamed[mid])["canonical_results"]}
+            results[mid] = {(): _evaluated(renamed[mid])}
     for mid in sorted(targets):
         incoming = [c for c in spec["couplings"] if c["target"]["member"] == mid]
         sources = sorted({c["source"]["member"] for c in incoming})
@@ -144,10 +168,11 @@ def evaluate(spec):
             flows = {}
             for c in incoming:
                 src = c["source"]["member"]
-                traces = results[src][()]["policies"][chosen[src]]["trajectories"]
-                flows[c["id"]] = {sid: interface_flows(renamed[src], traces[sid]["daily"])[c["source"]["interface"]] for sid in joint_ids}
+                res, key = results[src][()]
+                traces = res["policies"][chosen[src]]["trajectories"]
+                flows[c["id"]] = {sid: interface_flows(renamed[src], traces[key[sid]]["daily"])[c["source"]["interface"]] for sid in joint_ids}
             model = _coupled(renamed[mid], incoming, flows)
-            results[mid][combo] = registry.evaluate(model)["canonical_results"]
+            results[mid][combo] = _evaluated(model)
             variants[mid][combo] = {"sources": chosen, "coupled_totals": {c["id"]: {sid: q(flows[c["id"]][sid][-1] * Fraction(c["factor"]))
                                     for sid in joint_ids} for c in incoming}}
     def member_result(mid, joint):
@@ -166,15 +191,15 @@ def evaluate(spec):
         for sid in joint_ids:
             life = {}
             for mid in members:
-                res = member_result(mid, joint)
-                row = res["policies"][joint[mid]]["by_scenario"][sid]
+                res, key = member_result(mid, joint)
+                row = res["policies"][joint[mid]]["by_scenario"][key[sid]]
                 life[mid] = row["task_status"] if renamed[mid]["task"]["kind"] == "life_conditions" else None
-                daily = res["policies"][joint[mid]]["trajectories"][sid]["daily"]
+                daily = res["policies"][joint[mid]]["trajectories"][key[sid]]["daily"]
                 for w in renamed[mid]["welfare"]:
                     sign = 1 if w["direction"] == "higher" else -1
                     for t, state in enumerate(daily):
                         coords[("welfare", carrier_id(mid, w["carrier"]), mid, w["dimension"], sid, t)] = sign * Fraction(state["stocks"][w["stock"]])
-                for f in res["policies"][joint[mid]]["functional"]["by_scenario"][sid]:
+                for f in res["policies"][joint[mid]]["functional"]["by_scenario"][key[sid]]:
                     coords[("function", mid, f["function"], sid)] = Fraction(f["terminal"])
             statuses = [v for v in life.values() if v is not None]
             # A failure in any member fails the joint life condition; otherwise an undecided one leaves it undecided.
@@ -237,7 +262,7 @@ def evaluate(spec):
         del row["_coords"]
     member_ledgers = {}
     for mid in members:
-        variant = next(iter(results[mid].values()))
+        variant = next(iter(results[mid].values()))[0]
         member_ledgers[mid] = {m["module"]: m["status"] for m in variant["modules"]["modules"]}
     return {
         "format": "genius-federation-result/1", "name": spec["name"],

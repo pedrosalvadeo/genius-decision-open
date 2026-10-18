@@ -210,6 +210,12 @@ class AgentTwinTests(unittest.TestCase):
         self.assertEqual(self.rpc('twin_federation',dict(federation_id='missing')).json['result']['structuredContent']['error']['http_status'],404)
         law=self.call('twin_driver_law',dict(series=[dict(period=str(y),value=str(v)) for y,v in enumerate([3,5,9,4,6],2020)],anchors=dict(low='4',high='8')))
         self.assertEqual((law['format'],law['admitted'],law['followed']),('genius-driver-law/1',False,dict(low=3,high=2)))
+        series=lambda values:[dict(period=str(y),value=str(v)) for y,v in enumerate(values,2020)]
+        joint=self.call('twin_joint_driver_law',dict(drivers=[dict(name='a',series=series([0,1,0,1]),anchors=dict(low='0',high='1')),
+            dict(name='b',series=series([0,0,1,1]),anchors=dict(low='0',high='1'))],
+            scenarios=dict(same=dict(cells=[['low','low'],['high','high']],representative=['low','low']),
+                           different=dict(cells=[['low','high'],['high','low']],representative=['low','high']))))
+        self.assertEqual((joint['format'],joint['admitted'],joint['followed']),('genius-joint-driver-law/1',False,dict(same=2,different=2)))
         cid=self.call('twin_create_case',{'payload':dict(text=case['narrative'],title=case['title'],profile=STOCKFLOW)})['case']['id']
         self.call('twin_observe_system',dict(case_id=cid,payload=dict(base_version=0,observation_revision=0,
             idempotency_key='field-observation',observation=case['observation'])))

@@ -1,9 +1,9 @@
 # Propuesta AM-02.1 — Ley empírica con varios conductores
 
-Estado: `PROPUESTA`, pendiente de la revisión de Pedro.
+Estado: `ACEPTADA`. Pedro la aprobó el 2026-10-18 («Apruebo»).
 - Redactada el 2026-10-18 a pedido de Pedro, que eligió «Sí, prepárala» en la tarjeta «¿Preparo la enmienda de AM-02 para leyes con dos o más factores?».
 - Extiende AM-02 (`PROPOSAL_AM-02.md`) y conserva sus once reparaciones. No modifica S1 ni el kernel.
-- El código existe (`twin/genius_twin/driver_law.py`, `joint_certificate`), pero la API y el MCP no lo sirven, y ningún gemelo usa todavía una ley conjunta.
+- Código: `twin/genius_twin/driver_law.py` (`joint_certificate`), servido en `POST /laws/driver/joint` y en la herramienta MCP `twin_joint_driver_law`. La federación del Colorado ya la usa.
 
 ## Problema
 
@@ -91,7 +91,10 @@ Como la elección cambia, el certificado dice `SELECTION_FRAGILE_UNDER_PARTITION
 
 **3. Hay poca evidencia por escenario.** Los escenarios alineado seco y alineado húmedo tienen 2 y 3 años. El certificado los lista en `low_power`.
 
-**Consecuencia para la federación (hipótesis, todavía sin cálculo).** La federación necesita al menos los dos escenarios desacoplados. Es probable que «Powell más seco que Denver» sea el que más presiona a Lake Mead, pero ningún cálculo del gemelo lo ha mostrado todavía. Rehacer la federación y calcularla queda para después de esta revisión.
+**Consecuencia para la federación (aplicada tras la aprobación).** La federación ahora tiene cinco escenarios: los tres alineados y los dos desacoples, cada uno calculado en su celda representativa, con la ley conjunta admitida.
+- Un gemelo miembro que ve la misma realización en varios escenarios conjuntos (Denver normal aparece en tres) la evalúa una sola vez, con la suma de sus masas.
+- Resultado: con la regla «reanudar el riego al 70 %», Denver riega en su año normal pero no en el seco. En el año desacoplado, Denver normal con Powell mínimo, desvía 17.000 acre-pies de un Powell que ya está en su mínimo, y Powell termina en 4.055 mil acre-pies en vez de 4.072.
+- Las seis rutas conjuntas siguen cumpliendo la condición de vida en los cinco escenarios, la frontera no cambia y la mejor ruta para cada actor tampoco. Como la ley es frágil, ningún orden se apoya sólo en ella.
 
 ## Revisión adversarial separada (2026-10-18)
 
@@ -120,8 +123,8 @@ Una sesión independiente leyó la propuesta, AM-02, el código y el certificado
 - **Gemelos:** un gemelo puede tener escenarios definidos por varios factores, en cualquier dominio. El límite de 8 escenarios obliga a agrupar celdas; los grupos quedan declarados y certificados.
 - **Federaciones:** la ley conjunta reemplaza a los supuestos de alineación que hoy se declaran a mano.
 
-## Al aprobar
+## Hecho al aprobar (2026-10-18)
 
-1. Servir `POST /laws/driver/joint` y la herramienta MCP `twin_joint_driver_law`.
-2. Rehacer la federación del Colorado con los escenarios desacoplados y la ley conjunta admitida.
-3. Cambiar el estado a `ACEPTADA` en `AMENDMENTS.md`.
+1. Se sirve en `POST /laws/driver/joint` y en la herramienta MCP `twin_joint_driver_law`.
+2. La federación del Colorado se rehízo con los escenarios desacoplados y la ley conjunta admitida.
+3. El estado quedó como `ACEPTADA` en `AMENDMENTS.md`.

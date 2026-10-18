@@ -138,8 +138,8 @@ def certificate(series, anchors, tie=None, confidence=Fraction(95, 100), driver=
                  "Retrospectiva precuencial: se revoca si los contrastes prospectivos la descalibran. No es bienestar."))
 
 
-# Proposed amendment AM-02.1 (GENIUS_PROGRAM/theory/PROPOSAL_AM-02.1.md), pending Pedro's review:
-# a law over scenarios defined by two or three drivers at once. Not served by the API or MCP.
+# Amendment AM-02.1 (GENIUS_PROGRAM/theory/PROPOSAL_AM-02.1.md), approved by Pedro on 2026-10-18:
+# a law over scenarios defined by two or three drivers at once. Served at POST /laws/driver/joint.
 JOINT_FORMAT = "genius-joint-driver-law/1"
 MAX_DRIVERS = 3
 
@@ -250,7 +250,7 @@ def joint_certificate(drivers, scenarios, confidence=Fraction(95, 100), window=W
     law = None if chosen is None else forecasts[chosen][-1]
     table = {" × ".join(cell): sum(c == cell for c in cells) for cell in product(*categories)}
     return dict(
-        format=JOINT_FORMAT, amendment="AM-02.1 (PROPOSED, NOT ADMITTED UNTIL REVIEWED)", drivers=[
+        format=JOINT_FORMAT, amendment="AM-02.1", drivers=[
             dict(name=n, anchors={c: str(v) for c, v in a.items()}, tie=t) for n, a, t in zip(names, anchors, ties)],
         scenarios={sid: [list(cell) for cell, s in cell_of.items() if s == sid] for sid in sids},
         representatives=representative, window=window, periods_offered=offered, periods_without_every_driver=dropped, outcomes=len(common), joint_table=table,

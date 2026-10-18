@@ -57,6 +57,8 @@ de declaración directa siguiente sigue disponible.
    ruta conjunta para cada actor.
    `twin_driver_law` saca una ley de escenarios empírica (AM-02) para cualquier dominio
    desde la historia de un conductor exógeno: un valor por período y el ancla de cada escenario.
+   `twin_joint_driver_law` hace lo mismo con 2 o 3 conductores a la vez (AM-02.1): los
+   escenarios cubren todas las combinaciones de categorías, fijadas antes de mirar el registro.
 8. `twin_delete_case`: `case_id`, `base_version`, `confirm: true`.
    `delete_agent_space` con `confirm: true` elimina también los expedientes
    del gemelo y revoca la cuenta. Exportar antes cuando se necesite conservarlos.
