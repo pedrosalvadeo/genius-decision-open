@@ -16,9 +16,10 @@ route replaces it only if the kernel's per-carrier comparison (by_actor) no
 longer counts the champion among that carrier's best. "dominance": a new route
 replaces an elite only by strictly dominating it in the full product order.
 
-Every verdict is kept as a row: the route, its per-scenario results and its
-place in the batch order. Those rows are the training data for a proposer that
-learns where better routes are.
+Every verdict is kept as a row: the route, its per-scenario results (life
+condition, each carrier's welfare at every step, each function's terminal value)
+and its place in the batch order. Those rows train the learned proposer
+(route_proposer), which only chooses which variations the kernel evaluates.
 """
 from copy import deepcopy
 import hashlib
@@ -29,7 +30,7 @@ from fractions import Fraction
 from .stockflow import validate_model
 
 FORMAT = "genius-route-search/1"
-ROWS = "genius-route-verdicts/1"
+ROWS = "genius-route-verdicts/2"
 MAX_ROUTES = 6
 
 
@@ -93,7 +94,13 @@ def _rows(model, batch, ids, canonical, origin):
                      "strictly_dominated_by": sorted(l for l, r in strict if r == pid),
                      "pvs": policy["pvs"]["value"], "cag_robust": policy["cag"]["robust"],
                      "by_scenario": {sid: {"task_status": row["task_status"],
-                                           "wellbeing_worst": {f"{w['carrier']}.{w['dimension']}": w["worst"] for w in row["wellbeing"]}}
+                                           "wellbeing_worst": {f"{w['carrier']}.{w['dimension']}": w["worst"] for w in row["wellbeing"]},
+                                           "wellbeing_final": {f"{w['carrier']}.{w['dimension']}": w["final"] for w in row["wellbeing"]},
+                                           "functions_terminal": {f["function"]: f["terminal"]
+                                                                  for f in policy["functional"]["by_scenario"].get(sid, [])},
+                                           "welfare_path": {f"{w['carrier']}.{w['dimension']}":
+                                                            [state["stocks"][w["stock"]] for state in policy["trajectories"][sid]["daily"]]
+                                                            for w in model["welfare"]}}
                                      for sid, row in policy["by_scenario"].items()}})
     return rows
 
@@ -125,11 +132,44 @@ def _champions(canonical, ids, champions, children):
     return changes, ties
 
 
-def search(model, evaluate_model, batches=10, elites=3, seed=0, goal="per_carrier"):
-    """Batches of elites plus new candidates, judged by the kernel (see the module docstring for goals)."""
+def _variations(model, elite, pool, routes, rng, values, seen, limit):
+    """Up to `limit` new valid variations of pool routes, each with its parent, not yet named."""
+    out, tries = [], 0
+    while len(out) < limit and tries < 20 * limit:
+        tries += 1
+        parent = routes[rng.choice(pool)]
+        child = mutate(parent, model, rng, values)
+        key = _key(child)
+        if key in seen:
+            continue
+        child["id"], child["label"] = "candidate", "candidate"
+        trial = deepcopy(model)
+        trial["policies"] = [routes[pid] for pid in elite] + [child]
+        try:
+            validate_model(trial)
+        except ValueError:
+            continue
+        seen.add(key)  # a variation the proposer passes over is not drawn again
+        out.append((child, parent["id"]))
+    return out
+
+
+def search(model, evaluate_model, batches=10, elites=3, seed=0, goal="per_carrier", proposer="random",
+           candidates_per_batch=40, training_rows=()):
+    """Batches of elites plus new candidates, judged by the kernel (see the module docstring for goals).
+
+    proposer "random" sends random variations to the kernel; "learned" draws
+    candidates_per_batch variations and lets a network trained on the verdict
+    rows so far (plus training_rows from earlier searches of the same model)
+    choose which ones the kernel evaluates (see route_proposer).
+    """
     validate_model(model)
     if goal not in ("per_carrier", "dominance"):
         raise ValueError("goal is per_carrier or dominance")
+    if proposer not in ("random", "learned"):
+        raise ValueError("proposer is random or learned")
+    if proposer == "learned" and goal != "per_carrier":
+        raise ValueError("the learned proposer serves the per_carrier goal")
     if not 1 <= elites < MAX_ROUTES:
         raise ValueError(f"elites must leave room for candidates (1 to {MAX_ROUTES - 1})")
     rng = random.Random(seed)
@@ -153,9 +193,32 @@ def search(model, evaluate_model, batches=10, elites=3, seed=0, goal="per_carrie
     seen = {_key(p) for p in model["policies"]}
     improvements, history, made = [], [], 0
     pool = list(elite)  # every route left undominated in some batch may be a parent
+    digest = hashlib.sha256(json.dumps(model, sort_keys=True).encode()).hexdigest()
+    learner, learning = None, []
+    if proposer == "learned":
+        from .route_proposer import LearnedProposer
+        prior = [r for r in training_rows if r.get("model_sha256") == digest]
+        learner = LearnedProposer(model, values, seed=seed, training_rows=prior)
     for b in range(1, batches + 1):
-        children, tries = [], 0
-        while len(elite) + len(children) < MAX_ROUTES and tries < 200:
+        if learner is not None:
+            fit = learner.train(rows)
+            drawn = _variations(model, elite, pool, routes, rng, values, seen, candidates_per_batch)
+            latest = {r["route"]: learner.encoding.target(r) for r in rows}
+            picked, notes = learner.choose([c for c, _ in drawn], champions, latest, MAX_ROUTES - len(elite))
+            children = []
+            for i in picked:
+                child, parent = drawn[i]
+                made += 1
+                child["id"], child["label"] = f"r{made}", f"Variante {made} de {parent}"
+                children.append(child)
+                origin[child["id"]] = f"VARIATION_OF:{parent}"
+                routes[child["id"]] = child
+            learning.append({"batch": b, **fit, "drawn": len(drawn),
+                             "chosen": [{"route": c["id"], **n} for c, n in zip(children, notes)]})
+        else:
+            children = []
+        tries = 0
+        while learner is None and len(elite) + len(children) < MAX_ROUTES and tries < 200:
             tries += 1
             parent = routes[rng.choice(pool)]
             child = mutate(parent, model, rng, values)
@@ -208,9 +271,10 @@ def search(model, evaluate_model, batches=10, elites=3, seed=0, goal="per_carrie
         winners = [i["route"] for i in improvements if i["batch"] == b]
         if frontier:
             elite = (winners + [pid for pid in frontier if pid not in winners])[:elites]
-    digest = hashlib.sha256(json.dumps(model, sort_keys=True).encode()).hexdigest()
+    for row in rows:
+        row["model_sha256"] = digest
     return {"format": FORMAT, "model_sha256": digest, "seed": seed, "batches": history,
-            "goal": goal, "declared_frontier": start, "declared_champions": declared_champions, "champions": champions,
+            "goal": goal, "proposer": proposer, "learning": learning, "declared_frontier": start, "declared_champions": declared_champions, "champions": champions,
             "elite": elite, "elite_routes": [routes[pid] for pid in elite],
             "improvements": improvements, "undominated_pool": pool, "rows": rows,
             "meaning": "Routes proposed by variation and judged by the kernel batch by batch. Champions are the best route found "
