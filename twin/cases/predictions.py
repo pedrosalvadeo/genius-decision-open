@@ -11,6 +11,8 @@ live     (module 0) restarts the frozen model from a fully observed step and
          that restart.
 population founds <case>/population.json: the living population of routes
          (genius_twin.population), generation 0 from the model's step 0.
+evolve   adds one generation on the population's current present, with no new
+         observation (run daily by the population node).
 
 Run from the repository root with PYTHONPATH=twin:kernel:
   python twin/cases/predictions.py freeze denver_water_2026
@@ -221,6 +223,41 @@ def live(case, reading_date, stocks, capabilities, observed_at, source):
     return record
 
 
+def evolve_population(case, batches=6, state=None):
+    """One more generation of the case's population on its current present (no new observation).
+
+    state: a directory holding <case>/population.json from earlier evolutions
+    (the population node's branch). It is used when it grew from the same model
+    and is not behind the committed population's last observed step; the result
+    is written there, so the committed population changes only by observation.
+    """
+    path = CASES / case / POPULATION
+    if not path.exists():
+        raise SystemExit(f'{case}: found the population first')
+    alive = json.loads(path.read_text())
+    model = _model(case, FROZEN_WORLD if (CASES / case / FROZEN_WORLD).exists() else 'world.json')
+    if alive['base_model_sha256'] != population._digest(model):
+        raise SystemExit(f'{case}: the population was founded on another model')
+    if state is not None:
+        kept = Path(state) / case / POPULATION
+        if kept.exists():
+            grown = json.loads(kept.read_text())
+            if (grown['base_model_sha256'] == alive['base_model_sha256']
+                    and grown['generations'][-1]['step'] >= alive['generations'][-1]['step']):
+                alive = grown
+        path = kept
+        path.parent.mkdir(parents=True, exist_ok=True)
+    step = alive['generations'][-1]['step']
+    present = model
+    if step:
+        log = json.loads((CASES / case / 'living.json').read_text())
+        restart = [row for row in log['restarts'] if row['step'] == step][-1]
+        present = living.reanchor(model, step, restart['observed_stocks'], restart['observed_capabilities'])
+    alive = population.evolve(alive, present, registry.evaluate, batches=batches)
+    path.write_text(json.dumps(alive, ensure_ascii=False, indent=1) + '\n')
+    return alive['generations'][-1]
+
+
 def found_population(case, batches=6):
     """Generation 0 of the case's living population of routes, from the frozen world when there is one."""
     model = _model(case, FROZEN_WORLD if (CASES / case / FROZEN_WORLD).exists() else 'world.json')
@@ -252,8 +289,15 @@ def main(argv=None):
     founding = commands.add_parser('population')
     founding.add_argument('case', choices=sorted(p.name for p in CASES.iterdir() if (p / 'world.json').exists()))
     founding.add_argument('--batches', type=int, default=6)
+    evolving = commands.add_parser('evolve')
+    evolving.add_argument('case', choices=sorted(p.name for p in CASES.iterdir() if (p / POPULATION).exists()))
+    evolving.add_argument('--batches', type=int, default=6)
+    evolving.add_argument('--state', help='Directory with earlier evolutions; the result is written there')
     args = parser.parse_args(argv)
-    if args.command == 'population':
+    if args.command == 'evolve':
+        json.dump(evolve_population(args.case, args.batches, args.state), sys.stdout, ensure_ascii=False, indent=1)
+        print()
+    elif args.command == 'population':
         json.dump(found_population(args.case, args.batches), sys.stdout, ensure_ascii=False, indent=1)
         print()
     elif args.command == 'freeze':

@@ -13,7 +13,9 @@ The population is the artificial-life cycle the other modules already allow:
   condition in some scenario while another route keeps it, or when its niches
   are taken by better routes (displaced);
 - heredity: every kernel verdict is kept and trains the learned proposer of
-  the next generation, shifted to the new present.
+  the next generation, shifted to the new present;
+- between observations (evolve) variation and selection keep running on the
+  same present, so the population improves and the network gathers verdicts.
 
 Fixed and outside evolution: the kernel, the ideal of wellbeing and care for
 life, and the declared world (actions, scenarios, law, conditions). Nothing
@@ -69,7 +71,7 @@ def _inherit(rows, step, digest):
     return out
 
 
-def _generation(population, model, step, label, evaluate_model, batches, seed):
+def _generation(population, model, step, label, evaluate_model, batches, seed, kind="OBSERVED_PRESENT"):
     validate_model(model)
     members = population["members"]
     alive = [rid for rid, m in members.items() if m["died_generation"] is None]
@@ -138,7 +140,7 @@ def _generation(population, model, step, label, evaluate_model, batches, seed):
                                      "generation": g, "step": step, "policy_original": original})
     population["memory"] = population["memory"][-MEMORY_ROWS:]
     population["generations"].append({
-        "generation": g, "step": step, "observation": label, "model_sha256": digest,
+        "generation": g, "kind": kind, "step": step, "observation": label, "model_sha256": digest,
         "niches": {carrier: names[rid] for carrier, rid in sorted(champions.items())},
         "life_condition_kept_by": sorted(names[rid] for rid in set(champions.values()) if _keeps_life(result["rows"], rid)),
         "born": sorted(r for r in living_ids if members[r]["born_generation"] == g),
@@ -178,6 +180,20 @@ def advance(population, living_model, step, label, evaluate_model, batches=6, se
     if population["generations"] and step <= population["generations"][-1]["step"]:
         raise ValueError("a generation needs a later observation than the last one")
     return _generation(population, living_model, step, label, evaluate_model, batches, seed)
+
+
+def evolve(population, present_model, evaluate_model, batches=6, seed=0, label="SAME_PRESENT"):
+    """One more generation on the present of the last one, with no new observation.
+
+    Variation and selection keep working between observations; only an observed
+    restart (advance) can bring new evidence from reality.
+    """
+    if not population["generations"]:
+        raise ValueError("found the population first")
+    step = population["generations"][-1]["step"]
+    if present_model["horizon"] != population["horizon"] - step:
+        raise ValueError("the present model must be the base model restarted at the last generation's step")
+    return _generation(population, present_model, step, label, evaluate_model, batches, seed, kind="SAME_PRESENT")
 
 
 def alive(population):
