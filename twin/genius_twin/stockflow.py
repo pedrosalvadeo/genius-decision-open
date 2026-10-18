@@ -16,6 +16,9 @@ PROFILE = "STOCK_FLOW_FINITE_V1"
 ROOT_FIELDS = "profile name horizon step_unit stocks carriers capabilities initial_capabilities actions policies scenarios law welfare task require_all_scenarios selection assumptions functions subsystems interfaces".split()
 ID_PATTERN = r"^[A-Za-z][A-Za-z0-9_.-]*$"
 Q_PATTERN = r"^(0|[1-9][0-9]*)/[1-9][0-9]*$"
+# Policies x scenarios x states. Measured on the blood case scaled to 270 cells: 10 s,
+# 14 MB packed output (envelope.py) under production's 16 MB, 136 MB in the web process.
+OCCURRENCE_LIMIT = 256
 ASSUMPTION_KINDS = ["MODEL", "INITIALIZATION", "INFORMATION", "SEMANTIC", "CALIBRATION", "NORMATIVE", "PROBABILITY", "SYNTHETIC"]
 
 
@@ -101,7 +104,7 @@ def model_schema():
     schema["properties"]["capabilities"]["items"]["properties"]["holds_when"] = arr(stock_pred, 1, 6)
     schema.update({"$schema": "https://json-schema.org/draft/2020-12/schema", "title": PROFILE,
         "x-semantic-rules": ["Reduced nonnegative rationals, numerator/denominator at most 12 digits",
-        "Unique IDs and valid references", "P*S*(H+1)<=128; generated signatures<=16",
+        "Unique IDs and valid references", f"P*S*(H+1)<={OCCURRENCE_LIMIT}; generated signatures<=16",
         "Per-unit deposits<=withdrawals; no implicit conversion", "Complete renewable availability per event",
         "Unique complete event words; law null or exact normalized scenario map",
         "Policies read only prior state; fixed carrier existence; no implicit mortality model"]})
@@ -224,8 +227,8 @@ def validate_model(model):
             if incoming > outgoing:
                 raise ValueError(f"action {action['id']}: deposits exceed withdrawals for unit {unit}")
     H = model["horizon"]
-    if len(model["policies"]) * len(model["scenarios"]) * (H + 1) > 128:
-        raise ValueError("occurrence limit P*S*(H+1)<=128 exceeded")
+    if len(model["policies"]) * len(model["scenarios"]) * (H + 1) > OCCURRENCE_LIMIT:
+        raise ValueError(f"occurrence limit P*S*(H+1)<={OCCURRENCE_LIMIT} exceeded")
     held = {c["id"] for c in caps.values() if "holds_when" in c}
     for cid in held:
         refs([p["stock"] for p in caps[cid]["holds_when"]], stocks, "capability.holds_when")

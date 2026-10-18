@@ -111,7 +111,7 @@ def rows(key, lake):
 
 
 # Monthly states in WY2027, quarterly in WY2028: 2 routes x 3 inflows x 17 states fit the
-# 128-occurrence limit, and the evaluation artifact fits production's output limit.
+# occurrence limit, and the evaluation artifact fits production's output limit.
 STATES = list(range(13)) + [15, 18, 21, 24]  # indices into MONTHS: Sep 2026..Sep 2027, Dec 2027, Mar, Jun, Sep 2028
 H = len(STATES) - 1
 MAY = 8  # step 8 = end of May 2027; step 12 = Sep 2027; steps 13-16 = end of each WY2028 quarter

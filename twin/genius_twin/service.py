@@ -13,6 +13,7 @@ import unicodedata
 
 from .store import Store, dumps, identifier, now, sha
 from . import registry
+from .envelope import pack, unpack
 
 
 class ServiceError(ValueError):
@@ -88,7 +89,7 @@ class TwinService:
             raise ServiceError("model_outside_profile", "Modelo fuera del perfil admitido.", details=str(exc)) from exc
 
     def capabilities(self):
-        return {"format": "genius-twin-capabilities/0.2.0", "profile": registry.D1,
+        return {"format": "genius-twin-capabilities/0.2.0", "profile": registry.STOCKFLOW,
                 "profiles": registry.profiles(), "examples": registry.examples(),
                 "scope": "Declared finite models; calculation under assumptions, empirical validity not assessed",
                 "transport": "HTTP JSON; access boundary belongs to the embedding", "mcp": self.execution_context.get('mcp', False), "external_acquisition": False,
@@ -109,7 +110,6 @@ class TwinService:
                     "operations": ["transfer", "connect", "disconnect", "use_action"],
                     "generation": "exhaustive declared combinations; shared base, scenarios and criteria",
                     "acceptance_required": True, "physical_actions": False},
-                "observation_variables": {"water_in_tray_liters": "L", "minutes_a": "min", "minutes_b": "min"},
                 "states": {"job": ["running", "completed", "failed", "interrupted"],
                            "admission": ["DRAFT_NOT_ADMITTED", "SYNTHETIC_ONLY", "DECLARED_MODEL_ONLY", "MODEL_REVIEW_REQUIRED"]}}
 
@@ -119,7 +119,10 @@ class TwinService:
         title = text(payload.get("title", "Nueva decisión"), "title", 160)
         requested = payload.get("profile")
         require(requested is None or requested in registry.PROFILES, "unsupported_profile", "Perfil no admitido.", 422)
-        matches = requested == registry.D1 or (requested is None and any(token in normalized(narrative) for token in ("semillero", "huerta", "plantas", "planta")))
+        # Any domain: a story is never routed by its words. The synthetic seedling
+        # template D1 is used only when asked for by name; every other case starts
+        # as a general stock-flow model to declare.
+        matches = requested == registry.D1
         requested = registry.D1 if matches else registry.STOCKFLOW
         obligations = []
         if not matches:
@@ -514,7 +517,7 @@ class TwinService:
             if "world_construction" in version["metadata"]:
                 envelope["world_construction"] = deepcopy(version["metadata"]["world_construction"])
             with self.store.transaction() as conn:
-                conn.execute("UPDATE jobs SET status='completed',finished_at=?,result_json=? WHERE id=? AND status='running'", (now(), dumps(envelope), jid))
+                conn.execute("UPDATE jobs SET status='completed',finished_at=?,result_json=? WHERE id=? AND status='running'", (now(), dumps(pack(envelope)), jid))
         except Exception as exc:
             error = {"code": exc.code if isinstance(exc, ServiceError) else ("evaluation_timeout" if isinstance(exc, TimeoutError) else "evaluation_failed"),
                      "message": exc.message if isinstance(exc, ServiceError) else "La evaluación no pudo completarse; no se infiere inviabilidad."}
@@ -586,7 +589,7 @@ class TwinService:
                     "invalid_observation_reference", "Política/escenario no pertenece a esta versión.")
             prediction_job = conn.execute("SELECT * FROM jobs WHERE case_id=? AND version=? AND status='completed' ORDER BY created_at DESC LIMIT 1", (cid, base)).fetchone()
             require(prediction_job is not None, "frozen_prediction_required", "Evalúa primero esta versión para contrastar con una predicción congelada.", 422)
-            frozen = json.loads(prediction_job["result_json"])
+            frozen = unpack(json.loads(prediction_job["result_json"]))
             state = frozen["canonical_results"]["policies"][payload["policy_id"]]["trajectories"][payload["scenario_id"]]["daily"][day]
             predicted = Fraction(state["stocks"][variable] if stockflow else state[variable])
             prediction_finished = datetime.fromisoformat(prediction_job["finished_at"])

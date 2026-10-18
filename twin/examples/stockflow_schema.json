@@ -126,6 +126,47 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 2000
+          },
+          "holds_when": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "stock"
+                  ]
+                },
+                "stock": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+                  "maxLength": 64
+                },
+                "op": {
+                  "type": "string",
+                  "enum": [
+                    "ge",
+                    "le"
+                  ]
+                },
+                "value": {
+                  "type": "string",
+                  "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+                  "maxLength": 25,
+                  "x-rational": true
+                }
+              },
+              "required": [
+                "kind",
+                "stock",
+                "op",
+                "value"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 6
           }
         },
         "required": [
@@ -214,6 +255,17 @@
             },
             "minItems": 0,
             "maxItems": 8,
+            "uniqueItems": true
+          },
+          "compose": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+              "maxLength": 64
+            },
+            "minItems": 2,
+            "maxItems": 4,
             "uniqueItems": true
           }
         },
@@ -646,6 +698,225 @@
       },
       "minItems": 1,
       "maxItems": 24
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "serves": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+              "maxLength": 64
+            },
+            "minItems": 0,
+            "maxItems": 6,
+            "uniqueItems": true
+          },
+          "measure": {
+            "type": "string",
+            "enum": [
+              "current",
+              "cumulative"
+            ]
+          },
+          "when": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "stock"
+                      ]
+                    },
+                    "stock": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+                      "maxLength": 64
+                    },
+                    "op": {
+                      "type": "string",
+                      "enum": [
+                        "ge",
+                        "le"
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+                      "maxLength": 25,
+                      "x-rational": true
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "stock",
+                    "op",
+                    "value"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "capability"
+                      ]
+                    },
+                    "capability": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+                      "maxLength": 64
+                    },
+                    "present": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "capability",
+                    "present"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 6
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "water",
+              "food",
+              "energy",
+              "health",
+              "care",
+              "shelter",
+              "livelihood",
+              "education",
+              "mobility",
+              "safety",
+              "infrastructure",
+              "ecosystems"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "serves",
+          "measure",
+          "when"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 8
+    },
+    "subsystems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "stocks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+              "maxLength": 64
+            },
+            "minItems": 1,
+            "maxItems": 6,
+            "uniqueItems": true
+          },
+          "carriers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+              "maxLength": 64
+            },
+            "minItems": 0,
+            "maxItems": 6,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "stocks",
+          "carriers"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 6
+    },
+    "interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "source": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "target": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "source",
+          "target"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 8
     }
   },
   "required": [
@@ -673,7 +944,7 @@
   "x-semantic-rules": [
     "Reduced nonnegative rationals, numerator/denominator at most 12 digits",
     "Unique IDs and valid references",
-    "P*S*(H+1)<=128; generated signatures<=16",
+    "P*S*(H+1)<=256; generated signatures<=16",
     "Per-unit deposits<=withdrawals; no implicit conversion",
     "Complete renewable availability per event",
     "Unique complete event words; law null or exact normalized scenario map",

@@ -18,7 +18,7 @@ Perfiles: `SEMILLERO_14D_SYNTHETIC_V1` conserva D1; `STOCK_FLOW_FINITE_V1` admit
 
 ## Expediente, borrador y propuestas
 
-POST `/cases` con `{text,title?,profile?}` devuelve HTTP 201 y `{case,proposal,obligations,draft}`. Enviar `profile:"STOCK_FLOW_FINITE_V1"` fuerza un borrador general incluso si la prosa menciona plantas. No interpreta parámetros ni ejecuta IA externa. `case.profile` conserva el perfil solicitado desde versión cero. La ausencia de perfil mantiene la compatibilidad D1: si el relato menciona el dominio semillero, propone su plantilla sintética, que aún exige reconocimiento explícito.
+POST `/cases` con `{text,title?,profile?}` devuelve HTTP 201 y `{case,proposal,obligations,draft}`. Sin `profile`, o con `profile:"STOCK_FLOW_FINITE_V1"`, el caso empieza como borrador general en cualquier dominio. No interpreta parámetros ni ejecuta IA externa. `case.profile` conserva el perfil solicitado desde versión cero. La plantilla sintética D1 (semillero) se propone sólo si se pide por nombre con `profile:"SEMILLERO_14D_SYNTHETIC_V1"` y aún exige reconocimiento explícito; desde el 2026-10-18 las palabras del relato nunca eligen el perfil. `GET /capabilities` informa `STOCK_FLOW_FINITE_V1` como perfil por defecto, y las variables observables de D1 están en su entrada de `profiles`.
 
 GET `/cases` devuelve `{cases:[...]}`. GET `/cases/<cid>` devuelve `{case,draft,versions,proposals,jobs,observations}`. `case.current_version:0` significa que todavía no se aceptó un modelo. Una obligación `MODELO_PENDIENTE` explica lo que falta; confirmar una propuesta válida resuelve esa obligación, sin afirmar admisión empírica.
 
@@ -54,7 +54,7 @@ POST `/cases/<cid>/evaluate` con `{version:1}` devuelve `{job,evaluation}`. El r
 
 La identidad de ejecución contiene perfil, hashes de dominio/compilador/registry/runner/kernel y contexto de límites. `execution_key` combina esa identidad con el digest del modelo. Reutilización de completed solo dentro de la misma versión e identidad; una actualización del compilador o límites no devuelve el recibo anterior como si fuera nuevo. Las evaluaciones antiguas siguen disponibles. La identidad del modelo no reemplaza `Result.input_digest`, que sigue referenciando los bytes exactos de FP1.
 
-El sobre `genius-twin-evaluation/0.2.0` conserva `canonical_results`, `native_result`, `native_input_json`, `native_runs`, `verification`, `compilation_manifest`, versión, job e identidades. `rc01_receipt:null` y su estado están afuera de los Result nativos: no se produce un recibo R2 ficticio.
+El sobre `genius-twin-evaluation/0.2.0` conserva `canonical_results`, `native_result`, `native_input_json`, `native_runs`, `verification`, `compilation_manifest`, versión, job e identidades. Para transporte y almacenamiento el sobre se empaqueta sin pérdida (`genius_twin/envelope.py`): cada Result nativo se guarda una vez, como su texto canónico, y al leerlo se reconstruye el sobre idéntico. `rc01_receipt:null` y su estado están afuera de los Result nativos: no se produce un recibo R2 ficticio.
 
 Estados separados:
 

@@ -14,8 +14,9 @@ PROFILES = (D1, STOCKFLOW)
 
 def profiles():
     return [
-        {"id": D1, "label": "Semillero D1", "scope": "SYNTHETIC_FIXED_TEMPLATE",
-         "confirmation": "acknowledge_synthetic", "observations": True},
+        {"id": D1, "label": "Semillero D1", "scope": "SYNTHETIC_FIXED_TEMPLATE", "role": "REGRESSION_EXAMPLE_ONLY_BY_NAME",
+         "confirmation": "acknowledge_synthetic", "observations": True,
+         "observation_variables": {"water_in_tray_liters": "L", "minutes_a": "min", "minutes_b": "min"}},
         {"id": STOCKFLOW, "label": "Existencias y flujos finitos", "scope": "DECLARED_FINITE_MODEL",
          "confirmation": "acknowledge_declared", "observations": True, "system_observations": True,
          "observation_scope": "Source-attributed system graphs; a measured stock is contrasted with the frozen prediction, without automatic calibration"},

@@ -94,6 +94,10 @@ Fuera del agua: `twin/history/flu_seasons.py` cosecha el pico de cada temporada 
 
 Acciones compuestas (cualquier dominio): una acción puede declarar `compose` con 2 a 4 acciones del modelo que se hacen en el mismo paso. `stockflow.expand_actions` completa sus requisitos y cambios de capacidad como unión, y sus retiros y depósitos como suma por existencia; se ejecuta todo o nada. `validate_model` rechaza una composición cuyos flujos no coinciden con sus partes o que compone otra compuesta. El kernel no cambia: sigue viendo una acción por paso.
 
+Tamaño de los mundos (cualquier dominio): el límite de celdas políticas × escenarios × estados pasa de 128 a 256. Lo que lo frenaba no era la matemática sino la salida: el sobre repetía cada Result nativo cinco veces (11,4 MB en el caso de sangre). Ahora `envelope.py` lo empaqueta sin pérdida para transporte y almacenamiento (5,3 MB) y se reconstruye idéntico al leerlo. Medido sobre el caso de sangre ampliado a 270 celdas: 10 s, 14 MB empaquetados (bajo los 16 MB de producción) y 136 MB de memoria en el proceso web. Un mundo que pase el límite y aun así exceda la salida falla de forma explícita; no se trunca ni se infiere inviabilidad.
+
+Perfil por defecto (cualquier dominio): un relato nuevo empieza siempre como modelo general de existencias y flujos. Antes, un relato que nombraba plantas, una huerta o un semillero caía en la plantilla sintética D1, y lo mismo una planta potabilizadora o industrial. D1 queda como ejemplo de regresión, disponible sólo si se pide por nombre.
+
 Primer caso fuera del agua, `twin/cases/us_blood_2026`: reserva de sangre tipo 0 de la Cruz Roja en el invierno 2026/27, con escenarios de gripe, la condición de vida de no bajar de un día de reserva, bienestar de pacientes, Cruz Roja y donantes, y funciones `health` y `safety` del catálogo. Los ocho módulos quedan llenos con el mismo kernel. Seguir igual incumple la condición con gripe grave (PVS 2/3); la campaña y la postergación la cumplen siempre, y la elección entre ellas depende de a quién se le pide el esfuerzo.
 
 ## Módulo IV en el Colorado: por qué no se separan los estados todavía

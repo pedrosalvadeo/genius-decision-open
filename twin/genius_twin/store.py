@@ -9,6 +9,8 @@ from pathlib import Path
 import sqlite3
 import uuid
 
+from .envelope import unpack
+
 
 def now():
     return datetime.now(timezone.utc).isoformat()
@@ -183,7 +185,7 @@ class Store:
         value["error"] = json.loads(error) if error else None
         result = json.loads(raw) if raw else None
         if full:
-            value["evaluation"] = result
+            value["evaluation"] = unpack(result)
         elif result:
             value["canonical_results"] = result.get("canonical_results")
             value["admission"] = result.get("admission")

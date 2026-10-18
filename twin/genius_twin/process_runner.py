@@ -14,6 +14,8 @@ import subprocess
 import sys
 import tempfile
 
+from .envelope import pack, unpack
+
 
 class ProcessEvaluator:
     def __init__(self, timeout=90, memory_mb=384, output_bytes=67108864):
@@ -47,7 +49,7 @@ class ProcessEvaluator:
             if output.tell() > self.output_bytes:
                 raise RuntimeError('Execution artifact exceeds its limit')
             output.seek(0)
-            result = json.load(output)
+            result = unpack(json.load(output))
         if type(result) is not dict or 'canonical_results' not in result or 'native_result' not in result:
             raise RuntimeError('Invalid compiler envelope')
         return result
@@ -77,7 +79,8 @@ def main():
     model = json.loads(sys.stdin.buffer.read(262145))
     from .registry import evaluate
     result = evaluate(model)
-    json.dump(result, sys.stdout, ensure_ascii=False, allow_nan=False, separators=(',', ':'))
+    # Packed: the output limit counts each native Result once.
+    json.dump(pack(result), sys.stdout, ensure_ascii=False, allow_nan=False, separators=(',', ':'))
 
 
 if __name__ == '__main__':
