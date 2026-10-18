@@ -79,6 +79,10 @@ ROUTES = {
         'Accept reviewed model assumptions only within the authority granted by the decision owner. Payload: base_version, idempotency_key, confirmed=true, acknowledge_declared or acknowledge_synthetic=true. Never invent human confirmation. Acceptance does not validate empirical facts or authorize physical action.'),
     'twin_evaluate': ('POST', '/cases/{case_id}/evaluate', 'twins:evaluate', {'case_id': ID, 'version': dict(type='integer', minimum=1)}, ('case_id', 'version'),
         'Evaluate an accepted version through the real bounded engine. Consumes the shared agent job budget even on retry. Returns a frozen job receipt. Preserve verification, unknowns and all model/evidence limits; no empirical validation is implied.'),
+    'twin_evaluate_anytime': ('POST', '/cases/{case_id}/anytime/evaluate', 'twins:evaluate',
+        {'case_id': ID, 'version': dict(type='integer', minimum=1), 'budget_seconds': dict(type='string', maxLength=40),
+         'tie_order': dict(type='array', items=dict(type='string'), maxItems=8)}, ('case_id', 'version', 'budget_seconds'),
+        'AM-05: when the full evaluation does not fit your window, evaluate the scenarios one at a time (most probable first; ties in tie_order, declared before computing, for example worst case first) until budget_seconds (an exact number such as "20") runs out. Each run is kernel-verified. Returns the routes refuted (failed the life condition in an evaluated scenario), each route\'s PVS as an exact interval (unevaluated mass counts as unknown, never guessed), wellbeing, functions and CAG for the evaluated scenarios only, and a selection only if the model allows a unique one and a single route remains unrefuted. Counts as one evaluation job; not stored as a frozen prediction.'),
     'twin_get_job': ('GET', '/jobs/{job_id}', 'twins:read', {'job_id': ID}, ('job_id',), 'Read an own frozen twin job and verification receipt. job.elapsed_seconds is your own measured cost.'),
     'twin_job_freshness': ('GET', '/jobs/{job_id}/freshness', 'twins:read', {'job_id': ID}, ('job_id',),
         'Whether reality was observed again during or after an own job\'s computation, or in a later version. The frozen job never changes; if it is superseded, re-anchor the twin on the new observation and evaluate again.'),
@@ -125,6 +129,8 @@ def execute(name, args, authorization, rest):
                    'text': args['text'], 'structured': {'construction': args['construction']}}
     elif name == 'twin_driver_law':
         payload = {k: args[k] for k in ('series', 'anchors', 'tie', 'driver', 'window') if k in args}
+    elif name == 'twin_evaluate_anytime':
+        payload = {k: args[k] for k in ('version', 'budget_seconds', 'tie_order') if k in args}
     elif name == 'twin_decision_window':
         payload = {'version': args['version'], 'window': args['window']}
     elif name == 'twin_joint_driver_law':

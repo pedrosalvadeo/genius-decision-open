@@ -137,6 +137,7 @@ class ServiceTests(unittest.TestCase):
         again = self.client.post(f"/api/cases/{cid}/observations", json=observation)
         self.assertEqual(again.get_json(), value)
         self.assertEqual(self.client.get(f'/api/jobs/{before["job"]["id"]}').get_json(), before)
+        self.assertEqual(self.client.post(f"/api/cases/{cid}/anytime/evaluate", json={"version": 1, "budget_seconds": 5}).status_code, 422)
         fresh = self.client.get(f'/api/jobs/{before["job"]["id"]}/freshness').get_json()
         self.assertEqual((fresh["status"], fresh["observed_after_computation"]),
                          ("SUPERSEDED_BY_NEWER_OBSERVATION", [value["observation"]["id"]]))

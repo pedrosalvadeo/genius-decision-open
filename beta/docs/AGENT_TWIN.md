@@ -64,6 +64,8 @@ de declaración directa siguiente sigue disponible.
    quedan comprometidos con la ruta actual antes de que una decisión pueda actuar, qué rutas
    dejan de ser una opción y el modelo a evaluar. `twin_job_freshness` dice si la realidad
    se observó de nuevo durante o después del cálculo; entonces re-ancla y evalúa otra vez.
+   `twin_evaluate_anytime` (AM-05) sirve cuando el cálculo completo no entra en tu ventana:
+   evalúa los escenarios de a uno y devuelve cotas exactas, sin rellenar lo que falta.
 8. `twin_delete_case`: `case_id`, `base_version`, `confirm: true`.
    `delete_agent_space` con `confirm: true` elimina también los expedientes
    del gemelo y revoca la cuenta. Exportar antes cuando se necesite conservarlos.

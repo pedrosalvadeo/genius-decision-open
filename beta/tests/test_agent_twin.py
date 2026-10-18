@@ -233,6 +233,10 @@ class AgentTwinTests(unittest.TestCase):
         late=self.call('twin_decision_window',dict(case_id=cid,version=1,window=dict(available_seconds=2*month,step_seconds=month,
             seconds_per_cell=str(month),committed_route='keep_ban')))
         self.assertEqual((late['status'],late['committed_steps'],late['committed_route']),('DOES_NOT_FIT_WINDOW',2,'keep_ban'))
+        anytime=self.call('twin_evaluate_anytime',dict(case_id=cid,version=1,budget_seconds='60'))
+        self.assertEqual((anytime['format'],anytime['status'],anytime['stored']),('genius-anytime-evaluation/1','COMPLETE_BY_SCENARIO',False))
+        self.assertEqual(sorted(anytime['unrefuted']),decision['feasible'])
+        self.assertTrue(all(run['verification_valid'] for run in anytime['runs']))
         observed=self.call('twin_observe',dict(case_id=cid,payload=dict(base_version=1,policy_id='keep_ban',scenario_id='dry',
             day=1,variable='storage',unit='pct_capacity',value='65.5',observed_at='2026-11-15T12:00:00+00:00',
             source='Synthetic test reading; no field data',idempotency_key='field-reading')))['observation']
