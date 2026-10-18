@@ -151,6 +151,17 @@ def make_blueprint(service_factory, name="twin_api"):
         except (ValueError, AttributeError, TypeError) as exc:
             raise ServiceError("invalid_driver_law", str(exc), 400) from exc
 
+    @bp.post("/laws/driver/joint")
+    def joint_driver_law():
+        from fractions import Fraction
+        from .driver_law import WINDOW, joint_certificate
+        body = json_body()
+        fields(body, {"drivers", "scenarios", "window"}, {"drivers", "scenarios"})
+        try:
+            return jsonify(joint_certificate(body["drivers"], body["scenarios"], Fraction(95, 100), body.get("window", WINDOW)))
+        except (ValueError, AttributeError, TypeError, KeyError) as exc:
+            raise ServiceError("invalid_driver_law", str(exc), 400) from exc
+
     @bp.get("/cases")
     def cases():
         return jsonify(service_factory().list_cases())

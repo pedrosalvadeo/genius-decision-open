@@ -2,8 +2,8 @@
  "assumptions": [
   {
    "id": "SharedHydrology",
-   "provenance": "Hipótesis del modelizador. En 2026 ambos tuvieron un año muy seco (caso denver_water_2026, claim dry_runoff_2026; caso lake_mead_2027). Sin estudio de correlación todavía.",
-   "statement": "La misma nieve del alto Colorado gobierna el deshielo de Denver y la afluencia a Powell, así que los escenarios se alinean: seco con mínimo, normal con más probable y húmedo con máximo."
+   "provenance": "Registro 1996-2025: 16 de 30 años alineados y 14 desalineados (twin/history/colorado_joint_law.json, AM-02.1). La versión anterior suponía alineación siempre; el registro la refutó.",
+   "statement": "La nieve de Denver y la afluencia a Powell no siempre coinciden. Hay tres años alineados (seco con mínimo, normal con más probable, húmedo con máximo) y un desacople en cada dirección. Cada desacople se calcula en su celda representativa, un paso fuera de la diagonal con Denver normal; la PVS de un desacople vale sólo para esa representativa."
   },
   {
    "id": "DiversionReplacement",
@@ -12,8 +12,8 @@
   },
   {
    "id": "JointLaw",
-   "provenance": "Casos denver_water_2026 (claim d_law) y lake_mead_2027 (claim d_law).",
-   "statement": "Un tercio para cada año alineado, la ley que ya declaran los dos gemelos."
+   "provenance": "twin/history/colorado_joint_law.json: nieve del 1 de abril de Denver (NRCS) y afluencia no regulada a Powell (RISE), últimos 30 años en común; law_status SELECTION_FRAGILE_UNDER_PARTITION.",
+   "statement": "Ley empírica conjunta admitida (AM-02.1): seco 3/35, normal 12/35, húmedo 4/35, Powell más seco 9/35, Powell más húmedo 1/5. Es frágil: con otras particiones gana la de masas iguales, así que ningún orden de rutas se apoya sólo en ella."
   }
  ],
  "by_joint_route": {
@@ -27,6 +27,20 @@
      }
     },
     "normal": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "powell_drier": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "powell_wetter": {
      "joint_life_given_scenario": "1/1",
      "life_by_member": {
       "denver": "success",
@@ -69,6 +83,20 @@
       "mead": "success"
      }
     },
+    "powell_drier": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "powell_wetter": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
     "wet": {
      "joint_life_given_scenario": "1/1",
      "life_by_member": {
@@ -99,6 +127,20 @@
      }
     },
     "normal": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "powell_drier": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "powell_wetter": {
      "joint_life_given_scenario": "1/1",
      "life_by_member": {
       "denver": "success",
@@ -141,6 +183,20 @@
       "mead": "success"
      }
     },
+    "powell_drier": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "powell_wetter": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
     "wet": {
      "joint_life_given_scenario": "1/1",
      "life_by_member": {
@@ -177,6 +233,20 @@
       "mead": "success"
      }
     },
+    "powell_drier": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "powell_wetter": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
     "wet": {
      "joint_life_given_scenario": "1/1",
      "life_by_member": {
@@ -207,6 +277,20 @@
      }
     },
     "normal": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "powell_drier": {
+     "joint_life_given_scenario": "1/1",
+     "life_by_member": {
+      "denver": "success",
+      "mead": "success"
+     }
+    },
+    "powell_wetter": {
      "joint_life_given_scenario": "1/1",
      "life_by_member": {
       "denver": "success",
@@ -798,6 +882,22 @@
     "denver": "wet",
     "mead": "maximum"
    }
+  },
+  {
+   "id": "powell_drier",
+   "label": "Powell más seco que Denver (representado por Denver normal y Powell mínimo)",
+   "members": {
+    "denver": "normal",
+    "mead": "minimum"
+   }
+  },
+  {
+   "id": "powell_wetter",
+   "label": "Powell más húmedo que Denver (representado por Denver normal y Powell máximo)",
+   "members": {
+    "denver": "normal",
+    "mead": "maximum"
+   }
   }
  ],
  "labels": {
@@ -824,9 +924,11 @@
   }
  },
  "law": {
-  "dry": "1/3",
-  "normal": "1/3",
-  "wet": "1/3"
+  "dry": "3/35",
+  "normal": "12/35",
+  "powell_drier": "9/35",
+  "powell_wetter": "1/5",
+  "wet": "4/35"
  },
  "members": {
   "denver": {
@@ -856,6 +958,8 @@
       "west_slope_diversion": {
        "dry": "0/1",
        "normal": "0/1",
+       "powell_drier": "0/1",
+       "powell_wetter": "0/1",
        "wet": "0/1"
       }
      },
@@ -871,6 +975,8 @@
       "west_slope_diversion": {
        "dry": "283953/10000",
        "normal": "283953/10000",
+       "powell_drier": "283953/10000",
+       "powell_wetter": "283953/10000",
        "wet": "283953/10000"
       }
      },
@@ -886,6 +992,8 @@
       "west_slope_diversion": {
        "dry": "0/1",
        "normal": "851859/50000",
+       "powell_drier": "851859/50000",
+       "powell_wetter": "851859/50000",
        "wet": "851859/50000"
       }
      },

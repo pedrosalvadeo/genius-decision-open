@@ -59,7 +59,7 @@ FP1 no admite transporte entre dos modelos (02 §2.4), así que `genius_twin/fed
 - **Portadores comunes:** `shared_carriers` les da una sola identidad entre miembros, para no contarlos dos veces.
 - **Resultado:** rutas conjuntas (producto de rutas), condición de vida conjunta por escenario (falla si falla en algún miembro), PVS conjunta y su rango bajo toda ley, y frontera por orden producto sobre bienestar paso a paso de cada portador, funciones terminales y PVS conjunta, sin sumas.
 
-Primer caso, `cases/colorado_basin_2027/federation.json`: Denver y Lake Mead/Powell alineados por la nieve del alto Colorado (seco con mínimo, normal con más probable, húmedo con máximo). El riego exterior de Denver se repone en su mitad del alto Colorado (la fuente de la mitad de su suministro) y deja de llegar a Powell al paso siguiente. Reanudar el riego en mayo saca de Powell unos 28 mil acre-pies: mejor para los jardines de Denver, peor para Denver Water y para Glen Canyon. Las seis rutas conjuntas tienen PVS conjunta 1 y quedan en la frontera.
+Primer caso, `cases/colorado_basin_2027/federation.json`: Denver y Lake Mead/Powell en cinco escenarios conjuntos: tres alineados (seco con mínimo, normal con más probable, húmedo con máximo) y un desacople en cada dirección, con la ley conjunta de AM-02.1. El riego exterior de Denver se repone en su mitad del alto Colorado (la fuente de la mitad de su suministro) y deja de llegar a Powell al paso siguiente. Reanudar el riego en mayo saca de Powell unos 28 mil acre-pies: mejor para los jardines de Denver, peor para Denver Water y para Glen Canyon. Las seis rutas conjuntas tienen PVS conjunta 1 en los cinco escenarios y quedan en la frontera.
 
 Cualquier agente la lee por API y MCP: `GET /api/twin/federations` y `/federations/<id>` (`twin_federations`, `twin_federation`) devuelven la especificación y el resultado congelado en `federation_result.json`. Se regenera con `python -m genius_twin.federation <caso>` y una prueba exige que coincida con lo que la federación calcula.
 
@@ -98,6 +98,8 @@ Tamaño de los mundos (cualquier dominio): el límite de celdas políticas × es
 
 Perfil por defecto (cualquier dominio): un relato nuevo empieza siempre como modelo general de existencias y flujos. Antes, un relato que nombraba plantas, una huerta o un semillero caía en la plantilla sintética D1, y lo mismo una planta potabilizadora o industrial. D1 queda como ejemplo de regresión, disponible sólo si se pide por nombre.
 
+Varios factores a la vez (AM-02.1, aprobada por Pedro el 2026-10-18): `driver_law.joint_certificate` certifica una ley sobre escenarios definidos por 2 o 3 conductores. Los escenarios forman una partición de todas las combinaciones de categorías, y las candidatas son masas iguales, frecuencia conjunta y conductores independientes. En el Colorado (`twin/history/colorado_joint_law.json`), la nieve de Denver y la afluencia a Powell no coincidieron en 14 de los últimos 30 años, así que el supuesto de alineación de la federación no se sostiene. Qué candidata gana depende de cómo se agrupan los desacoples, y el certificado lo marca como frágil. Se sirve en `POST /laws/driver/joint` y en el MCP como `twin_joint_driver_law`. La federación del Colorado ya tiene cinco escenarios: los tres alineados y un desacople en cada dirección, con esa ley. Si un miembro ve la misma realización en varios escenarios conjuntos, la evalúa una vez con la suma de sus masas. En el desacople seco, con «reanudar al 70 %», Denver desvía 17.000 acre-pies de un Powell que ya está en su mínimo.
+
 Primer caso fuera del agua, `twin/cases/us_blood_2026`: reserva de sangre tipo 0 de la Cruz Roja en el invierno 2026/27, con escenarios de gripe, la condición de vida de no bajar de un día de reserva, bienestar de pacientes, Cruz Roja y donantes, y funciones `health` y `safety` del catálogo. Los ocho módulos quedan llenos con el mismo kernel. Seguir igual incumple la condición con gripe grave (PVS 2/3); la campaña y la postergación la cumplen siempre, y la elección entre ellas depende de a quién se le pide el esfuerzo.
 
 ## Módulo IV en el Colorado: por qué no se separan los estados todavía
@@ -112,4 +114,4 @@ Una capacidad puede declarar `holds_when`: existe exactamente en los estados cuy
 
 ## Siguiente
 
-Sumar portadores comunes reales (por ejemplo, la población que depende de varios embalses) y reemplazar las hipótesis de alineación y desvío por datos (archivos de pronósticos y desvíos de Moffat y Roberts).
+Sumar portadores comunes reales (por ejemplo, la población que depende de varios embalses) y reemplazar la hipótesis de desvío por datos (archivos de pronósticos y desvíos de Moffat y Roberts).

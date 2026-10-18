@@ -22,6 +22,15 @@ ROUTES = {
          'tie': dict(type='string'), 'driver': dict(type='string', maxLength=200),
          'window': dict(type=['integer', 'null'], minimum=1)}, ('series', 'anchors'),
         'Derive an empirical scenario law (AM-02) for any twin from the history of one exogenous driver: snow, river flow, weekly cases, demand, prices. series: one exact value per independent period, oldest first. anchors: the driver value that defines each of the twin\'s scenarios (use the twin\'s scenario ids). Only the most recent 30 periods are used unless window says otherwise (null = all). Returns a law over those ids ready for the model\'s law field, or the refusals (fewer than 30 outcomes, no calibrated candidate). You declare that the driver does not depend on the compared routes and periods do not overlap; never invent history.'),
+    'twin_joint_driver_law': ('POST', '/laws/driver/joint', 'twins:evaluate',
+        {'drivers': dict(type='array', minItems=2, maxItems=3, items=dict(type='object', properties=dict(
+            name=dict(type='string', maxLength=200),
+            series=dict(type='array', minItems=1, maxItems=400, items=dict(type='object', properties=dict(period=dict(type='string'), value=dict(type='string')), required=['period', 'value'])),
+            anchors=dict(type='object', minProperties=2, maxProperties=8, additionalProperties=dict(type='string')),
+            tie=dict(type='string')), required=['name', 'series', 'anchors'])),
+         'scenarios': dict(type='object', minProperties=2, maxProperties=8),
+         'window': dict(type=['integer', 'null'], minimum=1)}, ('drivers', 'scenarios'),
+        'Derive an empirical scenario law (AM-02.1) when a twin\'s scenarios depend on two or three exogenous drivers at once, in any domain (flu and donors, two river basins, demand and wind). drivers: each with its series (one exact value per period, oldest first, same period labels for all drivers) and the anchor value of each of its categories. scenarios: the twin\'s scenario ids, each a list of cells [category per driver]; together they must cover every combination exactly once, and a scenario with several cells is {"cells": [...], "representative": cell}. Fix the partition from the twin and its task before looking at the joint record. The most recent 30 common periods are used. Returns the joint table, the law or its refusals, and which scenarios have little evidence; never invent history.'),
     'twin_prepare_world': ('POST', '/cases/{case_id}/world/prepare', 'twins:write',
         {'case_id': ID, 'payload': PAYLOAD}, ('case_id', 'payload'),
         'Preview a construction without saving or accepting it. Payload: base_version, construction following twin_world_contract. Returns draft/model, missing-data questions, formal diagnostics, source-span checks and boundary receipt. Missing quantities are never defaulted; null law/thresholds remain unknown. READY_FOR_REVIEW is not empirical validation.'),
@@ -106,6 +115,8 @@ def execute(name, args, authorization, rest):
                    'text': args['text'], 'structured': {'construction': args['construction']}}
     elif name == 'twin_driver_law':
         payload = {k: args[k] for k in ('series', 'anchors', 'tie', 'driver', 'window') if k in args}
+    elif name == 'twin_joint_driver_law':
+        payload = {k: args[k] for k in ('drivers', 'scenarios', 'window') if k in args}
     elif name == 'twin_delete_case':
         payload = {'base_version': args['base_version']}
     return rest(method, path, payload, authorization)
