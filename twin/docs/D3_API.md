@@ -54,7 +54,7 @@ POST `/cases/<cid>/evaluate` con `{version:1}` devuelve `{job,evaluation}`. El r
 
 La identidad de ejecución contiene perfil, hashes de dominio/compilador/registry/runner/kernel y contexto de límites. `execution_key` combina esa identidad con el digest del modelo. Reutilización de completed solo dentro de la misma versión e identidad; una actualización del compilador o límites no devuelve el recibo anterior como si fuera nuevo. Las evaluaciones antiguas siguen disponibles. La identidad del modelo no reemplaza `Result.input_digest`, que sigue referenciando los bytes exactos de FP1.
 
-El sobre `genius-twin-evaluation/0.2.0` conserva `canonical_results`, `native_result`, `native_input_json`, `native_runs`, `verification`, `compilation_manifest`, versión, job e identidades. `rc01_receipt:null` y su estado están afuera de los Result nativos: no se produce un recibo R2 ficticio.
+El sobre `genius-twin-evaluation/0.2.0` conserva `canonical_results`, `native_result`, `native_input_json`, `native_runs`, `verification`, `compilation_manifest`, versión, job e identidades. Para transporte y almacenamiento el sobre se empaqueta sin pérdida (`genius_twin/envelope.py`): cada Result nativo se guarda una vez, como su texto canónico, y al leerlo se reconstruye el sobre idéntico. `rc01_receipt:null` y su estado están afuera de los Result nativos: no se produce un recibo R2 ficticio.
 
 Estados separados:
 

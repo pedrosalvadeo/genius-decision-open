@@ -204,6 +204,7 @@ class StockFlowContracts(unittest.TestCase):
                 validate_model(model)
         model = default_model(); model["horizon"] = 30
         model["policies"] += [dict(deepcopy(model["policies"][0]), id="third")]
+        model["policies"] += [dict(deepcopy(model["policies"][0]), id=f"extra{i}") for i in range(2)]  # 5 x 2 x 31 > 256
         with self.assertRaisesRegex(ValueError, "occurrence limit"):
             validate_model(model)
         self.assertEqual(model_schema()["additionalProperties"], False)

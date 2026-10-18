@@ -50,7 +50,7 @@ relaciones es una premisa común que debe revisarse. Diseñar una intervención 
 corrige datos de partida ni cambia el objetivo para favorecer una alternativa.
 
 Se mantienen los límites del perfil sobre el modelo combinado: 6 políticas,
-12 acciones, 8 capacidades, 16 firmas alcanzadas y 128 ocurrencias de estado.
+12 acciones, 8 capacidades, 16 firmas alcanzadas y 256 ocurrencias de estado.
 La expansión se cuenta antes de construir las combinaciones. Cualquier exceso
 rechaza toda la propuesta; no trunca, muestrea ni fabrica un ganador. La cobertura
 `EXHAUSTIVE_DECLARED_COMBINATIONS` se refiere únicamente al conjunto finito

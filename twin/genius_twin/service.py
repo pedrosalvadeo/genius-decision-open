@@ -13,6 +13,7 @@ import unicodedata
 
 from .store import Store, dumps, identifier, now, sha
 from . import registry
+from .envelope import pack, unpack
 
 
 class ServiceError(ValueError):
@@ -514,7 +515,7 @@ class TwinService:
             if "world_construction" in version["metadata"]:
                 envelope["world_construction"] = deepcopy(version["metadata"]["world_construction"])
             with self.store.transaction() as conn:
-                conn.execute("UPDATE jobs SET status='completed',finished_at=?,result_json=? WHERE id=? AND status='running'", (now(), dumps(envelope), jid))
+                conn.execute("UPDATE jobs SET status='completed',finished_at=?,result_json=? WHERE id=? AND status='running'", (now(), dumps(pack(envelope)), jid))
         except Exception as exc:
             error = {"code": exc.code if isinstance(exc, ServiceError) else ("evaluation_timeout" if isinstance(exc, TimeoutError) else "evaluation_failed"),
                      "message": exc.message if isinstance(exc, ServiceError) else "La evaluación no pudo completarse; no se infiere inviabilidad."}
@@ -586,7 +587,7 @@ class TwinService:
                     "invalid_observation_reference", "Política/escenario no pertenece a esta versión.")
             prediction_job = conn.execute("SELECT * FROM jobs WHERE case_id=? AND version=? AND status='completed' ORDER BY created_at DESC LIMIT 1", (cid, base)).fetchone()
             require(prediction_job is not None, "frozen_prediction_required", "Evalúa primero esta versión para contrastar con una predicción congelada.", 422)
-            frozen = json.loads(prediction_job["result_json"])
+            frozen = unpack(json.loads(prediction_job["result_json"]))
             state = frozen["canonical_results"]["policies"][payload["policy_id"]]["trajectories"][payload["scenario_id"]]["daily"][day]
             predicted = Fraction(state["stocks"][variable] if stockflow else state[variable])
             prediction_finished = datetime.fromisoformat(prediction_job["finished_at"])

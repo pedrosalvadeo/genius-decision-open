@@ -12,7 +12,7 @@ import json
 from math import prod
 from pathlib import Path
 
-from .stockflow import PROFILE, _shape, canonical_json, model_schema, q, validate_model
+from .stockflow import OCCURRENCE_LIMIT, PROFILE, _shape, canonical_json, model_schema, q, validate_model
 
 FORMAT = 'genius-intervention-design/1'
 
@@ -47,7 +47,7 @@ def schema():
             operations=arr({'oneOf': [transfer, change, use]}, 1, 12))), 1, 5)))
     result.update({'$schema': 'https://json-schema.org/draft/2020-12/schema',
         'title': FORMAT, 'x-scope': 'Declared directed transfers and scheduled actions; no physical execution',
-        'x-limits': 'Base and generated policies together <=6; actions<=12; capabilities<=8; P*S*(H+1)<=128. All combinations or reject.'})
+        'x-limits': 'Base and generated policies together <=6; actions<=12; capabilities<=8; P*S*(H+1)<=' + str(OCCURRENCE_LIMIT) + '. All combinations or reject.'})
     return result
 
 
@@ -116,7 +116,7 @@ def generate(base, design):
             choices.append(len(steps) * len(operation.get('amounts', [None])))
         count += prod(choices)
         total = len(base['policies']) + count
-        if total > 6 or total * len(base['scenarios']) * (base['horizon'] + 1) > 128:
+        if total > 6 or total * len(base['scenarios']) * (base['horizon'] + 1) > OCCURRENCE_LIMIT:
             raise ValueError('Design exceeds combined policy/occurrence limits; no alternatives were truncated')
 
     model = deepcopy(base)
