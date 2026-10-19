@@ -1,0 +1,1448 @@
+{
+  "narrative": "Primer gemelo de la Tierra con hipótesis declaradas: la humanidad emite 42,2 GtCO2 por año y le quedan entre 950 y 1500 GtCO2 para no pasar 2 °C, según cuán sensible sea el clima. Se comparan bajar emisiones y deforestación a cero en 2045, 2065 o 2085, y seguir con las políticas actuales.",
+  "observation": {
+    "format": "genius-system-observation/1",
+    "label": "La Tierra: clima y bosques, 2025",
+    "window": {
+      "start": "2015-12-12T00:00:00+00:00",
+      "end": "2026-10-19T00:00:00+00:00"
+    },
+    "entities": [
+      {
+        "id": "budget",
+        "label": "Presupuesto de CO2 para 2 °C",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_budget"
+        ]
+      },
+      {
+        "id": "emitted",
+        "label": "CO2 emitido",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_emissions"
+        ]
+      },
+      {
+        "id": "forest",
+        "label": "Bosques del mundo",
+        "kind": "resource",
+        "evidence_ids": [
+          "e_forest"
+        ]
+      },
+      {
+        "id": "future_generations",
+        "label": "Generaciones futuras",
+        "kind": "person",
+        "evidence_ids": [
+          "e_budget"
+        ]
+      },
+      {
+        "id": "other_species",
+        "label": "Otras especies",
+        "kind": "living",
+        "evidence_ids": [
+          "e_boundaries"
+        ]
+      },
+      {
+        "id": "people_today",
+        "label": "Personas de hoy",
+        "kind": "person",
+        "evidence_ids": [
+          "e_warming"
+        ]
+      },
+      {
+        "id": "fossil_economies",
+        "label": "Economías fósiles",
+        "kind": "organization",
+        "evidence_ids": [
+          "e_emissions"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "e_boundaries",
+        "observed_at": "2025-09-24T12:00:00+02:00",
+        "source": "Potsdam Institute for Climate Impact Research, \"Seven of nine planetary boundaries now breached – ocean acidification joins the danger zone\", 24/09/2025, https://www.pik-potsdam.de/en/news/latest-news/seven-of-nine-planetary-boundaries-now-breached-2013-ocean-acidification-joins-the-danger-zone",
+        "basis": "reported",
+        "statement": "Siete de nueve límites planetarios cruzados.",
+        "uncertainty": "Evaluación científica."
+      },
+      {
+        "id": "e_warming",
+        "observed_at": "2025-06-19T12:00:00+01:00",
+        "source": "University of Leeds, \"Scientists find three years left of remaining carbon budget for 1.5C\" (Forster et al. 2025, Indicators of Global Climate Change 2024), 19/06/2025, https://www.leeds.ac.uk/news/article/5801/scientists-find-three-years-left-of-remaining-carbon-budget-for-15-c ; and the paper, Earth System Science Data 17, 2641, 2025, https://essd.copernicus.org/articles/17/2641/2025/",
+        "basis": "reported",
+        "statement": "1,36 °C de calentamiento humano en 2024.",
+        "uncertainty": "Estimación central."
+      },
+      {
+        "id": "e_budget",
+        "observed_at": "2021-08-09T12:00:00+00:00",
+        "source": "IPCC AR6 WGI SPM Table SPM.2 (remaining carbon budgets from 1/1/2020), as tabulated by openclimatedata, https://openclimatedata.net/climate-spirals/carbon-budget/",
+        "basis": "reported",
+        "statement": "Presupuesto para 2 °C de 1150-1700 GtCO2 desde 2020.",
+        "uncertainty": "Rango 33-67 %."
+      },
+      {
+        "id": "e_emissions",
+        "observed_at": "2025-11-13T12:00:00+00:00",
+        "source": "Friedlingstein et al., \"Global Carbon Budget 2025\", Earth System Science Data 18, 3211, 2026, https://essd.copernicus.org/articles/18/3211/2026/",
+        "basis": "reported",
+        "statement": "42,2 GtCO2 emitidas en 2025.",
+        "uncertainty": "Proyección anual."
+      },
+      {
+        "id": "e_forest",
+        "observed_at": "2025-10-21T12:00:00+02:00",
+        "source": "FAO, Global Forest Resources Assessment 2025: Key findings, https://openknowledge.fao.org/server/api/core/bitstreams/2dee6e93-1988-4659-aa89-30dd20b43b15/content/FRA-2025/key-findings.html ; and FAO newsroom, \"Global deforestation slows, but forests remain under pressure, FAO report shows\", https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+        "basis": "reported",
+        "statement": "4140 Mha de bosque; 10,9 Mha deforestadas por año.",
+        "uncertainty": "Datos nacionales agregados."
+      }
+    ],
+    "relations": [
+      {
+        "id": "econ_emit",
+        "source": "fossil_economies",
+        "target": "emitted",
+        "kind": "organizes",
+        "evidence_ids": [
+          "e_emissions"
+        ]
+      },
+      {
+        "id": "budget_future",
+        "source": "budget",
+        "target": "future_generations",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_budget"
+        ]
+      },
+      {
+        "id": "budget_today",
+        "source": "budget",
+        "target": "people_today",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_warming"
+        ]
+      },
+      {
+        "id": "forest_species",
+        "source": "forest",
+        "target": "other_species",
+        "kind": "supplies",
+        "evidence_ids": [
+          "e_forest"
+        ]
+      }
+    ],
+    "unknowns": [
+      "Respuesta exacta del clima a cada tonelada de CO2 (por eso hay tres escenarios).",
+      "Puntos de inflexión del sistema climático.",
+      "Cinco límites planetarios cruzados que este gemelo todavía no modela (agua, nitrógeno, fósforo, acidificación, entidades nuevas).",
+      "Costos de mitigación y daños económicos del calentamiento."
+    ]
+  },
+  "construction": {
+    "format": "genius-world-construction/1",
+    "sources": [
+      {
+        "id": "phc",
+        "origin": "Potsdam Institute for Climate Impact Research, \"Seven of nine planetary boundaries now breached – ocean acidification joins the danger zone\", 24/09/2025, https://www.pik-potsdam.de/en/news/latest-news/seven-of-nine-planetary-boundaries-now-breached-2013-ocean-acidification-joins-the-danger-zone",
+        "observed_at": "2025-09-24T12:00:00+02:00",
+        "content": "seven out of nine Planetary Boundaries have been breached"
+      },
+      {
+        "id": "igcc",
+        "origin": "University of Leeds, \"Scientists find three years left of remaining carbon budget for 1.5C\" (Forster et al. 2025, Indicators of Global Climate Change 2024), 19/06/2025, https://www.leeds.ac.uk/news/article/5801/scientists-find-three-years-left-of-remaining-carbon-budget-for-15-c ; and the paper, Earth System Science Data 17, 2641, 2025, https://essd.copernicus.org/articles/17/2641/2025/",
+        "observed_at": "2025-06-19T12:00:00+01:00",
+        "content": "central estimate of the remaining carbon budget for 1.5°C to be 130 billion tonnes of CO2 (from the beginning of 2025) […] 1.52°C, of which 1.36°C can be attributed to human activity […] AR6 budgets were expressed from 2020 onwards, and approximately 200 Gt CO2 was emitted between 2020 and 2024"
+      },
+      {
+        "id": "ar6_budget",
+        "origin": "IPCC AR6 WGI SPM Table SPM.2 (remaining carbon budgets from 1/1/2020), as tabulated by openclimatedata, https://openclimatedata.net/climate-spirals/carbon-budget/",
+        "observed_at": "2021-08-09T12:00:00+00:00",
+        "content": "2.0 °C: 1350 GtCO₂ (Median), 33%-67% range: 1150 - 1700 GtCO₂"
+      },
+      {
+        "id": "ar6_scenarios",
+        "origin": "IPCC AR6 WGI Chapter 1, p. 1-102, as quoted in https://scholar.colorado.edu/downloads/000001537",
+        "observed_at": "2021-08-09T12:00:00+00:00",
+        "content": "No likelihood is attached to the scenarios assessed in this Report"
+      },
+      {
+        "id": "gcb",
+        "origin": "Friedlingstein et al., \"Global Carbon Budget 2025\", Earth System Science Data 18, 3211, 2026, https://essd.copernicus.org/articles/18/3211/2026/",
+        "observed_at": "2025-11-13T12:00:00+00:00",
+        "content": "about 11.5 GtC (42.2 GtCO2), marginally below the 2024 level due to lower net land-use emissions"
+      },
+      {
+        "id": "unep",
+        "origin": "UNEP, Emissions Gap Report 2025, 04/11/2025, https://www.unep.org/en/publications/report/emissions-gap-report-2025",
+        "observed_at": "2025-11-04T12:00:00+00:00",
+        "content": "2.3-2.5°C based on full implementation of Nationally Determined Contributions (NDCs), while those based on current policies are 2.8°C"
+      },
+      {
+        "id": "paris",
+        "origin": "Paris Agreement, Article 2.1(a), as quoted by the Grantham Research Institute (LSE), https://www.lse.ac.uk/granthaminstitute/?p=53369",
+        "observed_at": "2015-12-12T12:00:00+01:00",
+        "content": "holding the increase in the global average temperature to well below 2°C above pre-industrial levels and pursuing efforts to limit the temperature increase to 1.5°C"
+      },
+      {
+        "id": "fra",
+        "origin": "FAO, Global Forest Resources Assessment 2025: Key findings, https://openknowledge.fao.org/server/api/core/bitstreams/2dee6e93-1988-4659-aa89-30dd20b43b15/content/FRA-2025/key-findings.html ; and FAO newsroom, \"Global deforestation slows, but forests remain under pressure, FAO report shows\", https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+        "observed_at": "2025-10-21T12:00:00+02:00",
+        "content": "The world has a total forest area of 4.14 billion hectares […] current rate of deforestation at 10.9 million hectares per year remains too high"
+      }
+    ],
+    "claims": [
+      {
+        "id": "boundaries",
+        "basis": "reported",
+        "statement": "En 2025 la Tierra ya cruzó siete de los nueve límites planetarios.",
+        "uncertainty": "Evaluación del Planetary Health Check 2025; varios valores de control son estimaciones con incertidumbre propia.",
+        "spans": [
+          {
+            "source_id": "phc",
+            "start": 0,
+            "end": 57,
+            "quote": "seven out of nine Planetary Boundaries have been breached"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "warming",
+        "basis": "reported",
+        "statement": "En 2024 el calentamiento observado fue 1,52 °C, de los cuales 1,36 °C se atribuyen a la actividad humana; el presupuesto restante para 1,5 °C al 50 % era de 130 GtCO2 desde el inicio de 2025.",
+        "uncertainty": "Estimación central de Forster et al. 2025.",
+        "spans": [
+          {
+            "source_id": "igcc",
+            "start": 123,
+            "end": 182,
+            "quote": "1.52°C, of which 1.36°C can be attributed to human activity"
+          },
+          {
+            "source_id": "igcc",
+            "start": 0,
+            "end": 118,
+            "quote": "central estimate of the remaining carbon budget for 1.5°C to be 130 billion tonnes of CO2 (from the beginning of 2025)"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "budget_2c",
+        "basis": "reported",
+        "statement": "Presupuesto de CO2 para 2 °C desde 2020 (IPCC AR6): 1350 GtCO2 al 50 %, 1150 al 67 % y 1700 al 33 %; entre 2020 y 2024 se emitieron cerca de 200 GtCO2.",
+        "uncertainty": "Tabla SPM.2 citada por una fuente secundaria; incluye el efecto de gases distintos del CO2 bajo trayectorias típicas.",
+        "spans": [
+          {
+            "source_id": "ar6_budget",
+            "start": 0,
+            "end": 61,
+            "quote": "2.0 °C: 1350 GtCO₂ (Median), 33%-67% range: 1150 - 1700 GtCO₂"
+          },
+          {
+            "source_id": "igcc",
+            "start": 237,
+            "end": 295,
+            "quote": "approximately 200 Gt CO2 was emitted between 2020 and 2024"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "emissions",
+        "basis": "reported",
+        "statement": "Emisiones mundiales de CO2 en 2025 (fósiles y uso del suelo): 42,2 GtCO2.",
+        "uncertainty": "Proyección del Global Carbon Budget 2025 para el año completo.",
+        "spans": [
+          {
+            "source_id": "gcb",
+            "start": 0,
+            "end": 96,
+            "quote": "about 11.5 GtC (42.2 GtCO2), marginally below the 2024 level due to lower net land-use emissions"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "current_policies",
+        "basis": "reported",
+        "statement": "Con las políticas actuales el mundo va a 2,8 °C en este siglo; con las NDC cumplidas, a 2,3-2,5 °C.",
+        "uncertainty": "Proyección del PNUMA; depende de supuestos posteriores a 2030.",
+        "spans": [
+          {
+            "source_id": "unep",
+            "start": 0,
+            "end": 133,
+            "quote": "2.3-2.5°C based on full implementation of Nationally Determined Contributions (NDCs), while those based on current policies are 2.8°C"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "no_likelihood",
+        "basis": "reported",
+        "statement": "El IPCC no asigna probabilidades a sus escenarios socioeconómicos.",
+        "uncertainty": "Cita del capítulo 1 del AR6 a través de una fuente secundaria.",
+        "spans": [
+          {
+            "source_id": "ar6_scenarios",
+            "start": 0,
+            "end": 66,
+            "quote": "No likelihood is attached to the scenarios assessed in this Report"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "paris",
+        "basis": "reported",
+        "statement": "El Acuerdo de París fija mantener el calentamiento muy por debajo de 2 °C y procurar limitarlo a 1,5 °C.",
+        "uncertainty": "Texto citado por una fuente secundaria.",
+        "spans": [
+          {
+            "source_id": "paris",
+            "start": 0,
+            "end": 164,
+            "quote": "holding the increase in the global average temperature to well below 2°C above pre-industrial levels and pursuing efforts to limit the temperature increase to 1.5°C"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "forests",
+        "basis": "reported",
+        "statement": "Bosques del mundo en 2025: 4140 millones de hectáreas; deforestación de 10,9 millones de hectáreas por año en 2015-2025, con una pérdida neta de 4,12 millones por año.",
+        "uncertainty": "FRA 2025; la pérdida neta de 4,12 Mha por año está en el informe completo y no se cita textual aquí.",
+        "spans": [
+          {
+            "source_id": "fra",
+            "start": 0,
+            "end": 58,
+            "quote": "The world has a total forest area of 4.14 billion hectares"
+          },
+          {
+            "source_id": "fra",
+            "start": 63,
+            "end": 143,
+            "quote": "current rate of deforestation at 10.9 million hectares per year remains too high"
+          }
+        ],
+        "premises": []
+      },
+      {
+        "id": "h_budget",
+        "basis": "hypothesis",
+        "statement": "El presupuesto de CO2 para 2 °C desde 2025 es 950, 1150 o 1500 GtCO2 (el de 2020 menos 200 GtCO2 emitidos).",
+        "uncertainty": "Resta simple; Forster et al. 2025 y el Global Carbon Budget 2025 dan cifras cercanas (cerca de 1050-1110 GtCO2 al 50 %).",
+        "spans": [],
+        "premises": [
+          "budget_2c"
+        ]
+      },
+      {
+        "id": "h_routes",
+        "basis": "hypothesis",
+        "statement": "Cada ruta fija, década por década, qué fracción del ritmo de 2025 (42,2 GtCO2 y 10,9 Mha deforestadas por año) se mantiene: 100, 75, 50, 25 o 0 %. Bajar a cero en 2045: 75 y 25 %. En 2065: 100, 75, 50 y 25 %. En 2085: 100, 75, 50, 50, 25 y 25 %. Políticas actuales: 100 % siempre. Emisiones acumuladas 2025-2105: fast 422, medium 1055, slow 1371.5, current_policies 3376 GtCO2.",
+        "uncertainty": "Simplificación en escalones de una década; la deforestación baja al mismo ritmo que las emisiones. El PNUMA proyecta que las políticas actuales no mantienen las emisiones exactamente constantes; no se modelan emisiones negativas.",
+        "spans": [],
+        "premises": [
+          "emissions",
+          "current_policies",
+          "forests"
+        ]
+      },
+      {
+        "id": "h_forest",
+        "basis": "hypothesis",
+        "statement": "La expansión de bosque de 6,78 Mha por año (10,9 de deforestación menos 4,12 de pérdida neta) sigue igual en todas las rutas y escenarios.",
+        "uncertainty": "La expansión incluye plantaciones, que no equivalen a bosque nativo para la biodiversidad.",
+        "spans": [],
+        "premises": [
+          "forests"
+        ]
+      },
+      {
+        "id": "d_scenarios",
+        "basis": "decision",
+        "statement": "Escenarios: la respuesta del clima a cada tonelada de CO2 es incierta. Clima más sensible usa el presupuesto con 67 % de probabilidad de no pasar 2 °C; central, el del 50 %; menos sensible, el del 33 %.",
+        "uncertainty": "Los tres escenarios representan los tercios de la distribución de forma optimista: un tercio inferior bien representado usaría el presupuesto del 83 % (900 GtCO2 desde 2020), que no se pudo verificar textual. Las rutas frágiles pueden estar sobrestimadas.",
+        "spans": [],
+        "premises": [
+          "budget_2c",
+          "h_budget"
+        ]
+      },
+      {
+        "id": "d_law",
+        "basis": "decision",
+        "statement": "Ley declarada: un tercio para cada escenario, como tercios de la distribución de probabilidad que el IPCC da para el presupuesto.",
+        "uncertainty": "No es una ley empírica AM-02: el clima del siglo no se repite 30 veces. La PVS es condicional a esta ley y se informa su rango bajo toda ley.",
+        "spans": [],
+        "premises": [
+          "d_scenarios",
+          "no_likelihood"
+        ]
+      },
+      {
+        "id": "d_routes",
+        "basis": "decision",
+        "statement": "Rutas: bajar emisiones y deforestación a cero en 2045, 2065 o 2085, o seguir con las políticas actuales. Las trayectorias socioeconómicas del IPCC se tratan como decisiones de la humanidad, no como escenarios, por eso no necesitan probabilidad.",
+        "uncertainty": "Opciones planteadas por el modelizador; no son propuestas oficiales.",
+        "spans": [],
+        "premises": [
+          "no_likelihood",
+          "current_policies",
+          "h_routes"
+        ]
+      },
+      {
+        "id": "d_life_task",
+        "basis": "decision",
+        "statement": "Condición de vida: no superar el presupuesto de CO2 para 2 °C, la línea superior del Acuerdo de París, en ninguna década. Gastar más de lo que queda en una década cuenta como incumplimiento.",
+        "uncertainty": "Umbral elegido por el modelizador. Con 1,5 °C (130 GtCO2 desde 2025) todas las rutas lo incumplirían en todos los escenarios antes de 2030. Los límites planetarios de CO2 (350 ppm) ya están cruzados.",
+        "spans": [],
+        "premises": [
+          "paris",
+          "warming",
+          "h_budget",
+          "boundaries"
+        ]
+      },
+      {
+        "id": "d_welfare",
+        "basis": "decision",
+        "statement": "Bienestar: las generaciones futuras y las personas de hoy por el presupuesto que queda (más es mejor); las otras especies por la superficie de bosque; las economías que dependen de combustibles fósiles por el CO2 que pueden seguir emitiendo.",
+        "uncertainty": "Representación del modelizador; ninguna parte la declaró. No modela costos de mitigación ni daños económicos del calentamiento.",
+        "spans": [],
+        "premises": [
+          "h_routes",
+          "h_forest"
+        ]
+      },
+      {
+        "id": "d_functions",
+        "basis": "decision",
+        "statement": "Funciones (módulo I), en décadas cumplidas: protección frente al calentamiento peligroso (presupuesto de 2 °C sin agotar) y ecosistemas (bosque no menor que el de 2025).",
+        "uncertainty": "Más décadas cumplidas es mejor.",
+        "spans": [],
+        "premises": [
+          "d_life_task",
+          "forests"
+        ]
+      },
+      {
+        "id": "d_subsystems",
+        "basis": "decision",
+        "statement": "Subsistemas (módulo II): atmósfera y energía (presupuesto y CO2 emitido) y biosfera (bosques). Los une el uso del suelo, que emite CO2 al deforestar.",
+        "uncertainty": "No se modelan otros límites planetarios (agua, nitrógeno, fósforo, acidificación).",
+        "spans": [],
+        "premises": [
+          "boundaries"
+        ]
+      },
+      {
+        "id": "modelling",
+        "basis": "definition",
+        "statement": "Unidades: GtCO2 para presupuesto y emisiones, millones de hectáreas (Mha) para bosques. Ocho pasos de una década, de 2025 a 2105. Las emisiones de cada ruta salen del presupuesto; el escenario ajusta el presupuesto en la primera década; la expansión de bosque entra cada década.",
+        "uncertainty": "Modelo de un solo número para el clima: no modela gases distintos del CO2 por separado, puntos de inflexión ni emisiones negativas.",
+        "spans": [],
+        "premises": [
+          "h_budget",
+          "h_routes",
+          "h_forest"
+        ]
+      }
+    ],
+    "fragments": [
+      {
+        "path": "/profile",
+        "value": "STOCK_FLOW_FINITE_V1",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/name",
+        "value": "La Tierra: clima y bosques, 2025-2105",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/horizon",
+        "value": 8,
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/step_unit",
+        "value": "step",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/0",
+        "value": {
+          "id": "budget",
+          "label": "Presupuesto de CO2 que queda para 2 °C",
+          "unit": "GtCO2",
+          "kind": "persistent",
+          "initial": "1500/1",
+          "capacity": "1500/1"
+        },
+        "claim_ids": [
+          "h_budget",
+          "modelling"
+        ]
+      },
+      {
+        "path": "/stocks/1",
+        "value": {
+          "id": "emitted",
+          "label": "CO2 emitido desde 2025 (acumulado)",
+          "unit": "GtCO2",
+          "kind": "persistent",
+          "initial": "0/1",
+          "capacity": "5000/1"
+        },
+        "claim_ids": [
+          "h_routes"
+        ]
+      },
+      {
+        "path": "/stocks/2",
+        "value": {
+          "id": "forest",
+          "label": "Bosques del mundo",
+          "unit": "Mha",
+          "kind": "persistent",
+          "initial": "4140/1",
+          "capacity": "6000/1"
+        },
+        "claim_ids": [
+          "forests"
+        ]
+      },
+      {
+        "path": "/carriers/0",
+        "value": {
+          "id": "future_generations",
+          "label": "Generaciones futuras",
+          "kind": "person"
+        },
+        "claim_ids": [
+          "d_life_task"
+        ]
+      },
+      {
+        "path": "/carriers/1",
+        "value": {
+          "id": "other_species",
+          "label": "Otras especies",
+          "kind": "living"
+        },
+        "claim_ids": [
+          "boundaries"
+        ]
+      },
+      {
+        "path": "/carriers/2",
+        "value": {
+          "id": "people_today",
+          "label": "Personas de hoy",
+          "kind": "person"
+        },
+        "claim_ids": [
+          "warming"
+        ]
+      },
+      {
+        "path": "/carriers/3",
+        "value": {
+          "id": "fossil_economies",
+          "label": "Economías que dependen de combustibles fósiles",
+          "kind": "organization"
+        },
+        "claim_ids": [
+          "emissions"
+        ]
+      },
+      {
+        "path": "/capabilities/0",
+        "value": {
+          "id": "emit",
+          "label": "Economía en marcha"
+        },
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/initial_capabilities/0",
+        "value": "emit",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/actions/0",
+        "value": {
+          "id": "level_100",
+          "label": "Emitir y deforestar al 100 % del ritmo de 2025 durante una década",
+          "requires": [
+            "emit"
+          ],
+          "withdrawals": {
+            "budget": "422/1",
+            "forest": "109/1"
+          },
+          "deposits": {
+            "emitted": "422/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_routes",
+          "h_forest"
+        ]
+      },
+      {
+        "path": "/actions/1",
+        "value": {
+          "id": "level_75",
+          "label": "Emitir y deforestar al 75 % del ritmo de 2025 durante una década",
+          "requires": [
+            "emit"
+          ],
+          "withdrawals": {
+            "budget": "633/2",
+            "forest": "327/4"
+          },
+          "deposits": {
+            "emitted": "633/2"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_routes",
+          "h_forest"
+        ]
+      },
+      {
+        "path": "/actions/2",
+        "value": {
+          "id": "level_50",
+          "label": "Emitir y deforestar al 50 % del ritmo de 2025 durante una década",
+          "requires": [
+            "emit"
+          ],
+          "withdrawals": {
+            "budget": "211/1",
+            "forest": "109/2"
+          },
+          "deposits": {
+            "emitted": "211/1"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_routes",
+          "h_forest"
+        ]
+      },
+      {
+        "path": "/actions/3",
+        "value": {
+          "id": "level_25",
+          "label": "Emitir y deforestar al 25 % del ritmo de 2025 durante una década",
+          "requires": [
+            "emit"
+          ],
+          "withdrawals": {
+            "budget": "211/2",
+            "forest": "109/4"
+          },
+          "deposits": {
+            "emitted": "211/2"
+          },
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_routes",
+          "h_forest"
+        ]
+      },
+      {
+        "path": "/actions/4",
+        "value": {
+          "id": "level_0",
+          "label": "Emitir y deforestar al 0 % del ritmo de 2025 durante una década",
+          "requires": [
+            "emit"
+          ],
+          "withdrawals": {},
+          "deposits": {},
+          "add_capabilities": [],
+          "remove_capabilities": []
+        },
+        "claim_ids": [
+          "h_routes",
+          "h_forest"
+        ]
+      },
+      {
+        "path": "/policies/0",
+        "value": {
+          "id": "fast",
+          "label": "Bajar a cero en 2045",
+          "default_action": "level_0",
+          "rules": [
+            {
+              "steps": [
+                1
+              ],
+              "when": [],
+              "action": "level_75"
+            },
+            {
+              "steps": [
+                2
+              ],
+              "when": [],
+              "action": "level_25"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_routes",
+          "h_routes"
+        ]
+      },
+      {
+        "path": "/policies/1",
+        "value": {
+          "id": "medium",
+          "label": "Bajar a cero en 2065",
+          "default_action": "level_0",
+          "rules": [
+            {
+              "steps": [
+                1
+              ],
+              "when": [],
+              "action": "level_100"
+            },
+            {
+              "steps": [
+                2
+              ],
+              "when": [],
+              "action": "level_75"
+            },
+            {
+              "steps": [
+                3
+              ],
+              "when": [],
+              "action": "level_50"
+            },
+            {
+              "steps": [
+                4
+              ],
+              "when": [],
+              "action": "level_25"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_routes",
+          "h_routes"
+        ]
+      },
+      {
+        "path": "/policies/2",
+        "value": {
+          "id": "slow",
+          "label": "Bajar a cero en 2085",
+          "default_action": "level_0",
+          "rules": [
+            {
+              "steps": [
+                1
+              ],
+              "when": [],
+              "action": "level_100"
+            },
+            {
+              "steps": [
+                2
+              ],
+              "when": [],
+              "action": "level_75"
+            },
+            {
+              "steps": [
+                3
+              ],
+              "when": [],
+              "action": "level_50"
+            },
+            {
+              "steps": [
+                4
+              ],
+              "when": [],
+              "action": "level_50"
+            },
+            {
+              "steps": [
+                5
+              ],
+              "when": [],
+              "action": "level_25"
+            },
+            {
+              "steps": [
+                6
+              ],
+              "when": [],
+              "action": "level_25"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_routes",
+          "h_routes"
+        ]
+      },
+      {
+        "path": "/policies/3",
+        "value": {
+          "id": "current_policies",
+          "label": "Seguir con las políticas actuales",
+          "default_action": "level_0",
+          "rules": [
+            {
+              "steps": [
+                1
+              ],
+              "when": [],
+              "action": "level_100"
+            },
+            {
+              "steps": [
+                2
+              ],
+              "when": [],
+              "action": "level_100"
+            },
+            {
+              "steps": [
+                3
+              ],
+              "when": [],
+              "action": "level_100"
+            },
+            {
+              "steps": [
+                4
+              ],
+              "when": [],
+              "action": "level_100"
+            },
+            {
+              "steps": [
+                5
+              ],
+              "when": [],
+              "action": "level_100"
+            },
+            {
+              "steps": [
+                6
+              ],
+              "when": [],
+              "action": "level_100"
+            },
+            {
+              "steps": [
+                7
+              ],
+              "when": [],
+              "action": "level_100"
+            },
+            {
+              "steps": [
+                8
+              ],
+              "when": [],
+              "action": "level_100"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_routes",
+          "h_routes"
+        ]
+      },
+      {
+        "path": "/scenarios/0",
+        "value": {
+          "id": "low",
+          "label": "Clima más sensible (presupuesto del 67 %)",
+          "events": [
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {
+                "budget": "550/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_scenarios",
+          "h_budget",
+          "h_forest"
+        ]
+      },
+      {
+        "path": "/scenarios/1",
+        "value": {
+          "id": "central",
+          "label": "Clima central (presupuesto del 50 %)",
+          "events": [
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {
+                "budget": "350/1"
+              },
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_scenarios",
+          "h_budget",
+          "h_forest"
+        ]
+      },
+      {
+        "path": "/scenarios/2",
+        "value": {
+          "id": "high",
+          "label": "Clima menos sensible (presupuesto del 33 %)",
+          "events": [
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            },
+            {
+              "inflows": {
+                "forest": "339/5"
+              },
+              "renewables": {},
+              "drains": {},
+              "remove_capabilities": []
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_scenarios",
+          "h_budget",
+          "h_forest"
+        ]
+      },
+      {
+        "path": "/law",
+        "value": {
+          "low": "1/3",
+          "central": "1/3",
+          "high": "1/3"
+        },
+        "claim_ids": [
+          "d_law"
+        ]
+      },
+      {
+        "path": "/welfare/0",
+        "value": {
+          "carrier": "future_generations",
+          "dimension": "climate_margin",
+          "label": "Presupuesto de 2 °C que queda",
+          "stock": "budget",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/welfare/1",
+        "value": {
+          "carrier": "people_today",
+          "dimension": "climate_margin",
+          "label": "Presupuesto de 2 °C que queda",
+          "stock": "budget",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/welfare/2",
+        "value": {
+          "carrier": "other_species",
+          "dimension": "forest",
+          "label": "Superficie de bosque",
+          "stock": "forest",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/welfare/3",
+        "value": {
+          "carrier": "fossil_economies",
+          "dimension": "emissions_allowed",
+          "label": "CO2 que pueden seguir emitiendo",
+          "stock": "emitted",
+          "direction": "higher"
+        },
+        "claim_ids": [
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/task",
+        "value": {
+          "kind": "life_conditions",
+          "label": "No superar el presupuesto de CO2 para 2 °C en ninguna década",
+          "living_carriers": [
+            "future_generations",
+            "other_species"
+          ],
+          "conditions": [
+            {
+              "stock": "budget",
+              "op": "ge",
+              "threshold": "0/1"
+            }
+          ],
+          "require_action_success": true
+        },
+        "claim_ids": [
+          "d_life_task"
+        ]
+      },
+      {
+        "path": "/functions/0",
+        "value": {
+          "id": "climate_safety",
+          "kind": "safety",
+          "label": "Calentamiento por debajo de 2 °C (décadas cumplidas)",
+          "serves": [
+            "future_generations",
+            "people_today",
+            "other_species"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "budget",
+              "op": "ge",
+              "value": "0/1"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
+        ]
+      },
+      {
+        "path": "/functions/1",
+        "value": {
+          "id": "forest_cover",
+          "kind": "ecosystems",
+          "label": "Bosque no menor que el de 2025 (décadas cumplidas)",
+          "serves": [
+            "other_species"
+          ],
+          "measure": "cumulative",
+          "when": [
+            {
+              "kind": "stock",
+              "stock": "forest",
+              "op": "ge",
+              "value": "4140/1"
+            }
+          ]
+        },
+        "claim_ids": [
+          "d_functions"
+        ]
+      },
+      {
+        "path": "/subsystems/0",
+        "value": {
+          "id": "atmosphere",
+          "label": "Atmósfera y energía",
+          "stocks": [
+            "budget",
+            "emitted"
+          ],
+          "carriers": [
+            "future_generations",
+            "people_today",
+            "fossil_economies"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/subsystems/1",
+        "value": {
+          "id": "biosphere",
+          "label": "Biosfera",
+          "stocks": [
+            "forest"
+          ],
+          "carriers": [
+            "other_species"
+          ]
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/interfaces/0",
+        "value": {
+          "id": "land_use",
+          "label": "Deforestación que emite CO2 (Mha)",
+          "source": "biosphere",
+          "target": "atmosphere"
+        },
+        "claim_ids": [
+          "d_subsystems"
+        ]
+      },
+      {
+        "path": "/require_all_scenarios",
+        "value": true,
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/selection",
+        "value": "none",
+        "claim_ids": [
+          "modelling"
+        ]
+      },
+      {
+        "path": "/assumptions/0",
+        "value": {
+          "id": "Calibration",
+          "kind": "CALIBRATION",
+          "statement": "Presupuesto desde 2025, rutas en escalones por década y expansión de bosque son hipótesis propias sobre cifras publicadas.",
+          "provenance": "Claims h_budget, h_routes, h_forest"
+        },
+        "claim_ids": [
+          "h_budget",
+          "h_routes",
+          "h_forest"
+        ]
+      },
+      {
+        "path": "/assumptions/1",
+        "value": {
+          "id": "LifeTwoDegrees",
+          "kind": "NORMATIVE",
+          "statement": "La condición de vida es no superar el presupuesto de 2 °C; margen climático, bosques y emisiones permitidas se comparan como bienestar, sin sumarlos.",
+          "provenance": "Claims d_life_task, d_welfare"
+        },
+        "claim_ids": [
+          "d_life_task",
+          "d_welfare"
+        ]
+      },
+      {
+        "path": "/assumptions/2",
+        "value": {
+          "id": "ClimateLaw",
+          "kind": "PROBABILITY",
+          "statement": "Un tercio para cada respuesta del clima, declarado a partir de las probabilidades del IPCC para el presupuesto; no es una ley empírica AM-02. La PVS se informa también bajo toda ley.",
+          "provenance": "Claim d_law"
+        },
+        "claim_ids": [
+          "d_law"
+        ]
+      }
+    ],
+    "scope": {
+      "format": "genius-system-scope/1",
+      "observation_revision": 1,
+      "label": "Presupuesto de CO2 para 2 °C, emisiones y bosques",
+      "members": [
+        "budget",
+        "emitted",
+        "forest",
+        "future_generations",
+        "other_species",
+        "people_today",
+        "fossil_economies"
+      ],
+      "intervention_entities": [
+        "fossil_economies"
+      ],
+      "evaluation_entities": [
+        "budget",
+        "emitted",
+        "forest",
+        "future_generations",
+        "other_species",
+        "people_today",
+        "fossil_economies"
+      ],
+      "bindings": [
+        {
+          "collection": "stocks",
+          "model_id": "budget",
+          "entity_id": "budget"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "emitted",
+          "entity_id": "emitted"
+        },
+        {
+          "collection": "stocks",
+          "model_id": "forest",
+          "entity_id": "forest"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "future_generations",
+          "entity_id": "future_generations"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "other_species",
+          "entity_id": "other_species"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "people_today",
+          "entity_id": "people_today"
+        },
+        {
+          "collection": "carriers",
+          "model_id": "fossil_economies",
+          "entity_id": "fossil_economies"
+        }
+      ],
+      "rationale": "La humanidad decide su ruta de emisiones y deforestación; se evalúan el margen climático, los bosques y las emisiones permitidas. Fuera de alcance: los otros límites planetarios."
+    },
+    "unresolved": []
+  },
+  "provenance": "Interpretación manual de extractos textuales citados; cifras no citadas declaradas como hipótesis."
+}

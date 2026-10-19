@@ -23,7 +23,7 @@ class FieldCaseTests(unittest.TestCase):
 
     def test_catalog_and_full_flow_for_each_case(self):
         rows = self.client.get('/api/field-cases').json['field_cases']
-        self.assertEqual({row['id'] for row in rows}, {'denver_water_2026', 'lake_mead_2027', 'lake_mead_2028', 'mendoza_potrerillos_2026', 'us_blood_2026'})
+        self.assertEqual({row['id'] for row in rows}, {'denver_water_2026', 'earth_2105', 'lake_mead_2027', 'lake_mead_2028', 'mendoza_potrerillos_2026', 'us_blood_2026'})
         self.assertEqual(self.client.get('/api/field-cases/missing').status_code, 404)
         for row in rows:
             with self.subTest(case=row['id']):
