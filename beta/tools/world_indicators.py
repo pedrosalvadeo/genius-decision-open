@@ -28,18 +28,18 @@ INDICATORS = [
          note_en="Global annual mean. The planetary boundary is 350 ppm.",
          note_es="Promedio global anual. El límite planetario es de 350 ppm."),
     dict(id="living_planet", boundary="biosphere", slugs=["global-living-planet-index", "living-planet-index"], better="up", years=(1970, 2100),
-         en="Monitored wildlife populations", es="Poblaciones de fauna silvestre monitoreadas", unit="index",
+         scale=100, en="Monitored wildlife populations", es="Poblaciones de fauna silvestre monitoreadas", unit="index",
          note_en="Living Planet Index, 1970 = 100. Average change in vertebrate populations.",
          note_es="Índice Planeta Vivo, 1970 = 100. Cambio promedio de las poblaciones de vertebrados."),
-    dict(id="forest", boundary="land", slugs=["forest-area-km", "forest-area-as-share-of-land-area"], better="up", years=(1990, 2100),
-         en="Forest area", es="Superficie de bosques", unit="km2"),
+    dict(id="forest", boundary="land", slugs=["forest-area-km"], better="up", years=(1990, 2100), scale=1e-6,
+         en="Forest area", es="Superficie de bosques", unit="Mha"),
     dict(id="freshwater", boundary="freshwater", slugs=["annual-freshwater-withdrawals"], better="down", years=(1960, 2100),
          en="Freshwater withdrawn each year", es="Agua dulce extraída por año", unit="m3"),
-    dict(id="nitrogen", boundary="nutrients", slugs=["nitrogen-fertilizer-consumption", "use-of-nitrogenous-fertilizers", "nitrogen-fertilizer-use"], better="down", years=(1961, 2100),
-         en="Nitrogen fertilizer used", es="Fertilizante nitrogenado usado", unit="t"),
+    dict(id="nitrogen", boundary="nutrients", slugs=["nitrogen-fertilizer-application-per-hectare-of-cropland", "nitrogen-fertilizer-use-per-hectare-of-cropland", "fertilizer-use-nitrogen", "global-fertilizer-use-by-nutrient"], better="down", years=(1961, 2100),
+         en="Nitrogen fertilizer per hectare of cropland", es="Fertilizante nitrogenado por hectárea cultivada", unit="kg/ha"),
     dict(id="plastics", boundary="novel_entities", slugs=["global-plastics-production"], better="down", years=(1950, 2100),
          en="Plastic produced each year", es="Plástico producido por año", unit="t"),
-    dict(id="ocean_ph", boundary="ocean_acidification", slugs=["seawater-ph"], better="up", entities=["World", "Hawaii", "Hawaii (Aloha station)"], years=(1988, 2100),
+    dict(id="ocean_ph", boundary="ocean_acidification", slugs=["seawater-ph"], better="up", entities=["World", "Hawaii", "Hawaii (Aloha station)", "Hawaii (HOT)", "Bermuda"], years=(1988, 2100),
          en="Ocean surface pH", es="pH de la superficie del océano", unit="pH",
          note_en="Lower pH is a more acidic ocean.", note_es="Un pH más bajo es un océano más ácido."),
     dict(id="so2", boundary="aerosols", slugs=["so-emissions-by-world-region-in-million-tonnes", "sulfur-dioxide-emissions"], better="down", years=(1950, 2100),
@@ -62,26 +62,31 @@ def noaa(years):
                 citation="NOAA Global Monitoring Laboratory, global annual mean CO₂", updated=None, entity="World")
 
 
-def grapher(slug, total=False, years=(0, 9999), entities=("World",)):
+def grapher(slug, total=False, years=(0, 9999), entities=("World",), scale=1):
     text = get(f"{GRAPHER}{slug}.csv?v=1&csvType=full&useColumnShortNames=false")
     rows = list(csv.reader(io.StringIO(text)))
     header, body = rows[0], rows[1:]
     entity = next((e for e in entities if any(r[0] == e for r in body)), None)
     if entity is None:
         raise ValueError(f"no {entities} row; entities like {sorted({r[0] for r in body})[:8]}")
-    # Entity, Code, Year, value columns...: one column, or a stacked chart whose total is the sum.
-    points = []
+    # Entity, Code, Year (or Day), value columns...: one column, or a stacked chart whose total is the sum.
+    # Daily series are averaged per year.
+    when = next(i for i, h in enumerate(header) if h in ("Year", "Day", "Date"))
+    first = when + 1
+    by_year = {}
     for r in body:
-        if r[0] != entity:
+        if r[0] != entity or not r[when]:
             continue
-        cells = [c.strip() for c in (r[3:] if total else r[3:4])]
-        if any(cells) and years[0] <= int(r[2]) <= years[1]:
-            points.append([int(r[2]), round(sum(float(c) for c in cells if c), 4)])
+        cells = [c.strip() for c in (r[first:] if total else r[first:first + 1])]
+        year = int(r[when][:4])
+        if any(cells) and years[0] <= year <= years[1]:
+            by_year.setdefault(year, []).append(sum(float(c) for c in cells if c))
+    points = [[y, round(sum(v) / len(v) * scale, 4)] for y, v in by_year.items()]
     if len(points) < 2:
         raise ValueError(f"only {len(points)} points for {entity}")
     meta = json.loads(get(f"{GRAPHER}{slug}.metadata.json"))
     column = next(iter(meta.get("columns", {}).values()), {})
-    return dict(column="total of " + ", ".join(header[3:]) if total else header[3], points=sorted(points), chart=f"{GRAPHER}{slug}",
+    return dict(column="total of " + ", ".join(header[first:]) if total else header[first], points=sorted(points), chart=f"{GRAPHER}{slug}",
                 citation=column.get("citationShort") or column.get("citationLong"), source_unit=column.get("unit"),
                 updated=column.get("lastUpdated"), entity=entity)
 
@@ -91,7 +96,7 @@ def main():
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
     result, failures = [], []
-    keep = lambda item: {k: v for k, v in item.items() if k not in ("slugs", "total", "years", "entities", "source")}
+    keep = lambda item: {k: v for k, v in item.items() if k not in ("slugs", "total", "years", "entities", "source", "scale")}
     for item in INDICATORS:
         years = item.get("years", (0, 9999))
         if item.get("source") == "noaa":
@@ -102,7 +107,7 @@ def main():
             continue
         for slug in item["slugs"]:
             try:
-                data = grapher(slug, item.get("total", False), years, item.get("entities", ("World",)))
+                data = grapher(slug, item.get("total", False), years, item.get("entities", ("World",)), item.get("scale", 1))
             except Exception as error:  # report and try the next candidate
                 failures.append(f"{slug}: {error}")
                 continue
