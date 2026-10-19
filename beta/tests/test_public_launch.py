@@ -37,6 +37,17 @@ class PublicLaunchTests(unittest.TestCase):
             self.assertIn('lang="es-AR"', spanish)
             self.assertIn('class="lang-switch" href="/"', spanish)
             self.assertIn('href="/app?next=/twin/"', spanish)
+            self.assertIn('href="/es/lab"', spanish)
+        for path, lang in (('/lab', 'lang="en"'), ('/es/lab', 'lang="es-AR"')):
+            with self.client.get(path) as response:
+                self.assertEqual(response.status_code, 200)
+                lab = response.get_data(as_text=True)
+                self.assertIn(lang, lab)
+                self.assertIn('id="casos"', lab)
+                self.assertIn('href="/app?next=/twin/"', lab)
+        with self.client.get('/static/world-indicators.json') as response:
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(len(response.json['indicators']), 5)
         with self.client.get('/app') as response:
             self.assertEqual(response.status_code, 200)
             workspace = response.get_data(as_text=True)

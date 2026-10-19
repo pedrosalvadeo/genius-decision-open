@@ -258,6 +258,15 @@ def create_app(overrides=None):
     def index_es():
         return send_from_directory(app.static_folder,'index.es.html')
 
+    # The lab: real cases, twins, modules and tools for agents, apart from the home page.
+    @app.get('/lab')
+    def lab():
+        return send_from_directory(app.static_folder,'lab.html')
+
+    @app.get('/es/lab')
+    def lab_es():
+        return send_from_directory(app.static_folder,'lab.es.html')
+
     @app.get('/app')
     def workspace():
         return send_from_directory(app.static_folder, 'workspace.html')

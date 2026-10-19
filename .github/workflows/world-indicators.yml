@@ -1,0 +1,32 @@
+name: World indicators
+
+# Downloads the world indicators charted on the home page (Our World in Data, which
+# republishes World Bank, UN IGME, Ember and UNEP series). It contacts no one; the JSON
+# is printed and uploaded so it can be reviewed and committed to beta/genius_beta/static.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'beta/tools/world_indicators.py'
+      - '.github/workflows/world-indicators.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download the World series and their sources
+        run: python beta/tools/world_indicators.py --out world-indicators.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: world-indicators
+          path: world-indicators.json
