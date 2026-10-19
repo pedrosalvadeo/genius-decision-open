@@ -47,7 +47,7 @@ class PublicLaunchTests(unittest.TestCase):
                 self.assertIn('href="/app?next=/twin/"', lab)
         with self.client.get('/static/world-indicators.json') as response:
             self.assertEqual(response.status_code, 200)
-            self.assertEqual(len(response.json['indicators']), 5)
+            self.assertEqual(len(response.json['indicators']), 9)
         with self.client.get('/app') as response:
             self.assertEqual(response.status_code, 200)
             workspace = response.get_data(as_text=True)

@@ -185,3 +185,23 @@
 @keyframes rise{from{transform:translateY(60px) scale(.9);opacity:.3}to{transform:none;opacity:1}}
 @keyframes lift{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
 @media print{.sky,.decide-controls{display:none}.horizon-hero,.decide-section,.roots-section{background:white;color:#173f35}}
+/* The nine boundaries in data */
+.indicator-example{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:36px;align-items:center;margin-top:48px;padding:30px;border-radius:8px;background:#eaf0dc}
+.indicator-example:empty{display:none}
+.example-copy .eyebrow{margin-bottom:14px;color:#3c6236}
+.example-copy h3{font-size:1.7rem;line-height:1.2;letter-spacing:-.035em}
+.example-copy p:not(.eyebrow){font-size:.88rem;color:var(--muted);margin-top:14px}
+.indicator-example .indicator{border-color:#cbd8bc}
+.indicator-example+.indicator-grid{margin-top:22px}
+.indicator-boundary{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.indicator-boundary strong{font-weight:650;border-radius:3px;padding:3px 6px;letter-spacing:.04em}
+.indicator.crossed .indicator-boundary strong{background:#f6e2d8;color:#97431f}
+.indicator.safe .indicator-boundary strong{background:#e3eedb;color:#3c6236}
+.indicator.crossed .indicator-plot .line{stroke:var(--crossed)}
+.indicator.crossed .indicator-plot .end{fill:var(--crossed)}
+.indicator.crossed .indicator-plot .area{fill:#f2d6c8}
+.indicator.crossed .indicator-change strong{color:#97431f}
+.indicator.crossed .indicator-plot .hover-dot{stroke:var(--crossed)}
+.indicator-plot .limit{stroke:var(--green);stroke-width:1;stroke-dasharray:4 3}
+.indicator-plot .limit-label{fill:var(--green)}
+@media(max-width:780px){.indicator-example{grid-template-columns:1fr;gap:18px;padding:18px;margin-top:30px}.example-copy h3{font-size:1.4rem}}
