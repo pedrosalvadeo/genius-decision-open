@@ -170,8 +170,11 @@ def _json_object(text):
     return json.loads(text[start:end + 1])
 
 
-def genius_answer(client, question, clock=time.monotonic):
-    """Draft, validate (with up to two repairs), evaluate, and read the kernel's results."""
+def genius_answer(client, question, clock=time.monotonic, system=MODELLER, extra=None):
+    """Draft, validate (with up to two repairs), evaluate, and read the kernel's results.
+
+    `extra(draft, model)` lets a product read fields of the draft the kernel does not use; it may
+    raise ValueError to send the draft back for repair."""
     from genius_twin import registry
     deadline = clock() + DEADLINE_SECONDS
     messages = [{"role": "user", "content": question}]
@@ -181,7 +184,7 @@ def genius_answer(client, question, clock=time.monotonic):
         if remaining < 20:
             break
         response = client.with_options(timeout=remaining).messages.create(
-            model=MODEL, max_tokens=12000, output_config={"effort": "medium"}, system=MODELLER, messages=messages)
+            model=MODEL, max_tokens=12000, output_config={"effort": "medium"}, system=system, messages=messages)
         if response.stop_reason == "refusal":
             return {"status": "REFUSED", "attempts": attempt}
         text = _text(response)
@@ -191,6 +194,7 @@ def genius_answer(client, question, clock=time.monotonic):
                 return {"status": "NOT_A_DECISION", "explanation": str(draft["not_a_decision"]), "attempts": attempt}
             model = expand(draft)
             registry.validate(model)
+            added = extra(draft, model) if extra else {}
         except (ValueError, KeyError, TypeError, AttributeError, IndexError, ZeroDivisionError) as error:
             reason = f"{type(error).__name__}: {error}"[:600]
             errors.append(reason)
@@ -201,7 +205,7 @@ def genius_answer(client, question, clock=time.monotonic):
             results = registry.evaluate(model)["canonical_results"]
         except (RuntimeError, ValueError) as error:
             return {"status": "KERNEL_ERROR", "attempts": attempt, "repairs": errors, "model": model, "error": f"{type(error).__name__}: {error}"[:600]}
-        return {"status": "EVALUATED", "attempts": attempt, "repairs": errors, "model": model, "summary": summarize(model, results)}
+        return {"status": "EVALUATED", "attempts": attempt, "repairs": errors, "model": model, "summary": summarize(model, results), **added}
     return {"status": "MODEL_NOT_VALID", "attempts": len(errors), "repairs": errors}
 
 
@@ -282,6 +286,9 @@ def install(app, APIError, fail_quota):
     def limits(side, uid):
         fail_quota(f"compare-{side}:{uid}", app.config["MAX_COMPARE_DAILY"])
         fail_quota(f"compare-{side}-global", app.config["MAX_GLOBAL_COMPARE_DAILY"])
+
+    from .business import install as install_business
+    install_business(app, APIError, fail_quota, client)
 
     @app.get("/comparar")
     def compare_page():
