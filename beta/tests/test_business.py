@@ -1,6 +1,7 @@
 """Decision report for companies: boundary tags, the planetary view and the endpoints, with a fake language model."""
 from copy import deepcopy
 import json
+import time
 from pathlib import Path
 import tempfile
 import unittest
@@ -80,13 +81,33 @@ class EndpointTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
+    def collect(self, job):
+        for _ in range(200):
+            r = self.http.get('/api/business/report/' + job)
+            if r.status_code != 200 or r.json.get('status') != 'WORKING':
+                return r
+            time.sleep(0.05)
+        self.fail('report never finished')
+
+    def test_other_users_cannot_collect_a_report(self):
+        started = self.http.post('/api/business/report', json={'decision': 'Plantar 40 ha'}, headers=self.csrf)
+        other = self.app.test_client()
+        o = other.post('/api/register', json=dict(username='otra', password='A-long-password-123', privacy_accepted=True,
+                                                   privacy_version=self.app.config['PRIVACY_VERSION'], adult_confirmed=True))
+        self.assertEqual(o.status_code, 201, o.json)
+        self.assertEqual(other.get('/api/business/report/' + started.json['job']).status_code, 404)
+        self.assertEqual(self.collect(started.json['job']).json['status'], 'EVALUATED')
+
     def test_pages_report_recalculation_and_limit(self):
         for path in ('/business', '/empresas', '/business/report', '/empresas/informe'):
             self.assertEqual(self.http.get(path).status_code, 200, path)
         self.assertEqual(self.app.test_client().post('/api/business/report', json={'decision': 'x'}).status_code, 401)
         self.assertEqual(self.http.post('/api/business/report', json={'company': 'x'}, headers=self.csrf).status_code, 400)
-        r = self.http.post('/api/business/report', json={'decision': 'Plantar 40 ha'}, headers=self.csrf)
+        started = self.http.post('/api/business/report', json={'decision': 'Plantar 40 ha'}, headers=self.csrf)
+        self.assertEqual(started.status_code, 202, started.json)
+        r = self.collect(started.json['job'])
         self.assertEqual(r.json['status'], 'EVALUATED', r.json)
+        self.assertEqual(self.http.get('/api/business/report/' + started.json['job']).status_code, 404)
         again = self.http.post('/api/business/report', json={'decision': 'Plantar 40 ha'}, headers=self.csrf)
         self.assertEqual(again.status_code, 429)
         model = r.json['model']

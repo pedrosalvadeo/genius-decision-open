@@ -10,6 +10,9 @@ boundary. Nothing is summed and nothing is stored.
 """
 from fractions import Fraction
 import os
+import secrets
+import threading
+import time
 
 from flask import g, jsonify, request, send_from_directory
 
@@ -39,6 +42,7 @@ This is a company's decision (a product, a supplier, a site, an investment, a ta
 
 MODELLER = compare.MODELLER + GUIDE
 MAX_FIELD = 1500
+JOB_SECONDS = 600  # a finished report waits this long in memory for its page to collect it
 
 
 def tags(draft, model):
@@ -127,6 +131,21 @@ def install(app, APIError, fail_quota, client):
     def business_report_page_es():
         return send_from_directory(static, "informe.html")
 
+    # The report runs in the background and the page polls for it: a request held open for a minute and a half
+    # drops on phones (screen off, network switch) and shows "Failed to fetch". Jobs live only in this process's
+    # memory, belong to the user who started them, and are forgotten once collected or after JOB_SECONDS.
+    jobs, lock = {}, threading.Lock()
+
+    def run(job, model, text):
+        try:
+            job["result"] = report(model, text)
+        except Exception as error:
+            upstream = type(error).__module__.startswith("anthropic")
+            app.logger.warning("business_report_failed class=%s upstream=%s", type(error).__name__, upstream)
+            job["error"] = ("compare_upstream", "La IA no respondió a tiempo. Probá de nuevo en un momento.", 502) if upstream \
+                else ("report_failed", "No pudimos armar el informe. Probá de nuevo en un momento.", 500)
+        job["done"] = time.monotonic()
+
     @app.post("/api/business/report")
     def business_report():
         text = question_from(request.get_json(silent=True))
@@ -135,13 +154,27 @@ def install(app, APIError, fail_quota, client):
         model = client()
         fail_quota(f"business:{g.user['id']}", app.config["MAX_COMPARE_DAILY"])
         fail_quota("business-global", app.config["MAX_GLOBAL_COMPARE_DAILY"])
-        try:
-            return jsonify(report(model, text))
-        except Exception as error:
-            if not type(error).__module__.startswith("anthropic"):
-                raise
-            app.logger.warning("business_upstream_failed class=%s", type(error).__name__)
-            raise APIError("compare_upstream", "La IA no respondió a tiempo. Probá de nuevo en un momento.", 502)
+        job_id, job = secrets.token_urlsafe(16), {"user": g.user["id"], "done": None}
+        with lock:
+            now = time.monotonic()
+            for key in [k for k, j in jobs.items() if j["done"] is not None and now - j["done"] > JOB_SECONDS]:
+                del jobs[key]
+            jobs[job_id] = job
+        threading.Thread(target=run, args=(job, model, text), daemon=True).start()
+        return jsonify(job=job_id, status="WORKING"), 202
+
+    @app.get("/api/business/report/<job_id>")
+    def business_report_job(job_id):
+        with lock:
+            job = jobs.get(job_id)
+            if job is None or job["user"] != g.user["id"]:
+                raise APIError("report_not_found", "No encontramos ese informe; puede que el servidor se haya reiniciado. Generalo de nuevo.", 404)
+            if job["done"] is None:
+                return jsonify(job=job_id, status="WORKING")
+            del jobs[job_id]
+        if "error" in job:
+            raise APIError(*job["error"])
+        return jsonify(job["result"])
 
     @app.post("/api/business/recalculate")
     def business_recalculate():
