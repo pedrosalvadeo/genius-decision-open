@@ -1,0 +1,238 @@
+"use strict";
+// Decision report for companies: one page for /business/report (English) and /empresas/informe (Spanish).
+const $ = id => document.getElementById(id);
+const EN = document.documentElement.lang.startsWith("en");
+const T = EN ? {
+  failed: "The service could not complete the request.", refused: "The AI declined to model this decision.",
+  notValid: "The AI could not write a model the validator accepts, so Genius calculates nothing. Add detail: the options, what is uncertain and whom it affects.",
+  rejected: "What the validator rejected", kernel: "The model passed validation but the kernel could not calculate it: ",
+  recalculated: "Recalculated by the kernel with your corrections", life: "Life condition: ",
+  keep: "Keep it in every scenario: ", none: "No route keeps it in every scenario. Genius does not recommend sacrificing it: another route is needed.",
+  dropped: "Dropped because they lose it in some scenario: ", lifeTable: "1. Life and PVS by route and scenario",
+  route: "Route", lives: "✓ kept", lost: "✗ lost", undecided: "undecided", noLaw: "no law",
+  planet: "2. Planetary boundaries", planetLead: "Where each route leaves each boundary at the end of the horizon (worst moment in brackets). Highlighted: the routes that leave the most room in that scenario.",
+  start: "at the start", higher: "higher is better", lower: "lower is better", worst: "worst",
+  carriers: "3. Best for each affected party", tied: " (tied or incomparable)", noWelfare: "no wellbeing criterion declared",
+  disagree: "The affected parties disagree: what is best for one is not for another. Genius shows the conflict instead of adding it into one number.",
+  wellbeing: "Wellbeing of each affected party by scenario (end and worst moment)",
+  hypotheses: n => "4. Model hypotheses (" + n + ")", download: "Download the full model (JSON)", print: "Print or save as PDF",
+  edit: "Correct hypotheses and recalculate", editLead: "Change any number the AI assumed. Decimals or fractions are accepted (for example 2.5 or 1/3). The kernel recalculates without the AI.",
+  stocks: "Stocks", stock: "Stock", initial: "At start", capacity: "Maximum", condition: "Life condition", mustBe: "Must be",
+  atLeast: "at least", atMost: "at most", threshold: "Threshold", law: "Probability of each scenario (must add up to 1)",
+  scenario: "Scenario", probability: "Probability", actions: "Actions, per step", action: "Action", effect: "Effect", amount: "Amount",
+  uses: "uses", adds: "adds to", arrives: "arrives at", consumed: "consumed from", available: "available in", step: "Step ",
+  recalc: "Recalculate with the kernel", working: "Modelling the decision and calculating with the kernel… this can take up to two minutes.",
+  steps: (n, unit) => n + " " + (unit || "steps"), generated: "Generated on ", rule: "Life condition and PVS first; then, for each affected party, the routes no other beats on what matters to them. Criteria are never added together.",
+  locale: "en-US",
+} : {
+  failed: "El servicio no pudo completar la solicitud.", refused: "La IA no quiso modelar esta decisión.",
+  notValid: "La IA no logró escribir un modelo que el validador acepte, así que Genius no calcula nada. Agregá detalle: las opciones, qué es incierto y a quién afecta.",
+  rejected: "Lo que rechazó el validador", kernel: "El modelo pasó la validación pero el kernel no pudo calcularlo: ",
+  recalculated: "Recalculado por el kernel con tus correcciones", life: "Condición de vida: ",
+  keep: "La conservan en todos los escenarios: ", none: "Ninguna ruta la conserva en todos los escenarios. Genius no recomienda sacrificarla: hace falta buscar otra ruta.",
+  dropped: "Quedan descartadas porque la pierden en algún escenario: ", lifeTable: "1. Vida y PVS por ruta y escenario",
+  route: "Ruta", lives: "✓ se conserva", lost: "✗ se pierde", undecided: "indeciso", noLaw: "sin ley",
+  planet: "2. Límites planetarios", planetLead: "Dónde deja cada ruta cada límite al final del horizonte (entre paréntesis, el peor momento). Resaltadas: las rutas que dejan más margen en ese escenario.",
+  start: "al inicio", higher: "más es mejor", lower: "menos es mejor", worst: "peor",
+  carriers: "3. Lo mejor para cada afectado", tied: " (empatadas o incomparables)", noWelfare: "sin criterio de bienestar declarado",
+  disagree: "Los afectados no coinciden: lo mejor para uno no lo es para otro. Genius muestra el conflicto en vez de sumarlo en un número.",
+  wellbeing: "Bienestar de cada afectado por escenario (final y peor momento)",
+  hypotheses: n => "4. Hipótesis del modelo (" + n + ")", download: "Descargar el modelo completo (JSON)", print: "Imprimir o guardar en PDF",
+  edit: "Corregir hipótesis y recalcular", editLead: "Cambiá cualquier número que la IA supuso. Se aceptan decimales o fracciones (por ejemplo 2.5 o 1/3). El kernel recalcula sin usar la IA.",
+  stocks: "Existencias", stock: "Existencia", initial: "Al inicio", capacity: "Máximo", condition: "Condición de vida", mustBe: "Debe ser",
+  atLeast: "al menos", atMost: "a lo sumo", threshold: "Umbral", law: "Probabilidad de cada escenario (deben sumar 1)",
+  scenario: "Escenario", probability: "Probabilidad", actions: "Acciones, por paso", action: "Acción", effect: "Efecto", amount: "Cantidad",
+  uses: "usa", adds: "aporta a", arrives: "llega a", consumed: "se consume de", available: "disponible de", step: "Paso ",
+  recalc: "Recalcular con el kernel", working: "Modelando la decisión y calculando con el kernel… puede tardar hasta dos minutos.",
+  steps: (n, unit) => n + " " + (unit || "pasos"), generated: "Generado el ", rule: "Primero la condición de vida y la PVS; después, para cada afectado, las rutas que ninguna otra supera en lo suyo. Sin sumar criterios.",
+  locale: "es-AR",
+};
+const state = {csrf: null};
+
+function node(tag, props = {}, ...children) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (k === "class") el.className = v; else el.setAttribute(k, v);
+  }
+  for (const child of children) if (child !== null && child !== undefined) el.append(child);
+  return el;
+}
+function num(text) {
+  if (text === null || text === undefined) return null;
+  const [a, b] = String(text).split("/");
+  return Number(a) / Number(b || 1);
+}
+function fmt(text) {
+  const n = num(text);
+  return n === null || Number.isNaN(n) ? "—" : n.toLocaleString(T.locale, {maximumFractionDigits: 2});
+}
+function pct(text) {
+  const n = num(text);
+  return n === null || Number.isNaN(n) ? T.noLaw : (n * 100).toLocaleString(T.locale, {maximumFractionDigits: 1}) + " %";
+}
+async function api(path, body) {
+  const headers = {Accept: "application/json"};
+  if (body !== undefined) {headers["Content-Type"] = "application/json"; headers["X-CSRF-Token"] = state.csrf || "";}
+  const response = await fetch(path, {method: body === undefined ? "GET" : "POST", headers, credentials: "same-origin", cache: "no-store",
+    body: body === undefined ? undefined : JSON.stringify(body)});
+  let data = null;
+  try {data = await response.json();} catch (_) {}
+  if (!response.ok) {const error = new Error(data?.error?.message || T.failed); error.status = response.status; throw error;}
+  return data;
+}
+function details(title, ...children) {
+  return node("details", {class: "result-details"}, node("summary", {}, title), ...children);
+}
+function table(head, rows) {
+  return node("div", {class: "compare-table-wrap"}, node("table", {class: "compare-table"},
+    node("thead", {}, node("tr", {}, ...head.map(h => typeof h === "string" ? node("th", {}, h) : h))), node("tbody", {}, ...rows)));
+}
+
+function show(result) {
+  const box = $("report");
+  box.hidden = false;
+  if (result.status === "NOT_A_DECISION") {box.replaceChildren(node("p", {}, result.explanation)); return;}
+  if (result.status === "REFUSED") {box.replaceChildren(node("p", {class: "muted"}, T.refused)); return;}
+  if (result.status === "MODEL_NOT_VALID") {
+    box.replaceChildren(node("p", {}, T.notValid), details(T.rejected, node("ul", {}, ...(result.repairs || []).map(r => node("li", {}, r)))));
+    return;
+  }
+  if (result.status === "KERNEL_ERROR") {box.replaceChildren(node("p", {}, T.kernel + result.error)); return;}
+  const s = result.summary;
+  const label = rid => s.route_labels[rid] || rid;
+  const parts = [node("p", {class: "eyebrow"}, "GENIUS · " + (EN ? "DECISION REPORT" : "INFORME DE DECISIÓN")), node("h2", {}, s.name),
+    node("p", {class: "small muted"}, T.generated + new Date().toLocaleDateString(T.locale) + " · " + T.steps(s.horizon, result.step_label) + " · " + s.routes.length + " " + (EN ? "routes" : "rutas") + " × " + s.scenarios.length + " " + (EN ? "scenarios" : "escenarios"))];
+  if (result.recalculated) parts.push(node("p", {class: "badge"}, T.recalculated));
+  const keep = s.life_filter.keep_life_everywhere;
+  const verdict = node("div", {class: "verdict" + (keep.length ? "" : " alert")});
+  verdict.append(node("p", {}, node("strong", {}, T.life), s.life_condition));
+  verdict.append(node("p", {}, keep.length ? T.keep + keep.map(label).join(", ") + "." : T.none));
+  const lost = s.routes.filter(r => r.loses_life_in.length);
+  if (lost.length && keep.length) verdict.append(node("p", {}, T.dropped + lost.map(r => r.label).join(", ") + "."));
+  parts.push(verdict);
+
+  const scen = s.scenarios;
+  parts.push(node("h3", {}, T.lifeTable), table([T.route, ...scen.map(x => x.label + (x.probability ? " (" + pct(x.probability) + ")" : "")), "PVS"],
+    s.routes.map(r => node("tr", {}, node("td", {}, r.label),
+      ...scen.map(x => r.keeps_life_in.includes(x.id) ? node("td", {class: "ok"}, T.lives) : r.loses_life_in.includes(x.id) ? node("td", {class: "bad"}, T.lost) : node("td", {}, T.undecided)),
+      node("td", {}, r.pvs.value !== null ? pct(r.pvs.value) : r.pvs.law_range ? pct(r.pvs.law_range.min) + "–" + pct(r.pvs.law_range.max) : "—")))));
+
+  parts.push(node("h3", {}, T.planet), node("p", {class: "small"}, T.planetLead));
+  for (const b of result.planetary || []) {
+    const name = b.boundary_label[EN ? 1 : 0];
+    parts.push(node("h4", {}, name + " · " + b.label), node("p", {class: "small muted"}, fmt(b.initial) + " " + b.unit + " " + T.start + " · " + (b.direction === "higher" ? T.higher : T.lower)));
+    parts.push(table([T.route, ...scen.map(x => x.label)], s.routes.map(r => node("tr", {}, node("td", {}, r.label),
+      ...scen.map(x => {const c = b.by_scenario[x.id][r.id]; return node("td", {class: b.most_room[x.id].includes(r.id) ? "room" : ""}, fmt(c.final) + " (" + T.worst + " " + fmt(c.worst) + ")");})))));
+  }
+
+  parts.push(node("h3", {}, T.carriers), node("ul", {}, ...s.carriers.map(c => node("li", {}, node("strong", {}, c.label + ": "),
+    c.best && c.best.length ? c.best.map(label).join(EN ? " or " : " o ") + (c.status === "UNIQUE" ? "" : T.tied) : T.noWelfare))));
+  if (s.carriers_disagree) parts.push(node("p", {class: "small"}, T.disagree));
+  const wb = details(T.wellbeing);
+  for (const x of scen) {
+    wb.append(node("p", {class: "small"}, node("strong", {}, x.label)), table([T.route, ...s.routes[0].wellbeing[x.id].map(w => w.label)],
+      s.routes.map(r => node("tr", {}, node("td", {}, r.label), ...r.wellbeing[x.id].map(w => node("td", {}, fmt(w.final) + " (" + T.worst + " " + fmt(w.worst) + ")"))))));
+  }
+  parts.push(wb);
+  parts.push(node("h3", {}, T.hypotheses(s.assumptions.length)), node("ul", {class: "hypotheses"}, ...s.assumptions.map(a => node("li", {}, a.statement + " ", node("span", {class: "muted"}, "· " + a.provenance)))));
+  parts.push(editor(result));
+  const download = node("button", {type: "button", class: "text-button no-print"}, T.download);
+  download.addEventListener("click", () => {
+    const url = URL.createObjectURL(new Blob([JSON.stringify({model: result.model, boundaries: result.boundaries, step_label: result.step_label}, null, 2)], {type: "application/json"}));
+    const a = node("a", {href: url, download: "genius-report-model.json"}); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+  const print = node("button", {type: "button", class: "button primary no-print"}, T.print);
+  print.addEventListener("click", () => window.print());
+  parts.push(node("p", {class: "small muted"}, T.rule), node("div", {class: "report-actions"}, print, download));
+  box.replaceChildren(...parts);
+  box.scrollIntoView({behavior: "smooth", block: "start"});
+}
+
+function shown(text) {
+  if (text === null || text === undefined) return "";
+  const [a, b = "1"] = String(text).split("/");
+  if (b === "1") return a;
+  let d = Number(b);
+  for (const p of [2, 5]) while (d % p === 0) d /= p;
+  return d === 1 ? String(Number(a) / Number(b)) : a + "/" + b;
+}
+
+// Every number the language model supposed, editable; the kernel recalculates without the AI.
+function editor(result) {
+  const model = JSON.parse(JSON.stringify(result.model));
+  const changes = new Map();
+  const stockLabel = Object.fromEntries(model.stocks.map(x => [x.id, x.label]));
+  const field = (obj, key, what) => {
+    const before = shown(obj[key]);
+    const input = node("input", {class: "num-input", inputmode: "decimal", value: before, "aria-label": what});
+    input.addEventListener("input", () => {
+      const v = input.value.trim().replace(",", ".");
+      if (v === "") delete obj[key]; else obj[key] = v;
+      if (v === before) changes.delete(what); else changes.set(what, what + ": " + (before || "0") + " → " + (v || "0"));
+    });
+    return input;
+  };
+  const box = details(T.edit);
+  box.classList.add("no-print");
+  box.append(node("p", {class: "small"}, T.editLead));
+  box.append(node("h4", {}, T.stocks), table([T.stock, T.initial, T.capacity], model.stocks.map(x =>
+    node("tr", {}, node("td", {}, x.label + " (" + x.unit + ")"), node("td", {}, field(x, "initial", x.label + " " + T.initial)), node("td", {}, field(x, "capacity", x.label + " " + T.capacity))))));
+  box.append(node("h4", {}, T.condition), table([T.stock, T.mustBe, T.threshold], model.task.conditions.map(c =>
+    node("tr", {}, node("td", {}, stockLabel[c.stock]), node("td", {}, c.op === "ge" ? T.atLeast : T.atMost), node("td", {}, field(c, "threshold", T.threshold + " " + stockLabel[c.stock]))))));
+  if (model.law) box.append(node("h4", {}, T.law), table([T.scenario, T.probability], model.scenarios.map(x =>
+    node("tr", {}, node("td", {}, x.label), node("td", {}, field(model.law, x.id, T.probability + " " + x.label))))));
+  const actionRows = [];
+  for (const a of model.actions) for (const [kind, name] of [["withdrawals", T.uses], ["deposits", T.adds]])
+    for (const stock of Object.keys(a[kind])) actionRows.push(node("tr", {}, node("td", {}, a.label), node("td", {}, name + " " + stockLabel[stock]), node("td", {}, field(a[kind], stock, a.label + " " + name + " " + stockLabel[stock]))));
+  if (actionRows.length) box.append(node("h4", {}, T.actions), table([T.action, T.effect, T.amount], actionRows));
+  const names = {inflows: T.arrives, drains: T.consumed, renewables: T.available};
+  for (const sc of model.scenarios) {
+    const pairs = [];
+    for (const kind of ["inflows", "drains", "renewables"]) for (const stock of model.stocks.map(x => x.id))
+      if (sc.events.some(e => e[kind] && stock in e[kind])) pairs.push([kind, stock]);
+    if (!pairs.length) continue;
+    box.append(node("h4", {}, T.scenario + ": " + sc.label), table(["", ...sc.events.map((_, i) => T.step + (i + 1))], pairs.map(([kind, stock]) =>
+      node("tr", {}, node("td", {}, names[kind] + " " + stockLabel[stock]), ...sc.events.map((e, i) => node("td", {}, field(e[kind], stock, sc.label + ", " + T.step + (i + 1) + ", " + names[kind] + " " + stockLabel[stock])))))));
+  }
+  const button = node("button", {type: "button", class: "button primary"}, T.recalc);
+  const error = node("p", {class: "form-error", role: "alert", hidden: ""});
+  button.addEventListener("click", async () => {
+    button.disabled = true; error.hidden = true;
+    try {show(await api("/api/business/recalculate", {model, changes: [...changes.values()], boundaries: result.boundaries, step_label: result.step_label}));}
+    catch (e) {error.textContent = e.message; error.hidden = false; button.disabled = false;}
+  });
+  box.append(button, error);
+  return box;
+}
+
+async function submit(event) {
+  event.preventDefault();
+  const body = {lang: EN ? "en" : "es"};
+  for (const key of ["company", "place", "decision", "options", "horizon"]) body[key] = $(key).value.trim();
+  if (!body.decision) return;
+  $("error").hidden = true;
+  $("send").disabled = true;
+  $("report").hidden = false;
+  $("report").replaceChildren(node("p", {class: "waiting"}, T.working));
+  try {show(await api("/api/business/report", body));}
+  catch (error) {$("report").replaceChildren(node("p", {class: "bad"}, error.message));}
+  $("send").disabled = false;
+}
+
+async function start() {
+  try {
+    const me = await api("/api/me");
+    state.csrf = me.csrf_token;
+    $("username-label").textContent = me.user.username;
+    $("session").hidden = false;
+  } catch (error) {
+    if (error.status === 401) {$("login-needed").hidden = false; return;}
+    $("error").textContent = error.message; $("error").hidden = false; return;
+  }
+  const status = await api("/api/compare/status").catch(() => ({enabled: false}));
+  if (!status.enabled) {$("not-configured").hidden = false; return;}
+  $("ask").hidden = false;
+  $("ask").addEventListener("submit", submit);
+}
+
+start();

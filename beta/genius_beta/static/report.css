@@ -1,0 +1,13 @@
+.report-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem}
+.report-form .wide{grid-column:1/-1}
+.report-form label{display:block;font-weight:600;font-size:.85rem;margin-bottom:.3rem}
+.report-form input,.report-form textarea{width:100%}
+.report{padding:1.6rem 1.8rem;margin:1.6rem 0;font-size:.9rem;overflow-wrap:anywhere}
+.report h3{margin:1.6rem 0 .4rem;font-size:1rem}
+.report h4{margin:1.1rem 0 .2rem;font-size:.88rem}
+.report ul{padding-left:1.1rem;margin:.4rem 0}
+.report li{margin:.25rem 0}
+.compare-table td.room{background:var(--mint);font-weight:650}
+.report-actions{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:1rem}
+@media(max-width:860px){.report-form{grid-template-columns:1fr}.report{padding:1.1rem}}
+@media print{.topbar,.compare-intro,#ask,.no-print,.scope-foot,.skip{display:none!important}.compare{margin:0;padding:0;max-width:none}.report{border:0;box-shadow:none;padding:0;margin:0}.result-details{display:block}.result-details>*{display:block}.compare-table-wrap{overflow:visible}body{background:white}}

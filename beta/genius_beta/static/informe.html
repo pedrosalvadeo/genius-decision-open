@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Un informe de decisión para empresas: cada ruta en cada escenario, la condición de vida, la PVS, las personas y los sistemas vivos afectados y los límites planetarios.">
+  <meta name="referrer" content="no-referrer">
+  <link rel="alternate" hreflang="en" href="https://geniusdecision.app/business/report">
+  <link rel="alternate" hreflang="es" href="https://geniusdecision.app/empresas/informe">
+  <title>Informe de decisión · Genius para empresas</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/compare.css">
+  <link rel="stylesheet" href="/static/report.css">
+  <script defer src="/static/report.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+<header class="topbar"><a href="/es" class="brand" aria-label="Genius, inicio"><span class="brand-mark" aria-hidden="true">g</span><span>genius<span class="brand-sub">DECISION</span></span></a><span class="beta-label">BETA · PARA EMPRESAS</span><a href="/business/report" hreflang="en" lang="en">English</a><div class="session" id="session" hidden><span id="username-label"></span><a href="/app">Mi espacio</a></div></header>
+<main id="main" class="compare">
+  <section class="compare-intro">
+    <p class="eyebrow">GENIUS PARA EMPRESAS · INFORME DE DECISIÓN</p>
+    <h1>Decidí dentro de los límites planetarios.</h1>
+    <p class="lead">Describí una decisión que tu empresa tiene que tomar. La IA sólo la traduce a un modelo con rutas, escenarios, las personas afectadas y los sistemas vivos que toca; el kernel de Genius calcula cada ruta en cada escenario. Recibís qué rutas conservan la condición de vida, su PVS, dónde deja cada ruta cada límite planetario y qué es lo mejor para cada afectado, con cada número supuesto marcado como hipótesis que podés corregir.</p>
+    <p class="small"><a href="/empresas">Cómo funciona y planes</a></p>
+  </section>
+  <div id="login-needed" class="callout warning" hidden><strong>Necesitás entrar a Genius</strong><p>Cada informe usa una IA paga, así que está disponible para cuentas de la beta. Crear una es gratis.</p><a class="button primary" href="/app?next=/empresas/informe">Entrar <span aria-hidden="true">→</span></a></div>
+  <div id="not-configured" class="callout warning" hidden><strong>El informe todavía no está configurado en este servidor</strong><p>Falta la clave de la IA.</p></div>
+  <form id="ask" class="card compare-form report-form" hidden>
+    <div><label for="company">Empresa y sector</label><input id="company" maxlength="1500" placeholder="Una bodega mediana que exporta a Europa"></div>
+    <div><label for="place">Dónde opera</label><input id="place" maxlength="1500" placeholder="Mendoza, Argentina; riega del río Mendoza"></div>
+    <div class="wide"><label for="decision">La decisión</label><textarea id="decision" rows="4" maxlength="1500" required placeholder="Si plantar 40 hectáreas más de viñedo en un año seco, mantener la superficie actual o pasar primero a riego por goteo."></textarea></div>
+    <div><label for="options">Opciones que evalúan (opcional)</label><input id="options" maxlength="1500"></div>
+    <div><label for="horizon">Horizonte (opcional)</label><input id="horizon" maxlength="1500" placeholder="5 años"></div>
+    <p class="field-help wide">No incluyas datos personales ni secretos comerciales. Tu descripción se envía a Anthropic (Claude) para redactar el modelo y no se guarda en Genius.</p>
+    <div class="wide"><button class="button primary" id="send" type="submit">Generar el informe <span aria-hidden="true">→</span></button></div>
+  </form>
+  <div id="error" class="notice error" role="alert" hidden></div>
+  <article id="report" class="card report" hidden aria-live="polite"></article>
+  <p class="scope-foot">Los resultados valen bajo las hipótesis del modelo, que se muestran completas. No reemplazan asesoramiento legal, financiero ni ambiental, ni un reporte de sostenibilidad auditado.</p>
+</main>
+</body>
+</html>
