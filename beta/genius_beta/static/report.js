@@ -3,7 +3,7 @@
 const $ = id => document.getElementById(id);
 const EN = document.documentElement.lang.startsWith("en");
 const T = EN ? {
-  failed: "The service could not complete the request.", refused: "The AI declined to model this decision.",
+  failed: "The service could not complete the request.", offline: "We lost the connection with Genius. Check your connection and try again.", refused: "The AI declined to model this decision.",
   notValid: "The AI could not write a model the validator accepts, so Genius calculates nothing. Add detail: the options, what is uncertain and whom it affects.",
   rejected: "What the validator rejected", kernel: "The model passed validation but the kernel could not calculate it: ",
   recalculated: "Recalculated by the kernel with your corrections", life: "Life condition: ",
@@ -37,7 +37,7 @@ const T = EN ? {
     {label: "Delivery fleet", company: "Logistics company with 300 diesel vans", place: "Greater Buenos Aires, Argentina", decision: "Whether to renew the fleet with diesel vans, switch gradually to electric vans with chargers at the depots, or outsource the last mile", horizon: "6 years"},
   ],
 } : {
-  failed: "El servicio no pudo completar la solicitud.", refused: "La IA no quiso modelar esta decisión.",
+  failed: "El servicio no pudo completar la solicitud.", offline: "Se perdió la conexión con Genius. Revisá tu conexión y probá de nuevo.", refused: "La IA no quiso modelar esta decisión.",
   notValid: "La IA no logró escribir un modelo que el validador acepte, así que Genius no calcula nada. Agregá detalle: las opciones, qué es incierto y a quién afecta.",
   rejected: "Lo que rechazó el validador", kernel: "El modelo pasó la validación pero el kernel no pudo calcularlo: ",
   recalculated: "Recalculado por el kernel con tus correcciones", life: "Condición de vida: ",
@@ -251,6 +251,22 @@ function editor(result) {
   return box;
 }
 
+// The report is computed in the background; ask for it every few seconds. A dropped poll (phone asleep, network
+// switch) is retried instead of failing the whole report.
+async function collect(job) {
+  const until = Date.now() + 6 * 60 * 1000;
+  let misses = 0;
+  while (Date.now() < until) {
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    let data;
+    try {data = await api("/api/business/report/" + encodeURIComponent(job));}
+    catch (error) {if (error.status || ++misses > 40) throw error; continue;}
+    misses = 0;
+    if (data.status !== "WORKING") return data;
+  }
+  throw new Error(T.failed);
+}
+
 async function submit(event) {
   event.preventDefault();
   const body = {lang: EN ? "en" : "es"};
@@ -265,8 +281,8 @@ async function submit(event) {
     node("div", {}, node("p", {}, node("strong", {}, T.working)), node("ol", {class: "small"}, ...T.phases.map(x => node("li", {}, x))), clock)));
   $("report").scrollIntoView({behavior: "smooth", block: "start"});
   const timer = setInterval(() => {clock.textContent = T.wait(Math.round((Date.now() - started) / 1000));}, 1000);
-  try {show(await api("/api/business/report", body));}
-  catch (error) {$("report").replaceChildren(node("p", {class: "bad"}, error.message));}
+  try {show(await collect((await api("/api/business/report", body)).job));}
+  catch (error) {$("report").replaceChildren(node("p", {class: "bad"}, error.status ? error.message : T.offline));}
   clearInterval(timer);
   $("send").disabled = false;
 }
