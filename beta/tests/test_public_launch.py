@@ -29,6 +29,14 @@ class PublicLaunchTests(unittest.TestCase):
             self.assertNotIn('id="auth-form"', home)
             self.assertNotIn('/static/app.js', home)
             self.assertNotIn('Set-Cookie', response.headers)
+            self.assertIn('lang="en"', home)
+            self.assertIn('href="/es"', home)
+        with self.client.get('/es') as response:
+            self.assertEqual(response.status_code, 200)
+            spanish = response.get_data(as_text=True)
+            self.assertIn('lang="es-AR"', spanish)
+            self.assertIn('class="lang-switch" href="/"', spanish)
+            self.assertIn('href="/app?next=/twin/"', spanish)
         with self.client.get('/app') as response:
             self.assertEqual(response.status_code, 200)
             workspace = response.get_data(as_text=True)
