@@ -25,15 +25,29 @@
   // ---------- World indicators ----------
   var locale = es ? 'es-AR' : 'en-US';
   function fmt(value, unit) {
-    if (unit === 't') return new Intl.NumberFormat(locale, { notation: 'compact', maximumFractionDigits: 1 }).format(value) + ' t';
+    var nf = function (o) { return new Intl.NumberFormat(locale, o).format(value); };
+    if (unit === 't') return (value < 1e6 ? nf({ maximumFractionDigits: 0 }) : nf({ notation: 'compact', maximumFractionDigits: 1 })) + ' t';
+    if (unit === 'km3') return nf({ maximumFractionDigits: 0 }) + ' km³';
+    if (unit === 'Mha') return nf({ maximumFractionDigits: 0 }) + ' Mha';
+    if (unit === 'kg/ha') return nf({ maximumFractionDigits: 0 }) + ' kg/ha';
+    if (unit === 'ppm') return nf({ maximumFractionDigits: 0 }) + ' ppm';
+    if (unit === 'pH') return nf({ minimumFractionDigits: 3, maximumFractionDigits: 3 });
+    if (unit === 'index') return nf({ maximumFractionDigits: 0 });
     var digits = value < 10 ? 1 : 0;
-    return new Intl.NumberFormat(locale, { maximumFractionDigits: digits, minimumFractionDigits: digits }).format(value) + ' %';
+    return nf({ maximumFractionDigits: digits, minimumFractionDigits: digits }) + ' %';
   }
 
-  function chart(item) {
-    var card = el('article', { class: 'indicator ' + (item.better === 'up' ? 'rises' : 'falls') });
+  function chart(item, boundary) {
+    var crossed = boundary && boundary.crossed;
+    var card = el('article', { class: 'indicator ' + (crossed ? 'crossed' : 'safe') });
     var pts = item.points, first = pts[0], last = pts[pts.length - 1];
     var head = el('div', { class: 'indicator-head' });
+    if (boundary) {
+      var tag = el('p', { class: 'indicator-boundary' });
+      tag.appendChild(el('span', null, boundary[es ? 'es' : 'en'].name));
+      tag.appendChild(el('strong', null, crossed ? t('Crossed', 'Cruzado') : t('Safe zone', 'Zona segura')));
+      head.appendChild(tag);
+    }
     head.appendChild(el('h3', null, es ? item.es : item.en));
     var change = el('p', { class: 'indicator-change' });
     change.appendChild(el('span', { class: 'from' }, fmt(first[1], item.unit)));
@@ -45,14 +59,24 @@
 
     var W = 320, H = 130, L = 4, R = 4, T = 10, B = 18;
     var x0 = first[0], x1 = last[0];
-    var ymax = Math.max.apply(null, pts.map(function (p) { return p[1]; }));
+    var vals = pts.map(function (p) { return p[1]; });
+    if (item.limit != null) vals.push(item.limit);
+    var ymax = Math.max.apply(null, vals), ymin = 0;
+    if (item.unit === 'ppm' || item.unit === 'pH' || item.unit === 'Mha') { // these never approach zero; show their own range
+      ymin = Math.min.apply(null, vals); var pad = (ymax - ymin) * 0.12; ymin -= pad; ymax += pad;
+    }
     var X = function (x) { return L + (x - x0) / (x1 - x0 || 1) * (W - L - R); };
-    var Y = function (y) { return T + (1 - Math.max(0, y) / ymax) * (H - T - B); };
+    var Y = function (y) { return T + (1 - (Math.max(ymin, y) - ymin) / (ymax - ymin || 1)) * (H - T - B); };
     var line = pts.map(function (p, i) { return (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ' ' + Y(p[1]).toFixed(1); }).join('');
     var plot = svg('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'indicator-plot', role: 'img',
       'aria-label': (es ? item.es : item.en) + ': ' + fmt(first[1], item.unit) + ' (' + first[0] + ') → ' + fmt(last[1], item.unit) + ' (' + last[0] + ')' });
     plot.appendChild(svg('line', { x1: L, x2: W - R, y1: H - B, y2: H - B, class: 'baseline' }));
     plot.appendChild(svg('path', { d: line + 'L' + X(x1) + ' ' + (H - B) + 'L' + X(x0) + ' ' + (H - B) + 'Z', class: 'area' }));
+    if (item.limit != null) {
+      plot.appendChild(svg('line', { x1: L, x2: W - R, y1: Y(item.limit), y2: Y(item.limit), class: 'limit' }));
+      var lt = svg('text', { x: W - R, y: Y(item.limit) - 4, class: 'tick limit-label', 'text-anchor': 'end' });
+      lt.textContent = t('boundary ', 'límite ') + fmt(item.limit, item.unit); plot.appendChild(lt);
+    }
     var path = svg('path', { d: line, class: 'line' });
     plot.appendChild(path);
     plot.appendChild(svg('circle', { cx: X(x1), cy: Y(last[1]), r: 4, class: 'end' }));
@@ -104,8 +128,22 @@
 
   var grid = document.getElementById('indicator-grid');
   if (grid) getJSON('/static/world-indicators.json', function (data) {
-    grid.textContent = '';
-    data.indicators.forEach(function (item) { grid.appendChild(chart(item)); });
+    getJSON('/static/boundaries.json', function (bounds) {
+      var byId = {}; bounds.boundaries.forEach(function (b) { byId[b.id] = b; });
+      var example = document.getElementById('indicator-example');
+      grid.textContent = '';
+      data.indicators.forEach(function (item) {
+        var b = byId[item.boundary];
+        if (example && item.id === 'ozone') {
+          var intro = el('div', { class: 'example-copy' });
+          intro.appendChild(el('p', { class: 'eyebrow' }, t('PROOF THAT IT CAN BE DONE', 'LA PRUEBA DE QUE SE PUEDE')));
+          intro.appendChild(el('h3', null, t('The ozone layer, protected by deciding differently.', 'La capa de ozono, protegida al decidir distinto.')));
+          intro.appendChild(el('p', null, t('In 1987 the world agreed in the Montreal Protocol to stop the substances that destroyed ozone. Their use fell 99 %, and the boundary is in the safe zone. The other boundaries need the same turn, in every decision.',
+            'En 1987 el mundo acordó en el Protocolo de Montreal dejar las sustancias que destruían el ozono. Su uso cayó 99 % y el límite está en zona segura. Los otros límites necesitan el mismo giro, en cada decisión.')));
+          example.appendChild(intro); example.appendChild(chart(item, b));
+        } else grid.appendChild(chart(item, b));
+      });
+    });
   });
 
   // ---------- Nine planetary boundaries ----------
