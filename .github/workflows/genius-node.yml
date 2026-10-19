@@ -78,6 +78,9 @@ jobs:
       - name: Verify the blood-supply case quotes against the live pages
         continue-on-error: true
         run: python twin/history/source_quotes.py twin/history/blood_2026/quotes.json --out out/blood_quotes.json
+      - name: Verify the Earth twin quotes against the live pages
+        continue-on-error: true
+        run: python twin/history/source_quotes.py twin/history/earth_2026/quotes.json --out out/earth_quotes.json
       - name: Probe the Mendoza river at Guido (SNIH monthly series workbook)
         continue-on-error: true
         run: |
