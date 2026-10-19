@@ -32,7 +32,7 @@ class SeedAdoptionTests(unittest.TestCase):
         self.assertEqual(self.client.post('/adopt').status_code, 405)
 
     def test_entry_points(self):
-        for path in ('/', '/network', '/organisms'):
+        for path in ('/lab', '/es/lab', '/network', '/organisms'):
             with self.client.get(path) as response:
                 self.assertIn('href="/adopt"', response.text, path)
 
