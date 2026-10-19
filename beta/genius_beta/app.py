@@ -254,6 +254,10 @@ def create_app(overrides=None):
             return redirect('/app?access=api', code=302)
         return send_from_directory(app.static_folder,'index.html')
 
+    @app.get('/es')
+    def index_es():
+        return send_from_directory(app.static_folder,'index.es.html')
+
     @app.get('/app')
     def workspace():
         return send_from_directory(app.static_folder, 'workspace.html')
