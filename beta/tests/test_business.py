@@ -47,6 +47,24 @@ class ReportTests(unittest.TestCase):
         self.assertIn("in English", text)
 
 
+class BoundaryDataTests(unittest.TestCase):
+    def test_nine_boundaries_laws_and_pages_agree(self):
+        static = Path(business.__file__).parent / 'static'
+        data = json.loads((static / 'boundaries.json').read_text())
+        ids = [b['id'] for b in data['boundaries']]
+        self.assertEqual(ids, list(business.BOUNDARIES))
+        self.assertEqual(sum(b['crossed'] for b in data['boundaries']), 7)
+        for law in data['laws']:
+            self.assertTrue(set(law['boundaries']) <= set(ids), law['id'])
+            self.assertTrue(law['es']['name'] and law['en']['name'] and law['url'].startswith('https://'))
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('build_pages', Path(business.__file__).parents[1] / 'tools' / 'build_business_pages.py')
+        build = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(build)
+        self.assertEqual((static / 'business.html').read_text(), build.page('en', data), 'run beta/tools/build_business_pages.py')
+        self.assertEqual((static / 'empresas.html').read_text(), build.page('es', data), 'run beta/tools/build_business_pages.py')
+
+
 class EndpointTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
