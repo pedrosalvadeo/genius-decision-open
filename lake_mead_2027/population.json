@@ -245,6 +245,88 @@
    "born_generation": 1,
    "born_step": 0,
    "parent": "r14",
+   "died_generation": 2,
+   "death": "DISPLACED_IN_EVERY_NICHE"
+  },
+  "g2_r22": {
+   "policy": {
+    "default_action": "extra_may",
+    "rules": [
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "when": [],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   },
+   "label": "Ruta nacida en la generación 2",
+   "born_generation": 2,
+   "born_step": 0,
+   "parent": "r3",
    "died_generation": null,
    "death": null
   }
@@ -418,6 +500,80 @@
      "batch": 6,
      "rows": 70,
      "life_agreement": "70/70",
+     "drawn": 40
+    }
+   ]
+  },
+  {
+   "generation": 2,
+   "kind": "SAME_PRESENT",
+   "step": 0,
+   "observation": "SAME_PRESENT",
+   "model_sha256": "5efda1775995356b1272b7545975d34f551988fb2bd85b2ece383230a3ec9281",
+   "niches": {
+    "glen_canyon": "release_6",
+    "lower_basin": "g2_r22"
+   },
+   "life_condition_kept_by": [],
+   "born": [
+    "g2_r22"
+   ],
+   "died": [
+    {
+     "route": "g1_r19",
+     "reason": "DISPLACED_IN_EVERY_NICHE"
+    }
+   ],
+   "improvements": [
+    {
+     "batch": 5,
+     "carrier": "lower_basin",
+     "route": "r19",
+     "replaces": "g1_r19"
+    },
+    {
+     "batch": 6,
+     "carrier": "lower_basin",
+     "route": "g2_r22",
+     "replaces": "r19"
+    }
+   ],
+   "kernel_batches": 7,
+   "learning": [
+    {
+     "batch": 1,
+     "rows": 78,
+     "life_agreement": "78/78",
+     "drawn": 40
+    },
+    {
+     "batch": 2,
+     "rows": 84,
+     "life_agreement": "81/84",
+     "drawn": 40
+    },
+    {
+     "batch": 3,
+     "rows": 90,
+     "life_agreement": "89/90",
+     "drawn": 40
+    },
+    {
+     "batch": 4,
+     "rows": 96,
+     "life_agreement": "95/96",
+     "drawn": 40
+    },
+    {
+     "batch": 5,
+     "rows": 102,
+     "life_agreement": "101/102",
+     "drawn": 40
+    },
+    {
+     "batch": 6,
+     "rows": 108,
+     "life_agreement": "107/108",
      "drawn": 40
     }
    ]
@@ -15248,6 +15404,7552 @@
         "stock": "powell",
         "op": "le",
         "value": "4724/1"
+       }
+      ],
+      "action": "extra_jul"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 0,
+   "route": "release_6",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": []
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 0,
+   "route": "g1_r19",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "g1_r19",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "release_6",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": []
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "r1",
+   "origin": "VARIATION_OF:release_6",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       4
+      ],
+      "when": [],
+      "action": "base_release"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "r2",
+   "origin": "VARIATION_OF:g1_r19",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "r3",
+   "origin": "VARIATION_OF:g1_r19",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_may",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "r4",
+   "origin": "VARIATION_OF:release_6",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5103/1",
+      "glen_canyon.powell_reserve": "3664/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5252/1",
+      "glen_canyon.powell_reserve": "3664/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6704/1",
+       "6670/1",
+       "6784/1",
+       "6830/1",
+       "6855/1",
+       "6395/1",
+       "5848/1",
+       "5407/1",
+       "5103/1",
+       "5104/1",
+       "5220/1",
+       "5252/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5151/1",
+       "5094/1",
+       "4962/1",
+       "4746/1",
+       "4554/1",
+       "4445/1",
+       "4435/1",
+       "4507/1",
+       "4761/1",
+       "4406/1",
+       "3967/1",
+       "3664/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5508/1",
+      "glen_canyon.powell_reserve": "4717/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5853/1",
+      "glen_canyon.powell_reserve": "5742/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6725/1",
+       "6704/1",
+       "6809/1",
+       "6864/1",
+       "6887/1",
+       "6465/1",
+       "6032/1",
+       "5703/1",
+       "5508/1",
+       "5532/1",
+       "5735/1",
+       "5853/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5151/1",
+       "5094/1",
+       "4962/1",
+       "4824/1",
+       "4717/1",
+       "4730/1",
+       "4852/1",
+       "5558/1",
+       "6478/1",
+       "6351/1",
+       "5965/1",
+       "5742/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5921/1",
+      "glen_canyon.powell_reserve": "5036/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "6369/1",
+      "glen_canyon.powell_reserve": "11693/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6737/1",
+       "6745/1",
+       "6866/1",
+       "6946/1",
+       "6978/1",
+       "6694/1",
+       "6343/1",
+       "6080/1",
+       "5921/1",
+       "5974/1",
+       "6223/1",
+       "6369/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5165/1",
+       "5137/1",
+       "5036/1",
+       "5090/1",
+       "5180/1",
+       "5407/1",
+       "6030/1",
+       "8244/1",
+       "11440/1",
+       "11848/1",
+       "11669/1",
+       "11693/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_sep"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "g1_r19",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "release_6",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": []
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "r5",
+   "origin": "VARIATION_OF:r1",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       3
+      ],
+      "when": [],
+      "action": "base_release"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "r6",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6437/1",
+      "glen_canyon.powell_reserve": "1576/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7340/1",
+      "glen_canyon.powell_reserve": "1576/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7046/1",
+       "6673/1",
+       "6437/1",
+       "6644/1",
+       "7034/1",
+       "7340/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3237/1",
+       "3241/1",
+       "3427/1",
+       "2866/1",
+       "2153/1",
+       "1576/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6638/1",
+      "glen_canyon.powell_reserve": "3600/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7485/1",
+      "glen_canyon.powell_reserve": "4110/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7162/1",
+       "6833/1",
+       "6638/1",
+       "6810/1",
+       "7161/1",
+       "7485/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3722/1",
+       "4428/1",
+       "5348/1",
+       "5073/1",
+       "4539/1",
+       "4110/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7875/1",
+      "glen_canyon.powell_reserve": "10187/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7405/1",
+       "7142/1",
+       "6983/1",
+       "7184/1",
+       "7581/1",
+       "7875/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4968/1",
+       "7182/1",
+       "10378/1",
+       "10638/1",
+       "10311/1",
+       "10187/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       7,
+       8,
+       9
+      ],
+      "when": [],
+      "action": "extra_sep"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "r7",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "1100/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7816/1",
+      "glen_canyon.powell_reserve": "1100/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "6984/1",
+       "7120/1",
+       "7510/1",
+       "7816/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2880/1",
+       "2390/1",
+       "1677/1",
+       "1100/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3516/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8077/1",
+      "glen_canyon.powell_reserve": "3518/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7185/1",
+       "7344/1",
+       "7753/1",
+       "8077/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4801/1",
+       "4539/1",
+       "3947/1",
+       "3518/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8351/1",
+      "glen_canyon.powell_reserve": "9711/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7472/1",
+       "7660/1",
+       "8057/1",
+       "8351/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9889/1",
+       "10162/1",
+       "9835/1",
+       "9711/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       9,
+       10
+      ],
+      "when": [],
+      "action": "extra_jul"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "r8",
+   "origin": "VARIATION_OF:r3",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6199/1",
+      "glen_canyon.powell_reserve": "1814/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7102/1",
+      "glen_canyon.powell_reserve": "1814/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6704/1",
+       "6670/1",
+       "6784/1",
+       "6830/1",
+       "6855/1",
+       "6669/1",
+       "6396/1",
+       "6229/1",
+       "6199/1",
+       "6406/1",
+       "6796/1",
+       "7102/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5151/1",
+       "5094/1",
+       "4962/1",
+       "4746/1",
+       "4554/1",
+       "4171/1",
+       "3887/1",
+       "3685/1",
+       "3665/1",
+       "3104/1",
+       "2391/1",
+       "1814/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6194/1",
+      "glen_canyon.powell_reserve": "4372/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "6539/1",
+      "glen_canyon.powell_reserve": "5056/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6725/1",
+       "6704/1",
+       "6809/1",
+       "6864/1",
+       "6887/1",
+       "6739/1",
+       "6512/1",
+       "6389/1",
+       "6194/1",
+       "6218/1",
+       "6421/1",
+       "6539/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5151/1",
+       "5094/1",
+       "4962/1",
+       "4824/1",
+       "4717/1",
+       "4456/1",
+       "4372/1",
+       "4872/1",
+       "5792/1",
+       "5665/1",
+       "5279/1",
+       "5056/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5921/1",
+      "glen_canyon.powell_reserve": "5036/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "6369/1",
+      "glen_canyon.powell_reserve": "11693/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6737/1",
+       "6745/1",
+       "6866/1",
+       "6946/1",
+       "6978/1",
+       "6694/1",
+       "6343/1",
+       "6080/1",
+       "5921/1",
+       "5974/1",
+       "6223/1",
+       "6369/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5165/1",
+       "5137/1",
+       "5036/1",
+       "5090/1",
+       "5180/1",
+       "5407/1",
+       "6030/1",
+       "8244/1",
+       "11440/1",
+       "11848/1",
+       "11669/1",
+       "11693/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_may",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_sep"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "g1_r19",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "release_6",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": []
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "r9",
+   "origin": "VARIATION_OF:r5",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       2
+      ],
+      "when": [],
+      "action": "base_release"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "r10",
+   "origin": "VARIATION_OF:r3",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_may",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "mead",
+        "op": "le",
+        "value": "4478/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "r11",
+   "origin": "VARIATION_OF:release_6",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5344/1",
+      "glen_canyon.powell_reserve": "3424/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5492/1",
+      "glen_canyon.powell_reserve": "3424/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7206/1",
+       "7163/1",
+       "6703/1",
+       "6156/1",
+       "5715/1",
+       "5411/1",
+       "5344/1",
+       "5460/1",
+       "5492/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4370/1",
+       "4246/1",
+       "4137/1",
+       "4127/1",
+       "4199/1",
+       "4453/1",
+       "4166/1",
+       "3727/1",
+       "3424/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5828/1",
+      "glen_canyon.powell_reserve": "4409/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "6617/1",
+      "glen_canyon.powell_reserve": "4978/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7240/1",
+       "7195/1",
+       "6773/1",
+       "6272/1",
+       "5875/1",
+       "5828/1",
+       "6000/1",
+       "6351/1",
+       "6617/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4448/1",
+       "4409/1",
+       "4422/1",
+       "4612/1",
+       "5386/1",
+       "6158/1",
+       "5883/1",
+       "5349/1",
+       "4978/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6821/1",
+      "glen_canyon.powell_reserve": "4592/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7713/1",
+      "glen_canyon.powell_reserve": "10349/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7322/1",
+       "7286/1",
+       "7150/1",
+       "6947/1",
+       "6832/1",
+       "6821/1",
+       "7022/1",
+       "7419/1",
+       "7713/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4714/1",
+       "4872/1",
+       "4951/1",
+       "5426/1",
+       "7492/1",
+       "10540/1",
+       "10800/1",
+       "10473/1",
+       "10349/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "r12",
+   "origin": "VARIATION_OF:r5",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6066/1",
+      "glen_canyon.powell_reserve": "2702/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "6214/1",
+      "glen_canyon.powell_reserve": "2702/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6854/1",
+       "7106/1",
+       "7337/1",
+       "7151/1",
+       "6878/1",
+       "6437/1",
+       "6133/1",
+       "6066/1",
+       "6182/1",
+       "6214/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "4892/1",
+       "4470/1",
+       "4072/1",
+       "3689/1",
+       "3405/1",
+       "3477/1",
+       "3731/1",
+       "3444/1",
+       "3005/1",
+       "2702/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6290/1",
+      "glen_canyon.powell_reserve": "3890/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "6475/1",
+      "glen_canyon.powell_reserve": "5120/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6879/1",
+       "7140/1",
+       "7369/1",
+       "7221/1",
+       "6994/1",
+       "6597/1",
+       "6334/1",
+       "6290/1",
+       "6425/1",
+       "6475/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "4892/1",
+       "4548/1",
+       "4235/1",
+       "3974/1",
+       "3890/1",
+       "4664/1",
+       "5652/1",
+       "5593/1",
+       "5275/1",
+       "5120/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6609/1",
+      "glen_canyon.powell_reserve": "4698/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "6923/1",
+      "glen_canyon.powell_reserve": "11139/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6936/1",
+       "7222/1",
+       "7460/1",
+       "7382/1",
+       "7237/1",
+       "6906/1",
+       "6679/1",
+       "6664/1",
+       "6845/1",
+       "6923/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "4966/1",
+       "4814/1",
+       "4698/1",
+       "4719/1",
+       "5136/1",
+       "7418/1",
+       "10682/1",
+       "11158/1",
+       "11047/1",
+       "11139/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       3
+      ],
+      "when": [],
+      "action": "base_release"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "g1_r19",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "release_6",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": []
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "r13",
+   "origin": "VARIATION_OF:r5",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "3856/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5060/1",
+      "glen_canyon.powell_reserve": "3856/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "5060/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "3856/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       3
+      ],
+      "when": [],
+      "action": "base_release"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "r14",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "r15",
+   "origin": "VARIATION_OF:r9",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6590/1",
+      "glen_canyon.powell_reserve": "1636/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7280/1",
+      "glen_canyon.powell_reserve": "1636/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6839/1",
+       "6940/1",
+       "7189/1",
+       "7370/1",
+       "7530/1",
+       "7273/1",
+       "6929/1",
+       "6691/1",
+       "6590/1",
+       "6726/1",
+       "7045/1",
+       "7280/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5016/1",
+       "4824/1",
+       "4557/1",
+       "4206/1",
+       "3879/1",
+       "3567/1",
+       "3354/1",
+       "3223/1",
+       "3274/1",
+       "2784/1",
+       "2142/1",
+       "1636/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6791/1",
+      "glen_canyon.powell_reserve": "3839/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7541/1",
+      "glen_canyon.powell_reserve": "4054/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6860/1",
+       "6974/1",
+       "7214/1",
+       "7404/1",
+       "7562/1",
+       "7343/1",
+       "7045/1",
+       "6851/1",
+       "6791/1",
+       "6950/1",
+       "7288/1",
+       "7541/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5016/1",
+       "4824/1",
+       "4557/1",
+       "4284/1",
+       "4042/1",
+       "3852/1",
+       "3839/1",
+       "4410/1",
+       "5195/1",
+       "4933/1",
+       "4412/1",
+       "4054/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4505/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7989/1",
+      "glen_canyon.powell_reserve": "10073/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6872/1",
+       "7015/1",
+       "7271/1",
+       "7486/1",
+       "7653/1",
+       "7504/1",
+       "7288/1",
+       "7160/1",
+       "7136/1",
+       "7324/1",
+       "7708/1",
+       "7989/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5030/1",
+       "4867/1",
+       "4631/1",
+       "4550/1",
+       "4505/1",
+       "4597/1",
+       "5085/1",
+       "7164/1",
+       "10225/1",
+       "10498/1",
+       "10184/1",
+       "10073/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "mead",
+        "op": "ge",
+        "value": "4478/1"
+       }
+      ],
+      "action": "extra_jul"
+     },
+     {
+      "steps": [
+       2
+      ],
+      "when": [],
+      "action": "base_release"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "r16",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6707/1",
+      "glen_canyon.powell_reserve": "1480/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7436/1",
+      "glen_canyon.powell_reserve": "1480/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7422/1",
+       "7595/1",
+       "7351/1",
+       "7020/1",
+       "6795/1",
+       "6707/1",
+       "6856/1",
+       "7188/1",
+       "7436/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4154/1",
+       "3814/1",
+       "3489/1",
+       "3263/1",
+       "3119/1",
+       "3157/1",
+       "2654/1",
+       "1999/1",
+       "1480/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3748/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7697/1",
+      "glen_canyon.powell_reserve": "3898/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7456/1",
+       "7627/1",
+       "7421/1",
+       "7136/1",
+       "6955/1",
+       "6908/1",
+       "7080/1",
+       "7431/1",
+       "7697/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4232/1",
+       "3977/1",
+       "3774/1",
+       "3748/1",
+       "4306/1",
+       "5078/1",
+       "4803/1",
+       "4269/1",
+       "3898/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4440/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8145/1",
+      "glen_canyon.powell_reserve": "9917/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7538/1",
+       "7718/1",
+       "7582/1",
+       "7379/1",
+       "7264/1",
+       "7253/1",
+       "7454/1",
+       "7851/1",
+       "8145/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4498/1",
+       "4440/1",
+       "4519/1",
+       "4994/1",
+       "7060/1",
+       "10108/1",
+       "10368/1",
+       "10041/1",
+       "9917/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "mead",
+        "op": "ge",
+        "value": "4478/1"
+       }
+      ],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "g1_r19",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8377/1",
+      "glen_canyon.powell_reserve": "9685/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7686/1",
+       "8083/1",
+       "8377/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10136/1",
+       "9809/1",
+       "9685/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "release_6",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": []
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "r17",
+   "origin": "VARIATION_OF:r5",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "3666/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5250/1",
+      "glen_canyon.powell_reserve": "3666/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "5015/1",
+       "5250/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4172/1",
+       "3666/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5511/1",
+      "glen_canyon.powell_reserve": "6084/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5258/1",
+       "5511/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6442/1",
+       "6084/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5959/1",
+      "glen_canyon.powell_reserve": "12103/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5678/1",
+       "5959/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12214/1",
+       "12103/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       11,
+       12
+      ],
+      "when": [],
+      "action": "extra_jul"
+     },
+     {
+      "steps": [
+       3
+      ],
+      "when": [],
+      "action": "base_release"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "r18",
+   "origin": "VARIATION_OF:r3",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6293/1",
+      "glen_canyon.powell_reserve": "2032/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "6884/1",
+      "glen_canyon.powell_reserve": "2032/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6806/1",
+       "6874/1",
+       "7090/1",
+       "7238/1",
+       "7365/1",
+       "7075/1",
+       "6698/1",
+       "6427/1",
+       "6293/1",
+       "6396/1",
+       "6682/1",
+       "6884/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5049/1",
+       "4890/1",
+       "4656/1",
+       "4338/1",
+       "4044/1",
+       "3765/1",
+       "3585/1",
+       "3487/1",
+       "3571/1",
+       "3114/1",
+       "2505/1",
+       "2032/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6494/1",
+      "glen_canyon.powell_reserve": "4050/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7145/1",
+      "glen_canyon.powell_reserve": "4450/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6827/1",
+       "6908/1",
+       "7115/1",
+       "7272/1",
+       "7397/1",
+       "7145/1",
+       "6814/1",
+       "6587/1",
+       "6494/1",
+       "6620/1",
+       "6925/1",
+       "7145/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5049/1",
+       "4890/1",
+       "4656/1",
+       "4416/1",
+       "4207/1",
+       "4050/1",
+       "4070/1",
+       "4674/1",
+       "5492/1",
+       "5263/1",
+       "4775/1",
+       "4450/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4670/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7593/1",
+      "glen_canyon.powell_reserve": "10469/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6839/1",
+       "6949/1",
+       "7172/1",
+       "7354/1",
+       "7488/1",
+       "7306/1",
+       "7057/1",
+       "6896/1",
+       "6839/1",
+       "6994/1",
+       "7345/1",
+       "7593/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5063/1",
+       "4933/1",
+       "4730/1",
+       "4682/1",
+       "4670/1",
+       "4795/1",
+       "5316/1",
+       "7428/1",
+       "10522/1",
+       "10828/1",
+       "10547/1",
+       "10469/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_may",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "mead",
+        "op": "ge",
+        "value": "4478/1"
+       }
+      ],
+      "action": "extra_may"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "r19",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8435/1",
+      "glen_canyon.powell_reserve": "9627/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7554/1",
+       "7543/1",
+       "7744/1",
+       "8141/1",
+       "8435/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6770/1",
+       "9818/1",
+       "10078/1",
+       "9751/1",
+       "9627/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       8
+      ],
+      "when": [],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "r20",
+   "origin": "VARIATION_OF:release_6",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5244/1",
+      "glen_canyon.powell_reserve": "3524/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5392/1",
+      "glen_canyon.powell_reserve": "3524/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6329/1",
+       "6056/1",
+       "5615/1",
+       "5311/1",
+       "5244/1",
+       "5360/1",
+       "5392/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4511/1",
+       "4227/1",
+       "4299/1",
+       "4553/1",
+       "4266/1",
+       "3827/1",
+       "3524/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5468/1",
+      "glen_canyon.powell_reserve": "4712/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5653/1",
+      "glen_canyon.powell_reserve": "5942/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6399/1",
+       "6172/1",
+       "5775/1",
+       "5512/1",
+       "5468/1",
+       "5603/1",
+       "5653/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "4796/1",
+       "4712/1",
+       "5486/1",
+       "6474/1",
+       "6415/1",
+       "6097/1",
+       "5942/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5842/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "6101/1",
+      "glen_canyon.powell_reserve": "11961/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6560/1",
+       "6415/1",
+       "6084/1",
+       "5857/1",
+       "5842/1",
+       "6023/1",
+       "6101/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5541/1",
+       "5958/1",
+       "8240/1",
+       "11504/1",
+       "11980/1",
+       "11869/1",
+       "11961/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_jun"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "r19",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8161/1",
+      "glen_canyon.powell_reserve": "3434/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7428/1",
+       "7837/1",
+       "8161/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4455/1",
+       "3863/1",
+       "3434/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8435/1",
+      "glen_canyon.powell_reserve": "9627/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7554/1",
+       "7543/1",
+       "7744/1",
+       "8141/1",
+       "8435/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6770/1",
+       "9818/1",
+       "10078/1",
+       "9751/1",
+       "9627/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       8
+      ],
+      "when": [],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "release_6",
+   "origin": "DECLARED",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "4844/1",
+      "glen_canyon.powell_reserve": "4072/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "4844/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "4072/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5105/1",
+      "glen_canyon.powell_reserve": "6490/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5105/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6490/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5553/1",
+      "glen_canyon.powell_reserve": "12509/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5553/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12509/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": []
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "r21",
+   "origin": "VARIATION_OF:r9",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4696/1",
+      "glen_canyon.powell_reserve": "3869/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5047/1",
+      "glen_canyon.powell_reserve": "3869/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6636/1",
+       "6534/1",
+       "6580/1",
+       "6558/1",
+       "6515/1",
+       "6055/1",
+       "5508/1",
+       "5067/1",
+       "4763/1",
+       "4696/1",
+       "4812/1",
+       "5047/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5018/1",
+       "4894/1",
+       "4785/1",
+       "4775/1",
+       "4847/1",
+       "5101/1",
+       "4814/1",
+       "4375/1",
+       "3869/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "4920/1",
+      "glen_canyon.powell_reserve": "5057/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5308/1",
+      "glen_canyon.powell_reserve": "6287/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6657/1",
+       "6568/1",
+       "6605/1",
+       "6592/1",
+       "6547/1",
+       "6125/1",
+       "5624/1",
+       "5227/1",
+       "4964/1",
+       "4920/1",
+       "5055/1",
+       "5308/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5219/1",
+       "5230/1",
+       "5166/1",
+       "5096/1",
+       "5057/1",
+       "5070/1",
+       "5260/1",
+       "6034/1",
+       "7022/1",
+       "6963/1",
+       "6645/1",
+       "6287/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "5294/1",
+      "glen_canyon.powell_reserve": "5155/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "5756/1",
+      "glen_canyon.powell_reserve": "12306/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6669/1",
+       "6609/1",
+       "6662/1",
+       "6674/1",
+       "6638/1",
+       "6286/1",
+       "5867/1",
+       "5536/1",
+       "5309/1",
+       "5294/1",
+       "5475/1",
+       "5756/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5233/1",
+       "5273/1",
+       "5240/1",
+       "5362/1",
+       "5520/1",
+       "5815/1",
+       "6506/1",
+       "8788/1",
+       "12052/1",
+       "12528/1",
+       "12417/1",
+       "12306/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "base_release",
+    "rules": [
+     {
+      "steps": [
+       12
+      ],
+      "when": [],
+      "action": "extra_jul"
+     },
+     {
+      "steps": [
+       2
+      ],
+      "when": [],
+      "action": "base_release"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "r22",
+   "origin": "VARIATION_OF:r3",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "842/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8074/1",
+      "glen_canyon.powell_reserve": "842/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "7024/1",
+       "7344/1",
+       "7596/1",
+       "7827/1",
+       "7641/1",
+       "7368/1",
+       "7201/1",
+       "7171/1",
+       "7378/1",
+       "7768/1",
+       "8074/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4740/1",
+       "4402/1",
+       "3980/1",
+       "3582/1",
+       "3199/1",
+       "2915/1",
+       "2713/1",
+       "2693/1",
+       "2132/1",
+       "1419/1",
+       "842/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3260/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8335/1",
+      "glen_canyon.powell_reserve": "3260/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7058/1",
+       "7369/1",
+       "7630/1",
+       "7859/1",
+       "7711/1",
+       "7484/1",
+       "7361/1",
+       "7372/1",
+       "7602/1",
+       "8011/1",
+       "8335/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4740/1",
+       "4402/1",
+       "4058/1",
+       "3745/1",
+       "3484/1",
+       "3400/1",
+       "3900/1",
+       "4614/1",
+       "4281/1",
+       "3689/1",
+       "3260/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4208/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8551/1",
+      "glen_canyon.powell_reserve": "9511/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7099/1",
+       "7426/1",
+       "7712/1",
+       "7950/1",
+       "7872/1",
+       "7727/1",
+       "7670/1",
+       "7659/1",
+       "7860/1",
+       "8257/1",
+       "8551/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4783/1",
+       "4476/1",
+       "4324/1",
+       "4208/1",
+       "4229/1",
+       "4646/1",
+       "6654/1",
+       "9702/1",
+       "9962/1",
+       "9635/1",
+       "9511/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_may",
+    "rules": [
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "when": [],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "r23",
+   "origin": "VARIATION_OF:g1_r19",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7958/1",
+      "glen_canyon.powell_reserve": "958/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6852/1",
+       "6966/1",
+       "7228/1",
+       "7480/1",
+       "7711/1",
+       "7525/1",
+       "7252/1",
+       "7085/1",
+       "7055/1",
+       "7262/1",
+       "7652/1",
+       "7958/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4096/1",
+       "3698/1",
+       "3315/1",
+       "3031/1",
+       "2829/1",
+       "2809/1",
+       "2248/1",
+       "1535/1",
+       "958/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "3376/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8219/1",
+      "glen_canyon.powell_reserve": "3376/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6873/1",
+       "7000/1",
+       "7253/1",
+       "7514/1",
+       "7743/1",
+       "7595/1",
+       "7368/1",
+       "7245/1",
+       "7256/1",
+       "7486/1",
+       "7895/1",
+       "8219/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5003/1",
+       "4798/1",
+       "4518/1",
+       "4174/1",
+       "3861/1",
+       "3600/1",
+       "3516/1",
+       "4016/1",
+       "4730/1",
+       "4397/1",
+       "3805/1",
+       "3376/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4324/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "8551/1",
+      "glen_canyon.powell_reserve": "9511/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6885/1",
+       "7041/1",
+       "7310/1",
+       "7596/1",
+       "7834/1",
+       "7756/1",
+       "7611/1",
+       "7496/1",
+       "7485/1",
+       "7744/1",
+       "8199/1",
+       "8551/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5017/1",
+       "4841/1",
+       "4592/1",
+       "4440/1",
+       "4324/1",
+       "4345/1",
+       "4762/1",
+       "6828/1",
+       "9876/1",
+       "10078/1",
+       "9693/1",
+       "9511/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_jul",
+    "rules": [
+     {
+      "steps": [
+       10,
+       11,
+       12
+      ],
+      "when": [],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "le",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_jun"
+     },
+     {
+      "steps": [
+       6,
+       7
+      ],
+      "when": [],
+      "action": "extra_aug"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "powell",
+        "op": "ge",
+        "value": "4724/1"
+       }
+      ],
+      "action": "extra_aug"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "r24",
+   "origin": "VARIATION_OF:r3",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_0a0a19f709ce8691637c"
+   ],
+   "by_scenario": {
+    "minimum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6590/1",
+      "glen_canyon.powell_reserve": "1636/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7280/1",
+      "glen_canyon.powell_reserve": "1636/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6839/1",
+       "6940/1",
+       "7189/1",
+       "7370/1",
+       "7530/1",
+       "7273/1",
+       "6929/1",
+       "6691/1",
+       "6590/1",
+       "6726/1",
+       "7045/1",
+       "7280/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5016/1",
+       "4824/1",
+       "4557/1",
+       "4206/1",
+       "3879/1",
+       "3567/1",
+       "3354/1",
+       "3223/1",
+       "3274/1",
+       "2784/1",
+       "2142/1",
+       "1636/1"
+      ]
+     }
+    },
+    "most_probable": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6791/1",
+      "glen_canyon.powell_reserve": "3839/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7541/1",
+      "glen_canyon.powell_reserve": "4054/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6860/1",
+       "6974/1",
+       "7214/1",
+       "7404/1",
+       "7562/1",
+       "7343/1",
+       "7045/1",
+       "6851/1",
+       "6791/1",
+       "6950/1",
+       "7288/1",
+       "7541/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5016/1",
+       "4824/1",
+       "4557/1",
+       "4284/1",
+       "4042/1",
+       "3852/1",
+       "3839/1",
+       "4410/1",
+       "5195/1",
+       "4933/1",
+       "4412/1",
+       "4054/1"
+      ]
+     }
+    },
+    "maximum": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "lower_basin.mead_reserve": "6827/1",
+      "glen_canyon.powell_reserve": "4505/1"
+     },
+     "wellbeing_final": {
+      "lower_basin.mead_reserve": "7989/1",
+      "glen_canyon.powell_reserve": "10073/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "lower_basin.mead_reserve": [
+       "6827/1",
+       "6872/1",
+       "7015/1",
+       "7271/1",
+       "7486/1",
+       "7653/1",
+       "7504/1",
+       "7288/1",
+       "7160/1",
+       "7136/1",
+       "7324/1",
+       "7708/1",
+       "7989/1"
+      ],
+      "glen_canyon.powell_reserve": [
+       "5155/1",
+       "5030/1",
+       "4867/1",
+       "4631/1",
+       "4550/1",
+       "4505/1",
+       "4597/1",
+       "5085/1",
+       "7164/1",
+       "10225/1",
+       "10498/1",
+       "10184/1",
+       "10073/1"
+      ]
+     }
+    }
+   },
+   "generation": 2,
+   "step": 0,
+   "policy_original": {
+    "default_action": "extra_may",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "mead",
+        "op": "ge",
+        "value": "4478/1"
        }
       ],
       "action": "extra_jul"
