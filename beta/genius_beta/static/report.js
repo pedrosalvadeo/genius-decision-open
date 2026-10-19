@@ -8,46 +8,70 @@ const T = EN ? {
   rejected: "What the validator rejected", kernel: "The model passed validation but the kernel could not calculate it: ",
   recalculated: "Recalculated by the kernel with your corrections", life: "Life condition: ",
   keep: "Keep it in every scenario: ", none: "No route keeps it in every scenario. Genius does not recommend sacrificing it: another route is needed.",
-  dropped: "Dropped because they lose it in some scenario: ", lifeTable: "1. Life and PVS by route and scenario",
+  dropped: "Dropped because they lose it in some scenario: ", lifeTable: "2. Life and PVS by route and scenario",
   route: "Route", lives: "✓ kept", lost: "✗ lost", undecided: "undecided", noLaw: "no law",
-  planet: "2. Planetary boundaries", planetLead: "Where each route leaves each boundary at the end of the horizon (worst moment in brackets). Highlighted: the routes that leave the most room in that scenario.",
+  planet: "3. Planetary boundaries", planetLead: "Where each route leaves each boundary at the end of the horizon (worst moment in brackets). Highlighted: the routes that leave the most room in that scenario.",
   start: "at the start", higher: "higher is better", lower: "lower is better", worst: "worst",
-  carriers: "3. Best for each affected party", tied: " (tied or incomparable)", noWelfare: "no wellbeing criterion declared",
+  carriers: "4. Best for each affected party", tied: " (tied or incomparable)", noWelfare: "no wellbeing criterion declared",
   disagree: "The affected parties disagree: what is best for one is not for another. Genius shows the conflict instead of adding it into one number.",
   wellbeing: "Wellbeing of each affected party by scenario (end and worst moment)",
-  hypotheses: n => "4. Model hypotheses (" + n + ")", download: "Download the full model (JSON)", print: "Print or save as PDF",
+  hypotheses: n => "6. Model hypotheses (" + n + ")", download: "Download the full model (JSON)", print: "Print or save as PDF",
   edit: "Correct hypotheses and recalculate", editLead: "Change any number the AI assumed. Decimals or fractions are accepted (for example 2.5 or 1/3). The kernel recalculates without the AI.",
   stocks: "Stocks", stock: "Stock", initial: "At start", capacity: "Maximum", condition: "Life condition", mustBe: "Must be",
   atLeast: "at least", atMost: "at most", threshold: "Threshold", law: "Probability of each scenario (must add up to 1)",
   scenario: "Scenario", probability: "Probability", actions: "Actions, per step", action: "Action", effect: "Effect", amount: "Amount",
   uses: "uses", adds: "adds to", arrives: "arrives at", consumed: "consumed from", available: "available in", step: "Step ",
-  recalc: "Recalculate with the kernel", working: "Modelling the decision and calculating with the kernel… this can take up to two minutes.",
-  steps: (n, unit) => n + " " + (unit || "steps"), generated: "Generated on ", rule: "Life condition and PVS first; then, for each affected party, the routes no other beats on what matters to them. Criteria are never added together.",
+  recalc: "Recalculate with the kernel", working: "Modelling the decision and calculating with the kernel.",
+  steps: (n, unit) => unit ? "horizon " + n + " × " + unit : n + " steps", generated: "Generated on ", rule: "Life condition and PVS first; then, for each affected party, the routes no other beats on what matters to them. Criteria are never added together.",
   locale: "en-US",
+  essentials: "The essentials", touches: (n, names) => "This decision touches " + n + " of the 9 planetary boundaries: " + names + ".",
+  roomAll: (b, routes) => b + ": " + routes + " leaves the most room in every scenario.", roomMixed: b => b + ": the route that leaves the most room changes with the scenario.",
+  conflict: "The affected parties do not agree on the best route; see section 4.", agree: "The affected parties agree on the best route.",
+  nine: "The nine checks", crossedNow: "crossed today", safeNow: "safe zone today", touched: "touched by this decision",
+  laws: "5. Laws and frameworks that apply", lawsLead: "They ask companies to assess impacts on the boundaries this decision touches. A guide, not legal advice.",
+  examplesLabel: "Or start from an example:", wait: s => "Working for " + s + " s. It usually takes about a minute.",
+  phases: ["The AI drafts the model: routes, scenarios, people and living systems affected, boundary stocks.", "The validator checks it and sends it back if something does not add up.", "The kernel calculates every route in every scenario."],
+  examples: [
+    {label: "Winery in Mendoza", company: "Mid-sized winery that exports to Europe", place: "Mendoza, Argentina; irrigates from the Mendoza River downstream of Potrerillos", decision: "Whether to plant 40 more hectares of vineyard in a dry year, keep the current area, or first switch the current 120 hectares to drip irrigation", horizon: "5 years"},
+    {label: "Cotton supplier", company: "Clothing brand selling in Europe", place: "Buys cotton from Brazil and India; sews in Bangladesh", decision: "Whether to keep the current conventional cotton supplier, switch to certified organic cotton at a higher price, or move half of the volume to recycled fibres", horizon: "4 years"},
+    {label: "Delivery fleet", company: "Logistics company with 300 diesel vans", place: "Greater Buenos Aires, Argentina", decision: "Whether to renew the fleet with diesel vans, switch gradually to electric vans with chargers at the depots, or outsource the last mile", horizon: "6 years"},
+  ],
 } : {
   failed: "El servicio no pudo completar la solicitud.", refused: "La IA no quiso modelar esta decisión.",
   notValid: "La IA no logró escribir un modelo que el validador acepte, así que Genius no calcula nada. Agregá detalle: las opciones, qué es incierto y a quién afecta.",
   rejected: "Lo que rechazó el validador", kernel: "El modelo pasó la validación pero el kernel no pudo calcularlo: ",
   recalculated: "Recalculado por el kernel con tus correcciones", life: "Condición de vida: ",
   keep: "La conservan en todos los escenarios: ", none: "Ninguna ruta la conserva en todos los escenarios. Genius no recomienda sacrificarla: hace falta buscar otra ruta.",
-  dropped: "Quedan descartadas porque la pierden en algún escenario: ", lifeTable: "1. Vida y PVS por ruta y escenario",
+  dropped: "Quedan descartadas porque la pierden en algún escenario: ", lifeTable: "2. Vida y PVS por ruta y escenario",
   route: "Ruta", lives: "✓ se conserva", lost: "✗ se pierde", undecided: "indeciso", noLaw: "sin ley",
-  planet: "2. Límites planetarios", planetLead: "Dónde deja cada ruta cada límite al final del horizonte (entre paréntesis, el peor momento). Resaltadas: las rutas que dejan más margen en ese escenario.",
+  planet: "3. Límites planetarios", planetLead: "Dónde deja cada ruta cada límite al final del horizonte (entre paréntesis, el peor momento). Resaltadas: las rutas que dejan más margen en ese escenario.",
   start: "al inicio", higher: "más es mejor", lower: "menos es mejor", worst: "peor",
-  carriers: "3. Lo mejor para cada afectado", tied: " (empatadas o incomparables)", noWelfare: "sin criterio de bienestar declarado",
+  carriers: "4. Lo mejor para cada afectado", tied: " (empatadas o incomparables)", noWelfare: "sin criterio de bienestar declarado",
   disagree: "Los afectados no coinciden: lo mejor para uno no lo es para otro. Genius muestra el conflicto en vez de sumarlo en un número.",
   wellbeing: "Bienestar de cada afectado por escenario (final y peor momento)",
-  hypotheses: n => "4. Hipótesis del modelo (" + n + ")", download: "Descargar el modelo completo (JSON)", print: "Imprimir o guardar en PDF",
+  hypotheses: n => "6. Hipótesis del modelo (" + n + ")", download: "Descargar el modelo completo (JSON)", print: "Imprimir o guardar en PDF",
   edit: "Corregir hipótesis y recalcular", editLead: "Cambiá cualquier número que la IA supuso. Se aceptan decimales o fracciones (por ejemplo 2.5 o 1/3). El kernel recalcula sin usar la IA.",
   stocks: "Existencias", stock: "Existencia", initial: "Al inicio", capacity: "Máximo", condition: "Condición de vida", mustBe: "Debe ser",
   atLeast: "al menos", atMost: "a lo sumo", threshold: "Umbral", law: "Probabilidad de cada escenario (deben sumar 1)",
   scenario: "Escenario", probability: "Probabilidad", actions: "Acciones, por paso", action: "Acción", effect: "Efecto", amount: "Cantidad",
   uses: "usa", adds: "aporta a", arrives: "llega a", consumed: "se consume de", available: "disponible de", step: "Paso ",
-  recalc: "Recalcular con el kernel", working: "Modelando la decisión y calculando con el kernel… puede tardar hasta dos minutos.",
-  steps: (n, unit) => n + " " + (unit || "pasos"), generated: "Generado el ", rule: "Primero la condición de vida y la PVS; después, para cada afectado, las rutas que ninguna otra supera en lo suyo. Sin sumar criterios.",
+  recalc: "Recalcular con el kernel", working: "Modelando la decisión y calculando con el kernel.",
+  steps: (n, unit) => unit ? "horizonte " + n + " × " + unit : n + " pasos", generated: "Generado el ", rule: "Primero la condición de vida y la PVS; después, para cada afectado, las rutas que ninguna otra supera en lo suyo. Sin sumar criterios.",
   locale: "es-AR",
+  essentials: "Lo esencial", touches: (n, names) => "Esta decisión toca " + n + " de los 9 límites planetarios: " + names + ".",
+  roomAll: (b, routes) => b + ": " + routes + " deja más margen en todos los escenarios.", roomMixed: b => b + ": la ruta que más margen deja cambia según el escenario.",
+  conflict: "Los afectados no coinciden en la mejor ruta; mirá la sección 4.", agree: "Los afectados coinciden en la mejor ruta.",
+  nine: "Los nueve checks", crossedNow: "cruzado hoy", safeNow: "en zona segura hoy", touched: "lo toca esta decisión",
+  laws: "5. Leyes y marcos que aplican", lawsLead: "Piden a las empresas evaluar los impactos sobre los límites que toca esta decisión. Una guía, no asesoramiento legal.",
+  examplesLabel: "O empezá con un ejemplo:", wait: s => "Llevamos " + s + " s. Suele tardar cerca de un minuto.",
+  phases: ["La IA redacta el modelo: rutas, escenarios, personas y sistemas vivos afectados, existencias de cada límite.", "El validador lo revisa y lo devuelve si algo no cierra.", "El kernel calcula cada ruta en cada escenario."],
+  examples: [
+    {label: "Bodega en Mendoza", company: "Bodega mediana que exporta vino a Europa", place: "Mendoza, Argentina; riega del río Mendoza aguas abajo de Potrerillos", decision: "Si plantar 40 hectáreas más de viñedo en un año seco, mantener la superficie actual o pasar primero a riego por goteo en las 120 hectáreas actuales", horizon: "5 años"},
+    {label: "Proveedor de algodón", company: "Marca de ropa que vende en Europa", place: "Compra algodón de Brasil y la India; confecciona en Bangladés", decision: "Si mantener el proveedor actual de algodón convencional, pasar a algodón orgánico certificado a mayor precio o llevar la mitad del volumen a fibras recicladas", horizon: "4 años"},
+    {label: "Flota de reparto", company: "Empresa de logística con 300 camionetas diésel", place: "Gran Buenos Aires, Argentina", decision: "Si renovar la flota con camionetas diésel, pasar de a poco a camionetas eléctricas con cargadores en los depósitos o tercerizar la última milla", horizon: "6 años"},
+  ],
 };
-const state = {csrf: null};
+const state = {csrf: null, data: null};
 
 function node(tag, props = {}, ...children) {
   const el = document.createElement(tag);
@@ -103,13 +127,26 @@ function show(result) {
   const parts = [node("p", {class: "eyebrow"}, "GENIUS · " + (EN ? "DECISION REPORT" : "INFORME DE DECISIÓN")), node("h2", {}, s.name),
     node("p", {class: "small muted"}, T.generated + new Date().toLocaleDateString(T.locale) + " · " + T.steps(s.horizon, result.step_label) + " · " + s.routes.length + " " + (EN ? "routes" : "rutas") + " × " + s.scenarios.length + " " + (EN ? "scenarios" : "escenarios"))];
   if (result.recalculated) parts.push(node("p", {class: "badge"}, T.recalculated));
-  const keep = s.life_filter.keep_life_everywhere;
-  const verdict = node("div", {class: "verdict" + (keep.length ? "" : " alert")});
-  verdict.append(node("p", {}, node("strong", {}, T.life), s.life_condition));
-  verdict.append(node("p", {}, keep.length ? T.keep + keep.map(label).join(", ") + "." : T.none));
-  const lost = s.routes.filter(r => r.loses_life_in.length);
-  if (lost.length && keep.length) verdict.append(node("p", {}, T.dropped + lost.map(r => r.label).join(", ") + "."));
-  parts.push(verdict);
+  const lang = EN ? "en" : "es";
+  const boundaryName = id => (state.data?.boundaries.find(b => b.id === id)?.[lang].name) || id;
+  const planetary = result.planetary || [];
+  const touchedIds = [...new Set(planetary.map(b => b.boundary))];
+  const essentials = node("div", {class: "essentials"}, node("p", {class: "eyebrow"}, "1. " + T.essentials.toUpperCase()));
+  const keepIds = s.life_filter.keep_life_everywhere;
+  const lostRoutes = s.routes.filter(r => r.loses_life_in.length);
+  const verdict = node("div", {class: "verdict" + (keepIds.length ? "" : " alert")}, node("p", {}, node("strong", {}, T.life), s.life_condition),
+    node("p", {}, keepIds.length ? T.keep + keepIds.map(label).join(", ") + "." : T.none));
+  if (lostRoutes.length && keepIds.length) verdict.append(node("p", {}, T.dropped + lostRoutes.map(r => r.label).join(", ") + "."));
+  essentials.append(verdict);
+  essentials.append(node("p", {}, T.touches(touchedIds.length, touchedIds.map(boundaryName).join(", "))));
+  for (const b of planetary) {
+    const sets = Object.values(b.most_room);
+    const always = sets.length ? sets.reduce((a, x) => a.filter(r => x.includes(r))) : [];
+    const what = boundaryName(b.boundary) + " (" + b.label + ")";
+    essentials.append(node("p", {class: "small"}, always.length ? T.roomAll(what, always.map(label).join(EN ? " or " : " o ")) : T.roomMixed(what)));
+  }
+  essentials.append(node("p", {class: "small"}, s.carriers_disagree ? T.conflict : T.agree));
+  parts.push(essentials);
 
   const scen = s.scenarios;
   parts.push(node("h3", {}, T.lifeTable), table([T.route, ...scen.map(x => x.label + (x.probability ? " (" + pct(x.probability) + ")" : "")), "PVS"],
@@ -117,7 +154,11 @@ function show(result) {
       ...scen.map(x => r.keeps_life_in.includes(x.id) ? node("td", {class: "ok"}, T.lives) : r.loses_life_in.includes(x.id) ? node("td", {class: "bad"}, T.lost) : node("td", {}, T.undecided)),
       node("td", {}, r.pvs.value !== null ? pct(r.pvs.value) : r.pvs.law_range ? pct(r.pvs.law_range.min) + "–" + pct(r.pvs.law_range.max) : "—")))));
 
-  parts.push(node("h3", {}, T.planet), node("p", {class: "small"}, T.planetLead));
+  parts.push(node("h3", {}, T.planet));
+  if (state.data) parts.push(node("div", {class: "nine", role: "list", "aria-label": T.nine}, ...state.data.boundaries.map(b => node("span", {
+    role: "listitem", class: "nine-chip" + (b.crossed ? " crossed" : " safe") + (touchedIds.includes(b.id) ? " touched" : ""),
+    title: (b.crossed ? T.crossedNow : T.safeNow) + (touchedIds.includes(b.id) ? " · " + T.touched : "")}, b[lang].name))));
+  parts.push(node("p", {class: "small"}, T.planetLead));
   for (const b of result.planetary || []) {
     const name = b.boundary_label[EN ? 1 : 0];
     parts.push(node("h4", {}, name + " · " + b.label), node("p", {class: "small muted"}, fmt(b.initial) + " " + b.unit + " " + T.start + " · " + (b.direction === "higher" ? T.higher : T.lower)));
@@ -134,6 +175,11 @@ function show(result) {
       s.routes.map(r => node("tr", {}, node("td", {}, r.label), ...r.wellbeing[x.id].map(w => node("td", {}, fmt(w.final) + " (" + T.worst + " " + fmt(w.worst) + ")"))))));
   }
   parts.push(wb);
+  const laws = (state.data?.laws || []).filter(x => x.boundaries.some(b => touchedIds.includes(b)));
+  if (laws.length) {
+    parts.push(node("h3", {}, T.laws), node("p", {class: "small muted"}, T.lawsLead), node("ul", {class: "laws"}, ...laws.map(x => node("li", {},
+      node("a", {href: x.url}, x[lang].name), ": " + x[lang].asks + " ", node("span", {class: "muted"}, x[lang].who)))));
+  }
   parts.push(node("h3", {}, T.hypotheses(s.assumptions.length)), node("ul", {class: "hypotheses"}, ...s.assumptions.map(a => node("li", {}, a.statement + " ", node("span", {class: "muted"}, "· " + a.provenance)))));
   parts.push(editor(result));
   const download = node("button", {type: "button", class: "text-button no-print"}, T.download);
@@ -213,13 +259,20 @@ async function submit(event) {
   $("error").hidden = true;
   $("send").disabled = true;
   $("report").hidden = false;
-  $("report").replaceChildren(node("p", {class: "waiting"}, T.working));
+  const started = Date.now();
+  const clock = node("p", {class: "waiting"}, T.wait(0));
+  $("report").replaceChildren(node("div", {class: "progress"}, node("span", {class: "spinner", "aria-hidden": "true"}),
+    node("div", {}, node("p", {}, node("strong", {}, T.working)), node("ol", {class: "small"}, ...T.phases.map(x => node("li", {}, x))), clock)));
+  $("report").scrollIntoView({behavior: "smooth", block: "start"});
+  const timer = setInterval(() => {clock.textContent = T.wait(Math.round((Date.now() - started) / 1000));}, 1000);
   try {show(await api("/api/business/report", body));}
   catch (error) {$("report").replaceChildren(node("p", {class: "bad"}, error.message));}
+  clearInterval(timer);
   $("send").disabled = false;
 }
 
 async function start() {
+  fetch("/static/boundaries.json", {cache: "no-cache"}).then(r => r.json()).then(d => {state.data = d;}).catch(() => {});
   try {
     const me = await api("/api/me");
     state.csrf = me.csrf_token;
@@ -233,6 +286,13 @@ async function start() {
   if (!status.enabled) {$("not-configured").hidden = false; return;}
   $("ask").hidden = false;
   $("ask").addEventListener("submit", submit);
+  const box = $("examples");
+  box.append(node("span", {class: "small muted"}, T.examplesLabel));
+  for (const ex of T.examples) {
+    const b = node("button", {type: "button", class: "chip"}, ex.label);
+    b.addEventListener("click", () => {for (const k of ["company", "place", "decision", "horizon"]) $(k).value = ex[k] || ""; $("options").value = ""; $("decision").focus();});
+    box.append(b);
+  }
 }
 
 start();

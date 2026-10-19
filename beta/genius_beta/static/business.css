@@ -1,0 +1,16 @@
+.solo-hero{grid-template-columns:1fr}.solo-hero .hero-copy{max-width:860px}.solo-hero .hero-lead,.solo-hero .hero-description{max-width:660px}
+.checks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:40px}
+.check{border:1px solid var(--line);border-radius:5px;padding:18px 20px;background:var(--white)}
+.check.crossed{border-color:#e0b7a4;background:#fbf2ec}
+.check .state{font-size:.58rem;letter-spacing:.1em;font-weight:700}
+.check.crossed .state{color:#9a3d22}.check.safe .state{color:#3c6236}
+.check h3{font-size:1.02rem;margin:8px 0 6px}.check p{font-size:.76rem;color:var(--muted);margin:0;line-height:1.6}
+.sub-title{margin-top:55px;font-size:1.35rem}
+.law-wrap{overflow-x:auto;margin-top:40px;border-top:1px solid var(--line)}
+.law-table{width:100%;border-collapse:collapse;font-size:.78rem;min-width:760px}
+.law-table th,.law-table td{text-align:left;vertical-align:top;padding:14px 12px 14px 0;border-bottom:1px solid var(--line);line-height:1.6}
+.law-table th{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:650}
+.law-table td:first-child{font-weight:600;width:20%}.law-table td:last-child{color:var(--muted);width:20%}
+.plans-section{padding-top:0}
+@media(max-width:900px){.checks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.checks{grid-template-columns:1fr}.sub-title{margin-top:35px}}
