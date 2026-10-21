@@ -134,10 +134,10 @@ Las notas anteriores conservan el estado que tenían al registrarse. La auditor�
 
 **Alcance:** no cambia S1 ni el kernel FP1. Los pasos comprometidos (`decision_window.py`) y la frescura de cada resultado ya funcionan sin cambiar la matemática. El cálculo por escenarios se sirve en `POST /cases/<cid>/anytime/evaluate` y en el MCP (`twin_evaluate_anytime`).
 
-## AM-06 — Selección «vida y PVS primero» dentro del kernel
+## AM-06 — PVS primero solo cuando su ventaja es robusta a la ley
 
 **Texto completo:** `PROPOSAL_AM-06.md`.
 
-**Estado:** `PROPUESTA` el 2026-10-21, espera la aprobación de Pedro. Agrega a la regla de selección explícita un modo `life_pvs`. El modo exige el filtro de vida (`task_all`) y elige, dentro de la frontera, la única ruta de PVS máxima; si hay empate, no elige. Así la regla que Pedro fijó el 2026-10-18 queda verificada en el kernel y no solo en las aplicaciones. Responde a la «Auditoría B».
+**Estado:** `PROPUESTA` el 2026-10-21, espera la aprobación de Pedro. Responde a la «Auditoría B». Agrega a la regla de selección explícita un modo `life_pvs`, que exige el filtro de vida (`task_all`). Dentro de la frontera, la PVS decide solo cuando su ventaja vale bajo toda ley admisible que declare el decisor; por defecto, toda ley sobre los escenarios. Si queda una sola ruta, la elige; si quedan varias, no elige y las muestra con el bienestar de cada portador. No usa umbrales inventados.
 
 **Alcance:** no cambia el orden producto de los cuatro criterios ni los modos de selección existentes. Toca `schema.py`, `decision.py` y `verifier.py`, que solo se modifican si Pedro la aprueba.
