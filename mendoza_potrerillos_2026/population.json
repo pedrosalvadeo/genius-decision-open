@@ -631,6 +631,65 @@
      "drawn": 40
     }
    ]
+  },
+  {
+   "generation": 4,
+   "kind": "SAME_PRESENT",
+   "step": 0,
+   "observation": "SAME_PRESENT",
+   "model_sha256": "e8fb932b8e6d28a6ea0b6d86e559d44ba104d04671c0e446bb9ba6cf7aa7f682",
+   "niches": {
+    "dgi": "g1_r1",
+    "irrigators": "g1_r17",
+    "lagoon_ecosystem": "g0_r15"
+   },
+   "life_condition_kept_by": [
+    "g0_r15",
+    "g1_r1",
+    "g1_r17"
+   ],
+   "born": [],
+   "died": [],
+   "improvements": [],
+   "kernel_batches": 7,
+   "learning": [
+    {
+     "batch": 1,
+     "rows": 157,
+     "life_agreement": "157/157",
+     "drawn": 40
+    },
+    {
+     "batch": 2,
+     "rows": 163,
+     "life_agreement": "162/163",
+     "drawn": 40
+    },
+    {
+     "batch": 3,
+     "rows": 169,
+     "life_agreement": "166/169",
+     "drawn": 40
+    },
+    {
+     "batch": 4,
+     "rows": 175,
+     "life_agreement": "173/175",
+     "drawn": 40
+    },
+    {
+     "batch": 5,
+     "rows": 181,
+     "life_agreement": "180/181",
+     "drawn": 40
+    },
+    {
+     "batch": 6,
+     "rows": 187,
+     "life_agreement": "186/187",
+     "drawn": 40
+    }
+   ]
   }
  ],
  "memory": [
@@ -37185,6 +37244,9529 @@
        4,
        5,
        6
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 0,
+   "route": "g0_r15",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "246/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "40422/169",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "107463/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "15996/89",
+       "23946/89",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "122129/356",
+       "29516/89",
+       "113999/356",
+       "54967/178",
+       "107463/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 0,
+   "route": "g1_r1",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 0,
+   "route": "g1_r17",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "330/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "62118/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "52794/169",
+       "62118/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "11407/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "15259/178"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "25869/356",
+       "15259/178"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "g1_r17",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "330/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "62118/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "52794/169",
+       "62118/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "11407/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "15259/178"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "25869/356",
+       "15259/178"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "g0_r15",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "246/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "40422/169",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "107463/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "15996/89",
+       "23946/89",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "122129/356",
+       "29516/89",
+       "113999/356",
+       "54967/178",
+       "107463/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "g1_r1",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "r1",
+   "origin": "VARIATION_OF:g1_r1",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "r2",
+   "origin": "VARIATION_OF:g1_r17",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "310/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "55358/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "49414/169",
+       "55358/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "8139/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "8139/178"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "18749/356",
+       "8139/178"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "lagoons_only",
+    "rules": [
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 1,
+   "route": "r3",
+   "origin": "VARIATION_OF:g1_r1",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "g1_r17",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "330/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "62118/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "52794/169",
+       "62118/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "11407/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "15259/178"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "25869/356",
+       "15259/178"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "g0_r15",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "246/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "40422/169",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "107463/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "15996/89",
+       "23946/89",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "122129/356",
+       "29516/89",
+       "113999/356",
+       "54967/178",
+       "107463/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "g1_r1",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "r4",
+   "origin": "VARIATION_OF:r3",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "r5",
+   "origin": "VARIATION_OF:r2",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "500/1",
+      "lagoon_ecosystem.lagoon_water": "60/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "500/1",
+       "500/1",
+       "500/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "645/2",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "500/1",
+      "lagoon_ecosystem.lagoon_water": "60/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "500/1",
+       "500/1",
+       "500/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "104493/338",
+       "113193/338",
+       "350/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "7852/89"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "500/1",
+      "lagoon_ecosystem.lagoon_water": "60/1",
+      "dgi.reserve": "7852/89"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "500/1",
+       "500/1",
+       "500/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "9486/89",
+       "33879/356",
+       "7852/89"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "lagoons_only",
+    "rules": [
+     {
+      "steps": [
+       7,
+       8
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 2,
+   "route": "r6",
+   "origin": "VARIATION_OF:g1_r17",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "625/2",
+      "lagoon_ecosystem.lagoon_water": "80/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "125/1",
+       "125/1",
+       "125/1",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "625/2",
+       "625/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "80/1",
+       "80/1",
+       "80/1",
+       "80/1",
+       "80/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "615/2",
+       "295/1",
+       "565/2",
+       "665/2",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "625/2",
+      "lagoon_ecosystem.lagoon_water": "80/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "125/1",
+       "125/1",
+       "125/1",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "625/2",
+       "625/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "80/1",
+       "80/1",
+       "80/1",
+       "80/1",
+       "80/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "615/2",
+       "49135/169",
+       "92605/338",
+       "108065/338",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "24427/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "625/2",
+      "lagoon_ecosystem.lagoon_water": "80/1",
+      "dgi.reserve": "76313/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "125/1",
+       "125/1",
+       "125/1",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "625/2",
+       "625/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "80/1",
+       "80/1",
+       "80/1",
+       "80/1",
+       "80/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "25128/89",
+       "62171/178",
+       "350/1",
+       "350/1",
+       "106999/356",
+       "21951/89",
+       "68609/356",
+       "17916/89",
+       "76313/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       3,
+       4,
+       5,
+       6
+      ],
+      "when": [],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "g1_r17",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "330/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "62118/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "52794/169",
+       "62118/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "11407/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "15259/178"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "25869/356",
+       "15259/178"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "g0_r15",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "246/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "40422/169",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "107463/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "15996/89",
+       "23946/89",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "122129/356",
+       "29516/89",
+       "113999/356",
+       "54967/178",
+       "107463/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "g1_r1",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "r7",
+   "origin": "VARIATION_OF:r3",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "le",
+        "value": "25/1"
+       }
+      ],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "r8",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "625/1",
+      "lagoon_ecosystem.lagoon_water": "20/1",
+      "dgi.reserve": "615/2"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "625/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "20/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "310/1",
+       "615/2"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "625/1",
+      "lagoon_ecosystem.lagoon_water": "20/1",
+      "dgi.reserve": "96351/338"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "625/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "20/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "49414/169",
+       "96351/338"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "287/89"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "625/1",
+      "lagoon_ecosystem.lagoon_water": "20/1",
+      "dgi.reserve": "287/89"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "625/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "20/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "18749/356",
+       "287/89"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "lagoons_only",
+    "rules": [
+     {
+      "steps": [
+       11
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 3,
+   "route": "r9",
+   "origin": "VARIATION_OF:r4",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "375/2",
+       "375/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "615/2",
+       "295/1",
+       "565/2",
+       "665/2",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "375/2",
+       "375/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "615/2",
+       "49135/169",
+       "92605/338",
+       "108065/338",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "19696/89"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "375/2",
+       "375/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "615/2",
+       "90275/356",
+       "17770/89",
+       "74135/356",
+       "19696/89"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       7,
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "g1_r17",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "330/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "62118/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "52794/169",
+       "62118/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "11407/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "15259/178"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "25869/356",
+       "15259/178"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "g0_r15",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "246/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "40422/169",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "107463/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "15996/89",
+       "23946/89",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "122129/356",
+       "29516/89",
+       "113999/356",
+       "54967/178",
+       "107463/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "g1_r1",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "r10",
+   "origin": "VARIATION_OF:r7",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "375/4",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "1105/4",
+       "1105/4",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "375/4",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "1105/4",
+       "1105/4",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "375/4",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2",
+       "375/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "1105/4",
+       "23980/89",
+       "116509/356",
+       "125143/356",
+       "32448/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       3,
+       4
+      ],
+      "when": [],
+      "action": "reinforced_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "le",
+        "value": "25/1"
+       }
+      ],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "r11",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1375/2",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "375/4",
+       "375/2",
+       "1125/4",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "625/1",
+       "1375/2",
+       "1375/2",
+       "1375/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "689/4",
+       "1105/4",
+       "1105/4",
+       "1105/4",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "310/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "111833/676"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1375/2",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "55358/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "375/4",
+       "375/2",
+       "1125/4",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "625/1",
+       "1375/2",
+       "1375/2",
+       "1375/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "111833/676",
+       "1105/4",
+       "1105/4",
+       "1105/4",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "49414/169",
+       "55358/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "0/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "625/1",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "0/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "375/4",
+       "375/2",
+       "1125/4",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "625/1",
+       "625/1",
+       "625/1",
+       "625/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "37729/356",
+       "21637/178",
+       "52007/356",
+       "24791/178",
+       "47921/356",
+       "34305/356",
+       "4176/89",
+       "0/1",
+       "3055/356",
+       "0/1",
+       "0/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "lagoons_only",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4
+      ],
+      "when": [],
+      "action": "reinforced_allocation"
+     },
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 4,
+   "route": "r12",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "0/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1875/2",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "40/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "375/4",
+       "375/2",
+       "1125/4",
+       "375/1",
+       "1875/4",
+       "1125/2",
+       "2625/4",
+       "750/1",
+       "3375/4",
+       "1875/2",
+       "1875/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "609/4",
+       "1025/4",
+       "1025/4",
+       "1025/4",
+       "1025/4",
+       "455/2",
+       "695/4",
+       "110/1",
+       "185/4",
+       "0/1",
+       "40/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "4669/338"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1875/2",
+      "lagoon_ecosystem.lagoon_water": "200/1",
+      "dgi.reserve": "4669/338"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "375/4",
+       "375/2",
+       "1125/4",
+       "375/1",
+       "1875/4",
+       "1125/2",
+       "2625/4",
+       "750/1",
+       "3375/4",
+       "3375/4",
+       "1875/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "180/1",
+       "200/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "98313/676",
+       "1025/4",
+       "1025/4",
+       "1025/4",
+       "1025/4",
+       "74783/338",
+       "8459/52",
+       "15998/169",
+       "18017/676",
+       "48937/676",
+       "4669/338"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "299/89"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1875/4",
+      "lagoon_ecosystem.lagoon_water": "100/1",
+      "dgi.reserve": "28293/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "375/4",
+       "375/2",
+       "1125/4",
+       "375/1",
+       "1875/4",
+       "1875/4",
+       "1875/4",
+       "1875/4",
+       "1875/4",
+       "1875/4",
+       "1875/4"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "100/1",
+       "100/1",
+       "100/1",
+       "100/1",
+       "100/1",
+       "100/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "30609/356",
+       "14517/178",
+       "30647/356",
+       "10551/178",
+       "299/89",
+       "4915/178",
+       "14479/356",
+       "8767/178",
+       "20589/356",
+       "5911/89",
+       "28293/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "lagoons_only",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "reinforced_and_lagoons"
+     },
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "g1_r17",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "330/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "62118/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "52794/169",
+       "62118/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "11407/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "15259/178"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "25869/356",
+       "15259/178"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "g0_r15",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "246/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "40422/169",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "107463/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "15996/89",
+       "23946/89",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "122129/356",
+       "29516/89",
+       "113999/356",
+       "54967/178",
+       "107463/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "g1_r1",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "r13",
+   "origin": "VARIATION_OF:r4",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/4",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "375/4",
+       "375/4",
+       "375/4"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "1105/4",
+       "1305/4",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/4",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "375/4",
+       "375/4",
+       "375/4"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "1105/4",
+       "217665/676",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/4",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "106049/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "375/4",
+       "375/4",
+       "375/4"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "1105/4",
+       "25350/89",
+       "106049/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       9
+      ],
+      "when": [],
+      "action": "reinforced_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "r14",
+   "origin": "VARIATION_OF:r2",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "310/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "55358/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "49414/169",
+       "55358/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "8139/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "8139/178"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "18749/356",
+       "8139/178"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "lagoons_only",
+    "rules": [
+     {
+      "steps": [
+       10
+      ],
+      "when": [],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 5,
+   "route": "r15",
+   "origin": "VARIATION_OF:g1_r1",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "735/2"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "125/2",
+       "125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "615/2",
+       "735/2"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "122583/338"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "125/2",
+       "125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "615/2",
+       "122583/338"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "114119/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "125/2",
+       "125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "615/2",
+       "114119/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       10
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "g1_r17",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "305/1",
+       "585/2",
+       "280/1",
+       "330/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "62118/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "50729/169",
+       "95793/338",
+       "45064/169",
+       "52794/169",
+       "62118/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "11407/178"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/2",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "15259/178"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "375/1",
+       "875/2",
+       "500/1",
+       "1125/2",
+       "1125/2",
+       "1125/2"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "78805/356",
+       "15301/89",
+       "42009/356",
+       "11407/178",
+       "25869/356",
+       "15259/178"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "g0_r15",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "246/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "350/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "40422/169",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "107463/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "15996/89",
+       "23946/89",
+       "350/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "122129/356",
+       "29516/89",
+       "113999/356",
+       "54967/178",
+       "107463/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "g1_r1",
+   "origin": "DECLARED",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "r16",
+   "origin": "VARIATION_OF:r7",
+   "feasible": true,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "266/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "43802/169",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "370/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "17776/89",
+       "27506/89",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1",
+       "370/1"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       5
+      ],
+      "when": [],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "le",
+        "value": "25/1"
+       }
+      ],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "hold"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "r17",
+   "origin": "VARIATION_OF:r2",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "2375/4",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "1275/4"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "1625/4",
+       "1875/4",
+       "2125/4",
+       "2375/4",
+       "2375/4",
+       "2375/4"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "407/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "1105/4",
+       "1095/4",
+       "1045/4",
+       "995/4",
+       "1115/4",
+       "1275/4"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "171/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "2375/4",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "200307/676"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "1625/4",
+       "1875/4",
+       "2125/4",
+       "2375/4",
+       "2375/4",
+       "2375/4"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "66479/338",
+       "615/2",
+       "615/2",
+       "615/2",
+       "615/2",
+       "1105/4",
+       "181791/676",
+       "170461/676",
+       "159131/676",
+       "176531/676",
+       "200307/676"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "5153/356"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "2375/4",
+      "lagoon_ecosystem.lagoon_water": "40/1",
+      "dgi.reserve": "5153/356"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "125/2",
+       "125/1",
+       "375/2",
+       "250/1",
+       "625/2",
+       "1625/4",
+       "1875/4",
+       "2125/4",
+       "2375/4",
+       "2375/4",
+       "2375/4"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "20/1",
+       "40/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "24427/178",
+       "16381/89",
+       "42691/178",
+       "47041/178",
+       "92421/356",
+       "16920/89",
+       "50079/356",
+       "7721/89",
+       "11689/356",
+       "1906/89",
+       "5153/356"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "lagoons_only",
+    "rules": [
+     {
+      "steps": [
+       6
+      ],
+      "when": [],
+      "action": "reinforced_allocation"
+     },
+     {
+      "steps": [
+       8,
+       9
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     }
+    ]
+   }
+  },
+  {
+   "format": "genius-route-verdicts/2",
+   "batch": 6,
+   "route": "r18",
+   "origin": "VARIATION_OF:g0_r15",
+   "feasible": false,
+   "frontier": false,
+   "strictly_dominated_by": [],
+   "pvs": null,
+   "cag_robust": [
+    "org_8e9abaa5243170de9681"
+   ],
+   "by_scenario": {
+    "forecast": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "110/1"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "210/1"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "375/4",
+       "375/2",
+       "1125/4",
+       "375/1",
+       "375/1",
+       "375/1",
+       "375/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "246/1",
+       "350/1",
+       "350/1",
+       "350/1",
+       "1025/4",
+       "455/2",
+       "695/4",
+       "110/1",
+       "140/1",
+       "170/1",
+       "210/1"
+      ]
+     }
+    },
+    "below": {
+     "task_status": "success",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "15998/169"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "375/1",
+      "lagoon_ecosystem.lagoon_water": "220/1",
+      "dgi.reserve": "30642/169"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "375/4",
+       "375/2",
+       "1125/4",
+       "375/1",
+       "375/1",
+       "375/1",
+       "375/1"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1",
+       "220/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "40422/169",
+       "350/1",
+       "350/1",
+       "350/1",
+       "1025/4",
+       "74783/338",
+       "8459/52",
+       "15998/169",
+       "20348/169",
+       "24698/169",
+       "30642/169"
+      ]
+     }
+    },
+    "like_2025": {
+     "task_status": "failure",
+     "wellbeing_worst": {
+      "irrigators.irrigation": "0/1",
+      "lagoon_ecosystem.lagoon_water": "0/1",
+      "dgi.reserve": "3993/89"
+     },
+     "wellbeing_final": {
+      "irrigators.irrigation": "1125/4",
+      "lagoon_ecosystem.lagoon_water": "200/1",
+      "dgi.reserve": "3993/89"
+     },
+     "functions_terminal": {},
+     "welfare_path": {
+      "irrigators.irrigation": [
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "0/1",
+       "375/4",
+       "375/2",
+       "1125/4",
+       "1125/4",
+       "1125/4",
+       "1125/4",
+       "1125/4"
+      ],
+      "lagoon_ecosystem.lagoon_water": [
+       "0/1",
+       "20/1",
+       "40/1",
+       "60/1",
+       "80/1",
+       "100/1",
+       "120/1",
+       "140/1",
+       "140/1",
+       "160/1",
+       "180/1",
+       "200/1"
+      ],
+      "dgi.reserve": [
+       "171/1",
+       "15996/89",
+       "23946/89",
+       "350/1",
+       "350/1",
+       "1025/4",
+       "14841/89",
+       "11759/178",
+       "26573/356",
+       "5627/89",
+       "18443/356",
+       "3993/89"
+      ]
+     }
+    }
+   },
+   "generation": 4,
+   "step": 0,
+   "policy_original": {
+    "default_action": "hold",
+    "rules": [
+     {
+      "steps": [
+       5,
+       6,
+       7,
+       8
+      ],
+      "when": [],
+      "action": "reinforced_and_lagoons"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      "when": [
+       {
+        "kind": "stock",
+        "stock": "potrerillos",
+        "op": "ge",
+        "value": "25/1"
+       }
+      ],
+      "action": "lagoons_only"
+     },
+     {
+      "steps": [
+       2,
+       3,
+       4,
+       5
+      ],
+      "when": [],
+      "action": "dry_allocation"
+     },
+     {
+      "steps": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
       ],
       "when": [],
       "action": "dry_allocation"
