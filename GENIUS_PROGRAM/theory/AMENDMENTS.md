@@ -133,3 +133,11 @@ Las notas anteriores conservan el estado que tenían al registrarse. La auditor�
 **Estado:** `ACEPTADA` el 2026-10-18 por Pedro. Cuando el cálculo completo no entra en la ventana del decisor, los escenarios se evalúan de a uno, por masa decreciente, y se entregan cotas exactas de PVS y rutas refutadas. Una selección sólo se emite si el modelo la permite y queda una única ruta no refutada, condicionada a los escenarios que faltan. Una revisión adversarial separada pidió diez reparaciones, ya incorporadas.
 
 **Alcance:** no cambia S1 ni el kernel FP1. Los pasos comprometidos (`decision_window.py`) y la frescura de cada resultado ya funcionan sin cambiar la matemática. El cálculo por escenarios se sirve en `POST /cases/<cid>/anytime/evaluate` y en el MCP (`twin_evaluate_anytime`).
+
+## AM-06 — Selección «vida y PVS primero» dentro del kernel
+
+**Texto completo:** `PROPOSAL_AM-06.md`.
+
+**Estado:** `PROPUESTA` el 2026-10-21, espera la aprobación de Pedro. Agrega a la regla de selección explícita un modo `life_pvs`. El modo exige el filtro de vida (`task_all`) y elige, dentro de la frontera, la única ruta de PVS máxima; si hay empate, no elige. Así la regla que Pedro fijó el 2026-10-18 queda verificada en el kernel y no solo en las aplicaciones. Responde a la «Auditoría B».
+
+**Alcance:** no cambia el orden producto de los cuatro criterios ni los modos de selección existentes. Toca `schema.py`, `decision.py` y `verifier.py`, que solo se modifican si Pedro la aprueba.
