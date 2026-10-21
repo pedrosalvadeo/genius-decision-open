@@ -39,7 +39,7 @@ Es decir, ninguna ley admisible pone a $p$ por debajo de $q$. Con «toda ley», 
 
 **Ejemplo.**
 - Hay tres escenarios. La ruta A conserva la vida en los escenarios 1 y 2, y la ruta B solo en el 1. A tiene ventaja robusta: ninguna ley la pone debajo.
-- Ahora A conserva la vida en 1 y 2, y B en 1 y 3. Con la ley declarada A tiene 0,85 y B 0,80, pero otra ley invierte el orden. Ninguna tiene ventaja robusta, y la PVS no decide entre ellas.
+- Ahora A conserva la vida en 1 y 2, y B en 1 y 3. Con una ley A tiene 0,85 y B 0,80, pero con otra, que da más peso al escenario 3, el orden se invierte. Ninguna tiene ventaja robusta, y la PVS no decide entre ellas.
 
 ### C. Nuevo modo de selección `life_pvs`
 
