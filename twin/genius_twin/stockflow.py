@@ -13,7 +13,7 @@ import re
 from .function_catalog import CATALOG
 
 PROFILE = "STOCK_FLOW_FINITE_V1"
-ROOT_FIELDS = "profile name horizon step_unit stocks carriers capabilities initial_capabilities actions policies scenarios law welfare task require_all_scenarios selection assumptions functions subsystems interfaces".split()
+ROOT_FIELDS = "profile name horizon step_unit stocks carriers capabilities initial_capabilities actions policies scenarios law welfare task require_all_scenarios selection assumptions functions subsystems interfaces conversions observable".split()
 ID_PATTERN = r"^[A-Za-z][A-Za-z0-9_.-]*$"
 Q_PATTERN = r"^(0|[1-9][0-9]*)/[1-9][0-9]*$"
 # Policies x scenarios x states. Measured on the blood case scaled to 270 cells: 10 s,
@@ -102,10 +102,18 @@ def model_schema():
     # Module III: a capability with holds_when exists exactly in the states whose
     # stocks satisfy it (e.g. hydropower above a minimum power pool). Optional.
     schema["properties"]["capabilities"]["items"]["properties"]["holds_when"] = arr(stock_pred, 1, 6)
+    # AM-07: declared exact conversions between units of one quantity (1 `from` = factor `to`).
+    # They only let an action's conservation check compare those units; nothing else is summed.
+    schema["properties"]["conversions"] = arr(obj({"from": ident, "to": ident, "factor": qty, "provenance": txt}), 0, 8)
+    # Partial observation (MV, AM-01): what the controller sees. Without it every stock and
+    # capability is observed, as before; with it, rules read only these and the information
+    # is the history of chosen actions and observed values.
+    schema["properties"]["observable"] = obj({"stocks": {**arr(ident, 0, 6), "uniqueItems": True},
+                                              "capabilities": {**arr(ident, 0, 8), "uniqueItems": True}})
     schema.update({"$schema": "https://json-schema.org/draft/2020-12/schema", "title": PROFILE,
         "x-semantic-rules": ["Reduced nonnegative rationals, numerator/denominator at most 12 digits",
         "Unique IDs and valid references", f"P*S*(H+1)<={OCCURRENCE_LIMIT}; generated signatures<=16",
-        "Per-unit deposits<=withdrawals; no implicit conversion", "Complete renewable availability per event",
+        "Per-unit deposits<=withdrawals; only declared exact conversions (AM-07)", "Complete renewable availability per event",
         "Unique complete event words; law null or exact normalized scenario map",
         "Policies read only prior state; fixed carrier existence; no implicit mortality model"]})
     return schema
@@ -192,6 +200,53 @@ def expand_actions(model):
     return {**model, "actions": expanded}
 
 
+def unit_classes(model):
+    """AM-07: each unit -> (root unit, exact factor), so that 1 unit = factor root.
+
+    Units joined by declared conversions form one class; a class whose conversions
+    disagree around a cycle is rejected. Units without conversions are their own root.
+    """
+    units = {s["unit"] for s in model["stocks"]}
+    graph = {}
+    for c in model.get("conversions", []):
+        factor = Fraction(c["factor"])
+        if c["from"] == c["to"] or factor <= 0:
+            raise ValueError("conversion joins two different units with a positive factor")
+        graph.setdefault(c["from"], []).append((c["to"], factor))
+        graph.setdefault(c["to"], []).append((c["from"], 1 / factor))
+        units |= {c["from"], c["to"]}
+    if len({(c["from"], c["to"]) for c in model.get("conversions", [])} | {(c["to"], c["from"]) for c in model.get("conversions", [])}) \
+            != 2 * len(model.get("conversions", [])):
+        raise ValueError("conversion declared twice")
+    out = {}
+    for start in sorted(units):
+        if start in out:
+            continue
+        out[start] = (start, Fraction(1))
+        stack = [start]
+        while stack:
+            unit = stack.pop()
+            for other, factor in graph.get(unit, []):
+                # 1 other = (1/factor) unit = out[unit][1] / factor root
+                value = out[unit][1] / factor
+                if other in out:
+                    if out[other] != (start, value):
+                        raise ValueError(f"conversions between {unit} and {other} disagree around a cycle")
+                    continue
+                out[other] = (start, value)
+                stack.append(other)
+    return out
+
+
+def observation(model, row):
+    """What the controller sees of a state row (all of it when nothing is declared)."""
+    seen = model.get("observable")
+    if seen is None:
+        return {"stocks": row["stocks"], "capabilities": row["capabilities"]}
+    return {"stocks": {k: row["stocks"][k] for k in seen["stocks"]},
+            "capabilities": sorted(set(row["capabilities"]) & set(seen["capabilities"]))}
+
+
 def validate_model(model):
     _shape(model, model_schema())
     tables = {}
@@ -203,6 +258,7 @@ def validate_model(model):
     def refs(values, domain, where):
         if not set(values) <= set(domain):
             raise ValueError(f"{where}: unknown reference")
+    units = unit_classes(model)
     refs(model["initial_capabilities"], caps, "initial_capabilities")
     for stock in stocks.values():
         if Fraction(stock["initial"]) > Fraction(stock["capacity"]):
@@ -221,11 +277,12 @@ def validate_model(model):
             raise ValueError("action cannot add and remove the same capability")
         for field in ("withdrawals", "deposits"):
             refs(action[field], stocks, "action." + field)
-        for unit in {s["unit"] for s in stocks.values()}:
-            outgoing = sum((Fraction(v) for k, v in action["withdrawals"].items() if stocks[k]["unit"] == unit), Fraction())
-            incoming = sum((Fraction(v) for k, v in action["deposits"].items() if stocks[k]["unit"] == unit), Fraction())
-            if incoming > outgoing:
-                raise ValueError(f"action {action['id']}: deposits exceed withdrawals for unit {unit}")
+        for root in {r for r, _ in units.values()}:
+            def total(flows):
+                return sum((Fraction(v) * units[stocks[k]["unit"]][1] for k, v in flows.items()
+                            if units[stocks[k]["unit"]][0] == root), Fraction())
+            if total(action["deposits"]) > total(action["withdrawals"]):
+                raise ValueError(f"action {action['id']}: deposits exceed withdrawals for unit {root}")
     H = model["horizon"]
     if len(model["policies"]) * len(model["scenarios"]) * (H + 1) > OCCURRENCE_LIMIT:
         raise ValueError(f"occurrence limit P*S*(H+1)<={OCCURRENCE_LIMIT} exceeded")
@@ -235,6 +292,9 @@ def validate_model(model):
     if held & (set(model["initial_capabilities"]) | {k for a in actions.values() for k in a["add_capabilities"] + a["remove_capabilities"]}
                | {k for s in model["scenarios"] for e in s["events"] for k in e["remove_capabilities"]}):
         raise ValueError("a capability with holds_when follows the state only: not initial, added or removed")
+    if "observable" in model:
+        refs(model["observable"]["stocks"], stocks, "observable.stocks")
+        refs(model["observable"]["capabilities"], caps, "observable.capabilities")
     for policy in model["policies"]:
         refs([policy["default_action"]], actions, "policy.default_action")
         for rule in policy["rules"]:
@@ -246,6 +306,10 @@ def validate_model(model):
                     refs([predicate["stock"]], stocks, "predicate.stock")
                 else:
                     refs([predicate["capability"]], caps, "predicate.capability")
+                if "observable" in model:
+                    seen = model["observable"]["stocks" if predicate["kind"] == "stock" else "capabilities"]
+                    if predicate[predicate["kind"]] not in seen:
+                        raise ValueError(f"policy {policy['id']}: a rule reads {predicate[predicate['kind']]}, which is not observable")
     words = set()
     renewables = {s["id"] for s in stocks.values() if s["kind"] == "renewable"}
     for scenario in model["scenarios"]:

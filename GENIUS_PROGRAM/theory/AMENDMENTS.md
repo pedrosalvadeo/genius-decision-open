@@ -133,3 +133,27 @@ Las notas anteriores conservan el estado que tenían al registrarse. La auditor�
 **Estado:** `ACEPTADA` el 2026-10-18 por Pedro. Cuando el cálculo completo no entra en la ventana del decisor, los escenarios se evalúan de a uno, por masa decreciente, y se entregan cotas exactas de PVS y rutas refutadas. Una selección sólo se emite si el modelo la permite y queda una única ruta no refutada, condicionada a los escenarios que faltan. Una revisión adversarial separada pidió diez reparaciones, ya incorporadas.
 
 **Alcance:** no cambia S1 ni el kernel FP1. Los pasos comprometidos (`decision_window.py`) y la frescura de cada resultado ya funcionan sin cambiar la matemática. El cálculo por escenarios se sirve en `POST /cases/<cid>/anytime/evaluate` y en el MCP (`twin_evaluate_anytime`).
+
+## AM-06 — Territorio: el mismo modelo zona por zona
+
+**Texto completo:** `PROPOSAL_AM-06.md`.
+
+**Estado:** `ACEPTADA` el 2026-11-06 por Pedro, en la opción «solo zona por zona». Un modelo plantilla se evalúa en cada zona con factores exactos de tamaño y disponibilidad. El kernel verifica cada zona por separado. El orden del territorio es la conjunción de los órdenes de zona, criterio por criterio, más la PVS conjunta: la probabilidad de que la vida se sostenga en todas las zonas a la vez. No hay sumas entre zonas ni comparación anónima. Una zona sin dato no se evalúa y el resultado queda relativo a las zonas con dato.
+
+**Alcance:** no cambia S1 ni el kernel FP1. Está en `twin/genius_twin/territory.py`, con el caso del arbolado del centro de Mendoza en 60 manzanas (`twin/cases/mendoza_arbolado_2027`).
+
+## AM-07 — Conversiones de unidades declaradas
+
+**Texto completo:** `PROPOSAL_AM-07.md`.
+
+**Estado:** `ACEPTADA` el 2026-11-06 por Pedro. Un modelo puede declarar conversiones exactas entre unidades de una misma magnitud ($1\,u = c\,v$). La regla de que una acción no deposita más de lo que retira se aplica por clase de unidades convertibles, no por unidad suelta. Un ciclo inconsistente se rechaza. Las existencias conservan su unidad y su libro mayor, y en el kernel cada existencia sigue siendo su propio recurso.
+
+**Alcance:** no cambia S1 ni el kernel FP1. La misma propuesta habilita en el perfil la observación parcial que MV y AM-01 ya admiten: las reglas leen sólo lo observable y la información es la historia de lo observado.
+
+## AM-08 — Estado inicial incierto como familia de instancias
+
+**Texto completo:** `PROPOSAL_AM-08.md`.
+
+**Estado:** `ACEPTADA` el 2026-11-06 por Pedro. Una zona declara de 2 a 4 valores del saldo inicial de hasta 2 existencias. Cada combinación es una instancia con su inicialización única (G02), y el kernel verifica cada una. La zona afirma sólo lo que vale con todos los valores. La vida que cambia con el valor queda `depends_on_initial`, y la PVS pasa a ser un rango o un par de cotas exactas, sin probabilidad para los valores. La misma propuesta deja medido que un año en semanas (52 pasos) da 36 MB empaquetados por zona, más que los 16 MB del servicio, así que el horizonte máximo no se subió.
+
+**Alcance:** no cambia S1 ni el kernel FP1. Está en `twin/genius_twin/territory.py`.

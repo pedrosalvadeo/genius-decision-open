@@ -1,0 +1,855 @@
+{
+ "format": "genius-territory/1",
+ "name": "Arbolado del centro de Mendoza en enero, manzana por manzana",
+ "template": {
+  "profile": "STOCK_FLOW_FINITE_V1",
+  "name": "Arbolado de una manzana en enero: ¿y si sumamos padrinos vecinos?",
+  "horizon": 4,
+  "step_unit": "step",
+  "stocks": [
+   {
+    "id": "agua",
+    "label": "Agua de riego del turno semanal",
+    "unit": "m3",
+    "kind": "renewable",
+    "initial": "100/1",
+    "capacity": "100/1"
+   },
+   {
+    "id": "tazas",
+    "label": "Agua guardada en las tazas de los árboles",
+    "unit": "m3",
+    "kind": "persistent",
+    "initial": "40/1",
+    "capacity": "80/1"
+   },
+   {
+    "id": "horas",
+    "label": "Horas de cuadrilla y vecinos por semana",
+    "unit": "hour",
+    "kind": "renewable",
+    "initial": "40/1",
+    "capacity": "40/1"
+   }
+  ],
+  "carriers": [
+   {
+    "id": "arbolado",
+    "label": "Arbolado de la manzana",
+    "kind": "living"
+   },
+   {
+    "id": "vecinos",
+    "label": "Vecinos de la manzana",
+    "kind": "person"
+   },
+   {
+    "id": "ciudad",
+    "label": "Municipalidad",
+    "kind": "organization"
+   }
+  ],
+  "capabilities": [
+   {
+    "id": "cuadrilla",
+    "label": "Cuadrilla municipal de riego operando"
+   },
+   {
+    "id": "padrinos",
+    "label": "Red de vecinos padrinos organizada"
+   }
+  ],
+  "initial_capabilities": [
+   "cuadrilla"
+  ],
+  "actions": [
+   {
+    "id": "riego_comun",
+    "label": "Riego por acequia con cuadrilla",
+    "requires": [
+     "cuadrilla"
+    ],
+    "withdrawals": {
+     "agua": "60/1",
+     "horas": "30/1"
+    },
+    "deposits": {
+     "tazas": "45/1"
+    },
+    "add_capabilities": [],
+    "remove_capabilities": []
+   },
+   {
+    "id": "organizar",
+    "label": "Organizar padrinos (y regar menos esa semana)",
+    "requires": [
+     "cuadrilla"
+    ],
+    "withdrawals": {
+     "agua": "40/1",
+     "horas": "40/1"
+    },
+    "deposits": {
+     "tazas": "30/1"
+    },
+    "add_capabilities": [
+     "padrinos"
+    ],
+    "remove_capabilities": []
+   },
+   {
+    "id": "riego_padrinos",
+    "label": "Riego al pie con padrinos",
+    "requires": [
+     "padrinos"
+    ],
+    "withdrawals": {
+     "agua": "60/1",
+     "horas": "20/1"
+    },
+    "deposits": {
+     "tazas": "55/1"
+    },
+    "add_capabilities": [],
+    "remove_capabilities": []
+   }
+  ],
+  "policies": [
+   {
+    "id": "hoy",
+    "label": "Seguir como hoy",
+    "default_action": "riego_comun",
+    "rules": []
+   },
+   {
+    "id": "padrinos",
+    "label": "Camino «Mejorar mi barrio»: sumar padrinos",
+    "default_action": "riego_padrinos",
+    "rules": [
+     {
+      "steps": [
+       1
+      ],
+      "when": [],
+      "action": "organizar"
+     }
+    ]
+   }
+  ],
+  "scenarios": [
+   {
+    "id": "normal",
+    "label": "Enero normal",
+    "events": [
+     {
+      "inflows": {},
+      "renewables": {
+       "agua": "100/1",
+       "horas": "40/1"
+      },
+      "drains": {
+       "tazas": "40/1"
+      },
+      "remove_capabilities": []
+     },
+     {
+      "inflows": {},
+      "renewables": {
+       "agua": "100/1",
+       "horas": "40/1"
+      },
+      "drains": {
+       "tazas": "40/1"
+      },
+      "remove_capabilities": []
+     },
+     {
+      "inflows": {},
+      "renewables": {
+       "agua": "100/1",
+       "horas": "40/1"
+      },
+      "drains": {
+       "tazas": "40/1"
+      },
+      "remove_capabilities": []
+     },
+     {
+      "inflows": {},
+      "renewables": {
+       "agua": "100/1",
+       "horas": "40/1"
+      },
+      "drains": {
+       "tazas": "40/1"
+      },
+      "remove_capabilities": []
+     }
+    ]
+   },
+   {
+    "id": "ola",
+    "label": "Ola de calor con corte de turno y cuadrilla desbordada",
+    "events": [
+     {
+      "inflows": {},
+      "renewables": {
+       "agua": "100/1",
+       "horas": "40/1"
+      },
+      "drains": {
+       "tazas": "40/1"
+      },
+      "remove_capabilities": []
+     },
+     {
+      "inflows": {},
+      "renewables": {
+       "agua": "100/1",
+       "horas": "40/1"
+      },
+      "drains": {
+       "tazas": "60/1"
+      },
+      "remove_capabilities": []
+     },
+     {
+      "inflows": {},
+      "renewables": {
+       "agua": "50/1",
+       "horas": "40/1"
+      },
+      "drains": {
+       "tazas": "60/1"
+      },
+      "remove_capabilities": [
+       "cuadrilla"
+      ]
+     },
+     {
+      "inflows": {},
+      "renewables": {
+       "agua": "100/1",
+       "horas": "40/1"
+      },
+      "drains": {
+       "tazas": "40/1"
+      },
+      "remove_capabilities": []
+     }
+    ]
+   }
+  ],
+  "law": {
+   "normal": "3/4",
+   "ola": "1/4"
+  },
+  "welfare": [
+   {
+    "carrier": "arbolado",
+    "dimension": "agua_raices",
+    "label": "Agua disponible para las raíces",
+    "stock": "tazas",
+    "direction": "higher"
+   },
+   {
+    "carrier": "vecinos",
+    "dimension": "tiempo_libre",
+    "label": "Horas que quedan libres",
+    "stock": "horas",
+    "direction": "higher"
+   },
+   {
+    "carrier": "ciudad",
+    "dimension": "agua_sobrante",
+    "label": "Agua del turno que sobra",
+    "stock": "agua",
+    "direction": "higher"
+   }
+  ],
+  "task": {
+   "kind": "life_conditions",
+   "label": "Que los árboles nunca queden con menos de 10 m3 en las tazas",
+   "living_carriers": [
+    "arbolado"
+   ],
+   "conditions": [
+    {
+     "stock": "tazas",
+     "op": "ge",
+     "threshold": "10/1"
+    }
+   ],
+   "require_action_success": false
+  },
+  "require_all_scenarios": false,
+  "selection": "none",
+  "assumptions": [
+   {
+    "id": "Prueba",
+    "kind": "SYNTHETIC",
+    "statement": "Prueba de integración con Adelanta. Cantidades, consumos, ley (1 de cada 4 eneros con ola de calor) y umbral son supuestos redondos, no mediciones del censo de arbolado ni de Irrigación.",
+    "provenance": "Hilo «Definir objetivos de los usuarios del mapa», 6 nov 2026"
+   }
+  ]
+ },
+ "zones": [
+  {
+   "id": "m01",
+   "label": "Manzana 1 · 1ª Sección · Parque Central",
+   "size": "28/25",
+   "supply": {
+    "horas": "635/672"
+   },
+   "provenance": "56 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 127 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m02",
+   "label": "Manzana 2 · 1ª Sección · Parque Central",
+   "size": "6/5",
+   "supply": {
+    "horas": "173/144"
+   },
+   "provenance": "60 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 173 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m03",
+   "label": "Manzana 3 · 1ª Sección · Parque Central",
+   "size": "43/50",
+   "supply": {
+    "horas": "355/516"
+   },
+   "provenance": "43 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 71 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m04",
+   "label": "Manzana 4 · 1ª Sección · Parque Central",
+   "size": "31/25",
+   "supply": {
+    "horas": "445/744"
+   },
+   "provenance": "62 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 89 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m05",
+   "label": "Manzana 5 · 1ª Sección · Parque Central",
+   "size": "53/50",
+   "supply": {
+    "horas": "485/636"
+   },
+   "provenance": "53 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 97 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m06",
+   "label": "Manzana 6 · 1ª Sección · Parque Central",
+   "size": "51/50",
+   "supply": {
+    "horas": "355/306"
+   },
+   "provenance": "51 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 142 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m07",
+   "label": "Manzana 7 · 1ª Sección · Parque Central",
+   "size": "1/1",
+   "supply": {
+    "horas": "7/6"
+   },
+   "provenance": "50 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 140 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m08",
+   "label": "Manzana 8 · 1ª Sección · Parque Central",
+   "size": "6/5",
+   "supply": {
+    "horas": "67/72"
+   },
+   "provenance": "60 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 134 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m09",
+   "label": "Manzana 9 · 1ª Sección · Parque Central",
+   "size": "17/25",
+   "supply": {
+    "horas": "515/408"
+   },
+   "provenance": "34 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 103 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m10",
+   "label": "Manzana 10 · 1ª Sección · Parque Central",
+   "size": "57/50",
+   "supply": {
+    "horas": "595/684"
+   },
+   "provenance": "57 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 119 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m11",
+   "label": "Manzana 11 · 1ª Sección · Parque Central",
+   "size": "31/50",
+   "supply": {
+    "horas": "265/186"
+   },
+   "provenance": "31 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 106 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m12",
+   "label": "Manzana 12 · 1ª Sección · Parque Central",
+   "size": "31/25",
+   "supply": {
+    "horas": "575/744"
+   },
+   "provenance": "62 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 115 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m13",
+   "label": "Manzana 13 · 1ª Sección · Parque Central",
+   "size": "9/10",
+   "supply": {
+    "horas": "79/54"
+   },
+   "provenance": "45 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 158 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m14",
+   "label": "Manzana 14 · 1ª Sección · Parque Central",
+   "size": "39/50",
+   "supply": {
+    "horas": "145/156"
+   },
+   "provenance": "39 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 87 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m15",
+   "label": "Manzana 15 · 1ª Sección · Parque Central",
+   "size": "21/25",
+   "supply": {
+    "horas": "425/504"
+   },
+   "provenance": "42 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 85 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m16",
+   "label": "Manzana 16 · 2ª Sección · Barrio Cívico",
+   "size": "11/10",
+   "supply": {
+    "horas": "115/132"
+   },
+   "provenance": "55 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 115 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m17",
+   "label": "Manzana 17 · 2ª Sección · Barrio Cívico",
+   "size": "9/10",
+   "supply": {
+    "horas": "113/108"
+   },
+   "provenance": "45 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 113 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m18",
+   "label": "Manzana 18 · 2ª Sección · Barrio Cívico",
+   "size": "9/10",
+   "supply": {
+    "horas": "67/108"
+   },
+   "provenance": "45 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 67 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m19",
+   "label": "Manzana 19 · 2ª Sección · Barrio Cívico",
+   "size": "53/50",
+   "supply": {
+    "horas": "60/53"
+   },
+   "provenance": "53 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 144 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m20",
+   "label": "Manzana 20 · 2ª Sección · Barrio Cívico",
+   "size": "18/25",
+   "supply": {
+    "horas": "305/216"
+   },
+   "provenance": "36 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 122 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m21",
+   "label": "Manzana 21 · 2ª Sección · Barrio Cívico",
+   "size": "7/5",
+   "supply": {
+    "horas": "139/168"
+   },
+   "provenance": "70 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 139 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m22",
+   "label": "Manzana 22 · 2ª Sección · Barrio Cívico",
+   "size": "13/10",
+   "supply": {
+    "horas": "34/39"
+   },
+   "provenance": "65 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 136 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m23",
+   "label": "Manzana 23 · 2ª Sección · Barrio Cívico",
+   "size": "24/25",
+   "supply": {
+    "horas": "665/576"
+   },
+   "provenance": "48 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 133 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m24",
+   "label": "Manzana 24 · 2ª Sección · Barrio Cívico",
+   "size": "53/50",
+   "supply": {
+    "horas": "185/159"
+   },
+   "provenance": "53 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 148 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m25",
+   "label": "Manzana 25 · 2ª Sección · Barrio Cívico",
+   "size": "3/2",
+   "supply": {
+    "horas": "29/60"
+   },
+   "provenance": "75 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 87 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m26",
+   "label": "Manzana 26 · 2ª Sección · Barrio Cívico",
+   "size": "32/25",
+   "supply": {
+    "horas": "95/128"
+   },
+   "provenance": "64 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 114 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m27",
+   "label": "Manzana 27 · 2ª Sección · Barrio Cívico",
+   "size": "11/10",
+   "supply": {
+    "horas": "45/44"
+   },
+   "provenance": "55 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 135 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m28",
+   "label": "Manzana 28 · 2ª Sección · Barrio Cívico",
+   "size": "26/25",
+   "supply": {
+    "horas": "145/208"
+   },
+   "provenance": "52 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 87 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m29",
+   "label": "Manzana 29 · 2ª Sección · Barrio Cívico",
+   "size": "1/1",
+   "supply": {
+    "horas": "25/24"
+   },
+   "provenance": "50 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 125 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m30",
+   "label": "Manzana 30 · 2ª Sección · Barrio Cívico",
+   "size": "63/50",
+   "supply": {
+    "horas": "25/36"
+   },
+   "provenance": "63 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 105 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m31",
+   "label": "Manzana 31 · 2ª Sección · Barrio Cívico",
+   "size": "33/25",
+   "supply": {
+    "horas": "205/264"
+   },
+   "provenance": "66 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 123 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m32",
+   "label": "Manzana 32 · 2ª Sección · Barrio Cívico",
+   "size": "31/25",
+   "supply": {
+    "horas": "335/372"
+   },
+   "provenance": "62 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 134 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m33",
+   "label": "Manzana 33 · 2ª Sección · Barrio Cívico",
+   "size": "43/50",
+   "supply": {
+    "horas": "185/172"
+   },
+   "provenance": "43 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 111 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m34",
+   "label": "Manzana 34 · 2ª Sección · Barrio Cívico",
+   "size": "24/25",
+   "supply": {
+    "horas": "65/64"
+   },
+   "provenance": "48 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 117 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m35",
+   "label": "Manzana 35 · 2ª Sección · Barrio Cívico",
+   "size": "28/25",
+   "supply": {
+    "horas": "355/336"
+   },
+   "provenance": "56 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 142 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m36",
+   "label": "Manzana 36 · 2ª Sección · Barrio Cívico",
+   "size": "6/5",
+   "supply": {
+    "horas": "47/72"
+   },
+   "provenance": "60 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 94 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m37",
+   "label": "Manzana 37 · 2ª Sección · Barrio Cívico",
+   "size": "11/10",
+   "supply": {
+    "horas": "32/33"
+   },
+   "provenance": "55 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 128 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m38",
+   "label": "Manzana 38 · 2ª Sección · Barrio Cívico",
+   "size": "61/50",
+   "supply": {
+    "horas": "385/366"
+   },
+   "provenance": "61 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 154 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m39",
+   "label": "Manzana 39 · 2ª Sección · Barrio Cívico",
+   "size": "57/50",
+   "supply": {
+    "horas": "655/684"
+   },
+   "provenance": "57 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 131 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m40",
+   "label": "Manzana 40 · 2ª Sección · Barrio Cívico",
+   "size": "36/25",
+   "supply": {
+    "horas": "265/432"
+   },
+   "provenance": "72 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 106 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m41",
+   "label": "Manzana 41 · 2ª Sección · Barrio Cívico",
+   "size": "37/50",
+   "supply": {
+    "horas": "485/444"
+   },
+   "provenance": "37 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 97 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m42",
+   "label": "Manzana 42 · 2ª Sección · Barrio Cívico",
+   "size": "28/25",
+   "supply": {
+    "horas": "75/56"
+   },
+   "provenance": "56 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 180 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m43",
+   "label": "Manzana 43 · 2ª Sección · Barrio Cívico",
+   "size": "28/25",
+   "supply": {
+    "horas": "275/224"
+   },
+   "provenance": "56 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 165 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m44",
+   "label": "Manzana 44 · 2ª Sección · Barrio Cívico",
+   "size": "49/50",
+   "supply": {
+    "horas": "15/14"
+   },
+   "provenance": "49 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 126 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m45",
+   "label": "Manzana 45 · 2ª Sección · Barrio Cívico",
+   "size": "61/50",
+   "supply": {
+    "horas": "175/183"
+   },
+   "provenance": "61 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 140 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m46",
+   "label": "Manzana 46 · 2ª Sección · Barrio Cívico",
+   "size": "28/25",
+   "supply": {
+    "horas": "5/7"
+   },
+   "provenance": "56 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 96 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m47",
+   "label": "Manzana 47 · 2ª Sección · Barrio Cívico",
+   "size": "1/1",
+   "supply": {
+    "horas": "4/3"
+   },
+   "provenance": "50 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 160 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m48",
+   "label": "Manzana 48 · 2ª Sección · Barrio Cívico",
+   "size": "26/25",
+   "supply": {
+    "horas": "745/624"
+   },
+   "provenance": "52 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 149 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m49",
+   "label": "Manzana 49 · 2ª Sección · Barrio Cívico",
+   "size": "11/10",
+   "supply": {
+    "horas": "25/22"
+   },
+   "provenance": "55 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 150 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m50",
+   "label": "Manzana 50 · 2ª Sección · Barrio Cívico",
+   "size": "26/25",
+   "supply": {
+    "horas": "725/624"
+   },
+   "provenance": "52 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 145 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m51",
+   "label": "Manzana 51 · 2ª Sección · Barrio Cívico",
+   "size": "6/5",
+   "supply": {
+    "horas": "67/144"
+   },
+   "provenance": "60 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 67 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m52",
+   "label": "Manzana 52 · 2ª Sección · Barrio Cívico",
+   "size": "11/10",
+   "supply": {
+    "horas": "137/132"
+   },
+   "provenance": "55 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 137 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m53",
+   "label": "Manzana 53 · 2ª Sección · Barrio Cívico",
+   "size": "53/50",
+   "supply": {
+    "horas": "145/212"
+   },
+   "provenance": "53 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 87 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m54",
+   "label": "Manzana 54 · 2ª Sección · Barrio Cívico",
+   "size": "24/25",
+   "supply": {
+    "horas": "145/192"
+   },
+   "provenance": "48 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 87 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m55",
+   "label": "Manzana 55 · 2ª Sección · Barrio Cívico",
+   "size": "43/50",
+   "supply": {
+    "horas": "105/86"
+   },
+   "provenance": "43 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 126 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m56",
+   "label": "Manzana 56 · 2ª Sección · Barrio Cívico",
+   "size": "31/25",
+   "supply": {
+    "horas": "425/744"
+   },
+   "provenance": "62 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 85 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m57",
+   "label": "Manzana 57 · 3ª Sección · Parque O'Higgins",
+   "size": "7/5",
+   "supply": {
+    "horas": "2/3"
+   },
+   "provenance": "70 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 112 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m58",
+   "label": "Manzana 58 · 3ª Sección · Parque O'Higgins",
+   "size": "6/5",
+   "supply": {
+    "horas": "19/24"
+   },
+   "provenance": "60 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 114 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m59",
+   "label": "Manzana 59 · 3ª Sección · Parque O'Higgins",
+   "size": "53/50",
+   "supply": {
+    "horas": "65/53"
+   },
+   "provenance": "53 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 156 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  },
+  {
+   "id": "m60",
+   "label": "Manzana 60 · 3ª Sección · Parque O'Higgins",
+   "size": "37/50",
+   "supply": {
+    "horas": "435/148"
+   },
+   "provenance": "37 árboles del censo del arbolado de la Ciudad (2011-2012) a menos de 20 m de la manzana; 261 hogares del Censo 2022. Tamaño = árboles/50; horas disponibles = 40 h × hogares/120."
+  }
+ ],
+ "assumptions": [
+  {
+   "id": "referencia",
+   "statement": "La manzana de referencia tiene 50 árboles y 120 hogares; el agua de las tazas, del turno y las horas de riego crecen con los árboles, y las horas disponibles de cuadrilla y vecinos crecen con los hogares.",
+   "provenance": "Supuesto redondo para la prueba de integración con Adelanta, 6 nov 2026; no es medición de Irrigación ni de la Ciudad."
+  },
+  {
+   "id": "censos",
+   "statement": "Árboles: censo del arbolado público de la Ciudad de Mendoza (2011-2012), asignados a la manzana más cercana a menos de 20 m. Hogares: Censo 2022 por manzana, como los usa el mapa de Adelanta (public/mendoza/datos.json).",
+   "provenance": "Mapa 3D de Mendoza de Adelanta, pedrosalvadeo/adelanta-pyme"
+  },
+  {
+   "id": "plantilla",
+   "statement": "Consumos, ley (1 de cada 4 eneros con ola de calor y corte de turno) y umbral de 10 m3 por cada 50 árboles son los del caso de prueba del arbolado, supuestos redondos.",
+   "provenance": "Hilo «Definir objetivos de los usuarios del mapa», 6 nov 2026"
+  }
+ ]
+}

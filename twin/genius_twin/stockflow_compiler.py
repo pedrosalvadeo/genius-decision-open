@@ -9,7 +9,7 @@ import hashlib
 
 from genius_kernel import evaluate, verify_result
 from .modules import module_ledger
-from .stockflow import canonical_json, compute_trajectories, function_values, interface_flows, q, validate_model
+from .stockflow import canonical_json, compute_trajectories, function_values, interface_flows, observation, q, validate_model
 
 COMPILER_VERSION = "GENIUS_STOCK_FLOW_FINITE_V1_COMPILER_1"
 
@@ -105,18 +105,24 @@ def compile_model(model, *, cag_mode="robust"):
     state_records, query_records, semantic_records = {}, [], []
     points, availability, transition_rows, updates = set(), {}, {}, {}
     information, states = {"i0"}, {"x0"}
+    partial = "observable" in model
+    observed = set()
     for policy in model["policies"]:
         pid = policy["id"]
         nodes = {}
         for sid, tr in trajectories[pid].items():
-            history = []
+            history, seen = [], []
             for t, row in enumerate(tr["daily"]):
                 path = words[sid][:t]
+                # With declared partial observation the controller receives y = O(state) and
+                # its information is the history of its actions and observations (MV, AM-01).
+                y = _id("obs_", observation(model, row)) if partial else None
                 if t:
                     history.append([row["action_id"], words[sid][t - 1]])
+                    seen.append([row["action_id"], y])
                 x = "x0" if t == 0 else _id("state_", history)
-                info = "i0" if t == 0 else _id("info_", history)
-                node = {"x": x, "i": info, "record": row, "functions": {f: vals[t] for f, vals in raws[pid][sid].items()},
+                info = "i0" if t == 0 else _id("info_", seen if partial else history)
+                node = {"x": x, "i": info, "y": y, "record": row, "functions": {f: vals[t] for f, vals in raws[pid][sid].items()},
                         "flows": {f: vals[t] for f, vals in flows[pid][sid].items()}}
                 if path in nodes and nodes[path] != node:
                     raise ValueError("Nonanticipation violated: identical event/action history has unequal state")
@@ -164,9 +170,11 @@ def compile_model(model, *, cag_mode="robust"):
             availability.setdefault((t, x), set()).add(action)
             outcomes = []
             for eid, child in sorted(children.items()):
-                outcomes.append({"branch": eid, "u": eid, "next_x": child["x"], "y": eid})
-                update = {"t": str(t), "i": info, "a": action, "y": eid, "next_i": child["i"]}
-                key = (t, info, action, eid)
+                y = child["y"] if partial else eid
+                observed.add(y)
+                outcomes.append({"branch": eid, "u": eid, "next_x": child["x"], "y": y})
+                update = {"t": str(t), "i": info, "a": action, "y": y, "next_i": child["i"]}
+                key = (t, info, action, y)
                 if key in updates and updates[key] != update:
                     raise RuntimeError("Information update collision")
                 updates[key] = update
@@ -183,6 +191,8 @@ def compile_model(model, *, cag_mode="robust"):
         d["policies"].append({"id": pid, "decisions": list(decisions.values())})
     d["functional"]["reduction"]["ids"].sort()
     d["model"]["states"], d["model"]["information"] = sorted(states), sorted(information)
+    if partial:
+        d["model"]["observations"] = sorted(observed)
     d["model"]["transitions"], d["model"]["updates"] = list(transition_rows.values()), list(updates.values())
     for (t, x), actions in sorted(availability.items()):
         for table in ("executable", "admissible"):
