@@ -45,8 +45,13 @@ Todo resultado matemático lo calcula el kernel FP1 y lo verifica su verificador
   - un acoplamiento lleva el flujo de una interfaz de un miembro a una existencia de otro;
   - los portadores compartidos mantienen una sola identidad;
   - si un miembro ve la misma realización en varios escenarios conjuntos, la evalúa una vez con la suma de sus masas.
+- **Territorio** (`territory.py`, AM-06). El mismo modelo en hasta 128 zonas (manzanas, radios, barrios), cada una con su tamaño y su disponibilidad exactos, evaluada y verificada por separado:
+  - las rutas, los escenarios y la ley son los mismos en todas las zonas;
+  - una ruta es al menos tan buena para el territorio sólo si lo es en cada zona con dato, criterio por criterio, y su PVS conjunta (la vida sostenida en todas las zonas a la vez) no es menor;
+  - nada se suma entre zonas y no hay comparación anónima;
+  - una zona sin dato no se evalúa ni se rellena, y el resultado queda relativo a las zonas con dato.
 - **Independiente del dominio:** sí.
-- **Límite que queda:** un solo nivel de acoplamientos (un destino no puede ser fuente).
+- **Límite que queda:** un solo nivel de acoplamientos (un destino no puede ser fuente). El territorio no acopla zonas.
 
 ### III · Capacidad generativa (CAG)
 - **Contrato.** Las capacidades presentes en cada estado forman una organización, que es la firma del estado. La CAG posible y la robusta cuentan qué organizaciones alcanza y conserva cada ruta. Una capacidad puede existir sólo mientras se cumplan condiciones sobre existencias (`holds_when`).

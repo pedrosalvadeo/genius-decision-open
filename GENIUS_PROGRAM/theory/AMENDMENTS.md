@@ -133,3 +133,11 @@ Las notas anteriores conservan el estado que tenían al registrarse. La auditor�
 **Estado:** `ACEPTADA` el 2026-10-18 por Pedro. Cuando el cálculo completo no entra en la ventana del decisor, los escenarios se evalúan de a uno, por masa decreciente, y se entregan cotas exactas de PVS y rutas refutadas. Una selección sólo se emite si el modelo la permite y queda una única ruta no refutada, condicionada a los escenarios que faltan. Una revisión adversarial separada pidió diez reparaciones, ya incorporadas.
 
 **Alcance:** no cambia S1 ni el kernel FP1. Los pasos comprometidos (`decision_window.py`) y la frescura de cada resultado ya funcionan sin cambiar la matemática. El cálculo por escenarios se sirve en `POST /cases/<cid>/anytime/evaluate` y en el MCP (`twin_evaluate_anytime`).
+
+## AM-06 — Territorio: el mismo modelo zona por zona
+
+**Texto completo:** `PROPOSAL_AM-06.md`.
+
+**Estado:** `ACEPTADA` el 2026-11-06 por Pedro, en la opción «solo zona por zona». Un modelo plantilla se evalúa en cada zona con factores exactos de tamaño y disponibilidad. El kernel verifica cada zona por separado. El orden del territorio es la conjunción de los órdenes de zona, criterio por criterio, más la PVS conjunta: la probabilidad de que la vida se sostenga en todas las zonas a la vez. No hay sumas entre zonas ni comparación anónima. Una zona sin dato no se evalúa y el resultado queda relativo a las zonas con dato.
+
+**Alcance:** no cambia S1 ni el kernel FP1. Está en `twin/genius_twin/territory.py`, con el caso del arbolado del centro de Mendoza en 60 manzanas (`twin/cases/mendoza_arbolado_2027`).

@@ -1,0 +1,9210 @@
+{
+ "assumptions": [
+  {
+   "id": "referencia",
+   "provenance": "Supuesto redondo para la prueba de integración con Adelanta, 6 nov 2026; no es medición de Irrigación ni de la Ciudad.",
+   "statement": "La manzana de referencia tiene 50 árboles y 120 hogares; el agua de las tazas, del turno y las horas de riego crecen con los árboles, y las horas disponibles de cuadrilla y vecinos crecen con los hogares."
+  },
+  {
+   "id": "censos",
+   "provenance": "Mapa 3D de Mendoza de Adelanta, pedrosalvadeo/adelanta-pyme",
+   "statement": "Árboles: censo del arbolado público de la Ciudad de Mendoza (2011-2012), asignados a la manzana más cercana a menos de 20 m. Hogares: Censo 2022 por manzana, como los usa el mapa de Adelanta (public/mendoza/datos.json)."
+  },
+  {
+   "id": "plantilla",
+   "provenance": "Hilo «Definir objetivos de los usuarios del mapa», 6 nov 2026",
+   "statement": "Consumos, ley (1 de cada 4 eneros con ola de calor y corte de turno) y umbral de 10 m3 por cada 50 árboles son los del caso de prueba del arbolado, supuestos redondos."
+  }
+ ],
+ "by_route": {
+  "hoy": {
+   "feasible_in": [
+    "m01",
+    "m02",
+    "m03",
+    "m04",
+    "m05",
+    "m06",
+    "m07",
+    "m08",
+    "m09",
+    "m10",
+    "m11",
+    "m12",
+    "m13",
+    "m14",
+    "m15",
+    "m16",
+    "m17",
+    "m18",
+    "m19",
+    "m20",
+    "m21",
+    "m22",
+    "m23",
+    "m24",
+    "m25",
+    "m26",
+    "m27",
+    "m28",
+    "m29",
+    "m30",
+    "m31",
+    "m32",
+    "m33",
+    "m34",
+    "m35",
+    "m36",
+    "m37",
+    "m38",
+    "m39",
+    "m40",
+    "m41",
+    "m42",
+    "m43",
+    "m44",
+    "m45",
+    "m46",
+    "m47",
+    "m48",
+    "m49",
+    "m50",
+    "m51",
+    "m52",
+    "m53",
+    "m54",
+    "m55",
+    "m56",
+    "m57",
+    "m58",
+    "m59",
+    "m60"
+   ],
+   "joint_life_by_scenario": {
+    "normal": "failure",
+    "ola": "failure"
+   },
+   "joint_pvs": "0/1",
+   "life_fails_in": {
+    "normal": [
+     "m03",
+     "m04",
+     "m18",
+     "m25",
+     "m26",
+     "m28",
+     "m30",
+     "m36",
+     "m40",
+     "m46",
+     "m51",
+     "m53",
+     "m56",
+     "m57"
+    ],
+    "ola": [
+     "m01",
+     "m02",
+     "m03",
+     "m04",
+     "m05",
+     "m06",
+     "m07",
+     "m08",
+     "m09",
+     "m10",
+     "m11",
+     "m12",
+     "m13",
+     "m14",
+     "m15",
+     "m16",
+     "m17",
+     "m18",
+     "m19",
+     "m20",
+     "m21",
+     "m22",
+     "m23",
+     "m24",
+     "m25",
+     "m26",
+     "m27",
+     "m28",
+     "m29",
+     "m30",
+     "m31",
+     "m32",
+     "m33",
+     "m34",
+     "m35",
+     "m36",
+     "m37",
+     "m38",
+     "m39",
+     "m40",
+     "m41",
+     "m42",
+     "m43",
+     "m44",
+     "m45",
+     "m46",
+     "m47",
+     "m48",
+     "m49",
+     "m50",
+     "m51",
+     "m52",
+     "m53",
+     "m54",
+     "m55",
+     "m56",
+     "m57",
+     "m58",
+     "m59",
+     "m60"
+    ]
+   },
+   "life_undecided_in": {
+    "normal": [],
+    "ola": []
+   }
+  },
+  "padrinos": {
+   "feasible_in": [
+    "m01",
+    "m02",
+    "m03",
+    "m04",
+    "m05",
+    "m06",
+    "m07",
+    "m08",
+    "m09",
+    "m10",
+    "m11",
+    "m12",
+    "m13",
+    "m14",
+    "m15",
+    "m16",
+    "m17",
+    "m18",
+    "m19",
+    "m20",
+    "m21",
+    "m22",
+    "m23",
+    "m24",
+    "m25",
+    "m26",
+    "m27",
+    "m28",
+    "m29",
+    "m30",
+    "m31",
+    "m32",
+    "m33",
+    "m34",
+    "m35",
+    "m36",
+    "m37",
+    "m38",
+    "m39",
+    "m40",
+    "m41",
+    "m42",
+    "m43",
+    "m44",
+    "m45",
+    "m46",
+    "m47",
+    "m48",
+    "m49",
+    "m50",
+    "m51",
+    "m52",
+    "m53",
+    "m54",
+    "m55",
+    "m56",
+    "m57",
+    "m58",
+    "m59",
+    "m60"
+   ],
+   "joint_life_by_scenario": {
+    "normal": "failure",
+    "ola": "failure"
+   },
+   "joint_pvs": "0/1",
+   "life_fails_in": {
+    "normal": [
+     "m01",
+     "m03",
+     "m04",
+     "m05",
+     "m08",
+     "m10",
+     "m12",
+     "m14",
+     "m15",
+     "m16",
+     "m18",
+     "m21",
+     "m22",
+     "m25",
+     "m26",
+     "m28",
+     "m30",
+     "m31",
+     "m32",
+     "m36",
+     "m37",
+     "m39",
+     "m40",
+     "m45",
+     "m46",
+     "m51",
+     "m53",
+     "m54",
+     "m56",
+     "m57",
+     "m58"
+    ],
+    "ola": [
+     "m01",
+     "m02",
+     "m03",
+     "m04",
+     "m05",
+     "m06",
+     "m07",
+     "m08",
+     "m09",
+     "m10",
+     "m11",
+     "m12",
+     "m13",
+     "m14",
+     "m15",
+     "m16",
+     "m17",
+     "m18",
+     "m19",
+     "m20",
+     "m21",
+     "m22",
+     "m23",
+     "m24",
+     "m25",
+     "m26",
+     "m27",
+     "m28",
+     "m29",
+     "m30",
+     "m31",
+     "m32",
+     "m33",
+     "m34",
+     "m35",
+     "m36",
+     "m37",
+     "m38",
+     "m39",
+     "m40",
+     "m41",
+     "m42",
+     "m43",
+     "m44",
+     "m45",
+     "m46",
+     "m47",
+     "m48",
+     "m49",
+     "m50",
+     "m51",
+     "m52",
+     "m53",
+     "m54",
+     "m55",
+     "m56",
+     "m57",
+     "m58",
+     "m59",
+     "m60"
+    ]
+   },
+   "life_undecided_in": {
+    "normal": [],
+    "ola": []
+   }
+  }
+ },
+ "decision": {
+  "coverage": "EXHAUSTIVE",
+  "feasibility": "KERNEL_FEASIBLE_IN_EVERY_ZONE_WITH_DATA",
+  "feasible": [
+   "hoy",
+   "padrinos"
+  ],
+  "frontier": [
+   "hoy",
+   "padrinos"
+  ],
+  "pairs": [
+   {
+    "by_criterion": {
+     "cag": {
+      "better_in": [],
+      "equal_in": [
+       "m01",
+       "m03",
+       "m04",
+       "m05",
+       "m08",
+       "m10",
+       "m12",
+       "m14",
+       "m15",
+       "m16",
+       "m18",
+       "m21",
+       "m22",
+       "m25",
+       "m26",
+       "m28",
+       "m30",
+       "m31",
+       "m32",
+       "m36",
+       "m37",
+       "m39",
+       "m40",
+       "m45",
+       "m46",
+       "m51",
+       "m53",
+       "m54",
+       "m56",
+       "m57",
+       "m58"
+      ],
+      "incomparable_in": [],
+      "unknown_in": [],
+      "worse_in": [
+       "m02",
+       "m06",
+       "m07",
+       "m09",
+       "m11",
+       "m13",
+       "m17",
+       "m19",
+       "m20",
+       "m23",
+       "m24",
+       "m27",
+       "m29",
+       "m33",
+       "m34",
+       "m35",
+       "m38",
+       "m41",
+       "m42",
+       "m43",
+       "m44",
+       "m47",
+       "m48",
+       "m49",
+       "m50",
+       "m52",
+       "m55",
+       "m59",
+       "m60"
+      ]
+     },
+     "functional": {
+      "better_in": [],
+      "equal_in": [
+       "m01",
+       "m02",
+       "m03",
+       "m04",
+       "m05",
+       "m06",
+       "m07",
+       "m08",
+       "m09",
+       "m10",
+       "m11",
+       "m12",
+       "m13",
+       "m14",
+       "m15",
+       "m16",
+       "m17",
+       "m18",
+       "m19",
+       "m20",
+       "m21",
+       "m22",
+       "m23",
+       "m24",
+       "m25",
+       "m26",
+       "m27",
+       "m28",
+       "m29",
+       "m30",
+       "m31",
+       "m32",
+       "m33",
+       "m34",
+       "m35",
+       "m36",
+       "m37",
+       "m38",
+       "m39",
+       "m40",
+       "m41",
+       "m42",
+       "m43",
+       "m44",
+       "m45",
+       "m46",
+       "m47",
+       "m48",
+       "m49",
+       "m50",
+       "m51",
+       "m52",
+       "m53",
+       "m54",
+       "m55",
+       "m56",
+       "m57",
+       "m58",
+       "m59",
+       "m60"
+      ],
+      "incomparable_in": [],
+      "unknown_in": [],
+      "worse_in": []
+     },
+     "pvs": {
+      "better_in": [
+       "m01",
+       "m05",
+       "m08",
+       "m10",
+       "m12",
+       "m14",
+       "m15",
+       "m16",
+       "m21",
+       "m22",
+       "m31",
+       "m32",
+       "m37",
+       "m39",
+       "m45",
+       "m54",
+       "m58"
+      ],
+      "equal_in": [
+       "m02",
+       "m03",
+       "m04",
+       "m06",
+       "m07",
+       "m09",
+       "m11",
+       "m13",
+       "m17",
+       "m18",
+       "m19",
+       "m20",
+       "m23",
+       "m24",
+       "m25",
+       "m26",
+       "m27",
+       "m28",
+       "m29",
+       "m30",
+       "m33",
+       "m34",
+       "m35",
+       "m36",
+       "m38",
+       "m40",
+       "m41",
+       "m42",
+       "m43",
+       "m44",
+       "m46",
+       "m47",
+       "m48",
+       "m49",
+       "m50",
+       "m51",
+       "m52",
+       "m53",
+       "m55",
+       "m56",
+       "m57",
+       "m59",
+       "m60"
+      ],
+      "incomparable_in": [],
+      "unknown_in": [],
+      "worse_in": []
+     },
+     "welfare": {
+      "better_in": [],
+      "equal_in": [
+       "m03",
+       "m04",
+       "m18",
+       "m25",
+       "m26",
+       "m28",
+       "m30",
+       "m36",
+       "m40",
+       "m46",
+       "m51",
+       "m53",
+       "m56",
+       "m57"
+      ],
+      "incomparable_in": [
+       "m01",
+       "m02",
+       "m05",
+       "m06",
+       "m07",
+       "m08",
+       "m09",
+       "m10",
+       "m11",
+       "m12",
+       "m13",
+       "m14",
+       "m15",
+       "m16",
+       "m17",
+       "m19",
+       "m20",
+       "m21",
+       "m22",
+       "m23",
+       "m24",
+       "m27",
+       "m29",
+       "m31",
+       "m32",
+       "m33",
+       "m34",
+       "m35",
+       "m37",
+       "m38",
+       "m39",
+       "m41",
+       "m42",
+       "m43",
+       "m44",
+       "m45",
+       "m47",
+       "m48",
+       "m49",
+       "m50",
+       "m52",
+       "m54",
+       "m55",
+       "m58",
+       "m59",
+       "m60"
+      ],
+      "unknown_in": [],
+      "worse_in": []
+     }
+    },
+    "cag": "0",
+    "functional": "1",
+    "joint_pvs": "1",
+    "left": "hoy",
+    "pvs": "1",
+    "right": "padrinos",
+    "strict": "0",
+    "strictly_better_in": [],
+    "strictly_worse_in": [],
+    "weak": "0",
+    "welfare": "0"
+   },
+   {
+    "by_criterion": {
+     "cag": {
+      "better_in": [
+       "m02",
+       "m06",
+       "m07",
+       "m09",
+       "m11",
+       "m13",
+       "m17",
+       "m19",
+       "m20",
+       "m23",
+       "m24",
+       "m27",
+       "m29",
+       "m33",
+       "m34",
+       "m35",
+       "m38",
+       "m41",
+       "m42",
+       "m43",
+       "m44",
+       "m47",
+       "m48",
+       "m49",
+       "m50",
+       "m52",
+       "m55",
+       "m59",
+       "m60"
+      ],
+      "equal_in": [
+       "m01",
+       "m03",
+       "m04",
+       "m05",
+       "m08",
+       "m10",
+       "m12",
+       "m14",
+       "m15",
+       "m16",
+       "m18",
+       "m21",
+       "m22",
+       "m25",
+       "m26",
+       "m28",
+       "m30",
+       "m31",
+       "m32",
+       "m36",
+       "m37",
+       "m39",
+       "m40",
+       "m45",
+       "m46",
+       "m51",
+       "m53",
+       "m54",
+       "m56",
+       "m57",
+       "m58"
+      ],
+      "incomparable_in": [],
+      "unknown_in": [],
+      "worse_in": []
+     },
+     "functional": {
+      "better_in": [],
+      "equal_in": [
+       "m01",
+       "m02",
+       "m03",
+       "m04",
+       "m05",
+       "m06",
+       "m07",
+       "m08",
+       "m09",
+       "m10",
+       "m11",
+       "m12",
+       "m13",
+       "m14",
+       "m15",
+       "m16",
+       "m17",
+       "m18",
+       "m19",
+       "m20",
+       "m21",
+       "m22",
+       "m23",
+       "m24",
+       "m25",
+       "m26",
+       "m27",
+       "m28",
+       "m29",
+       "m30",
+       "m31",
+       "m32",
+       "m33",
+       "m34",
+       "m35",
+       "m36",
+       "m37",
+       "m38",
+       "m39",
+       "m40",
+       "m41",
+       "m42",
+       "m43",
+       "m44",
+       "m45",
+       "m46",
+       "m47",
+       "m48",
+       "m49",
+       "m50",
+       "m51",
+       "m52",
+       "m53",
+       "m54",
+       "m55",
+       "m56",
+       "m57",
+       "m58",
+       "m59",
+       "m60"
+      ],
+      "incomparable_in": [],
+      "unknown_in": [],
+      "worse_in": []
+     },
+     "pvs": {
+      "better_in": [],
+      "equal_in": [
+       "m02",
+       "m03",
+       "m04",
+       "m06",
+       "m07",
+       "m09",
+       "m11",
+       "m13",
+       "m17",
+       "m18",
+       "m19",
+       "m20",
+       "m23",
+       "m24",
+       "m25",
+       "m26",
+       "m27",
+       "m28",
+       "m29",
+       "m30",
+       "m33",
+       "m34",
+       "m35",
+       "m36",
+       "m38",
+       "m40",
+       "m41",
+       "m42",
+       "m43",
+       "m44",
+       "m46",
+       "m47",
+       "m48",
+       "m49",
+       "m50",
+       "m51",
+       "m52",
+       "m53",
+       "m55",
+       "m56",
+       "m57",
+       "m59",
+       "m60"
+      ],
+      "incomparable_in": [],
+      "unknown_in": [],
+      "worse_in": [
+       "m01",
+       "m05",
+       "m08",
+       "m10",
+       "m12",
+       "m14",
+       "m15",
+       "m16",
+       "m21",
+       "m22",
+       "m31",
+       "m32",
+       "m37",
+       "m39",
+       "m45",
+       "m54",
+       "m58"
+      ]
+     },
+     "welfare": {
+      "better_in": [],
+      "equal_in": [
+       "m03",
+       "m04",
+       "m18",
+       "m25",
+       "m26",
+       "m28",
+       "m30",
+       "m36",
+       "m40",
+       "m46",
+       "m51",
+       "m53",
+       "m56",
+       "m57"
+      ],
+      "incomparable_in": [
+       "m01",
+       "m02",
+       "m05",
+       "m06",
+       "m07",
+       "m08",
+       "m09",
+       "m10",
+       "m11",
+       "m12",
+       "m13",
+       "m14",
+       "m15",
+       "m16",
+       "m17",
+       "m19",
+       "m20",
+       "m21",
+       "m22",
+       "m23",
+       "m24",
+       "m27",
+       "m29",
+       "m31",
+       "m32",
+       "m33",
+       "m34",
+       "m35",
+       "m37",
+       "m38",
+       "m39",
+       "m41",
+       "m42",
+       "m43",
+       "m44",
+       "m45",
+       "m47",
+       "m48",
+       "m49",
+       "m50",
+       "m52",
+       "m54",
+       "m55",
+       "m58",
+       "m59",
+       "m60"
+      ],
+      "unknown_in": [],
+      "worse_in": []
+     }
+    },
+    "cag": "1",
+    "functional": "1",
+    "joint_pvs": "1",
+    "left": "padrinos",
+    "pvs": "0",
+    "right": "hoy",
+    "strict": "0",
+    "strictly_better_in": [],
+    "strictly_worse_in": [],
+    "weak": "0",
+    "welfare": "0"
+   }
+  ],
+  "relative_to": null,
+  "rule": "PRODUCT_ORDER_OVER_ZONE_KERNEL_ORDERS_NO_SUMS_NO_ANONYMOUS_MATCHING",
+  "selected": null
+ },
+ "empirical_admission": "DECLARED_ASSUMPTIONS_ONLY",
+ "format": "genius-territory-result/1",
+ "law": {
+  "normal": "3/4",
+  "ola": "1/4"
+ },
+ "name": "Arbolado del centro de Mendoza en enero, manzana por manzana",
+ "routes": {
+  "hoy": "Seguir como hoy",
+  "padrinos": "Camino «Mejorar mi barrio»: sumar padrinos"
+ },
+ "scenarios": {
+  "normal": "Enero normal",
+  "ola": "Ola de calor con corte de turno y cuadrilla desbordada"
+ },
+ "scope": "EACH_ZONE_KERNEL_VERIFIED_TERRITORY_LAYER_READS_ZONE_ORDERS",
+ "spec_digest": "eb1b54588536b9105616707c0542bb11d15e0ad3bdd24304a33f710d20702e68",
+ "zone_labels": {
+  "m01": "Manzana 1 · 1ª Sección · Parque Central",
+  "m02": "Manzana 2 · 1ª Sección · Parque Central",
+  "m03": "Manzana 3 · 1ª Sección · Parque Central",
+  "m04": "Manzana 4 · 1ª Sección · Parque Central",
+  "m05": "Manzana 5 · 1ª Sección · Parque Central",
+  "m06": "Manzana 6 · 1ª Sección · Parque Central",
+  "m07": "Manzana 7 · 1ª Sección · Parque Central",
+  "m08": "Manzana 8 · 1ª Sección · Parque Central",
+  "m09": "Manzana 9 · 1ª Sección · Parque Central",
+  "m10": "Manzana 10 · 1ª Sección · Parque Central",
+  "m11": "Manzana 11 · 1ª Sección · Parque Central",
+  "m12": "Manzana 12 · 1ª Sección · Parque Central",
+  "m13": "Manzana 13 · 1ª Sección · Parque Central",
+  "m14": "Manzana 14 · 1ª Sección · Parque Central",
+  "m15": "Manzana 15 · 1ª Sección · Parque Central",
+  "m16": "Manzana 16 · 2ª Sección · Barrio Cívico",
+  "m17": "Manzana 17 · 2ª Sección · Barrio Cívico",
+  "m18": "Manzana 18 · 2ª Sección · Barrio Cívico",
+  "m19": "Manzana 19 · 2ª Sección · Barrio Cívico",
+  "m20": "Manzana 20 · 2ª Sección · Barrio Cívico",
+  "m21": "Manzana 21 · 2ª Sección · Barrio Cívico",
+  "m22": "Manzana 22 · 2ª Sección · Barrio Cívico",
+  "m23": "Manzana 23 · 2ª Sección · Barrio Cívico",
+  "m24": "Manzana 24 · 2ª Sección · Barrio Cívico",
+  "m25": "Manzana 25 · 2ª Sección · Barrio Cívico",
+  "m26": "Manzana 26 · 2ª Sección · Barrio Cívico",
+  "m27": "Manzana 27 · 2ª Sección · Barrio Cívico",
+  "m28": "Manzana 28 · 2ª Sección · Barrio Cívico",
+  "m29": "Manzana 29 · 2ª Sección · Barrio Cívico",
+  "m30": "Manzana 30 · 2ª Sección · Barrio Cívico",
+  "m31": "Manzana 31 · 2ª Sección · Barrio Cívico",
+  "m32": "Manzana 32 · 2ª Sección · Barrio Cívico",
+  "m33": "Manzana 33 · 2ª Sección · Barrio Cívico",
+  "m34": "Manzana 34 · 2ª Sección · Barrio Cívico",
+  "m35": "Manzana 35 · 2ª Sección · Barrio Cívico",
+  "m36": "Manzana 36 · 2ª Sección · Barrio Cívico",
+  "m37": "Manzana 37 · 2ª Sección · Barrio Cívico",
+  "m38": "Manzana 38 · 2ª Sección · Barrio Cívico",
+  "m39": "Manzana 39 · 2ª Sección · Barrio Cívico",
+  "m40": "Manzana 40 · 2ª Sección · Barrio Cívico",
+  "m41": "Manzana 41 · 2ª Sección · Barrio Cívico",
+  "m42": "Manzana 42 · 2ª Sección · Barrio Cívico",
+  "m43": "Manzana 43 · 2ª Sección · Barrio Cívico",
+  "m44": "Manzana 44 · 2ª Sección · Barrio Cívico",
+  "m45": "Manzana 45 · 2ª Sección · Barrio Cívico",
+  "m46": "Manzana 46 · 2ª Sección · Barrio Cívico",
+  "m47": "Manzana 47 · 2ª Sección · Barrio Cívico",
+  "m48": "Manzana 48 · 2ª Sección · Barrio Cívico",
+  "m49": "Manzana 49 · 2ª Sección · Barrio Cívico",
+  "m50": "Manzana 50 · 2ª Sección · Barrio Cívico",
+  "m51": "Manzana 51 · 2ª Sección · Barrio Cívico",
+  "m52": "Manzana 52 · 2ª Sección · Barrio Cívico",
+  "m53": "Manzana 53 · 2ª Sección · Barrio Cívico",
+  "m54": "Manzana 54 · 2ª Sección · Barrio Cívico",
+  "m55": "Manzana 55 · 2ª Sección · Barrio Cívico",
+  "m56": "Manzana 56 · 2ª Sección · Barrio Cívico",
+  "m57": "Manzana 57 · 3ª Sección · Parque O'Higgins",
+  "m58": "Manzana 58 · 3ª Sección · Parque O'Higgins",
+  "m59": "Manzana 59 · 3ª Sección · Parque O'Higgins",
+  "m60": "Manzana 60 · 3ª Sección · Parque O'Higgins"
+ },
+ "zones": {
+  "m01": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "ce8d57ff3ff2bb9f53f9c56f05f47f7c2e195672d197d2502b128bbb958b3271",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "224/5",
+        "initial": "224/5",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "224/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "131/15",
+        "initial": "127/3",
+        "worst": "131/15"
+       },
+       "ola": {
+        "final": "127/3",
+        "initial": "127/3",
+        "worst": "131/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "112/1"
+       },
+       "ola": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "56/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "127/3",
+        "initial": "127/3",
+        "worst": "127/3"
+       },
+       "ola": {
+        "final": "127/3",
+        "initial": "127/3",
+        "worst": "127/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m02": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "9218a7897f5fa6abaedc25cb2e61f2d766bdb22f330105c6b9f2881d8d0f2a67",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "48/1",
+        "initial": "48/1",
+        "worst": "48/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "48/1",
+        "initial": "120/1",
+        "worst": "48/1"
+       },
+       "ola": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "48/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "65/3",
+        "initial": "173/3",
+        "worst": "65/3"
+       },
+       "ola": {
+        "final": "173/3",
+        "initial": "173/3",
+        "worst": "65/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "48/1",
+        "initial": "48/1",
+        "worst": "36/1"
+       },
+       "ola": {
+        "final": "18/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "48/1",
+        "initial": "120/1",
+        "worst": "48/1"
+       },
+       "ola": {
+        "final": "48/1",
+        "initial": "120/1",
+        "worst": "48/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "101/3",
+        "initial": "173/3",
+        "worst": "29/3"
+       },
+       "ola": {
+        "final": "101/3",
+        "initial": "173/3",
+        "worst": "29/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m03": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "810f5ed4049643b083db19b82e4e9f18a81621c6e978d541f22a741bb00f352e",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "172/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "172/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "86/1",
+        "initial": "86/1",
+        "worst": "86/1"
+       },
+       "ola": {
+        "final": "86/1",
+        "initial": "86/1",
+        "worst": "43/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "71/3",
+        "initial": "71/3",
+        "worst": "71/3"
+       },
+       "ola": {
+        "final": "71/3",
+        "initial": "71/3",
+        "worst": "71/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "172/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "172/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "86/1",
+        "initial": "86/1",
+        "worst": "86/1"
+       },
+       "ola": {
+        "final": "86/1",
+        "initial": "86/1",
+        "worst": "43/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "71/3",
+        "initial": "71/3",
+        "worst": "71/3"
+       },
+       "ola": {
+        "final": "71/3",
+        "initial": "71/3",
+        "worst": "71/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m04": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "cfb71458c34782b38eae94ffee8d658b5b452fabb115b7a7fc06c2cdba5cfab2",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "124/1"
+       },
+       "ola": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "62/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "89/3",
+        "initial": "89/3",
+        "worst": "89/3"
+       },
+       "ola": {
+        "final": "89/3",
+        "initial": "89/3",
+        "worst": "89/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "124/1"
+       },
+       "ola": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "62/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "89/3",
+        "initial": "89/3",
+        "worst": "89/3"
+       },
+       "ola": {
+        "final": "89/3",
+        "initial": "89/3",
+        "worst": "89/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m05": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "d09c5a029788cc406b0d27daf6282d61731fdcffe764d4411246f64c38670c5e",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "212/5",
+        "initial": "212/5",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "212/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "8/15",
+        "initial": "97/3",
+        "worst": "8/15"
+       },
+       "ola": {
+        "final": "97/3",
+        "initial": "97/3",
+        "worst": "8/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "106/1"
+       },
+       "ola": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "53/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "97/3",
+        "initial": "97/3",
+        "worst": "97/3"
+       },
+       "ola": {
+        "final": "97/3",
+        "initial": "97/3",
+        "worst": "97/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m06": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "1771d285eb5158fe3ab107eb79c6d710a2381da8df2efa3e596a92e8eef1dd1f",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "204/5",
+        "initial": "204/5",
+        "worst": "204/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "204/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "204/5",
+        "initial": "102/1",
+        "worst": "204/5"
+       },
+       "ola": {
+        "final": "102/1",
+        "initial": "102/1",
+        "worst": "204/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "251/15",
+        "initial": "142/3",
+        "worst": "251/15"
+       },
+       "ola": {
+        "final": "142/3",
+        "initial": "142/3",
+        "worst": "251/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "204/5",
+        "initial": "204/5",
+        "worst": "153/5"
+       },
+       "ola": {
+        "final": "153/10",
+        "initial": "204/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "204/5",
+        "initial": "102/1",
+        "worst": "204/5"
+       },
+       "ola": {
+        "final": "204/5",
+        "initial": "102/1",
+        "worst": "204/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "404/15",
+        "initial": "142/3",
+        "worst": "98/15"
+       },
+       "ola": {
+        "final": "404/15",
+        "initial": "142/3",
+        "worst": "98/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m07": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "7bb835565360f7a019f670975f702a7c7f7b53be5ca5416853db99bf76070109",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "40/1",
+        "initial": "40/1",
+        "worst": "40/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "40/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "40/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       },
+       "ola": {
+        "final": "100/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "50/3",
+        "initial": "140/3",
+        "worst": "50/3"
+       },
+       "ola": {
+        "final": "140/3",
+        "initial": "140/3",
+        "worst": "50/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "40/1",
+        "initial": "40/1",
+        "worst": "30/1"
+       },
+       "ola": {
+        "final": "15/1",
+        "initial": "40/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "40/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       },
+       "ola": {
+        "final": "40/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "80/3",
+        "initial": "140/3",
+        "worst": "20/3"
+       },
+       "ola": {
+        "final": "80/3",
+        "initial": "140/3",
+        "worst": "20/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m08": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "a09c5bac9ae0ec1c1747c59ccf7aa8de8e0eb0f06372435460095b3c1fee062a",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "48/1",
+        "initial": "48/1",
+        "worst": "48/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "48/1",
+        "initial": "120/1",
+        "worst": "48/1"
+       },
+       "ola": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "48/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "26/3",
+        "initial": "134/3",
+        "worst": "26/3"
+       },
+       "ola": {
+        "final": "134/3",
+        "initial": "134/3",
+        "worst": "26/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "120/1"
+       },
+       "ola": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "60/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "134/3",
+        "initial": "134/3",
+        "worst": "134/3"
+       },
+       "ola": {
+        "final": "134/3",
+        "initial": "134/3",
+        "worst": "134/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m09": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "b714034a51e65ffffb509894e812f03dd70203d09403d8e99b2a0a14b90c9bde",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "136/5",
+        "initial": "136/5",
+        "worst": "136/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "136/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "136/5",
+        "initial": "68/1",
+        "worst": "136/5"
+       },
+       "ola": {
+        "final": "68/1",
+        "initial": "68/1",
+        "worst": "136/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "209/15",
+        "initial": "103/3",
+        "worst": "209/15"
+       },
+       "ola": {
+        "final": "103/3",
+        "initial": "103/3",
+        "worst": "209/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "136/5",
+        "initial": "136/5",
+        "worst": "102/5"
+       },
+       "ola": {
+        "final": "51/5",
+        "initial": "136/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "136/5",
+        "initial": "68/1",
+        "worst": "136/5"
+       },
+       "ola": {
+        "final": "136/5",
+        "initial": "68/1",
+        "worst": "136/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "311/15",
+        "initial": "103/3",
+        "worst": "107/15"
+       },
+       "ola": {
+        "final": "311/15",
+        "initial": "103/3",
+        "worst": "107/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m10": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "4030d41e98cd38b094ac1862bf0fe2a1a88b9366f15bea96a92d7f73a406e224",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "228/5",
+        "initial": "228/5",
+        "worst": "228/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "228/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "228/5",
+        "initial": "114/1",
+        "worst": "228/5"
+       },
+       "ola": {
+        "final": "114/1",
+        "initial": "114/1",
+        "worst": "228/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "82/15",
+        "initial": "119/3",
+        "worst": "82/15"
+       },
+       "ola": {
+        "final": "119/3",
+        "initial": "119/3",
+        "worst": "82/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "228/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "228/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "114/1",
+        "initial": "114/1",
+        "worst": "114/1"
+       },
+       "ola": {
+        "final": "114/1",
+        "initial": "114/1",
+        "worst": "57/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "119/3",
+        "initial": "119/3",
+        "worst": "119/3"
+       },
+       "ola": {
+        "final": "119/3",
+        "initial": "119/3",
+        "worst": "119/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m11": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "7237f807cdd578bbfe08141afbb26ef570226d3d9a7d7004809a5b92976aa4b5",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "124/5",
+        "initial": "124/5",
+        "worst": "124/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "124/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "124/5",
+        "initial": "62/1",
+        "worst": "124/5"
+       },
+       "ola": {
+        "final": "62/1",
+        "initial": "62/1",
+        "worst": "124/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "251/15",
+        "initial": "106/3",
+        "worst": "251/15"
+       },
+       "ola": {
+        "final": "106/3",
+        "initial": "106/3",
+        "worst": "251/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "124/5",
+        "initial": "124/5",
+        "worst": "93/5"
+       },
+       "ola": {
+        "final": "93/10",
+        "initial": "124/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "124/5",
+        "initial": "62/1",
+        "worst": "124/5"
+       },
+       "ola": {
+        "final": "124/5",
+        "initial": "62/1",
+        "worst": "124/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "344/15",
+        "initial": "106/3",
+        "worst": "158/15"
+       },
+       "ola": {
+        "final": "344/15",
+        "initial": "106/3",
+        "worst": "158/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m12": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "5f6e0dafa4946c5a1ee93e42ed16e0205bf5aae185c25136928fcba51e396f9a",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "248/5",
+        "initial": "248/5",
+        "worst": "248/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "248/5",
+        "initial": "124/1",
+        "worst": "248/5"
+       },
+       "ola": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "248/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "17/15",
+        "initial": "115/3",
+        "worst": "17/15"
+       },
+       "ola": {
+        "final": "115/3",
+        "initial": "115/3",
+        "worst": "17/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "124/1"
+       },
+       "ola": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "62/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "115/3",
+        "initial": "115/3",
+        "worst": "115/3"
+       },
+       "ola": {
+        "final": "115/3",
+        "initial": "115/3",
+        "worst": "115/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m13": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "e4ede336e8811c979328852990a9d7efa282a1f9bde9ffbc7758806400c8a367",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "36/1",
+        "initial": "36/1",
+        "worst": "36/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "36/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "36/1",
+        "initial": "90/1",
+        "worst": "36/1"
+       },
+       "ola": {
+        "final": "90/1",
+        "initial": "90/1",
+        "worst": "36/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "77/3",
+        "initial": "158/3",
+        "worst": "77/3"
+       },
+       "ola": {
+        "final": "158/3",
+        "initial": "158/3",
+        "worst": "77/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "36/1",
+        "initial": "36/1",
+        "worst": "27/1"
+       },
+       "ola": {
+        "final": "27/2",
+        "initial": "36/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "36/1",
+        "initial": "90/1",
+        "worst": "36/1"
+       },
+       "ola": {
+        "final": "36/1",
+        "initial": "90/1",
+        "worst": "36/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "104/3",
+        "initial": "158/3",
+        "worst": "50/3"
+       },
+       "ola": {
+        "final": "104/3",
+        "initial": "158/3",
+        "worst": "50/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m14": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "d8d22f6a753245f70ce89c5b5b694790b5f3e788b788853556cab330e543b4d3",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "156/5",
+        "initial": "156/5",
+        "worst": "156/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "156/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "156/5",
+        "initial": "78/1",
+        "worst": "156/5"
+       },
+       "ola": {
+        "final": "78/1",
+        "initial": "78/1",
+        "worst": "156/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "28/5",
+        "initial": "29/1",
+        "worst": "28/5"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "28/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "156/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "156/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "78/1",
+        "initial": "78/1",
+        "worst": "78/1"
+       },
+       "ola": {
+        "final": "78/1",
+        "initial": "78/1",
+        "worst": "39/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m15": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "e3c25ac0fa3bb128c54e98dec09422d87561e0ce964afecb3d5adbe2ae1e28e1",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "168/5",
+        "initial": "168/5",
+        "worst": "168/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "168/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "168/5",
+        "initial": "84/1",
+        "worst": "168/5"
+       },
+       "ola": {
+        "final": "84/1",
+        "initial": "84/1",
+        "worst": "168/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "47/15",
+        "initial": "85/3",
+        "worst": "47/15"
+       },
+       "ola": {
+        "final": "85/3",
+        "initial": "85/3",
+        "worst": "47/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "168/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "168/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "84/1",
+        "initial": "84/1",
+        "worst": "84/1"
+       },
+       "ola": {
+        "final": "84/1",
+        "initial": "84/1",
+        "worst": "42/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "85/3",
+        "initial": "85/3",
+        "worst": "85/3"
+       },
+       "ola": {
+        "final": "85/3",
+        "initial": "85/3",
+        "worst": "85/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m16": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "2cc08a3c990240ab04a1691f97265bdb7bd6e434c9d24475f6dbfc3057e622c9",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "44/1",
+        "initial": "44/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "110/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "16/3",
+        "initial": "115/3",
+        "worst": "16/3"
+       },
+       "ola": {
+        "final": "115/3",
+        "initial": "115/3",
+        "worst": "16/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "44/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "110/1",
+        "initial": "110/1",
+        "worst": "110/1"
+       },
+       "ola": {
+        "final": "110/1",
+        "initial": "110/1",
+        "worst": "55/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "115/3",
+        "initial": "115/3",
+        "worst": "115/3"
+       },
+       "ola": {
+        "final": "115/3",
+        "initial": "115/3",
+        "worst": "115/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m17": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "e030828be8bb84b38827914d4758f82aa2d50818ce8db54f03d5a5cec151a9e2",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "36/1",
+        "initial": "36/1",
+        "worst": "36/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "36/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "36/1",
+        "initial": "90/1",
+        "worst": "36/1"
+       },
+       "ola": {
+        "final": "90/1",
+        "initial": "90/1",
+        "worst": "36/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "32/3",
+        "initial": "113/3",
+        "worst": "32/3"
+       },
+       "ola": {
+        "final": "113/3",
+        "initial": "113/3",
+        "worst": "32/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "36/1",
+        "initial": "36/1",
+        "worst": "27/1"
+       },
+       "ola": {
+        "final": "27/2",
+        "initial": "36/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "36/1",
+        "initial": "90/1",
+        "worst": "36/1"
+       },
+       "ola": {
+        "final": "36/1",
+        "initial": "90/1",
+        "worst": "36/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "59/3",
+        "initial": "113/3",
+        "worst": "5/3"
+       },
+       "ola": {
+        "final": "59/3",
+        "initial": "113/3",
+        "worst": "5/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m18": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "d704d38cba54bf8f1f254368a1a2ae894719096d577165dd18ca8b973bbeb54a",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "36/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "36/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "90/1",
+        "initial": "90/1",
+        "worst": "90/1"
+       },
+       "ola": {
+        "final": "90/1",
+        "initial": "90/1",
+        "worst": "45/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "67/3",
+        "initial": "67/3",
+        "worst": "67/3"
+       },
+       "ola": {
+        "final": "67/3",
+        "initial": "67/3",
+        "worst": "67/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "36/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "36/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "90/1",
+        "initial": "90/1",
+        "worst": "90/1"
+       },
+       "ola": {
+        "final": "90/1",
+        "initial": "90/1",
+        "worst": "45/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "67/3",
+        "initial": "67/3",
+        "worst": "67/3"
+       },
+       "ola": {
+        "final": "67/3",
+        "initial": "67/3",
+        "worst": "67/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m19": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "3eeac3b6457fbc8ac52b9a0e6cb0d5bb5559dc766b7b970faaf2d3b102fcfa6b",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "212/5",
+        "initial": "212/5",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "212/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "81/5",
+        "initial": "48/1",
+        "worst": "81/5"
+       },
+       "ola": {
+        "final": "48/1",
+        "initial": "48/1",
+        "worst": "81/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "212/5",
+        "initial": "212/5",
+        "worst": "159/5"
+       },
+       "ola": {
+        "final": "159/10",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "134/5",
+        "initial": "48/1",
+        "worst": "28/5"
+       },
+       "ola": {
+        "final": "134/5",
+        "initial": "48/1",
+        "worst": "28/5"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m20": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "22b8374c2f5307daf87148c1451e9ec2a557a28471c8ad9b239ce5da3d66b081",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "144/5",
+        "initial": "144/5",
+        "worst": "144/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "144/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "144/5",
+        "initial": "72/1",
+        "worst": "144/5"
+       },
+       "ola": {
+        "final": "72/1",
+        "initial": "72/1",
+        "worst": "144/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "286/15",
+        "initial": "122/3",
+        "worst": "286/15"
+       },
+       "ola": {
+        "final": "122/3",
+        "initial": "122/3",
+        "worst": "286/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "144/5",
+        "initial": "144/5",
+        "worst": "108/5"
+       },
+       "ola": {
+        "final": "54/5",
+        "initial": "144/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "144/5",
+        "initial": "72/1",
+        "worst": "144/5"
+       },
+       "ola": {
+        "final": "144/5",
+        "initial": "72/1",
+        "worst": "144/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "394/15",
+        "initial": "122/3",
+        "worst": "178/15"
+       },
+       "ola": {
+        "final": "394/15",
+        "initial": "122/3",
+        "worst": "178/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m21": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "56f67d2e534278a6d95b0cf592457361129f5019c271840bdc325b3357f02ba9",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "56/1",
+        "initial": "56/1",
+        "worst": "56/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "56/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "56/1",
+        "initial": "140/1",
+        "worst": "56/1"
+       },
+       "ola": {
+        "final": "140/1",
+        "initial": "140/1",
+        "worst": "56/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "13/3",
+        "initial": "139/3",
+        "worst": "13/3"
+       },
+       "ola": {
+        "final": "139/3",
+        "initial": "139/3",
+        "worst": "13/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "56/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "56/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "140/1",
+        "initial": "140/1",
+        "worst": "140/1"
+       },
+       "ola": {
+        "final": "140/1",
+        "initial": "140/1",
+        "worst": "70/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "139/3",
+        "initial": "139/3",
+        "worst": "139/3"
+       },
+       "ola": {
+        "final": "139/3",
+        "initial": "139/3",
+        "worst": "139/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m22": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "2f1ef4948c172eeab65ef8635ec266237195186729f9bdba04908762c0c9cf9e",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "52/1",
+        "initial": "52/1",
+        "worst": "52/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "52/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "52/1",
+        "initial": "130/1",
+        "worst": "52/1"
+       },
+       "ola": {
+        "final": "130/1",
+        "initial": "130/1",
+        "worst": "52/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "19/3",
+        "initial": "136/3",
+        "worst": "19/3"
+       },
+       "ola": {
+        "final": "136/3",
+        "initial": "136/3",
+        "worst": "19/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "52/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "52/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "130/1",
+        "initial": "130/1",
+        "worst": "130/1"
+       },
+       "ola": {
+        "final": "130/1",
+        "initial": "130/1",
+        "worst": "65/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "136/3",
+        "initial": "136/3",
+        "worst": "136/3"
+       },
+       "ola": {
+        "final": "136/3",
+        "initial": "136/3",
+        "worst": "136/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m23": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "56e2a69b5684b92cba9d1a221e6e56617b8cf4f007a1cd8577d617b885116236",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "192/5",
+        "initial": "192/5",
+        "worst": "192/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "192/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "192/5",
+        "initial": "96/1",
+        "worst": "192/5"
+       },
+       "ola": {
+        "final": "96/1",
+        "initial": "96/1",
+        "worst": "192/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "233/15",
+        "initial": "133/3",
+        "worst": "233/15"
+       },
+       "ola": {
+        "final": "133/3",
+        "initial": "133/3",
+        "worst": "233/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "192/5",
+        "initial": "192/5",
+        "worst": "144/5"
+       },
+       "ola": {
+        "final": "72/5",
+        "initial": "192/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "192/5",
+        "initial": "96/1",
+        "worst": "192/5"
+       },
+       "ola": {
+        "final": "192/5",
+        "initial": "96/1",
+        "worst": "192/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "377/15",
+        "initial": "133/3",
+        "worst": "89/15"
+       },
+       "ola": {
+        "final": "377/15",
+        "initial": "133/3",
+        "worst": "89/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m24": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "9c661c2758c556b7a8b8fecfeeafb1158bf78b58680d735acc2adab5e7d31afe",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "212/5",
+        "initial": "212/5",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "212/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "263/15",
+        "initial": "148/3",
+        "worst": "263/15"
+       },
+       "ola": {
+        "final": "148/3",
+        "initial": "148/3",
+        "worst": "263/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "212/5",
+        "initial": "212/5",
+        "worst": "159/5"
+       },
+       "ola": {
+        "final": "159/10",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "422/15",
+        "initial": "148/3",
+        "worst": "104/15"
+       },
+       "ola": {
+        "final": "422/15",
+        "initial": "148/3",
+        "worst": "104/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m25": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "1071f60cdafb0659e3d33bcfc291795936e0a1dcaf52f48df398390207537b8a",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "60/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "60/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "150/1",
+        "initial": "150/1",
+        "worst": "150/1"
+       },
+       "ola": {
+        "final": "150/1",
+        "initial": "150/1",
+        "worst": "75/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "60/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "60/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "150/1",
+        "initial": "150/1",
+        "worst": "150/1"
+       },
+       "ola": {
+        "final": "150/1",
+        "initial": "150/1",
+        "worst": "75/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m26": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "4eb8eb0b79afb78bd2c2bf032c95674affeac64889a5bfd9405715c1f0fb3742",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "256/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "256/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "128/1",
+        "initial": "128/1",
+        "worst": "128/1"
+       },
+       "ola": {
+        "final": "128/1",
+        "initial": "128/1",
+        "worst": "64/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "38/1",
+        "initial": "38/1",
+        "worst": "38/1"
+       },
+       "ola": {
+        "final": "38/1",
+        "initial": "38/1",
+        "worst": "38/1"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "256/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "256/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "128/1",
+        "initial": "128/1",
+        "worst": "128/1"
+       },
+       "ola": {
+        "final": "128/1",
+        "initial": "128/1",
+        "worst": "64/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "38/1",
+        "initial": "38/1",
+        "worst": "38/1"
+       },
+       "ola": {
+        "final": "38/1",
+        "initial": "38/1",
+        "worst": "38/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m27": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "ee05bf12375b7906b2f18822f7742f55b52782ffb726556b10c521b4a570d10f",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "44/1",
+        "initial": "44/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "110/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "12/1",
+        "initial": "45/1",
+        "worst": "12/1"
+       },
+       "ola": {
+        "final": "45/1",
+        "initial": "45/1",
+        "worst": "12/1"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "44/1",
+        "initial": "44/1",
+        "worst": "33/1"
+       },
+       "ola": {
+        "final": "33/2",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "23/1",
+        "initial": "45/1",
+        "worst": "1/1"
+       },
+       "ola": {
+        "final": "23/1",
+        "initial": "45/1",
+        "worst": "1/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m28": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "da088257ea4f3827e2849589eb644fbbfebca3bf5eb919e3e893938ed1672c94",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "208/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "208/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "104/1",
+        "initial": "104/1",
+        "worst": "104/1"
+       },
+       "ola": {
+        "final": "104/1",
+        "initial": "104/1",
+        "worst": "52/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "208/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "208/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "104/1",
+        "initial": "104/1",
+        "worst": "104/1"
+       },
+       "ola": {
+        "final": "104/1",
+        "initial": "104/1",
+        "worst": "52/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m29": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "86d024a91e5b0d0f71b42241146c048bc4766652f45a6821a21253dc1e31af2b",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "40/1",
+        "initial": "40/1",
+        "worst": "40/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "40/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "40/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       },
+       "ola": {
+        "final": "100/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "35/3",
+        "initial": "125/3",
+        "worst": "35/3"
+       },
+       "ola": {
+        "final": "125/3",
+        "initial": "125/3",
+        "worst": "35/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "40/1",
+        "initial": "40/1",
+        "worst": "30/1"
+       },
+       "ola": {
+        "final": "15/1",
+        "initial": "40/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "40/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       },
+       "ola": {
+        "final": "40/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "65/3",
+        "initial": "125/3",
+        "worst": "5/3"
+       },
+       "ola": {
+        "final": "65/3",
+        "initial": "125/3",
+        "worst": "5/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m30": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "43dd78b2029d5bed9fbbe500ee3d753bae4657d20f93891af961ba9166dd9428",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "252/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "252/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "126/1",
+        "initial": "126/1",
+        "worst": "126/1"
+       },
+       "ola": {
+        "final": "126/1",
+        "initial": "126/1",
+        "worst": "63/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "35/1",
+        "initial": "35/1",
+        "worst": "35/1"
+       },
+       "ola": {
+        "final": "35/1",
+        "initial": "35/1",
+        "worst": "35/1"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "252/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "252/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "126/1",
+        "initial": "126/1",
+        "worst": "126/1"
+       },
+       "ola": {
+        "final": "126/1",
+        "initial": "126/1",
+        "worst": "63/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "35/1",
+        "initial": "35/1",
+        "worst": "35/1"
+       },
+       "ola": {
+        "final": "35/1",
+        "initial": "35/1",
+        "worst": "35/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m31": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "6e89fc4561b8d383fe034bb1ec5740803f7e7750e77e299e46cb4fe23de7f3b3",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "264/5",
+        "initial": "264/5",
+        "worst": "264/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "264/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "264/5",
+        "initial": "132/1",
+        "worst": "264/5"
+       },
+       "ola": {
+        "final": "132/1",
+        "initial": "132/1",
+        "worst": "264/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "7/5",
+        "initial": "41/1",
+        "worst": "7/5"
+       },
+       "ola": {
+        "final": "41/1",
+        "initial": "41/1",
+        "worst": "7/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "264/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "264/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "132/1",
+        "initial": "132/1",
+        "worst": "132/1"
+       },
+       "ola": {
+        "final": "132/1",
+        "initial": "132/1",
+        "worst": "66/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "41/1",
+        "initial": "41/1",
+        "worst": "41/1"
+       },
+       "ola": {
+        "final": "41/1",
+        "initial": "41/1",
+        "worst": "41/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m32": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "390486ae61535ca40195cf13a937ff9c271cf146e5efc6c2f921c292a55d3694",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "248/5",
+        "initial": "248/5",
+        "worst": "248/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "248/5",
+        "initial": "124/1",
+        "worst": "248/5"
+       },
+       "ola": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "248/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "112/15",
+        "initial": "134/3",
+        "worst": "112/15"
+       },
+       "ola": {
+        "final": "134/3",
+        "initial": "134/3",
+        "worst": "112/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "124/1"
+       },
+       "ola": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "62/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "134/3",
+        "initial": "134/3",
+        "worst": "134/3"
+       },
+       "ola": {
+        "final": "134/3",
+        "initial": "134/3",
+        "worst": "134/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m33": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "2aae26891846bd569232619f779d6de24686c234725f9156dc6af56f0ba85719",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "172/5",
+        "initial": "172/5",
+        "worst": "172/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "172/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "172/5",
+        "initial": "86/1",
+        "worst": "172/5"
+       },
+       "ola": {
+        "final": "86/1",
+        "initial": "86/1",
+        "worst": "172/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "56/5",
+        "initial": "37/1",
+        "worst": "56/5"
+       },
+       "ola": {
+        "final": "37/1",
+        "initial": "37/1",
+        "worst": "56/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "172/5",
+        "initial": "172/5",
+        "worst": "129/5"
+       },
+       "ola": {
+        "final": "129/10",
+        "initial": "172/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "172/5",
+        "initial": "86/1",
+        "worst": "172/5"
+       },
+       "ola": {
+        "final": "172/5",
+        "initial": "86/1",
+        "worst": "172/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "99/5",
+        "initial": "37/1",
+        "worst": "13/5"
+       },
+       "ola": {
+        "final": "99/5",
+        "initial": "37/1",
+        "worst": "13/5"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m34": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "580b69078010bde534049e0b2c2a865a73fd55b4e86a83b5d6478ba76435ccf4",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "192/5",
+        "initial": "192/5",
+        "worst": "192/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "192/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "192/5",
+        "initial": "96/1",
+        "worst": "192/5"
+       },
+       "ola": {
+        "final": "96/1",
+        "initial": "96/1",
+        "worst": "192/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "51/5",
+        "initial": "39/1",
+        "worst": "51/5"
+       },
+       "ola": {
+        "final": "39/1",
+        "initial": "39/1",
+        "worst": "51/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "192/5",
+        "initial": "192/5",
+        "worst": "144/5"
+       },
+       "ola": {
+        "final": "72/5",
+        "initial": "192/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "192/5",
+        "initial": "96/1",
+        "worst": "192/5"
+       },
+       "ola": {
+        "final": "192/5",
+        "initial": "96/1",
+        "worst": "192/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "99/5",
+        "initial": "39/1",
+        "worst": "3/5"
+       },
+       "ola": {
+        "final": "99/5",
+        "initial": "39/1",
+        "worst": "3/5"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m35": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "27595499a995c0a47a09989e078ea8a2c136bdee6c404574adcee16c84217a74",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "224/5",
+        "initial": "224/5",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "224/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "206/15",
+        "initial": "142/3",
+        "worst": "206/15"
+       },
+       "ola": {
+        "final": "142/3",
+        "initial": "142/3",
+        "worst": "206/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "224/5",
+        "initial": "224/5",
+        "worst": "168/5"
+       },
+       "ola": {
+        "final": "84/5",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "374/15",
+        "initial": "142/3",
+        "worst": "38/15"
+       },
+       "ola": {
+        "final": "374/15",
+        "initial": "142/3",
+        "worst": "38/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m36": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "a5a9850315767c14602f5c1907f01baea9d20d2b63fb5eba8b921d5f903fbf63",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "120/1"
+       },
+       "ola": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "60/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "94/3",
+        "initial": "94/3",
+        "worst": "94/3"
+       },
+       "ola": {
+        "final": "94/3",
+        "initial": "94/3",
+        "worst": "94/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "120/1"
+       },
+       "ola": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "60/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "94/3",
+        "initial": "94/3",
+        "worst": "94/3"
+       },
+       "ola": {
+        "final": "94/3",
+        "initial": "94/3",
+        "worst": "94/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m37": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "ebd7535bd71b9b9c0a0de6d7a8b8b34599d518c01a8e9adf25c18aa85b477f1a",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "44/1",
+        "initial": "44/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "110/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "29/3",
+        "initial": "128/3",
+        "worst": "29/3"
+       },
+       "ola": {
+        "final": "128/3",
+        "initial": "128/3",
+        "worst": "29/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "44/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "110/1",
+        "initial": "110/1",
+        "worst": "110/1"
+       },
+       "ola": {
+        "final": "110/1",
+        "initial": "110/1",
+        "worst": "55/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "128/3",
+        "initial": "128/3",
+        "worst": "128/3"
+       },
+       "ola": {
+        "final": "128/3",
+        "initial": "128/3",
+        "worst": "128/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m38": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "ecee589fdc28dea00e353406650eb238d7d63b3a34d7bf2bc3d8d119a86a49e2",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "244/5",
+        "initial": "244/5",
+        "worst": "244/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "244/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "244/5",
+        "initial": "122/1",
+        "worst": "244/5"
+       },
+       "ola": {
+        "final": "122/1",
+        "initial": "122/1",
+        "worst": "244/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "221/15",
+        "initial": "154/3",
+        "worst": "221/15"
+       },
+       "ola": {
+        "final": "154/3",
+        "initial": "154/3",
+        "worst": "221/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "244/5",
+        "initial": "244/5",
+        "worst": "183/5"
+       },
+       "ola": {
+        "final": "183/10",
+        "initial": "244/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "244/5",
+        "initial": "122/1",
+        "worst": "244/5"
+       },
+       "ola": {
+        "final": "244/5",
+        "initial": "122/1",
+        "worst": "244/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "404/15",
+        "initial": "154/3",
+        "worst": "38/15"
+       },
+       "ola": {
+        "final": "404/15",
+        "initial": "154/3",
+        "worst": "38/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m39": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "04b0684aef95a52c401c89787e88b48706feb77ec0834d5501377514369270ab",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "228/5",
+        "initial": "228/5",
+        "worst": "228/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "228/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "228/5",
+        "initial": "114/1",
+        "worst": "228/5"
+       },
+       "ola": {
+        "final": "114/1",
+        "initial": "114/1",
+        "worst": "228/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "142/15",
+        "initial": "131/3",
+        "worst": "142/15"
+       },
+       "ola": {
+        "final": "131/3",
+        "initial": "131/3",
+        "worst": "142/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "228/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "228/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "114/1",
+        "initial": "114/1",
+        "worst": "114/1"
+       },
+       "ola": {
+        "final": "114/1",
+        "initial": "114/1",
+        "worst": "57/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "131/3",
+        "initial": "131/3",
+        "worst": "131/3"
+       },
+       "ola": {
+        "final": "131/3",
+        "initial": "131/3",
+        "worst": "131/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m40": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "f877ac1a4baae6601fe2231abfa92ce030e283be05d0b36911791087fc3ecbed",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "288/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "288/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "144/1",
+        "initial": "144/1",
+        "worst": "144/1"
+       },
+       "ola": {
+        "final": "144/1",
+        "initial": "144/1",
+        "worst": "72/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "106/3",
+        "initial": "106/3",
+        "worst": "106/3"
+       },
+       "ola": {
+        "final": "106/3",
+        "initial": "106/3",
+        "worst": "106/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "288/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "288/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "144/1",
+        "initial": "144/1",
+        "worst": "144/1"
+       },
+       "ola": {
+        "final": "144/1",
+        "initial": "144/1",
+        "worst": "72/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "106/3",
+        "initial": "106/3",
+        "worst": "106/3"
+       },
+       "ola": {
+        "final": "106/3",
+        "initial": "106/3",
+        "worst": "106/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m41": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "209049b1637067cfeb138fd615878457175fbcfe16316d69ee8787d8288eaffa",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "148/5",
+        "initial": "148/5",
+        "worst": "148/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "148/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "148/5",
+        "initial": "74/1",
+        "worst": "148/5"
+       },
+       "ola": {
+        "final": "74/1",
+        "initial": "74/1",
+        "worst": "148/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "152/15",
+        "initial": "97/3",
+        "worst": "152/15"
+       },
+       "ola": {
+        "final": "97/3",
+        "initial": "97/3",
+        "worst": "152/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "148/5",
+        "initial": "148/5",
+        "worst": "111/5"
+       },
+       "ola": {
+        "final": "111/10",
+        "initial": "148/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "148/5",
+        "initial": "74/1",
+        "worst": "148/5"
+       },
+       "ola": {
+        "final": "148/5",
+        "initial": "74/1",
+        "worst": "148/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "263/15",
+        "initial": "97/3",
+        "worst": "41/15"
+       },
+       "ola": {
+        "final": "263/15",
+        "initial": "97/3",
+        "worst": "41/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m42": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "9f9d06dd355124235280fc91675bdee8682d260cc2f70813582b7511af545486",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "224/5",
+        "initial": "224/5",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "224/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "132/5",
+        "initial": "60/1",
+        "worst": "132/5"
+       },
+       "ola": {
+        "final": "60/1",
+        "initial": "60/1",
+        "worst": "132/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "224/5",
+        "initial": "224/5",
+        "worst": "168/5"
+       },
+       "ola": {
+        "final": "84/5",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "188/5",
+        "initial": "60/1",
+        "worst": "76/5"
+       },
+       "ola": {
+        "final": "188/5",
+        "initial": "60/1",
+        "worst": "76/5"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m43": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "51d3d6dc4f925ce8d82d67a19148a5427e3d70f18c4e20c4a29bd2c46b88b2ce",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "224/5",
+        "initial": "224/5",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "224/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "107/5",
+        "initial": "55/1",
+        "worst": "107/5"
+       },
+       "ola": {
+        "final": "55/1",
+        "initial": "55/1",
+        "worst": "107/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "224/5",
+        "initial": "224/5",
+        "worst": "168/5"
+       },
+       "ola": {
+        "final": "84/5",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       },
+       "ola": {
+        "final": "224/5",
+        "initial": "112/1",
+        "worst": "224/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "163/5",
+        "initial": "55/1",
+        "worst": "51/5"
+       },
+       "ola": {
+        "final": "163/5",
+        "initial": "55/1",
+        "worst": "51/5"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m44": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "e102aebd424de8c742d963be26d349f0bd14766b61e87683f97f7822b7e9d58e",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "196/5",
+        "initial": "196/5",
+        "worst": "196/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "196/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "196/5",
+        "initial": "98/1",
+        "worst": "196/5"
+       },
+       "ola": {
+        "final": "98/1",
+        "initial": "98/1",
+        "worst": "196/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "63/5",
+        "initial": "42/1",
+        "worst": "63/5"
+       },
+       "ola": {
+        "final": "42/1",
+        "initial": "42/1",
+        "worst": "63/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "196/5",
+        "initial": "196/5",
+        "worst": "147/5"
+       },
+       "ola": {
+        "final": "147/10",
+        "initial": "196/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "196/5",
+        "initial": "98/1",
+        "worst": "196/5"
+       },
+       "ola": {
+        "final": "196/5",
+        "initial": "98/1",
+        "worst": "196/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "112/5",
+        "initial": "42/1",
+        "worst": "14/5"
+       },
+       "ola": {
+        "final": "112/5",
+        "initial": "42/1",
+        "worst": "14/5"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m45": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "90c218e4fd547d5a9377f03863aa12ec948d6b36e1a11ee6c14b540cdef2e911",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "244/5",
+        "initial": "244/5",
+        "worst": "244/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "244/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "244/5",
+        "initial": "122/1",
+        "worst": "244/5"
+       },
+       "ola": {
+        "final": "122/1",
+        "initial": "122/1",
+        "worst": "244/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "151/15",
+        "initial": "140/3",
+        "worst": "151/15"
+       },
+       "ola": {
+        "final": "140/3",
+        "initial": "140/3",
+        "worst": "151/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "244/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "244/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "122/1",
+        "initial": "122/1",
+        "worst": "122/1"
+       },
+       "ola": {
+        "final": "122/1",
+        "initial": "122/1",
+        "worst": "61/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "140/3",
+        "initial": "140/3",
+        "worst": "140/3"
+       },
+       "ola": {
+        "final": "140/3",
+        "initial": "140/3",
+        "worst": "140/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m46": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "a99b17546f0a3878187d8fe31d3baac0c668169249f52078d53d1cb1031c7f4f",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "112/1"
+       },
+       "ola": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "56/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "32/1",
+        "initial": "32/1",
+        "worst": "32/1"
+       },
+       "ola": {
+        "final": "32/1",
+        "initial": "32/1",
+        "worst": "32/1"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "224/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "112/1"
+       },
+       "ola": {
+        "final": "112/1",
+        "initial": "112/1",
+        "worst": "56/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "32/1",
+        "initial": "32/1",
+        "worst": "32/1"
+       },
+       "ola": {
+        "final": "32/1",
+        "initial": "32/1",
+        "worst": "32/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m47": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "ae312e9d7de0256ab74dbf87c1604fde7f30d5c326aa93bcca068b0d33911dac",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "40/1",
+        "initial": "40/1",
+        "worst": "40/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "40/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "40/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       },
+       "ola": {
+        "final": "100/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "70/3",
+        "initial": "160/3",
+        "worst": "70/3"
+       },
+       "ola": {
+        "final": "160/3",
+        "initial": "160/3",
+        "worst": "70/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "40/1",
+        "initial": "40/1",
+        "worst": "30/1"
+       },
+       "ola": {
+        "final": "15/1",
+        "initial": "40/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "40/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       },
+       "ola": {
+        "final": "40/1",
+        "initial": "100/1",
+        "worst": "40/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "100/3",
+        "initial": "160/3",
+        "worst": "40/3"
+       },
+       "ola": {
+        "final": "100/3",
+        "initial": "160/3",
+        "worst": "40/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m48": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "a5e9f593389a608aac1e59bfc2265a8315cab3d008ab88957c1851c52474e793",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "208/5",
+        "initial": "208/5",
+        "worst": "208/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "208/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "208/5",
+        "initial": "104/1",
+        "worst": "208/5"
+       },
+       "ola": {
+        "final": "104/1",
+        "initial": "104/1",
+        "worst": "208/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "277/15",
+        "initial": "149/3",
+        "worst": "277/15"
+       },
+       "ola": {
+        "final": "149/3",
+        "initial": "149/3",
+        "worst": "277/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "208/5",
+        "initial": "208/5",
+        "worst": "156/5"
+       },
+       "ola": {
+        "final": "78/5",
+        "initial": "208/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "208/5",
+        "initial": "104/1",
+        "worst": "208/5"
+       },
+       "ola": {
+        "final": "208/5",
+        "initial": "104/1",
+        "worst": "208/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "433/15",
+        "initial": "149/3",
+        "worst": "121/15"
+       },
+       "ola": {
+        "final": "433/15",
+        "initial": "149/3",
+        "worst": "121/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m49": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "4c45ea99b16d9dd14a60705d7e0457f52bde68f8b6c957f3620352a4582eaff6",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "44/1",
+        "initial": "44/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "110/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "17/1",
+        "initial": "50/1",
+        "worst": "17/1"
+       },
+       "ola": {
+        "final": "50/1",
+        "initial": "50/1",
+        "worst": "17/1"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "44/1",
+        "initial": "44/1",
+        "worst": "33/1"
+       },
+       "ola": {
+        "final": "33/2",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "28/1",
+        "initial": "50/1",
+        "worst": "6/1"
+       },
+       "ola": {
+        "final": "28/1",
+        "initial": "50/1",
+        "worst": "6/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m50": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "f353526c3f7906769580a497b1b8249b6852eb7474baf923481d3008d597b131",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "208/5",
+        "initial": "208/5",
+        "worst": "208/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "208/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "208/5",
+        "initial": "104/1",
+        "worst": "208/5"
+       },
+       "ola": {
+        "final": "104/1",
+        "initial": "104/1",
+        "worst": "208/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "257/15",
+        "initial": "145/3",
+        "worst": "257/15"
+       },
+       "ola": {
+        "final": "145/3",
+        "initial": "145/3",
+        "worst": "257/15"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "208/5",
+        "initial": "208/5",
+        "worst": "156/5"
+       },
+       "ola": {
+        "final": "78/5",
+        "initial": "208/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "208/5",
+        "initial": "104/1",
+        "worst": "208/5"
+       },
+       "ola": {
+        "final": "208/5",
+        "initial": "104/1",
+        "worst": "208/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "413/15",
+        "initial": "145/3",
+        "worst": "101/15"
+       },
+       "ola": {
+        "final": "413/15",
+        "initial": "145/3",
+        "worst": "101/15"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m51": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "ed8084fb46301ebf94a6a252211cf2cf8b4356fdb4abf8872931022d3c0d0ab6",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "120/1"
+       },
+       "ola": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "60/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "67/3",
+        "initial": "67/3",
+        "worst": "67/3"
+       },
+       "ola": {
+        "final": "67/3",
+        "initial": "67/3",
+        "worst": "67/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "120/1"
+       },
+       "ola": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "60/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "67/3",
+        "initial": "67/3",
+        "worst": "67/3"
+       },
+       "ola": {
+        "final": "67/3",
+        "initial": "67/3",
+        "worst": "67/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m52": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "6ad4646b72b276a1e4702fe5910bebf1567911352772210d1ade8ff9292e6a71",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "44/1",
+        "initial": "44/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "110/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "38/3",
+        "initial": "137/3",
+        "worst": "38/3"
+       },
+       "ola": {
+        "final": "137/3",
+        "initial": "137/3",
+        "worst": "38/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "44/1",
+        "initial": "44/1",
+        "worst": "33/1"
+       },
+       "ola": {
+        "final": "33/2",
+        "initial": "44/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       },
+       "ola": {
+        "final": "44/1",
+        "initial": "110/1",
+        "worst": "44/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "71/3",
+        "initial": "137/3",
+        "worst": "5/3"
+       },
+       "ola": {
+        "final": "71/3",
+        "initial": "137/3",
+        "worst": "5/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m53": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "9aac381cc969478e056ef7db90b2657fedd67625366f88939d786ba718e1928b",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "106/1"
+       },
+       "ola": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "53/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "106/1"
+       },
+       "ola": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "53/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m54": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "6b3250928c2f7323cd9278e1a6ba5d8c8ee3472926678267c6a416d62ed87176",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "192/5",
+        "initial": "192/5",
+        "worst": "192/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "192/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "192/5",
+        "initial": "96/1",
+        "worst": "192/5"
+       },
+       "ola": {
+        "final": "96/1",
+        "initial": "96/1",
+        "worst": "192/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "1/5",
+        "initial": "29/1",
+        "worst": "1/5"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "1/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "192/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "192/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "96/1",
+        "initial": "96/1",
+        "worst": "96/1"
+       },
+       "ola": {
+        "final": "96/1",
+        "initial": "96/1",
+        "worst": "48/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       },
+       "ola": {
+        "final": "29/1",
+        "initial": "29/1",
+        "worst": "29/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m55": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "7e1be256be46868fe837a4f0e8a76dc8ee13624324fa57097766a2dd8df57d1b",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "172/5",
+        "initial": "172/5",
+        "worst": "172/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "172/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "172/5",
+        "initial": "86/1",
+        "worst": "172/5"
+       },
+       "ola": {
+        "final": "86/1",
+        "initial": "86/1",
+        "worst": "172/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "81/5",
+        "initial": "42/1",
+        "worst": "81/5"
+       },
+       "ola": {
+        "final": "42/1",
+        "initial": "42/1",
+        "worst": "81/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "172/5",
+        "initial": "172/5",
+        "worst": "129/5"
+       },
+       "ola": {
+        "final": "129/10",
+        "initial": "172/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "172/5",
+        "initial": "86/1",
+        "worst": "172/5"
+       },
+       "ola": {
+        "final": "172/5",
+        "initial": "86/1",
+        "worst": "172/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "124/5",
+        "initial": "42/1",
+        "worst": "38/5"
+       },
+       "ola": {
+        "final": "124/5",
+        "initial": "42/1",
+        "worst": "38/5"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m56": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "1f7484a37eb09f0aa58e2405d6752cef04fe92dc3e605d01aea9e2786df2fee5",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "124/1"
+       },
+       "ola": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "62/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "85/3",
+        "initial": "85/3",
+        "worst": "85/3"
+       },
+       "ola": {
+        "final": "85/3",
+        "initial": "85/3",
+        "worst": "85/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "248/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "124/1"
+       },
+       "ola": {
+        "final": "124/1",
+        "initial": "124/1",
+        "worst": "62/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "85/3",
+        "initial": "85/3",
+        "worst": "85/3"
+       },
+       "ola": {
+        "final": "85/3",
+        "initial": "85/3",
+        "worst": "85/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m57": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "a7a86fd3bb60dc532535416c3650c00aa1a174896c2ffb45976ed8e12e0daa6a",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "1",
+     "welfare": "1"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "56/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "56/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "140/1",
+        "initial": "140/1",
+        "worst": "140/1"
+       },
+       "ola": {
+        "final": "140/1",
+        "initial": "140/1",
+        "worst": "70/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "112/3",
+        "initial": "112/3",
+        "worst": "112/3"
+       },
+       "ola": {
+        "final": "112/3",
+        "initial": "112/3",
+        "worst": "112/3"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "56/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "56/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "140/1",
+        "initial": "140/1",
+        "worst": "140/1"
+       },
+       "ola": {
+        "final": "140/1",
+        "initial": "140/1",
+        "worst": "70/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "112/3",
+        "initial": "112/3",
+        "worst": "112/3"
+       },
+       "ola": {
+        "final": "112/3",
+        "initial": "112/3",
+        "worst": "112/3"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m58": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "2c18677d5eb062604d9cc544e7c361430464d8f65d8e4ef1eb4088de9fb5fb3d",
+   "pairs": [
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "0",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "48/1",
+        "initial": "48/1",
+        "worst": "48/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "48/1",
+        "initial": "120/1",
+        "worst": "48/1"
+       },
+       "ola": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "48/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "2/1",
+        "initial": "38/1",
+        "worst": "2/1"
+       },
+       "ola": {
+        "final": "38/1",
+        "initial": "38/1",
+        "worst": "2/1"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "0/1",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "failure",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "48/1",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "120/1"
+       },
+       "ola": {
+        "final": "120/1",
+        "initial": "120/1",
+        "worst": "60/1"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "38/1",
+        "initial": "38/1",
+        "worst": "38/1"
+       },
+       "ola": {
+        "final": "38/1",
+        "initial": "38/1",
+        "worst": "38/1"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m59": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "c0e866e45361c260318f3e499620ff001c41d6efe5ef2c3559c136724f0b643f",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "212/5",
+        "initial": "212/5",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "106/1",
+        "initial": "106/1",
+        "worst": "212/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "101/5",
+        "initial": "52/1",
+        "worst": "101/5"
+       },
+       "ola": {
+        "final": "52/1",
+        "initial": "52/1",
+        "worst": "101/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "212/5",
+        "initial": "212/5",
+        "worst": "159/5"
+       },
+       "ola": {
+        "final": "159/10",
+        "initial": "212/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       },
+       "ola": {
+        "final": "212/5",
+        "initial": "106/1",
+        "worst": "212/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "154/5",
+        "initial": "52/1",
+        "worst": "48/5"
+       },
+       "ola": {
+        "final": "154/5",
+        "initial": "52/1",
+        "worst": "48/5"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  },
+  "m60": {
+   "coverage": "EXHAUSTIVE",
+   "failed": [],
+   "feasible": [
+    "hoy",
+    "padrinos"
+   ],
+   "frontier": [
+    "hoy",
+    "padrinos"
+   ],
+   "model_digest": "898e96c7a2b38c143af9e805bfe9d2e51c54244b3ed7d4d0c8f5ad1d7f31a1a6",
+   "pairs": [
+    {
+     "cag": "0",
+     "functional": "1",
+     "left": "hoy",
+     "pvs": "1",
+     "right": "padrinos",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    },
+    {
+     "cag": "1",
+     "functional": "1",
+     "left": "padrinos",
+     "pvs": "1",
+     "right": "hoy",
+     "strict": "0",
+     "weak": "0",
+     "welfare": "0"
+    }
+   ],
+   "routes": {
+    "hoy": {
+     "additional_robust_capabilities": [],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "148/5",
+        "initial": "148/5",
+        "worst": "148/5"
+       },
+       "ola": {
+        "final": "0/1",
+        "initial": "148/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "148/5",
+        "initial": "74/1",
+        "worst": "148/5"
+       },
+       "ola": {
+        "final": "74/1",
+        "initial": "74/1",
+        "worst": "148/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "324/5",
+        "initial": "87/1",
+        "worst": "324/5"
+       },
+       "ola": {
+        "final": "87/1",
+        "initial": "87/1",
+        "worst": "324/5"
+       }
+      }
+     }
+    },
+    "padrinos": {
+     "additional_robust_capabilities": [
+      "cuadrilla",
+      "padrinos"
+     ],
+     "all_scenarios": false,
+     "pvs": "3/4",
+     "pvs_state": "DEFINED",
+     "task_status": {
+      "normal": "success",
+      "ola": "failure"
+     },
+     "wellbeing": {
+      "arbolado.agua_raices": {
+       "normal": {
+        "final": "148/5",
+        "initial": "148/5",
+        "worst": "111/5"
+       },
+       "ola": {
+        "final": "111/10",
+        "initial": "148/5",
+        "worst": "0/1"
+       }
+      },
+      "ciudad.agua_sobrante": {
+       "normal": {
+        "final": "148/5",
+        "initial": "74/1",
+        "worst": "148/5"
+       },
+       "ola": {
+        "final": "148/5",
+        "initial": "74/1",
+        "worst": "148/5"
+       }
+      },
+      "vecinos.tiempo_libre": {
+       "normal": {
+        "final": "361/5",
+        "initial": "87/1",
+        "worst": "287/5"
+       },
+       "ola": {
+        "final": "361/5",
+        "initial": "87/1",
+        "worst": "287/5"
+       }
+      }
+     }
+    }
+   },
+   "unknown": [],
+   "verification": "VALID"
+  }
+ },
+ "zones_without_data": {}
+}
