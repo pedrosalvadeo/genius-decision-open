@@ -50,6 +50,7 @@ Todo resultado matemático lo calcula el kernel FP1 y lo verifica su verificador
   - una ruta es al menos tan buena para el territorio sólo si lo es en cada zona con dato, criterio por criterio, y su PVS conjunta (la vida sostenida en todas las zonas a la vez) no es menor;
   - nada se suma entre zonas y no hay comparación anónima;
   - una zona sin dato no se evalúa ni se rellena, y el resultado queda relativo a las zonas con dato.
+  - una zona con un dato incierto declara de 2 a 4 valores iniciales (AM-08); afirma sólo lo que vale con todos, y la PVS queda como rango o cotas, sin probabilidad para esos valores.
 - **Independiente del dominio:** sí.
 - **Límite que queda:** un solo nivel de acoplamientos (un destino no puede ser fuente). El territorio no acopla zonas.
 

@@ -92,6 +92,34 @@ class TerritoryTests(unittest.TestCase):
         self.assertEqual(result['decision']['relative_to'], 'ZONES_WITH_DATA')
         self.assertIsNone(result['decision']['selected'])
 
+    def test_uncertain_initial_values_never_get_a_probability(self):
+        doubtful = {**RICH, 'id': 'dudosa', 'initial_values': {'tazas': ['5/1', '40/1']}}
+        result = territory.evaluate(small([doubtful]))
+        zone = result['zones']['dudosa']
+        self.assertEqual([v['initial'] for v in zone['initial_values']], [{'tazas': '5/1'}, {'tazas': '40/1'}])
+        self.assertEqual(zone['verification'], 'VALID')
+        route = zone['routes']['padrinos']
+        # With 5 m3 the basins start below 10 m3 and life fails at once; with 40 m3 it holds in a normal January.
+        self.assertEqual(route['task_status'], {'normal': 'depends_on_initial', 'ola': 'failure'})
+        self.assertIsNone(route['pvs'])
+        self.assertEqual(route['pvs_range'], {'min': '0/1', 'max': '3/4'})
+        joint = result['by_route']['padrinos']
+        self.assertIsNone(joint['joint_pvs'])
+        self.assertEqual(joint['joint_pvs_bounds'], {'min': '0/1', 'max': '3/4'})
+        self.assertEqual(joint['life_depends_on_initial_in'], {'normal': ['dudosa'], 'ola': []})
+        self.assertEqual(result['decision']['conditional_on_declared_initial_values'], ['dudosa'])
+        # The zone order is the conjunction over the declared values, so it never claims more than each one.
+        single = territory.evaluate(small([RICH]))['zones']['rica']['pairs']
+        for merged, one in zip(zone['pairs'], single):
+            for c in ('welfare', 'cag', 'pvs', 'weak'):
+                if one[c] == '0':
+                    self.assertEqual(merged[c], '0')
+
+    def test_uncertain_values_must_fit_the_model(self):
+        for values in ({'lluvia': ['1/1', '2/1']}, {'tazas': ['1/1', '1000/1']}):
+            with self.assertRaises(ValueError):
+                territory.validate(small([{**RICH, 'initial_values': values}]))
+
     def test_invalid_territories_are_rejected(self):
         cases = [
             small([RICH, dict(RICH)]),

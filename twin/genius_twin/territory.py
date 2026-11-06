@@ -23,6 +23,12 @@ evaluated and packed; and a sum over zones would hide a zone that loses. So:
   if it holds in every zone, so the joint PVS is the probability that life holds
   everywhere at once. Wellbeing, generative capabilities and life stay separate.
 
+A zone may also declare 2 to 4 values for the initial balance of up to two stocks
+(AM-08), when a datum is uncertain: each combination is its own instance with one
+shared initialization, and the zone holds what holds for every declared value. No
+probability is attached to those values; a life status that changes with them is
+`depends_on_initial`, and the joint PVS becomes exact bounds.
+
 Couplings between zones (water passing downstream) are not part of V1: each
 zone's kernel order compares routes inside one instance, and a coupled zone
 would need one instance per route. They need their own amendment.
@@ -30,6 +36,7 @@ would need one instance per route. They need their own amendment.
 from copy import deepcopy
 from fractions import Fraction
 import hashlib
+from itertools import product
 import json
 
 from . import registry
@@ -38,6 +45,7 @@ from .stockflow import PROFILE, _shape, canonical_json, q
 FORMAT = "genius-territory/1"
 RESULT_FORMAT = "genius-territory-result/1"
 MAX_ZONES = 128
+MAX_VARIANTS = 8
 CRITERIA = ("welfare", "cag", "pvs", "functional")
 
 
@@ -52,7 +60,9 @@ def schema():
         return {"type": "array", "items": item, "minItems": lo, "maxItems": hi}
     zone = obj({"id": ident, "label": txt, "size": qty,
                 "supply": {"type": "object", "additionalProperties": qty, "maxProperties": 6},
-                "missing": txt, "provenance": txt}, optional=("size", "supply", "missing"))
+                "initial_values": {"type": "object", "additionalProperties": {**arr(qty, 2, 4), "uniqueItems": True},
+                                   "maxProperties": 2},
+                "missing": txt, "provenance": txt}, optional=("size", "supply", "initial_values", "missing"))
     return obj({
         "format": {"type": "string", "enum": [FORMAT]}, "name": txt,
         "template": {"type": "object"},
@@ -133,7 +143,36 @@ def validate(spec):
         unknown = set(zone.get("supply", {})) - stocks
         if unknown:
             raise ValueError(f"zone {zone['id']}: unknown supply stock " + ", ".join(sorted(unknown)))
-        registry.validate(zone_model(template, zone))
+        unknown = set(zone.get("initial_values", {})) - stocks
+        if unknown:
+            raise ValueError(f"zone {zone['id']}: unknown uncertain stock " + ", ".join(sorted(unknown)))
+        variants = zone_variants(template, zone)
+        if len(variants) > MAX_VARIANTS:
+            raise ValueError(f"zone {zone['id']}: at most {MAX_VARIANTS} combinations of initial values")
+        for _, _, model in variants:
+            registry.validate(model)
+
+
+def zone_variants(template, zone):
+    """AM-08: one instance per combination of the zone's declared initial values.
+
+    Each instance keeps a single shared initialization (G02); the uncertain stock's
+    initial balance is set to one declared value, in the zone's own units. No
+    probability is attached to the values: conclusions hold for every declared one.
+    """
+    base = zone_model(template, zone)
+    uncertain = sorted(zone.get("initial_values", {}).items())
+    if not uncertain:
+        return [("v0", {}, base)]
+    out = []
+    for n, combo in enumerate(product(*(values for _, values in uncertain))):
+        model = deepcopy(base)
+        initial = dict(zip((k for k, _ in uncertain), combo))
+        for stock in model["stocks"]:
+            if stock["id"] in initial:
+                stock["initial"] = initial[stock["id"]]
+        out.append((f"v{n}", initial, model))
+    return out
 
 
 def _and(values):
@@ -150,7 +189,7 @@ def _digest(value):
     return hashlib.sha256(canonical_json(value).encode()).hexdigest()
 
 
-def _zone_summary(model, envelope):
+def _instance_summary(model, envelope):
     canonical = envelope["canonical_results"]
     decision = canonical["decision"]
     routes = {}
@@ -180,6 +219,46 @@ def _zone_summary(model, envelope):
     }
 
 
+def _merge_variants(runs, routes, scenarios):
+    """AM-08: a zone with uncertain initial values holds what holds in every declared value."""
+    each = [r for _, _, r in runs]
+    routes_out = {}
+    for pid in routes:
+        rows = [r["routes"][pid] for r in each]
+        statuses = {}
+        for sid in scenarios:
+            seen = {row["task_status"][sid] for row in rows}
+            statuses[sid] = seen.pop() if len(seen) == 1 else "depends_on_initial"
+        values = [row["pvs"] for row in rows]
+        same = len(set(values)) == 1
+        routes_out[pid] = {
+            "task_status": statuses,
+            "pvs": values[0] if same else None, "pvs_state": rows[0]["pvs_state"] if same else "DEPENDS_ON_INITIAL",
+            "pvs_range": None if same or None in values else {"min": q(min(map(Fraction, values))), "max": q(max(map(Fraction, values)))},
+            "all_scenarios": rows[0]["all_scenarios"] if len({row["all_scenarios"] for row in rows}) == 1 else None,
+            "additional_robust_capabilities": sorted(set.intersection(*(set(row["additional_robust_capabilities"]) for row in rows))),
+            "wellbeing_by_initial": {vid: r["routes"][pid]["wellbeing"] for vid, _, r in runs},
+        }
+    pairs = {}
+    for key in each[0]["_pairs"]:
+        rows = [r["_pairs"].get(key) for r in each]
+        pairs[key] = {c: _and(row[c] if row else None for row in rows) for c in CRITERIA + ("weak",)}
+    for (a, b), row in pairs.items():
+        back = pairs.get((b, a), {}).get("weak")
+        row["strict"] = "1" if row["weak"] == "1" and back == "0" else "0" if row["weak"] == "0" or back == "1" else None
+    feasible = set.intersection(*(set(r["feasible"]) for r in each))
+    failed = set.union(*(set(r["failed"]) for r in each))
+    return {
+        "initial_values": [{"id": vid, "initial": initial, "model_digest": r["model_digest"]} for vid, initial, r in runs],
+        "verification": "VALID" if all(r["verification"] == "VALID" for r in each) else "INVALID",
+        "coverage": "EXHAUSTIVE" if all(r["coverage"] == "EXHAUSTIVE" for r in each) else "RELATIVE",
+        "feasible": sorted(feasible), "failed": sorted(failed), "unknown": sorted(set(routes) - feasible - failed),
+        "frontier": sorted(r for r in feasible if not any(pairs.get((o, r), {}).get("strict") == "1" for o in feasible if o != r)),
+        "routes": routes_out,
+        "_pairs": pairs,
+    }
+
+
 def evaluate(spec):
     validate(spec)
     template = spec["template"]
@@ -191,8 +270,9 @@ def evaluate(spec):
         if "missing" in zone:
             missing[zone["id"]] = zone["missing"]
             continue
-        model = zone_model(template, zone)
-        zones[zone["id"]] = _zone_summary(model, registry.evaluate(model))
+        runs = [(vid, initial, _instance_summary(model, registry.evaluate(model)))
+                for vid, initial, model in zone_variants(template, zone)]
+        zones[zone["id"]] = runs[0][2] if len(runs) == 1 else _merge_variants(runs, routes, scenarios)
     with_data = list(zones)
     # Joint life: per scenario, it holds for the territory only if it holds in every zone with data.
     by_route = {}
@@ -200,13 +280,20 @@ def evaluate(spec):
         joint = {}
         for sid in scenarios:
             statuses = [zones[z]["routes"][r]["task_status"][sid] for z in with_data]
-            joint[sid] = "failure" if "failure" in statuses else "undecided" if "undecided" in statuses else "success"
-        pvs = None
+            joint[sid] = ("failure" if "failure" in statuses else "undecided" if "undecided" in statuses
+                          else "depends_on_initial" if "depends_on_initial" in statuses else "success")
+        pvs = bounds = None
         if law is not None and with_data and "undecided" not in joint.values():
-            pvs = q(sum((Fraction(law[s]) for s in scenarios if joint[s] == "success"), Fraction()))
+            low = sum((Fraction(law[s]) for s in scenarios if joint[s] == "success"), Fraction())
+            # Upper bound: every scenario no zone certainly fails. It need not be attained, since
+            # one zone's initial value is the same in every scenario.
+            high = low + sum((Fraction(law[s]) for s in scenarios if joint[s] == "depends_on_initial"), Fraction())
+            pvs = q(low) if low == high else None
+            bounds = {"min": q(low), "max": q(high)}
         status = {z: zones[z]["routes"][r]["task_status"] for z in with_data}
         by_route[r] = {
-            "joint_life_by_scenario": joint, "joint_pvs": pvs,
+            "joint_life_by_scenario": joint, "joint_pvs": pvs, "joint_pvs_bounds": bounds,
+            "life_depends_on_initial_in": {sid: sorted(z for z in with_data if status[z][sid] == "depends_on_initial") for sid in scenarios},
             "life_fails_in": {sid: sorted(z for z in with_data if status[z][sid] == "failure") for sid in scenarios},
             "life_undecided_in": {sid: sorted(z for z in with_data if status[z][sid] == "undecided") for sid in scenarios},
             "feasible_in": sorted(z for z in with_data if r in zones[z]["feasible"]),
@@ -219,8 +306,9 @@ def evaluate(spec):
             per = {z: zones[z]["_pairs"].get((a, b)) for z in with_data}
             row = {c: _and(p[c] if p else None for p in per.values()) for c in CRITERIA + ("weak",)}
             # Life of the whole territory is a criterion of its own: the joint PVS, never a sum of zone PVS.
-            x, y = by_route[a]["joint_pvs"], by_route[b]["joint_pvs"]
-            row["joint_pvs"] = None if x is None or y is None else "1" if Fraction(x) >= Fraction(y) else "0"
+            x, y = by_route[a]["joint_pvs_bounds"], by_route[b]["joint_pvs_bounds"]
+            row["joint_pvs"] = (None if x is None or y is None else "1" if Fraction(x["min"]) >= Fraction(y["max"])
+                                else "0" if Fraction(x["max"]) < Fraction(y["min"]) else None)
             row["weak"] = _and([row["weak"], row["joint_pvs"]])
             weak[(a, b)] = row["weak"]
             if a == b:
@@ -264,6 +352,7 @@ def evaluate(spec):
             "feasible": feasible, "frontier": frontier, "pairs": pairs,
             "selected": frontier[0] if coverage == "EXHAUSTIVE" and len(frontier) == 1 else None,
             "relative_to": None if not missing else "ZONES_WITH_DATA",
+            "conditional_on_declared_initial_values": sorted(z for z, v in zones.items() if "initial_values" in v),
         },
         "assumptions": deepcopy(spec["assumptions"]),
         "empirical_admission": "DECLARED_ASSUMPTIONS_ONLY",

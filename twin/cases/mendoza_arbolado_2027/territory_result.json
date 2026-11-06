@@ -85,6 +85,14 @@
     "ola": "failure"
    },
    "joint_pvs": "0/1",
+   "joint_pvs_bounds": {
+    "max": "0/1",
+    "min": "0/1"
+   },
+   "life_depends_on_initial_in": {
+    "normal": [],
+    "ola": []
+   },
    "life_fails_in": {
     "normal": [
      "m03",
@@ -238,6 +246,14 @@
     "ola": "failure"
    },
    "joint_pvs": "0/1",
+   "joint_pvs_bounds": {
+    "max": "0/1",
+    "min": "0/1"
+   },
+   "life_depends_on_initial_in": {
+    "normal": [],
+    "ola": []
+   },
    "life_fails_in": {
     "normal": [
      "m01",
@@ -342,6 +358,7 @@
   }
  },
  "decision": {
+  "conditional_on_declared_initial_values": [],
   "coverage": "EXHAUSTIVE",
   "feasibility": "KERNEL_FEASIBLE_IN_EVERY_ZONE_WITH_DATA",
   "feasible": [
