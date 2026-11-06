@@ -917,6 +917,76 @@
       },
       "minItems": 0,
       "maxItems": 8
+    },
+    "conversions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "to": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "factor": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$",
+            "maxLength": 25,
+            "x-rational": true
+          },
+          "provenance": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "factor",
+          "provenance"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 8
+    },
+    "observable": {
+      "type": "object",
+      "properties": {
+        "stocks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "minItems": 0,
+          "maxItems": 6,
+          "uniqueItems": true
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$",
+            "maxLength": 64
+          },
+          "minItems": 0,
+          "maxItems": 8,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "stocks",
+        "capabilities"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -945,7 +1015,7 @@
     "Reduced nonnegative rationals, numerator/denominator at most 12 digits",
     "Unique IDs and valid references",
     "P*S*(H+1)<=256; generated signatures<=16",
-    "Per-unit deposits<=withdrawals; no implicit conversion",
+    "Per-unit deposits<=withdrawals; only declared exact conversions (AM-07)",
     "Complete renewable availability per event",
     "Unique complete event words; law null or exact normalized scenario map",
     "Policies read only prior state; fixed carrier existence; no implicit mortality model"

@@ -141,3 +141,11 @@ Las notas anteriores conservan el estado que tenían al registrarse. La auditor�
 **Estado:** `ACEPTADA` el 2026-11-06 por Pedro, en la opción «solo zona por zona». Un modelo plantilla se evalúa en cada zona con factores exactos de tamaño y disponibilidad. El kernel verifica cada zona por separado. El orden del territorio es la conjunción de los órdenes de zona, criterio por criterio, más la PVS conjunta: la probabilidad de que la vida se sostenga en todas las zonas a la vez. No hay sumas entre zonas ni comparación anónima. Una zona sin dato no se evalúa y el resultado queda relativo a las zonas con dato.
 
 **Alcance:** no cambia S1 ni el kernel FP1. Está en `twin/genius_twin/territory.py`, con el caso del arbolado del centro de Mendoza en 60 manzanas (`twin/cases/mendoza_arbolado_2027`).
+
+## AM-07 — Conversiones de unidades declaradas
+
+**Texto completo:** `PROPOSAL_AM-07.md`.
+
+**Estado:** `ACEPTADA` el 2026-11-06 por Pedro. Un modelo puede declarar conversiones exactas entre unidades de una misma magnitud ($1\,u = c\,v$). La regla de que una acción no deposita más de lo que retira se aplica por clase de unidades convertibles, no por unidad suelta. Un ciclo inconsistente se rechaza. Las existencias conservan su unidad y su libro mayor, y en el kernel cada existencia sigue siendo su propio recurso.
+
+**Alcance:** no cambia S1 ni el kernel FP1. La misma propuesta habilita en el perfil la observación parcial que MV y AM-01 ya admiten: las reglas leen sólo lo observable y la información es la historia de lo observado.
