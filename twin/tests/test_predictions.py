@@ -30,6 +30,8 @@ class FrozenPredictionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             shutil.copytree(predictions.CASES / 'denver_water_2026', root / 'denver_water_2026')
+            # Start from no recorded readings: the committed log already holds real ones.
+            (root / 'denver_water_2026' / 'observations.json').unlink(missing_ok=True)
             before = (root / 'denver_water_2026' / 'prediction.json').read_bytes()
             with patch.object(predictions, 'CASES', root):
                 record = predictions.contrast('denver_water_2026', date(2026, 11, 12), '63.5', '2026-11-13T15:00:00+00:00', 'Synthetic test reading; no field data')

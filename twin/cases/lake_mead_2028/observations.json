@@ -1,0 +1,64 @@
+{
+ "format": "genius-twin-field-observations/1",
+ "case": "lake_mead_2028",
+ "observations": [
+  {
+   "case": "lake_mead_2028",
+   "prediction_sha256": "211c298e3ef278b700fd90950b802242c13c172fcc4ead65af60b378a346c0ab",
+   "frozen_at": "2026-10-18T00:10:58+00:00",
+   "step": 1,
+   "step_date": "2026-10-31",
+   "reading_date": "2026-10-31",
+   "variable": "mead",
+   "unit": "kaf",
+   "value_exact": "6899/1",
+   "observed_at": "2026-11-16T12:00:00-08:00",
+   "source": "Bureau of Reclamation, \"November 2026 Most Probable 24-Month Study – 6 maf Lake Powell Release Scenario\", 16/11/2026, https://www.usbr.gov/lc/region/g4000/24mo_6.pdf, Hoover Dam - Lake Mead row: \"Oct 2026 405 237 44 496 8.1 25 487 448 1038.85 6899\" (same row in 24mo_7.pdf)",
+   "origin": "CITED_PUBLIC_READING",
+   "source_authentication": "NOT_ESTABLISHED",
+   "temporal_relation": "PROSPECTIVE_REFERENCE",
+   "model_was_calibrated": false,
+   "comparisons": {
+    "release_6": {
+     "scenarios": {
+      "minimum": {
+       "predicted_exact": "6636/1",
+       "delta_exact": "263/1"
+      },
+      "most_probable": {
+       "predicted_exact": "6657/1",
+       "delta_exact": "242/1"
+      },
+      "maximum": {
+       "predicted_exact": "6669/1",
+       "delta_exact": "230/1"
+      }
+     },
+     "nearest_scenarios": [
+      "maximum"
+     ]
+    },
+    "release_7": {
+     "scenarios": {
+      "minimum": {
+       "predicted_exact": "6636/1",
+       "delta_exact": "263/1"
+      },
+      "most_probable": {
+       "predicted_exact": "6657/1",
+       "delta_exact": "242/1"
+      },
+      "maximum": {
+       "predicted_exact": "6669/1",
+       "delta_exact": "230/1"
+      }
+     },
+     "nearest_scenarios": [
+      "maximum"
+     ]
+    }
+   },
+   "meaning": "Diferencias exactas contra cada política y escenario congelados. Los escenarios más cercanos son descriptivos, sin umbral ni probabilidad."
+  }
+ ]
+}
