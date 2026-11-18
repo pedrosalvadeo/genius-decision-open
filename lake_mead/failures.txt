@@ -684,5 +684,8 @@ https://www.usbr.gov/lc/region/g4000/24mo/2026/AUG26_6.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2026/AUG26_7.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2026/SEP26.pdf not found
 https://www.usbr.gov/lc/region/g4000/24mo/2026/SEP26_MAX.pdf not found
-https://www.usbr.gov/lc/region/g4000/24mo.pdf does not name 2026-10 at the top
 https://www.usbr.gov/lc/region/g4000/24mo/2026/OCT26.pdf not found
+https://www.usbr.gov/lc/region/g4000/24mo.pdf does not name 2026-11 at the top
+https://www.usbr.gov/lc/region/g4000/24mo/2026/NOV26.pdf not found
+https://www.usbr.gov/lc/region/g4000/24mo_MAX.pdf does not name 2026-11 at the top
+https://www.usbr.gov/lc/region/g4000/24mo/2026/NOV26_MAX.pdf not found
